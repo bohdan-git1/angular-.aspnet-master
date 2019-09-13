@@ -1,0 +1,134 @@
+<div class="closeBtn" (click)="cancelModal()">
+		<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="13.5" width="2.12119" height="19.0907" transform="rotate(45 13.5 0)" fill="#333333"/>
+				<rect y="1.50195" width="2.12119" height="19.0907" transform="rotate(-45 0 1.50195)" fill="#333333"/>
+		</svg>
+</div>
+
+<div class="gallery-main-div">
+    <div class="gallery-title" *ngIf="!selectMultiple">
+        <div class="gallery-text">Gallery</div>
+		<div class="actionbtn-cont">
+			<div class="upload-text" (click)="showUploadModal()">Upload</div>
+			<div class="select-multiple-text" (click)="showSelectMultiple()">Select multiple</div>
+			<div class="cancel-text" (click)="cancelModal()">Cancel</div>
+		</div>
+		
+		<div class="clear"></div>
+    </div>
+	
+	<div class="gallery-title" *ngIf="selectMultiple">
+        <div class="gallery-text">Select Multiple</div>
+		<div class="actionbtn-cont">
+			<div class="compare-btn" (click)="getCompareData()">Compare</div>
+			<div class="compare-cancel" (click)="cancelCampere()">Cancel</div>
+		</div>
+		
+		<div class="clear"></div>
+    </div>
+	
+     <div class="img-gallery-main-div">
+          <div *ngFor="let imagelist of imageGalleryArray; let secIndx=index" class="gallery-section">
+               <div class="gallery-all-title">{{imagelist.gallerysection}}</div>
+              <div class="gallery-all-img">
+
+                <div class="gallery-img" *ngFor="let image of imagelist.imgsection let indx = index" (click)="selectImage(secIndx, indx)">
+                    <img *ngIf="image.img" style="width: 100%" src="{{image.img}}">
+                    <!-- <div class="img-name" *ngIf="image.img==''">  {{image.img_name}} </div> -->
+					
+					<div class="img-overlay" *ngIf="image.selected">
+						<div class="select-icon" >
+							<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+								<circle cx="12.5" cy="12.5" r="9.5" fill="#4EC8F0"/>
+								<circle cx="12.5" cy="12.5" r="9.125" stroke="white" stroke-width="0.75"/>
+								</g>
+								<path d="M8 13.16L11.3302 16.8137C11.417 16.9089 11.5698 16.8984 11.6428 16.7923L17 9" stroke="white" stroke-width="0.75"/>
+								<defs>
+								<filter id="filter0_d" x="0" y="0" width="27" height="27" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								<feOffset dx="1" dy="1"/>
+								<feGaussianBlur stdDeviation="2"/>
+								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								</filter>
+								</defs>
+							</svg>
+						</div>
+					</div>
+                </div>
+              </div>
+          </div>
+     </div>
+</div>
+
+<div class="full-overlay" *ngIf="showComparePanel">
+	<div class="compare-panel">
+		<div class="compare-panel-top-btn">
+			<div class="panel-acion-btn" (click)="showComparePanel=false">Back</div>
+			<div class="panel-acion-btn" (click)="saveasJPG()">Save as JPG</div>
+		</div>
+		
+		<!-- <div class="middle-panel">
+			<div class="middle-panel-first">
+				<div class="middle-panel-title">Pre-Exam - 09/24/13 8y 7m</div>
+				<div class="middle-panel-cont">
+					<div class="img-block-wrapper"><div class="img-block"></div></div>
+					<div class="img-block-wrapper"><div class="img-block"></div></div>
+					<div class="img-block-wrapper"><div class="img-block"></div></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="middle-panel">
+			<div class="middle-panel-first">
+				<div class="middle-panel-title">Final Phase 2 - 03/15/18 13y 1m</div>
+				<div class="middle-panel-cont">
+					<div class="img-block-wrapper"><div class="img-block"></div></div>
+					<div class="img-block-wrapper"><div class="img-block"></div></div>
+					<div class="img-block-wrapper"><div class="img-block"></div></div>
+				</div>
+			</div>
+		</div> -->
+		<div id="compard" style="background: #ffffff; padding: 10px; box-sizing: border-box;">
+			<div class="middle-panel" *ngFor="let compareitem of compareArrPanelArr" >
+				<div class="middle-panel-first">
+					<div class="middle-panel-title">{{compareitem.gallerysection}}</div>
+					<div class="middle-panel-cont">
+						<ng-container *ngFor="let imgitem of compareitem.imgsection">
+							<div class="img-block-wrapper" *ngIf="imgitem.selected">
+								<div class="img-block">
+									<img src="{{imgitem.img}}" width="100%"/>
+								</div>
+							</div>
+						</ng-container>
+						<!-- <div class="img-block-wrapper"><div class="img-block"></div></div>
+						<div class="img-block-wrapper"><div class="img-block"></div></div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="compare-panel-bottom-btn">
+			<div class="bottom-action-btn">
+				<svg width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M18.7561 16.7644H3.23033C2.65224 16.7644 2.15674 16.2785 2.15674 15.7117V4.7802C2.15674 4.21338 2.65224 3.72754 3.23033 3.72754H18.7561C19.3342 3.72754 19.8297 4.21338 19.8297 4.7802V15.7117C19.8297 16.2785 19.3342 16.7644 18.7561 16.7644Z" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+					<path d="M2.32227 4.375L10.8284 10.9339L19.3346 4.375" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+					<path d="M2.07471 14.7398L7.60784 8.42383" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+					<path d="M19.8299 14.7398L14.3794 8.42383" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+				</svg>
+			</div>
+			
+			<div class="bottom-action-btn">
+				<svg width="25" height="18" viewBox="0 0 25 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8.65589 4.4375C4.02563 4.4375 0.321414 7.32783 0.321414 10.8431C0.321414 12.2492 0.861611 13.4991 1.86484 14.5146C1.47898 15.1395 0.78444 16.0769 0.167072 15.9988C-0.68181 15.9207 2.40503 17.4049 4.25714 16.2332C5.56905 16.8581 7.11247 17.2487 8.73306 17.2487C13.3633 17.2487 17.0675 14.3584 17.0675 10.8431C16.9904 7.32783 13.2862 4.4375 8.65589 4.4375Z" fill="white"/>
+					<path d="M24.8618 11.8582C24.3216 11.9363 23.7042 11.077 23.3184 10.5302C24.3216 9.43656 24.9389 8.10857 24.9389 6.70246C24.9389 3.1872 21.2347 0.296875 16.6045 0.296875C11.9742 0.296875 8.34717 3.10908 8.34717 6.62435C8.34717 10.1396 12.0514 13.0299 16.6816 13.0299C18.3022 13.0299 19.8457 12.6394 21.1576 12.0144C22.7782 13.2643 25.6335 11.7801 24.8618 11.8582Z" fill="white"/>
+					<path d="M16.6052 13.0302C16.8367 12.6396 17.2997 11.7803 17.2225 10.6867C17.2225 9.20245 16.528 8.18693 16.065 7.64011C14.6759 5.68718 12.6694 5.06225 11.8977 4.8279C10.663 4.43731 9.65975 4.43731 8.96521 4.51543C8.7337 5.2966 8.34785 6.93705 8.96521 8.57751C10.0456 11.2335 13.0553 13.0302 16.6052 13.0302ZM16.6052 13.0302C16.9138 12.4834 17.2997 11.6241 17.2225 10.6867" stroke="#4EC8F0" stroke-width="0.5" stroke-miterlimit="10"/>
+				</svg>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,283 @@
+.title-section{
+font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 17px;
+text-align: center;
+color: #646464;
+}
+
+.list-section{
+    background: #FFFFFF;
+    border-radius: 4px;
+    /* padding-top: 10px; */
+    height: 460px;
+}
+
+.common-list-section{
+  
+
+    border-radius: 2px;
+    margin-bottom: 6px;
+}
+
+.common-hostipal-section{
+    float: left;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #646464;
+	width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.common-location-section{
+    float: right;
+    text-align: right;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #646464;
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+    box-sizing: border-box;
+    height: 100%;
+    cursor: pointer;
+}
+
+.location-section{
+	/* height: 20px; */
+    background: transparent;
+    margin-bottom: 6px;
+    cursor: pointer;
+    border-radius: 2px;
+	border: 1px solid transparent;
+}
+
+.doctorDetails-section{
+    margin-left: 100px;
+    background: #FFFFFF;
+    border: 1px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    padding: 2px 10px;
+}
+
+.active{
+    border: 1px solid #4EC8F0;
+	background: #4EC8F0;
+}
+
+.submit_btn{
+        
+    background: #FFFFFF;
+    border: 1px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 11px;
+    color: #646464;
+    width: 65px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.search-section{
+    height: 35px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    width: 100%;
+    padding: 15px 5px;
+}
+.search{
+    background: #FFFFFF;
+    border: 0.5px solid #A5A5A5;
+    border-radius: 4px;
+    float: left;
+    width: 60%;
+    height: 100%;
+    position: relative;
+}
+
+
+
+.search-input{
+    width: 60%;
+    height: 25px;
+    margin: 5px 5px 5px 18px;
+    border: none;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    color: #A5A5A5;
+
+}
+
+.ser-icon{
+    position: absolute;
+    top: 8px;
+    left: 10px;
+}
+
+.D-search {
+    float: left;
+    width: 33px;
+    height: 33px;
+    background: #F0F0F0;
+    margin-left: 30px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.D-for-doctor{
+   
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    color: #000000;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.L-search {
+    float: left;
+    width: 33px;
+    height: 33px;
+    background: #F0F0F0;
+    margin-left: 30px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+
+.L-for-location{
+   
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    color: #000000;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.active-circle{
+
+    background: #4EC8F0;
+}
+
+.active-backColor{
+    background: rgba(78, 200, 240, 0.53);
+    
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+
+.radio-btnwrap{/*width:100%; float:left;*/ display:block; text-align:right; margin-top:7px;}
+.radio-btnwrap .name{display:inline-block; vertical-align:middle; font-family:Lato; font-style:normal; font-weight:bold; font-size:10px; line-height:normal;
+text-align:center; color:#646464; 
+transition: color 0.5s ease-out;
+    -o-transition: color 0.5s ease-out;
+    -moz-transition: color 0.5s ease-out;
+    -webkit-transition: color 0.5s ease-out;
+
+}
+.radio-btnwrap .name.activeoption{color:#4EC8F0; transition: color 0.5s ease-out;
+    -o-transition: color 0.5s ease-out;
+    -moz-transition: color 0.5s ease-out;
+    -webkit-transition: color 0.5s ease-out;}
+.radio-btnwrap .radio{width:40px; height:21px; margin:0 5px; display:inline-block; vertical-align:middle; background:#4EC8F0; box-shadow:inset 2px 2px 4px rgba(0, 0, 0, 0.25); border-radius:50px; position: relative;}
+.radio-btnwrap .radio .round{width:15px; height:15px; background:linear-gradient(180deg, #FFFFFF 0%, #EDEDED 100%);
+box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25); border-radius:50px;
+position: absolute;
+left: 3px;
+top: 3px;
+
+	transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+
+}
+
+.elemSelected {
+	background: rgba(78, 200, 240, 0.1);
+	border: 1px solid #4EC8F0;
+}
+
+.inner-elem {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #646464;
+	padding: 2px 0;
+}
+
+.sub-elem-left {
+	float: left;
+	width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.sub-elem-right {
+	float: right;
+    text-align: right;
+    box-sizing: border-box;
+    height: 100%;
+	width: 50%;
+}
+
+.active-inner {
+	color: #FFFFFF;
+}
+
+.active-inner-loc {
+	color: #646464;
+}
+
+
+
+
+
+

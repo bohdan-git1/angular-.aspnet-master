@@ -1,0 +1,27 @@
+<!-- <div class="dayevent-cont" [ngStyle]="{'width': blockWd + 'px', right: -(blockWd+4) + 'px'}"> -->
+
+<div class="dayevent-cont" [ngStyle]="{'width': blockWd + 'px'}">
+	<div class="dayeventmsg" (click)="openDayEvent()">{{dayevntData.title}}</div>
+
+	<div class="msg-detail" *ngIf="showDetail">
+		<div class="msg-title" (click)="openDayEvent()">{{dayevntData.title}}</div>
+		
+		<div class="msg-txt">{{dayevntData.notes}}</div>
+		
+		<div class="remove-btn" (click)="removeEvent()">
+			<div class="btn-txt">Remove</div>
+			
+			<div class="btn-icon">
+				<svg width="7" height="9" viewBox="0 0 7 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0 0.825195H6.6L5.87384 7.36063C5.81757 7.86706 5.38951 8.2502 4.87996 8.2502H1.72004C1.21049 8.2502 0.782429 7.86706 0.726159 7.36063L0 0.825195Z" fill="#F0F0F0"/>
+					<ellipse cx="3.3" cy="0.825" rx="3.3" ry="0.825" fill="#C0C0C0"/>
+					<rect x="1.48584" y="3.2998" width="0.4125" height="4.125" rx="0.20625" fill="#C0C0C0"/>
+					<rect x="4.78516" y="3.2998" width="0.4125" height="4.125" rx="0.20625" fill="#C0C0C0"/>
+					<rect x="3.13525" y="3.2998" width="0.4125" height="4.125" rx="0.20625" fill="#C0C0C0"/>
+				</svg>
+			</div>			
+		</div>
+
+	</div>
+</div>
+

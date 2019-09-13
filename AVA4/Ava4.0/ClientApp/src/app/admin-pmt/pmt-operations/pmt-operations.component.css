@@ -1,0 +1,175 @@
+.menubar {
+	width: 100%;
+	height: 400px;
+	background: linear-gradient(270deg, #31B8E4 0%, #56CCF2 100%);
+}
+
+.searchbox-holder {
+	position: absolute;
+	right: 210px;
+	top: 0;
+}
+
+.menu-cont {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow: hidden;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.menu-item {
+	width: 100%;
+	height: 92px;
+	position: relative;
+	margin-bottom: 5px;
+}
+
+.hoverbox {
+	width: 1px;
+	height: 92px;
+	left: -53px;
+	top: 0;
+	background: #F0F0F0;
+	border-radius: 0;
+	position: absolute;
+	
+	transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+.hoverbox-action {
+	width: 194px;
+	border-radius: 100px;
+	
+	transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+.selectedMenu {
+	width: 194px;
+	height: 92px;
+	left: -53px;
+	top: 0;
+	background: #F0F0F0;
+	border-radius: 100px;
+	position: absolute;
+	
+	transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+.menu-box {
+	width: 75px;
+	height: 75px;
+	background: #FFFFFF;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	cursor: pointer;
+}
+
+.elem {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.elem-icon {
+	width: 35px;
+	margin: auto;
+}
+
+.elem-label {
+	font-size: 9px;
+	text-align: center;
+	color: #00AEEF;
+	margin-top: 2px;
+}
+
+.bottom-cont {
+	position: absolute;
+    bottom: -90px;
+    left: 160px;
+	right: 0;
+	margin: auto;
+    width: 50%;
+    height: 180px;
+}
+
+.mainmenu1, .mainmenu2, .mainmenu3 {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	left: 0;
+	bottom: 50px;
+	background: #FFFFFF;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 100px;
+}
+
+.mainmenu2 {
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+}
+
+.mainmenu3 {
+	right: 0;
+	left: auto;
+}
+
+.active-menu {
+	width: 180px;
+	height: 180px;
+	background: #4EC8F0;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 100px;
+	bottom: 0;
+}
+
+.menu-label {
+	font-size: 10px;
+	text-align: center;
+	color: #A5A5A5;
+}
+
+.main-menu-icon {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.menu-cnt {
+	width: 100%;
+	height: 70px;
+	position: absolute;
+	margin: auto;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.active-menu-label {
+	font-size: 20px;
+	text-align: center;
+	color: #FFFFFF;
+}

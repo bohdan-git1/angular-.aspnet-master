@@ -1,0 +1,168 @@
+<div class="meter-wrapper">
+<div class="meter-cont-wrapper">
+	<div class="meter-cont animatecard" [ngStyle]="{'margin-left': movePos + 'px'}">
+		<div class="steps">
+			<div [ngClass]="{'meter-panel': true, 'animatePanel': singleMeter}">
+				<div class="treatment-time">
+					<div class="total-month">{{treatmentMonth}} months</div>
+					<div class="used-month">{{elapsedMonth}} months</div>
+				</div>
+				<div class="bottom-elem" (click)="showPanel()">$$</div>
+			
+				<div class="marker-cont step1-marker-cont">
+					<div class="meter-mark" *ngFor="let maker of markerArr" [ngStyle]="{'bottom': maker + 'px'}"></div>
+				</div>
+			
+				<div class="meter-rail-cont meter-rail-2 step1-meter-rail-2">
+					<div class="meter-rail"></div>
+					<div class="meter-rail-elapsed" [ngStyle]="{'height': timeElaspsed + 'px'}"></div>
+					
+					<div class="dayscount left-align" [ngStyle]="{'bottom': (todayCount-4.5) + 'px'}">
+						<span>
+							<svg width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect y="3" width="3" height="20" rx="1.5" transform="rotate(-90 0 3)" fill="#646464"/>
+							</svg>
+						</span>
+						<span style="padding-top: 5px">TODAY</span>
+					</div>
+					
+					<div class="elapsed-marker-cont" [ngStyle]="{'bottom': (timeElaspsed-23) + 'px'}">
+						<div class="elapsed-marker"></div>
+						<div class="elapsed-marker-blue">
+							<div class="blue-dot"></div>
+							<div class="elapsed-value">{{timeElaspsed_percentage}}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div [ngClass]="{'meter-panel': true, 'animatePanel': financialMeter}">
+				
+				<div class="total-treatment-month">12 Months</div>
+				<div class="treatment-time">
+					<div class="total-month">{{treatmentMonth}} months</div>
+					<div class="used-month">{{elapsedMonth}} months</div>
+				</div>
+				<div class="bottom-elem" (click)="showPanel()">$$</div>
+			
+				<div class="meter-rail-cont meter-rail-1">
+					<div class="meter-rail">
+						<div class="inner-rail" [ngStyle]="{'height': redmarker + 'px'}"></div>
+					</div>
+					<div class="meter-rail-elapsed" [ngStyle]="{'height': leftMeter_timeElapsed + 'px'}"></div>
+					
+					<div class="dayscount" [ngStyle]="{'bottom': (redmarker-4.5) + 'px'}">
+						<span style="padding-top: 5px">{{redmarker_days}} DAYS</span>
+						<span>
+							<svg width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect y="3" width="3" height="20" rx="1.5" transform="rotate(-90 0 3)" fill="#646464"/>
+							</svg>
+						</span>
+					</div>
+				</div>
+			
+				<div class="marker-cont">
+					<div class="meter-mark" *ngFor="let maker of markerArr" [ngStyle]="{'bottom': maker + 'px'}"></div>
+				</div>
+			
+				<div class="meter-rail-cont meter-rail-2">
+					<div class="meter-rail"></div>
+					<div class="meter-rail-elapsed" [ngStyle]="{'height': timeElaspsed + 'px'}"></div>
+					
+					<div class="dayscount left-align" [ngStyle]="{'bottom': (todayCount-4.5) + 'px'}">
+						<span>
+							<svg width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect y="3" width="3" height="20" rx="1.5" transform="rotate(-90 0 3)" fill="#646464"/>
+							</svg>
+						</span>
+						<span style="padding-top: 5px">TODAY</span>
+					</div>
+					
+					<div class="elapsed-marker-cont" [ngStyle]="{'bottom': (timeElaspsed-23) + 'px'}">
+						<div class="elapsed-marker"></div>
+						<div class="elapsed-marker-blue">
+							<div class="blue-dot"></div>
+							<div class="elapsed-value">{{timeElaspsed_percentage}}%</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		
+		<!-- <div class="steps">
+		
+			
+			
+		</div> -->
+		
+		<div class="steps">
+			<div class="info-item">
+				<p class="info-note">Started treatment</p>
+				<p class="info-date">June 9, 2018</p>
+			</div>
+			
+			<div class="info-item">
+				<p class="info-note">Est treatment time</p>
+				<p class="info-date">9 months</p>
+			</div>
+			
+			<div class="info-item">
+				<p class="info-note">Est treatment completion</p>
+				<p class="info-date">March 9, 2019</p>
+			</div>
+
+			<div class="info-item">Patient is on track to complete treatment<span class="blue-text"> EARLY</span></div>
+
+			<div class="info-item">
+				<p class="info-note">Updated treatment completion</p>
+				<p class="info-date blue-text">February 2, 2019</p>
+			</div>
+			
+			<div class="info-item step3-notes">Notes:Pt is getting married April 19, 2019 and wants to finish treatment before then!</div>
+
+		</div>
+	
+	
+	<!-- <div class="meter-rail-cont meter-rail-1">
+		<div class="meter-rail">
+			<div class="inner-rail"></div>
+		</div>
+		<div class="meter-rail-elapsed" [ngStyle]="{'height': timeElaspsed + 'px'}"></div>
+		<div class="dayscount">
+			<span>56 DAYS</span>
+			<span>
+				<svg width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect y="3" width="3" height="20" rx="1.5" transform="rotate(-90 0 3)" fill="#646464"/>
+				</svg>
+			</span>
+		</div>
+		
+		<div class="meter-mark" *ngFor="let maker of markerArr" [ngStyle]="{'bottom': maker + 'px'}"></div>
+		
+		
+		<div class="meter-rail meter-rail-2"></div>
+		<div class="meter-rail-elapsed" [ngStyle]="{'height': timeElaspsed + 'px'}"></div> -->
+		
+		<!-- <div class="elapsed-marker-cont" [ngStyle]="{'bottom': (timeElaspsed-23) + 'px'}">
+			<div class="elapsed-marker"></div>
+			<div class="elapsed-marker-blue">
+				<div class="blue-dot"></div>
+				<div class="elapsed-value">{{elapsedValue}}%</div>
+			</div>
+		</div>
+		
+	</div> -->
+	</div>
+</div>
+<div class="next-btn" (click)="nextSlide()">
+		<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.789025 5.29921L3.97101 8.48119C4.16627 8.67645 4.48285 8.67645 4.67811 8.48119C4.87337 8.28592 4.87337 7.96934 4.67811 7.77408L2.34968 5.44565H7.14294V5.44668H8.98757C9.99677 5.44668 10.8149 6.2648 10.8149 7.27401C10.8149 8.28322 9.99677 9.10134 8.98756 9.10134H7.14294V10.1013H8.98756C10.5491 10.1013 11.8149 8.8355 11.8149 7.27401C11.8149 5.71252 10.5491 4.44668 8.98757 4.44668H8.56773V4.44565H2.34968L4.67811 2.11723C4.87337 1.92196 4.87337 1.60538 4.67811 1.41012C4.48285 1.21486 4.16627 1.21486 3.97101 1.41012L0.789025 4.5921C0.593763 4.78736 0.593763 5.10394 0.789025 5.29921Z" fill="white"/>
+<path d="M3.97101 8.48119L4.23617 8.21602L4.23617 8.21602L3.97101 8.48119ZM0.789025 5.29921L1.05419 5.03404L1.05419 5.03404L0.789025 5.29921ZM4.67811 7.77408L4.94328 7.50891V7.50891L4.67811 7.77408ZM2.34968 5.44565V5.07065H1.44435L2.08452 5.71082L2.34968 5.44565ZM7.14294 5.44565H7.51794V5.07065H7.14294V5.44565ZM7.14294 5.44668H6.76794V5.82168H7.14294V5.44668ZM7.14294 9.10134V8.72634H6.76794V9.10134H7.14294ZM7.14294 10.1013H6.76794V10.4763H7.14294V10.1013ZM8.56773 4.44668H8.19273V4.82168H8.56773V4.44668ZM8.56773 4.44565H8.94273V4.07065H8.56773V4.44565ZM2.34968 4.44565L2.08452 4.18049L1.44435 4.82065H2.34968V4.44565ZM4.67811 2.11723L4.94328 2.38239V2.38239L4.67811 2.11723ZM3.97101 1.41012L4.23617 1.67528L4.23617 1.67528L3.97101 1.41012ZM0.789025 4.5921L1.05419 4.85726L1.05419 4.85726L0.789025 4.5921ZM4.23617 8.21602L1.05419 5.03404L0.52386 5.56437L3.70584 8.74635L4.23617 8.21602ZM4.41295 8.21602C4.36413 8.26484 4.28499 8.26484 4.23617 8.21602L3.70584 8.74635C4.04755 9.08806 4.60157 9.08806 4.94328 8.74635L4.41295 8.21602ZM4.41295 8.03924C4.46176 8.08806 4.46176 8.16721 4.41295 8.21602L4.94328 8.74635C5.28499 8.40464 5.28499 7.85062 4.94328 7.50891L4.41295 8.03924ZM2.08452 5.71082L4.41295 8.03924L4.94328 7.50891L2.61485 5.18049L2.08452 5.71082ZM7.14294 5.07065H2.34968V5.82065H7.14294V5.07065ZM6.76794 5.44565V5.44668H7.51794V5.44565H6.76794ZM7.14294 5.82168H8.98757V5.07168H7.14294V5.82168ZM8.98757 5.82168C9.78966 5.82168 10.4399 6.47191 10.4399 7.27401H11.1899C11.1899 6.0577 10.2039 5.07168 8.98757 5.07168V5.82168ZM10.4399 7.27401C10.4399 8.07611 9.78966 8.72634 8.98756 8.72634V9.47634C10.2039 9.47634 11.1899 8.49033 11.1899 7.27401H10.4399ZM8.98756 8.72634H7.14294V9.47634H8.98756V8.72634ZM6.76794 9.10134V10.1013H7.51794V9.10134H6.76794ZM7.14294 10.4763H8.98756V9.72634H7.14294V10.4763ZM8.98756 10.4763C10.7562 10.4763 12.1899 9.04261 12.1899 7.27401H11.4399C11.4399 8.6284 10.3419 9.72634 8.98756 9.72634V10.4763ZM12.1899 7.27401C12.1899 5.50541 10.7562 4.07168 8.98757 4.07168V4.82168C10.3419 4.82168 11.4399 5.91963 11.4399 7.27401H12.1899ZM8.98757 4.07168H8.56773V4.82168H8.98757V4.07168ZM8.19273 4.44565V4.44668H8.94273V4.44565H8.19273ZM2.34968 4.82065H8.56773V4.07065H2.34968V4.82065ZM4.41295 1.85206L2.08452 4.18049L2.61485 4.71082L4.94328 2.38239L4.41295 1.85206ZM4.41295 1.67528C4.46176 1.7241 4.46176 1.80324 4.41295 1.85206L4.94328 2.38239C5.28499 2.04068 5.28499 1.48666 4.94328 1.14495L4.41295 1.67528ZM4.23617 1.67528C4.28499 1.62647 4.36413 1.62647 4.41295 1.67528L4.94328 1.14495C4.60157 0.803245 4.04755 0.803245 3.70584 1.14495L4.23617 1.67528ZM1.05419 4.85726L4.23617 1.67528L3.70584 1.14495L0.52386 4.32693L1.05419 4.85726ZM1.05419 5.03404C1.00537 4.98523 1.00537 4.90608 1.05419 4.85726L0.52386 4.32693C0.182151 4.66864 0.182151 5.22266 0.52386 5.56437L1.05419 5.03404Z" fill="#4EC8F0"/>
+</svg>
+
+	</div>
+
+</div>

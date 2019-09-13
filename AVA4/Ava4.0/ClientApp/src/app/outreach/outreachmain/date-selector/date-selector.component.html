@@ -1,0 +1,35 @@
+<div class="calendar-cont">
+	<div class="monthname">{{monthname | date:'MMM y'}}</div>
+	<div class="week daynames">
+		<div *ngFor="let name of dayNames" class="date-text dayname">
+		{{ name }}
+		</div>
+	</div>
+	
+	<div class="weeks">
+		<div *ngFor="let week of weeks; let weekIndx = index" class="week">
+			<div *ngFor="let day of week; let dayIndx = index" [ngClass]="{'date-text': true, holiday: day.holiday, today: day.today, seldate: day.selected, longerday: day.longerday, shorterday: day.shorterday}" (click)="selectedDateClick(day.weekdate, weekIndx, dayIndx)">
+			  <div>{{day.weekdate | date:'d'}}</div>
+			  <!-- <div class="dots-container" *ngIf="day.weekdate">
+				<div [ngClass]="{reddots: day.reddots}"></div>
+			  </div> -->
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="nav-btn left-btn" (click)="gotoMonth('prev')">
+		<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M9.63025 0.861696C9.23973 0.471172 8.60656 0.471172 8.21604 0.861696L1.16583 7.9119C1.15882 7.91852 1.15188 7.92527 1.14502 7.93213L0.927448 8.1497C0.752699 8.32445 0.656146 8.54778 0.637788 8.77622C0.614924 9.05849 0.71146 9.34861 0.927397 9.56455L1.14497 9.78212C1.1524 9.78955 1.15991 9.79683 1.16751 9.80398L8.21609 16.8526C8.60661 17.2431 9.23977 17.2431 9.6303 16.8526L9.84787 16.635C10.2384 16.2445 10.2384 15.6113 9.84787 15.2208L3.4842 8.8571L9.84782 2.49348C10.2383 2.10296 10.2383 1.46979 9.84782 1.07927L9.63025 0.861696Z" fill="#A5A5A5"/>
+		</svg>
+	</div>
+	
+	<div class="nav-btn right-btn" (click)="gotoMonth('next')">
+		<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M8.36975 17.1383C8.76027 17.5288 9.39344 17.5288 9.78396 17.1383L16.8342 10.0881C16.8412 10.0815 16.8481 10.0747 16.855 10.0679L17.0726 9.8503C17.2473 9.67555 17.3439 9.45222 17.3622 9.22378C17.3851 8.94151 17.2885 8.65139 17.0726 8.43545L16.855 8.21788C16.8476 8.21045 16.8401 8.20317 16.8325 8.19602L9.78391 1.14745C9.39339 0.756922 8.76022 0.756921 8.3697 1.14745L8.15213 1.36502C7.7616 1.75554 7.7616 2.38871 8.15213 2.77923L14.5158 9.1429L8.15218 15.5065C7.76165 15.897 7.76165 16.5302 8.15218 16.9207L8.36975 17.1383Z" fill="#A5A5A5"/>
+		</svg>
+	</div>
+	
+	
+	
+</div>

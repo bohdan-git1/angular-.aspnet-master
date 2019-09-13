@@ -1,0 +1,22 @@
+<div class="component-container" #container>
+	
+	<div class="image-cont-wrapper" [ngStyle]="{'width': (img_wrapperWd) + 'px', 'left': animationPos + 'px'}">
+	
+		<div class="image-cont" *ngFor="let sliderimg of imageUrlArray; let indx=index" [ngStyle]="{'width':img_containerWd + 'px' , 'left': indx==0 ? firstimgPos + 'px' : getPostion(indx) + 'px'}">
+			<div class="inner-cont" [ngStyle]="{'text-align':indx==sliderCount? 'center' : indx==sliderCount-1 ? 'right' : 'left'}">
+				<img src="{{sliderimg}}" [ngStyle]="{'width':indx==sliderCount? '100%' : img_containerWd-200 + 'px'}" class="sliderImg"/>
+			</div>
+		</div>
+		
+		
+		
+		
+	</div>
+	
+	<div class="image-dot-cont">
+		<div class="image-dots" *ngFor="let sliderimg of imageUrlArray; let indx=index" [ngStyle]="{'background': indx==sliderCount ? '#646464' : '#C4C4C4','cursor':'pointer'}" (click)="clickOnDot(indx)"></div>
+	</div>
+	
+	
+	
+</div>

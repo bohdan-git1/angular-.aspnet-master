@@ -1,0 +1,38 @@
+<div class="drpdn-panel">
+	<div class="drpdn-cont" *ngFor="let drpdn of multidrpdndata let indx=index">
+		<div (click)="toogleDropdown(indx)">
+			<div [ngClass]="{'drpdn-title': true, 'option-selected': drpdn.opendrpdn}">{{drpdn.title}}</div>
+			<!-- <div class="down-arrow">
+				<svg width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2.5 4L0.334936 0.25L4.66506 0.25L2.5 4Z" fill="#4EC8F0"/>
+				</svg>
+			</div> -->
+		</div>
+		<div class="drpdn-optn" *ngIf="drpdn.opendrpdn">
+			<ul>
+				<li *ngFor="let ddoption of drpdn.ddoptions let subindx=index" class="optn_title">
+					
+					<div (click)="toggleSubdrpndn(indx,subindx)">
+						<div [ngClass]="{'ddoptions-title': true, 'accord-sub-label': true, 'option-selected': ddoption.opensubdrpdn}">{{ddoption.title}}</div>
+						<!-- <div class="down-arrow" *ngIf="ddoption.suboptn.length > 0">
+							<svg width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M2.5 4L0.334936 0.25L4.66506 0.25L2.5 4Z" fill="#4EC8F0"/>
+							</svg>
+						</div> -->
+					</div>
+					<ul class="accord-sub" *ngIf="ddoption.opensubdrpdn">
+						<li  *ngFor="let suboption of ddoption.suboptn let optnindx=index" >
+							
+							<div [ngClass]="{'accord-sub-label': true, 'option-selected': suboption.selected}" (click)="selectedOptn(indx,subindx,optnindx)">{{suboption.title}}</div>
+							
+							<div [ngClass]="{'accord-sub-label-input': true, 'option-selected': suboption.selected}">	
+								<input type="text" [ngStyle]="{'color': suboption.selected ? '#333333' : '#A5A5A5'}" *ngIf="suboption.selected" [(ngModel)]="suboption.time"/>
+							</div>
+						
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

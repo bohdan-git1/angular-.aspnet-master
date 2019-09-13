@@ -1,0 +1,370 @@
+<div class="card-accord-cont">
+	<div [ngClass]="{'flip-container': true, 'flipcontclose': toggleclass[0].accordclose}">
+		<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + stepsRotateY + 'deg)'}">
+			
+			
+			<div [ngClass]="toggleclass[0]" style="padding-left: 5px; padding-right: 5px;">
+			
+				<div [ngClass]="contentClass[0]">
+					
+						<app-stepsdrdn [drpdndata]="selectedStep" (stepLibraryStep1)="stepLibraryStep1($event)"></app-stepsdrdn>
+					
+				</div>
+				
+				<!----<div [ngClass]="contentClass[0]" style="height: 150px; padding-top: 5px; border-top: 1px solid #C4C4C4; margin-top: 5px;">
+					<perfect-scrollbar>
+						 <app-stepsdrdn [drpdndata]="stepsPlan"></app-stepsdrdn> 
+						
+						<div class="drpdn-optn" style="padding-right: 10px;">
+							<div *ngFor="let ddoption of stepsPlan let optnindx=index" class="optn_title">
+								<div class="remove-icon">
+									<svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M4.806 3.39H3.06V5.244H2.1555V3.39H0.4185V2.5665H2.1555V0.7215H3.06V2.5665H4.806V3.39Z" fill="#00AEEF"/>
+									</svg>
+								</div>
+								<div [ngClass]="{'ddlabel': true, 'selectedOptn': ddoption.selected}">{{ddoption.title}}</div>
+								<div [ngClass]="{'duration': true, 'duration-selected': ddoption.selected}">
+									{{ddoption.duration}}
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+						
+					</perfect-scrollbar>
+				</div>-->
+				
+				<!----<div class="drpdn-optn" style="padding-right: 10px; margin-top: 8px;">
+					<div class="remove-icon"></div>
+					<div class="txtime-label" style="text-align: right;">Tx time</div>
+					<div [ngClass]="{'duration': true, 'duration-selected': true}" style="font-weight: bold; font-size: 11px;">9 mo</div>
+					<div class="clear"></div>
+				</div>-->
+				
+				<!----<div class="drpdn-optn" style="padding-right: 10px; margin-top: 8px;">
+					<div class="optn_title">
+						<div class="remove-icon">
+							<svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M4.806 3.39H3.06V5.244H2.1555V3.39H0.4185V2.5665H2.1555V0.7215H3.06V2.5665H4.806V3.39Z" fill="#00AEEF"/>
+							</svg>
+						</div>
+						
+						<div [ngClass]="{'ddlabel': true}">
+							<input type="text" placeholder="Item" class="stps-input"/>
+						</div>
+						<div [ngClass]="{'duration': true}">
+							<input type="text" placeholder="mo" class="stps-input"/>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>--->
+				
+				
+				
+				<div class="fixed-content" (click)="toggleAccordion(0)">
+					<div class="card-title">
+						<!-- <div class="updatedon">10/18/18</div>
+						<div class="card-title-label">Steps</div>
+						<div style="clear: both;"></div> -->
+						
+						<div class="card-label-flipside">Edit Steps</div>
+						<div class="flipside-done-btn" (click)="flipStepsSection(false)">Done</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+
+
+
+
+			
+
+
+			
+			<div [ngClass]="toggleclassBack[0]">
+			
+				<div class="fixed-content-top" *ngIf="!toggleclass[0].accordclose" (click)="flipStepsSection(true)">
+					<div class="card-title">
+						<div class="updatedon" style="padding-top: 7px">10/18/18</div>
+						<div class="card-title-label" style="font-size: 20px">Steps</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+				
+				<div [ngClass]="contentClass[0]">
+					<perfect-scrollbar>
+						<app-nontxplan-back [drpdndata]="selectedStep"></app-nontxplan-back>
+					</perfect-scrollbar>
+				</div>
+				
+				<!-- <div class="icon" *ngIf="!toggleclass[0].accordclose" (click)="flipStepsSection(true)">
+					<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1.2459 7.23996L0.706284 9.19288L2.65798 8.65319L2.65939 8.6546L8.26595 3.04593L6.85338 1.63282L1.24713 7.24119L1.2459 7.23996Z" fill="#56CCF2"/>
+						<path d="M7.17944 1.30664L8.20188 0.283814C8.35806 0.127574 8.61128 0.127574 8.76746 0.283813L9.61445 1.13112C9.77063 1.28736 9.77063 1.54068 9.61445 1.69692L8.59201 2.71974L7.17944 1.30664Z" fill="#56CCF2"/>
+					</svg>
+				</div> -->
+				
+				<div class="fixed-content" (click)="toggleAccordion(0)" *ngIf="toggleclass[0].accordclose">
+					<div class="card-title">
+						<div class="updatedon" style="padding-top: 3px">10/18/18</div>
+						<div class="card-title-label" style="font-size: 14px">Steps</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+	
+	<div [ngClass]="{'flip-container': true, 'flipcontclose': toggleclass[1].accordclose}">
+		<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + txPlanRotateY + 'deg)'}">
+			<div [ngClass]="toggleclass[1]">
+				
+				<div [ngClass]="contentClass[1]">
+					<perfect-scrollbar>
+						<app-acordionddn [drpdndata]="txPlanArr"></app-acordionddn>
+					</perfect-scrollbar>
+				</div>
+				
+				
+				<!-- <div class="icon" *ngIf="!toggleclass[1].accordclose" (click)="txPlanSectionFlip()">
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="6" cy="6" r="5.75" stroke="#4EC8F0" stroke-width="0.5"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M9.37639 4.25772C9.26647 4.15758 9.09619 4.16551 8.99605 4.27542L5.27214 8.36294L3.52272 6.76914C3.41281 6.669 3.24252 6.67693 3.14238 6.78684C3.04225 6.89676 3.05017 7.06704 3.16009 7.16718L5.0245 8.86574C5.03918 8.90091 5.06159 8.9335 5.09162 8.96085C5.20154 9.06099 5.37182 9.05307 5.47196 8.94315L9.39409 4.63806C9.49423 4.52814 9.4863 4.35786 9.37639 4.25772Z" fill="#434343"/>
+					</svg>
+					
+				</div> -->
+				
+				<div class="fixed-content" (click)="toggleAccordion(1)">
+					<div class="card-title">
+						<div class="card-label-flipside">Edit Tx Plan</div>
+						<div class="flipside-done-btn" (click)="txPlanSectionFlip(false)">Done</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			
+			<div [ngClass]="toggleclassBack[1]">
+			
+				<div class="fixed-content-top" *ngIf="!toggleclass[1].accordclose">
+					<div class="card-title">
+						<div class="updatedon" style="padding-top: 7px">10/18/18</div>
+						<div class="card-title-label" style="font-size: 20px; cursor: pointer;" (click)="txPlanSectionFlip(true)">Tx Plan</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+				
+				<div [ngClass]="contentClass[1]">
+					<perfect-scrollbar>
+						<app-txplan-back [noteBoolean]="noteBoolean" [note]='1' [drpdndata]="txPlanArr"></app-txplan-back>
+					</perfect-scrollbar>
+					
+				</div>
+				
+				
+				<!-- <div class="icon" *ngIf="!toggleclass[1].accordclose" (click)="txPlanSectionFlip(true)">
+					<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1.2459 7.23996L0.706284 9.19288L2.65798 8.65319L2.65939 8.6546L8.26595 3.04593L6.85338 1.63282L1.24713 7.24119L1.2459 7.23996Z" fill="#56CCF2"/>
+						<path d="M7.17944 1.30664L8.20188 0.283814C8.35806 0.127574 8.61128 0.127574 8.76746 0.283813L9.61445 1.13112C9.77063 1.28736 9.77063 1.54068 9.61445 1.69692L8.59201 2.71974L7.17944 1.30664Z" fill="#56CCF2"/>
+					</svg>
+				</div> -->
+				
+				
+				
+				<div class="fixed-content" (click)="toggleAccordion(1)" *ngIf="toggleclass[1].accordclose">
+					<div class="card-title">
+						<div class="updatedon" style="padding-top: 3px;">10/18/18</div>
+						<div class="card-title-label" style="font-size: 14px;">Tx Plan</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>	
+	
+	<div [ngClass]="{'flip-container': true, 'flipcontclose': toggleclass[2].accordclose}">
+		<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + goalRotateY + 'deg)'}">
+			<div [ngClass]="toggleclass[2]">
+				<div [ngClass]="contentClass[2]">
+						<perfect-scrollbar>
+							<app-goals-acordionddn [drpdndata]="goalArr"></app-goals-acordionddn>
+						</perfect-scrollbar>
+				</div>
+				
+				<!-- <div class="icon" *ngIf="!toggleclass[2].accordclose" (click)="goalSectionFlip()">
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="6" cy="6" r="5.75" stroke="#4EC8F0" stroke-width="0.5"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M9.37639 4.25772C9.26647 4.15758 9.09619 4.16551 8.99605 4.27542L5.27214 8.36294L3.52272 6.76914C3.41281 6.669 3.24252 6.67693 3.14238 6.78684C3.04225 6.89676 3.05017 7.06704 3.16009 7.16718L5.0245 8.86574C5.03918 8.90091 5.06159 8.9335 5.09162 8.96085C5.20154 9.06099 5.37182 9.05307 5.47196 8.94315L9.39409 4.63806C9.49423 4.52814 9.4863 4.35786 9.37639 4.25772Z" fill="#434343"/>
+					</svg>
+				</div> -->
+				
+				<div class="fixed-content" (click)="toggleAccordion(2)">
+					<div class="card-title">
+						<div class="card-label-flipside">Edit Goals</div>
+						<div class="flipside-done-btn" (click)="goalSectionFlip(false)">Done</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			
+			<div [ngClass]="toggleclassBack[2]">
+			
+				<div class="fixed-content-top" *ngIf="!toggleclass[2].accordclose" (click)="goalSectionFlip(true)">
+					<div class="card-title">
+						<div class="updatedon" style="padding-top: 7px">10/18/18</div>
+						<div class="card-title-label" style="font-size: 20px; cursor: pointer;">Goals</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+				
+				<div [ngClass]="contentClass[2]">
+						<perfect-scrollbar>
+								<app-txplan-back [noteBoolean]="noteBoolean" [note]='0' [drpdndata]="goalArr"></app-txplan-back>
+						</perfect-scrollbar>
+				</div>
+				
+				<!-- <div class="icon" *ngIf="!toggleclass[2].accordclose" (click)="goalSectionFlip(true)">
+					<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1.2459 7.23996L0.706284 9.19288L2.65798 8.65319L2.65939 8.6546L8.26595 3.04593L6.85338 1.63282L1.24713 7.24119L1.2459 7.23996Z" fill="#56CCF2"/>
+						<path d="M7.17944 1.30664L8.20188 0.283814C8.35806 0.127574 8.61128 0.127574 8.76746 0.283813L9.61445 1.13112C9.77063 1.28736 9.77063 1.54068 9.61445 1.69692L8.59201 2.71974L7.17944 1.30664Z" fill="#56CCF2"/>
+					</svg>
+				</div> -->
+				
+				<div class="fixed-content" *ngIf="toggleclass[2].accordclose" (click)="toggleAccordion(2)">
+					<div class="card-title">
+						<div class="updatedon" style="padding-top: 3px;">10/18/18</div>
+						<div class="card-title-label" style="font-size: 14px;">Goals</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div [ngClass]="{'flip-container': true, 'flipcontclose': toggleclass[3].accordclose}">
+		<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + bracketRotateY + 'deg)'}">
+			<div [ngClass]="toggleclassBack[3]">
+			
+			<div class="fixed-content-top" *ngIf="!toggleclass[3].accordclose">
+				<div class="card-title">
+					<div class="updatedon" style="padding-top: 9px">01/12/19</div>
+					<div class="card-title-label">
+						<div class="selected-brc-col" *ngFor="let item of selectedBracktColr" [ngStyle]="{'background': item.color}"></div>
+						<div class="card-title-label-cont" style="font-size: 20px; cursor: pointer;">Brackets</div>
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				
+				<div style="clear: both;"></div>
+			</div>
+			
+				<div [ngClass]="contentClass[3]">
+					
+					<!-- <div class="bracket-dropdown-cont">
+						<div class="drpdn-label-cont" (click)="showBracketDdr=showBracketDdr==true ? false : true">
+							<div class="bracket-col" [ngStyle]="{'background': selectedBracket.color}"></div>
+							<div class="drpdn-label">{{selectedBracket.label}}</div>
+							<div class="down-arr">
+								<svg width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M2.5 4L0.334936 0.25L4.66506 0.25L2.5 4Z" fill="#4EC8F0"/>
+								</svg>
+							</div>
+						</div>
+						
+						<div class="backet-drpdn-options" *ngIf="showBracketDdr">
+							<div class="drpdn-option" *ngFor="let item of bracketArr; let indx=index" (click)="selectBracket(indx)" [ngStyle]="{'background': item.selected == true ? '#f0f0f0' : 'transparent', 'border-color': item.selected == true ? '#4EC8F0' : 'transparent'}">
+								<div class="bracket-col" [ngStyle]="{'background': item.color}"></div>
+								<div class="drpdn-label">{{item.label}}</div>
+							</div>
+							
+							<div class="drpdn-option" style="cursor: pointer;">
+								<div class="add-new" *ngIf="!addnewBrckt" (click)="addnewBrckt=true">+ New bracket type</div>
+								<ng-container *ngIf="addnewBrckt">
+									<div class="add-new-title-cont">
+										<div class="bracket-selected-colr" [ngStyle]="{'background-color': this.addnew_selected}"></div>
+										<div class="add-new-title"><input type="text" placeholder="Bracket title" [(ngModel)]="newbracketlabel"/></div>
+										<div class="add-btn" (click)="addnewbrcktToList()">
+											<svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M0.316429 3.81H2.45043V6.076H3.55593V3.81H5.67893V2.8035H3.55593V0.548499H2.45043V2.8035H0.316429V3.81Z" fill="#4EC8F0"/>
+											</svg>
+										</div>
+									</div>
+									<div class="bracket-option">
+										<div class="braket-color-item" *ngFor="let coloritem of newBracketColorArr; let indx=index" (click)="selectBrcktColor(indx)" [ngStyle]="{'border-color': coloritem.selected==true ? '#646464' : 'transparent'}">
+											<div class="braket-color-item-inner" [ngStyle]="{'background': coloritem.color}"></div>
+										</div>
+									</div>
+								</ng-container>
+								
+							</div>
+							
+							
+							
+						</div>
+					</div>
+					
+					<div class="teeth-selector-cont">
+						<div class="all-btn" (click)="selectallTeeth(true)">All</div>
+						<div class="teeth-selector-box">
+							<div class="top-section">
+								<div class="teeth-selector-leftside border-right">
+									<div class="teethnum" *ngFor="let teethItem of braketTeethArr[0].teethelem; let indx=index" (click)="selectTeeth(0, indx)" [ngStyle]="{'color': teethItem.brackettype}">{{teethItem.label}}</div>
+								</div>
+								<div class="teeth-selector-rightside">
+									<div class="teethnum" *ngFor="let teethItem of braketTeethArr[1].teethelem; let indx=index" (click)="selectTeeth(1, indx)" [ngStyle]="{'color': teethItem.brackettype}">{{teethItem.label}}</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="bottom-section">
+								<div class="teeth-selector-leftside border-right">
+									<div class="teethnum" *ngFor="let teethItem of braketTeethArr[2].teethelem; let indx=index" (click)="selectTeeth(2, indx)" [ngStyle]="{'color': teethItem.brackettype}">{{teethItem.label}}</div>
+								</div>
+								<div class="teeth-selector-rightside">
+									<div class="teethnum" *ngFor="let teethItem of braketTeethArr[3].teethelem; let indx=index" (click)="selectTeeth(3, indx)" [ngStyle]="{'color': teethItem.brackettype}">{{teethItem.label}}</div>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					
+					<app-bracket-card (getSelected)="getSelectedBrcktColr($event)"></app-bracket-card>
+					
+				</div>
+				
+				
+				<div class="fixed-content" (click)="toggleAccordion(3)" *ngIf="toggleclass[3].accordclose">
+					<div class="card-title">
+						<div class="updatedon" style="padding-top: 8px">01/12/19</div>
+						<div class="card-title-label">
+							<div class="selected-brc-col" *ngFor="let item of selectedBracktColr" [ngStyle]="{'background': item.color}"></div>
+							<div class="card-title-label-cont" style="font-size: 14px;">Brackets</div>
+						</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

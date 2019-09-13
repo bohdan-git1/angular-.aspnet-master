@@ -1,0 +1,124 @@
+<div class="title-section">Professional Referrals</div>
+
+<div class="search-section">
+    <div class="search">
+       <div class="ser-icon">
+            <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.64365 1.7868C5.26871 0.110129 3.03091 0.110129 1.65598 1.7868C0.281341 3.46384 0.281341 6.19239 1.65598 7.86942C2.76367 9.21988 4.42997 9.4795 5.75495 8.65369C5.94408 8.5358 6.22156 8.63993 6.36288 8.81226L8.36522 11.254C8.65701 11.6091 9.12854 11.6091 9.41884 11.254C9.71034 10.8986 9.71034 10.3236 9.41884 9.96917L7.4165 7.52667C7.27122 7.35001 7.15494 7.08553 7.24783 6.87652C7.97224 5.2465 7.7724 3.16361 6.64365 1.7868ZM6.01147 7.09851C4.98496 8.35029 3.31436 8.35029 2.28815 7.09851C1.26224 5.84673 1.26224 3.80986 2.28815 2.55808C3.31436 1.30666 4.98496 1.30666 6.01147 2.55808C7.03797 3.80986 7.03797 5.84673 6.01147 7.09851Z" fill="#6BD3F4"/>
+            </svg>
+       </div>
+        <input class="search-input"  [placeholder]="searchPlaceholderTxt" type="text" (keyup)="search($event)"/>
+    </div>
+	
+	<div class="radio-btnwrap">
+	  <div [ngClass]="{'name': true, 'activeoption': defaultDoctor}">Doctor</div>
+	   <div class="radio" (click)="doctorAlocationFilterFn()">
+		 <div class="round" [ngStyle]="{'left': defaultDoctor ? '3px': '22px'}"></div>
+	   </div>
+	  <div [ngClass]="{'name': true, 'activeoption': !defaultDoctor}">Location</div>
+	</div>
+	
+    <!-- <div [ngClass]="{ 'D-search': true, 'active-circle': doctorAlocationFilter== false }" (click)="doctorAlocationFilterFn('D')">
+       <div class="D-for-doctor">
+            D
+       </div> 
+    </div>
+    <div [ngClass]="{ 'L-search': true, 'active-circle': doctorAlocationFilter==true}" class="L-search" (click)="doctorAlocationFilterFn('L')">
+            <div class="L-for-location">
+                L
+            </div> 
+    </div> -->
+</div>
+
+<div class="list-section">
+    <perfect-scrollbar [config]="config">
+    <div *ngIf="!defaultDoctor">
+        <div  *ngFor="let doctordetails of searchLocationArr; let indx=index" class="common-list-section">
+
+            <div [ngClass]="{'location-section': true, 'elemSelected': doctordetails.selected}" style="padding: 2px 10px;" (click)="showDoctorDetail(doctordetails.id)">
+			
+                <!-- <div class="common-hostipal-section">
+                    {{doctordetails.title}}
+                </div>
+                <div class="common-location-section">
+                    {{doctordetails.city}}, {{doctordetails.state}}
+                </div> -->
+				
+				<div class="sub-elem-left">
+					<div [ngClass]="{'inner-elem': true, 'active-inner-loc':doctordetails.selected}">{{doctordetails.clinicname}}</div>
+					<div [ngClass]="{'inner-elem': true, 'active-inner-loc':doctordetails.selected}" *ngIf="doctordetails.selected">{{doctordetails.phone}}</div>
+				</div>
+				<div class="sub-elem-right">
+					<div [ngClass]="{'inner-elem': true, 'active-inner-loc':doctordetails.selected}">{{doctordetails.city}}, {{doctordetails.state}}</div>
+					<div [ngClass]="{'inner-elem': true, 'active-inner-loc':doctordetails.selected}" *ngIf="doctordetails.selected">{{doctordetails.addr}}</div>
+				</div>
+				
+                <div style="clear: both;"></div>
+            </div>
+
+            <div *ngIf="doctordetails.selected">
+                <div *ngFor="let doctoroptionsdetails of doctordetails.doctoroptions; let doctorindx=index" [ngClass]="{'doctorDetails-section': true, 'active': doctoroptionsdetails.selected}"  (click)="selectDoctor(doctordetails.id,doctorindx)">
+					
+					<div class="sub-elem-left" [ngStyle]="{'width': '65%'}">
+						<div [ngClass]="{'inner-elem': true, 'active-inner':doctoroptionsdetails.selected}" >{{doctoroptionsdetails.doctorname}}</div>
+					</div>
+					<div class="sub-elem-right" [ngStyle]="{'width': '35%'}">
+						<div [ngClass]="{'inner-elem': true, 'active-inner':doctoroptionsdetails.selected}" >{{doctoroptionsdetails.designation}}</div>
+					</div>
+					
+                    <!-- <div class="common-hostipal-section">
+                        {{doctoroptionsdetails.doctorname}}
+                    </div>
+                    <div class="common-location-section">
+                        {{doctoroptionsdetails.designation}}
+                    </div> -->
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="defaultDoctor">
+            <div  *ngFor="let doctordetails of searchDoctorArr; let indx=index" class="common-list-section">
+    
+                <div [ngClass]="{'location-section': true, 'elemSelected': doctordetails.selected}" style="height: 20px;" (click)="showLocationDetail(doctordetails.id)">
+                    <div class="common-hostipal-section">
+                        {{doctordetails.doctorname}}
+                    </div>
+                    <div class="common-location-section">
+                        {{doctordetails.designation}}
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+    
+                <div *ngIf="doctordetails.selected">
+                    <div *ngFor="let doctoroptionsdetails of doctordetails.clinicnames; let doctorindx=index" [ngClass]="{'doctorDetails-section': true, 'active': doctoroptionsdetails.selected}"  (click)="selectClinic(doctordetails.id,doctorindx)">
+                        <div class="sub-elem-left">
+							<div [ngClass]="{'inner-elem': true, 'active-inner':doctoroptionsdetails.selected}">{{doctoroptionsdetails.clinicname}}</div>
+							<div [ngClass]="{'inner-elem': true, 'active-inner':doctoroptionsdetails.selected}" *ngIf="doctoroptionsdetails.selected">{{doctoroptionsdetails.phone}}</div>
+                        </div>
+                        <div class="sub-elem-right">
+							<div [ngClass]="{'inner-elem': true, 'active-inner':doctoroptionsdetails.selected}">{{doctoroptionsdetails.city}}, {{doctoroptionsdetails.state}}</div>
+							<div [ngClass]="{'inner-elem': true, 'active-inner':doctoroptionsdetails.selected}" *ngIf="doctoroptionsdetails.selected">{{doctoroptionsdetails.addr}}</div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    
+
+
+</perfect-scrollbar>
+<div (click)="saveDetails()" class="submit_btn">DONE</div>
+
+</div>
+
+
+
+
+
+

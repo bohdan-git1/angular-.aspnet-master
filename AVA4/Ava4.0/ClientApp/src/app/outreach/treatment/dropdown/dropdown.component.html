@@ -1,0 +1,13 @@
+<div class="dropdown-wrapper">
+	<div class="dropdown-label-cont" (click)="showddoptions()">
+      <div class="dropdown-label">{{ddplaceholder}}</div>
+      <div class="dropdown-icon">
+        <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.5 6L10.2631 0H0.73686L5.5 6Z" fill="#4EC8F0"/>
+         </svg>
+      </div>
+    </div>
+    <div class="dropdown-options-cont" *ngIf="showdd">
+      <div [ngClass]="{'optionsitem': true, selectedoptn: optionitem.selected}" *ngFor="let optionitem of _ddoptionsArr; let indx=index" (click)="selectdOption(indx)">{{optionitem.option}}</div>
+    </div>
+</div>

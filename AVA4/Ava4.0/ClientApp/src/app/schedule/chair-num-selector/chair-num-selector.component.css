@@ -1,0 +1,52 @@
+.chair-selector-cont {
+	position: relative;
+	z-index: 10000;
+}
+
+.top-section {
+	width: 36px;
+	height: 20px;
+	background: #DFDFDF;
+	border-radius: 2px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.interaction-section {
+	width: 36px;
+	height: 161px;
+	background: #DFDFDF;
+	border-radius: 2px;
+	margin-top: 5px;
+}
+
+.section-label {
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 10px;
+	text-align: center;
+	color: #FFFFFF;
+	padding: 2px 5px;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+.num-selector {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 14px;
+	text-align: center;
+	color: #FFFFFF;
+	padding: 2px 5px;
+	background: transparent;
+	cursor: pointer;
+}
+
+.num-selector:hover, .num-selector-selected {
+	background: #FFF;
+	color: #4EC8F0;
+}

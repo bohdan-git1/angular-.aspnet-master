@@ -1,0 +1,427 @@
+<div class="analytics-wrapper">
+<perfect-scrollbar [config]="config">
+	<!-- <div fxLayout="column" class="analytics-content" [ngStyle]="{'zoom': zoomviewport/100}"> -->
+	
+	<div fxLayout="column" class="analytics-content" [ngStyle]="{'transform': windowWd <= 1600 ? 'scale('+(zoomviewport/100)+') translate('+ ((1728*(zoomviewport/100) - 1728)/2) + 'px, 0px)' : 'scale('+(zoomviewport/100)+')'}">
+		<div fxLayout="row" fxLayoutGap="80px">
+			<div fxFlex="20">
+				<div class="left-panel">
+					
+					<div class="location-dropdown">
+						<div class="drpdn-label-cont" (click)="showLocationDrpdn()">
+							<div class="drpdn-label" >{{selectedLoc}}</div>
+							<div class="drpdn-arrow">
+								<svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M5.5 7L0.736861 0.249999L10.2631 0.25L5.5 7Z" fill="#4EC8F0"/>
+								</svg>
+							</div>
+						</div>
+						
+						<div class="drpdn-option-cont" *ngIf="showlocDdrnOption">
+							<div [ngClass]="{'drpdn-option': true, 'option-selected': loc.selected}" *ngFor="let loc of locationsDdArr; let indx=index" (click)="selectLocation(indx)">{{loc.label}}</div>
+						</div>
+					</div>
+					
+					<div class="calender-section">
+						<app-analytics-calender [monthname]="currMonths" [calenderRule]="calenderRule"></app-analytics-calender>
+					</div>
+                    
+                    <div class="to-do-list">
+                      <div class="heading">To-do</div>
+                      
+                      <div class="details">
+                        <div class="post-time">10.12.18</div>
+                      </div>
+                      
+                      <div class="details">
+                        <div class="content"><del>Schedule new appointment for Qui - Gonn Jinn</del></div>
+                        <div class="post-time">41 min ago</div>
+                      </div>
+                      
+                      <div class="details">
+                        <div class="content">Schedule new appointment for Qui - Gonn Jinn</div>
+                        <div class="post-time">2 hours ago</div>
+                      </div>
+                      
+                       <div class="details">
+                        <div class="content">You updated billing info for account, Lisa Travis</div>
+                        <div class="post-time">4 hours ago</div>
+                      </div>
+                      
+                      <div class="details">
+                        <div class="content">You created a new lead, Jeff Smith</div>
+                        <div class="post-time">5 hours ago</div>
+                      </div>
+                      
+                      <a class="see-all-btn" href="#">See all...</a>
+                    
+                    </div>
+					
+				</div>
+			</div>
+			
+			<div fxFlex="50">
+				
+				<!-- <div fxLayout="row">
+					<div> -->
+                    
+                    <div class="title-block">
+						<div class="logo"><img src="assets/robot.png" /></div>
+						  <div class="block-content">
+							<div class="welcome-block">Hello, Dr. Tobler!</div>
+							<div class="notification-block">You have 16 tasks on your to-do list for today.</div>
+                            <div class="clock-icon" (click)="showClockInfo=showClockInfo==false?true:false">
+                              <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M24.0757 23.4586V8.70727C24.0757 7.93534 23.4499 7.30957 22.678 7.30957C21.906 7.30957 21.2803 7.93534 21.2803 8.70727V23.4586H24.0757Z" fill="#56CCF2"/>
+								<path d="M23.2888 21.5148L21.2822 23.4609L29.3781 31.8079C29.9155 32.362 30.8003 32.3755 31.3544 31.8381C31.9085 31.3007 31.922 30.4159 31.3846 29.8618L23.2888 21.5148Z" fill="#56CCF2"/>
+								<path d="M43.667 22.5835C43.667 34.2276 34.2276 43.667 22.5835 43.667C10.9394 43.667 1.5 34.2276 1.5 22.5835C1.5 10.9394 10.9394 1.5 22.5835 1.5C34.2276 1.5 43.667 10.9394 43.667 22.5835Z" stroke="#56CCF2" stroke-width="3" stroke-miterlimit="10"/>
+							</svg>
+                            </div>
+							
+							<div class="clock-info-section" *ngIf="showClockInfo">
+								<div class="clock-info-title" [ngStyle]="{'color': title_color}" >{{title_for}}</div>
+								<div class="to-day">{{weekbar_for | date: 'EEEE'}}</div>
+								<div class="clock-info-content-cont">
+
+									<div class="clock-info-content" *ngIf="clock_in_for">
+										<div class="clock-info-icon">
+											<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24 24V9C24 8.44772 23.5523 8 23 8C22.4477 8 22 8.44772 22 9V24H24Z" fill="#56CCF2"/>
+												<path d="M24 25L24 23L12 23C11.4477 23 11 23.4477 11 24C11 24.5523 11.4477 25 12 25L24 25Z" fill="#56CCF2"/>
+												<path d="M44.167 22.5835C44.167 34.5037 34.5037 44.167 22.5835 44.167C10.6633 44.167 1 34.5037 1 22.5835C1 10.6633 10.6633 1 22.5835 1C34.5037 1 44.167 10.6633 44.167 22.5835Z" stroke="#56CCF2" stroke-width="2" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										<div class="clock-info-label">
+											<div class="clock-info-label-name">Clocked in</div>
+											<div class="clock-info-label-name">{{currentcheckin_time_for | date:'h:mm a'}}</div>
+										</div>
+									</div>
+									
+									<div class="clock-info-content" *ngIf="start_break_for">
+										<div class="clock-info-icon">
+											<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M18 14H17C16.4477 14 16 14.4477 16 15V31C16 31.5523 16.4477 32 17 32H18C18.5523 32 19 31.5523 19 31V15C19 14.4477 18.5523 14 18 14Z" fill="#F6CC61"/>
+												<path d="M28 32L29 32C29.5523 32 30 31.5523 30 31L30 15C30 14.4477 29.5523 14 29 14L28 14C27.4477 14 27 14.4477 27 15L27 31C27 31.5523 27.4477 32 28 32Z" fill="#F6CC61"/>
+												<path d="M44.167 22.5835C44.167 34.5037 34.5037 44.167 22.5835 44.167C10.6633 44.167 1 34.5037 1 22.5835C1 10.6633 10.6633 1 22.5835 1C34.5037 1 44.167 10.6633 44.167 22.5835Z" stroke="#F6CC61" stroke-width="2" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										<div class="clock-info-label">
+											<div class="clock-info-label-name">Start Break/Lunch</div>
+											<div class="clock-info-label-name">{{ currentlunch_time_for | date:'h:mm a' }}</div>
+										</div>
+									</div>
+									
+									<div class="clock-info-content" *ngIf="end_break_for">
+										<div class="clock-info-icon">
+											<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M18 14H17C16.4477 14 16 14.4477 16 15V31C16 31.5523 16.4477 32 17 32H18C18.5523 32 19 31.5523 19 31V15C19 14.4477 18.5523 14 18 14Z" fill="#F6CC61"/>
+												<path d="M28 32L29 32C29.5523 32 30 31.5523 30 31L30 15C30 14.4477 29.5523 14 29 14L28 14C27.4477 14 27 14.4477 27 15L27 31C27 31.5523 27.4477 32 28 32Z" fill="#F6CC61"/>
+												<path d="M44.167 22.5835C44.167 34.5037 34.5037 44.167 22.5835 44.167C10.6633 44.167 1 34.5037 1 22.5835C1 10.6633 10.6633 1 22.5835 1C34.5037 1 44.167 10.6633 44.167 22.5835Z" stroke="#F6CC61" stroke-width="2" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										<div class="clock-info-label">
+											<div class="clock-info-label-name">End Break/Lunch</div>
+											<div class="clock-info-label-name">{{ currentlunchend_time_for | date:'h:mm a' }}</div>
+										</div>
+									</div>
+									
+									<div class="clock-info-content" *ngIf="clock_out_for">
+										<div class="clock-info-icon">
+											<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24 24V9C24 8.44772 23.5523 8 23 8C22.4477 8 22 8.44772 22 9V24H24Z" fill="#FD7474"/>
+												<path d="M22 23L22 25L34 25C34.5523 25 35 24.5523 35 24C35 23.4477 34.5523 23 34 23L22 23Z" fill="#FD7474"/>
+												<path d="M44.167 22.5835C44.167 34.5037 34.5037 44.167 22.5835 44.167C10.6633 44.167 1 34.5037 1 22.5835C1 10.6633 10.6633 1 22.5835 1C34.5037 1 44.167 10.6633 44.167 22.5835Z" stroke="#FD7474" stroke-width="2" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										<div class="clock-info-label">
+											<div class="clock-info-label-name">Clocked out</div>
+											<div class="clock-info-label-name">{{currentcheckout_time_for | date:'h:mm a'}}</div>
+										</div>
+									</div>
+
+								</div>
+								
+								<div class="duration-section" *ngIf="duration_for">
+									<div class="duration-label">Duration</div>
+									<div class="duration-time">
+										<span *ngIf="duration_time_for_hour"> {{duration_time_for_hour}}h</span> 	<span *ngIf="duration_time_for_minutes"> {{duration_time_for_minutes}}m</span> 
+								
+									
+								
+									</div>
+								</div>
+								
+								<div class="icon-shower">
+
+									<div class="icon-block-cont" (click)="clock_in()">
+										<div class="icon-block">
+											<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24 24V9C24 8.44772 23.5523 8 23 8C22.4477 8 22 8.44772 22 9V24H24Z" fill="#C4C4C4"/>
+												<path d="M24 25L24 23L12 23C11.4477 23 11 23.4477 11 24C11 24.5523 11.4477 25 12 25L24 25Z" fill="#C4C4C4"/>
+												<path d="M44.167 22.5835C44.167 34.5037 34.5037 44.167 22.5835 44.167C10.6633 44.167 1 34.5037 1 22.5835C1 10.6633 10.6633 1 22.5835 1C34.5037 1 44.167 10.6633 44.167 22.5835Z" stroke="#C4C4C4" stroke-width="2" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										<div class="icon-block-label">Clock in</div>
+									</div>
+
+									<div class="icon-block-cont" *ngIf="clock_out_for==false" (click)="break_fu()">
+										<div class="icon-block">
+											<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M18 14H17C16.4477 14 16 14.4477 16 15V31C16 31.5523 16.4477 32 17 32H18C18.5523 32 19 31.5523 19 31V15C19 14.4477 18.5523 14 18 14Z" fill="#F6CC61"/>
+												<path d="M28 32L29 32C29.5523 32 30 31.5523 30 31L30 15C30 14.4477 29.5523 14 29 14L28 14C27.4477 14 27 14.4477 27 15L27 31C27 31.5523 27.4477 32 28 32Z" fill="#F6CC61"/>
+												<path d="M44.167 22.5835C44.167 34.5037 34.5037 44.167 22.5835 44.167C10.6633 44.167 1 34.5037 1 22.5835C1 10.6633 10.6633 1 22.5835 1C34.5037 1 44.167 10.6633 44.167 22.5835Z" stroke="#F6CC61" stroke-width="2" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										
+										<div class="icon-block-label">{{break_title}}</div>
+									</div>
+
+									<div class="icon-block-cont" *ngIf="clock_out_for">
+										<div class="icon-block">
+											<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M18 14H17C16.4477 14 16 14.4477 16 15V31C16 31.5523 16.4477 32 17 32H18C18.5523 32 19 31.5523 19 31V15C19 14.4477 18.5523 14 18 14Z" fill="#F6CC61"/>
+												<path d="M28 32L29 32C29.5523 32 30 31.5523 30 31L30 15C30 14.4477 29.5523 14 29 14L28 14C27.4477 14 27 14.4477 27 15L27 31C27 31.5523 27.4477 32 28 32Z" fill="#F6CC61"/>
+												<path d="M44.167 22.5835C44.167 34.5037 34.5037 44.167 22.5835 44.167C10.6633 44.167 1 34.5037 1 22.5835C1 10.6633 10.6633 1 22.5835 1C34.5037 1 44.167 10.6633 44.167 22.5835Z" stroke="#F6CC61" stroke-width="2" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										
+										<div class="icon-block-label">{{break_title}}</div>
+									</div>
+
+									
+
+									<div class="icon-block-cont" (click)="check_out()">
+										<div class="icon-block">
+											<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24 24V9C24 8.44772 23.5523 8 23 8C22.4477 8 22 8.44772 22 9V24H24Z" fill="#FD7474"/>
+												<path d="M22 23L22 25L34 25C34.5523 25 35 24.5523 35 24C35 23.4477 34.5523 23 34 23L22 23Z" fill="#FD7474"/>
+												<path d="M44.167 22.5835C44.167 34.5037 34.5037 44.167 22.5835 44.167C10.6633 44.167 1 34.5037 1 22.5835C1 10.6633 10.6633 1 22.5835 1C34.5037 1 44.167 10.6633 44.167 22.5835Z" stroke="#FD7474" stroke-width="2" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										
+										<div class="icon-block-label">Clock out</div>
+									</div>
+
+								</div>
+								
+								<div class="shadow-patch"></div>
+							</div>
+							
+						  </div>
+					   </div>
+                       
+                       
+                       <div class="appnt-type-card" *ngFor="let analyticsItem of analyticsData; let indx=index" [ngStyle]="{'padding': analyticsItem.openaccordion==false ? '0' : '15px 15px 15px 35px', 'min-height': analyticsItem.openaccordion==false ? '0' : '600px'}">
+						
+						<div class="status-bar" *ngIf="!analyticsItem.openaccordion" (click)="openAnalyticsAccordion(indx)">
+                          <div class="status" [ngStyle]="{'background': setSectionBg(analyticsItem.section)}"><span>{{analyticsItem.section}}</span></div>
+                          <div class="result">{{analyticsItem.today}}</div>
+                        </div>
+						
+						<div *ngIf="analyticsItem.openaccordion">
+						
+							<div class="appnt-card-title" [ngStyle]="{'background': setSectionBg(analyticsItem.section)}"><span>{{analyticsItem.section}}</span></div>
+                       
+							<div fxLayout="row" >
+								<div fxFlex="25">
+									<div class="display-value active currency"><span>{{analyticsItem.today}}</span></div>
+									<div class="display-value-label">Today</div>
+								</div>
+								
+								<div fxFlex="25">
+									<div class="display-value currency"><span>{{analyticsItem.lastday}}</span></div>
+									<div class="display-value-label">Last Day</div>
+								</div>
+								
+								<div fxFlex="25">
+									<div class="display-value currency"><span>{{analyticsItem.last7day}}</span></div>
+									<div class="display-value-label">last 7 days</div>
+								</div>
+								
+								<div fxFlex="25">
+									<div class="display-value currency"><span>{{analyticsItem.last30day}}</span></div>
+									<div class="display-value-label">Last 30 days</div>
+								</div>
+							  
+							  </div>
+                          
+							  <div fxLayout="row">
+							  
+							   <div class="accrdn-wrap">
+								<div class="accrdn-label" *ngFor="let patientItem of analyticsItem.patients; let ptnIndx=index" [ngStyle]="{'background': setSectionBg(analyticsItem.section)}">
+								  {{patientItem.name}}
+								  <div class="anchor" (click)="showactionMenu(ptnIndx)">
+								   <svg width="23" height="5" viewBox="0 0 23 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+									  <circle cx="2.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="11.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="20.5" cy="2.5" r="2.5" fill="white"/>
+								   </svg>
+								  </div>
+								  
+								  <div class="dropdown" *ngIf="patientItem.openmenu">
+									<ul>
+									  <li (click)="selectAction()">Auto - Sequence</li>
+									  <li (click)="selectAction()">Set a custom message</li>
+									  <li (click)="selectAction()">Remind me</li>
+									  <li (click)="selectAction()">Send Now</li>
+									  <li (click)="selectAction()">Patient profile</li>
+									  <li (click)="selectAction()">Remove</li>
+									</ul>
+								  </div>
+								  
+								</div>
+								
+								<!-- <div class="accrdn-label">
+								  Elizabeth Thomas
+								  <div class="anchor">
+								   <svg width="23" height="5" viewBox="0 0 23 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+									  <circle cx="2.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="11.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="20.5" cy="2.5" r="2.5" fill="white"/>
+								   </svg>
+								  </div>
+								</div> -->
+								
+								<!-- <div class="accrdn-label">
+								  Jaron King
+								  <div class="anchor">
+								   <svg width="23" height="5" viewBox="0 0 23 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+									  <circle cx="2.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="11.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="20.5" cy="2.5" r="2.5" fill="white"/>
+								   </svg>
+								  </div>
+								</div> -->
+								
+								<!-- <div class="accrdn-label">
+								  Richard Sivan
+								  <div class="anchor">
+								   <svg width="23" height="5" viewBox="0 0 23 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+									  <circle cx="2.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="11.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="20.5" cy="2.5" r="2.5" fill="white"/>
+								   </svg>
+								  </div>
+								</div> -->
+								
+								<!-- <div class="accrdn-label">
+								  Lindy Loughlin
+								  <div class="anchor">
+								   <svg width="23" height="5" viewBox="0 0 23 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+									  <circle cx="2.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="11.5" cy="2.5" r="2.5" fill="white"/>
+									  <circle cx="20.5" cy="2.5" r="2.5" fill="white"/>
+								   </svg>
+								  </div>
+								  
+								  <div class="dropdown">
+									<ul>
+									  <li>Auto - Sequence</li>
+									  <li>Set a custom message</li>
+									  <li>Remind me</li>
+									  <li>Send Now</li>
+									  <li>Patient profile</li>
+									  <li>Remove</li>
+									</ul>
+								  </div>
+								</div> -->
+							   </div> 
+							   
+							 </div>
+						</div>
+                       </div>
+                    
+                    
+					   <!-- <div class="status-bar">
+                          <div class="status"><span>NO SHOW</span></div>
+                          <div class="result">2</div>
+                        </div>
+                        
+                        <div class="status-bar">
+                          <div class="status purple"><span>NO SHOW</span></div>
+                          <div class="result">6</div>
+                        </div>
+                        
+                        <div class="status-bar">
+                          <div class="status blue"><span>NO SHOW</span></div>
+                          <div class="result">2</div>
+                        </div>
+                        
+                        <div class="status-bar">
+                          <div class="status red"><span>NO SHOW</span></div>
+                          <div class="result">2</div>
+                        </div>
+                        
+                        <div class="status-bar">
+                          <div class="status pink"><span>NO SHOW</span></div>
+                          <div class="result">2</div>
+                        </div> -->
+						
+						
+					
+						
+					<!-- </div> -->
+					<!-- <div fxFlex="150px" style="position: relative;">
+						
+						<div class="profileimage-cont">
+							<div class="profile-img">
+								<img src="assets/doc-image.png" width="100%"/>
+							</div>
+							
+							<div class="shadow">
+								<svg width="50" height="6" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<ellipse cx="24.557" cy="2.90922" rx="24.557" ry="2.90922" fill="#C4C4C4"/>
+								</svg>
+
+							</div>
+						</div>
+						
+					</div> -->
+				<!-- </div> -->
+				
+			</div>
+            
+            
+            <div fxFlex="30">
+						<div style="float: right;">
+							<div class="search_panel">
+                                <div class="search-panel-icon">
+                                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <path d="M7.62817 1.78583C5.95247 0.109152 3.22516 0.109152 1.54947 1.78583C-0.125864 3.46286 -0.125864 6.19141 1.54947 7.86845C2.91259 9.23203 4.96983 9.48347 6.59207 8.6283C6.81247 8.51212 7.10986 8.63505 7.28598 8.81128L9.72632 11.2531C10.0819 11.6082 10.6566 11.6082 11.0104 11.2531C11.3657 10.8976 11.3657 10.3226 11.0104 9.96819L8.57008 7.5257C8.39396 7.34997 8.27118 7.05317 8.3872 6.83308C9.24308 5.2095 8.99191 3.1507 7.62817 1.78583ZM6.8577 7.09753C5.60665 8.34931 3.57061 8.34931 2.31993 7.09753C1.06961 5.84575 1.06961 3.80888 2.31993 2.5571C3.57061 1.30569 5.60665 1.30569 6.8577 2.5571C8.10875 3.80888 8.10875 5.84575 6.8577 7.09753Z" fill="#6BD3F4"/>
+                                  </svg>
+                                </div>
+								<span class="search-input">
+                                Find patient...
+                                </span>
+							</div>
+							
+							<div class="plus-btn-cont">
+								<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+								   <rect x="0.582031" y="6.18555" width="14" height="3.23077" fill="#4EC8F0"/>
+								   <rect x="5.96582" y="0.799805" width="3.23077" height="14" fill="#4EC8F0"/>
+								</svg>
+
+							</div>
+							
+							<div class="plus-btn-cont" style="width: 26px; height: 32px;">
+								<svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6.10938 17.8213C6.54891 19.079 7.77961 20.0014 9.18612 20.0014C10.5926 20.0014 11.9112 19.1629 12.4387 17.8213" stroke="#4EC8F0" stroke-width="0.75" stroke-miterlimit="10"/>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M12.4302 1.07582C13.2072 1.41007 13.9253 1.87035 14.5432 2.45257C15.9137 3.744 16.8119 5.65425 16.7528 8.18185L17.5026 8.19938C17.5664 5.46964 16.5904 3.35114 15.0575 1.90672C14.2572 1.15258 13.3108 0.587399 12.2919 0.213867C12.3686 0.488995 12.416 0.777704 12.4302 1.07582ZM5.70625 0.368649C4.93198 0.695784 4.19988 1.13919 3.5421 1.70168C1.88525 3.11848 0.721745 5.27231 0.53125 8.16588L1.27963 8.21514C1.45782 5.50845 2.53717 3.54783 4.02953 2.27169C4.51351 1.85782 5.04323 1.51402 5.60318 1.2396C5.60517 0.939322 5.64081 0.647631 5.70625 0.368649Z" fill="#4EC8F0"/>
+									<path d="M16.8164 13.3772C16.4648 13.1257 15.9374 12.6226 15.4978 11.868C15.2341 11.3649 15.1462 11.0295 14.9704 10.4425C14.8825 9.68789 14.7067 8.68171 14.7067 7.50783C14.7067 7.08858 14.7067 5.74701 13.7397 4.40543C12.7727 3.06385 11.4541 2.64461 11.0146 2.47691C10.9267 1.55458 10.1355 0.883789 9.16853 0.883789C8.20155 0.883789 7.41039 1.63843 7.32248 2.47691C5.12481 3.23155 3.54248 5.16007 3.54248 7.50783C3.54248 8.68171 3.36667 9.60404 3.27876 10.2748C3.27876 10.8618 3.10295 11.4487 2.66341 12.1195C2.39969 12.5387 2.22388 12.8741 1.78434 13.2934C1.52062 13.6288 1.2569 13.7965 1.08109 14.1319C0.905273 14.4673 0.905273 14.8027 0.905273 14.8865C0.905273 14.9703 0.905273 15.8088 1.52062 16.3119C2.13597 16.8989 2.92713 16.815 3.01504 16.815C7.23458 16.815 11.3662 16.815 15.5857 16.815C15.6736 16.815 16.8164 16.8989 17.4318 16.0604C17.7834 15.5573 17.6955 15.0542 17.6955 14.8027C17.5197 14.048 16.9922 13.5449 16.8164 13.3772Z" stroke="#4EC8F0" stroke-width="0.75" stroke-miterlimit="10"/>
+								</svg>
+
+								
+								<div class="notifictn_available"></div>
+							</div>
+						</div>
+						
+						
+					</div>
+            
+            
+            
+		</div>
+	</div>
+</perfect-scrollbar>
+</div>
+

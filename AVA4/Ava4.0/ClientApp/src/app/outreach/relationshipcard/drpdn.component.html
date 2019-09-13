@@ -1,0 +1,5 @@
+<div class="locationdialog">
+	<ul>
+		<li class="list-item" *ngFor="let item of listarr let indx=index" (click)="selectedItem(item.label, indx)">{{item.label}}</li>
+	</ul>
+</div>

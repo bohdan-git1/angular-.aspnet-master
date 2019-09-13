@@ -1,0 +1,54 @@
+.drpdn-title {
+	font-weight: bold;
+	font-size: 11px;
+	color: #4EC8F0;
+	cursor: pointer;
+	height: 20px;
+}
+
+.drpdn-cont {
+	margin-bottom: 10px;
+}
+
+.drpdn-optn {
+    margin-right: 15px;
+}
+
+.drpdn-optn ul {
+	list-style: none;
+}
+
+.optn_title {
+	font-size: 11px;
+	color: #333333;
+	cursor: pointer;
+	/* font-weight: bold; */
+	margin-bottom: 5px;
+	box-sizing: border-box;
+}
+
+.optn_title:first-child {
+	margin-top: 5px;
+}
+
+.optn_title span {
+	padding: 2px 3px 3px;
+}
+
+.ddlabel {
+	float: left;
+	font-size: 11px;
+	color: #333333;
+	width: 80%;
+}
+
+.duration {
+	font-size: 11px;
+	float: right;
+	text-align: right;
+	color: #333333;
+}
+
+.clear {
+	clear: both;
+}

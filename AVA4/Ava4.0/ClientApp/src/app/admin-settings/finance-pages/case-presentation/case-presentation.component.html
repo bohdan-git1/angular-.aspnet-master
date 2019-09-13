@@ -1,0 +1,72 @@
+<div class="pagetitle">CASE PRESENTATION</div>
+<div fxLayout="column">
+	<div fxLayout="row" fxLayoutGap="15px">
+		<div fxFlex="431px">
+			<div class="section-cont">
+				<div class="section-title">TREATMENTS</div>
+				<div class="inner-cont">
+					<div class="section-item-cont" *ngFor="let sectionitem of treatmentArr; let indx=index">
+						<div class="section-item float-left">{{sectionitem.label}}</div>
+						<div class="section-item float-right remove-btn" (click)="openRremovePopup(indx, 'treatment')">
+							<svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M4.67605 1.31818L3.16708 2.82714L4.76939 4.42945L3.98768 5.21115L2.38538 3.60885L0.884189 5.11004L0.172486 4.39833L1.67367 2.89715L0.0791477 1.30262L0.860854 0.520914L2.45538 2.11544L3.96435 0.606474L4.67605 1.31818Z" fill="#333333"/>
+							</svg>
+						</div>
+						<div class="clear"></div>
+						
+						<div class="remove-popup" *ngIf="sectionitem.remove" (click)="removeItem('indx', 'treatment')">
+							<div class="popup-icon">
+								<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M10.1114 1.93506L6.81909 5.22735L10.315 8.72329L8.60949 10.4288L5.11355 6.93289L1.83823 10.2082L0.285424 8.6554L3.56074 5.38008L0.0817767 1.90112L1.78732 0.195578L5.26628 3.67454L8.55857 0.382254L10.1114 1.93506Z" fill="#F63D3D"/>
+								</svg>
+							</div>
+							<div class="popup-label">Remove this treatment option?</div>
+						</div>
+					</div>
+					
+					<div class="add-btn">
+						<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect x="12.5" y="8" width="1" height="10" rx="0.5" fill="#434343"/>
+							<rect x="8" y="13.5" width="1" height="10" rx="0.5" transform="rotate(-90 8 13.5)" fill="#434343"/>
+							<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div fxFlex="431px">
+			<div class="section-cont">
+				<div class="section-title">PAYMENT OPTIONS</div>
+				<div class="inner-cont">
+					<div class="section-item-cont" *ngFor="let sectionitem of paymentoptions; let indx=index">
+						<div class="section-item float-left">{{sectionitem.label}}</div>
+						<div class="section-item float-right remove-btn" (click)="openRremovePopup(indx, 'payment')">
+							<svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M4.67605 1.31818L3.16708 2.82714L4.76939 4.42945L3.98768 5.21115L2.38538 3.60885L0.884189 5.11004L0.172486 4.39833L1.67367 2.89715L0.0791477 1.30262L0.860854 0.520914L2.45538 2.11544L3.96435 0.606474L4.67605 1.31818Z" fill="#333333"/>
+							</svg>
+						</div>
+						<div class="clear"></div>
+						
+						<div class="remove-popup" *ngIf="sectionitem.remove" (click)="removeItem('indx', 'payment')">
+							<div class="popup-icon">
+								<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M10.1114 1.93506L6.81909 5.22735L10.315 8.72329L8.60949 10.4288L5.11355 6.93289L1.83823 10.2082L0.285424 8.6554L3.56074 5.38008L0.0817767 1.90112L1.78732 0.195578L5.26628 3.67454L8.55857 0.382254L10.1114 1.93506Z" fill="#F63D3D"/>
+								</svg>
+							</div>
+							<div class="popup-label">Remove this Payment Option?</div>
+						</div>
+					</div>
+					
+					<div class="add-btn">
+						<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect x="12.5" y="8" width="1" height="10" rx="0.5" fill="#434343"/>
+							<rect x="8" y="13.5" width="1" height="10" rx="0.5" transform="rotate(-90 8 13.5)" fill="#434343"/>
+							<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

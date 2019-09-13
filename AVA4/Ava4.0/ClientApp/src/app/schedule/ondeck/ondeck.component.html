@@ -1,0 +1,115 @@
+<div class="ondeck">
+	<div fxLayout="row">
+		<div fxFlex="140px">
+			<div class="ondeck-label" (click)="moveHorizontally('start')" >On Deck</div>
+		</div>
+		<div fxFlex="calc(100%-190px)">
+			<div class="listbox-content" style="overflow: hidden">
+				<perfect-scrollbar class="perfect-scrollbar" [config]="config">
+					<div class="listbox-scroller" [ngStyle]="{'width':update_onDeck.length*300+100+'px'}">
+
+						<div class="box-item" *ngFor="let pData of update_onDeck"  [ngClass]="{'appl-border':pData.appntType=='appl', 'exam-border':pData.appntType=='exam', 'd-band-border':pData.appntType=='dband', 'record-border':pData.appntType=='record','adj-border':pData.appntType=='adj', 'start-border':pData.appntType=='start'}">
+							<div class="left-content">
+								<div class="item-elem wait-min ">{{pData.timeGap}}</div>
+								<div class="item-elem">
+									<div class="item-icon longer-time" *ngIf="pData.checkInTime > pData.startTime">
+										<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="9" cy="9" r="8.5" fill="white" stroke="#F11212"/>
+											<path d="M9 5.14258V10.2854H15.4286" stroke="#F11212"/>
+										</svg>
+									</div>
+
+									<div class="item-icon" *ngIf="!(pData.checkInTime > pData.startTime)">
+										<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="9" cy="9" r="8.5" fill="white" stroke="#646464"/>
+											<path d="M9 5.14258V10.2854H15.4286" stroke="#646464"/>
+										</svg>
+									</div>
+
+								</div>
+								<div class="item-elem patient-name" *ngIf="pData.patientFullName.length>17">{{pData.patientFullName.substring(0,15)}}...</div>
+								<div class="item-elem patient-name"*ngIf="!(pData.patientFullName.length>17)">{{pData.patientFullName}}</div>
+
+							</div>
+							<div class="appnt-time"><span class="checkin-time checkin-late">{{pData.checkInTime}}</span><span>({{pData.startTime}})</span></div>
+							<div class="clear-float"></div>
+							
+						</div>
+
+
+
+
+						
+						<!-- <div class="box-item yellow-border">
+							<div class="left-content">
+								<div class="item-elem wait-min">5m</div>
+								<div class="item-elem">
+									<div class="item-icon">
+										<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="9" cy="9" r="8.5" fill="white" stroke="#646464"/>
+											<path d="M9 5.14258V10.2854H15.4286" stroke="#646464"/>
+										</svg>
+									</div>
+								</div>
+								<div class="item-elem patient-name">Obi - Wan Kenobi</div>
+							</div>
+							<div class="appnt-time"><span class="checkin-time">07:58</span><span>(08:00)</span></div>
+							<div class="clear-float"></div>
+							
+						</div> -->
+
+
+
+
+						
+						<!-- <div class="box-item orrange-border">
+							<div class="left-content">
+								<div class="item-elem wait-min">3m</div>
+								<div class="item-elem">
+									<div class="item-icon">
+										<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="9" cy="9" r="8.5" fill="white" stroke="#646464"/>
+											<path d="M9 5.14258V10.2854H15.4286" stroke="#646464"/>
+										</svg>
+									</div>
+								</div>
+								<div class="item-elem patient-name">Boba Fett</div>
+							</div>
+							<div class="appnt-time"><span class="checkin-time">08:00</span><span>(08:00)</span></div>
+							<div class="clear-float"></div>
+							
+						</div> -->
+
+
+
+						
+						<!-- <div class="box-item green-border">
+							<div class="left-content">
+								<div class="item-elem wait-min">0m</div>
+								<div class="item-elem">
+									<div class="item-icon">
+										<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="9" cy="9" r="8.5" fill="white" stroke="#646464"/>
+											<path d="M9 5.14258V10.2854H15.4286" stroke="#646464"/>
+										</svg>
+									</div>
+								</div>
+								<div class="item-elem patient-name">Poe Dameron</div>
+							</div>
+							<div class="appnt-time"><span class="checkin-time checkin-late">08:03</span><span>(08:00)</span></div>
+							<div class="clear-float"></div>
+							
+						</div> -->
+
+
+
+
+					</div>
+				</perfect-scrollbar>
+			</div>
+		</div>
+		<div fxFlex="30px">
+			<div class="nav-btn"><mat-icon class="nav-icon" (click)="moveHorizontally('right')" >keyboard_arrow_right</mat-icon></div>
+		</div>
+	</div>
+</div>

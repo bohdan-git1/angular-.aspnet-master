@@ -1,0 +1,126 @@
+<div class="patient-block fadein-animate" [ngStyle]="{'left': posLeft + 'px', 'width': (blockWd-1) + 'px', 'border-color': (selectedappntType == 'all' || patientdata.appntType == selectedappntType) ? patientdata.checkedin == true ? '#646464' : appntType : 'transparent', 'height': patientblockSettings.chairHt + 'px', 'background': patientdata.checkedin == true ? '#F0F0F0' : '#FFFFFF'}" (click)="openPatientBlock()">
+	
+	<div >
+		
+		<div [ngClass]="{'alergy-sign': true, 'alergy-sign-center': duration_min <= 9}" *ngIf="patientdata.alergy">
+			<svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M6 3.64961H3.75758V6H2.2303V3.64961H0V2.33858H2.2303V0H3.75758V2.33858H6V3.64961Z" fill="#F11212"/>
+			</svg>
+		</div>
+		
+		<div *ngIf="duration_min <= 9" class="min-10" [ngStyle]="{'height': patientblockSettings.chairHt + 'px'}">
+			<!-- <div class="img-cont" *ngIf="timer_view != 9 && patientblockSettings.chairHt > 56" [ngStyle]="{'width': patientblockSettings.chairHt <= 60 ? '18px' : patientblockSettings.chairHt <= 80 ? '30px' : '37px', 'height': patientblockSettings.chairHt <= 60 ? '18px' : patientblockSettings.chairHt <= 80 ? '30px' : '37px'}">
+				
+			</div> -->
+			
+			<!-- <div class="dots" *ngIf="patientdata.payment==true || patientdata.alergy==true" [ngStyle]="{left: patientblockSettings.chairHt < 56 ? '5px' : patientblockSettings.chairHt <= 80 ? '30px' : '37px', 'top' : patientblockSettings.chairHt < 56 ? '5px' : patientblockSettings.chairHt <= 70 ? '25px' : patientblockSettings.chairHt <= 80 ? '32px' : '39px'}"></div> -->
+			
+			<div class="five-min-wrapper">
+				<div class="patient-name rotatedname" *ngIf="timer_view != 9" >{{patientdata.firstname | slice: 0:4}} {{patientdata.firstname.length > 4 ? '..' : ''}}</div>
+				<!-- <div class="five-min-starttime" *ngIf="timer_view != 9">{{patientdata.stratTime}}</div> -->
+			</div>
+		</div>
+		
+	
+		<div *ngIf="duration_min >= 10 && duration_min < 15" class="min-10">
+			<div class="ten-min-img-cont" *ngIf="timer_view != 9">
+				<div class="profile-img" [ngStyle]="{'border-color': appntType}" *ngIf="patientdata.profileimg != ''">
+					<img src={{patientdata.profileimg}} />
+				</div>
+			</div>
+			
+			<!-- <div class="dots" *ngIf="patientdata.payment==true || patientdata.alergy==true" [ngStyle]="{left: patientblockSettings.chairHt < 56 ? '5px' : patientblockSettings.chairHt <= 80 ? '30px' : '37px', 'top' : patientblockSettings.chairHt < 56 ? '5px' : patientblockSettings.chairHt <= 70 ? '25px' : patientblockSettings.chairHt <= 80 ? '32px' : '39px'}"></div> -->
+			
+			<div class="min-10-pateint-wrapper" style="top: 41px;">
+				<div class="patient-name ten-min-patient-name" *ngIf="timer_view != 9" >{{patientdata.firstname | slice: 0:(patientdata.firstname.length > 6 ? 6 : patientdata.firstname.length)}}{{patientdata.firstname.length > 6 ? '..' : ''}}</div>
+				<div class="five-min-starttime" style="padding: 0 1px;" *ngIf="timer_view != 9">{{getFormattedTime(patientdata.stratTime)}}</div>
+			</div>
+			
+			<!-- <div class="five-min-wrapper" *ngIf="windowHt <= 900">
+				<div class="patient-name ten-min-patient-name" *ngIf="timer_view != 9" >{{patientdata.firstname | slice: 0:(patientdata.firstname.length > 6 ? 6 : patientdata.firstname.length)}}{{patientdata.firstname.length > 6 ? '..' : ''}}</div>
+				<div class="five-min-starttime" style="padding: 0 1px;" *ngIf="timer_view != 9">{{getFormattedTime(patientdata.stratTime)}}</div>
+			</div> -->
+			
+		</div>
+		
+		<div *ngIf="duration_min >= 15 && duration_min < 21" class="min-10">
+			<div class="ten-min-img-cont" *ngIf="timer_view != 9">
+				<div class="profile-img" [ngStyle]="{'border-color': appntType}" *ngIf="patientdata.profileimg != ''">
+					<img src={{patientdata.profileimg}} />
+				</div>
+			</div>
+			
+			<!-- <div class="dots" *ngIf="patientdata.payment==true || patientdata.alergy==true" [ngStyle]="{left: patientblockSettings.chairHt < 56 ? '5px' : patientblockSettings.chairHt <= 80 ? '30px' : '37px', 'top' : patientblockSettings.chairHt < 56 ? '5px' : patientblockSettings.chairHt <= 70 ? '25px' : patientblockSettings.chairHt <= 80 ? '32px' : '39px'}"></div> -->
+			
+			<div class="min-10-pateint-wrapper" style="top: 41px;">
+				<div class="patient-name ten-min-patient-name" *ngIf="timer_view != 9" >{{patientdata.firstname | slice: 0:(patientdata.firstname.length > 10 ? 10 : patientdata.firstname.length)}}{{patientdata.firstname.length > 10 ? '..' : ''}}</div>
+				<div class="five-min-starttime" style="padding: 0 1px;" *ngIf="timer_view != 9">{{getFormattedTime(patientdata.stratTime)}}</div>
+			</div>
+			
+			<!-- <div class="five-min-wrapper" *ngIf="windowHt <= 900">
+				<div class="patient-name ten-min-patient-name" *ngIf="timer_view != 9" >{{patientdata.firstname | slice: 0:(patientdata.firstname.length > 10 ? 10 : patientdata.firstname.length)}}{{patientdata.firstname.length > 6 ? '..' : ''}}</div>
+				<div class="five-min-starttime" style="padding: 0 1px;" *ngIf="timer_view != 9">{{getFormattedTime(patientdata.stratTime)}}</div>
+			</div> -->
+		</div>
+		
+		<div *ngIf="duration_min > 20" class="min-other">
+			<div class="upper-block" *ngIf="timer_view != 9">
+				<div class="profile-img-wrapper">
+					<div class="profile-img" [ngStyle]="{'border-color': appntType}" *ngIf="patientdata.profileimg != ''">
+						<img src={{patientdata.profileimg}} />
+					</div>
+				</div>
+				
+				<div class="patient-name">
+					<div>{{patientdata.firstname | slice: 0:sliceString(patientdata.firstname)}}{{patientdata.firstname.length > sliceString(patientdata.firstname) ? '..' : ''}}</div>
+					
+					<div>{{patientdata.lastname | slice: 0:sliceString(patientdata.lastname)}}{{patientdata.lastname.length > sliceString(patientdata.lastname) ? '..' : ''}}</div>
+				</div>
+				
+				<!-- <div class="patient-name" *ngIf="windowHt < 786">
+					<div>{{getFullName(patientdata.firstname, patientdata.lastname) | slice: 0:sliceString(patientdata.firstname)}}{{getFullName(patientdata.firstname, patientdata.lastname).length > sliceString(getFullName(patientdata.firstname, patientdata.lastname)) ? '..' : ''}}</div>
+					
+				</div> -->
+				
+			</div>
+			
+			<div class="lower-block" *ngIf="timer_view != 9" [ngStyle]="{'width': (patientblockSettings.chairHt < 54) ? 'calc(100% - 42px)' : 'calc(100% - 10px)'} ">
+					
+				<ng-container *ngIf="duration_min > 25">
+					<div class="time-cont-left">
+						<div class="time-in-chair">{{getFormattedTime(patientdata.stratTime)}}</div>
+					</div>
+					<div class="time-cont-right">
+						<div class="access-code">{{patientdata.accesscode}}</div>
+					</div>
+					
+					<div class="clear"></div>
+				</ng-container>
+				
+				<ng-container *ngIf="duration_min <= 25">
+					<ng-container *ngIf="patientblockSettings.chairHt > 54">
+						<div class="time-cont-left">
+							<div class="time-in-chair">{{getFormattedTime(patientdata.stratTime)}}</div>
+						</div>
+						<div class="time-cont-right">
+							<div class="access-code">{{patientdata.accesscode}}</div>
+						</div>
+						
+						<div class="clear"></div>
+					</ng-container>
+					
+					<div class="time-cont-right" *ngIf="patientblockSettings.chairHt < 54">
+						<div class="access-code">{{getFormattedTime(patientdata.stratTime)}}</div>
+					</div>
+					
+					<div class="clear"></div>
+				</ng-container>
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<div class="overlay-box" *ngIf="selectedappntType != 'all' && patientdata.appntType != selectedappntType"></div>
+	
+</div>

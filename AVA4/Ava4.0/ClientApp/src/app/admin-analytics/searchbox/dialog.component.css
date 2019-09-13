@@ -1,0 +1,35 @@
+.searchoxDD {
+	padding: 10px 20px;
+	box-sizing: border-box;
+	height: 100%;
+}
+
+.searchoxDD ul {
+	list-style: none;
+}
+
+.grp-item-label {
+	font-weight: bold;
+	font-size: 14px;
+	color: #4BC6EE;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.grp-option-label {
+	font-size: 14px;
+	color: #4BC6EE;
+	padding: 5px 15px;
+	cursor: pointer;
+}
+
+.subgrp-option-label {
+	font-size: 14px;
+	color: #4BC6EE;
+	padding: 5px 40px;
+	cursor: pointer;
+}
+
+.grp-option-label:hover, .subgrp-option-label:hover {
+	background: #F0F0F0;
+}

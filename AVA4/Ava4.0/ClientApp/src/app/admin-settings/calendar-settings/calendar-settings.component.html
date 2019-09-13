@@ -1,0 +1,28 @@
+<div class="calendar-cont" [ngStyle]="{'border':mon_sel ? '2px solid #000000' : '2px solid transparent' }">
+	<div class="monthname" (click)="selectMonth();">{{monthname | date:'MMMM y'}}</div>
+	<div class="day-names">
+		<div *ngFor="let name of dayNames" class="day-name">
+		{{ name }}
+		</div>
+	</div>
+	
+	<!-- [ngStyle]="{'color': (day.scheduled || day.selectedSchedule) ? day.color : '#C6C6C6', 'border': (day.selectedSchedule && day.normalday) ? '1px solid '+day.color : '1px solid transparent'}" -->
+	
+	<div class="weeks">
+		<div *ngFor="let week of weeks let weekIndx = index" class="week">
+			<div *ngFor="let day of week let dayIndx = index" (click)="sel_date(day)" [ngClass]="{'date-text': true, 'today': day.today, 'seldate': day.selected}"
+			
+			[ngStyle]="{'color': (day.scheduled || day.selectedSchedule) ? day.color : '#C6C6C6', 'border': (day.selectedSchedule) ? '1px solid '+day.color : '1px solid transparent'}"
+			
+			>                                           
+			  <div>{{day.weekdate | date:'d'}}</div>
+			  <!-- <div class="dots-container" *ngIf="day.weekdate">
+				<div [ngClass]="{reddots: day.reddots}"></div>
+			  </div> -->
+			  
+			  <!-- <div>{{day.selectedSchedule}} {{day.normalday}}</div> -->
+			  
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,106 @@
+<div class="onDeckCont">
+	<!-- <div class="overlay-patch" *ngIf="dialogAlign == 'left'"></div>
+	<div class="overlay-patch-right" *ngIf="dialogAlign == 'right'"></div> -->
+	
+	<div class="box-content" *ngIf="dialogAlign == 'left'">
+		<div class="box-item green-border">
+			<div class="left-content">
+				<div class="item-elem wait-min ">13m</div>
+				<div class="item-elem"><mat-icon class="item-icon longer-time">access_time</mat-icon></div>
+				<div class="item-elem patient-name" (click)="showBottom(0)">Kylo Ren</div>
+			</div>
+			<div class="appnt-time"><span class="checkin-time checkin-late">07:50</span><span>(07:45)</span></div>
+			<div class="clear-float"></div>
+			
+			
+			<div class="bottom-content" *ngIf="showSeat[0]">
+				<div class="item-elem patient-name">Chair - 6</div>
+				<div class="appnt-time box-seat">Seat</div>
+				<div class="clear-float"></div>
+			</div>
+			
+		</div>
+		
+		<div class="box-item yellow-border">
+			<div class="left-content">
+				<div class="item-elem wait-min">5m</div>
+				<div class="item-elem"><mat-icon class="item-icon">access_time</mat-icon></div>
+				<div class="item-elem patient-name" (click)="showBottom(1)">Obi - Wan Kenobi</div>
+			</div>
+			<div class="appnt-time"><span class="checkin-time">07:58</span><span>(08:00)</span></div>
+			<div class="clear-float"></div>
+			
+			<div class="bottom-content" *ngIf="showSeat[1]">
+				<div class="item-elem patient-name">Chair - 3</div>
+				<div class="appnt-time box-seat">Seat</div>
+				<div class="clear-float"></div>
+			</div>
+			
+		</div>
+		
+		<div class="box-item orrange-border">
+			<div class="left-content">
+				<div class="item-elem wait-min">3m</div>
+				<div class="item-elem"><mat-icon class="item-icon">access_time</mat-icon></div>
+				<div class="item-elem patient-name" (click)="showBottom(2)">Boba Fett</div>
+			</div>
+			<div class="appnt-time"><span class="checkin-time">08:00</span><span>(08:00)</span></div>
+			<div class="clear-float"></div>
+			
+			<div class="bottom-content" *ngIf="showSeat[2]">
+				<div class="item-elem patient-name">Chair - 1</div>
+				<div class="appnt-time box-seat">Seat</div>
+				<div class="clear-float"></div>
+			</div>
+		</div>
+		
+		<div class="box-item green-border">
+			<div class="left-content">
+				<div class="item-elem wait-min">0m</div>
+				<div class="item-elem"><mat-icon class="item-icon">access_time</mat-icon></div>
+				<div class="item-elem patient-name" (click)="showBottom(3)">Poe Dameron</div>
+			</div>
+			<div class="appnt-time"><span class="checkin-time checkin-late">08:03</span><span>(08:00)</span></div>
+			<div class="clear-float"></div>
+			
+			<div class="bottom-content" *ngIf="showSeat[3]">
+				<div class="item-elem patient-name">Chair - 2</div>
+				<div class="appnt-time box-seat">Seat</div>
+				<div class="clear-float"></div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="box-content" *ngIf="dialogAlign == 'right'">
+		<div class="box-item red-border">
+			<div class="left-content">
+				<div class="item-elem chairNum">#2</div>
+				<div class="item-elem patient-name">Han Solo</div>
+			</div>
+			<div class="appnt-time-right">
+				<div>07:00-08:15</div>
+				<div class="time-elapsed-cont">
+					<div class="time-elapsed" style="width: 80%;"></div>
+				</div>
+			</div>
+			<div class="clear-float"></div>
+		</div>
+		
+		<div class="box-item green-border">
+			<div class="left-content">
+				<div class="item-elem chairNum">#3</div>
+				<div class="item-elem patient-name">Chewbacca</div>
+			</div>
+			<div class="appnt-time-right">
+				<div>07:00-08:00</div>
+				<div class="time-elapsed-cont">
+					<div class="time-elapsed" style="width: 80%;"></div>
+				</div>
+			</div>
+			<div class="clear-float"></div>
+		</div>
+	</div>
+	
+</div>
+

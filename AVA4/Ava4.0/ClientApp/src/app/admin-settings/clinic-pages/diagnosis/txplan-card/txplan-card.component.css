@@ -1,0 +1,132 @@
+input:focus, textarea:focus {
+    outline: none;
+}
+.section-cont{width:100%; /*height:655px;*/ padding:15px; position:relative; box-sizing:border-box; background:#E5E5E5}
+.section-title{width:100%; margin-bottom:15px; font-size:14px; text-align:center; text-transform:uppercase; color:#646464; letter-spacing:3px; position:relative}
+.view-btn{position:absolute; right:8px; top:0; z-index:99}
+.inner-cont{width:100%; min-height:600px; background:#FFF; border-radius:4px; box-sizing:border-box; padding-top:15px; padding-bottom:15px; padding-left:10px; padding-right:10px;position:relative}
+.tx-item-holder {width:80%; display:block; position:relative; margin:0 auto}
+.section-item-cont {width:100%; display:inline-block; padding:3px 5px 4px 14px; box-sizing:border-box; margin-bottom:0; background:#F0F0F0; border-radius:2px; position:relative; font-family:Lato; font-style:normal; font-weight:bold; font-size:11px; line-height:normal; color:#646464}
+.down-arrow{width:5px; position:absolute; right:-17px; top:-2px; padding:0 5px}
+.btm-dv{width:100%; position:absolute; left:0; bottom:0}
+.labelbox-holder2{
+	width: 100%;
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    float: left;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    left: 0
+}
+
+.plus-btn-wrap2{width:100%; display:block; margin:15px auto 0; padding:0; border-bottom:#C4C4C4 1px solid}
+.plus-btn{width:15px; height:15px; display:inline-block; cursor: pointer;}
+.labelbox-wrapper {
+	width: 100%;
+    border-top: 1px solid #C4C4C4;
+    padding-top: 3px;
+}
+.labelbox{
+	width: 100%;
+    position: relative;
+    margin: 0 0 3px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 2px;
+    height: 24px;
+}
+.labelbox .name{font-family:Lato; font-style:normal; font-weight:bold; font-size:11px; line-height:normal; color:#A5A5A5; width: 100%; height: 100%; box-sizing: border-box;}
+.entry-input-cont {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 13px;
+    color: #A5A5A5;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
+.entry-input-cont::placeholder {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #A5A5A5;
+}
+.add-btn{position:absolute; z-index:999; right:0; top:0; cursor: pointer; width: 24px; height: 24px;}
+
+.drag-drop-cont {
+	padding-left: 80px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.drag-drop-elem {
+	border: 1px solid #4EC8F0;
+	box-sizing: border-box;
+	border-radius: 2px;
+}
+
+.drag-drop-elem-label {
+	display: flex;
+	align-items: center;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #4EC8F0;
+	padding-left: 10px;
+	cursor: move;
+}
+
+.bottom-elem {
+	position: absolute;
+	left: 0;
+	bottom: 10px;
+	width: 100%;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+.info-item {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #4EC8F0;
+    float: left;
+    /* padding-top: 15px; */
+	width: 80%;
+	height: 27px;
+	display: flex;
+	align-items: center;
+}
+
+.library-btn {
+	width: 30px;
+    height: 27px;
+    background: #FFFFFF;
+    border: 0.5px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.clear {
+	clear: both;
+}
+
+
+

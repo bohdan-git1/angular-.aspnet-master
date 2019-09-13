@@ -1,0 +1,112 @@
+<div class="timeline-timer">
+	<div fxLayout="row" style="height: 34px;">
+		<div fxFlex="56px" class="nav-btn vh_center border-right" (click)="slidetimer('left')">
+			<mat-icon class="timeline-timer-icon">keyboard_arrow_left</mat-icon>
+		</div>
+		
+		<div fxFlex="calc(100%-112px)" class="timer" #timer >
+			<div class="timeslot-cont-wrapper">
+				<perfect-scrollbar class="perfect-scrollbar" #timercomponent [config]="timerConfig">
+					<div class="timeslot-cont" [style.width.px] = "slotcont_wd">
+						<div class="time-slot" style="width: 27px"></div>
+						<div class="time-slot-block" *ngFor="let timeslot of timerLabelArr let indx = index">
+							<div class="time-slot" [style.width.px]="(timer_width/timer_view)/6" [style.fontSize.px]="timer_view == 9 ? 13 : 18">{{timeslot}}</div>
+							
+							<div class="time-slot-quarter" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 9 : 14"  [style.marginTop.px]="-2">|</div>
+							
+							<div class="time-slot-quarter" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 9 : 14"  [style.marginTop.px]="-2">|</div>
+							
+							<div class="time-slot" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 13 : 18" [style.marginTop.px]="-2">|</div>
+							
+							<div class="time-slot-quarter" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 9 : 14"  [style.marginTop.px]="-2">|</div>
+							
+							<div class="time-slot-quarter" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 9 : 14"  [style.marginTop.px]="-2">|</div>
+							
+							
+							<div class="time-slot-quarter 1st" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes > 0 && endTime_minutes <= 45" [style.fontSize.px]="timer_view == 9 ? 9 : 14" [style.marginTop.px]="-2">|</div>
+							
+							<div class="time-slot-quarter 1st" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes > 0 && endTime_minutes <= 45" [style.fontSize.px]="timer_view == 9 ? 9 : 14" [style.marginTop.px]="-2">|</div>
+							
+							<div class="time-slot 2nd" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes >= 30 && endTime_minutes <= 45" [style.fontSize.px]="timer_view == 9 ? 13 : 18" [style.marginTop.px]="-2">|</div>
+							
+							<div class="time-slot-quarter 3rd" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes >= 45" [style.fontSize.px]="timer_view == 9 ? 9 : 14" [style.marginTop.px]="-2">|</div>
+							
+							<div class="time-slot-quarter 3rd" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes >= 45" [style.fontSize.px]="timer_view == 9 ? 9 : 14" [style.marginTop.px]="-2">|</div>
+							
+						</div>
+						<div class="time-slot" style="width: 27px"></div>
+					</div>
+					
+					
+				</perfect-scrollbar>
+			</div>
+		</div>
+		
+		<div fxFlex="56px" class="nav-btn vh_center border-left" (click)="slidetimer('right')">
+			<mat-icon class="timeline-timer-icon">keyboard_arrow_right</mat-icon>
+		</div>
+		
+		
+	</div>
+</div>
+
+<div class="patient-area" [style.height.px]="windowHt" style="position: relative;">
+	
+	<perfect-scrollbar class="perfect-scrollbar"  #patientcomponent [config]="config">
+		<div class="scrollable-section" [ngStyle]="{'width': scrollablecont_wd + 'px', 'height': scrollableContHt + 'px'}">
+			
+			<div class="guide guide_hr" *ngFor="let guide of guidePosArr" [style.left.px]="guide"></div>
+			
+			<div class="guide guide_hlfHr" *ngFor="let guide_hlHr of guidePosArr_halfHr" [style.left.px]="guide_hlHr"></div>
+			
+			<ng-container *ngIf="showfiveminGuide">
+				<div class="guide guide_fiveMin" *ngFor="let guide_fivemin of fiveminposArr" [style.left.px]="guide_fivemin"></div>
+			</ng-container>
+			
+			<div class="time-elapsed" [style.width.px]="clockWd"></div>
+			
+			<div class="chair-section" *ngFor="let chair of patientArr_1" [ngStyle]="{'padding-bottom': patientblockSettings.bottomMargin + 'px', height: patientblockSettings.chairHt + 'px'}">
+				<div class="clickable-overlay" (click)="getPatientModal($event)"></div>
+				<app-patientblock *ngFor="let patient of chair.patients" [patientdata]="patient" [block_space]="block_space" [slot_space]="slot_space" [patientblockSettings]="patientblockSettings"></app-patientblock>
+			</div>
+			
+			<div class="lunch-time-block" [ngStyle]="{'width': lunch_blockWd + 'px', 'left': lunch_posLeft + 'px'}">Lunch</div>
+			
+		</div>
+	</perfect-scrollbar>
+	
+	<div class="overbooked-cont">
+		<perfect-scrollbar class="perfect-scrollbar"  #overbookedcont [config]="config">
+			<div class="overbooked-cont-wrapper" [ngStyle]="{'width': scrollablecont_wd + 'px'}">
+				<div class="overbooked-block" *ngFor="let overbookedItem of overbookedArr" [ngStyle]="{'width': overbookedItem.width + 'px', 'left': overbookedItem.left + 'px' }" (click)="showOverBookedPopup()"></div>
+			</div>
+		</perfect-scrollbar>
+	</div>
+	
+	<!-- <div style="position: absolute; left: 240px; top: 0; width: 1px; height: 100%; border-left: 1px solid #000;"></div> -->
+	
+	
+		
+</div>
+
+<!-- <div class="timeline-footer">
+	<ul>
+		<li class="appnt-type-block">
+			<span>
+				
+			<app-viewselector (selectedView)="getView($event)" [viewarr]="views" [selectedItem] = "selectedviewIndx"></app-viewselector>
+			</span>
+		</li>
+		<li class="appnt-type-block yellow"><span>Record</span></li>
+		<li class="appnt-type-block red"><span>Exam</span></li>
+		<li class="appnt-type-block blue"><span>Start</span></li>
+		<li class="appnt-type-block orange"><span>Appl</span></li>
+		<li class="appnt-type-block green"><span>Adj</span></li>
+		<li class="appnt-type-block purple"><span>D-Band</span></li>
+	</ul>
+</div> -->
+
+<ng-container *ngFor="let dayevnt of dayEventMsgArr">
+	<app-day-event-bolck [dayevntData]="dayevnt" [block_space]="block_space" [slot_space]="slot_space" (removeDayEvent)="removeDayEvent($event)" [clockWd]="clockWd"></app-day-event-bolck>
+</ng-container>
+

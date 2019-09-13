@@ -1,0 +1,124 @@
+<div class="drpdn-panel">
+	<div class="drpdn-cont" *ngFor="let drpdn of drpdndata let indx=index">
+		<div class="drpdn-title">
+			<div class="drpdn-title-label">{{drpdn.title}}</div>
+		</div>
+		<div class="date-section">
+			12/15/2019
+		</div>
+
+		<div  class="search-section">
+			<input (keyup)="searchStepLibraryList($event.target.value)" class="search-input" placeholder="Type or search from library"/>
+			<div class="dropdown-icon" (click)="showAllLibrary()">
+					<svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M6 6L0.803848 0.75L11.1962 0.75L6 6Z" fill="#C4C4C4"/>
+					</svg>
+			</div>
+
+			<div *ngIf="searchBar" class="step-libary" [ngStyle]="{'height': searchBoxHg1St + 'px'}" >
+				<div [ngStyle]="{'height': searchBoxHg2Nd + 'px'}"  >
+				<perfect-scrollbar  #listboxscroll>
+					<div style="padding: 10px 5px 5px 10px;">
+							<div  *ngFor="let stepLibraryArray of filterstepLibrary let optnindx=index"  (click)="selectForstepBox(optnindx)" class="common-libary comonhover">
+							
+										<div [ngClass]="{'common-title': true, 'common-libary-background': stepLibraryArray.selected}"> {{stepLibraryArray.title}} </div>
+										<div [ngClass]="{'common-time hoverTime': true, 'common-libary-background': stepLibraryArray.selected}"> {{stepLibraryArray.duration}} </div>
+										<div style="clear: both"></div>
+							
+							</div>
+							<div style="clear: both"></div>
+							<div  *ngIf="filterstepLibrary.length==0"  class="common-libary nofound comonhover">
+								No Library Found.
+							</div>
+							<div style="clear: both"></div>
+					</div>
+				</perfect-scrollbar>
+				</div>
+				
+				<div class="remaining-section" [ngStyle]="{'height': remainingBoxHg + 'px'}">
+					<div *ngIf="filterstepLibrary.length!=0"   class="save-section">
+						<div class="save-done" (click)="saveTomoveStepLibrary(indx)">
+							Done
+						</div>
+					</div>
+					
+					<div  class="add-new-libary">
+						<div class="common-title-name" style="background: #F0F0F0; border: 0.5px solid #A5A5A5;">
+							<input  [(ngModel)]="addTolibrary" class="add-to-library" placeholder="Name"/> 
+						</div>
+						<div class="common-time-duration" style="background: #F0F0F0; border: 0.5px solid #A5A5A5;">
+							<input [(ngModel)]="addTotime" maxlength="5" placeholder="Time" class="add-to-time" /> 
+						</div>
+						<div style="clear: both"></div>
+
+						<div  class="add-section">
+							<div class="add-done" (click)="addNewLibrary()">
+								Add
+							</div>
+						</div>
+
+	
+						<!----<div class="plus-icon" (click)="addNewLibrary()">
+							<svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M4.806 3.39H3.06V5.244H2.1555V3.39H0.4185V2.5665H2.1555V0.7215H3.06V2.5665H4.806V3.39Z" fill="#00AEEF"/>
+							</svg>
+						</div>-->
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="drpdn-optn" [ngStyle]="{'height': searchBoxHg3Nd + 'px'}" >
+			<perfect-scrollbar  #listboxscroll1>
+		<ul>
+			<li *ngFor="let ddoption of drpdn.ddoptions let optnindx=index" class="optn_title">
+				<div (click)="selectedEditOptn(indx, optnindx)" *ngIf="ddoption.edit" class="edit-icon">
+					<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1.03826 5.91339L0.706284 8.12149L2.45058 7.70137L2.45209 7.70328L7.12427 1.78963L5.7117 0.00171575L1.03967 5.91518L1.03826 5.91339Z" fill="#56CCF2"/>
+					</svg>
+				</div>
+
+				<div [ngClass]="{'ddlabel': true, 'selectedOptn': ddoption.selected}">
+					
+					<div *ngIf="ddoption.selected==false" (click)="selectedOptn(indx, optnindx)" >
+							{{ddoption.title}}
+					</div>
+
+					<div *ngIf="ddoption.selected==true"  >
+							<input (blur)="saveTitle($event.target.value, indx, optnindx)" class="comonDDoption" value="{{ddoption.title}}" />
+					</div>
+
+
+				</div>
+				<div [ngClass]="{'duration': true, 'selectedOptn': ddoption.selected}">
+					
+					<div *ngIf="ddoption.selected==false" (click)="selectedOptn(indx, optnindx)" >
+							{{ddoption.duration}}
+					</div>
+
+					<div *ngIf="ddoption.selected==true"  >
+							<input (blur)="saveTime($event.target.value, indx, optnindx)" class="comonDDoption" value="{{ddoption.duration}}" />
+					</div>
+
+
+				</div>
+
+				<div *ngIf="ddoption.edit" class="remove-icon" (click)="deleteOption(indx, optnindx)" >
+					<svg width="8" height="9" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="1.06055" y="1.93945" width="1" height="4" transform="rotate(-45 1.06055 1.93945)" fill="#FD7474"/>
+						<rect x="1.76758" y="4.76758" width="1" height="4" transform="rotate(-135 1.76758 4.76758)" fill="#FD7474"/>
+					</svg>
+				</div>
+
+				<div class="clear"></div>
+			</li>
+			
+		 </ul>
+		</perfect-scrollbar>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,201 @@
+<div class="pagetitle">TEMPLATES</div>
+
+<div fxLayout="column" style="padding-top: 30px;" [ngStyle]="{'height': boxHt + 'px'}">
+	
+	<perfect-scrollbar>
+	
+   <div fxLayout="row" fxLayoutGap="25px">
+
+      <div fxFlex="457px">
+         <div class="content-wrap">
+           <div class="accordion-list-holder">
+             <div [ngClass]="{'list-item': true, 'active': item.selected}" *ngFor="let item of templateSubArr; let indx=index" (click)="selectTemplateSub(indx)">{{item.label}}</div>
+             <!-- <div class="list-item active">Deband letter to dentist</div>
+             <div class="list-item">Phosflur rinse (Poor OH) - to dentist</div>
+             <div class="list-item">Recall visit to dentist</div>
+             <div class="list-item">Oral Hygiene Poor to dentist</div>
+             <div class="list-item">Extraction Letter</div> -->
+           </div>
+           
+            <div class="plus-btn">
+			  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <rect x="4.5" width="1" height="10" rx="0.5" fill="#434343"/>
+                 <rect y="5.5" width="1" height="10" rx="0.5" transform="rotate(-90 0 5.5)" fill="#434343"/>
+             </svg>
+           </div>
+         </div> 
+      
+       
+      </div>
+      
+      
+      <div fxFlex="966px">
+        <div class="content-wrap">
+          <div fxLayout="row" fxLayoutGap="35px">
+            
+            <div fxFlex="600px">
+              <div class="accordion-content">
+                
+                <div class="heading">
+                  <div class="title">{{selectedSub}}</div>
+                  <div class="delete-btn">
+                   <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0 1.75H14L12.3488 16.6104C12.2926 17.1169 11.8645 17.5 11.355 17.5H2.64504C2.13549 17.5 1.70743 17.1169 1.65116 16.6104L0 1.75Z" fill="#3C3C3C"/>
+					<ellipse cx="7" cy="1.75" rx="7" ry="1.75" fill="#C0C0C0"/>
+					<rect x="3.15137" y="7" width="0.875" height="8.75" rx="0.4375" fill="#6F6F6F"/>
+					<rect x="10.1504" y="7" width="0.875" height="8.75" rx="0.4375" fill="#6F6F6F"/>
+					<rect x="6.65039" y="7" width="0.875" height="8.75" rx="0.4375" fill="#6F6F6F"/>
+                  </svg>
+                  </div>
+                </div>
+                
+                <div class="txtcontent">
+                  <p class="m-btm15">Dr <span class="tag">+ [Doctor First Name]</span> <span class="tag">+ [Doctor Last Name]</span> <br> 
+                  <span class="tag">+ [Practice Full Address]</span> 
+                  </p>
+                  
+              
+                  <p>RE: <span class="tag">+ [Patient’s First Name]</span> <span class="tag">+ [Patient’s Last Name]</span></p>
+              
+                  <p class="m-btm15">Dear <span class="tag">+ [Doctor First Name]</span>,</p>
+              
+                  <p>We are pleased to inform you that<span class="tag">+ [Patient’s First Name]</span> has completed orthodontic therapy and all orthodontic applicances have 
+                  been removed. This treatment has, as originally planned, eliminated much of the pre-exsisting deformity 
+                  within the limits of the patient cooperation and normal physiological growth and development of the 
+                  dentition and skeletal components.</p>
+                  
+                  <p>A resonable amount of settlement is to be expected. Therefore, orthodontic retainers have been inserted 
+                  and we shall keep<span class="tag">+ [Patient’s First Name]</span> under observation for a minimum of two years to evaluate the development of the third 
+                  molars and observe settings changes. It is advised that a complete </p>
+                  
+                  <p>It is advised that a complete examination including a caries check, prophy and flouride, and PA X-rays be 
+                  scheduled. Perhaps your office would like to notify <span class="tag">+ [Patient’s First Name]</span> and/or parents of an available oppourtunity. Please be 
+                  advised that our office has scheduled final records in 6 to 8 weeks from now, at which time a panographic 
+                  X-ray will be emailed or mailed to you for your records.</p>
+                  
+                  <p>Should there be any questions concerning please do not hesitate to call.</p>
+                  
+                  <p>Sincerely, <br><span class="tag">+ [Doctor Signature]</span></p>
+                </div>
+              
+              </div> 
+            </div>
+            
+            
+             <div fxFlex="calc(100% - 600px)">
+               
+                <div class="radio-btnwrap">
+                  <div class="name active">English</div>
+                   <div class="radio">
+                     <div class="round"></div>
+                   </div>
+                  <div class="name">Espanol</div>
+                </div>
+                
+                <div class="tag-box">
+                  <div class="title">DRAG & DROP</div>
+                  <div class="tag">+ [Practice Name]</div> 
+                  <div class="tag">+ [Doctor Degree]</div>
+                  <div class="tag">+ [Doctor Preferred Name]</div>
+                  <div class="tag">+ [Doctor First Name]</div> 
+                  <div class="tag">+ [Doctor Last Name]</div>
+                  <div class="tag">+ [Practice Full Address]</div>
+                  <div class="tag">+ [Todays Date]</div>
+                  <div class="tag">+ [TC First Name]</div>
+                  <div class="tag">+ [TC Last Name]</div>
+                </div>
+                
+                
+                <div class="tag-box">
+                  <div class="tag">+ [Patient’s First Name]</div>
+                  <div class="tag">+ [Patient’s Last Name]</div>
+                  <div class="tag">+ [Patient’s Nickname]</div>
+                  <div class="tag">+ [Patient Age]</div>
+                  <div class="tag">+ [Patient Date Of Birth]</div>
+                  <div class="tag">+ [Patient Full Address]</div>
+                  <div class="tag">+ [Patient Email]</div>
+                </div>
+                
+               <div class="tag-box">
+                  <div class="tag">+ [He/She]</div>
+                  <div class="tag">+ [he/she]</div>
+                  <div class="tag">+ [His/Her]</div>
+                  <div class="tag">+ [his/her]</div>
+                  <div class="tag">+ [Him/Her]</div>
+                  <div class="tag">+ [him/her]</div>
+                  <div class="tag">+ [his/hers]</div>
+                  <div class="tag">+ [His/Hers]</div>
+                  <div class="tag">+ [son/daughter]</div>
+                </div>   
+                
+                 <div class="tag-box">
+                  <div class="tag">+ [Last Appt Date]</div>
+                  <div class="tag">+ [Next Appt Date]</div>
+                  <div class="tag">+ [Next Time]</div>
+                </div>   
+             
+                 <div class="tag-box">
+                  <div class="tag">+ [Resp First]</div>
+                  <div class="tag">+ [Resp Middle]</div>
+                  <div class="tag">+ [Resp Last]</div>
+                  <div class="tag">+ [Resp Full Address]</div>
+                  <div class="tag">+ [Amount Owing]</div>
+                  <div class="tag">+ [Amount Balance]</div>
+                  <div class="tag">+ [Amount Ins Balance]</div>
+                  <div class="tag">+ [Insurance Co Name]</div>
+                  <div class="tag">+ [Next Monthly Payment]</div>
+                  <div class="tag">+ [Last Payment Amount]</div>
+                  <div class="tag">+ [Last Payment Date]</div>
+                </div>  
+                
+                <div class="tag-box">
+                  <div class="tag">+ [Team Name]</div>
+                  <div class="tag">+ [Team Email]</div>
+                  <div class="tag">+ [Off Email]</div>
+                  <div class="tag">+ [Diagnosis]</div>
+                  <div class="tag">+ [Tx Plan]</div>
+                  <div class="tag">+ [Goals]</div>
+                </div>
+                
+                <div class="tag-box" style="margin-top:73px">
+                  <div class="title">ATTACHMENTS</div>
+                  <div class="tag">+ [Header with Logo]</div> 
+                  <div class="tag">+ [Patient Tooth Grid]</div>
+                </div>  
+     
+            </div>
+          
+          </div>
+        
+        </div>
+      
+      </div>
+      
+
+   </div>
+
+	</perfect-scrollbar>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

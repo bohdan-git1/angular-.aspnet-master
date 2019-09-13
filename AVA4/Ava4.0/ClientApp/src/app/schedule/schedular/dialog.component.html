@@ -1,0 +1,39 @@
+<app-calendar (selectedDate)="getSelectedDate($event)" [userseldate]="userseldate" ></app-calendar>
+
+<!-- <div fxLayout="column" class="calender-cont">
+	
+	<div fxLayout="row" fxFlexOffset="0" class="calender-wrapper">
+		<div fxFlex="8" class="nav-btn-cont">
+			<div class="nav-btn">
+				<mat-icon class="calender-nav-icon">keyboard_arrow_left</mat-icon>
+			</div>
+		</div>
+		<div fxFlex="84">
+			<div fxLayout="row" fxLayoutGap="10px" style="height: 100%">
+				<div fxFlex="50">
+					<div class="calender">
+						
+						<app-calendar (selectedDate)="getSelectedDate($event)" [selectedMonth]="currentMonth" [updateCalender]="updateCalender" ></app-calendar>
+						
+					</div>
+					
+				</div>
+				<div fxFlex="50">
+					<div class="calender">
+						
+						<!-- <app-calendar (selectedDate)="getSelectedDate($event)" [selectedMonth]="nextMonth" [updateCalender]="updateCalender" ></app-calendar>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div fxFlex="8" class="nav-btn-cont right-float">
+			<div class="nav-btn" (click)="goToNextMonth()">
+				<mat-icon class="calender-nav-icon">keyboard_arrow_right</mat-icon>
+			</div>
+		</div>
+		
+	</div>
+	
+</div> -->

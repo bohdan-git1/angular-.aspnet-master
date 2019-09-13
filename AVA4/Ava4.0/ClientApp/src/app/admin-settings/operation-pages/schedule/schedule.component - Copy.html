@@ -1,0 +1,188 @@
+<div class="pagetitle">SCHEDULE</div>
+<div fxLayout="column">
+	<div fxLayout="row" fxLayoutGap="15px" style="height: 100%;">
+		<div fxFlex="363px">
+			<div class="chair-cont">
+				<div class="section-title">CHAIRS</div>
+				<div class="inner-cont">
+					<div fxLayout="row" fxLayoutGap="15px" style="height: 100%;">
+						<div fxFlex="30">
+							<div class="numcont">
+								<div class="numcont-label">Total amount of chairs?</div>
+								<div class="input-cont"><input type="text"/></div>
+							</div>
+							
+							<div class="numcont">
+								<div class="numcont-label">How many chairs do you want to view on one screen? (up to 9)</div>
+								<div class="input-cont"><input type="text"/></div>
+							</div>
+						</div>
+						<div fxFlex="70" style="position: relative;">
+							<div class="block-cont"></div>
+							<div class="nav-cont-top">
+								<svg width="28" height="23" viewBox="0 0 28 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M14.1703 0.276528C14.0922 0.149695 13.9078 0.149694 13.8297 0.276527L0.331349 22.1951C0.249287 22.3284 0.345153 22.5 0.501646 22.5L27.4984 22.5C27.6548 22.5 27.7507 22.3284 27.6686 22.1951L14.1703 0.276528Z" fill="#F0F0F0"/>
+								</svg>
+							</div>
+							<div style="height: calc(100% - 66px); margin-top: 33px; position: relative;">
+								<div fxLayout="row" fxLayoutGap="25px" style="margin-bottom: 25px;">
+									<div fxFlex="28px">
+										<div class="chair-label">
+											<div class="label-text rotate-label">Exam</div>
+										</div>
+									</div>
+									<div fxFlex="calc(100% - 53px)">
+										<div class="right-block"></div>
+									</div>
+								</div>
+								
+								<div fxLayout="row" fxLayoutGap="25px" style="margin-bottom: 25px;">
+									<div fxFlex="28px">
+										<div class="chair-label">
+											<div class="label-text">2</div>
+										</div>
+									</div>
+									<div fxFlex="calc(100% - 53px)">
+										<div class="right-block"></div>
+									</div>
+								</div>
+								
+								<div fxLayout="row" fxLayoutGap="25px" style="margin-bottom: 25px;">
+									<div fxFlex="28px">
+										<div class="chair-label">
+											<div class="label-text">3</div>
+										</div>
+									</div>
+									<div fxFlex="calc(100% - 53px)">
+										<div class="right-block"></div>
+									</div>
+								</div>
+								
+								<div fxLayout="row" fxLayoutGap="25px" style="margin-bottom: 25px;">
+									<div fxFlex="28px">
+										<div class="chair-label">
+											<div class="label-text">4</div>
+										</div>
+									</div>
+									<div fxFlex="calc(100% - 53px)">
+										<div class="right-block"></div>
+									</div>
+								</div>
+								
+								<div fxLayout="row" fxLayoutGap="25px" style="margin-bottom: 25px;">
+									<div fxFlex="28px">
+										<div class="chair-label">
+											<div class="label-text">5</div>
+										</div>
+									</div>
+									<div fxFlex="calc(100% - 53px)">
+										<div class="right-block"></div>
+									</div>
+								</div>
+								
+								
+							</div>
+							<div class="nav-cont-bottom">
+								<svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M14.8326 22.7442C14.9116 22.8649 15.0884 22.8649 15.1674 22.7442L29.5199 0.809507C29.6069 0.67649 29.5115 0.5 29.3526 0.5H0.647445C0.488483 0.5 0.39305 0.67649 0.480087 0.809507L14.8326 22.7442Z" fill="#F0F0F0"/>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div fxFlex="757px">
+			<div class="calender-cont">
+				<div class="section-title">CALENDAR</div>
+				<div fxLayout="row" fxLayoutGap="15px" style="height: 100%;">
+					<div fxFlex="calc(100% - 220px)">
+						<!-- <div fxLayout="row" fxLayoutGap="5px" style="margin-bottom: 5px;" *ngFor="let currMonths of calendarMonths">
+							<div fxFlex="50"></div>
+							<div fxFlex="50"><app-calendar-settings></app-calendar-settings></div>
+						</div> -->
+						
+						<div class="calender-block" *ngFor="let currMonths of calendarMonths">
+							<app-calendar-settings [monthname]="currMonths" [calenderRule]="calenderRule"></app-calendar-settings>
+						</div>
+						
+					
+					</div>
+					<div fxFlex="205px">
+						<div class="inner-cont" style="padding-right: 10px;">
+							<div class="calender-legend-cont">
+								<div class="cal-legnd-item">
+									<div class="legnd-item-label">Normal Day</div>
+									<div class="legnd-item-colr normal"></div>
+									<div class="clear"></div>
+								</div>
+							</div>
+							
+							<div class="calender-legend-cont">
+								<div class="cal-legnd-item">
+									<div class="legnd-item-label">Short Day</div>
+									<div class="legnd-item-colr short"></div>
+									<div class="clear"></div>
+								</div>
+							</div>
+							
+							<div class="calender-legend-cont">
+								<div class="cal-legnd-item">
+									<div class="legnd-item-label">Long Day</div>
+									<div class="legnd-item-colr long"></div>
+									<div class="clear"></div>
+								</div>
+							</div>
+							
+							<div class="calender-legend-cont">
+								<div class="cal-legnd-item">
+									<div class="legnd-item-label">Office Closed</div>
+									<div class="legnd-item-colr closed"></div>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div fxFlex="229px">
+			<div class="legend-cont">
+				<div class="section-title">APPOINTMENT TYPES</div>
+				<div class="inner-cont">
+					<div class="legend-item">
+						<div class="img-cont record"><img src="assets/profile_4.png" width="100%"/></div>
+						<div class="legend-label">Record</div>
+					</div>
+					
+					<div class="legend-item">
+						<div class="img-cont exam"><img src="assets/profile_4.png" width="100%"/></div>
+						<div class="legend-label">Exam</div>
+					</div>
+					
+					<div class="legend-item">
+						<div class="img-cont start"><img src="assets/profile_4.png" width="100%"/></div>
+						<div class="legend-label">Start</div>
+					</div>
+					
+					<div class="legend-item">
+						<div class="img-cont appl"><img src="assets/profile_4.png" width="100%"/></div>
+						<div class="legend-label">Appl</div>
+					</div>
+					
+					<div class="legend-item">
+						<div class="img-cont adj"><img src="assets/profile_4.png" width="100%"/></div>
+						<div class="legend-label">Adj</div>
+					</div>
+					
+					<div class="legend-item">
+						<div class="img-cont dband"><img src="assets/profile_4.png" width="100%"/></div>
+						<div class="legend-label">D-Band</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

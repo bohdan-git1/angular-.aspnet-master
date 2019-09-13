@@ -1,0 +1,321 @@
+<div fxLayout="column">
+	<div class="title-bar"  [ngStyle]="{'height': expendpatient_Detail_height + 'px'}">
+		
+		<div class="profile-expanded-div" (click)="expendpatientDetail(expendpatient_Detail,1)" ></div>
+		<div class="patient-info">
+			<div class="patient-name">{{patient_info.firstname}} {{patient_info.lastname}}</div>
+			<div class="patient-status patient-info-block">Pending</div>
+			<div class="patient-age patient-info-block">8y 3m</div>
+			<div class="patient-appnt-time patient-info-block">{{next_appoinment_date}}</div>
+		</div>
+		
+		<div style="float: right; margin-right: 25px; position: relative;">
+			<div class="search_panel">
+				<div fxLayout="row">
+					<div fxFlex="5" class="vh_center">
+						<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M7.67797 1.38641C6.00228 -0.290262 3.27496 -0.290262 1.59927 1.38641C-0.0760588 3.06345 -0.0760588 5.792 1.59927 7.46903C2.96239 8.83262 5.01963 9.08406 6.64188 8.22889C6.86227 8.11271 7.15966 8.23564 7.33578 8.41187L9.77613 10.8536C10.1318 11.2087 10.7064 11.2087 11.0602 10.8536C11.4155 10.4982 11.4155 9.92316 11.0602 9.56878L8.61989 7.12628C8.44377 6.95056 8.32098 6.65375 8.437 6.43367C9.29288 4.81008 9.04172 2.75129 7.67797 1.38641ZM6.90751 6.69812C5.65646 7.9499 3.62042 7.9499 2.36973 6.69812C1.11941 5.44634 1.11941 3.40947 2.36973 2.15769C3.62042 0.906271 5.65646 0.906271 6.90751 2.15769C8.15856 3.40947 8.15856 5.44634 6.90751 6.69812Z" fill="#6BD3F4"/>
+						</svg>
+					</div>
+					<div fxFlex="90">
+						<input class="search-input" placeholder="Find Patient..." [matAutocomplete]="auto">
+						
+						<mat-autocomplete #auto="matAutocomplete" class="search-auto-complete mat-elevation-z0">
+						  <mat-option *ngFor="let option of search_options" [value]="option" style="font-size: 12px; height: 30px;">
+							{{option}}
+						  </mat-option>
+						</mat-autocomplete>
+						
+					</div>
+					
+					<div fxFlex="5" class="vh_center" (click)="showLast()">
+						<svg width="13" height="6" viewBox="0 0 13 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.5 6L12.1292 0H0.870835L6.5 6Z" fill="#4EC8F0"/>
+						</svg>
+					</div>
+					
+					<div class="lastnames-list" *ngIf="showlastList">
+						<perfect-scrollbar>
+							<ul>
+								<li *ngFor="let lastitem of lastlistArr"><div class="lastitem-label">{{lastitem.name}}</div></li>
+							</ul>
+						</perfect-scrollbar>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			<div class="plus-btn-cont">
+				<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect y="3.8457" width="10" height="2.30769" fill="white"/>
+					<rect x="3.84583" width="2.30769" height="10" fill="white"/>
+				</svg>
+			</div>
+			
+			<div class="plus-btn-cont" style="width: 26px; height: 32px;">
+				<svg viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M4.09094 13.4434C4.4049 14.3417 5.28397 15.0005 6.28862 15.0005C7.29327 15.0005 8.23513 14.4016 8.61187 13.4434" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M8.60933 1.60016C9.13596 1.83247 9.62232 2.14784 10.042 2.54327C10.9977 3.44386 11.6282 4.77857 11.5866 6.55513L12.3364 6.57266C12.3827 4.59397 11.6744 3.051 10.5563 1.99742C9.95349 1.42939 9.23763 1.00918 8.46812 0.738281C8.55779 1.00792 8.60742 1.29796 8.60933 1.60016ZM3.83737 0.846661C3.24665 1.08715 2.68792 1.41992 2.18789 1.84751C0.980923 2.8796 0.137825 4.44566 0 6.53919L0.74838 6.58845C0.873903 4.6818 1.63284 3.30896 2.67531 2.41752C3.00078 2.13921 3.35601 1.90603 3.73138 1.71766C3.73024 1.68471 3.72966 1.65161 3.72966 1.61836C3.72966 1.34976 3.76735 1.09061 3.83737 0.846661Z" fill="white"/>
+					<path d="M11.7393 10.2696C11.4881 10.0899 11.1114 9.73056 10.7974 9.19153C10.609 8.83218 10.5462 8.59262 10.4207 8.17337C10.3579 7.63435 10.2323 6.91564 10.2323 6.07716C10.2323 5.7777 10.2323 4.81943 9.54159 3.86116C8.85089 2.90289 7.90903 2.60343 7.59508 2.48365C7.53228 1.82484 6.96717 1.3457 6.27647 1.3457C5.58577 1.3457 5.02066 1.88473 4.95787 2.48365C3.3881 3.02267 2.25787 4.40019 2.25787 6.07716C2.25787 6.91564 2.13228 7.57445 2.06949 8.05359C2.06949 8.47283 1.94391 8.89207 1.62996 9.37121C1.44159 9.67067 1.31601 9.91024 1.00205 10.2097C0.81368 10.4493 0.625308 10.569 0.499727 10.8086C0.374145 11.0482 0.374146 11.2877 0.374146 11.3476C0.374146 11.4075 0.374146 12.0064 0.81368 12.3658C1.25322 12.785 1.81833 12.7252 1.88112 12.7252C4.89508 12.7252 7.84624 12.7252 10.8602 12.7252C10.923 12.7252 11.7393 12.785 12.1788 12.1861C12.43 11.8268 12.3672 11.4674 12.3672 11.2877C12.2416 10.7487 11.8648 10.3894 11.7393 10.2696Z" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+				</svg>
+				
+				<div class="notifictn_available"></div>
+			</div>
+			
+			
+			<div class="zoom-cont">
+				<div class="zoom-btn plus-btn" (click)="zoomView('in')"><mat-icon class="zoom-icon">remove</mat-icon></div>
+				<div class="zoom-value">{{zoomviewport}}%</div>
+				<div class="zoom-btn minus-btn" (click)="zoomView('out')"><mat-icon class="zoom-icon" >add</mat-icon></div>
+			</div> 
+			
+		</div>
+		<div class="clear"></div>
+		
+		<div class="expend-profile-details" *ngIf='expendpatient_Detail'>
+			
+			<perfect-scrollbar [config]="config">
+				<div style="width: calc(100% - 60px); float: left; min-width: 1716px; display: flex">
+
+					<div class="stone-section">
+						<div class="list-container-head">
+							<div class="list-name">
+								Health History
+							</div>
+							<div class="list-date">
+								<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7.35491 4.94H4.63891V7.824L3.23191 7.824V4.94H0.529906L0.529906 3.659H3.23191L3.23191 0.788999H4.63891L4.63891 3.659H7.35491V4.94Z" fill="#4EC8F0"/>
+								</svg>
+									
+							</div>
+						</div>
+
+
+						<div class="list-container">
+							<div class="list-name">
+								High Blood Pressure
+							</div>
+							<div class="list-date">
+								02/09/2019 	
+							</div>
+						</div>
+
+						<div class="list-container">
+							<div class="list-name">
+								High Blood Pressure
+							</div>
+							<div class="list-date">
+								01/20/2018
+							</div>
+						</div>
+
+
+				</div>
+	
+				
+				<div class="middle-form-section">
+				<div class="expend-profile-section1">
+					<div class="medical-alert">
+						<div class="medical-plus-sign">+</div>
+						<div class="medical-alert-des">
+						Allergic to Latex.
+						Allergic to Codiene. 
+						Hypertension - Calcium Blockers.
+						</div>
+						<div class="clear"></div>
+						<div class="medical-alert-title">Medical Alert</div>
+					</div>
+				
+				
+					
+				</div>
+				<div class="clear"></div>
+				<div class="common-expend-profile-section first-section">
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.firstname" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >First name</div>
+
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.preferredname" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >Preferred name</div>
+
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.email" class="common-inputfield" type="text"/></div>
+					<div class="common-lebel" >Email address</div>
+
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.employer" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >Employer</div>
+
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.address" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >Street address</div>
+
+					
+
+				</div>
+				<div class="common-expend-profile-section">
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.middlename" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >Middle Name</div>
+
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.dob" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" > Date of birth</div>
+
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.phone" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >Phone number</div>
+
+					<div class="input-field-cont"><input  [(ngModel)]="patient_info.employerid" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >Employer ID</div>
+
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.city" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >City</div>
+
+					
+
+				</div>
+				<div class="common-expend-profile-section">
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.lastname" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >Last name</div>
+
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.SSN" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel common-1st-missing" > SSN</div>
+
+					<div class="input-field-cont"><input  [(ngModel)]="patient_info.workphone" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" > Work phone</div>
+
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.state" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >State</div>
+
+				
+		
+				</div>
+				<div class="common-expend-profile-section last-section">
+					
+					<div class="dropdown-label-cont common-lebel" (click)="showddoptions()">
+							<div class="dropdown-label">{{ddplaceholder}}</div>
+
+						<div class="dropdown-icon">
+							<svg width="6" height="4" viewBox="0 0 6 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M3 4L0.401924 0.25L5.59808 0.25L3 4Z" fill="white"/>
+							</svg>
+									
+						</div>
+					  </div>
+				  
+					  <div class="dropdown-options-cont" *ngIf="showdd">
+						<div class="optionsitem" *ngFor="let optionitem of Treatment_status; let indx=index;"  (click)="selectDdOption(indx)">{{optionitem.option}}</div>
+					  </div>
+
+					<div  class="common-lebel common-3st-missing" >Treatment status</div>
+
+				
+					<div class="input-field-cont"><input [(ngModel)]="patient_info.zipcode" class="common-inputfield" type="text"/></div>
+					<div  class="common-lebel" >Zip code</div>
+
+				
+				</div>
+				<div class="clear"></div>
+				<div class="input-field-cont">
+					<input  [(ngModel)]="patient_info.phone" class="common-inputfield" type="text"/>
+				</div>
+				<div  class="common-lebel" >Emergency contact info</div>
+
+				</div>
+
+				<div class="expend-profile-section2">
+						<div class="list-container-head">
+							<div class="list-name">
+									<svg style="padding-right: 4px;" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M8.80272 12.9995H1.62893C1.28144 12.9995 1 12.7256 1 12.3874V3.26283C1 3.0942 1.06988 2.94141 1.1838 2.83054C1.33696 2.68148 1.55522 2.65912 1.62797 2.65166C1.97259 2.61626 4.03168 2.60881 6.85468 2.64421C7.71335 3.45847 8.57202 4.27273 9.43165 5.08699C9.43165 7.52046 9.43165 9.95392 9.43165 12.3883C9.43452 12.4386 9.43165 12.5299 9.38666 12.6324C9.34263 12.733 9.27849 12.7927 9.2469 12.8215C9.08416 12.9697 8.88026 12.9939 8.80272 12.9995Z" fill="white" stroke="#4EC8F0" stroke-width="0.5"/>
+										<path d="M10.4253 11.3784H3.25051C2.90302 11.3784 2.62158 11.1045 2.62158 10.7664V1.64167C2.62158 1.47306 2.69146 1.32028 2.80538 1.20943C2.95854 1.06038 3.1768 1.03802 3.24955 1.03057C3.59417 0.995168 5.65326 0.987716 8.47626 1.02312C9.33493 1.8373 10.1936 2.65149 11.0532 3.46568C11.0532 5.89893 11.0532 8.33217 11.0532 10.7664C11.0561 10.8167 11.0532 10.9079 11.0082 11.0104C10.9642 11.111 10.9001 11.1706 10.8685 11.1995C10.7067 11.3486 10.5028 11.3728 10.4253 11.3784Z" fill="white" stroke="#4EC8F0" stroke-width="0.5"/>
+										<path d="M11.0541 3.5946H9.052C8.72539 3.5946 8.45947 3.32258 8.45947 2.98626V1C9.32466 1.86454 10.1889 2.73006 11.0541 3.5946Z" fill="#4EC8F0"/>
+										<path d="M9.49088 5.21603H3.86074C3.71327 5.21603 3.59473 5.09725 3.59473 4.95156V4.83185C3.59473 4.68523 3.7142 4.56738 3.86074 4.56738H9.49088C9.63836 4.56738 9.75689 4.68616 9.75689 4.83185V4.95156C9.75689 5.09725 9.63836 5.21603 9.49088 5.21603Z" fill="#4EC8F0"/>
+										<path d="M8.51536 7.16232H3.86328C3.7144 7.16232 3.59473 7.04354 3.59473 6.89785V6.77814C3.59473 6.63152 3.71534 6.51367 3.86328 6.51367H8.51536C8.66425 6.51367 8.78392 6.63245 8.78392 6.77814V6.89785C8.78486 7.04447 8.66425 7.16232 8.51536 7.16232Z" fill="#4EC8F0"/>
+										<path d="M9.49088 9.10861H3.86074C3.71327 9.10861 3.59473 8.98983 3.59473 8.84414V8.72443C3.59473 8.57781 3.7142 8.45996 3.86074 8.45996H9.49088C9.63836 8.45996 9.75689 8.57874 9.75689 8.72443V8.84414C9.75689 8.98983 9.63836 9.10861 9.49088 9.10861Z" fill="#4EC8F0"/>
+									</svg>
+										
+									Documents
+							</div>
+							<div class="list-date">
+								<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7.35491 4.94H4.63891V7.824L3.23191 7.824V4.94H0.529906L0.529906 3.659H3.23191L3.23191 0.788999H4.63891L4.63891 3.659H7.35491V4.94Z" fill="#4EC8F0"/>
+								</svg>
+									
+							</div>
+						</div>
+
+
+						<div class="list-container">
+							<div class="list-name">Scanned letter from Dr. George Jones</div>
+							<div class="list-date">02/09/2019</div>
+						</div>
+
+						<div class="list-container">
+							<div class="list-name">Insurance EOB</div>
+							<div class="list-date">06/30/2018</div>
+						</div>
+
+						<div class="list-container">
+							<div class="list-name">HIPAA consent</div>
+							<div class="list-date">01/20/2018</div>
+						</div>
+
+					<div class="file-icon">
+							+ UPLOAD
+					</div>
+					
+				</div>
+			
+				<div class="clear"></div>
+				</div>
+			</perfect-scrollbar>
+		</div>
+		
+
+</div>
+
+<div fxLayout="column" style="margin-top: 70px;">
+	<div fxLayout="row">
+		<div fxFlex="calc(100% - 330px)">
+		
+			<div *ngIf="!postTreatment">
+				<app-patient-profile-home (showPostTreatment)="showPostTreatment($event)"></app-patient-profile-home>
+			</div>
+			
+			<div class="accordion" [style.height.px]="accordHt" *ngIf="postTreatment">
+				<ul>
+					 <li [style.marginBottom.px]="-acord_bottom_margin "*ngFor="let item of panelArr let indx=index">
+						<input type="radio" name="select" class="accordion-select" [checked]="item.checked" (change)="activePanel(indx)" [style.height.px]="zoomWd" />
+						<div [ngClass]="{'accordion-title': true, 'title-selected': item.checked === true}" [style.height.px]="zoomWd" [style.fontSize.px]="fontsize">
+							<span>{{item.title}}</span>
+						</div>
+						
+						<div class="accordion-content" [style.height.px]="acord_cont_ht" style="overflow: hidden;" *ngIf="indx == 0">
+						
+						<app-treatment></app-treatment>
+							
+						</div>
+						
+						<div class="accordion-content" [style.height.px]="acord_cont_ht" *ngIf="indx == 1">
+							<app-finance [showMinimum]="false"></app-finance>
+						</div>
+						
+						<div class="accordion-content" [style.height.px]="acord_cont_ht" *ngIf="indx == 2">
+							<app-communication></app-communication>
+						</div>
+						
+						<div [ngClass]="{'accordion-separator': itemclicked == true}" [ngStyle]="{'margin-bottom': item.checked === true ? acord_bottom_margin + 'px' : ''}"></div>
+					</li> 
+				</ul>
+			</div>
+		</div>
+		
+		<div fxFlex="330px"class="right-panel">
+			<app-chair [chairDetails]="patientInChair" [activepatient]="true"></app-chair>
+			
+			<div class="other-patient-panel">
+				<app-chair *ngFor="let chair of chair_labelArr" [chairDetails]="chair" [activepatient]="false"></app-chair>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="profile-cont">
+	<img src="{{patient_info.profileimg}}" width="100%" />
+</div>

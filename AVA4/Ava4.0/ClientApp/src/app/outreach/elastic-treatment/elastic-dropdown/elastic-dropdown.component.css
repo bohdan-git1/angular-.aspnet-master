@@ -1,0 +1,97 @@
+.component-cont {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.dd-label-cont {
+	width: 100%;
+	height: 100%;
+	background: #FFFFFF;
+	border: 1px solid #4EC8F0;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dd-label {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: normal;
+	color: #434343;
+	text-align: center;
+}
+
+.dd-options-cont {
+	position: absolute;
+    top: 36px;
+    width: 560px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #fff;
+    border: 1px solid #4EC8F0;
+    z-index: 1000;
+    padding: 10px 15px;
+    box-sizing: border-box;
+	height: 375px;
+}
+
+.elastice-head  {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 4px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    height: 25px;
+}
+
+.elastice-head-type{
+    float: left;
+    text-align: left;
+    width: 20%;
+}
+
+.elastice-head-description{
+    float: left;
+    text-align: right;
+    width: 40%;
+}
+
+.elastice-head-teeth{
+    float: right;
+    text-align: left;
+    width: 35%;
+}
+
+.hdclolor-set{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: normal;
+    color: #4EC8F0;
+	margin-bottom: 5px;
+}
+
+.listclolor-set {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: normal;
+    color: #434343;
+    margin-bottom: 4px;
+    box-sizing: border-box;
+	cursor: pointer;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.elastice-data-list:hover {
+	background: #f4f4f4;
+}

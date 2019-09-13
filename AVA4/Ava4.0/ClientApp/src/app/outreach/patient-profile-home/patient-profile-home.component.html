@@ -1,0 +1,159 @@
+<div class="comp-cont">
+	<div class="treatment-section">
+		<div class="main-section-title"><div>Treatment</div></div>
+		<div class="main-section-content">
+			
+			<perfect-scrollbar>
+				<div fxLayout="row" fxLayoutGap="25px" style="position: relative; height: 100%;">
+					<div fxFlex="343px">
+						<div class="diagnositc-card">
+							<div fxLayout="row" fxLayoutGap="5">
+								<div fxFlex="60">
+									<div class="card-content-section" style="padding-top: 30px; padding-left: 10px;">
+										<div class="section-title">Alert</div>
+										<div class="section-content section-content-red">Allergic to codiene, is austistic (don’t make direct eye contact). <br>Hippa release has not been signed</div>
+									</div>
+									
+									<div class="card-content-section" style="padding-left: 10px;">
+										<div class="section-title">Patient Referral</div>
+										<div class="section-content">
+											<ul>
+												<li>John Smith</li>
+												<li>Paula Jones</li>
+												<li class="thanks">Jackie Mendoza - Thank you!</li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="card-content-section" style="padding-left: 10px;">
+										<div class="section-title">Professional Referral</div>
+										<div class="section-content">
+											<ul>
+												<li>Dr. Jim Holmes <span class="desg-italic">Oral Surgeon</span></li>
+												<li>Dr. Jane Nolan <span class="desg-italic">Pediatric Dentist</span></li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="card-content-section" style="padding-left: 10px;">
+										<div class="section-title">Dentist</div>
+										<div class="section-content">
+											<ul>
+												<li>Dr. Susan Smiley</li>
+												<li>Dr. Sam Walters</li>
+											</ul>
+										</div>
+									</div>
+									
+								</div>
+								<div fxFlex="35">
+									
+									<div class="card-content-section" style="padding-top: 30px; padding-right: 10px;">
+										<div class="section-title">Relationships</div>
+										<div class="section-content">
+											<ul>
+												<li>MO - Clarissa Marcum </li>
+												<li>FA- Peter Goslin</li>
+												<li>SF- Spencer Marcum</li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="card-content-section" style="padding-right: 10px;">
+										<div class="section-title">Comment</div>
+										<div class="section-content">
+											Parents are divorced. Mom (Clarissa) is bringing Stella into the office but all financial information should be sent to Dad (Peter).
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div fxFlex="880px" class="card-elem">
+								
+								<div class="treatment-table">
+									<div class="treatment-table-header">
+										<div class="treatment-header-cell" style="width: 102px;">Date / Time</div>
+										<div class="treatment-header-cell" style="width: 69px;">UW</div>
+										<div class="treatment-header-cell" style="width: 49px;">LW</div>
+										<div class="treatment-header-cell" style="width: 30px;">Hyg</div>
+										<div class="treatment-header-cell" style="width: 34px;">Appl</div>
+										<div class="treatment-header-cell" style="width: 34px;">St</div>
+										<div class="treatment-header-cell" style="width: 44px;">Dr</div>
+										<div class="treatment-header-cell left-align" style="width: 255px;">Notes</div>
+										<div class="treatment-header-cell left-align" style="width: 110px;">Next Notes</div>
+										<div class="treatment-header-cell" style="width: 34px;">Proc</div>
+										<div class="treatment-header-cell" style="width: 34px;">U</div>
+										<div class="treatment-header-cell" style="width: 50px;">Wks</div>
+									</div>
+								</div>
+								
+								<div class="treatment-table">
+									<div [ngStyle]="{'width': '860px', 'height': '270px'}">
+									
+										<perfect-scrollbar>
+										
+											<div class="treatment-table-body" *ngFor="let tretmentItem of treatmentArr" style="padding-right: 10px;">
+												<div class="treatment-body-cell" style="width: 102px;">{{tretmentItem.date}} &nbsp;</div>
+												<div class="treatment-body-cell" style="width: 69px;">{{tretmentItem.UW}} &nbsp;</div>
+												<div class="treatment-body-cell" style="width: 49px;">{{tretmentItem.LW}} &nbsp;</div>
+												<div class="treatment-body-cell" style="width: 30px;">{{tretmentItem.Hyg}} &nbsp;</div>
+												<div class="treatment-body-cell" style="width: 34px;">{{tretmentItem.Appl}} &nbsp;</div>
+												<div class="treatment-body-cell" style="width: 34px;">{{tretmentItem.St}} &nbsp;</div>
+												<div class="treatment-body-cell" style="width: 44px;">{{tretmentItem.dr}} &nbsp;</div>
+												<div class="treatment-body-cell left-align wrap-text italic-style" style="width: 255px;">{{tretmentItem.notes}} &nbsp;</div>
+												<div class="treatment-body-cell left-align wrap-text italic-style" style="width: 110px;">{{tretmentItem.next_notes}} &nbsp;</div>
+												<div class="treatment-body-cell" style="width: 34px;">{{tretmentItem.Proc}} &nbsp;</div>
+												<div class="treatment-body-cell" style="width: 34px;">{{tretmentItem.U}} &nbsp;</div>
+												<div class="treatment-body-cell" style="width: 50px;">{{tretmentItem.Wks}} &nbsp;</div>
+											</div>
+										</perfect-scrollbar>
+									</div>
+								</div>
+							</div>
+					
+					
+					
+					<div fxFlex="167px">
+						<app-treatmentmeter [all]="true"></app-treatmentmeter>
+					</div>
+					
+					
+					
+				</div>
+				
+				<div class="clickable-overlay" (click)="showProfileSection('treatment')"></div>
+			
+			</perfect-scrollbar>
+		</div>
+		
+	</div>
+	
+	<div class="finance-section">
+		<div class="main-section-title"><div>Finances</div></div>
+		
+		<div class="main-section-content" style="position: relative;">
+			<app-finance [showMinimum]="true"></app-finance>
+			
+			<div class="clickable-overlay" (click)="showProfileSection('finance')"></div>
+			
+		</div>
+		
+		
+		
+	</div>
+	
+	<div class="communication-section">
+		<div class="main-section-title"><div>Communication</div></div>
+		
+		<div class="main-section-content" style="position: relative;">
+			<app-communication></app-communication>
+			
+			<div class="clickable-overlay" (click)="showProfileSection('communication')"></div>
+			
+		</div>
+		
+	</div>
+</div>

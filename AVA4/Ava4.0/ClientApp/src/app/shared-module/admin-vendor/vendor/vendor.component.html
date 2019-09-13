@@ -1,0 +1,274 @@
+<div fxLayout="row">
+
+  <div fxFlex="455px">
+    <perfect-scrollbar>
+      <div class="main-cont">
+
+        <div class="information-box-cont">
+          <div class="box-title">Vendors</div>
+          <div class="box-content">
+            <div class="flip-container">
+              <div class="flipper" [ngStyle]="{'transform': 'rotateY(' + rotateOnY + 'deg)'}">
+                <div class="card1">
+                  <div class="content-wrap">
+                    <div fxLayout="row">
+                      <div fxFlex="100">
+                        <div class="searchbox">
+                          <div class="serach-icon">
+                            <svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M7.3352 1.2575C5.6595 -0.419168 2.93219 -0.419168 1.2565 1.2575C-0.418832 2.93454 -0.418832 5.66309 1.2565 7.34013C2.61962 8.70371 4.67686 8.95515 6.2991 8.09998C6.5195 7.9838 6.81689 8.10673 6.99301 8.28296L9.43335 10.7247C9.78898 11.0798 10.3636 11.0798 10.7175 10.7247C11.0727 10.3693 11.0727 9.79425 10.7175 9.43987L8.27711 6.99738C8.101 6.82165 7.97821 6.52485 8.09423 6.30476C8.95011 4.68118 8.69895 2.62238 7.3352 1.2575ZM6.56473 6.56921C5.31369 7.82099 3.27764 7.82099 2.02696 6.56921C0.776638 5.31743 0.776638 3.28056 2.02696 2.02878C3.27764 0.777365 5.31369 0.777365 6.56473 2.02878C7.81578 3.28056 7.81578 5.31743 6.56473 6.56921Z"
+                                fill="#6BD3F4" />
+                            </svg>
+                          </div>
+
+                          <input type="text" placeholder="Find vendor" [(ngModel)]='textSearch' />
+
+                          <!--<input type="text" placeholder="Find vendor" (keyup)="searchvendor($event)" />-->
+                        </div>
+                      </div>
+                    </div>
+                    <perfect-scrollbar>
+                      <div fxLayout="row">
+                        <div fxFlex="100">
+                          <ul>
+                            <li [ngClass]="{'orginfo':true, 'orginfo-selected': vendoritem.selected  }"
+                              (click)="selectDropdown(indx)"
+                              *ngFor="let vendoritem of vendorArr | searchFilter: 'vendorname': textSearch; let indx=index;  ">
+                              <div [ngClass]="{'org-name':true, 'org-name-selected': vendoritem.selected  }">
+                                {{vendoritem.vendorname}}</div>
+                              <div [ngClass]="{'org-location':true, 'org-location-selected': vendoritem.selected  }">
+                                {{vendoritem.phone}}</div>
+
+
+                              <div class="orginfo-dropdown" *ngIf="vendoritem.selected">
+                                <!--<div class="container">
+                        <div class="org-location">Ext: {{vendoritem.ext}}</div>
+                        <div class="org-name"><span>Code:</span> {{vendoritem.code}}</div>
+                      </div>-->
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.add1}}</div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.add2}}</div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.city}}</div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.state}}</div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.zipcode}}</div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="left-wrap">
+                                    <div class="org-name">{{vendoritem.phoneNo}}</div>
+                                  </div>
+
+                                  <div class="right-wrap">
+                                    <div class="org-name">{{vendoritem.phExt}}</div>
+                                  </div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.rep}}</div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.repphone}}</div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.email}}</div>
+
+                                </div>
+
+                                <div class="container">
+                                  <div class="left-wrap">
+                                    <div class="org-name">{{vendoritem.website}}</div>
+                                  </div>
+
+                                  <div class="right-wrap">
+                                    <button type="button" class="go-btn">GO</button>
+                                  </div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.login}}</div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name">{{vendoritem.password}}</div>
+                                </div>
+
+                                <div class="container">
+                                  <div class="org-name noteAnswer">{{vendoritem.note}}</div>
+                                </div>
+
+
+
+
+                              </div>
+                              <div class="clear"></div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </perfect-scrollbar>
+                  </div>
+
+                  <div class="plus-btn" (click)="flipCard()">
+                    <svg viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.01 4.65H5.1V7.74H3.5925V4.65H0.6975V3.2775H3.5925V0.202499H5.1V3.2775H8.01V4.65Z"
+                        fill="#4EC8F0" />
+                    </svg>
+
+                  </div>
+                </div>
+
+                <div class="card2">
+
+                  <div class="content-wrap">
+                    <perfect-scrollbar>
+                      <div class="form-wrap">
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Name</div>
+                            <div class="info-input"><input type="text" placeholder="Name" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Address 1</div>
+                            <div class="info-input"><input type="text" placeholder="Address 1" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Address 2</div>
+                            <div class="info-input"><input type="text" placeholder="Address 2" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">City</div>
+                            <div class="info-input"><input type="text" placeholder="City" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">State</div>
+                            <div class="info-input"><input type="text" placeholder="State" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Zip Code</div>
+                            <div class="info-input"><input type="text" placeholder="Zip Code" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutGap="4px">
+                          <div fxFlex="80">
+                            <div class="label-title">Phone Number</div>
+                            <div class="info-input"><input type="text" placeholder="Phone number" /></div>
+                          </div>
+                          <div fxFlex="20">
+                            <div class="label-title">Ext.</div>
+                            <div class="info-input"><input type="text" placeholder="Ext." /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Rep</div>
+                            <div class="info-input"><input type="text" placeholder="Rep" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Rep Phone</div>
+                            <div class="info-input"><input type="text" placeholder="Rep phone" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Email</div>
+                            <div class="info-input"><input type="text" placeholder="Email" /></div>
+                          </div>
+                        </div>
+
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Website</div>
+                            <div class="info-input"><input type="text" placeholder="Website" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Login</div>
+                            <div class="info-input"><input type="text" placeholder="Login" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutGap="15px">
+                          <div fxFlex="100">
+                            <div class="label-title">Password</div>
+                            <div class="info-input"><input type="password" placeholder="Password" /></div>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row">
+                          <div fxFlex="100">
+                            <div class="label-title">Notes</div>
+                            <div class="notes-textarea">
+                              <textarea>
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur  sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                               </textarea>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </perfect-scrollbar>
+                  </div>
+
+                  <div class="plus-btn" (click)="flipCard()">
+                    <svg viewBox="0 0 7 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6.47461" width="0.707099" height="6.92308" transform="rotate(45 6.47461 0)"
+                        fill="#00ABE9" />
+                      <rect y="3.31348" width="0.707099" height="2.94384" transform="rotate(-45 0 3.31348)"
+                        fill="#00ABE9" />
+                    </svg>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </perfect-scrollbar>
+  </div>
+
+</div>

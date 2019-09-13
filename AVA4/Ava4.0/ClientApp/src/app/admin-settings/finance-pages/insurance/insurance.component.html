@@ -1,0 +1,429 @@
+<div class="pagetitle">INSURANCE</div>
+<div fxLayout="column">
+	<div fxLayout="row" fxLayoutGap="15px">
+		<div fxFlex="468px">
+			<div class="section-cont">
+				<div class="section-title">CARRIERS</div>
+				<div class="inner-cont">
+					<div class="flip-container">
+						<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + rotateOnY + 'deg)'}">
+							<div class="card1">
+								<ul>
+									<li class="orginfo">
+										<!-- <div class="selector" [ngStyle]="{'height': selectorHeight + 'px'}"></div> -->
+										<div [ngClass]="{'org-code':  !detailsAcrd[0].accordOpen, 'detailed-info-item': true}">BCBS</div>
+										<div [ngClass]="{'org-name': !detailsAcrd[0].accordOpen, 'detailed-info-item': true}">Regence BCBS Dental of Oregon</div>
+										<div class="clear"></div>
+										
+										<div class="org-overlay" (click)="showDetails($event, 0)"></div>
+										
+										<div class="detailed-info" [ngStyle]="{'height': detailsAcrd[0].accordOpen == true ? 'auto' : '0px'}">
+											<div class="detailed-info-item">P.O. Box 30805</div>
+											<div class="detailed-info-item">Salt Lake City</div>
+											<div class="detailed-info-item">UT</div>
+											<div class="detailed-info-item">84130 - 0805</div>
+											<div class="detailed-info-item phNum">(866) 227-0913</div>
+											<div class="detailed-info-item ext">Ext 3157</div>
+											<div class="detailed-info-item">Regencesupport@bcbs.com</div>
+											<div class="detailed-info-item">Payor ID 8910462</div>
+											<div class="detailed-info-item">www.regence.com</div>
+											<div class="detailed-info-item active">Active</div>
+											<div class="detailed-info-item">Notes:</div>
+											<div class="detailed-info-item">School Dist - $1,000 LTM at 50% No age limit. No waiting v=03/10. We are a provider with BCBS. (800) 452-8812 Oregon Teamster - Has letters first for ID #</div>
+											
+										</div>
+									</li>
+									
+									<li class="orginfo">
+										<div [ngClass]="{'org-code':  !detailsAcrd[1].accordOpen, 'detailed-info-item': true}">Aetna</div>
+										<div [ngClass]="{'org-name': !detailsAcrd[1].accordOpen, 'detailed-info-item': true}">Aetna Dental Insurance</div>
+										<div class="clear"></div>
+										
+										<div class="org-overlay" (click)="showDetails($event, 1)"></div>
+										
+										<div class="detailed-info" [ngStyle]="{'height': detailsAcrd[1].accordOpen == true ? 'auto' : '0px'}">
+											<div class="detailed-info-item">P.O. Box 30805</div>
+											<div class="detailed-info-item">Salt Lake City</div>
+											<div class="detailed-info-item">UT</div>
+											<div class="detailed-info-item">84130 - 0805</div>
+											<div class="detailed-info-item phNum">(866) 227-0913</div>
+											<div class="detailed-info-item ext">Ext 3157</div>
+											<div class="detailed-info-item">Regencesupport@bcbs.com</div>
+											<div class="detailed-info-item">Payor ID 8910462</div>
+											<div class="detailed-info-item">www.regence.com</div>
+											<div class="detailed-info-item active">Active</div>
+											<div class="detailed-info-item">Notes:</div>
+											<div class="detailed-info-item">School Dist - $1,000 LTM at 50% No age limit. No waiting v=03/10. We are a provider with BCBS. (800) 452-8812 Oregon Teamster - Has letters first for ID #</div>
+											
+										</div>
+										
+									</li>
+									
+									<li class="orginfo">
+										<div [ngClass]="{'org-code':  !detailsAcrd[2].accordOpen, 'detailed-info-item': true}">AARP</div>
+										<div [ngClass]="{'org-name': !detailsAcrd[2].accordOpen, 'detailed-info-item': true}">AARP Dental Insurance</div>
+										<div class="clear"></div>
+										
+										<div class="org-overlay" (click)="showDetails($event, 2)"></div>
+										
+										<div class="detailed-info" [ngStyle]="{'height': detailsAcrd[2].accordOpen == true ? 'auto' : '0px'}">
+											<div class="detailed-info-item">P.O. Box 30805</div>
+											<div class="detailed-info-item">Salt Lake City</div>
+											<div class="detailed-info-item">UT</div>
+											<div class="detailed-info-item">84130 - 0805</div>
+											<div class="detailed-info-item phNum">(866) 227-0913</div>
+											<div class="detailed-info-item ext">Ext 3157</div>
+											<div class="detailed-info-item">Regencesupport@bcbs.com</div>
+											<div class="detailed-info-item">Payor ID 8910462</div>
+											<div class="detailed-info-item">www.regence.com</div>
+											<div class="detailed-info-item active">Active</div>
+											<div class="detailed-info-item">Notes:</div>
+											<div class="detailed-info-item">School Dist - $1,000 LTM at 50% No age limit. No waiting v=03/10. We are a provider with BCBS. (800) 452-8812 Oregon Teamster - Has letters first for ID #</div>
+											
+										</div>
+									</li>
+									
+									<li class="orginfo">
+										<div [ngClass]="{'org-code':  !detailsAcrd[3].accordOpen, 'detailed-info-item': true}">MetLife</div>
+										<div [ngClass]="{'org-name': !detailsAcrd[3].accordOpen, 'detailed-info-item': true}">MetLife</div>
+										<div class="clear"></div>
+										
+										<div class="org-overlay" (click)="showDetails($event, 3)"></div>
+										
+										<div class="detailed-info" [ngStyle]="{'height': detailsAcrd[3].accordOpen == true ? 'auto' : '0px'}">
+											<div class="detailed-info-item">P.O. Box 30805</div>
+											<div class="detailed-info-item">Salt Lake City</div>
+											<div class="detailed-info-item">UT</div>
+											<div class="detailed-info-item">84130 - 0805</div>
+											<div class="detailed-info-item phNum">(866) 227-0913</div>
+											<div class="detailed-info-item ext">Ext 3157</div>
+											<div class="detailed-info-item">Regencesupport@bcbs.com</div>
+											<div class="detailed-info-item">Payor ID 8910462</div>
+											<div class="detailed-info-item">www.regence.com</div>
+											<div class="detailed-info-item active">Active</div>
+											<div class="detailed-info-item">Notes:</div>
+											<div class="detailed-info-item">School Dist - $1,000 LTM at 50% No age limit. No waiting v=03/10. We are a provider with BCBS. (800) 452-8812 Oregon Teamster - Has letters first for ID #</div>
+											
+										</div>
+									</li>
+								</ul>
+								
+								<div class="plus-btn" (click)="flipCard()">
+									<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect x="12.5" y="8" width="1" height="10" rx="0.5" fill="#434343"/>
+										<rect x="8" y="13.5" width="1" height="10" rx="0.5" transform="rotate(-90 8 13.5)" fill="#434343"/>
+										<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+									</svg>
+								</div>
+								
+							</div>
+							
+							<div class="card2">
+								
+								<ul>
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Code" /></div>
+										</div>
+										
+										<div class="right-col">
+											<app-toggle-btn [label]="'Active'"></app-toggle-btn>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Name" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Address1" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Address2" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="City" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="State" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Zip" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Phone Number" /></div>
+										</div>
+										
+										<div class="right-col">
+											<div class="ext"><input type="text" placeholder="Ext" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Fax Number" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Email Address" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Payor ID" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input"><input type="text" placeholder="Website" /></div>
+										</div>
+										<div class="right-col">
+											<div class="career-input" style="margin-bottom: 10px;"><input type="text" placeholder="Login" /></div>
+											<div class="career-input"><input type="password" placeholder="Password" /></div>
+										</div>
+									</li>
+									
+									<li class="career-input-item">
+										<div class="left-col">
+											<div class="career-input">
+												<textarea placeholder="Notes"></textarea>
+											</div>
+										</div>
+									</li>
+								</ul>
+								
+								
+								<div class="plus-btn" (click)="flipCard()">
+									<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M19.5436 8.20574C19.3394 8.01977 19.0232 8.03449 18.8372 8.23862L11.9214 15.8297L8.67248 12.8698C8.46835 12.6838 8.15211 12.6986 7.96614 12.9027C7.78017 13.1068 7.79489 13.4231 7.99902 13.609L11.4615 16.7635C11.4888 16.8288 11.5304 16.8893 11.5862 16.9401C11.7903 17.1261 12.1065 17.1114 12.2925 16.9073L19.5765 8.91209C19.7624 8.70796 19.7477 8.39172 19.5436 8.20574Z" fill="#434343"/>
+										<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+		
+		<div fxFlex="541px">
+			<div class="section-cont">
+				<div class="section-title">ADA CODES</div>
+				<div class="inner-cont">
+					<div class="scroll-cont">
+						<perfect-scrollbar>
+							<ul style="padding-right: 15px;">
+								<li class="orginfo marginbottom" *ngFor="let adaItem of adaCodes">
+									<div fxLayout="row" fxLayoutGap="10px">
+										<div fxFlex="15">{{adaItem.code}}</div>
+										<div fxFlex="80">{{adaItem.desc}}</div>
+										<div fxFlex="10">{{adaItem.amnt | currency : 'USD' : 'symbol' : '1.0'}}</div>
+									</div>
+								</li>
+							</ul>
+						</perfect-scrollbar>
+					</div>
+					
+					<div class="ada-code-input">
+						<div class="orginfo" style="padding-right: 15px; margin-bottom: 0;">
+							<div fxLayout="row" fxLayoutGap="10px">
+								<div fxFlex="15" class="input-cont"><input type="text" placeholder="Code" /></div>
+								<div fxFlex="80" class="input-cont"><input type="text" placeholder="Description" /></div>
+								<div fxFlex="10" class="input-cont"><input type="text" placeholder="Amount" /></div>
+							</div>
+						</div>
+						
+						<div class="add-btn">
+							<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<circle cx="9" cy="9" r="8.5" stroke="#4EC8F0"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0776 5.92992C13.9078 5.77528 13.6449 5.78752 13.4902 5.95726L7.74043 12.2685L5.03878 9.80714C4.86905 9.6525 4.60609 9.66474 4.45145 9.83448C4.29681 10.0042 4.30905 10.2672 4.47879 10.4218L7.35605 13.0431C7.37869 13.0985 7.41369 13.1498 7.46082 13.1927C7.63056 13.3474 7.89352 13.3351 8.04816 13.1654L14.1049 6.51726C14.2595 6.34752 14.2473 6.08456 14.0776 5.92992Z" fill="#434343"/>
+							</svg>
+						</div>
+					</div>
+					
+					
+					
+				</div>
+			</div>
+		</div>
+		
+		<!-- <div fxFlex="315px">
+			<div class="section-cont">
+				<div class="section-title">DOCTORS</div>
+				<div class="inner-cont">
+					<perfect-scrollbar>
+						<div class="doc-info">
+							<div class="orginfo" style="margin-bottom: 5px;">
+								<div class="doc-name">Dr. Kate Kramps</div>
+								<div class="doc-desg">DDS, PC</div>
+								<div class="clear"></div>
+							</div>
+						
+							<div class="orginfo" style="padding-top: 10px; padding-bottom: 10px;">
+								<ul>
+									<li class="doc-info-item">
+										<div class="info-label">Title</div>
+										<div class="info-txt">DDS, PC</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">First name</div>
+										<div class="info-txt">Katherine</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Last name</div>
+										<div class="info-txt">Kramps</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Preferred name</div>
+										<div class="info-txt">Kate</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Email</div>
+										<div class="info-txt">kate@stonehavendental.com</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Phone number</div>
+										<div class="info-txt">(808) 556-6678</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">State License #</div>
+										<div class="info-txt">90219938</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">NPI#</div>
+										<div class="info-txt">90219938</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">AAO member#</div>
+										<div class="info-txt">HTJYTDJYTF</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">ADA member#</div>
+										<div class="info-txt">(808) 556-6678</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Tax ID</div>
+										<div class="info-txt">90219938</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">SMPT Server</div>
+										<div class="info-txt">...</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="doc-info">
+							<div class="orginfo" style="margin-bottom: 5px;">
+								<div class="doc-name">Dr. Brian Carter</div>
+								<div class="doc-desg">DMD</div>
+								<div class="clear"></div>
+							</div>
+						
+							<div class="orginfo" style="padding-top: 10px; padding-bottom: 10px;">
+								<ul>
+									<li class="doc-info-item">
+										<div class="info-label">Title</div>
+										<div class="info-txt">DMD</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">First name</div>
+										<div class="info-txt">Brian</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Last name</div>
+										<div class="info-txt">Carter</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Preferred name</div>
+										<div class="info-txt"></div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Email</div>
+										<div class="info-txt">brian@stonehavendental.com</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Phone number</div>
+										<div class="info-txt">(808) 556-6678</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">State License #</div>
+										<div class="info-txt">90219938</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">NPI#</div>
+										<div class="info-txt">90219938</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">AAO member#</div>
+										<div class="info-txt">HTJYTDJYTF</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">ADA member#</div>
+										<div class="info-txt">(808) 556-6678</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">Tax ID</div>
+										<div class="info-txt">90219938</div>
+									</li>
+									
+									<li class="doc-info-item">
+										<div class="info-label">SMPT Server</div>
+										<div class="info-txt">...</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</perfect-scrollbar>
+				</div>
+			</div>
+		</div> -->
+		
+		
+	</div>
+</div>

@@ -1,0 +1,10 @@
+
+<app-create-procedure-event [selectedLocation]="selectedLocation"  (showNewPatient)="showNewPatient($event)" (patientPopUpOpenForm)="patientPopUpOpenForm($event)" [appntTime]="appntTime" [procedurecode]="procedurecode" *ngIf="showInitial_section==true"></app-create-procedure-event>
+
+
+<app-create-new-appointments [selectedLocation]="selectedLocation" [PatientInfo]="PatientInfo" (showNewEvent)="showNewEvent($event)"  (showNewPatient)="showNewPatient($event)" *ngIf="!showNewPatient_section && !showNewEvent_section && showInitial_section==false"></app-create-new-appointments>
+
+<app-new-patient [patientPopUpOpen]="patientPopUpOpen" (passPatientInfo)="passPatientInfo($event)" (showProcedureEvent)="showProcedureEvent($event)" (showCreateAppnt)="showCreateAppnt($event)" *ngIf="showNewPatient_section && showInitial_section==false"></app-new-patient>
+
+<app-create-new-event *ngIf="showNewEvent_section && showInitial_section==false " (backtoparent)="backtoparent()"></app-create-new-event>
+ 

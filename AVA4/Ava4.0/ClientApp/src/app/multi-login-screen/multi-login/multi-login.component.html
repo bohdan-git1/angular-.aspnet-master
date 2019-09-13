@@ -1,0 +1,122 @@
+<div class="main_Mlogin">
+  <div class="left-pane">
+    <div class="top-cloud">
+        <svg viewBox="0 0 636 118" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 1.17757C0 0.521552 0.531527 -0.00831178 1.18961 9.87584e-05C16.0977 0.286057 38.7509 1.79995 65.285 8.17515C138.205 25.7111 155.265 59.5047 209.481 72.3812C266.101 85.8297 266.017 53.3734 346.269 56.4685C444.703 60.27 451.95 109.379 527.52 97.9493C552.974 94.0972 593.547 82.2636 623.768 104.594C629.109 108.547 633.032 112.743 635.74 116.099C636.356 116.865 635.808 118 634.821 118H1.17273C0.52309 118 0 117.479 0 116.831V1.17757Z" fill="white"/>
+          </svg>
+    </div>
+    <div class="bottom-cloud">
+        <svg  viewBox="0 0 385 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M92.4047 17.3102C128.51 5.27371 179.046 -11.5695 224.939 11.438C247.643 22.8194 244.155 31.3909 265.467 38.455C302.124 50.6019 326.602 29.9308 358.571 45.5032C371.03 51.5727 379.552 60.6731 384.799 67.4688C385.27 68.0765 384.858 69 384.122 69H0.876282C0.0299683 69 -0.323242 67.8398 0.361176 67.3031C36.709 38.818 70.3634 24.6584 92.4047 17.3102Z" fill="white"/>
+          </svg>
+    </div>
+
+    <div class="top-img-text">
+        <div class="teeth-img">
+              <img src="/assets/Group 183.png" alt="teeth-Image" style="width: 100%;">
+        </div>
+        <div class="top-text">ORTHOTECH</div>
+
+    </div>
+
+    <div class="carousel-slide">
+
+      <!-- <slideshow [height]="'60%'"
+            [autoPlayInterval]="15000"
+           [minHeight]="'40%'"
+           [autoPlay]="true"
+           [showArrows]="false"
+           [imageUrls]="imageUrlArray"
+           [lazyLoad]="imageUrlArray?.length > 1"
+           [showDots]="true"
+           [autoPlayWaitForLazyLoad]="true"
+           [backgroundSize]="'310px 327px'"
+           [backgroundPosition]="'center top '"
+           [dotColor]="'#C4C4C4'">
+</slideshow> -->
+
+		<app-image-carousel></app-image-carousel>
+
+
+    </div>
+    
+
+  </div>
+
+  <div class="right-pane">
+      
+    <div class="bottom_block">
+      <svg viewBox="0 0 814 729" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M814 0V729H0V421.689L814 0Z" fill="url(#paint0_linear)"/>
+        <defs>
+        <linearGradient id="paint0_linear" x1="462" y1="729" x2="462" y2="342.008" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#56CCF2"/>
+        <stop offset="1" stop-color="#65D3F6"/>
+        </linearGradient>
+        </defs>
+        </svg>
+    </div>
+    <div class="top_block">
+      <div class="users_list" *ngIf="!codeVerify">
+        <br>
+        <br>
+        <br>
+        <div class="loggedIn-user" *ngFor="let user of loggedInUsers" (click)="loginVerify(user)">
+			<div class="user-img" [ngStyle]="{'border':user.break? '3px solid #F6CC61':'3px solid #FFFF'}">
+				<img [src]="user.image" alt="User image" width="100%">
+			</div>
+			
+          <div class="username">{{user.shortname}}</div>
+        </div>
+        <div class="loggedIn-user" (click)="newUserLogin()">
+			<div class="user-img" style="background: #F0F0F0">
+				 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="10" width="4" height="24" fill="#A5A5A5"/>
+					<rect x="24" y="10" width="4" height="24" transform="rotate(90 24 10)" fill="#A5A5A5"/>
+				</svg>
+			</div>
+        </div>
+      </div>
+
+
+
+      <div class="code-verify" *ngIf="codeVerify">
+
+        <div class="fullName">{{userFullName}}</div>
+		<div class="loggedIn-user">
+			<div class="user-img" [ngStyle]="{'border':userBreak? '5px solid #F6CC61':'5px solid #FFFF'}" (click)="loginVerify(user)">
+			  <img [src]="displayImg" alt="user image" width="100%">
+			</div>
+		</div>
+
+        <div class="verifcation">
+          <div class="code-div">
+            <input type="password" class="code-input" [(ngModel)]="inputCode">
+            <div class="arrow-btn" style="cursor: pointer;" (click)="checkValidation()">
+              <img src="/assets/Group 178.png" alt="arrow" height="100%"  >
+            </div>
+          </div>
+        </div>
+        <div class="hint-div">4 digit code</div>
+        <div class="error-div" *ngIf="errDiv">{{errMsg}}</div>
+
+      </div>
+    </div>
+    
+    <div class="location-div">{{loc}}</div>
+
+
+  </div>
+  
+  
+  <div class="closeBtn" (click)="closeModal()" *ngIf="codeVerify">
+		<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="13.5" width="2.12119" height="19.0907" transform="rotate(45 13.5 0)" fill="#FFFFFF"/>
+			<rect y="1.50195" width="2.12119" height="19.0907" transform="rotate(-45 0 1.50195)" fill="#FFFFFF"/>
+		</svg>
+	</div>
+
+
+
+</div>
+

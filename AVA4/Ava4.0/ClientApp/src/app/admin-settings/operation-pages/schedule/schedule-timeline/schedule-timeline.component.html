@@ -1,0 +1,215 @@
+<div style="height: 100%;">
+	<div style="padding-left: 50px;">
+		<div fxLayout="row" style="height: 34px;" class="timeline-timer" >
+			<div fxFlex="56px" class="nav-btn vh_center border-right" (click)="slidetimer('left')">
+				<mat-icon class="timeline-timer-icon">keyboard_arrow_left</mat-icon>
+			</div>
+			
+			<div fxFlex="calc(100%-112px)" class="timer" #timer >
+				<div class="timeslot-cont-wrapper">
+					<perfect-scrollbar class="perfect-scrollbar" #timercomponent [config]="timerConfig">
+						<div class="timeslot-cont" [style.width.px] = "slotcont_wd">
+							<div class="time-slot" style="width: 27px"></div>
+							<div class="time-slot-block" *ngFor="let timeslot of timerLabelArr let indx = index">
+								<div class="time-slot" [style.width.px]="(timer_width/timer_view)/6" [style.fontSize.px]="timer_view == 9 ? 13 : 18">{{timeslot}}</div>
+								
+								<div class="time-slot-quarter" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 9 : 14"  [style.marginTop.px]="-2">|</div>
+								
+								<div class="time-slot-quarter" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 9 : 14"  [style.marginTop.px]="-2">|</div>
+								
+								<div class="time-slot" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 13 : 18" [style.marginTop.px]="-2">|</div>
+								
+								<div class="time-slot-quarter" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 9 : 14"  [style.marginTop.px]="-2">|</div>
+								
+								<div class="time-slot-quarter" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx != timerLabelArr.length-1" [style.fontSize.px]="timer_view == 9 ? 9 : 14"  [style.marginTop.px]="-2">|</div>
+								
+								
+								<div class="time-slot-quarter 1st" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes > 0 && endTime_minutes <= 45" [style.fontSize.px]="timer_view == 9 ? 9 : 14" [style.marginTop.px]="-2">|</div>
+								
+								<div class="time-slot-quarter 1st" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes > 0 && endTime_minutes <= 45" [style.fontSize.px]="timer_view == 9 ? 9 : 14" [style.marginTop.px]="-2">|</div>
+								
+								<div class="time-slot 2nd" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes >= 30 && endTime_minutes <= 45" [style.fontSize.px]="timer_view == 9 ? 13 : 18" [style.marginTop.px]="-2">|</div>
+								
+								<div class="time-slot-quarter 3rd" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes >= 45" [style.fontSize.px]="timer_view == 9 ? 9 : 14" [style.marginTop.px]="-2">|</div>
+								
+								<div class="time-slot-quarter 3rd" [style.width.px]="(timer_width/timer_view)/6" *ngIf="indx == timerLabelArr.length-1 && endTime_minutes >= 45" [style.fontSize.px]="timer_view == 9 ? 9 : 14" [style.marginTop.px]="-2">|</div>
+								
+							</div>
+							<div class="time-slot" style="width: 27px"></div>
+						</div>
+						
+						
+					</perfect-scrollbar>
+				</div>
+			</div>
+			
+			<div fxFlex="56px" class="nav-btn vh_center border-left" (click)="slidetimer('right')">
+				<mat-icon class="timeline-timer-icon">keyboard_arrow_right</mat-icon>
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	<div class="scrollsection">
+	<perfect-scrollbar>
+	<div class="chair-area">
+		<div class="chair-elem" *ngFor="let chairlem of patientArr_1"><div [ngClass]="{'chair-label': true, 'rotated-chair-label': chairlem.chair.length > 1}">{{chairlem.chair | slice: 0:4}}</div></div>
+	</div>
+	
+	<div style="padding-left: 50px; padding-right: 25px;">
+	<div class="patient-area">
+		
+		<perfect-scrollbar class="perfect-scrollbar"  #patientcomponent [config]="config">
+			<div class="scrollable-section" [ngStyle]="{'width': scrollablecont_wd + 'px', 'height': scrollableContHt + 'px'}">
+				
+				<div class="guide guide_hr" *ngFor="let guide of guidePosArr" [style.left.px]="guide"></div>
+				
+				<div class="guide guide_hlfHr" *ngFor="let guide_hlHr of guidePosArr_halfHr" [style.left.px]="guide_hlHr"></div>
+				
+				<div class="guide guide_fiveMin" *ngFor="let guide_fivemin of fiveminposArr" [style.left.px]="guide_fivemin"></div>	
+
+				
+				
+				<div class="chair-section" *ngFor="let chair of patientArr_1; let indx=index" [ngStyle]="{'padding-bottom': patientblockSettings.bottomMargin + 'px', height: patientblockSettings.chairHt + 'px'}">
+					<!-- <div class="clickable-overlay" (click)="getPatientModal($event)"></div>
+					<app-patientblock *ngFor="let patient of chair.patients" [patientdata]="patient" [block_space]="block_space" [slot_space]="slot_space" [patientblockSettings]="patientblockSettings"></app-patientblock> -->
+					
+					<div class="clickable-overlay" (click)="getEntryPopup($event, indx)"></div>
+					<app-schedule-procedure-block *ngFor="let procedureItem of chair.procedures; let procIndx=index" [patientdata]="procedureItem" [block_space]="block_space" [slot_space]="slot_space" [patientblockSettings]="patientblockSettings" (selectblock)="selectProcedueBlock($event, indx, procIndx)"></app-schedule-procedure-block>
+					
+				</div>
+				
+				
+				<div class="lunch-time-block" [ngStyle]="{'width': lunch_blockWd + 'px', 'left': lunch_posLeft + 'px'}">Lunch</div>
+				
+				
+				<div class="entry-popup" [ngStyle]="{'left': entryPopupPos.left + 'px', 'top': entryPopupPos.top + 'px'}" *ngIf="showEntryPopup">
+					
+					<div class="close-btn" (click)="closePopup()">
+						<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect x="13.5" width="2.12119" height="19.0907" transform="rotate(45 13.5 0)" fill="#333333"/>
+							<rect y="1.50195" width="2.12119" height="19.0907" transform="rotate(-45 0 1.50195)" fill="#333333"/>
+						</svg>
+					</div>
+					
+					<div fxLayout="row">
+						<div fxFlex="60">
+							<div class="input-cont search-section" (clickOutside)="onSearchOutside()" [exclude]="'.search-section'">
+								
+								<div class="search-icon" (click)="showProcedureOptions()">
+									<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M7.82414 2.17547C6.12866 0.4988 3.36915 0.4988 1.67367 2.17547C-0.0214333 3.85251 -0.0214333 6.58106 1.67367 8.25809C3.05364 9.62243 5.1367 9.8734 6.77851 9.01655C7.00085 8.90051 7.29958 9.02457 7.47791 9.20093L9.94707 11.6427C10.3069 11.9978 10.8883 11.9978 11.2463 11.6427C11.6058 11.2872 11.6058 10.7122 11.2463 10.3578L8.77718 7.91535C8.59912 7.73976 8.47603 7.44078 8.59356 7.22006C9.45784 5.59689 9.20323 3.5396 7.82414 2.17547ZM7.04458 7.48718C5.77876 8.73896 3.71868 8.73896 2.45323 7.48718C1.18815 6.2354 1.18815 4.19853 2.45323 2.94675C3.71868 1.69533 5.77876 1.69533 7.04458 2.94675C8.3104 4.19853 8.3104 6.2354 7.04458 7.48718Z" fill="#6BD3F4"/>
+									</svg>
+								</div>
+								
+								<input class="search-input" placeholder="Group/Procedure search" (keyup)="searchProcedure($event)" [(ngModel)]="selectedProcOptn"/>
+								
+								<div class="search-result" *ngIf="searchResult" [ngStyle]="{'height': (filteSearchProcedure.length*200) + 'px'}">
+									<perfect-scrollbar>
+										<div style="padding-right: 10px;">
+											<div *ngFor="let procItem of filteSearchProcedure; let grpIndx=index" >
+												<div class="search-item-group" [ngStyle]="{'background': procItem.color}" style="cursor:pointer" (click)="selectSearchOption('group', grpIndx)">
+													<div class="item-group-label">{{procItem.type}}</div>
+													<div class="item-group-time">{{procItem.time}}</div>
+													<div class="clear"></div>
+												</div>
+												
+												<div class="subpro-item-cont" *ngFor="let subprocItem of procItem.subprocedure; let procindx=index" [ngStyle]="{'border-color': procItem.color}" (click)="selectSearchOption('proc', grpIndx, procindx)">
+													<div class="subpro-item">
+														<div class="subpro-code">{{subprocItem.code}}</div>
+														<div class="subpro-label">{{subprocItem.label}}</div>
+													</div>
+													
+													<div class="subpro-item-time">{{subprocItem.count}}</div>
+													<div class="clear"></div>
+												</div>
+											</div>
+											
+											<div class="nosearch-msg" *ngIf="filteSearchProcedure.length == 0">{{nosearchMsg}}</div>
+										</div>
+									</perfect-scrollbar>
+								</div>
+								
+							</div>
+							
+							<div class="input-cont">
+								<div class="input-value">{{getFormattedTime(appntTime)}}</div>
+								<div class="input-label">Start</div>
+								
+							</div>
+							
+							<div class="input-cont">
+								<div class="input-value">{{getFormattedTime(procedureEndTime)}}</div>
+								<div class="input-label">End</div>
+							</div>
+						</div>
+						
+						<div fxFlex="40" style="position: relative;">
+							<div style="text-align: right;">
+								<div class="minute-val">{{selectedProcedureOptn.time}}</div>
+								<div class="minute-unit">Minutes</div>
+							</div>
+							
+							<div class="bottom-action-btn">
+								<div class="popup-btn remove-btn" (click)="remove()">Remove</div>
+								<div class="popup-btn apply-btn" (click)="applyProcedure()">Apply</div>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+		</perfect-scrollbar>
+		</div>		
+			
+	</div>
+	
+	</perfect-scrollbar>
+	</div>
+
+	<div class="err-dialog" *ngIf="errAdd_proc">
+		<div class="top-bot">
+			<svg width="114" height="114" viewBox="0 0 114 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+			  <circle cx="57" cy="57" r="57" fill="#4EC8F0"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M41.6955 68.6967C42.6357 69.2572 44.7058 70.098 46.8212 68.7419C48.7106 67.5306 48.4665 65.0626 46.5591 65.6412C44.064 66.3192 42.1294 65.9395 40.014 65.4514C38.8659 65.1892 38.1699 66.274 39.5982 67.3588C40.1587 67.7837 41.0536 68.3171 41.6955 68.6967Z" fill="#0C1E2E"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M43.0691 54.9901C40.1311 56.6625 36.7591 59.1033 34.49 63.1261C33.3148 65.5489 36.8585 67.6823 37.8258 66.254C38.9016 64.4008 41.0351 62.2673 42.9425 60.8028C42.6261 58.6694 42.6171 56.6625 43.0691 54.9901Z" fill="#0E2436"/>
+			  <path d="M63.98 45.0102H56.5762V53.0739H63.98V45.0102Z" fill="#0E2436"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M73.9517 49.8721C73.2194 47.4222 60.8526 50.8846 54.3076 51.3908C53.6838 51.3999 53.0691 51.3999 52.4544 51.3818C51.5052 51.3366 50.4927 51.21 49.1819 50.9388C47.4552 50.4778 46.045 50.8304 44.9511 51.7796C43.4505 53 42.6007 55.251 42.3837 58.0353C41.8504 63.4232 43.559 70.7999 47.7988 76.5584C55.0851 88.2111 62.7058 86.8822 70.0373 72.861C73.5539 66.1081 77.6491 55.2238 73.9517 49.8721Z" fill="#EDEFF0"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M48.8642 76.1414C46.8031 70.1117 47.002 63.413 47.8608 63.2684C53.1582 62.3644 57.172 60.1224 60.1643 56.8951C61.3395 55.6385 64.7567 51.2993 64.9284 51.0823C59.423 51.1185 56.2228 53.3243 49.5332 51.6699C48.2495 51.3535 47.1647 51.4711 46.2787 51.9321C45.1035 52.5468 44.2267 53.7944 43.6933 55.4487C43.1238 57.1934 42.9249 59.363 43.1147 61.7496C43.4854 66.3872 45.3657 71.757 48.8642 76.1414Z" fill="#BECDD1"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M40.7377 34.4418C40.0688 34.6588 39.5625 34.9933 39.4631 35.4272C39.0924 36.9911 38.9749 38.8896 39.4088 40.5258C39.5173 40.9236 39.9693 41.1948 40.5841 41.3485C40.0869 39.0975 40.2586 36.5753 40.7377 34.4418Z" fill="#0C1E2E"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M41.8672 33.1301C41.2887 33.4284 40.8819 33.8081 40.7824 34.2691C40.231 36.5834 40.0502 39.3948 40.7101 41.8176C40.8819 42.4685 41.6864 42.8933 42.7532 43.1013C41.6141 39.9915 41.4243 36.5111 41.8672 33.1301Z" fill="#BECDD1"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M60.5618 47.5043C68.7521 46.7178 77.06 44.3855 77.4939 41.6916C77.8736 39.3411 77.6747 36.9365 77.069 34.5951C76.9063 36.5206 76.0746 37.9761 74.8632 38.184C73.1998 38.4643 71.437 36.2946 70.9308 33.3385C70.4245 30.3734 71.3647 27.7427 73.0281 27.4625C73.3354 27.4082 73.6518 27.4444 73.9592 27.5529C73.5976 26.9743 73.2179 26.4048 72.8202 25.8533C71.4099 23.8193 64.7835 23.4758 58.1662 24.2261C51.5308 24.8318 45.1123 26.5133 44.145 28.7914C41.8489 33.9081 40.8092 40.0643 42.789 45.2624C43.7744 47.7936 52.3805 48.3903 60.5618 47.5043Z" fill="#EDEFF0"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M52.2464 44.9458C53.3312 46.3741 54.7505 47.4137 56.4862 47.8205C49.7333 48.1369 43.6222 47.3685 42.8086 45.2441C40.8288 40.0551 41.8684 33.8988 44.1646 28.7731C44.8335 27.2001 48.106 25.9074 52.2554 25.0576C53.5301 24.7955 54.8861 24.5785 56.2783 24.4067C54.7324 24.9491 53.4668 25.8984 52.4724 27.1278C52.3368 27.2996 52.2012 27.4713 52.0746 27.6521C51.5503 27.7787 51.0531 27.9052 50.5921 28.0408C48.5128 28.6556 46.9851 29.4692 46.4879 30.4455C45.4302 32.4434 44.6708 34.6672 44.4267 36.882C44.2098 38.8799 44.4087 40.8687 45.1861 42.7129C45.6833 43.861 47.654 44.539 50.3751 44.8012C50.9446 44.8825 51.5774 44.9187 52.2464 44.9458Z" fill="#BECDD1"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M60.1826 43.8007C66.7728 43.1589 70.877 42.1916 71.2567 40.3022C72.0251 36.4421 70.2623 32.3921 67.6678 29.2371C66.5558 27.8269 63.8257 26.8958 58.5011 27.5014C53.1675 27.9986 47.9875 29.2462 47.183 30.8553C45.2845 34.4713 44.3805 38.7925 45.9174 42.4176C46.6948 44.1894 53.6014 44.5149 60.1826 43.8007Z" fill="#0C1E2E"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M60.1833 43.7974C64.1067 43.4177 67.1532 42.9205 69.0516 42.1793C69.6121 41.8086 69.9556 41.3837 70.046 40.9046C70.8144 37.0445 69.0516 32.9945 66.4571 29.8395C65.3452 28.4293 62.6151 27.4982 57.2905 28.1039C53.7287 28.4293 50.2392 29.0983 48.0787 29.9842C47.6447 30.2554 47.3464 30.5447 47.1927 30.852C45.2943 34.4681 44.3903 38.7892 45.9271 42.4143C46.6955 44.1862 53.6021 44.5116 60.1833 43.7974Z" fill="#0E2436"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M61.6829 43.6447C64.8921 43.2831 67.4053 42.822 69.0506 42.1802C69.611 41.8095 69.9546 41.3847 70.045 40.9055C70.7772 37.2262 69.2133 33.3751 66.8177 30.2925L66.7996 30.3648L63.9248 38.8625C63.3011 38.5642 62.6773 38.5642 62.1349 38.754C61.6829 38.9167 61.2761 39.206 60.9687 39.5766C60.6704 39.9382 60.4534 40.3722 60.345 40.8242C60.1822 41.5112 60.2726 42.2615 60.7156 42.8943C60.8241 43.0571 61.0953 43.265 61.4569 43.5C61.5202 43.5452 61.6015 43.5904 61.6829 43.6447Z" fill="#0C1E2E"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M51.6312 34.307C50.7182 34.2437 49.9407 35.1025 49.8955 36.2325C49.8413 37.3625 50.5374 38.3208 51.4504 38.3931C52.3635 38.4564 53.1409 37.5976 53.1861 36.4676C53.2404 35.3376 52.5443 34.3703 51.6312 34.307Z" fill="#13A7DD"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M58.8088 100.868C64.8205 100.868 69.684 101.383 69.684 102.016C69.684 102.649 64.8114 103.164 58.8088 103.164C52.7972 103.164 47.9336 102.649 47.9336 102.016C47.9336 101.383 52.8062 100.868 58.8088 100.868Z" fill="#BECDD1"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M64.577 57.4583C65.5262 57.4583 66.2946 58.308 66.2946 59.3657C66.2946 60.4234 65.5262 61.2732 64.577 61.2732C63.6278 61.2732 62.8594 60.4234 62.8594 59.3657C62.8594 58.308 63.6368 57.4583 64.577 57.4583Z" fill="#EC1B23"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M74.0117 27.5017C75.6751 27.2215 77.4379 29.3911 77.9441 32.3472C78.4504 35.3123 77.5102 37.943 75.8468 38.2233C74.1834 38.5035 72.4206 36.3339 71.9144 33.3778C71.4081 30.4217 72.3483 27.791 74.0117 27.5017Z" fill="#EDEFF0"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M75.4762 28.3975C76.7328 28.1805 78.0707 29.8258 78.4504 32.0678C78.8301 34.3097 78.1249 36.3076 76.8593 36.5155C75.6028 36.7325 74.2648 35.0872 73.8851 32.8452C73.5055 30.6123 74.2196 28.6145 75.4762 28.3975Z" fill="#0E2436"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M78.2722 46.6809C77.766 45.569 77.088 43.1824 78.8417 41.0128C80.4057 39.0692 83.1087 39.6387 82.2318 41.6817C81.1831 44.3486 81.373 46.5363 81.6442 48.9409C81.7978 50.2427 80.5142 50.8755 79.4836 49.1669C79.0858 48.498 78.6067 47.4312 78.2722 46.6809Z" fill="#0C1E2E"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M43.9729 71.0742C44.6148 71.6889 46.9652 74.853 47.4714 75.5671C48.4568 77.0859 46.4138 78.695 45.0939 77.9176C44.6781 77.6735 42.0655 73.6778 41.4507 72.5025C42.409 72.3127 43.2768 71.8607 43.9277 71.1375L43.9729 71.0742ZM43.548 67.5486C44.5515 68.0187 48.7732 70.2244 49.4874 70.7849C51.0061 72.0415 49.3879 74.3738 47.7607 73.9942C47.4624 73.9218 46.8929 73.4518 46.2601 72.8642C43.3582 70.8844 43.5661 70.4504 43.3672 69.2843C43.3401 69.1216 43.5842 67.7113 43.548 67.5486ZM41.7762 73.0721C41.957 73.3614 42.9062 75.6666 43.0689 75.9739C43.7469 77.4023 41.7943 78.5504 40.7366 77.7187C40.384 77.4384 38.9286 73.6235 38.4766 72.385C39.3535 72.8009 40.2575 73.0269 41.1253 73.0721C41.3423 73.0902 41.5592 73.0902 41.7762 73.0721Z" fill="#0E2436"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M38.3416 74.1471C40.7553 76.0907 43.8741 76.2715 45.4561 74.4996C47.0653 72.7006 46.4957 69.5637 44.2176 67.376L44.1363 67.3037L44.1182 67.2856C42.6899 65.9477 36.4251 61.8797 34.4543 62.2413C32.8271 62.5396 31.7514 64.1035 32.0497 65.7308C32.5198 68.3072 36.2985 72.6102 38.3416 74.1471Z" fill="#EDEFF0"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M40.4835 73.1511C38.4405 71.6143 34.6617 67.3113 34.1916 64.7348C34.047 63.9664 34.2187 63.2161 34.5984 62.6104C34.5713 62.6104 34.5442 62.6195 34.5261 62.6195H34.5171C33.8119 62.7551 33.2243 63.1528 32.8447 63.7043C32.465 64.2557 32.2932 64.9518 32.4288 65.6569V65.666C32.6277 66.7417 33.4594 68.161 34.4899 69.5442C35.638 71.081 37.0392 72.5545 38.115 73.4675C38.2687 73.5941 38.4314 73.7207 38.5851 73.8472C39.7332 74.7693 41.044 75.2756 42.2463 75.3298C43.1413 75.375 43.973 75.1761 44.6239 74.7241C43.7108 74.7241 42.7255 74.48 41.7853 73.9919C41.3333 73.7659 40.8994 73.4856 40.4835 73.1511Z" fill="#BECDD1"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M69.2777 57.1935C66.6922 55.6747 68.6539 51.5163 70.4348 52.2485C72.5683 53.2972 75.8589 53.9571 78.5347 54.1379L78.5619 54.1831C79.0771 55.2679 81.1925 52.4745 81.4908 53.5322C84.1577 62.961 72.8305 59.2456 69.2777 57.1935Z" fill="#0E2436"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M61.3844 33.6304C60.4714 33.5671 59.6939 34.4259 59.6397 35.556C59.5854 36.686 60.2815 37.6442 61.1946 37.7075C62.1076 37.7708 62.8851 36.912 62.9393 35.782C62.9936 34.6519 62.2975 33.6937 61.3844 33.6304Z" fill="#13A7DD"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M76.1662 44.6457C75.7865 43.7326 73.4632 40.0172 72.9298 39.2036C71.7636 37.5673 69.2686 39.0318 69.5307 40.7133C69.6121 41.2466 72.6857 45.5678 73.6621 46.6797C74.2406 45.7576 75.0633 45.0525 76.0848 44.6728L76.1662 44.6457ZM77.8928 43.1631C77.8115 41.9337 77.2329 36.6723 76.9526 35.7051C76.2656 33.6258 73.192 34.349 72.9298 36.1932C72.8846 36.5277 73.1377 37.3142 73.4903 38.2001C74.3672 42.006 74.9005 41.9608 76.0215 42.6478C76.1752 42.7382 77.7391 43.0546 77.8928 43.1631ZM73.2101 46.1192C72.975 45.8119 70.9772 43.8954 70.7331 43.6061C69.5307 42.3314 67.551 43.8863 67.9849 45.3147C68.1295 45.7938 71.4834 48.8493 72.5863 49.8076C72.514 48.7318 72.6405 47.7012 72.9479 46.7882C73.0202 46.5532 73.1106 46.3272 73.2101 46.1192Z" fill="#0E2436"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M70.8325 47.5035C69.802 44.2219 70.8777 40.9223 73.3547 40.0002C75.8679 39.0691 78.8873 40.9223 80.2252 44.1677L80.2704 44.2762L80.2794 44.2942C81.084 46.3102 82.7654 54.4462 81.5902 56.3447C80.6229 57.9086 78.5709 58.3968 77.0069 57.4204C74.5209 55.9017 71.601 50.2426 70.8325 47.5035Z" fill="#EDEFF0"/>
+			  <path fill-rule="evenodd" clip-rule="evenodd" d="M72.739 45.6889C73.5074 48.4281 76.4274 54.0781 78.9043 55.6149C79.6366 56.0669 80.4864 56.2025 81.2728 56.0579C81.2638 56.085 81.2457 56.1121 81.2276 56.1302V56.1393C80.8028 56.8173 80.1519 57.2602 79.4287 57.432C78.7055 57.6037 77.919 57.4953 77.2319 57.0704H77.2229C76.1923 56.4285 75.0623 55.0002 74.0498 53.3639C72.9198 51.5469 71.9616 49.5038 71.4553 48.0213C71.392 47.8043 71.3197 47.5873 71.2564 47.3794C70.7683 45.8155 70.7773 44.2606 71.2022 42.9859C71.5186 42.0458 72.061 41.2683 72.7933 40.7711C72.4226 41.7203 72.278 42.8323 72.3955 43.9984C72.4407 44.5589 72.5582 45.1194 72.739 45.6889Z" fill="#BECDD1"/>
+			  </svg>
+			  
+		  </div>
+		  <div class="error-text">Timeslot selected from {{selctd_stTm}} to {{selctd_endTm}} is currently not available.</div>
+		  <div class="error-action" (click)="errAdd_proc=false;">Ok</div>
+	</div>
+
+</div>
+
+
+
+
+

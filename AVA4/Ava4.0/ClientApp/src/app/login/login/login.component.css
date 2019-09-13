@@ -1,0 +1,299 @@
+input:focus {
+	outline: none;
+}
+
+.login-section {
+	width: 100%;
+    height: 100vh;
+    background: #4ec8f0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.center-txt {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.info-section {
+    /*background: #f5f5f5;*/
+    position: relative;
+    width: 100%;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    color: #4EC8F0;
+    box-sizing: border-box;
+    padding-top: 79px;
+}
+
+.center-txt-content {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	line-height: 36px;
+	text-align: center;
+	color: #4EC8F0;
+}
+
+.app-logo {
+	width: 78%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.input-section {
+	width: 60%;
+    margin: 80px auto 30px;
+}
+
+.textbox-holder {
+	position: relative;
+	margin: 0 auto;
+	background: none;
+	border: none;
+	box-sizing: border-box;
+	border-radius: 4px;
+	margin-bottom: 30px;
+	
+}
+
+.textbox-holder span {
+	width:100px;
+	display:inline-block;
+	vertical-align:top;
+	font-family: Lato;
+	font-size: 18px;
+	text-align: right;
+	color: #fff;
+	margin:0 10px 0 0;
+}
+
+.input-textbox {
+	width: calc(100% - 115px);
+	display:inline-block;
+	vertical-align:top;
+	font-family: Lato;
+	font-size: 18px;
+	color:#fff;
+	box-sizing: border-box;
+	border: none;
+	border-bottom:1px solid #646464;
+	background: transparent;
+	padding:0 10px 0 10px;
+}
+
+.fntxt {
+	width: 105px;
+}
+
+.fninput {
+	padding-left: 0;
+}
+
+.signin-btn {
+	width: 85px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 1px solid #646464;
+    box-sizing: border-box;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #4EC8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 auto 40px;
+}
+
+.forgot-pass-btn {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 19px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #FFFFFF;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 0 auto;
+}
+
+.error-msg {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 19px;
+	color: #f00;
+	text-align: right;
+}
+
+.loader {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+
+
+.radio-btnwrap {
+	/*display: block;
+    text-align: right;
+    padding-top: 3px;*/
+}
+
+.radio-btnwrap .name {
+	display: inline-block;
+    text-align: center;
+  transition: color 0.5s ease-out;
+  -o-transition: color 0.5s ease-out;
+  -moz-transition: color 0.5s ease-out;
+  -webkit-transition: color 0.5s ease-out;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px;
+	color: #646464;
+
+}
+.radio-btnwrap .name.activeoption {
+
+  transition: color 0.5s ease-out;
+  -o-transition: color 0.5s ease-out;
+  -moz-transition: color 0.5s ease-out;
+  -webkit-transition: color 0.5s ease-out;
+
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 22px;
+	text-decoration-line: underline;
+	color: #FFFFFF;
+
+}
+.radio-btnwrap .radio {
+  width: 40px;
+  height: 21px;
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: middle;
+  background: #646464;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  position: relative;
+}
+
+.radio-btnwrap .radio .round {
+  width: 15px;
+  height: 15px;
+  background: linear-gradient(180deg, #ffffff 0%, #ededed 100%);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+
+  transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.loginSvgImg{
+	position: absolute;
+    top: 10px;
+}
+
+.video-section {
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+    padding: 5% 25%;
+}
+
+.video-contain{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.stVideoBt{
+width: 189px;
+height: 43px;
+background: #4EC8F0;
+border: 1px solid #FFFFFF;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
+cursor: pointer;
+
+}
+
+.stVideoBtTx{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.button-section {
+	width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    z-index: 9;
+}
+
+.loginButtonSvgImg {
+	position: absolute;
+    right: 10px;
+    bottom: 30px;
+
+}
+
+.right-container {
+	width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

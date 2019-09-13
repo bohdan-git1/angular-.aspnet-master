@@ -1,0 +1,55 @@
+<div class="pagetitle">DIAGNOISIS</div>
+
+
+<div style="display:flex" [ngStyle]="{'height': boxHt + 'px'}">
+
+<perfect-scrollbar [config]="config">
+  <div fxLayout="column">
+  
+  <div fxLayout="row" fxLayoutGap="20px">
+	
+	<app-diagnosis-card [boxHt]="boxHt"></app-diagnosis-card>
+	<app-txplan-card [boxHt]="boxHt"></app-txplan-card>
+	
+	<!-- <div fxFlex="312px">
+		<div class="section-cont">
+			
+		</div>
+	</div> -->
+				
+	<div fxFlex="312px">
+		<div class="section-cont">
+			<app-goals-card [boxHt]="boxHt"></app-goals-card>
+		</div>
+	</div>
+				
+	<div fxFlex="537px">
+		<div class="section-cont">
+			<app-steps-card [boxHt]="boxHt"></app-steps-card>
+		</div>
+	</div>
+	
+    <!-- <div fxFlex="1080px">
+		<div class="section-cont">
+			<div fxLayout="row" fxLayoutGap="20px">
+				
+				<div fxFlex="312px">
+					<app-txplan-card [boxHt]="boxHt"></app-txplan-card>
+				</div>
+				
+				<div fxFlex="312px">
+					<app-goals-card [boxHt]="boxHt"></app-goals-card>
+				</div>
+				
+				<div fxFlex="537px">
+					<app-steps-card [boxHt]="boxHt"></app-steps-card>
+				</div>
+			</div>
+		</div>
+    </div> -->
+
+  </div>
+
+</div>
+</perfect-scrollbar>
+</div>

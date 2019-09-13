@@ -1,0 +1,92 @@
+<div class="card-content-section" >
+	<div class="section-title no-underline bottom-border">
+		
+		<div class="patient-exam-cont" *ngFor="let exam of patientExamArr">
+			<p>{{exam.type}}</p>
+			<p>{{exam.date}}</p>
+			<p>{{exam.age}}</p>
+		</div>
+	</div>
+	
+	<div class="section-content" style="padding-left: 0;" *ngIf="showtileView">
+		<div class="section-row">
+			<div class="img-grid-1"><div class="grid-content"><img src="{{galleryImgArr[0].imgurl}}" width="100%"/></div></div>
+			<div class="img-grid-1"><div class="grid-content"><img src="{{galleryImgArr[1].imgurl}}" width="100%"/></div></div>
+			<div class="img-grid-1"><div class="grid-content"><img src="{{galleryImgArr[2].imgurl}}" width="100%"/></div></div>
+			
+			<div class="clear"></div>
+		</div>
+		<div class="section-row">
+			<div class="img-grid-2"><div class="grid-content"><img src="{{galleryImgArr[3].imgurl}}" width="100%"/></div></div>
+			<div class="img-grid-2"><div class="grid-content center-content">
+				<div class="cnt-cont">
+					<div class="img-cont"><img src="assets/dentalbraces.png" /></div>
+					<div class="cnt-cont-info">
+						<p>Stella Goslin</p>
+						<p>03/13/18 13y 1m</p>
+					</div>
+				</div>
+			
+			</div></div>
+			<div class="img-grid-2"><div class="grid-content"><img src="{{galleryImgArr[4].imgurl}}" width="100%"/></div></div>
+		</div>
+		
+		<div class="section-row">
+			<div class="img-grid-3"><div class="grid-content"><img src="{{galleryImgArr[5].imgurl}}" width="100%"/></div></div>
+			<div class="img-grid-3"><div class="grid-content"><img src="{{galleryImgArr[6].imgurl}}" width="100%"/></div></div>
+			<div class="img-grid-3"><div class="grid-content"><img src="{{galleryImgArr[7].imgurl}}" width="100%"/></div></div>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+	
+	<div class="section-content" style="padding-left: 0;" *ngIf="!showtileView">
+		<div fxLayout="column">
+			<div fxLayout="row" fxLayoutGap="7px">
+				<div fxFlex="20%">
+					<div class="thumbimg-cont">
+						
+						<perfect-scrollbar class="perfect-scrollbar" #scrollercomponent [config]="config">
+							<div class="thumbimg" *ngFor="let patientImg of galleryImgArr let indx=index" (click)="showSelectedImg(indx)"><img src="{{patientImg.imgurl}}" width="100%"/></div>
+						</perfect-scrollbar>
+						
+					</div>
+					
+					<div class="contrl-cont">
+						<div class="scrl-btn" (click)="scroll('up')">
+							<svg viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" >
+					<path d="M18.4215 1.59001C18.2249 1.28196 17.7751 1.28196 17.5785 1.59001L1.21635 27.231C1.00396 27.5639 1.24302 28 1.63785 28L34.3622 28C34.757 28 34.996 27.5639 34.7836 27.231L18.4215 1.59001Z" fill="white" stroke="#48bce2"/>
+				</svg>
+						</div>
+						<div class="scrl-btn" (click)="scroll('dn')">
+							<svg viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M17.5785 27.41C17.7751 27.718 18.2249 27.718 18.4215 27.41L34.7836 1.76897C34.996 1.43613 34.757 1 34.3622 1H1.63785C1.24302 1 1.00396 1.43613 1.21635 1.76896L17.5785 27.41Z" fill="white" stroke="#48bce2"/>
+				</svg>
+						</div>
+					</div>
+				</div>
+				<div fxFlex="80%">
+					<div class="gal-img-cont">
+						<div [ngClass]="galimgclass[indx]" *ngFor="let bigImg of galleryImgArr let indx=index">
+							<img src="{{bigImg.imgurl}}" width="100%"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="toggleViewBtn" (click)="toggleGalleryView()">
+		<svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="1" y="1" width="30" height="31.7647" rx="1" fill="white" stroke="#646464" stroke-opacity="0.75" stroke-width="0.25"/>
+			<rect x="8.64722" y="2.76562" width="20.5882" height="27.9412" fill="#4EC8F0" fill-opacity="0.75" stroke="#646464" stroke-opacity="0.75" stroke-width="0.25"/>
+			<rect x="2.76465" y="2.7666" width="4.41176" height="4.41176" fill="#4EC8F0" fill-opacity="0.75" stroke="#646464" stroke-opacity="0.75" stroke-width="0.25"/>
+			<rect x="2.76465" y="8.64746" width="4.41176" height="4.41176" fill="#4EC8F0" fill-opacity="0.75" stroke="#646464" stroke-opacity="0.75" stroke-width="0.25"/>
+			<rect x="2.76465" y="14.5312" width="4.41176" height="4.41176" fill="#4EC8F0" fill-opacity="0.75" stroke="#646464" stroke-opacity="0.75" stroke-width="0.25"/>
+			<rect x="2.76465" y="20.4131" width="4.41176" height="4.41176" fill="#4EC8F0" fill-opacity="0.75" stroke="#646464" stroke-opacity="0.75" stroke-width="0.25"/>
+			<rect x="2.76465" y="26.2959" width="4.41176" height="4.41176" fill="#4EC8F0" fill-opacity="0.75" stroke="#646464" stroke-opacity="0.75" stroke-width="0.25"/>
+		</svg>
+	</div>
+	
+	<div style="clear:both;"></div>
+</div>

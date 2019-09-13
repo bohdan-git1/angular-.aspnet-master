@@ -1,0 +1,89 @@
+<div class="card-content-section">
+  <!-- <div class="section-display-wrapper animatecard" [ngStyle]="{'margin-left': posLeft + 'px'}"> -->
+    <div class="section-display-cont">
+      <!-- <perfect-scrollbar> -->
+        <div class="section-title" (click)="backtoMain()">Professional Referral</div>
+        <div class="section-content">
+            <div class="section-ref-in">
+                <div class="ref-in-head-section">
+                    <div class="ref-in-title">Doctor(s) who referred</div>
+                    <div class="ref-in-plus" (click)="showRefinBox('doctorRefIn')">
+                      <svg width="8" height="8" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+                      </svg>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+               
+                <div class="ref-in-list">
+                    <ul>
+						<li *ngFor="let docelem of docReffInArr | slice: 0:3" class="docelem">
+							<div class="docname">{{docelem.doctorname}}</div> 
+							<div class="docclinic">{{docelem.location.clinicname}}</div>
+						</li>
+
+                      <!-- <li *ngFor="let doctoroptionsdetails of subscriptionDoctor; let doctorindx=index" >
+                        <div *ngFor="let clinicnamesArray of doctoroptionsdetails.clinicnames; let clinicindx=index" >
+                            <div style="margin-bottom: 5px;" *ngIf="doctoroptionsdetails.accept">
+                                <div *ngIf="clinicindx==0" style="font-weight:bold; margin-bottom:5px;">
+                                    {{doctoroptionsdetails.doctorname}}
+                                </div> 
+                                 <div class="clinic" style="font-family: italic;" *ngIf="clinicindx==0">{{clinicnamesArray.location}}</div>
+
+                              </div>
+                        </div>
+                    </li> -->
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-ref-out">
+                <div class="section-ref-in">
+                    <div class="ref-in-head-section">
+                        <div class="ref-in-title">Patient referred out to:</div>
+                        <div class="ref-in-plus" (click)="showRefinBox('doctorRefOut')">
+                          <svg width="8" height="8" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+                          </svg>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    
+                    <div class="ref-in-list">
+                        <div class="ref-in-list-title-section">
+							<ul>
+								<li *ngFor="let refoutElem of docReffOutArr">
+									<div style="width: 70%; float: left;font-weight: bold;margin-bottom: 5px;"> {{refoutElem.doctorname}} </div> 
+									<div class="desg-italic">{{refoutElem.designation}}</div>
+									<div class="clear"></div>
+									<div class="clinic">{{refoutElem.phone}}</div>
+									<div class="clinic">{{refoutElem.email}}</div>
+									<div style="clear: both;"></div>
+								</li>
+
+                              <!-- <li *ngFor="let doctoroptionsdetails of subscriptionDoctorOut; let doctorindx=index" >
+                                  <div style="margin-bottom: 5px;" *ngIf="doctoroptionsdetails.accept">
+                                    <div style="width: 70%; float: left ;font-weight: bold; margin-bottom: 5px;"> {{doctoroptionsdetails.doctorname}} </div>
+                                     <div class="desg-italic">{{doctoroptionsdetails.designation}}</div>
+                                     <div class="clear"></div>
+                                    <div class="clinic">{{doctoroptionsdetails.phone}}</div>
+                                    <div class="clinic">{{doctoroptionsdetails.email}}</div>
+
+                                  <div style="clear: both;"></div>
+
+                                </div> 
+                                
+                              </li> -->
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+           
+        </div>
+    </div>
+</div>

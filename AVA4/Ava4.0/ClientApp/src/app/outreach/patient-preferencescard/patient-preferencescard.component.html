@@ -1,0 +1,18 @@
+<div class="card-content-section">
+    <!-- <div class="section-display-wrapper animatecard" [ngStyle]="{'margin-left': posLeft + 'px'}"> -->
+      <div class="section-display-cont">
+        <!-- <perfect-scrollbar> -->
+          <div class="section-title" (click)="backtoMain()">Patient Preferences</div>
+          <div class="section-content">
+
+            <div class="location-section">
+                <app-patient-preferences-dropdown [commonPlaceholder]="locationPlaceholder" [options]="locationArray" (selectOptionvalue)="saveLocationoptionvalue($event)" ></app-patient-preferences-dropdown>
+            </div>
+           
+            <div class="doctor-section">
+            <app-patient-preferences-dropdown [commonPlaceholder]="doctorPlaceholder" [options]="doctorArray" (selectOptionvalue)="saveDoctoroptionvalue($event)" ></app-patient-preferences-dropdown>
+            </div>
+
+          </div>
+      </div>
+  </div>

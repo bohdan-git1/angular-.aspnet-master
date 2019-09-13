@@ -1,0 +1,230 @@
+<div style="height:620px ">
+<perfect-scrollbar>
+<div class="new-doctor-location-form">
+ <div class="doctor-section">
+    
+    <div class="common-section">
+        <div class="common-msg"> 
+            <div *ngIf="doctorLocationformError[0].error==false"> Display name </div> 
+            <div *ngIf="doctorLocationformError[0].error==true" style="color:red;"> {{doctorLocationformError[0].erortxt}} </div> 
+        </div>
+        <input  (keyup)="checkerror('displayname')" [(ngModel)]="doctorAndlocationFMdata.displayname" type="text" class="common-input"/>
+    </div>
+
+
+    <div class="common-section">
+        <div class="common-msg">
+            <div *ngIf="doctorLocationformError[1].error==false"> First name </div> 
+            <div *ngIf="doctorLocationformError[1].error==true" style="color:red;"> {{doctorLocationformError[1].erortxt}} </div> 
+        </div>
+        <input (keyup)="checkerror('fname')" [(ngModel)]="doctorAndlocationFMdata.fname" type="text" class="common-input"/>
+    </div>
+
+
+    <div class="common-section">
+        <div class="common-msg">Middle name</div>
+        <input  [(ngModel)]="doctorAndlocationFMdata.mname" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">
+            <div *ngIf="doctorLocationformError[2].error==false"> Last name </div> 
+            <div *ngIf="doctorLocationformError[2].error==true" style="color:red;"> {{doctorLocationformError[2].erortxt}} </div>
+        </div>
+        <input  (keyup)="checkerror('lname')" [(ngModel)]="doctorAndlocationFMdata.lname" type="text" class="common-input"/>
+    </div>
+
+
+    <div class="common-section">
+        <div class="common-msg">
+                <div *ngIf="doctorLocationformError[3].error==false">Degree</div> 
+                <div *ngIf="doctorLocationformError[3].error==true" style="color:red;"> {{doctorLocationformError[3].erortxt}} </div>
+        </div>
+        <input  (keyup)="checkerror('degree')" [(ngModel)]="doctorAndlocationFMdata.degree" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">
+                <div *ngIf="doctorLocationformError[4].error==false">Nickname</div> 
+                <div *ngIf="doctorLocationformError[4].error==true" style="color:red;"> {{doctorLocationformError[4].erortxt}} </div>
+        </div>
+        <input  (keyup)="checkerror('nickname')" [(ngModel)]="doctorAndlocationFMdata.nickname" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">
+                <div *ngIf="doctorLocationformError[5].error==false">Birthdate</div> 
+                <div *ngIf="doctorLocationformError[5].error==true" style="color:red;"> {{doctorLocationformError[5].erortxt}} </div>
+        </div>
+        <input  (keyup)="checkerror('dob')" [textMask]="{mask: dateMask()}" [(ngModel)]="doctorAndlocationFMdata.bod"  type="text" class="common-input"/>
+    </div>
+
+
+    <div class="common-section">
+        <div class="common-msg">Cell Phone</div>
+        <input  [textMask]="{mask: phonemask}" [(ngModel)]="doctorAndlocationFMdata.cellphone" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">
+                <div *ngIf="doctorLocationformError[6].error==false">Email Address</div> 
+                <div *ngIf="doctorLocationformError[6].error==true" style="color:red;"> {{doctorLocationformError[6].erortxt}} </div>
+        </div>
+        <input  (keyup)="checkerror('doctoremail')" [(ngModel)]="doctorAndlocationFMdata.doctorEmail" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">Note</div>
+       
+        <textarea [(ngModel)]="doctorAndlocationFMdata.doctornote" class="common-textarea"  > </textarea>
+    </div>
+
+    <div class="Groups-section">
+        <div class="Groups-msg">Professional Groups:
+                <div *ngIf="doctorLocationformError[7].error==true" style="color:red; margin-top: 5px;"> {{doctorLocationformError[7].erortxt}} </div>
+        </div>
+        <div *ngFor="let professionalGroup of professionalGroupArray; let indx=index" class="ckeck-box-section">
+            <div class="check-box-icon">
+              <div class="check-box" (click)="checkCheckBoxFn(indx)">
+                  <div *ngIf="professionalGroup.selected">
+                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9452 3.63338C11.741 3.4474 11.4248 3.46212 11.2388 3.66625L4.323 11.2574L1.07408 8.29744C0.869948 8.11147 0.553708 8.12619 0.367736 8.33032C0.181765 8.53445 0.196485 8.85069 0.400615 9.03666L3.86309 12.1911C3.89036 12.2564 3.93198 12.317 3.98775 12.3678C4.19188 12.5537 4.50812 12.539 4.69409 12.3349L11.9781 4.33972C12.164 4.13559 12.1493 3.81935 11.9452 3.63338Z" fill="#C4C4C4"/>
+                      </svg>
+                  </div>
+              </div>
+
+            </div>
+            <div (click)="checkCheckBoxFn(indx)" class="check-box-text">{{professionalGroup.name}}</div>
+        </div>
+
+    </div>
+ </div>
+
+ <div class="location-section">
+  
+    <div class="common-section" style="height: 25px;background: #F0F0F0;position: relative;">
+        <div *ngIf="doctorLocationformError[8].error==true" class="common-msg">
+                <div  style="color:red;"> {{doctorLocationformError[8].erortxt}} </div>
+        </div>
+
+       <div (click)="showHideDropdownFu()" style="cursor:pointer;" class="new-location-or-select">{{selectedDropdownval}}</div>
+       <div (click)="showHideDropdownFu()" style="position: absolute;top: 0px; right: 13px;cursor:pointer;">
+          <svg width="8" height="8" viewBox="0 0 6 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5L0.401925 0.5L5.59808 0.5L3 5Z" fill="#4EC8F0"/>
+          </svg>
+       </div>
+
+
+       <div *ngIf="locationdropDown" class="location-libary"  [ngStyle]="{'height': searchBoxHg1St + 'px'}" >
+          <div [ngStyle]="{'height': searchBoxHg2Nd + 'px'}"  style=" margin-bottom: 5px;" >
+          <perfect-scrollbar #listboxscroll >
+            <div style="padding: 10px 5px 5px 10px;">
+                <div  *ngFor="let location of locationArray let optnindx=index"  (click)="selectdropDownBox(optnindx)" class="common-libary comonhover">
+                      <div [ngClass]="{'common-title': true}"> {{location.locationname}} </div>
+                      <div style="clear: both"></div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+          </perfect-scrollbar>
+          </div>
+
+          <div class="remaining-section" [ngStyle]="{'height': remainingBoxHg + 'px'}">
+					<div  class="add-new-location">
+              <div class="common-title-name" style="background: #F0F0F0; border: 0.5px solid #A5A5A5;">
+                <input  [(ngModel)]="addlocation" type="text" class="add-to-location" placeholder="Location"/> 
+              </div>
+             
+              <div style="clear: both"></div>
+  
+              <div  class="add-section">
+                <div class="add-done" (click)="addNewLocation()">
+                  Add
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">Location</div>
+        <input  [(ngModel)]="doctorAndlocationFMdata.locationadd" type="text" class="common-input"/>
+    </div>
+
+
+    <div class="common-section">
+        <div class="common-msg">
+                <div *ngIf="doctorLocationformError[9].error==false">Address</div> 
+                <div *ngIf="doctorLocationformError[9].error==true" style="color:red;"> {{doctorLocationformError[9].erortxt}} </div>
+        </div>
+        <input  (keyup)="checkerror('address')" [(ngModel)]="doctorAndlocationFMdata.address" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">City</div>
+        <input  [(ngModel)]="doctorAndlocationFMdata.city" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">State</div>
+        <input  [(ngModel)]="doctorAndlocationFMdata.state" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">Zip</div>
+        <input  [(ngModel)]="doctorAndlocationFMdata.zip" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section" style="border: none">
+        <div class="location-phone">
+            <div class="common-msg">
+                    <div *ngIf="doctorLocationformError[10].error==false">Phone</div> 
+                    <div *ngIf="doctorLocationformError[10].error==true" style="color:red;"> {{doctorLocationformError[10].erortxt}} </div>
+            </div>
+            <input  (keyup)="checkerror('phone')" [textMask]="{mask: phonemask}" [(ngModel)]="doctorAndlocationFMdata.phone" type="text" class="common-input"/>
+        </div>
+       
+        <div class="location-zip">
+            <div class="common-msg">Ext</div>
+            <input  [(ngModel)]="doctorAndlocationFMdata.ext" type="text" class="common-input"/>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">Fax</div>
+        <input  [(ngModel)]="doctorAndlocationFMdata.fax" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        <div class="common-msg">
+                <div *ngIf="doctorLocationformError[11].error==false">Email</div> 
+                <div *ngIf="doctorLocationformError[11].error==true" style="color:red;"> {{doctorLocationformError[11].erortxt}} </div>
+        </div>
+        <input  (keyup)="checkerror('locationemail')"  [(ngModel)]="doctorAndlocationFMdata.locationEmail" type="text" class="common-input"/>
+    </div>
+
+    <div class="common-section">
+        
+        <textarea [(ngModel)]="doctorAndlocationFMdata.locationNote" class="common-textarea" placeholder="Notes" ></textarea>
+    </div>
+
+
+  </div>
+
+  <div style="clear: both"></div>
+</div>
+</perfect-scrollbar>
+</div>
+
+
+<div class="add-bt-section" (click)="addDoctorAndlocationFN()" style="cursor: pointer;">
+    <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.01 4.65H5.1V7.74H3.5925V4.65H0.6975V3.2775H3.5925V0.202499H5.1V3.2775H8.01V4.65Z" fill="#4EC8F0"/>
+    </svg>
+    <div class="add-text">
+        Add
+    </div>
+</div>	
+
+

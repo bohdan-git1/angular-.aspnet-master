@@ -1,0 +1,21 @@
+.locationdialog {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	box-sizing: border-box;
+}
+
+.locationdialog ul {
+	list-style: none;
+}
+
+.list-item {
+	padding: 5px 0;
+	font-size: 12px;
+	color: #646464;
+	text-align: center;
+	cursor: pointer;
+}
+
+.list-item:hover, .list-item-selected {
+	background: #56CCF2;
+}

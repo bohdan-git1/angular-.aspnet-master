@@ -1,0 +1,294 @@
+<div class="pagetitle">PROCEDURE CODES</div>
+
+<div class="component-cont">
+
+<!-- <perfect-scrollbar [config]="config"> -->
+
+<div class="procedure-main-div" [ngStyle]="{'height': boxHt + 'px'}">
+    	
+	<div class="section-block">
+		
+		<div class="procedure-tab add-newtab" *ngIf="shownewTabEditor">
+			
+			<div class="group-title input-block">
+				<input type="text" placeholder="New group" [(ngModel)]="newTabGrp"/>
+			</div>
+			
+			<div class="group-duration input-block" >
+				<input type="number" placeholder="00 min" [(ngModel)]="newTabGrpDuration" style="padding-left: 3px; padding-right: 3px; text-align: center;" />
+			</div>
+			
+			
+			<div class="color-selector-wrapper">
+				<div class="color-selector-control" (click)="openColorSelector()">
+					<div class="color-selector">
+						<div class="color-circle" [ngStyle]="{'background': selectedColor}"></div>
+					</div>
+					<div class="color-selector-arrow">
+						<svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M4.5 6L0.602885 0.75L8.39711 0.750001L4.5 6Z" fill="#C4C4C4"/>
+						</svg>
+					</div>
+				</div>
+				
+				<div class="color-panel" *ngIf="opencolorSwatch">
+					<div class="color-panel-label">Recommended</div>
+					<ng-container *ngFor="let rowelem of selectorColorArr; let rowindx=index">
+						<div class="color-panel-cont" [ngStyle]="{'border-top': rowindx==2 ? '1px solid #A5A5A5' : 'none'}">
+							<div class="color-circle-selector" *ngFor="let colorelem of rowelem.row; let colindx=index" [ngStyle]="{'background': colorelem.color}" (click)="selectColor(rowindx, colindx)">
+								<svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="colorelem.selected">
+									<mask id="path-1-inside-1" fill="white">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10059 6.95005C4.1787 7.02816 4.30533 7.02816 4.38344 6.95005L10.3638 0.969711C10.4419 0.891607 10.5685 0.891607 10.6466 0.969711L11.778 2.10108C11.8561 2.17919 11.8561 2.30582 11.778 2.38393L4.38343 9.77849C4.30532 9.85659 4.17869 9.85659 4.10058 9.77849L2.99938 8.67727L2.8278 8.5057C2.82779 8.5057 2.82779 8.50569 2.8278 8.50569C2.8278 8.50569 2.8278 8.50568 2.8278 8.50568L0.14061 5.8185C0.0625051 5.74039 0.062505 5.61376 0.14061 5.53565L1.27198 4.40428C1.35009 4.32618 1.47672 4.32618 1.55482 4.40428L4.10059 6.95005Z"/>
+									</mask>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10059 6.95005C4.1787 7.02816 4.30533 7.02816 4.38344 6.95005L10.3638 0.969711C10.4419 0.891607 10.5685 0.891607 10.6466 0.969711L11.778 2.10108C11.8561 2.17919 11.8561 2.30582 11.778 2.38393L4.38343 9.77849C4.30532 9.85659 4.17869 9.85659 4.10058 9.77849L2.99938 8.67727L2.8278 8.5057C2.82779 8.5057 2.82779 8.50569 2.8278 8.50569C2.8278 8.50569 2.8278 8.50568 2.8278 8.50568L0.14061 5.8185C0.0625051 5.74039 0.062505 5.61376 0.14061 5.53565L1.27198 4.40428C1.35009 4.32618 1.47672 4.32618 1.55482 4.40428L4.10059 6.95005Z" fill="white"/>
+									<path d="M2.99938 8.67727L3.1408 8.53585L3.14079 8.53584L2.99938 8.67727ZM1.27198 4.40428L1.4134 4.5457L1.27198 4.40428ZM1.55482 4.40428L1.69624 4.26286L1.55482 4.40428ZM2.8278 8.50568L2.68637 8.6471L2.8278 8.50568ZM4.38343 9.77849L4.24201 9.63707L4.38343 9.77849ZM4.10058 9.77849L3.95916 9.91991L4.10058 9.77849ZM11.778 2.38393L11.6366 2.2425L11.778 2.38393ZM4.38344 6.95005L4.24201 6.80863L4.38344 6.95005ZM4.10059 6.95005L4.24201 6.80863L4.10059 6.95005ZM2.8278 8.5057L2.96921 8.36427L2.8278 8.5057ZM10.3638 0.969711L10.2224 0.82829V0.82829L10.3638 0.969711ZM10.6466 0.969711L10.788 0.82829L10.6466 0.969711ZM10.2224 0.82829L4.24201 6.80863L4.52486 7.09147L10.5052 1.11113L10.2224 0.82829ZM11.9194 1.95966L10.788 0.82829L10.5052 1.11113L11.6366 2.2425L11.9194 1.95966ZM4.52485 9.91991L11.9194 2.52535L11.6366 2.2425L4.24201 9.63707L4.52485 9.91991ZM2.85796 8.81869L3.95916 9.91991L4.24201 9.63707L3.1408 8.53585L2.85796 8.81869ZM2.68638 8.64713L2.85797 8.8187L3.14079 8.53584L2.96921 8.36427L2.68638 8.64713ZM2.96922 8.36426L0.282031 5.67707L-0.000811376 5.95992L2.68637 8.6471L2.96922 8.36426ZM0.282031 5.67707L1.4134 4.5457L1.13056 4.26286L-0.000811532 5.39423L0.282031 5.67707ZM1.4134 4.5457L3.95917 7.09147L4.24201 6.80863L1.69624 4.26286L1.4134 4.5457ZM1.4134 4.5457L1.69624 4.26286C1.54003 4.10665 1.28677 4.10665 1.13056 4.26286L1.4134 4.5457ZM0.282031 5.67707H0.282031L-0.000811532 5.39423C-0.157021 5.55044 -0.157021 5.80371 -0.000811376 5.95992L0.282031 5.67707ZM2.96922 8.64711C3.04733 8.56901 3.04732 8.44237 2.96922 8.36426L2.68637 8.6471C2.60827 8.569 2.60827 8.44237 2.68637 8.36427L2.96922 8.64711ZM4.24201 9.63707L3.95916 9.91991C4.11537 10.0761 4.36864 10.0761 4.52485 9.91991L4.24201 9.63707ZM11.6366 2.2425L11.9194 2.52535C12.0756 2.36914 12.0756 2.11587 11.9194 1.95966L11.6366 2.2425ZM4.24201 6.80863V6.80863L3.95917 7.09147C4.11538 7.24768 4.36865 7.24768 4.52486 7.09147L4.24201 6.80863ZM2.96921 8.36427C3.04732 8.44237 3.04732 8.56901 2.96922 8.64711L2.68637 8.36427C2.60826 8.44238 2.60827 8.56902 2.68638 8.64713L2.96921 8.36427ZM10.5052 1.11113V1.11113L10.788 0.82829C10.6318 0.67208 10.3786 0.67208 10.2224 0.82829L10.5052 1.11113Z" fill="#646464" mask="url(#path-1-inside-1)"/>
+								</svg>
+							</div>
+						</div>
+					</ng-container>
+				</div>
+			</div>
+			
+			<div class="newtab-save-btn" (click)="addnewTabItem()">
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="0.25" y="0.25" width="15.5" height="15.5" rx="1.75" fill="white" stroke="#4EC8F0" stroke-width="0.5"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M6.01856 10.0389C6.09667 10.117 6.2233 10.117 6.3014 10.0389L12.2817 4.05858C12.3599 3.98047 12.4865 3.98047 12.5646 4.05858L13.696 5.18995C13.7741 5.26805 13.7741 5.39469 13.696 5.47279L6.3014 12.8674C6.22329 12.9455 6.09666 12.9455 6.01855 12.8674L4.91735 11.7661L4.74576 11.5946C4.74576 11.5946 4.74576 11.5946 4.74576 11.5946C4.74577 11.5946 4.74577 11.5946 4.74576 11.5945L2.05858 8.90736C1.98047 8.82926 1.98047 8.70262 2.05858 8.62452L3.18995 7.49315C3.26805 7.41504 3.39469 7.41504 3.47279 7.49315L6.01856 10.0389Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+			
+		</div>
+		
+		<ng-container *ngFor="let tabitem of procedureArr; let indx=index">
+			
+			<div class="tab-seperator" *ngIf="tabitem.type=='events'"></div>
+			
+			<div class="procedure-tab"  [ngStyle]="{'background': tabitem.color}">
+				<div class="tabitem-content" (click)="selectProcedureTab(indx)" *ngIf="!tabitem.editmode">
+					<div class="tabitem-lbl">{{tabitem.label}}</div>
+					<div class="tabitem-time">{{tabitem.time}}</div>
+				</div>
+				
+				<div class="tab-item-editbtn" *ngIf="tabitem.selected && !tabitem.editmode" (click)="editTabItem(indx)">
+					<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="0.35" y="0.35" width="14.3" height="14.3" rx="1.65" fill="white" stroke="#4EC8F0" stroke-width="0.7"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M4.0705 9.29234L3.70824 11.0906L5.48279 10.7236L5.48432 10.7252L10.2928 5.8532L8.88023 4.42198L4.07192 9.29377L4.0705 9.29234Z" fill="#56CCF2"/>
+						<path d="M9.1582 4.13379L9.99666 3.28427C10.1518 3.12704 10.4034 3.12704 10.5586 3.28427L11.4092 4.1461C11.5644 4.30333 11.5644 4.55825 11.4092 4.71548L10.5708 5.56501L9.1582 4.13379Z" fill="#56CCF2"/>
+					</svg>
+				</div>
+				
+				<div class="tab-editmode" *ngIf="tabitem.editmode">
+					<div class="group-title input-block">
+						<input type="text" placeholder="New group" [(ngModel)]="newTabGrp" class="input-edit"/>
+					</div>
+					
+					<div class="group-duration input-block" >
+						<input type="number" placeholder="00 min" [(ngModel)]="newTabGrpDuration" style="padding-left: 3px; padding-right: 3px; text-align: center;" class="input-edit"/>
+					</div>
+					
+					
+					<div class="color-selector-wrapper">
+						<div class="color-selector-control" (click)="openColorSelector()">
+							<div class="color-selector">
+								<div class="color-circle" [ngStyle]="{'background': selectedColor}"></div>
+							</div>
+							<div class="color-selector-arrow">
+								<svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M4.5 6L0.602885 0.75L8.39711 0.750001L4.5 6Z" fill="#C4C4C4"/>
+								</svg>
+							</div>
+						</div>
+						
+						<div class="color-panel" *ngIf="opencolorSwatch">
+							<div class="color-panel-label">Recommended</div>
+							<ng-container *ngFor="let rowelem of selectorColorArr; let rowindx=index">
+								<div class="color-panel-cont" [ngStyle]="{'border-top': rowindx==2 ? '1px solid #A5A5A5' : 'none'}">
+									<div class="color-circle-selector" *ngFor="let colorelem of rowelem.row; let colindx=index" [ngStyle]="{'background': colorelem.color}" (click)="selectColor(rowindx, colindx)">
+										<svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="colorelem.selected">
+											<mask id="path-1-inside-1" fill="white">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10059 6.95005C4.1787 7.02816 4.30533 7.02816 4.38344 6.95005L10.3638 0.969711C10.4419 0.891607 10.5685 0.891607 10.6466 0.969711L11.778 2.10108C11.8561 2.17919 11.8561 2.30582 11.778 2.38393L4.38343 9.77849C4.30532 9.85659 4.17869 9.85659 4.10058 9.77849L2.99938 8.67727L2.8278 8.5057C2.82779 8.5057 2.82779 8.50569 2.8278 8.50569C2.8278 8.50569 2.8278 8.50568 2.8278 8.50568L0.14061 5.8185C0.0625051 5.74039 0.062505 5.61376 0.14061 5.53565L1.27198 4.40428C1.35009 4.32618 1.47672 4.32618 1.55482 4.40428L4.10059 6.95005Z"/>
+											</mask>
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M4.10059 6.95005C4.1787 7.02816 4.30533 7.02816 4.38344 6.95005L10.3638 0.969711C10.4419 0.891607 10.5685 0.891607 10.6466 0.969711L11.778 2.10108C11.8561 2.17919 11.8561 2.30582 11.778 2.38393L4.38343 9.77849C4.30532 9.85659 4.17869 9.85659 4.10058 9.77849L2.99938 8.67727L2.8278 8.5057C2.82779 8.5057 2.82779 8.50569 2.8278 8.50569C2.8278 8.50569 2.8278 8.50568 2.8278 8.50568L0.14061 5.8185C0.0625051 5.74039 0.062505 5.61376 0.14061 5.53565L1.27198 4.40428C1.35009 4.32618 1.47672 4.32618 1.55482 4.40428L4.10059 6.95005Z" fill="white"/>
+											<path d="M2.99938 8.67727L3.1408 8.53585L3.14079 8.53584L2.99938 8.67727ZM1.27198 4.40428L1.4134 4.5457L1.27198 4.40428ZM1.55482 4.40428L1.69624 4.26286L1.55482 4.40428ZM2.8278 8.50568L2.68637 8.6471L2.8278 8.50568ZM4.38343 9.77849L4.24201 9.63707L4.38343 9.77849ZM4.10058 9.77849L3.95916 9.91991L4.10058 9.77849ZM11.778 2.38393L11.6366 2.2425L11.778 2.38393ZM4.38344 6.95005L4.24201 6.80863L4.38344 6.95005ZM4.10059 6.95005L4.24201 6.80863L4.10059 6.95005ZM2.8278 8.5057L2.96921 8.36427L2.8278 8.5057ZM10.3638 0.969711L10.2224 0.82829V0.82829L10.3638 0.969711ZM10.6466 0.969711L10.788 0.82829L10.6466 0.969711ZM10.2224 0.82829L4.24201 6.80863L4.52486 7.09147L10.5052 1.11113L10.2224 0.82829ZM11.9194 1.95966L10.788 0.82829L10.5052 1.11113L11.6366 2.2425L11.9194 1.95966ZM4.52485 9.91991L11.9194 2.52535L11.6366 2.2425L4.24201 9.63707L4.52485 9.91991ZM2.85796 8.81869L3.95916 9.91991L4.24201 9.63707L3.1408 8.53585L2.85796 8.81869ZM2.68638 8.64713L2.85797 8.8187L3.14079 8.53584L2.96921 8.36427L2.68638 8.64713ZM2.96922 8.36426L0.282031 5.67707L-0.000811376 5.95992L2.68637 8.6471L2.96922 8.36426ZM0.282031 5.67707L1.4134 4.5457L1.13056 4.26286L-0.000811532 5.39423L0.282031 5.67707ZM1.4134 4.5457L3.95917 7.09147L4.24201 6.80863L1.69624 4.26286L1.4134 4.5457ZM1.4134 4.5457L1.69624 4.26286C1.54003 4.10665 1.28677 4.10665 1.13056 4.26286L1.4134 4.5457ZM0.282031 5.67707H0.282031L-0.000811532 5.39423C-0.157021 5.55044 -0.157021 5.80371 -0.000811376 5.95992L0.282031 5.67707ZM2.96922 8.64711C3.04733 8.56901 3.04732 8.44237 2.96922 8.36426L2.68637 8.6471C2.60827 8.569 2.60827 8.44237 2.68637 8.36427L2.96922 8.64711ZM4.24201 9.63707L3.95916 9.91991C4.11537 10.0761 4.36864 10.0761 4.52485 9.91991L4.24201 9.63707ZM11.6366 2.2425L11.9194 2.52535C12.0756 2.36914 12.0756 2.11587 11.9194 1.95966L11.6366 2.2425ZM4.24201 6.80863V6.80863L3.95917 7.09147C4.11538 7.24768 4.36865 7.24768 4.52486 7.09147L4.24201 6.80863ZM2.96921 8.36427C3.04732 8.44237 3.04732 8.56901 2.96922 8.64711L2.68637 8.36427C2.60826 8.44238 2.60827 8.56902 2.68638 8.64713L2.96921 8.36427ZM10.5052 1.11113V1.11113L10.788 0.82829C10.6318 0.67208 10.3786 0.67208 10.2224 0.82829L10.5052 1.11113Z" fill="#646464" mask="url(#path-1-inside-1)"/>
+										</svg>
+									</div>
+								</div>
+							</ng-container>
+						</div>
+					</div>
+					
+					<div class="newtab-save-btn" (click)="saveEditedTabItem(indx)">
+						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect x="0.25" y="0.25" width="15.5" height="15.5" rx="1.75" fill="white" stroke="#4EC8F0" stroke-width="0.5"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M6.01856 10.0389C6.09667 10.117 6.2233 10.117 6.3014 10.0389L12.2817 4.05858C12.3599 3.98047 12.4865 3.98047 12.5646 4.05858L13.696 5.18995C13.7741 5.26805 13.7741 5.39469 13.696 5.47279L6.3014 12.8674C6.22329 12.9455 6.09666 12.9455 6.01855 12.8674L4.91735 11.7661L4.74576 11.5946C4.74576 11.5946 4.74576 11.5946 4.74576 11.5946C4.74577 11.5946 4.74577 11.5946 4.74576 11.5945L2.05858 8.90736C1.98047 8.82926 1.98047 8.70262 2.05858 8.62452L3.18995 7.49315C3.26805 7.41504 3.39469 7.41504 3.47279 7.49315L6.01856 10.0389Z" fill="#4EC8F0"/>
+						</svg>
+					</div>
+				
+				</div>
+				
+				
+				
+				<div class="tabitem-arrow" [ngStyle]="{'border-left': '13px solid '+ tabitem.color}" *ngIf="tabitem.selected"></div>
+			</div>
+		</ng-container>
+		
+		<div class="new-btn" (click)="addnewTab()">
+			<div class="btn-label">+  N E W</div>
+		</div>
+		<div class="clear"></div>
+	
+	</div>
+	
+	
+    <div class="section-block" [ngStyle]="{'background': selectedProcedureSection.color}" *ngIf="selectedProcedureSection">
+		
+        <div class="section-block-data-list">
+            <div  *ngFor="let recordArray of selectedProcedureList; let indx = index">
+				<div class="section-data-list">
+				   <div class="section-sno" (click)="openup_doctor_assistant_section(indx)">{{recordArray.code}}</div>
+					 <div class="section-name">
+						<span *ngIf="recordArray.openup_doctor_assistant =='No'">{{recordArray.label}}</span> 
+					   <input (keyup)="Upadte_promocode_name($event, indx)" *ngIf="recordArray.openup_doctor_assistant =='Yes'" type='text' class="common-input comon-des-cls" value="{{recordArray.label}}">
+					</div>
+
+					 <div class="section-count" [style.float] = "recordArray.openup_doctor_assistant == 'Yes' ? 'left' : 'right'"  >
+						<span *ngIf="recordArray.openup_doctor_assistant =='No'">{{recordArray.count}}</span> 
+						<input (keyup)="Upadte_promocode_time($event, indx)" *ngIf="recordArray.openup_doctor_assistant =='Yes'" type='text' class="common-input common-count-cls" value="{{recordArray.count}}">
+					 </div>
+
+					<div *ngIf="recordArray.openup_doctor_assistant =='Yes'" class="hide-procedure-code" (click) = "hide_doctor_assistant_section(indx)">
+						<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M8.43018 1.39659L5.58054 4.24623L8.58575 7.25143L7.46145 8.37573L4.45624 5.37053L1.62074 8.20602L0.574225 7.15951L3.40972 4.32401L0.418661 1.33295L1.54296 0.208645L4.53402 3.19971L7.38366 0.350067L8.43018 1.39659Z" fill="#FD7474"/>
+						</svg>
+					</div>
+
+				   <div class="clear"></div>
+				 
+				  
+				   <div class="doctor-assistant" *ngIf="recordArray.openup_doctor_assistant =='Yes'">
+					  
+							<div class="setion-doctor-assistant">
+								<div class="title-doctor-assistant">
+									<div class="interval-time-slot-head"></div>
+									<div class="doctor-time-slot-head">Doctor</div>
+									<div class="assistant-time-slot-head">Assistant</div>
+								</div>
+							</div>
+
+							<div class="setion-doctor-assistant" *ngFor="let number of recordArray.boxLabelArr; let indx=index" [ngStyle]="{'width':  recordArray.boxWd + 'px'}">
+									<div class="title-doctor-assistant">
+										<div class="interval-time-slot-head">
+										  {{number}}
+										</div>
+										<div class="doctor-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(recordArray.length-1) ? '0 2px 2px 0' : 0}">
+											<input type="number" class="comon-input-for-doc-assis"/>
+										</div>
+										<div class="assistant-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(recordArray.length-1) ? '0 0 2px 0' : 0}">
+											<input type="number" class="comon-input-for-doc-assis"/>
+										</div>
+									</div>
+							</div>
+					   
+					</div>
+			   
+				</div>
+          
+			</div>
+        
+			<div class="add-more-procedure-section" *ngIf="(formopenArray[seletcedProcedureIndx].procedure_field_one || formopenArray[seletcedProcedureIndx].procedure_field_ten)">
+					<div class="add10-item" (click)="change_procedure_field_form(selectedProcedureSection.type)">
+							x {{formopenArray[seletcedProcedureIndx].countval}} ?
+					</div>
+					<div class="add-one-field" *ngIf="formopenArray[seletcedProcedureIndx].procedure_field_one" >
+                        <div class="section-data-list add-common-procedure-section">
+                                <form #addoneProcedure="ngForm" (ngSubmit)="add_one_procedure_code_fn(addoneProcedure, seletcedProcedureIndx)">
+                                <div class="add-procedure-code">
+                                 <input  type='text'  name="code" ngModel class="common-add-text" placeholder="Code">
+                                </div>
+                                <div class="add-procedure-des">
+                                 <input  type='text'   name="label" ngModel class="common-add-text" placeholder="Description">
+                                </div>
+                                <div class="add-procedure-time">
+                                <input  type='number' name="count" ngModel class="common-add-text" placeholder="Amount">
+                                </div>
+                                <input  type='hidden' name="openup_doctor_assistant" ngModel='No' class="common-add-text" placeholder="Amount">
+
+                                
+                                </form>
+                          <div class="clear"></div>
+                         </div>
+					</div>
+
+					<div class="add-ten-field" *ngIf="formopenArray[seletcedProcedureIndx].procedure_field_ten" >
+                        <form #addtenProcedure="ngForm" (ngSubmit)="add_ten_procedure_code_fn(addtenProcedure.value, seletcedProcedureIndx)">
+
+                        <div *ngFor="let i of tentimeShowprocedureField(num) let indx = index " class="section-data-list add-common-procedure-section">
+                               
+                            <div class="add-procedure-code">
+                                   <input  type='text' name="code" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Code">
+                                </div>
+                                <div class="add-procedure-des">
+                                  <input  type='text' name="label" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Description">
+                                </div>
+                                <div class="add-procedure-time">
+                                  <input  type='number' name="count" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                                </div>
+                                <input  type='hidden' name="openup_doctor_assistant" ngModel='No' [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                                
+                          <div class="clear"></div>
+                         </div>
+                      
+                         </form>
+					</div>
+               
+                <div class="add-procedure-icon" (click)="addoneProcedure.ngSubmit.emit()" *ngIf="formopenArray[seletcedProcedureIndx].procedure_field_one">
+                            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                            <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                            <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                            </svg>
+                            
+                </div>
+
+                <div class="add-procedure-icon" (click)="addtenProcedure.ngSubmit.emit()"  *ngIf="formopenArray[seletcedProcedureIndx].procedure_field_ten">
+                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                        <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                        <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                        </svg>
+                        
+                 </div>
+        </div>
+
+		</div>
+  
+       <div class="btn-cont" (click)="add_procedure_field(selectedProcedureSection.type, seletcedProcedureIndx)" *ngIf="!formopenArray[seletcedProcedureIndx].showaction">
+           
+            <div class="action-btn">
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d)">
+                    <circle cx="18" cy="16" r="14.5" fill="white" stroke="#4EC8F0"/>
+                    <rect x="17.2188" y="9.18164" width="2" height="13.4266" rx="0.2" fill="#646464"/>
+                    <rect x="11.1797" y="16.5664" width="2" height="13.4266" rx="0.2" transform="rotate(-90 11.1797 16.5664)" fill="#646464"/>
+                    </g>
+                    <defs>
+                    <filter id="filter0_d" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                    <feOffset dx="1" dy="3"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                    </filter>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- </perfect-scrollbar> -->
+	
+
+</div>

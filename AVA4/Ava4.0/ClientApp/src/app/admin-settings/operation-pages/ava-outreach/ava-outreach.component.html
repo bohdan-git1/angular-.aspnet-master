@@ -1,0 +1,628 @@
+<div class="pagetitle">
+		AVA'S OUTREACH
+		<span class="subTitle">SET UP SEQUENCES</span>
+	</div>
+	
+	<div class="sequece-body">
+			<div class="main-wrap">
+	
+					<div class="tab-btnwrap">
+						<div class="tab-btn" [ngClass]="{'active':active==true}" (click)="active_Adult();htghlightColor('active');adult=true;">
+							<ng-container *ngIf="defaultLang">Adult</ng-container>
+							<ng-container *ngIf="!defaultLang">Adulto</ng-container>
+						</div>
+						<div class="tab-btn" [ngClass]="{'active':active==false}" (click)="active_Child();htghlightColor('deactive');adult=false;">
+								<ng-container *ngIf="defaultLang">Child</ng-container>
+								<ng-container *ngIf="!defaultLang">Niño</ng-container></div>
+					</div>
+					
+					  <div class="title-dropdown" (click)="showDropdown=!showDropdown" style="cursor: pointer;">{{option_chosen}}
+						<div class="droparrow">
+							<svg width="14" height="9" viewBox="2 1 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M8 10L8.74228e-07 -4.4509e-07L16 9.53674e-07L8 10Z" fill="#4EC8F0"/>
+							</svg>
+						</div>
+					</div>
+					<div class="dropdown-content" *ngIf="showDropdown==true;">
+						<div class="dropdown-options" *ngFor="let option of dropdown_options" (click)="option_clicked=true; showDropdown=false; option_chosen=option;">{{option}}</div>
+					</div>
+					
+				  <div class="content-wrap" [ngStyle]="{'height': boxHt + 'px'}" *ngIf="option_clicked">
+					
+					<div class="top-options">
+				
+						<div class="radio-btnwrap">
+							<div [ngClass]="{'name': true, 'active': defaultLang}">English</div>
+							 <div class="radio" (click)="defaultLang=!defaultLang; checkPlcHolders();">
+							   <div class="round" [ngStyle]="{'left': defaultLang ? '3px': '22px'}"></div>
+							 </div>
+							<div [ngClass]="{'name': true, 'active': !defaultLang}">Espanol</div>
+						  </div>
+				
+						<div class="library" (click)="show_library=!show_library">
+							<div class="lib-img" style="float: left">
+									<svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0.943359 1.013V10.1675C0.943359 10.205 0.973589 10.2342 1.01007 10.2342H3.93197C3.9695 10.2342 3.99868 10.204 3.99868 10.1675V1.013C3.99868 0.975477 3.96845 0.946289 3.93197 0.946289H1.01007C0.973589 0.946289 0.943359 0.976519 0.943359 1.013ZM3.58797 9.18243H1.35511C1.33218 9.18243 1.31446 9.16366 1.31446 9.14177V8.84573C1.31446 8.82279 1.33322 8.80507 1.35511 8.80507H3.58693C3.60986 8.80507 3.62758 8.82384 3.62758 8.84573V9.14177C3.62863 9.16471 3.61091 9.18243 3.58797 9.18243ZM3.58485 3.62634H1.35824C1.33427 3.62634 1.31446 3.60654 1.31446 3.58256V3.29173C1.31446 3.26775 1.33427 3.24795 1.35824 3.24795H3.58485C3.60882 3.24795 3.62863 3.26775 3.62863 3.29173V3.58256C3.62863 3.60654 3.60882 3.62634 3.58485 3.62634ZM3.59006 2.54015H1.35407C1.33218 2.54015 1.3155 2.52242 1.3155 2.50158V2.20136C1.3155 2.17947 1.33322 2.16279 1.35407 2.16279H3.59006C3.61195 2.16279 3.62863 2.18051 3.62863 2.20136V2.50158C3.62863 2.52347 3.61091 2.54015 3.59006 2.54015Z" fill="#63CCF2"/>
+										<path d="M4.62891 1.013V10.1675C4.62891 10.205 4.65914 10.2342 4.69562 10.2342H7.61752C7.65504 10.2342 7.68423 10.204 7.68423 10.1675V1.013C7.68423 0.975477 7.654 0.946289 7.61752 0.946289H4.69562C4.65914 0.946289 4.62891 0.976519 4.62891 1.013ZM7.27352 9.18243H5.0417C5.01877 9.18243 5.00105 9.16366 5.00105 9.14177V8.84573C5.00105 8.82279 5.01981 8.80507 5.0417 8.80507H7.27352C7.29645 8.80507 7.31417 8.82384 7.31417 8.84573V9.14177C7.31417 9.16471 7.29645 9.18243 7.27352 9.18243ZM7.27039 3.62634H5.04379C5.01981 3.62634 5.00001 3.60654 5.00001 3.58256V3.29173C5.00001 3.26775 5.01981 3.24795 5.04379 3.24795H7.27039C7.29437 3.24795 7.31417 3.26775 7.31417 3.29173V3.58256C7.31417 3.60654 7.29437 3.62634 7.27039 3.62634ZM7.2756 2.54015H5.03962C5.01773 2.54015 5.00105 2.52242 5.00105 2.50158V2.20136C5.00105 2.17947 5.01877 2.16279 5.03962 2.16279H7.2756C7.29749 2.16279 7.31417 2.18051 7.31417 2.20136V2.50158C7.31417 2.52347 7.29749 2.54015 7.2756 2.54015Z" fill="#63CCF2"/>
+										<path d="M8.20798 1.64069L11.7136 10.0968C11.7282 10.1312 11.7668 10.1468 11.8012 10.1333L14.5021 9.01371C14.5365 8.99911 14.5521 8.96054 14.5386 8.92614L11.0319 0.470054C11.0173 0.435654 10.9787 0.420018 10.9443 0.433569L8.24447 1.55313C8.21007 1.56668 8.19443 1.60629 8.20798 1.64069ZM13.7797 8.17456L11.7178 9.02934C11.697 9.03768 11.673 9.0283 11.6646 9.00745L11.551 8.7333C11.5427 8.71245 11.5521 8.68847 11.5729 8.68013L13.6348 7.82535C13.6557 7.81701 13.6796 7.82639 13.688 7.84724L13.8016 8.1214C13.811 8.14225 13.8006 8.16622 13.7797 8.17456ZM11.649 3.04274L9.59231 3.89544C9.57042 3.90482 9.54436 3.89439 9.53498 3.87146L9.42344 3.60252C9.41406 3.58063 9.42448 3.55457 9.44742 3.54518L11.5041 2.69249C11.526 2.68311 11.5521 2.69353 11.5614 2.71646L11.673 2.98541C11.6824 3.0073 11.6719 3.03336 11.649 3.04274ZM11.2383 2.03785L9.17222 2.89472C9.15241 2.90306 9.12948 2.89367 9.12114 2.87387L9.00647 2.59659C8.99814 2.57678 9.00752 2.55385 9.02732 2.54551L11.0934 1.68864C11.1132 1.6803 11.1361 1.68968 11.1445 1.70949L11.2591 1.98677C11.2675 2.00658 11.2581 2.02951 11.2383 2.03785Z" fill="#63CCF2"/>
+										</svg>
+							</div>
+							<div class="lib-text">Library</div>
+							<div style="clear: left;"></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					
+					
+					<div class="scrollcontent">
+						<perfect-scrollbar>
+						
+					 
+					
+						<!-- RENDERING PART -->
+							<ng-container *ngIf="commentsArr[0].data.length>0">
+						<div class="wrap" *ngFor="let data of commentsArr[0].data; let i=index;">
+						  <div class="left-wrap">
+							<div class="day-txtbox">
+								<input type="number" [(ngModel)]="data.prd_quant" class="sideInput" (input)="updatePrdQuant(i,$event)">
+							</div>
+							<div class="days-selectbox"(click)="data.prd_drop=!data.prd_drop;check_Id(data.id)">{{data.prd}}
+							 <div class="dropdown">
+							   <svg width="6" height="4" viewBox="0 0 6 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+								 <path d="M3 4L-1.27146e-07 -4.76995e-08L6 4.76837e-07L3 4Z" fill="#A5A5A5"/>
+							  </svg>
+							</div>
+							</div>
+							<div class="dropdown_prd" *ngIf="data.prd_drop">
+								<div *ngFor="let prd of prds" (click)="data.prd=prd;data.prd_drop=!data.prd_drop"  [ngClass]="{'prd_box':data.prd!=prd, 'sel_prd_box':data.prd==prd}">{{prd}}</div>
+							</div>
+							
+							<div class="time-txtbox">
+								<input type="text" [(ngModel)]="data.time" class="sideInput" (input)="updateTime(i,$event)">
+							</div>
+						  </div>     
+						  <div class="right-wrap">
+						  
+						   <div class="right-content" *ngIf="data.msg_type=='notification'">
+							 <div class="icon-holder">
+						   <div class="icon notf">
+							 <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+								<circle cx="14.5" cy="12.5" r="12.5" fill="#FD7474"/>
+								</g>
+								<path d="M12.7441 17.2764C13.0308 18.0968 13.8336 18.6984 14.751 18.6984C15.6685 18.6984 16.5286 18.1514 16.8726 17.2764" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M16.8685 6.49639C16.8685 6.49029 16.8685 6.48418 16.8685 6.47806C16.8685 6.18122 16.8181 5.89702 16.726 5.63477C17.4429 5.88319 18.1102 6.27235 18.6713 6.801C19.6994 7.76976 20.3495 9.18781 20.3071 11.0035L19.5573 10.986C19.595 9.37242 19.0227 8.16262 18.1569 7.34684C17.7794 6.99108 17.3421 6.70667 16.8685 6.49639ZM12.4155 6.60616C12.0808 6.77565 11.7639 6.98453 11.4733 7.23306C10.5284 8.04101 9.83903 9.28628 9.72494 11.0193L8.97656 10.97C9.10296 9.05014 9.87652 7.61165 10.9858 6.66305C11.4512 6.26513 11.9718 5.95666 12.5221 5.73515C12.4509 5.969 12.4124 6.21871 12.4124 6.47806C12.4124 6.52103 12.4135 6.56374 12.4155 6.60616Z" fill="white"/>
+								<path d="M19.7291 14.3777C19.4997 14.2136 19.1557 13.8855 18.869 13.3932C18.697 13.0651 18.6396 12.8463 18.5249 12.4635C18.4676 11.9712 18.3529 11.3149 18.3529 10.5492C18.3529 10.2758 18.3529 9.40068 17.7222 8.5256C17.0914 7.65052 16.2313 7.37706 15.9446 7.26767C15.8873 6.66606 15.3713 6.22852 14.7405 6.22852C14.1098 6.22852 13.5937 6.72075 13.5364 7.26767C12.1029 7.7599 11.0708 9.01783 11.0708 10.5492C11.0708 11.3149 10.9561 11.9165 10.8988 12.3541C10.8988 12.7369 10.7841 13.1198 10.4974 13.5573C10.3254 13.8308 10.2107 14.0495 9.92398 14.323C9.75196 14.5418 9.57994 14.6512 9.46527 14.8699C9.35059 15.0887 9.35059 15.3075 9.35059 15.3622C9.35059 15.4169 9.35059 15.9638 9.75196 16.2919C10.1533 16.6748 10.6694 16.6201 10.7267 16.6201C13.479 16.6201 16.174 16.6201 18.9263 16.6201C18.9837 16.6201 19.7291 16.6748 20.1304 16.1279C20.3598 15.7997 20.3025 15.4715 20.3025 15.3075C20.1878 14.8152 19.8437 14.4871 19.7291 14.3777Z" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+								<circle cx="18.7396" cy="7.73956" r="2.48956" fill="#FD7474" stroke="white" stroke-width="0.5"/>
+								<defs>
+								<filter id="filter0_d" x="0" y="0" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								<feOffset dx="2" dy="4"/>
+								<feGaussianBlur stdDeviation="2"/>
+								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								</filter>
+								</defs>
+							 </svg>
+						   </div>
+				
+						   </div>
+							 <div class="comment-box">
+							   <div class="comment notification">
+									<div class="backdrop-list" *ngIf="defaultLang">
+										  <div class="highlights-list" [innerHtml]="getHighlightedtContent(data.content)">
+										  </div>
+									  </div>
+									<div *ngIf="defaultLang" style="position: relative;">{{data.content}}</div>
+								   
+								   <div class="backdrop-list" *ngIf="!defaultLang">
+										  <div class="highlights-list" [innerHtml]="getHighlightedtContent(data.content_espanol)">
+										  </div>
+									  </div>
+									<div *ngIf="!defaultLang" style="position: relative;">{{data.content_espanol}}</div>
+								   
+								 <div class="delete" (click)="deleteComment(i)">
+								   <svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+									  <path d="M0 0.599609H4.8L4.29884 5.11004C4.24257 5.61647 3.81451 5.99961 3.30496 5.99961H1.49504C0.985494 5.99961 0.557429 5.61647 0.501159 5.11004L0 0.599609Z" fill="#3C3C3C"/>
+									  <ellipse cx="2.4" cy="0.6" rx="2.4" ry="0.6" fill="#C0C0C0"/>
+									  <rect x="1.07812" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+									  <rect x="3.47852" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+									  <rect x="2.27832" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+								   </svg>
+				
+								 </div>
+							   </div>
+							 </div>
+						   </div> 
+	
+						   <div class="right-content" *ngIf="data.msg_type=='email'">
+							<div class="icon-holder">
+							  <div class="icon eml">
+								<svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+								   <g filter="url(#filter0_d)">
+								   <circle cx="14.5" cy="12.5" r="12.5" fill="#B48CF6"/>
+								   </g>
+								   <path d="M19.5088 16.835H8.95443C8.56145 16.835 8.22461 16.5048 8.22461 16.1194V8.68825C8.22461 8.30293 8.56145 7.97266 8.95443 7.97266H19.5088C19.9018 7.97266 20.2386 8.30293 20.2386 8.68825V16.1194C20.2386 16.5048 19.9018 16.835 19.5088 16.835Z" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+								   <path d="M8.33691 8.41309L14.1194 12.8718L19.9018 8.41309" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+								   <path d="M8.16797 15.4586L11.9294 11.165" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+								   <path d="M20.2375 15.4586L16.5322 11.165" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+								   <defs>
+								   <filter id="filter0_d" x="0" y="0" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								   <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								   <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								   <feOffset dx="2" dy="4"/>
+								   <feGaussianBlur stdDeviation="2"/>
+								   <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								   <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								   <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								   </filter>
+								   </defs>
+							   </svg>
+							  </div>
+							
+						  </div>
+							<div class="comment-box">
+							  <div class="comment email">{{data.subject}}</div>
+							  
+							  <div class="comment email">
+									<div class="backdrop-list" *ngIf="defaultLang">
+											<div class="highlights-list" [innerHtml]="getHighlightedtContent(data.content)">
+											</div>
+										</div>
+									  <div *ngIf="defaultLang" style="position: relative;">{{data.content}}</div>
+									 
+									 <div class="backdrop-list" *ngIf="!defaultLang">
+											<div class="highlights-list" [innerHtml]="getHighlightedtContent(data.content_espanol)">
+											</div>
+										</div>
+									  <div *ngIf="!defaultLang" style="position: relative;">{{data.content_espanol}}</div>
+								<div class="delete" (click)="deleteComment(i)">
+								  <svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+									 <path d="M0 0.599609H4.8L4.29884 5.11004C4.24257 5.61647 3.81451 5.99961 3.30496 5.99961H1.49504C0.985494 5.99961 0.557429 5.61647 0.501159 5.11004L0 0.599609Z" fill="#3C3C3C"/>
+									 <ellipse cx="2.4" cy="0.6" rx="2.4" ry="0.6" fill="#C0C0C0"/>
+									 <rect x="1.07812" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+									 <rect x="3.47852" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+									 <rect x="2.27832" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+								  </svg>
+			   
+								</div>
+							  </div>
+							</div>
+						  </div> 
+	
+						  <div class="right-content" *ngIf="data.msg_type=='chat'">
+							<div class="icon-holder">
+							<div class="icon cht">
+							  <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+								 <g filter="url(#filter0_d)">
+								 <circle cx="14.5" cy="12.5" r="12.5" fill="#8CF1E4"/>
+								 </g>
+								 <path d="M11.869 9.81445C8.72134 9.81445 6.20323 11.7793 6.20323 14.169C6.20323 15.1248 6.57045 15.9745 7.25244 16.6648C6.99014 17.0897 6.51799 17.7269 6.09831 17.6738C5.52124 17.6207 7.61966 18.6297 8.87872 17.8331C9.77055 18.2579 10.8198 18.5235 11.9214 18.5235C15.0691 18.5235 17.5872 16.5586 17.5872 14.169C17.5347 11.7793 15.0166 9.81445 11.869 9.81445Z" fill="white"/>
+								 <path d="M22.8858 14.8593C22.5185 14.9124 22.0988 14.3283 21.8365 13.9566C22.5185 13.2131 22.9382 12.3104 22.9382 11.3545C22.9382 8.96483 20.4201 7 17.2725 7C14.1248 7 11.6592 8.91173 11.6592 11.3014C11.6592 13.6911 14.1773 15.6559 17.3249 15.6559C18.4266 15.6559 19.4758 15.3904 20.3676 14.9655C21.4693 15.8152 23.4104 14.8062 22.8858 14.8593Z" fill="white"/>
+								 <path d="M17.2728 15.6559C17.4302 15.3904 17.7449 14.8062 17.6925 14.0628C17.6925 13.0538 17.2203 12.3635 16.9055 11.9917C15.9613 10.6641 14.5973 10.2393 14.0727 10.08C13.2333 9.81449 12.5513 9.81449 12.0792 9.86759C11.9218 10.3986 11.6595 11.5138 12.0792 12.629C12.8136 14.4345 14.8596 15.6559 17.2728 15.6559ZM17.2728 15.6559C17.4826 15.2842 17.7449 14.7 17.6925 14.0628" stroke="#8CF1E4" stroke-width="0.5" stroke-miterlimit="10"/>
+								 <defs>
+								 <filter id="filter0_d" x="0" y="0" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								 <feOffset dx="2" dy="4"/>
+								 <feGaussianBlur stdDeviation="2"/>
+								 <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								 </filter>
+								 </defs>
+							 </svg>
+						  </div>
+							
+						 
+							
+						  </div>
+							<div class="comment-box">
+							  <div class="comment message">
+									<div class="backdrop-list" *ngIf="defaultLang">
+											<div class="highlights-list" [innerHtml]="getHighlightedtContent(data.content)">
+											</div>
+										</div>
+									  <div *ngIf="defaultLang" style="position: relative;">{{data.content}}</div>
+									 
+									 <div class="backdrop-list" *ngIf="!defaultLang">
+											<div class="highlights-list" [innerHtml]="getHighlightedtContent(data.content_espanol)">
+											</div>
+										</div>
+									  <div *ngIf="!defaultLang" style="position: relative;">{{data.content_espanol}}</div>
+									<div class="delete" (click)="deleteComment(i)">
+										<svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M0 0.599609H4.8L4.29884 5.11004C4.24257 5.61647 3.81451 5.99961 3.30496 5.99961H1.49504C0.985494 5.99961 0.557429 5.61647 0.501159 5.11004L0 0.599609Z" fill="#3C3C3C"/>
+											<ellipse cx="2.4" cy="0.6" rx="2.4" ry="0.6" fill="#C0C0C0"/>
+											<rect x="1.07812" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+											<rect x="3.47852" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+											<rect x="2.27832" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+										</svg>
+				
+									</div>
+							  </div>
+							</div>
+						  </div> 
+	
+						  </div>
+						</div> 
+					</ng-container>
+	
+	
+						<!-- EDITING PART -->
+	
+						<div class="wrap">
+								<div class="left-wrap" *ngIf="show_editor">
+										<div class="day-txtbox">
+											<input type="number" [(ngModel)]="prd_quant" class="sideInput">
+										</div>
+										<div class="days-selectbox"(click)="showDropPrd=!showDropPrd;">{{period}}
+										 <div class="dropdown">
+										   <svg width="6" height="4" viewBox="0 0 6 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+											 <path d="M3 4L-1.27146e-07 -4.76995e-08L6 4.76837e-07L3 4Z" fill="#A5A5A5"/>
+										  </svg>
+										</div>
+										</div>
+										<div class="dropdown_prd" *ngIf="showDropPrd">
+											<div *ngFor="let prd of prds" (click)="period=prd;showDropPrd=!showDropPrd;"  [ngClass]="{'prd_box':period!=prd, 'sel_prd_box':period==prd}">{{prd}}</div>
+										</div>
+										
+										<div class="time-txtbox">
+											<input type="text" [(ngModel)]="prd_time" class="sideInput">
+										</div>
+									  </div> 
+							<!-- <div class="left-wrap" *ngIf="show_editor">
+							  <div class="day-txtbox">1</div>
+							  <div class="days-selectbox">Day(s)
+							   <div class="dropdown">
+								 <svg width="6" height="4" viewBox="0 0 6 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+								   <path d="M3 4L-1.27146e-07 -4.76995e-08L6 4.76837e-07L3 4Z" fill="#A5A5A5"/>
+								</svg>
+							  </div>
+							  </div>
+							  
+							  <div class="time-txtbox">12:00 <span>am <span class="active">pm</span></span></div>
+							</div>      -->
+							<div class="right-wrap">
+							
+							 <div class="right-content">
+							   <div [ngClass]="{'function_btn_box':showAll==true, 'icon-holder':showAll==false}">
+								  
+							   <div class="icon plus" *ngIf="expand_btn || showAll" (click)="showAll=!showAll">
+								 <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g filter="url(#filter0_d)">
+									<circle cx="14.5" cy="12.5" r="12.5" fill=" #AEE9FC"/>
+									</g>
+									<rect x="13.417" y="6" width="2.16667" height="13" rx="0.2" fill="white"/>
+									<rect x="8" y="13.583" width="2.16667" height="13" rx="0.2" transform="rotate(-90 8 13.583)" fill="white"/>
+									<defs>
+									<filter id="filter0_d" x="0" y="0" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+									<feOffset dx="2" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+									<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+									<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+									</filter>
+									</defs>
+								</svg>
+							   </div>
+							   
+							   <div class="icon chat" *ngIf="chat_btn || showAll" (click)="chatClick()">
+								 <svg [ngClass]="{'seq_icon':showAll===true, 'normal_seq_icon':showAll===false}" width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g filter="url(#filter0_d)">
+									<circle cx="14.5" cy="12.5" r="12.5" fill="#8CF1E4"/>
+									</g>
+									<path d="M11.869 9.81445C8.72134 9.81445 6.20323 11.7793 6.20323 14.169C6.20323 15.1248 6.57045 15.9745 7.25244 16.6648C6.99014 17.0897 6.51799 17.7269 6.09831 17.6738C5.52124 17.6207 7.61966 18.6297 8.87872 17.8331C9.77055 18.2579 10.8198 18.5235 11.9214 18.5235C15.0691 18.5235 17.5872 16.5586 17.5872 14.169C17.5347 11.7793 15.0166 9.81445 11.869 9.81445Z" fill="white"/>
+									<path d="M22.8858 14.8593C22.5185 14.9124 22.0988 14.3283 21.8365 13.9566C22.5185 13.2131 22.9382 12.3104 22.9382 11.3545C22.9382 8.96483 20.4201 7 17.2725 7C14.1248 7 11.6592 8.91173 11.6592 11.3014C11.6592 13.6911 14.1773 15.6559 17.3249 15.6559C18.4266 15.6559 19.4758 15.3904 20.3676 14.9655C21.4693 15.8152 23.4104 14.8062 22.8858 14.8593Z" fill="white"/>
+									<path d="M17.2728 15.6559C17.4302 15.3904 17.7449 14.8062 17.6925 14.0628C17.6925 13.0538 17.2203 12.3635 16.9055 11.9917C15.9613 10.6641 14.5973 10.2393 14.0727 10.08C13.2333 9.81449 12.5513 9.81449 12.0792 9.86759C11.9218 10.3986 11.6595 11.5138 12.0792 12.629C12.8136 14.4345 14.8596 15.6559 17.2728 15.6559ZM17.2728 15.6559C17.4826 15.2842 17.7449 14.7 17.6925 14.0628" stroke="#8CF1E4" stroke-width="0.5" stroke-miterlimit="10"/>
+									<defs>
+									<filter id="filter0_d" x="0" y="0" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+									<feOffset dx="2" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+									<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+									<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+									</filter>
+									</defs>
+								</svg>
+							 </div>
+							   
+							 <div class="icon notify" *ngIf="notification_btn || showAll" (click)="notifyClick()">
+							   <svg  [ngClass]="{'seq_icon':showAll===true, 'normal_seq_icon':showAll===false}" width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+								  <g filter="url(#filter0_d)">
+								  <circle cx="14.5" cy="12.5" r="12.5" fill="#FD7474"/>
+								  </g>
+								  <path d="M12.7441 17.2764C13.0308 18.0968 13.8336 18.6984 14.751 18.6984C15.6685 18.6984 16.5286 18.1514 16.8726 17.2764" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+								  <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8685 6.49639C16.8685 6.49029 16.8685 6.48418 16.8685 6.47806C16.8685 6.18122 16.8181 5.89702 16.726 5.63477C17.4429 5.88319 18.1102 6.27235 18.6713 6.801C19.6994 7.76976 20.3495 9.18781 20.3071 11.0035L19.5573 10.986C19.595 9.37242 19.0227 8.16262 18.1569 7.34684C17.7794 6.99108 17.3421 6.70667 16.8685 6.49639ZM12.4155 6.60616C12.0808 6.77565 11.7639 6.98453 11.4733 7.23306C10.5284 8.04101 9.83903 9.28628 9.72494 11.0193L8.97656 10.97C9.10296 9.05014 9.87652 7.61165 10.9858 6.66305C11.4512 6.26513 11.9718 5.95666 12.5221 5.73515C12.4509 5.969 12.4124 6.21871 12.4124 6.47806C12.4124 6.52103 12.4135 6.56374 12.4155 6.60616Z" fill="white"/>
+								  <path d="M19.7291 14.3777C19.4997 14.2136 19.1557 13.8855 18.869 13.3932C18.697 13.0651 18.6396 12.8463 18.5249 12.4635C18.4676 11.9712 18.3529 11.3149 18.3529 10.5492C18.3529 10.2758 18.3529 9.40068 17.7222 8.5256C17.0914 7.65052 16.2313 7.37706 15.9446 7.26767C15.8873 6.66606 15.3713 6.22852 14.7405 6.22852C14.1098 6.22852 13.5937 6.72075 13.5364 7.26767C12.1029 7.7599 11.0708 9.01783 11.0708 10.5492C11.0708 11.3149 10.9561 11.9165 10.8988 12.3541C10.8988 12.7369 10.7841 13.1198 10.4974 13.5573C10.3254 13.8308 10.2107 14.0495 9.92398 14.323C9.75196 14.5418 9.57994 14.6512 9.46527 14.8699C9.35059 15.0887 9.35059 15.3075 9.35059 15.3622C9.35059 15.4169 9.35059 15.9638 9.75196 16.2919C10.1533 16.6748 10.6694 16.6201 10.7267 16.6201C13.479 16.6201 16.174 16.6201 18.9263 16.6201C18.9837 16.6201 19.7291 16.6748 20.1304 16.1279C20.3598 15.7997 20.3025 15.4715 20.3025 15.3075C20.1878 14.8152 19.8437 14.4871 19.7291 14.3777Z" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+								  <circle cx="18.7396" cy="7.73956" r="2.48956" fill="#FD7474" stroke="white" stroke-width="0.5"/>
+								  <defs>
+								  <filter id="filter0_d" x="0" y="0" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								  <feOffset dx="2" dy="4"/>
+								  <feGaussianBlur stdDeviation="2"/>
+								  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								  </filter>
+								  </defs>
+							   </svg>
+							 </div>
+							 
+							 <div class="icon email" *ngIf="email_btn || showAll" (click)="emailClick()" [ngStyle]="{'margin-top':showAll==false?'43px':'0px'}">
+							   <svg [ngClass]="{'seq_icon':showAll===true, 'normal_seq_icon':showAll===false}" width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+								  <g filter="url(#filter0_d)">
+								  <circle cx="14.5" cy="12.5" r="12.5" fill="#B48CF6"/>
+								  </g>
+								  <path d="M19.5088 16.835H8.95443C8.56145 16.835 8.22461 16.5048 8.22461 16.1194V8.68825C8.22461 8.30293 8.56145 7.97266 8.95443 7.97266H19.5088C19.9018 7.97266 20.2386 8.30293 20.2386 8.68825V16.1194C20.2386 16.5048 19.9018 16.835 19.5088 16.835Z" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+								  <path d="M8.33691 8.41309L14.1194 12.8718L19.9018 8.41309" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+								  <path d="M8.16797 15.4586L11.9294 11.165" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+								  <path d="M20.2375 15.4586L16.5322 11.165" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+								  <defs>
+								  <filter id="filter0_d" x="0" y="0" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								  <feOffset dx="2" dy="4"/>
+								  <feGaussianBlur stdDeviation="2"/>
+								  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								  </filter>
+								  </defs>
+							  </svg>
+				  
+							 </div>
+							   
+							 </div>
+							   <!-- <div class="comment-box">
+								 <div class="comment">Type content here...
+								   <div class="delete">
+									 <svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0 0.599609H4.8L4.29884 5.11004C4.24257 5.61647 3.81451 5.99961 3.30496 5.99961H1.49504C0.985494 5.99961 0.557429 5.61647 0.501159 5.11004L0 0.599609Z" fill="#3C3C3C"/>
+										<ellipse cx="2.4" cy="0.6" rx="2.4" ry="0.6" fill="#C0C0C0"/>
+										<rect x="1.07812" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+										<rect x="3.47852" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+										<rect x="2.27832" y="2.40039" width="0.3" height="3" rx="0.15" fill="#6F6F6F"/>
+									 </svg>
+				  
+								   </div>
+								 </div>
+								 
+								 <div class="tag-box">
+								   <div class="title">DRAG & DROP</div>
+								   <div class="name">+ [Contact’s First Name]</div>
+								   <div class="name">+ [Guarantor’s First Name]</div>
+								   <div class="name">+ [TC First Name]</div>
+								   <div class="name">+ [TC Last Name]</div>
+								   <div class="name">+ [Last Appt Date]</div>
+								 </div>
+							   </div> -->
+	  
+							   <div class="txtcontent txt_chat" mwlDroppable (drop)="sub=false; dropItem($event)" *ngIf="chat_btn && show_editor">
+						  
+									  <!-- <div class="backdrop">
+										  <div class="highlights" [innerHtml]="highlightedText">
+										  </div>
+									  </div> -->
+									  <div class="del_img" (click)="del_commentBox()">
+											<svg width="6" height="11" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M0 0.708984H4.8L4.29924 5.19501C4.24274 5.70122 3.81477 6.08407 3.30542 6.08407H1.49459C0.98523 6.08407 0.557264 5.70122 0.500757 5.19501L0 0.708984Z" fill="#3C3C3C"/>
+												<ellipse cx="2.4" cy="0.709537" rx="2.4" ry="0.597232" fill="#C0C0C0"/>
+												<rect x="1.07812" y="2.50195" width="0.3" height="2.98616" rx="0.15" fill="#6F6F6F"/>
+												<rect x="3.47852" y="2.50195" width="0.3" height="2.98616" rx="0.15" fill="#6F6F6F"/>
+												<rect x="2.27734" y="2.50195" width="0.3" height="2.98616" rx="0.15" fill="#6F6F6F"/>
+												</svg>
+									  </div>
+									  
+										<div class="backdrop">
+											<div class="highlights" [innerHtml]="highlightedText">
+												<!-- cloned text with <mark> tags here -->
+											</div>
+										</div>
+									  
+									  <textarea class="editable_content edit_chat" autosize [placeholder]="plc_holderContent" #txtareaChat (blur)="sub=false; getCaretPos(txtareaChat)" (keyup)="sub=false; getCaretPos(txtareaChat)" [value]="selectedTemplateContent" ></textarea>
+									
+								  </div>
+								  <div class="txtcontent txt_notify" mwlDroppable (drop)="sub=false; dropItem($event)" *ngIf="notification_btn && show_editor">
+						  
+								  <!-- <div class="backdrop">
+									  <div class="highlights" [innerHtml]="highlightedText">
+									  </div>
+								  </div> -->
+								  <div class="del_img" (click)="del_commentBox()">
+										<svg width="6" height="11" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M0 0.708984H4.8L4.29924 5.19501C4.24274 5.70122 3.81477 6.08407 3.30542 6.08407H1.49459C0.98523 6.08407 0.557264 5.70122 0.500757 5.19501L0 0.708984Z" fill="#3C3C3C"/>
+											<ellipse cx="2.4" cy="0.709537" rx="2.4" ry="0.597232" fill="#C0C0C0"/>
+											<rect x="1.07812" y="2.50195" width="0.3" height="2.98616" rx="0.15" fill="#6F6F6F"/>
+											<rect x="3.47852" y="2.50195" width="0.3" height="2.98616" rx="0.15" fill="#6F6F6F"/>
+											<rect x="2.27734" y="2.50195" width="0.3" height="2.98616" rx="0.15" fill="#6F6F6F"/>
+											</svg>
+								  </div>
+								  
+								  <div class="backdrop">
+											<div class="highlights" [innerHtml]="highlightedText">
+												<!-- cloned text with <mark> tags here -->
+											</div>
+										</div>
+								  
+								  <textarea class="editable_content edit_notify" autosize [placeholder]="plc_holderContent" #txtareaNotify (blur)="sub=false; getCaretPos(txtareaNotify)" (keyup)="sub=false; getCaretPos(txtareaNotify)" [value]="selectedTemplateContent" ></textarea>
+								
+							  </div>
+	
+							  
+							 
+							 <!-- FOR DRAG DROP SUBJECT -->
+							  <!-- <div class="txtcontent email_sub" (drop)="sub=true;dropItem($event)" *ngIf="email_btn && show_editor">
+								  
+									<textarea class="editable_sub_content edit_email" #txtareaSub (blur)="sub=true;getCaretPos(txtareaSub)" (keyup)="sub=true;getCaretPos(txtareaSub)" [value]="subjectContent" [placeholder]="plc_holderSubject" ></textarea>
+							  </div> -->
+
+
+
+
+							  <div class="txtcontent email_sub"  *ngIf="email_btn && show_editor">
+								  
+									<textarea class="editable_sub_content edit_email"  [value]="subjectContent" [placeholder]="plc_holderSubject" ></textarea>
+							  </div>
+	
+							  <div class="txtcontent txt_email" mwlDroppable (drop)="sub=false;dropItem($event)" *ngIf="email_btn && show_editor">
+						  
+									<!-- <div class="backdrop">
+										<div class="highlights" [innerHtml]="highlightedText">
+										</div>
+									</div> -->
+									<div class="del_img" (click)="del_commentBox()">
+											<svg width="6" height="11" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M0 0.708984H4.8L4.29924 5.19501C4.24274 5.70122 3.81477 6.08407 3.30542 6.08407H1.49459C0.98523 6.08407 0.557264 5.70122 0.500757 5.19501L0 0.708984Z" fill="#3C3C3C"/>
+												<ellipse cx="2.4" cy="0.709537" rx="2.4" ry="0.597232" fill="#C0C0C0"/>
+												<rect x="1.07812" y="2.50195" width="0.3" height="2.98616" rx="0.15" fill="#6F6F6F"/>
+												<rect x="3.47852" y="2.50195" width="0.3" height="2.98616" rx="0.15" fill="#6F6F6F"/>
+												<rect x="2.27734" y="2.50195" width="0.3" height="2.98616" rx="0.15" fill="#6F6F6F"/>
+												</svg>
+									  </div>
+	
+									<div class="backdrop">
+											<div class="highlights" [innerHtml]="highlightedText">
+												<!-- cloned text with <mark> tags here -->
+											</div>
+										</div>
+									
+									<textarea class="editable_content edit_email" autosize [placeholder]="plc_holderContent" #txtareaMail (blur)="sub=false; getCaretPos(txtareaMail)" (keyup)="sub=false; getCaretPos(txtareaMail)" [value]="selectedTemplateContent" ></textarea>
+								  
+								</div>
+								
+							 </div> 
+							</div>
+						  </div> 
+					
+					
+						
+						<div class="info" [ngStyle]="{'border':openInfo==true? '2px solid #4EC8F0' : '0px solid #ffff'}">
+						   <p *ngIf="openInfo">A patient starts this sequence when they are entered as a new lead but have not yet set up an appointment</p>
+						   <div class="info-icon" (click)="openInfo=!openInfo">
+							 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+								<circle cx="11.5" cy="9.5" r="7.5" fill="#4EC8F0"/>
+								</g>
+								<circle cx="11.5016" cy="6.34241" r="1.18421" fill="white"/>
+								<rect x="10.3164" y="8.31641" width="2.36842" height="6.31579" fill="white"/>
+								<defs>
+								<filter id="filter0_d" x="0" y="0" width="23" height="23" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								<feOffset dy="2"/>
+								<feGaussianBlur stdDeviation="2"/>
+								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								</filter>
+								</defs>
+							 </svg>
+						   </div>
+						</div>
+						
+						</perfect-scrollbar>
+						
+					</div>
+					
+					
+				  </div>
+				
+				 
+				
+				
+				</div>
+	
+				<div class="library-div" *ngIf="show_library">
+	
+							<div class="tag-box" style="margin-top: 10px;">
+								<div class="title">SEARCH</div>
+								<div class="tag">
+									<input type="text" style="border: none; color:#ffff; background: #4EC8F0;" [(ngModel)]="search_input">
+								</div> 
+							</div>
+					
+							<div class="tag-box">
+								<div class="title">DRAG & DROP</div>
+								<div class="tag" mwlDraggable dropData="Practice Name" (click)="clickTag('Practice Name')">+ [Practice Name]</div> 
+								<div class="tag" mwlDraggable dropData="Doctor Degree" (click)="clickTag('Doctor Degree')">+ [Doctor Degree]</div>
+								<div class="tag" mwlDraggable dropData="Doctor Preferred Name" (click)="clickTag('Doctor Preferred Name')">+ [Doctor Preferred Name]</div>
+								<div class="tag" mwlDraggable dropData="Doctor First Name" (click)="clickTag('Doctor First Name')">+ [Doctor First Name]</div> 
+								<div class="tag" mwlDraggable dropData="Doctor Last Name" (click)="clickTag('Doctor Last Name')">+ [Doctor Last Name]</div>
+								<div class="tag" mwlDraggable dropData="Practice Full Address" (click)="clickTag('Practice Full Address')">+ [Practice Full Address]</div>
+								<div class="tag" mwlDraggable dropData="Todays Date" (click)="clickTag('Todays Date')">+ [Todays Date]</div>
+								<div class="tag" mwlDraggable dropData="TC First Name" (click)="clickTag('TC First Name')">+ [TC First Name]</div>
+								<div class="tag" mwlDraggable dropData="TC Last Name" (click)="clickTag('TC Last Name')">+ [TC Last Name]</div>
+							</div>
+							  
+							  
+							  <div class="tag-box">
+								<div class="tag" mwlDraggable dropData="Patient's First Name" (click)="clickTag('Patient\'s First Name')">+ [Patient's First Name]</div>
+								<div class="tag" mwlDraggable dropData="Patient's Last Name" (click)="clickTag('Patient\'s Last Name')">+ [Patient's Last Name]</div>
+								<div class="tag" mwlDraggable dropData="Patient's Nickname" (click)="clickTag('Patient\'s Nickname')">+ [Patient's Nickname]</div>
+								<div class="tag" mwlDraggable dropData="Patient Age" (click)="clickTag('Patient Age')">+ [Patient Age]</div>
+								<div class="tag" mwlDraggable dropData="Patient Date Of Birth" (click)="clickTag('Patient Date Of Birth')">+ [Patient Date Of Birth]</div>
+								<div class="tag" mwlDraggable dropData="Patient Full Address" (click)="clickTag('Patient Full Address')">+ [Patient Full Address]</div>
+								<div class="tag" mwlDraggable dropData="Patient Email" (click)="clickTag('Patient Email')">+ [Patient Email]</div>
+							  </div>
+							  
+							 <div class="tag-box">
+								<div class="tag" mwlDraggable dropData="He/She" (click)="clickTag('He/She')">+ [He/She]</div>
+								<div class="tag" mwlDraggable dropData="he/she" (click)="clickTag('he/she')">+ [he/she]</div>
+								<div class="tag" mwlDraggable dropData="His/Her" (click)="clickTag('His/Her')">+ [His/Her]</div>
+								<div class="tag" mwlDraggable dropData="his/her" (click)="clickTag('his/her')">+ [his/her]</div>
+								<div class="tag" mwlDraggable dropData="Him/Her" (click)="clickTag('Him/Her')">+ [Him/Her]</div>
+								<div class="tag" mwlDraggable dropData="him/her" (click)="clickTag('him/her')">+ [him/her]</div>
+								<div class="tag" mwlDraggable dropData="his/hers" (click)="clickTag('his/hers')">+ [his/hers]</div>
+								<div class="tag" mwlDraggable dropData="His/Hers" (click)="clickTag('His/Hers')">+ [His/Hers]</div>
+								<div class="tag" mwlDraggable dropData="son/daughter" (click)="clickTag('son/daughter')">+ [son/daughter]</div>
+							  </div>   
+							  
+							   <div class="tag-box">
+								<div class="tag" mwlDraggable dropData="Last Appt Date" (click)="clickTag('Last Appt Date')">+ [Last Appt Date]</div>
+								<div class="tag" mwlDraggable dropData="Next Appt Date" (click)="clickTag('Next Appt Date')">+ [Next Appt Date]</div>
+								<div class="tag" mwlDraggable dropData="Next Time" (click)="clickTag('Next Time')">+ [Next Time]</div>
+							  </div>   
+						   
+							   <div class="tag-box">
+								<div class="tag" mwlDraggable dropData="Resp First" (click)="clickTag('Resp First')">+ [Resp First]</div>
+								<div class="tag" mwlDraggable dropData="Resp Middle" (click)="clickTag('Resp Middle')">+ [Resp Middle]</div>
+								<div class="tag" mwlDraggable dropData="Resp Last" (click)="clickTag('Resp Last')">+ [Resp Last]</div>
+								<div class="tag" mwlDraggable dropData="Resp Full Address" (click)="clickTag('Resp Full Address')">+ [Resp Full Address]</div>
+								<div class="tag" mwlDraggable dropData="Amount Owing" (click)="clickTag('Amount Owing')">+ [Amount Owing]</div>
+								<div class="tag" mwlDraggable dropData="Amount Balance" (click)="clickTag('Amount Balance')">+ [Amount Balance]</div>
+								<div class="tag" mwlDraggable dropData="Amount Ins Balance" (click)="clickTag('Amount Ins Balance')">+ [Amount Ins Balance]</div>
+								<div class="tag" mwlDraggable dropData="Insurance Co Name" (click)="clickTag('Insurance Co Name')">+ [Insurance Co Name]</div>
+								<div class="tag" mwlDraggable dropData="Next Monthly Payment" (click)="clickTag('Next Monthly Payment')">+ [Next Monthly Payment]</div>
+								<div class="tag" mwlDraggable dropData="Last Payment Amount" (click)="clickTag('Last Payment Amount')">+ [Last Payment Amount]</div>
+								<div class="tag" mwlDraggable dropData="Last Payment Date" (click)="clickTag('Last Payment Date')">+ [Last Payment Date]</div>
+							  </div>  
+							  
+							  <div class="tag-box">
+								<div class="tag" mwlDraggable dropData="Team Name" (click)="clickTag('Team Name')">+ [Team Name]</div>
+								<div class="tag" mwlDraggable dropData="Team Email" (click)="clickTag('Team Email')">+ [Team Email]</div>
+								<div class="tag" mwlDraggable dropData="Off Email" (click)="clickTag('Off Email')">+ [Off Email]</div>
+								<div class="tag" mwlDraggable dropData="Diagnosis" (click)="clickTag('Diagnosis')">+ [Diagnosis]</div>
+								<div class="tag" mwlDraggable dropData="Tx Plan" (click)="clickTag('Tx Plan')">+ [Tx Plan]</div>
+								<div class="tag" mwlDraggable dropData="Goals" (click)="clickTag('Goals')">+ [Goals]</div>
+							  </div>
+							  
+							  <div class="tag-box" style="margin-top:73px">
+								<div class="title">ATTACHMENTS</div>
+								<div class="tag" (click)="clickTag('Practice Name')">+ [Header with Logo]</div> 
+								<div class="tag" (click)="clickTag('Practice Name')">+ [Patient Tooth Grid]</div>
+							  </div> 
+	
+	
+				</div>
+	</div>
+	
+	
+	

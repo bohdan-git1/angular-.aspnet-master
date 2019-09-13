@@ -1,0 +1,28 @@
+<div class="drpdn-panel">
+	<div class="drpdn-cont" *ngFor="let drpdn of drpdndata let indx=index">
+		<div class="drpdn-title" (click)="toogleDropdown(indx)">
+		<div style="display: inline-block; vertical-align: top;">
+			<svg width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.30557 3.36176C2.40563 3.48555 2.59437 3.48555 2.69443 3.36176L4.67846 0.907155C4.81061 0.74367 4.69425 0.5 4.48403 0.5H0.515966C0.305754 0.5 0.189394 0.74367 0.321538 0.907155L2.30557 3.36176Z" stroke="#4EC8F0" stroke-width="0.5"/>
+</svg>
+		</div>
+		
+		<div style="display: inline-block; vertical-align: middle; margin-left: 5px;">{{drpdn.title}}</div></div>
+		<div class="drpdn-optn" *ngIf="drpdn.opendrpdn_back">
+			<ul style="margin-top:2px;">
+				<li *ngFor="let ddoption of drpdn.ddoptions" style="margin-bottom:5px;">
+					<ng-container class="optn_title">
+						<div class="ddlabel">
+							<span>{{ddoption.title}}</span>
+						</div>
+						<div class="duration">
+							<span>{{ddoption.duration}}</span>
+						</div>
+						<div class="clear"></div>
+					</ng-container>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+
+<app-gallery *ngIf="imageName_receive==''" (imageName)="imageName($event)" ></app-gallery>
+
+<app-crop-image *ngIf="imageName_receive!=''" (backtoparent)="backtoparent()" [image_name]="imageName_receive"></app-crop-image>
+  

@@ -1,0 +1,127 @@
+<div class="pagetitle">POSTING CODES</div>
+<div fxLayout="column">
+	<div fxLayout="row" fxLayoutGap="15px">
+		<div fxFlex="970px" class="posting-code-section">
+			<div class="section-cont" [ngStyle]="{'height': boxHt + 'px'}" >
+
+				<div  [ngStyle]="{'height': boxScrollHt + 'px'}">
+ 			 	<perfect-scrollbar [config]="config">
+				<div   *ngFor="let item of postingcodeData let indx = index" [ngClass]="{'section-item': true, 'section-active': item.active == 'Y', 'section-inactive': item.active == 'N' }">
+					
+					<div (click)="editPostingmode(indx)" *ngIf="item.selected" class="edit-pencil">
+							<svg width="10" height="10" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M1.03826 6.03361L0.706284 7.77882L2.45009 7.44686L2.45111 7.44788L7.12329 2.77394L5.71072 1.36084L1.03898 6.03434L1.03826 6.03361Z" fill="#56CCF2"/>
+							<path d="M5.98242 1.08984L6.78734 0.284626C6.94352 0.128387 7.19673 0.128387 7.35291 0.284627L8.1999 1.13194C8.35608 1.28818 8.35608 1.54149 8.1999 1.69773L7.39499 2.50295L5.98242 1.08984Z" fill="#56CCF2"/>
+							</svg>
+					</div>
+
+					<div [ngClass]="{'cell-element code': true,  'section-inactive1': item.active == 'N' }" >
+						<div (click)="editModeactive(indx)" >{{item.code}}</div>
+						
+					</div>
+
+					<div [ngClass]="{'cell-element desc': true,  'section-inactive1': item.active == 'N' }">
+							<div *ngIf="item.edit_mode==false" (click)="editModeactive(indx)" >{{item.desc}}</div>
+							<input style="background: white;" class="comon-input" (blur)="upadtePostingdata($event,indx,'desc')" *ngIf="item.edit_mode" type='text'  value="{{item.desc}}">	
+					</div>
+
+					<div [ngClass]="{'cell-element type': true,  'section-inactive1': item.active == 'N' }">
+							<div (click)="editModeactive(indx)" >{{item.type}}</div>
+							
+					</div>
+
+					<div  [ngClass]="{'cell-element deposittype': true,  'section-inactive1': item.active == 'N' }" >
+							<div *ngIf="item.edit_mode==false" (click)="editModeactive(indx)" >{{item.depositType}}</div>
+							<div *ngIf="item.edit_mode && item.type=='Payment'" class="edit-depositemode"  >
+								<app-posting-dropdown  (postingcodeCloneDataArray)='appendPostingcodeData($event)' [ddplaceholder]="'Deposit Type'" [options]="depositArr"  [selectEditOption]="item.depositType"  [selectOption]="item.depositType"  [selectIndex]="indx" [postingcodeCloneData]="postingcodeCloneData" [postingcodeData]="postingcodeData" ></app-posting-dropdown>
+							</div>
+					</div>
+
+					<div [ngClass]="{'cell-element defaultamt': true,  'section-inactive1': item.active == 'N' }">
+							<div *ngIf="item.edit_mode==false" (click)="editModeactive(indx)" >
+								{{item.defaultAmt=='' ? '$0' : '$'+item.defaultAmt}}
+							</div>
+							<input  class="comon-input" style="text-align: center; background: white;" (blur)="upadtePostingdata($event,indx,'amount')" *ngIf="item.edit_mode" type='number'  value="{{item.defaultAmt=='' ? '0' : item.defaultAmt}}">
+					</div>
+
+					<div [ngClass]="{'cell-element active': true,  'section-inactive1': item.active == 'N' }">
+							<div *ngIf="item.edit_mode==false" (click)="editModeactive(indx)" >{{item.active}}</div>
+							<div *ngIf="item.edit_mode" class="edit-depositemode"  >
+								<app-posting-dropdown (postingcodeCloneDataArray)='appendPostingcodeData($event)' [ddplaceholder]="'Active'" [options]="statusArr" [selectActiveIndex]="indx" [selectActiveOption]="item.active"  [postingcodeData]="postingcodeData" [postingcodeCloneData]="postingcodeCloneData" ></app-posting-dropdown>
+							</div>
+					</div>
+
+
+					<div *ngIf="item.selected" class="delete-pencil" (click)="deletePostingData(indx)">
+						<svg  width="10" height="10" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M5.742 7H4.878C4.812 7 4.7595 6.9835 4.7205 6.9505C4.6845 6.9145 4.6545 6.8755 4.6305 6.8335L2.9025 4.1245C2.8785 4.1965 2.8515 4.258 2.8215 4.309L1.1385 6.8335C1.1085 6.8755 1.0755 6.9145 1.0395 6.9505C1.0065 6.9835 0.96 7 0.9 7H0.09L2.3085 3.688L0.18 0.5515H1.0485C1.1115 0.5515 1.158 0.562 1.188 0.582999C1.218 0.604 1.245 0.634 1.269 0.673L2.952 3.256C2.973 3.193 3.0045 3.124 3.0465 3.049L4.635 0.691C4.659 0.649 4.6875 0.616 4.7205 0.592C4.7535 0.565 4.7925 0.5515 4.8375 0.5515H5.67L3.5325 3.6475L5.742 7Z" fill="#F11212"/>
+						</svg>
+					</div>
+
+				</div>
+				</perfect-scrollbar>
+				</div>
+
+			
+			
+				<div  class="show-error">
+					<div *ngIf="showErrorMsg && errorVariable && editmode"  > {{showErrorMsg}} </div>
+				</div>
+
+				<div [ngStyle]="{'width': editmode == true ? '90%' : '97%'}"   style="height: 30px;width: 95%;float: left;">
+				<div class="section-item input-cont-border" style="padding-left: 22px;" *ngIf="editmode">
+					
+				<form #postingcodesfield="ngForm" (ngSubmit)="addEditmode(postingcodesfield,'ff')" >
+					<div class="cell-element code input-cont"><input type="text" (keyup)="checkerror($event,'code')" name="code" ngModel placeholder="Code" /></div>
+					<div class="cell-element desc input-cont"><input type="text" (keyup)="checkerror($event,'des')" name="desc" ngModel placeholder="Description" /></div>
+					<div class="cell-element dropdownSection type input-cont" style="margin-right: 30px;">
+						<app-posting-dropdown [ddplaceholder]="'Type'" [options]="typeArr" [dropdown]="1"  (typeName)='selectTypename($event)' ></app-posting-dropdown>
+						<input type="hidden" name="type" [(ngModel)]="typeName" />
+					</div>
+					<div class="cell-element dropdownSection deposittype input-cont">
+						<app-posting-dropdown  *ngIf="depositeBoolean" [ddplaceholder]="'Deposit Type'" [dropdown]="0" [options]="depositArr" (typeName)='selectDepositename($event)' ></app-posting-dropdown>
+						<input type="hidden" name="depositType" [(ngModel)]="depositeName" />
+					</div>
+					<div class="cell-element defaultamt input-cont"><input type="number" (keyup)="checkerror($event,'amount')"  name="defaultAmt" ngModel placeholder="DefaultAmt"  style="text-align: center" /></div>
+					<div class="cell-element dropdownSection active input-cont" style="margin-left: 4px;">
+						<app-posting-dropdown [ddplaceholder]="'Active'" [options]="statusArr" [dropdown]="0" (typeName)='selectStatusname($event)' ></app-posting-dropdown>
+						<input type="hidden" name="active" [(ngModel)]="statusName" />
+					</div>
+				</form>
+					<!-- <div class="cell-element status input-cont"><input type="text" placeholder="Status" /></div> -->
+				</div>
+				</div>
+				
+				<div [ngStyle]="{'width': editmode == true ? '6%' : '3%'}" class="plus-btn" *ngIf="!editmode" (click)="forpostingcodeData('edit')">
+					<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="12.5" y="8" width="1" height="10" rx="0.5" fill="#434343"/>
+						<rect x="8" y="13.5" width="1" height="10" rx="0.5" transform="rotate(-90 8 13.5)" fill="#434343"/>
+						<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+					</svg>
+				</div>
+				
+				<div  [ngStyle]="{'width': editmode == true ? '6%' : '3%'}" class="plus-btn" (click)="postingcodesfield.ngSubmit.emit()" *ngIf="editmode">
+					<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M19.2692 9.76434C19.065 9.57837 18.7488 9.59309 18.5628 9.79722L11.647 17.3883L8.39807 14.4284C8.19394 14.2424 7.8777 14.2571 7.69172 14.4613C7.50575 14.6654 7.52047 14.9816 7.7246 15.1676L11.1871 18.3221C11.2143 18.3874 11.256 18.4479 11.3117 18.4987C11.5159 18.6847 11.8321 18.67 12.0181 18.4658L19.302 10.4707C19.488 10.2665 19.4733 9.95031 19.2692 9.76434Z" fill="#434343"/>
+					</svg>
+				</div>
+
+				<div class="plus-btn closeIcon" *ngIf="editmode" (click)="closePostingcodeform()">
+						<svg style="margin-top: 7px; margin-left: 7px;" width="26" height="26" viewBox="0 0 26 26"  fill="#646464" xmlns="http://www.w3.org/2000/svg">
+							<rect fill="#333333" height="19.0907" transform="rotate(45 13.5 0)" width="1.52119" x="13.5"></rect>
+							<rect fill="#333333" height="19.0907" transform="rotate(-45 0 1.50195)" width="1.52119" y="1.50195"></rect>
+						</svg>
+				</div>
+	
+			</div>
+
+			<div class="eye-icon" (click)="showAllpostingCode()">
+					<svg width="28" height="17" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1.02891 7.86729C0.884176 8.05257 0.879162 8.31971 1.01771 8.51113C2.17183 10.1057 7.53418 17 13.9752 17C20.4163 17 25.779 10.1057 26.9332 8.51113C27.0718 8.31971 27.0668 8.05256 26.922 7.86727C25.7447 6.36021 20.3959 0 13.9755 0C7.55504 0 2.20619 6.36024 1.02891 7.86729ZM13.8936 15.3413C17.306 15.3413 20.0724 12.1662 20.0724 8.24945C20.0724 4.33271 17.306 1.15758 13.8936 1.15758C10.4812 1.15758 7.71488 4.33271 7.71488 8.24945C7.71488 12.1662 10.4812 15.3413 13.8936 15.3413Z" fill="#C4C4C4"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M13.8939 13.3158C16.3313 13.3158 18.3072 11.0479 18.3072 8.25019C18.3072 5.45253 16.3313 3.18457 13.8939 3.18457C12.7679 3.18457 11.7404 3.66856 10.9606 4.46517C11.1362 4.65035 11.2462 4.91608 11.2462 5.21131C11.2462 5.77084 10.851 6.22443 10.3635 6.22443C10.1959 6.22443 10.0393 6.17082 9.90579 6.07774C9.63308 6.7361 9.48047 7.47269 9.48047 8.25019C9.48047 11.0479 11.4564 13.3158 13.8939 13.3158Z" fill="#C4C4C4"/>
+					</svg>
+			</div>
+		</div>
+	</div>
+</div>

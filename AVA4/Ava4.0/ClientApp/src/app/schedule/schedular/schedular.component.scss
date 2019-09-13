@@ -1,0 +1,735 @@
+@import '~@angular/material/theming';
+
+.top-bar {
+	width: 100%;
+    height: 98px;
+    background: #4EC8F0;
+    position: relative;
+    box-sizing: border-box;
+    padding: 12px 35px 12px 93px;
+	margin-bottom: 30px;
+}
+
+.schedular-cont {
+	padding: 0 75px 0 0; 
+	box-sizing: border-box;
+	width: 1728px;
+	transform-origin: 0 0;
+}
+
+.day_status {
+	float: right;
+    cursor: pointer;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #FFFFFF;
+    padding-top: 10px;
+}
+
+.day_status span {
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	margin-left: 5px;
+}
+
+.date-selector {
+	position: relative;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #A5A5A5;
+    padding: 1px 5px;
+    max-width: 590px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 5px 0 0;
+    height: 35px
+}
+
+.left-top-cont {
+	max-width: 590px;
+    width: 100%;
+}
+
+.date-selector-label {
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	color: #56CCF2;
+	/*padding-top: 5px*/
+}
+
+.other-day {
+	font-size: 13px;
+	padding-top: 3px;
+}
+
+.selector-icon {
+	width: 30px;
+	height: 30px;
+	font-size: 30px;
+    color: #63CCF2;
+	cursor: pointer;
+}
+
+.search_panel {
+	position: relative;
+	background: #fff;
+	border-radius: 5px;
+	border: 1px solid #A5A5A5;
+	width: 340px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-top: 0;
+	display: inline-block;
+	height: 35px;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+.search-input {
+	padding: 7px 10px 7px 10px;
+	width: 100%;
+	box-sizing: border-box;
+	border: none;
+	font-size: 12px;
+	height: 35px;
+	background: none;
+}
+
+.search-input::placeholder {
+	color: #A5A5A5;
+	font-size: 12px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.search-panel-icon {
+	color: #63CCF2;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+}
+
+.vh_center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 35px;
+}
+
+.plus-btn-cont {
+	position: relative;
+    /* background: #fff; */
+    border-radius: 5px;
+    /* border: 1px solid #A5A5A5; */
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+    margin-top: 0;
+    display: inline-block;
+    margin-left: 4px;
+	margin-right: 4px;
+    text-align: center;
+    box-sizing: border-box;
+	vertical-align: middle;
+}
+
+.panelClass.mat-dialog-container {
+	@include mat-elevation(0);
+}
+
+.today-marker {
+	width: 10px;
+	height: 10px;
+	border: 2px solid #fe0000;
+	border-radius: 100px;
+	display: inline-block;
+	vertical-align: middle;
+	box-sizing: border-box;
+	margin-top: -5px;
+	margin-left: 5px;
+}
+
+.location-selection {
+	float: left;
+	cursor: pointer;
+	color: #FFFFFF;
+}
+
+.clear {
+	clear: both;
+}
+
+.scroll-btn {
+	margin-top: 10px;
+    text-align: center;
+    /*padding-left: 53px;*/
+	position: relative;
+	height: 25px;
+	width: 40px;
+	/*margin-bottom: 10px;*/
+}
+
+.scroll-up-btn {
+	position: absolute;
+    left: 0;
+    top: -50px;
+    z-index: 100000;
+	height: 25px;
+	width: 40px;
+}
+
+.scroll-btn-img {
+	position: absolute;
+	left: 53px;
+	right: 0;
+	margin: auto;
+}
+
+.calenderyr {
+	margin-left: 7px;
+}
+
+.lastnames-list {
+	width: 340px;
+    height: 245px;
+    background: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    position: absolute;
+    right: 0;
+    top: 33px;
+    z-index: 100;
+	padding: 5px 0;
+	box-sizing: border-box;
+}
+
+.lastname-item {
+	padding: 2px 10px;
+}
+
+.lastitem-label {
+	font-size: 14px;
+	text-align: right;
+	color: #4EC8F0;
+	/*padding: 5px 10px;*/
+	float: right;
+}
+
+.list-item-dob {
+	float: left;
+    font-size: 9px;
+    color: #A5A5A5;
+    padding-top: 5px;
+}
+
+.notifictn_available {
+	position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #FF5A5A;
+    top: 6px;
+    right: 6px;
+    border-radius: 100px;
+}
+
+.legend-cont {
+	position: absolute;
+    bottom: 75px;
+    right: 20px;
+}
+
+.legend-cont ul {
+	list-style: none;
+	
+}
+
+.appnt-type-block {
+	width: 22px;
+    height: 22px;
+    font-size: 6px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    color: #4C4C4C;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 1px;
+	display: flex;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+.appnt-type-block.yellow {
+	border: 1px solid #FCFF7C;
+}
+
+.appnt-type-block.red {
+	border: 1px solid #FD7474;
+}
+
+.appnt-type-block.blue {
+	border: 1px solid #74B3FD;
+}
+
+.appnt-type-block.orange {
+	border: 1px solid #F6CC61;
+}
+
+.appnt-type-block.green {
+	border: 1px solid #8CF1E4;
+}
+
+.appnt-type-block.purple {
+	border: 1px solid #B48CF6;
+}
+
+.zoom-cont {
+	position: absolute;
+	bottom: 8px;
+	right: 20px;
+}
+
+.zoom-btn {
+	background: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 4px;
+	cursor: pointer;
+}
+
+.plus-btn {
+	border-radius: 100px 0 0 100px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.minus-btn {
+	border-radius: 0 100px 100px 0;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.zoom-value {
+	display: inline-block;
+    width: 60px;
+	height: 30px;
+	box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    background: #fff;
+    padding: 5px 0;
+    border: 1px solid #ccc;
+	font-size: 14px;
+}
+
+.zoom-value input {
+	width: 45%;
+    text-align: right;
+    border: none;
+    padding-right: 2px;
+	font-size: 14px;
+}
+
+.zoom-icon {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	margin: auto;
+}
+
+.clone-container {
+	width: 500px;
+	height: 500px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	border: 1px solid #ccc;
+}
+
+.chairnumSelector {
+	position: absolute;
+	left: 0;
+	top: -16px;
+}
+
+.patientNumber {
+	min-width: 19px;
+    min-height: 19px;
+    border: 1px solid #FFFFFF;
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: auto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: normal;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 0 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 200;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.monthglance-active {
+	color: #333333;
+	border: 1px solid #333333;
+}
+
+.patientNumber-wrapper {
+	position: absolute;
+    right: -45px;
+    top: 0;
+}
+
+.month-glance-wrapper {
+	position: absolute;
+	width: 422px;
+	height: 505px;
+	left: -8px;
+	top: -8px;
+
+	background: rgba(255, 255, 255, 0.65);
+	border: 1px solid #A5A5A5;
+	box-sizing: border-box;
+	border-radius: 5px;
+	z-index: 100;
+}
+
+.day-reminder-btn  {
+	position: relative;
+	width: 24px;
+	height: 24px;
+	background: #4EC8F0;
+	border-radius: 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.day-reminder-btn-active {
+	position: relative;
+	width: 24px;
+	height: 24px;
+	background: #FFFFFF;
+	border-radius: 0 0 2px 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border-right: 1px solid #4EC8F0;
+	border-bottom: 1px solid #4EC8F0;
+	border-left: 1px solid #4EC8F0;
+}
+
+.day-reminder-cont {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.day-reminder-popup {
+	position: absolute;
+	width: 300px;
+	height: 280px;
+	background: #FFFFFF;
+	border: 1px solid #4EC8F0;
+	border-radius: 4px 4px 0 4px;
+	right: 0;
+	bottom: 23px;
+	box-sizing: border-box;
+	padding: 10px;
+}
+
+.bottom-patch {
+	width: 24px;
+	height: 4px;
+	background: #FFFFFF;
+	bottom: -2px;
+	right: 0;
+	position: absolute;
+}
+
+.reminder-popup-title {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: normal;
+	color: #4EC8F0;
+}
+
+.reminder-popup-section {
+	margin-top: 8px;
+}
+
+.reminder-popup-section .section-label {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: normal;
+	color: #4EC8F0;
+	float: left;
+}
+
+.reminder-popup-section .error-msg {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: normal;
+	color: #FD7474;
+	float: right;
+}
+
+.reminder-popup-section .input-cont {
+	width: 100%;
+	height: 25px;
+	border: 1px solid #4EC8F0;
+	border-radius: 2px;
+	margin-top: 4px;
+	position: relative;
+}
+
+.reminder-popup-section .input-cont input {
+	width: 100%;
+	height: 100%;
+	padding: 2px 5px;
+	box-sizing: border-box;
+	background: none;
+	border: none;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: normal;
+	color: #434343;
+}
+
+.reminder-popup-section .input-cont input::placeholder {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: normal;
+	color: #434343;
+}
+
+.reminder-popup-section .sec-division{
+	width: 33.33%;
+	float: left;
+}
+
+.mid-sec-sperator {
+	display: flex;
+    height: 49px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 7px;
+	color: #4EC8F0;
+	font-weight: bold;
+}
+
+.reminder-popup-section .input-cont.notespanel {
+	width: 100%;
+	height: 80px;
+	border: 1px solid #4EC8F0;
+	border-radius: 2px;
+	margin-top: 4px;
+}
+
+.reminder-popup-section .input-cont textarea {
+	width: 100%;
+	height: 100%;
+	padding: 2px 5px;
+	box-sizing: border-box;
+	background: none;
+	border: none;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: normal;
+	color: #434343;
+	resize: none;
+}
+
+.add-to-calndr{
+	text-align: right;
+	cursor: pointer;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: normal;
+	color: #4EC8F0;
+	text-decoration: underline;
+}
+
+.notifictn_available_list{
+	position: absolute;
+    width: 425px;
+    height: 500px;
+    background: #C4C4C4;
+    border-radius: 2px;
+    z-index: 9999;
+	margin-top: 10px;
+	padding: 3px;
+}
+
+.notifictn_list{
+    width: 100%;
+    height: 21px;
+    background: #FFFFFF;
+    border: 1px solid #EDEDED;
+    box-sizing: border-box;
+	border-radius: 1px;
+	margin-top: 3px;
+	border: 1px solid #EDEDED;
+}
+
+.notifictn_list:nth-child(1) {
+    margin-top: 0px;
+  }
+
+  
+.notifictn_time
+{
+	float: left;
+    width: 48px;
+    height: 21px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: normal;
+    color: #A5A5A5;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+
+.notifictn_name
+{
+	float: left;
+    width: 150px;
+    height: 19px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: normal;
+    color: #4EC8F0;
+    border-radius: 4px;
+}
+
+.notifictn_action {
+	float: right;
+    width: 200px;
+    height: 21px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: normal;
+    text-align: right;
+    color: #818181;
+    border-radius: 4px;
+}
+
+.cancel-icon {
+	float: right;
+    width: 23px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reminder-popup-section .calender-icon {
+	position: absolute;
+    right: 0;
+    top: 0;
+    width: 25px;
+    height: 100%;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 2px 5px 5px 5px;
+}
+
+
+.btn-txt {
+	display: inline-block;
+	margin-right: 5px;
+	vertical-align: middle;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 8px;
+	line-height: 10px;
+	color: #4EC8F0;
+}
+
+.btn-icon {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.remove-btn {
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	cursor: pointer;
+}
+
+
+.multi_login{
+	font-size: 14px;
+    font-family: Lato;
+    box-sizing: border-box;
+    color: #ffff;
+    background: transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 46px;
+    border: 1px solid #ffffff;
+    padding: 3px 15px;
+}
+
+/*@media screen and (max-height: 900px) {
+	.top-bar {
+		margin-bottom: 10px;
+		padding: 5px 35px;
+		height: 85px;
+	}
+	
+	.scroll-btn {
+		width: 25px;
+	}
+	
+	.scroll-up-btn {
+		width: 25px;
+		top: -35px;
+	}
+}*/
+
+
+

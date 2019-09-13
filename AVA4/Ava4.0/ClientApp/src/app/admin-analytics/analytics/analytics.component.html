@@ -1,0 +1,381 @@
+<div class="analytics-wrapper">
+<perfect-scrollbar [config]="config">
+	<!-- <div fxLayout="column" class="analytics-content" [ngStyle]="{'zoom': zoomviewport/100}"> -->
+	
+	<div fxLayout="column" class="analytics-content">
+		<div fxLayout="row" fxLayoutGap="80px">
+			<div class="left-wrap">
+				<div class="left-panel">
+					
+					<div class="color-block">
+						<svg viewBox="0 0 427 402" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M427 0L427 595H0L0 105.76L427 0Z" fill="url(#paint0_linear)"/>
+							<defs>
+							<linearGradient id="paint0_linear" x1="427" y1="194.356" x2="31.4561" y2="194.356" gradientUnits="userSpaceOnUse">
+							<stop stop-color="#56CCF2"/>
+							<stop offset="1" stop-color="#56CCF2" stop-opacity="0"/>
+							</linearGradient>
+							</defs>
+						</svg>
+					</div>
+					
+					<div class="location-dropdown">
+						<div class="drpdn-label-cont" (click)="showLocationDrpdn()">
+							<div class="drpdn-label" >{{selectedLoc}}</div>
+							<div class="drpdn-arrow">
+								<svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M5.5 7L0.736861 0.249999L10.2631 0.25L5.5 7Z" fill="#4EC8F0"/>
+								</svg>
+							</div>
+						</div>
+						
+						<div class="drpdn-option-cont" *ngIf="showlocDdrnOption">
+							<div [ngClass]="{'drpdn-option': true, 'option-selected': loc.selected}" *ngFor="let loc of locationsDdArr; let indx=index" (click)="selectLocation(indx)">{{loc.label}}</div>
+						</div>
+					</div>
+					
+					<div class="calender-section">
+						<app-analytics-calender [monthname]="currMonths" [calenderRule]="calenderRule"></app-analytics-calender>
+					</div>
+                    
+                    <div class="to-do-list">
+                      <div class="heading">To-do</div>
+                      
+                      <div class="details">
+                        <div class="post-time">{{todoToday | date: 'MM'}} <span class="dot-circle">&#183;</span> {{todoToday | date: 'dd'}} <span class="dot-circle">&#183;</span> {{todoToday | date: 'yy'}}</div>
+                      </div>
+                      
+                      <div class="details">
+                        <div class="content"><del>Schedule new appointment for Qui - Gonn Jinn</del></div>
+                        <div class="post-time">41 min ago</div>
+                      </div>
+                      
+                      <div class="details">
+                        <div class="content">Schedule new appointment for Qui - Gonn Jinn</div>
+                        <div class="post-time">2 hours ago</div>
+                      </div>
+                      
+                       <div class="details">
+                        <div class="content">You updated billing info for account, Lisa Travis</div>
+                        <div class="post-time">4 hours ago</div>
+                      </div>
+                      
+                      <div class="details">
+                        <div class="content">You created a new lead, Jeff Smith</div>
+                        <div class="post-time">5 hours ago</div>
+                      </div>
+                      
+                      
+                    
+                    </div>
+					
+					<div class="see-all-btn">See all...</div>
+					
+				</div>
+			</div>
+			
+			<div class="right-wrap">
+			
+			<div fxFlex="60">
+                    <div class="title-block">
+						<div class="logo"><img src="assets/robot.png" /></div>
+						  <div class="block-content">
+							<div class="welcome-block">Hello, Dr. Tobler!</div>
+							<div class="notification-block">You have 16 tasks on your to-do list for today.</div>
+                            
+							<div class="clock-icon" (click)="showClockInfo=showClockInfo==false?true:false">
+                              <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M24.0757 23.4586V8.70727C24.0757 7.93534 23.4499 7.30957 22.678 7.30957C21.906 7.30957 21.2803 7.93534 21.2803 8.70727V23.4586H24.0757Z" fill="#56CCF2"/>
+								<path d="M23.2888 21.5148L21.2822 23.4609L29.3781 31.8079C29.9155 32.362 30.8003 32.3755 31.3544 31.8381C31.9085 31.3007 31.922 30.4159 31.3846 29.8618L23.2888 21.5148Z" fill="#56CCF2"/>
+								<path d="M43.667 22.5835C43.667 34.2276 34.2276 43.667 22.5835 43.667C10.9394 43.667 1.5 34.2276 1.5 22.5835C1.5 10.9394 10.9394 1.5 22.5835 1.5C34.2276 1.5 43.667 10.9394 43.667 22.5835Z" stroke="#56CCF2" stroke-width="3" stroke-miterlimit="10"/>
+							</svg>
+                            </div> 
+                            
+   
+							
+							<div class="clock-info-content" *ngIf="showClockInfo">
+								<div class="section-title" [ngStyle]="{'color': title_color}">{{title_for}}</div>
+								<!--<div class="to-day">{{weekbar_for | date: 'EEEE'}}</div>-->
+                                
+										<div class="tetxtarea-holder" *ngIf="time_comment_box"><textarea placeholder="Comments"></textarea></div>
+										<perfect-scrollbar [config]="config">
+
+                      <div class="time-slot-wrap"> 
+													
+									   <div class="time-slot-info" *ngIf="clock_in_for== true || clock_out_for==true">
+                        <div class="time-slot">
+														<div class="icon">
+															<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+																<path d="M11.69 11.6898V4.38357C11.69 4.11456 11.4719 3.89648 11.2029 3.89648C10.9339 3.89648 10.7158 4.11456 10.7158 4.38357V11.6898H11.69Z" fill="#56CCF2"/>
+																<path d="M11.6904 12.1773L11.6904 11.2031L5.84546 11.2031C5.57645 11.2031 5.35837 11.4212 5.35837 11.6902C5.35837 11.9592 5.57645 12.1773 5.84546 12.1773L11.6904 12.1773Z" fill="#56CCF2"/>
+																<path d="M21.5 11C21.5 16.799 16.799 21.5 11 21.5C5.20101 21.5 0.5 16.799 0.5 11C0.5 5.20101 5.20101 0.5 11 0.5C16.799 0.5 21.5 5.20101 21.5 11Z" stroke="#56CCF2" stroke-miterlimit="10"/>
+															</svg>
+														</div>
+														<span>Clocked in</span>
+                      </div>
+                        <div class="time">{{currentcheckin_time_for | date:'h:mm a'}}</div>
+									   </div>
+										
+										 <div *ngFor="let currentlunch_time_for of Breaktimeclone_outArray | keyvalue; let indx=index">
+												<div class="time-slot-info" *ngIf="start_break_for">
+												<div class="time-slot">
+												<div class="icon">
+														<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M16.5 11L8.25 15.7631L8.25 6.23686L16.5 11Z" fill="#F6CC61"/>
+															<path d="M21.5 11C21.5 16.799 16.799 21.5 11 21.5C5.20101 21.5 0.5 16.799 0.5 11C0.5 5.20101 5.20101 0.5 11 0.5C16.799 0.5 21.5 5.20101 21.5 11Z" stroke="#F6CC61" stroke-miterlimit="10"/>
+															</svg>
+												</div>
+													<span>Start Break</span>
+												</div>
+												<div class="time">{{ currentlunch_time_for.key | date:'h:mm a' }}</div>
+												</div>
+
+											
+									
+										<div class="time-slot-info" *ngIf="end_break_for &&  currentlunch_time_for.value">
+												<div class="time-slot">
+														<div class="icon">
+														<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M9.25421 14.8562V7.54996C9.25421 7.14645 8.9271 6.81934 8.52359 6.81934C8.12008 6.81934 7.79297 7.14645 7.79297 7.54996V14.8562C7.79297 15.2597 8.12008 15.5868 8.52359 15.5868C8.9271 15.5868 9.25421 15.2597 9.25421 14.8562Z" fill="#F6CC61"/>
+												<path d="M13.1511 7.5491L13.1511 14.8553C13.1511 15.2588 13.4782 15.5859 13.8817 15.5859C14.2852 15.5859 14.6123 15.2588 14.6123 14.8553L14.6123 7.5491C14.6123 7.14559 14.2852 6.81848 13.8817 6.81848C13.4782 6.81848 13.1511 7.14559 13.1511 7.5491Z" fill="#F6CC61"/>
+												<path d="M21.5 11C21.5 16.799 16.799 21.5 11 21.5C5.20101 21.5 0.5 16.799 0.5 11C0.5 5.20101 5.20101 0.5 11 0.5C16.799 0.5 21.5 5.20101 21.5 11Z" stroke="#F6CC61" stroke-miterlimit="10"/>
+												</svg>
+														</div>
+														<span>End break</span>
+												</div>
+												<div class="time">{{ currentlunch_time_for.value | date:'h:mm a' }}</div>
+												</div>
+										</div>
+									
+									
+									
+									<div class="time-slot-info" *ngIf="clock_out_for">
+										<div class="time-slot">
+											<div class="icon">
+										<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M11.69 11.6898V4.38357C11.69 4.11456 11.4719 3.89648 11.2029 3.89648C10.9339 3.89648 10.7158 4.11456 10.7158 4.38357V11.6898H11.69Z" fill="#FD7474"/>
+										<path d="M10.7158 11.2036L10.7158 12.1777L16.5608 12.1777C16.8298 12.1777 17.0479 11.9597 17.0479 11.6907C17.0479 11.4216 16.8298 11.2036 16.5608 11.2036L10.7158 11.2036Z" fill="#FD7474"/>
+										<path d="M21.5 11C21.5 16.799 16.799 21.5 11 21.5C5.20101 21.5 0.5 16.799 0.5 11C0.5 5.20101 5.20101 0.5 11 0.5C16.799 0.5 21.5 5.20101 21.5 11Z" stroke="#FD7474" stroke-miterlimit="10"/>
+										</svg>
+										</div>
+										<span>Clocked out</span>
+										</div>
+										<div class="time">{{currentcheckout_time_for | date:'h:mm a'}}</div>
+									</div>
+								</div>
+										</perfect-scrollbar>
+									
+									
+          
+                                
+                                
+                                
+								<div class="time-duration" *ngIf="duration_for">Duration <span *ngIf="duration_time_for_hour">{{duration_time_for_hour}}h</span> <span *ngIf="duration_time_for_minutes"> {{duration_time_for_minutes}}m</span></div>                              
+								<div class="time-duration highlight" *ngIf="highlight_duration_for">Duration <span *ngIf="duration_time_for_hour">{{duration_time_for_hour}}h</span> <span *ngIf="duration_time_for_minutes"> {{duration_time_for_minutes}}m</span></div>
+
+								<div class="btm-content">
+
+									<div class="time-infobox" (click)="clock_in()">
+                    <div class="icon-label">Clock in</div>
+										<div class="icon">
+											<svg *ngIf="clock_in_for==false || clock_out_for==true" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+											  <path d="M21.2546 21.2546V7.97056C21.2546 7.48146 20.8581 7.08496 20.369 7.08496C19.8799 7.08496 19.4834 7.48146 19.4834 7.97056V21.2546H21.2546Z" fill="#4EC8F0"/>
+											  <path d="M21.2549 22.1394L21.2549 20.3682L10.6277 20.3682C10.1386 20.3682 9.74206 20.7647 9.74206 21.2538C9.74206 21.7429 10.1386 22.1394 10.6277 22.1394L21.2549 22.1394Z" fill="#4EC8F0"/>
+											  <path d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z" stroke="#4EC8F0" stroke-miterlimit="10"/>
+											 </svg>
+											 
+											 <svg *ngIf="clock_in_for==true &&  clock_out_for==false" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M21.2546 21.2546V7.97056C21.2546 7.48146 20.8581 7.08496 20.369 7.08496C19.8799 7.08496 19.4834 7.48146 19.4834 7.97056V21.2546H21.2546Z" fill="#A5A5A5"/>
+												<path d="M21.2549 22.1394L21.2549 20.3682L10.6277 20.3682C10.1386 20.3682 9.74206 20.7647 9.74206 21.2538C9.74206 21.7429 10.1386 22.1394 10.6277 22.1394L21.2549 22.1394Z" fill="#A5A5A5"/>
+												<path d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z" stroke="#A5A5A5" stroke-miterlimit="10"/>
+												</svg>
+												
+										</div>
+									</div>
+                                    
+										<div class="time-infobox" *ngIf="start_break_for && end_break_for==false && clock_out_for == false || break_title=='End Break'"  (click)="break_fu()">
+											<div class="icon-label">{{break_title}}</div>
+										<div class="icon">
+											<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+											  <path d="M15.8267 12.3984H15.1699C14.6176 12.3984 14.1699 12.8462 14.1699 13.3984V27.3393C14.1699 27.8916 14.6176 28.3393 15.1699 28.3393H15.8267C16.379 28.3393 16.8267 27.8916 16.8267 27.3393V13.3984C16.8267 12.8462 16.379 12.3984 15.8267 12.3984Z" fill="#F6CC61"/>
+											  <path d="M24.9115 28.3389L25.5684 28.3389C26.1207 28.3389 26.5684 27.8912 26.5684 27.3389L26.5684 13.398C26.5684 12.8457 26.1207 12.398 25.5684 12.398L24.9115 12.398C24.3593 12.398 23.9116 12.8457 23.9116 13.398L23.9116 27.3389C23.9116 27.8912 24.3593 28.3389 24.9115 28.3389Z" fill="#F6CC61"/>
+											  <path d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z" stroke="#F6CC61" stroke-miterlimit="10"/>
+											 </svg>
+											 
+											 
+										</div>
+									</div>
+								
+
+									<div class="time-infobox" *ngIf="!start_break_for  || end_break_for==true && break_title=='Start Break' || clock_out_for == true" (click)="break_fu()">
+                    <div class="icon-label">{{break_title}}</div>
+										<div class="icon">
+											<svg *ngIf="(clock_in_for==true || end_break_for==true || start_break_for==true) && clock_out_for==false" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+											  <path d="M30 20L15 28.6603L15 11.3397L30 20Z" fill="#F6CC61"/>
+											  <path d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z" stroke="#F6CC61" stroke-miterlimit="10"/>
+											 </svg>
+											 
+											 <svg *ngIf="clock_in_for==false || clock_out_for==true " width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M30 20L15 28.6603L15 11.3397L30 20Z" fill="#A5A5A5"/>
+												<path d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z" stroke="#A5A5A5" stroke-miterlimit="10"/>
+												</svg>
+												
+										</div>
+									</div>
+
+									<div class="time-infobox" (click)="check_out()">
+                    <div class="icon-label">Clock out</div>
+										<div class="icon">
+											<svg *ngIf="clock_out_for==false && clock_in_for== true" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+											  <path d="M21.2546 21.2546V7.97056C21.2546 7.48146 20.8581 7.08496 20.369 7.08496C19.8799 7.08496 19.4834 7.48146 19.4834 7.97056V21.2546H21.2546Z" fill="#FD7474"/>
+											  <path d="M19.4834 20.3694L19.4834 22.1406L30.1106 22.1406C30.5997 22.1406 30.9962 21.7441 30.9962 21.255C30.9962 20.7659 30.5997 20.3694 30.1106 20.3694L19.4834 20.3694Z" fill="#FD7474"/>
+											  <path d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z" stroke="#FD7474" stroke-miterlimit="10"/>
+											 </svg>
+											 
+											 <svg *ngIf=" clock_in_for==false || clock_out_for==true" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M21.2546 21.2546V7.97056C21.2546 7.48146 20.8581 7.08496 20.369 7.08496C19.8799 7.08496 19.4834 7.48146 19.4834 7.97056V21.2546H21.2546Z" fill="#A5A5A5"/>
+												<path d="M19.4834 20.3694L19.4834 22.1406L30.1106 22.1406C30.5997 22.1406 30.9962 21.7441 30.9962 21.255C30.9962 20.7659 30.5997 20.3694 30.1106 20.3694L19.4834 20.3694Z" fill="#A5A5A5"/>
+												<path d="M39.5 20C39.5 30.7696 30.7696 39.5 20 39.5C9.23045 39.5 0.5 30.7696 0.5 20C0.5 9.23045 9.23045 0.5 20 0.5C30.7696 0.5 39.5 9.23045 39.5 20Z" stroke="#A5A5A5" stroke-miterlimit="10"/>
+												</svg>
+												
+												
+
+										</div>
+									</div>
+
+								</div>
+								
+								<div class="shadow-patch"></div>
+							</div>
+							
+						  </div>
+					   </div>
+                       
+                       
+				<div class="appnt-type-card" *ngFor="let analyticsItem of analyticsData; let indx=index" [ngStyle]="{'padding': analyticsItem.openaccordion==false ? '0' : '15px 15px 15px 35px', 'min-height': analyticsItem.openaccordion==false ? '0' : '600px'}">
+					
+					<div class="status-bar" *ngIf="!analyticsItem.openaccordion" (click)="openAnalyticsAccordion(indx)">
+					  <div class="status" [ngStyle]="{'background': setSectionBg(analyticsItem.section)}"><span>{{analyticsItem.section}}</span></div>
+					  <div class="result">{{analyticsItem.today}}</div>
+					</div>
+					
+					<div *ngIf="analyticsItem.openaccordion">
+					
+						<div class="appnt-card-title" [ngStyle]="{'background': setSectionBg(analyticsItem.section)}">
+							
+							<div class="rotation-label" #rotationlabel [ngStyle]="{'top': toppos + 'px'}">{{analyticsItem.section}}</div>
+							
+						</div>
+				   
+						<div fxLayout="row" >
+							<div fxFlex="25">
+								<div class="display-value active currency" [ngStyle]="{'border-color': setSectionBg(analyticsItem.section)}"><span>{{analyticsItem.today}}</span></div>
+								<div class="display-value-label">Today</div>
+							</div>
+							
+							<div fxFlex="25">
+								<div class="display-value currency"><span>{{analyticsItem.lastday}}</span></div>
+								<div class="display-value-label">Last Day</div>
+							</div>
+							
+							<div fxFlex="25">
+								<div class="display-value currency"><span>{{analyticsItem.last7day}}</span></div>
+								<div class="display-value-label">last 7 days</div>
+							</div>
+							
+							<div fxFlex="25">
+								<div class="display-value currency"><span>{{analyticsItem.last30day}}</span></div>
+								<div class="display-value-label">Last 30 days</div>
+							</div>
+						  
+						  </div>
+					  
+						<div fxLayout="row">
+						  
+						   <div class="accrdn-wrap">
+							<div class="accrdn-label" *ngFor="let patientItem of analyticsItem.patients; let ptnIndx=index" [ngStyle]="{'border': '1px solid ' + setSectionBg(analyticsItem.section)}">
+							  {{patientItem.name}}
+							  <div class="anchor" (click)="showactionMenu(ptnIndx)">
+							   <svg width="23" height="5" viewBox="0 0 23 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+								  <circle cx="2.5" cy="2.5" r="2.5" fill="white"/>
+								  <circle cx="11.5" cy="2.5" r="2.5" fill="white"/>
+								  <circle cx="20.5" cy="2.5" r="2.5" fill="white"/>
+							   </svg>
+							  </div>
+							  
+							  <div class="dropdown" *ngIf="patientItem.openmenu">
+								<ul>
+								  <li (click)="selectAction()">Auto - Sequence</li>
+								  <li (click)="selectAction()">Set a custom message</li>
+								  <li (click)="selectAction()">Remind me</li>
+								  <li (click)="selectAction()">Send Now</li>
+								  <li (click)="selectAction()">Patient profile</li>
+								  <li (click)="selectAction()">Remove</li>
+								</ul>
+							  </div>
+							</div>
+						   </div> 
+						</div>
+					</div>
+				</div>
+			</div>
+            
+            
+            <div fxFlex="40">
+				<div style="float:right;">
+					<!-- <div class="search_panel">
+						<div class="search-panel-icon">
+						  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							 <path d="M7.62817 1.78583C5.95247 0.109152 3.22516 0.109152 1.54947 1.78583C-0.125864 3.46286 -0.125864 6.19141 1.54947 7.86845C2.91259 9.23203 4.96983 9.48347 6.59207 8.6283C6.81247 8.51212 7.10986 8.63505 7.28598 8.81128L9.72632 11.2531C10.0819 11.6082 10.6566 11.6082 11.0104 11.2531C11.3657 10.8976 11.3657 10.3226 11.0104 9.96819L8.57008 7.5257C8.39396 7.34997 8.27118 7.05317 8.3872 6.83308C9.24308 5.2095 8.99191 3.1507 7.62817 1.78583ZM6.8577 7.09753C5.60665 8.34931 3.57061 8.34931 2.31993 7.09753C1.06961 5.84575 1.06961 3.80888 2.31993 2.5571C3.57061 1.30569 5.60665 1.30569 6.8577 2.5571C8.10875 3.80888 8.10875 5.84575 6.8577 7.09753Z" fill="#6BD3F4"/>
+						  </svg>
+						</div>
+						<span class="search-input">
+						Find patient...
+						</span>
+					</div> -->
+					
+					<div class="plus-btn-cont">
+						<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+						   <rect x="0.582031" y="6.18555" width="14" height="3.23077" fill="#4EC8F0"/>
+						   <rect x="5.96582" y="0.799805" width="3.23077" height="14" fill="#4EC8F0"/>
+						</svg>
+
+					</div>
+					
+					<div class="plus-btn-cont" style="width: 26px; height: 32px;">
+						<svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.10938 17.8213C6.54891 19.079 7.77961 20.0014 9.18612 20.0014C10.5926 20.0014 11.9112 19.1629 12.4387 17.8213" stroke="#4EC8F0" stroke-width="0.75" stroke-miterlimit="10"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M12.4302 1.07582C13.2072 1.41007 13.9253 1.87035 14.5432 2.45257C15.9137 3.744 16.8119 5.65425 16.7528 8.18185L17.5026 8.19938C17.5664 5.46964 16.5904 3.35114 15.0575 1.90672C14.2572 1.15258 13.3108 0.587399 12.2919 0.213867C12.3686 0.488995 12.416 0.777704 12.4302 1.07582ZM5.70625 0.368649C4.93198 0.695784 4.19988 1.13919 3.5421 1.70168C1.88525 3.11848 0.721745 5.27231 0.53125 8.16588L1.27963 8.21514C1.45782 5.50845 2.53717 3.54783 4.02953 2.27169C4.51351 1.85782 5.04323 1.51402 5.60318 1.2396C5.60517 0.939322 5.64081 0.647631 5.70625 0.368649Z" fill="#4EC8F0"/>
+							<path d="M16.8164 13.3772C16.4648 13.1257 15.9374 12.6226 15.4978 11.868C15.2341 11.3649 15.1462 11.0295 14.9704 10.4425C14.8825 9.68789 14.7067 8.68171 14.7067 7.50783C14.7067 7.08858 14.7067 5.74701 13.7397 4.40543C12.7727 3.06385 11.4541 2.64461 11.0146 2.47691C10.9267 1.55458 10.1355 0.883789 9.16853 0.883789C8.20155 0.883789 7.41039 1.63843 7.32248 2.47691C5.12481 3.23155 3.54248 5.16007 3.54248 7.50783C3.54248 8.68171 3.36667 9.60404 3.27876 10.2748C3.27876 10.8618 3.10295 11.4487 2.66341 12.1195C2.39969 12.5387 2.22388 12.8741 1.78434 13.2934C1.52062 13.6288 1.2569 13.7965 1.08109 14.1319C0.905273 14.4673 0.905273 14.8027 0.905273 14.8865C0.905273 14.9703 0.905273 15.8088 1.52062 16.3119C2.13597 16.8989 2.92713 16.815 3.01504 16.815C7.23458 16.815 11.3662 16.815 15.5857 16.815C15.6736 16.815 16.8164 16.8989 17.4318 16.0604C17.7834 15.5573 17.6955 15.0542 17.6955 14.8027C17.5197 14.048 16.9922 13.5449 16.8164 13.3772Z" stroke="#4EC8F0" stroke-width="0.75" stroke-miterlimit="10"/>
+						</svg>
+
+						
+						<div class="notifictn_available"></div>
+					</div>
+				</div>
+			</div>
+            
+            
+			</div>
+            
+		</div>
+	</div>
+</perfect-scrollbar>
+
+
+	<div class="vendor-btn" (click)="openVendorModal()">
+		<svg width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.273 2.20773L5.66589 0.822998L0.721473 10.1321L3.32857 11.5169L8.273 2.20773Z" fill="white"/>
+<path d="M31.1256 10.8241L26.2055 2.30242L28.1556 1.17648L33.0758 9.69811L31.1256 10.8241Z" stroke="white" stroke-width="0.7"/>
+<path d="M8.6326 13.4688C8.51389 12.9927 8.27388 12.7832 8.16034 12.7004C7.78098 12.4287 7.30356 12.4804 6.65839 12.5529C6.34355 12.5891 6.08806 12.6434 5.91258 12.69C5.54096 12.1674 5.16935 11.6447 4.79773 11.1221C6.07774 8.70547 7.35775 6.28888 8.64034 3.86969C9.32163 4.28108 10.2713 4.70541 11.4378 4.79855C11.621 4.81408 11.7991 4.81925 11.972 4.81667C11.7268 5.25393 11.5075 5.60322 11.3526 5.84126C10.6842 6.87103 10.2481 7.32123 10.0674 8.15954C9.99003 8.52177 9.99261 8.79086 10.1397 8.99785C10.2171 9.10652 10.3307 9.18931 10.7875 9.32903C11.5229 9.55413 11.9152 9.67315 12.3978 9.5593C12.6971 9.48945 12.9139 9.35749 13.1075 9.22295C14.0778 8.55799 14.9785 7.53081 15.4249 6.99264C15.8275 6.88914 16.2275 6.78565 16.6301 6.68474C18.4882 7.6964 20.0469 8.58128 21.2366 9.26952C23.105 10.3484 23.8559 10.8219 24.723 11.4843C25.8689 12.3614 26.7282 13.1971 27.2908 13.7871C27.3527 13.8828 27.4276 14.0303 27.4456 14.2166C27.4895 14.6719 27.1669 15.1247 26.8727 15.3058C25.8972 15.9113 23.8559 14.4417 23.2701 14.0173C22.7979 13.6758 22.2585 13.4248 21.8095 13.0548C21.8095 13.0548 21.1282 12.4934 20.6611 12.5192C20.612 12.5218 20.4753 12.5296 20.4056 12.6253C20.4056 12.6253 20.3488 12.7004 20.3643 12.8297C20.4133 13.2334 22.1604 14.1286 22.1604 14.1286C22.2275 14.1622 22.0082 14.051 24.5347 15.5672C24.994 15.844 25.2392 15.9889 25.2934 16.2658C25.3966 16.7858 24.7747 17.4792 24.1166 17.5827C23.6985 17.6474 23.3579 17.4585 22.9424 17.2076C21.4275 16.2968 19.5617 14.954 18.9449 15.104C18.914 15.1118 18.8262 15.1325 18.8004 15.1972C18.7333 15.3628 19.1127 15.6758 19.4998 15.9604C20.8443 16.9514 21.5179 17.4456 22.403 17.813C22.563 17.8803 22.8521 17.9941 22.9553 18.2632C23.0792 18.5789 22.8856 18.9566 22.705 19.1636C22.4004 19.5103 21.9721 19.5439 21.874 19.5465C21.8379 19.5465 21.7862 19.5439 21.7217 19.5362C21.4817 19.5103 21.3062 19.4404 21.2366 19.4094C20.243 18.9954 19.8533 18.7703 19.8533 18.7703C18.1475 17.7923 17.7114 17.6293 17.4843 17.8026C17.4404 17.8363 17.4146 17.8751 17.4017 17.8984C17.3991 17.945 17.4017 18.0148 17.4249 18.0924C17.523 18.4184 17.8894 18.5556 18.3204 18.7393C18.3204 18.7393 18.6559 18.8816 19.4507 19.2645C20.4133 19.7302 20.4753 19.8881 20.4907 19.976C20.5604 20.3667 19.9901 20.7574 19.9256 20.8014C19.3707 21.1714 18.7411 21.1015 18.0985 21.0213C17.6443 20.9644 16.9398 20.8195 16.1294 20.4133C16.2301 20.1623 16.3488 19.7742 16.3746 19.293C16.3901 18.9618 16.4133 18.5168 16.2146 18.108C15.8068 17.2696 14.7204 17.1066 14.5604 17.0859C14.5681 16.985 14.6378 16.0174 13.8842 15.3653C13.3165 14.8738 12.6559 14.8841 12.4959 14.8893C12.4675 14.5891 12.3926 14.1389 12.1681 13.6448C12.0494 13.386 11.8429 12.9306 11.5384 12.7081C10.9371 12.2709 9.74744 12.5891 8.6326 13.4688Z" fill="white"/>
+<path d="M8.02093 17.1688L8.02094 17.1688L8.01972 17.167C7.88528 16.9651 7.85594 16.7402 7.86906 16.5429C7.87868 16.3982 7.91052 16.2811 7.92915 16.2231L9.89386 13.6525L9.90454 13.6386L9.91377 13.6236L9.91385 13.6235C9.92003 13.6134 9.97496 13.5242 10.0716 13.4379C10.1688 13.3511 10.2864 13.2861 10.4233 13.281L10.424 13.281C10.6488 13.2722 10.8152 13.4306 10.9477 13.5706C11.1462 13.7819 11.1982 14.0241 11.2212 14.1429C11.2758 14.4272 11.219 14.6642 11.1739 14.7962L9.11913 17.3255C9.06375 17.3852 8.87953 17.5624 8.62641 17.5641C8.47001 17.5648 8.33813 17.4982 8.22799 17.4057C8.11656 17.3121 8.04635 17.2075 8.02093 17.1688Z" stroke="white" stroke-width="0.7"/>
+<path d="M8.42134 13.9878L8.0716 14.0013C8.08133 14.2531 7.94195 14.4226 7.90459 14.4666L7.61648 14.7953L7.33403 15.1174C7.08696 15.3611 6.6849 15.3601 6.43697 15.1102L6.38102 15.0538L6.38102 15.0538L6.38018 15.0529C6.05725 14.7296 6.01259 14.4026 6.08465 14.241C6.10163 14.2047 6.13448 14.1467 6.21831 14.0848L6.22623 14.079L6.23382 14.0727L6.92046 13.5036L6.93358 13.4927L6.94558 13.4806C6.97873 13.4472 7.17277 13.2519 7.44692 13.2844L7.44881 13.2846C7.68148 13.3108 7.81792 13.4857 7.84124 13.5176L7.85678 13.5389L7.87532 13.5575C7.91037 13.5929 8.06171 13.7505 8.07161 14.0016L8.42134 13.9878ZM8.42134 13.9878C8.40608 13.6007 8.17466 13.3623 8.12379 13.311M8.42134 13.9878C8.43655 14.3814 8.21669 14.6399 8.16999 14.6948L8.16957 14.6953L8.12379 13.311M8.12379 13.311C8.08819 13.2623 7.87457 12.9804 7.48802 12.9368L8.12379 13.311ZM6.13255 15.3003L6.18849 15.3567L5.76634 14.0955C5.60867 14.4441 5.75617 14.9234 6.13255 15.3003Z" stroke="white" stroke-width="0.7"/>
+<path d="M11.1143 19.3634L11.1137 19.3636C10.8257 19.4188 10.6001 19.2805 10.5262 19.2295C10.2233 19.0194 10.077 18.6002 10.1499 18.2266L10.15 18.2259C10.1967 17.9837 10.3263 17.8175 10.3969 17.74L10.4062 17.7299L10.4147 17.719L11.8092 15.9262L11.8188 15.9138L11.8273 15.9006C11.8268 15.9014 11.8272 15.9009 11.8284 15.8993C11.8386 15.8854 11.9098 15.789 12.0228 15.6988C12.1494 15.5978 12.2888 15.5354 12.4317 15.5477C12.5732 15.5606 12.7039 15.6457 12.8196 15.8051C12.9366 15.9661 13.0115 16.17 13.0396 16.3306L13.0396 16.3306L13.0399 16.3322C13.0903 16.6128 13.0103 16.8533 12.9568 16.9751C12.5161 17.655 12.0755 18.3375 11.6351 19.0197C11.502 19.2107 11.3127 19.3257 11.1143 19.3634Z" stroke="white" stroke-width="0.7"/>
+<path d="M13.7873 20.7308L13.7863 20.7309C13.62 20.7532 13.425 20.6878 13.241 20.5319C13.0573 20.3763 12.9223 20.1605 12.8732 19.9605C12.812 19.7106 12.8865 19.4906 12.9068 19.4385L12.9069 19.4386L12.9097 19.4308C12.964 19.2812 13.0494 19.1787 13.3444 18.8691L13.3445 18.869C13.5259 18.6786 13.6898 18.5078 13.8278 18.364C13.9536 18.233 14.058 18.1243 14.1345 18.0434L14.1399 18.0377L14.1449 18.0319C14.1764 17.9955 14.3543 17.8109 14.6054 17.8109C14.8684 17.8109 15.0469 18.0216 15.1418 18.1457C15.4349 18.5293 15.2853 19.0201 15.2616 19.0894L15.5927 19.2029L15.2616 19.0894L15.2615 19.0897C15.2445 19.1394 15.2239 19.1995 14.9717 19.5392C14.7853 19.7889 14.5157 20.1326 14.1545 20.5317C13.9852 20.6975 13.8353 20.7244 13.7873 20.7308Z" stroke="white" stroke-width="0.7"/>
+<path d="M28.3026 11.5979L28.3028 11.5976C28.5352 11.3263 28.7174 11.0593 28.8609 10.8186C27.6411 8.59579 26.4235 6.373 25.2082 4.1502C24.9706 4.19056 24.6735 4.22734 24.3319 4.23725L24.3316 4.23726C23.5247 4.25988 22.9472 4.11476 22.0871 3.89863C21.9867 3.87342 21.8825 3.84724 21.7737 3.82025L28.3026 11.5979ZM28.3026 11.5979C27.9721 11.9845 27.6341 12.2729 27.3389 12.4869C25.8181 11.1514 24.0125 9.7318 21.9039 8.34362M28.3026 11.5979L16.6607 5.33919M16.6607 5.33919L16.8218 5.41957C18.3948 6.20461 20.113 7.1643 21.9039 8.34362M16.6607 5.33919L16.5017 5.42346M16.6607 5.33919L16.5017 5.42346M21.9039 8.34362L21.7114 8.63593L21.9039 8.34362ZM16.5017 5.42346C16.3119 5.52402 16.0649 5.63338 15.7651 5.71173L15.7639 5.71207M16.5017 5.42346L15.7639 5.71207M15.7639 5.71207C15.405 5.8073 15.088 5.82876 14.85 5.82637L14.644 5.82431M15.7639 5.71207L14.644 5.82431M14.644 5.82431L14.5422 6.00344M14.644 5.82431L14.5422 6.00344M14.5422 6.00344C14.0315 6.90219 13.4521 7.45825 13.0638 7.77365L13.0629 7.77432M14.5422 6.00344L13.0629 7.77432M13.0629 7.77432C12.441 8.28265 12.0739 8.36355 11.8927 8.39277L11.8927 8.39277C11.8058 8.40623 11.5906 8.43954 11.3759 8.43122C11.2675 8.42702 11.1771 8.41261 11.1117 8.38963C11.0803 8.37858 11.0603 8.36751 11.0486 8.35913C11.0434 8.35542 11.0401 8.35244 11.038 8.3503M13.0629 7.77432L11.038 8.3503M11.038 8.3503C11.0384 8.34494 11.0396 8.33623 11.0425 8.3235C11.0568 8.26082 11.1005 8.15461 11.2062 7.97166C11.3649 7.69682 11.6197 7.32059 11.995 6.76627C12.1178 6.58475 12.2537 6.38413 12.4033 6.16172L12.4034 6.16156C12.5405 5.95753 12.6627 5.77461 12.7727 5.61002C13.1196 5.0909 13.3448 4.75403 13.5303 4.51154C13.7604 4.21077 13.9097 4.08195 14.1434 3.94608C14.4476 3.77006 14.7596 3.65846 15.8586 3.5207L11.038 8.3503ZM19.5812 3.31557C18.0283 3.29689 16.7618 3.4076 15.8586 3.52069L19.5812 3.31557ZM19.5812 3.31557C20.5138 3.51383 21.2634 3.69379 21.7736 3.82024L19.5812 3.31557Z" stroke="white" stroke-width="0.7"/>
+</svg>
+
+	</div>
+
+</div>
+

@@ -1,0 +1,345 @@
+<div fxLayout="column" style="position: relative; height: 100%;">
+	<form [formGroup]="doctorform" novalidate *ngIf="editdoctor" (ngSubmit)="onSubmitDoctorform()">
+	<div fxLayout="row" fxLayoutGap="20px" >
+		
+		<div fxFlex="50">
+			
+			<div class="chkbox-cont">
+				<app-checkbox [chkboxlabel]="'Active'" [selected]="true"></app-checkbox>
+			</div>
+			<div class="editable-form">
+				<div class="editable-form-item">
+					<div class="form-label" *ngIf="!doctorform.controls.doctorname.hasError('required')">Display name</div>
+					<div class="form-label form-error-msg" *ngIf="doctorform.controls.doctorname.hasError('required') && ( doctorform.controls.doctorname.dirty || doctorform.controls.doctorname.touched)">{{validation.doctorname.msg}}</div>
+
+					<div class="form-input-cont">
+						<input type="text" placeholder="Display name"  [formControl]="doctorform.controls['doctorname']" formControlName="doctorname"/>
+					</div>
+				</div>
+
+				
+				<div class="editable-form-item">
+					<div class="form-label" *ngIf="!doctorform.controls.firstname.hasError('required')">First name</div>
+					<div class="form-label form-error-msg" *ngIf="doctorform.controls.firstname.hasError('required') && ( doctorform.controls.firstname.dirty || doctorform.controls.firstname.touched)">{{validation.firstname.msg}}</div>
+					<div class="form-input-cont">
+						<input type="text"placeholder="First name"  [formControl]="doctorform.controls['firstname']" formControlName="firstname"/>
+					</div>
+				</div>
+
+				
+				<div class="editable-form-item">
+					<div class="form-label">Middle name</div>
+					<div class="form-input-cont">
+						<input type="text" formControlName="middleName" placeholder="Middle name"  />
+					</div>
+				</div>
+				
+				
+				<div class="editable-form-item">
+						<div class="form-label" *ngIf="!doctorform.controls.lastname.hasError('required')">Last name</div>
+						<div class="form-label form-error-msg" *ngIf="doctorform.controls.lastname.hasError('required') && ( doctorform.controls.lastname.dirty || doctorform.controls.lastname.touched)">{{validation.lastname.msg}}</div>
+						<div class="form-input-cont">
+							<input type="text"placeholder="Last name"  [formControl]="doctorform.controls['lastname']" formControlName="lastname"/>
+						</div>
+				</div>
+
+				<div class="editable-form-item">
+						<div class="form-label" *ngIf="!doctorform.controls.designation.hasError('required')">Degree</div>
+						<div class="form-label form-error-msg" *ngIf="doctorform.controls.designation.hasError('required') && ( doctorform.controls.designation.dirty || doctorform.controls.designation.touched)">{{validation.designation.msg}}</div>
+						<div class="form-input-cont">
+							<input type="text"placeholder="Degree"  [formControl]="doctorform.controls['designation']" formControlName="designation"/>
+						</div>
+				</div>
+
+		
+				<div class="editable-form-item">
+					<div class="form-label">Nickname</div>
+					<div class="form-input-cont">
+						<input type="text" formControlName="nickName" placeholder="Nickname" />
+					</div>
+				</div>
+				
+				<div class="editable-form-item">
+					
+					<div class="form-label" *ngIf="!doctorform.controls.birthday.invalid">Birthdate</div>
+					<div class="form-label form-error-msg" *ngIf="doctorform.controls.birthday.invalid">
+						
+						<div *ngIf="doctorform.controls.birthday.value==''">
+								{{validation.dob.msg1}}
+						</div>
+						<div *ngIf="doctorform.controls.birthday.invalid && doctorform.controls.birthday.value!=''">
+								{{validation.dob.msg2}}
+						</div>
+
+					</div>
+					<div class="form-input-cont">
+						<input [textMask]="{mask: dateMask()}" type="text" placeholder="Birthdate" [formControl]="doctorform.controls['birthday']" formControlName="birthday"/>
+					</div>
+				</div>
+				
+			
+
+				<div class="editable-form-item">
+						
+					<div class="form-label" *ngIf="!doctorform.controls.phone.invalid">Cell Phone</div>
+					<div class="form-label form-error-msg" *ngIf="doctorform.controls.phone.invalid || ( doctorform.controls.phone.dirty || doctorform.controls.phone.touched )">
+							<div *ngIf="doctorform.controls.phone.value==''">
+									{{validation.phone.msg1}}
+							</div>
+							<div *ngIf="doctorform.controls.phone.invalid && doctorform.controls.phone.value!=''">
+									{{validation.phone.msg2}}
+							</div>
+					</div>
+					
+					<div class="form-input-cont">
+						<input type="text" placeholder="Cell Phone" [formControl]="doctorform.controls['phone']" formControlName="phone" [textMask]="{mask: phonemask}"/>
+					</div>
+				</div>
+
+
+					<div class="editable-form-item">
+						<div *ngIf="!doctorform.controls.email.invalid" class="form-label">Email Address</div>
+						<div class="form-label form-error-msg" *ngIf="doctorform.controls.email.invalid && ( doctorform.controls.email.dirty || doctorform.controls.email.touched )">
+							<div *ngIf="doctorform.controls.email.errors.required && doctorform.controls.email.value==''">
+									{{validation.email.msg1}}
+							</div>
+							<div *ngIf="doctorform.controls.email.invalid && doctorform.controls.email.value!=''">
+									{{validation.email.msg2}}
+							</div>
+							
+						</div>
+						<div class="form-input-cont">
+							<input type="text" [textMask]="{mask: emailMask}" placeholder="Email Address" formControlName="email"/>
+						</div>
+					</div>
+
+				
+			
+
+				<div class="editable-form-item">
+						
+						<div class="form-label" *ngIf="!doctorform.controls.notes.hasError('required')">Notes</div>
+						<div class="form-label form-error-msg" *ngIf="doctorform.controls.notes.hasError('required') && ( doctorform.controls.notes.dirty || doctorform.controls.notes.touched)">{{validation.notes.msg}}</div>
+
+						<div class="form-input-cont textarea-input">
+							<textarea formControlName="notes" ></textarea>
+						</div>
+					</div>
+
+			</div>
+			
+		
+			<div class="chkbox-cont" style="margin-top: 10px;position: relative;">
+				<div class="chkbox-cont-label" style="margin-bottom: 13px;">Professional Groups:</div>
+				<div *ngIf="error" style="font-family: Lato;font-style: normal;font-weight: normal;font-size: 12px;line-height: 14px; color: red; margin-top: 5px;position: absolute; top: 9px;">
+						Select atleast one professional group 
+				</div>
+					<div class="chkbox-holder" *ngFor="let groupVal of groupData; let indx=index">
+							<app-checkbox (errorTnsf)="errorTnsf($event)" [chkboxlabel]="groupVal.label" [selected]="groupVal.selected" [group]="groupData" [isArraychek]='isArraychek'></app-checkbox>
+					</div>
+			</div>
+		</div>
+	
+		
+		<div fxFlex="50">
+			<div class="active-location-cont">
+				<div class="loc-cont" *ngFor="let locitem of selectedLocArr; let locindx=index">
+					<div class="active-sign-cont" (click)="removefromList('location', locindx)">
+						<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M11.9452 3.63338C11.741 3.4474 11.4248 3.46212 11.2388 3.66625L4.323 11.2574L1.07408 8.29744C0.869948 8.11147 0.553708 8.12619 0.367736 8.33032C0.181765 8.53445 0.196485 8.85069 0.400615 9.03666L3.86309 12.1911C3.89036 12.2564 3.93198 12.317 3.98775 12.3678C4.19188 12.5537 4.50812 12.539 4.69409 12.3349L11.9781 4.33972C12.164 4.13559 12.1493 3.81935 11.9452 3.63338Z" fill="#4EC8F0"/>
+						</svg>
+					</div>
+					<div class="active-location-wrapper">
+						<div class="active-location">{{locitem.clinicname}}</div>
+						<div class="location-addr">{{locitem.city}}, {{locitem.state}}</div>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			
+			<div class="add-another">
+				<div class="add-another-wrapper" (click)="showDrpOptns('locationlist')">
+					<div class="add-icon">
+						<svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M8.01 4.65H5.1V7.74H3.5925V4.65H0.6975V3.2775H3.5925V0.202499H5.1V3.2775H8.01V4.65Z" fill="#4EC8F0"/>
+						</svg>
+					</div>
+					<div class="add-label">Attach another Location</div>
+				</div>
+				<div class="dropdown-optns" *ngIf="anotheroptns_location">
+					<div class="drpoptns" *ngFor="let clinicItem of drpdnLocArr" (click)="selectAnother(clinicItem, 'loc')">
+						<div class="active-location">{{clinicItem.clinicname}}</div>
+						<div class="location-addr">{{clinicItem.city}}, {{clinicItem.state}}</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="save-btn">
+		<button class="saveButton">Save</button>
+	</div>
+</form>
+
+	<form [formGroup]="locationform" novalidate *ngIf="!editdoctor" (ngSubmit)="onSubmitLocationform()" >
+	<div fxLayout="row" fxLayoutGap="20px">
+		
+		<div fxFlex="50">
+			<div class="active-location-cont" style="margin-top: 15px;">
+				<div class="loc-cont" *ngFor="let slectedDocItem of selectedDocArr; let docindx=index">
+					<div class="active-sign-cont" (click)="removefromList('doctor', docindx)">
+						<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M11.9452 3.63338C11.741 3.4474 11.4248 3.46212 11.2388 3.66625L4.323 11.2574L1.07408 8.29744C0.869948 8.11147 0.553708 8.12619 0.367736 8.33032C0.181765 8.53445 0.196485 8.85069 0.400615 9.03666L3.86309 12.1911C3.89036 12.2564 3.93198 12.317 3.98775 12.3678C4.19188 12.5537 4.50812 12.539 4.69409 12.3349L11.9781 4.33972C12.164 4.13559 12.1493 3.81935 11.9452 3.63338Z" fill="#4EC8F0"/>
+						</svg>
+					</div>
+					<div class="active-location-wrapper">
+						<div class="active-location">{{slectedDocItem.doctorname}}</div>
+						<div class="location-addr">{{slectedDocItem.designation}}</div>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			
+			<div class="add-another">
+				<div class="add-another-wrapper" (click)="showDrpOptns('doctorlist')">
+					<div class="add-icon">
+						<svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M8.01 4.65H5.1V7.74H3.5925V4.65H0.6975V3.2775H3.5925V0.202499H5.1V3.2775H8.01V4.65Z" fill="#4EC8F0"/>
+						</svg>
+					</div>
+					<div class="add-label">Attach another Doctor</div>
+				</div>
+				<div class="dropdown-optns" *ngIf="anotheroptns_doctor">
+					<div class="drpoptns" *ngFor="let doctorItem of drpdnDocArr" (click)="selectAnother(doctorItem, 'doctor')">
+						<div class="active-location">{{doctorItem.doctorname}}</div>
+						<div class="location-addr">{{doctorItem.designation}}</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div fxFlex="50">
+			<div class="chkbox-cont" style="margin-top: 15px;">
+				<app-checkbox [chkboxlabel]="'Active'" [selected]="true"></app-checkbox>
+			</div>
+			
+				<div class="editable-form">
+					<div class="editable-form-item">
+						<div class="form-label" *ngIf="!locationform.controls.clinicname.hasError('required')">Location name</div>
+						
+						<div class="form-label form-error-msg" *ngIf="locationform.controls.clinicname.hasError('required') && ( locationform.controls.clinicname.dirty || locationform.controls.clinicname.touched)">{{validation.clinicname.msg}}</div>
+						
+						<div class="form-input-cont">
+							<input type="text" placeholder="Location name" [formControl]="locationform.controls['clinicname']" formControlName="clinicname"/>
+						</div>
+					</div>
+					
+					<div class="editable-form-item">
+						<div class="form-label" *ngIf="!locationform.controls.address.hasError('required')">Address</div>
+						
+						<div class="form-label form-error-msg" *ngIf="locationform.controls.address.hasError('required') && ( locationform.controls.address.dirty || locationform.controls.address.touched)">{{validation.address.msg}}</div>
+						
+						<div class="form-input-cont">
+							<input type="text" placeholder="Address" [formControl]="locationform.controls['address']" formControlName="address"/>
+						</div>
+					</div>
+					
+					<div class="editable-form-item">
+						<div class="form-label" *ngIf="!locationform.controls.city.hasError('required')">City</div>
+						
+						<div class="form-label form-error-msg" *ngIf="locationform.controls.city.hasError('required') && ( locationform.controls.city.dirty || locationform.controls.city.touched)">{{validation.city.msg}}</div>
+						
+						<div class="form-input-cont">
+							<input type="text" placeholder="City" [formControl]="locationform.controls['city']" formControlName="city"/>
+						</div>
+					</div>
+					
+					<div class="editable-form-item">
+						
+						<div class="form-label" *ngIf="!locationform.controls.state.hasError(validation.state.type)">State</div>
+						
+						<div class="form-label form-error-msg" *ngIf="locationform.controls.state.hasError(validation.state.type) && ( locationform.controls.state.dirty || locationform.controls.state.touched)">{{validation.state.msg}}</div>
+						
+						<div class="form-input-cont">
+							<input type="text" [formControl]="locationform.controls['state']" placeholder="State" formControlName="state"/>
+						</div>
+					</div>
+					
+					<div class="editable-form-item">
+						<div class="form-label" *ngIf="!locationform.controls.zip.invalid">Zip code</div>
+						<div class="form-label form-error-msg" *ngIf="locationform.controls.zip.invalid">
+							{{validation.zip.msg}}
+							<div *ngIf="locationform.controls.zip.errors.required && locationform.controls.zip.value==''">
+									{{validation.zip.msg1}}
+							</div>
+							<div *ngIf="locationform.controls.zip.invalid==true && locationform.controls.zip.value!=''">
+									{{validation.zip.msg2}}
+							</div>
+						</div>
+						<div class="form-input-cont">
+							<input [textMask]="{mask: zipMask}"  type="text" placeholder="Zip code" [formControl]="locationform.controls['zip']" formControlName="zip"/>
+						</div>
+					</div>
+
+					
+					<div class="editable-form-item">
+						
+						<div class="form-label" *ngIf="!locationform.controls.phone.invalid">Phone number</div>
+						<div class="form-label form-error-msg" *ngIf="locationform.controls.phone.invalid && ( locationform.controls.phone.dirty || locationform.controls.phone.touched )">
+								<div *ngIf="locationform.controls.phone.value==''">
+										{{validation.phone.msg1}}
+								</div>
+								<div *ngIf="locationform.controls.phone.invalid && locationform.controls.phone.value!=''">
+										{{validation.phone.msg2}}
+								</div>
+						</div>
+						
+						<div class="form-input-cont">
+							<input type="text" [textMask]="{mask: phonemask}"   placeholder="Phone number" [formControl]="locationform.controls['phone']" formControlName="phone" />
+						</div>
+					</div>
+					
+					<div class="editable-form-item">
+						<div class="form-label">Fax area</div>
+						<div class="form-input-cont">
+							<input type="text" formControlName="faxForlocation" placeholder="Fax area"/>
+						</div>
+					</div>
+					
+					<div class="editable-form-item">
+						<div *ngIf="!locationform.controls.email.invalid" class="form-label">Email Address</div>
+						<div class="form-label form-error-msg" *ngIf="locationform.controls.email.invalid && ( locationform.controls.email.dirty || locationform.controls.email.touched )">
+							<div *ngIf="locationform.controls.email.errors.required && locationform.controls.email.value==''">
+									{{validation.email.msg1}}
+							</div>
+							<div *ngIf="locationform.controls.email.invalid && locationform.controls.email.value!=''">
+									{{validation.email.msg2}}
+							</div>
+							
+						</div>
+						<div class="form-input-cont">
+							<input type="text" [textMask]="{mask: emailMask}"  placeholder="Email Address" formControlName="email"/>
+						</div>
+					</div>
+					
+					<div class="editable-form-item">
+						
+						<div class="form-label" *ngIf="!locationform.controls.notes.hasError('required')">Notes</div>
+						<div class="form-label form-error-msg" *ngIf="locationform.controls.notes.hasError('required') && ( locationform.controls.notes.dirty || locationform.controls.notes.touched)">{{validation.notes.msg}}</div>
+
+						<div class="form-input-cont textarea-input">
+							<textarea formControlName="notes" ></textarea>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>	
+	<div class="save-btn">
+		  <button class="saveButton">Save</button>
+	</div>
+</form>
+</div>
+

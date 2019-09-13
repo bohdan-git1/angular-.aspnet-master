@@ -1,0 +1,26 @@
+.toggle-btn-cont {
+	cursor: pointer;
+}
+
+.toggle-selection {
+	width: 20px;
+	height: 20px;
+	background: #F0F0F0;
+	border-radius: 2px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.toggle-label {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 11px;
+	color: #646464;
+	margin-left: 10px;
+}
+
+.icon-cont {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

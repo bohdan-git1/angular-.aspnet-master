@@ -1,0 +1,955 @@
+<div fxLayout="column">
+	
+	<!-- <div class="title-bar">
+		<div class="patient-info">
+			<div class="patient-name">Estelle Goslin *Stella</div>
+			<div class="patient-status patient-info-block">Pending</div>
+			<div class="patient-age patient-info-block">8y 3m</div>
+			<div class="patient-appnt-time patient-info-block">Tues, June 3rd - Obs1</div>
+		</div>
+		
+		<div style="float: right; margin-right: 25px;">
+			<div class="search_panel">
+				<div fxLayout="row">
+					<div fxFlex="5" class="vh_center">
+						<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M7.67797 1.38641C6.00228 -0.290262 3.27496 -0.290262 1.59927 1.38641C-0.0760588 3.06345 -0.0760588 5.792 1.59927 7.46903C2.96239 8.83262 5.01963 9.08406 6.64188 8.22889C6.86227 8.11271 7.15966 8.23564 7.33578 8.41187L9.77613 10.8536C10.1318 11.2087 10.7064 11.2087 11.0602 10.8536C11.4155 10.4982 11.4155 9.92316 11.0602 9.56878L8.61989 7.12628C8.44377 6.95056 8.32098 6.65375 8.437 6.43367C9.29288 4.81008 9.04172 2.75129 7.67797 1.38641ZM6.90751 6.69812C5.65646 7.9499 3.62042 7.9499 2.36973 6.69812C1.11941 5.44634 1.11941 3.40947 2.36973 2.15769C3.62042 0.906271 5.65646 0.906271 6.90751 2.15769C8.15856 3.40947 8.15856 5.44634 6.90751 6.69812Z" fill="#6BD3F4"/>
+						</svg>
+					</div>
+					<div fxFlex="90">
+						<input class="search-input" placeholder="Find Patient..." [matAutocomplete]="auto">
+						
+						<mat-autocomplete #auto="matAutocomplete" class="search-auto-complete mat-elevation-z0">
+						  <mat-option *ngFor="let option of search_options" [value]="option" style="font-size: 12px; height: 30px;">
+							{{option}}
+						  </mat-option>
+						</mat-autocomplete>
+						
+					</div>
+					
+					<div fxFlex="5" class="vh_center" (click)="showLast()">
+						<svg width="13" height="6" viewBox="0 0 13 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.5 6L12.1292 0H0.870835L6.5 6Z" fill="#4EC8F0"/>
+						</svg>
+					</div>
+					
+					<div class="lastnames-list" *ngIf="showlastList">
+						<perfect-scrollbar>
+							<ul>
+								<li *ngFor="let lastitem of lastlistArr"><div class="lastitem-label">{{lastitem.name}}</div></li>
+							</ul>
+						</perfect-scrollbar>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			<div class="plus-btn-cont">
+				<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect y="3.8457" width="10" height="2.30769" fill="white"/>
+					<rect x="3.84583" width="2.30769" height="10" fill="white"/>
+				</svg>
+			</div>
+			
+			<div class="plus-btn-cont" style="width: 26px; height: 32px;">
+				<svg viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M4.09094 13.4434C4.4049 14.3417 5.28397 15.0005 6.28862 15.0005C7.29327 15.0005 8.23513 14.4016 8.61187 13.4434" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M8.60933 1.60016C9.13596 1.83247 9.62232 2.14784 10.042 2.54327C10.9977 3.44386 11.6282 4.77857 11.5866 6.55513L12.3364 6.57266C12.3827 4.59397 11.6744 3.051 10.5563 1.99742C9.95349 1.42939 9.23763 1.00918 8.46812 0.738281C8.55779 1.00792 8.60742 1.29796 8.60933 1.60016ZM3.83737 0.846661C3.24665 1.08715 2.68792 1.41992 2.18789 1.84751C0.980923 2.8796 0.137825 4.44566 0 6.53919L0.74838 6.58845C0.873903 4.6818 1.63284 3.30896 2.67531 2.41752C3.00078 2.13921 3.35601 1.90603 3.73138 1.71766C3.73024 1.68471 3.72966 1.65161 3.72966 1.61836C3.72966 1.34976 3.76735 1.09061 3.83737 0.846661Z" fill="white"/>
+					<path d="M11.7393 10.2696C11.4881 10.0899 11.1114 9.73056 10.7974 9.19153C10.609 8.83218 10.5462 8.59262 10.4207 8.17337C10.3579 7.63435 10.2323 6.91564 10.2323 6.07716C10.2323 5.7777 10.2323 4.81943 9.54159 3.86116C8.85089 2.90289 7.90903 2.60343 7.59508 2.48365C7.53228 1.82484 6.96717 1.3457 6.27647 1.3457C5.58577 1.3457 5.02066 1.88473 4.95787 2.48365C3.3881 3.02267 2.25787 4.40019 2.25787 6.07716C2.25787 6.91564 2.13228 7.57445 2.06949 8.05359C2.06949 8.47283 1.94391 8.89207 1.62996 9.37121C1.44159 9.67067 1.31601 9.91024 1.00205 10.2097C0.81368 10.4493 0.625308 10.569 0.499727 10.8086C0.374145 11.0482 0.374146 11.2877 0.374146 11.3476C0.374146 11.4075 0.374146 12.0064 0.81368 12.3658C1.25322 12.785 1.81833 12.7252 1.88112 12.7252C4.89508 12.7252 7.84624 12.7252 10.8602 12.7252C10.923 12.7252 11.7393 12.785 12.1788 12.1861C12.43 11.8268 12.3672 11.4674 12.3672 11.2877C12.2416 10.7487 11.8648 10.3894 11.7393 10.2696Z" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+				</svg>
+				
+				<div class="notifictn_available"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="zoom-cont">
+			<div class="zoom-btn plus-btn" (click)="zoomView('in')"><mat-icon class="zoom-icon">remove</mat-icon></div>
+			<div class="zoom-value">{{zoomviewport}}%</div>
+			<div class="zoom-btn minus-btn" (click)="zoomView('out')"><mat-icon class="zoom-icon" >add</mat-icon></div>
+		</div>
+	</div> -->
+	
+	<div [ngStyle]="{'height': windowContHt + 'px', 'width': '100%', 'overflow': 'hidden'}">
+	
+	<perfect-scrollbar #profilescroll>
+		<!-- <div style="width: 1759px; box-sizing: border-box;" [ngStyle]="{'height': windowHt + 'px'}"> -->
+		<div style="box-sizing: border-box; transform-origin: 0 0; position: relative;" [ngStyle]="{'transform': 'scale('+ (zoomviewport/100) +')', 'width': '100%'}">
+		
+
+			<div fxLayout="row">
+				<div fxFlex="100%" style="padding-top: 22px; padding-left: 88px;">
+					<div fxLayout="row" fxLayoutGap="10px" class="main-wrappr">
+						<!-- <div *ngIf="!elasticSection"> -->
+							<div fxFlex="13.5" class="alert-box" style="padding-bottom:10px">
+								<div class="flip-container">
+									<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + rotateOnY + 'deg)'}">
+										<div class="card-elem card1 flipcard1" style="padding-left: 0; padding-right: 0;">
+										<div class="notification-cont">
+											<app-treatment-notification></app-treatment-notification>
+										</div>
+										
+											<div class="card-section-wrapper">
+												<!-- <div class="card-section-cont animatecard" [ngStyle]="{'margin-left': animateFirstCard + 'px'}"> -->
+													<perfect-scrollbar>
+													
+													<div class="card-section-item">
+														
+														
+															<div style="padding-left: 10px; padding-right: 10px;">
+																<div class="card-content-section" style="padding-top: 30px;">
+																	<div style="float: left; margin-bottom: 5px;" class="section-title" (click)="flipSlide('MedicalAlert')" >Medical Alert</div>
+																	
+																	<div *ngIf="medicalAlertdataLength>21" (click)="moreMedicalAlert()" class="plusScrollicon"  style="float: left" >
+																		<svg style="margin-left: 15px;" width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+																		</svg>
+																	</div>
+											
+
+																	<div class="section-content section-content-red" [ngStyle]="{'height': heightFormedicalAlert + 'px', 'margin-bottom': mgBottomFormedicalAlert +'px'}">
+																		<perfect-scrollbar [config]="config">
+																		<div *ngIf="medicalAlertdataLength<=21 && moreMedicalAlertInfo== false">{{medicalAlertdata | slice:0:21 }} </div>
+																		<div *ngIf="medicalAlertdataLength>21 && moreMedicalAlertInfo== false">{{medicalAlertdata | slice:0:21 }} </div>
+
+																		<div *ngIf="medicalAlertdataLength>21 && moreMedicalAlertInfo== true">{{medicalAlertdata }} </div>
+																		</perfect-scrollbar>
+																	</div>
+																</div>
+
+																<div class="card-content-section">
+																	<div class="section-title" (click)="flipSlide('Relationships')">Relationships 
+																	</div>
+																	<div class="section-content">
+																		<ul>
+																			<li *ngFor="let relnDataArray of relnData; let doctorindx=index" >{{relnDataArray.relationtype}} - {{relnDataArray.fname}} </li>
+																			
+																		</ul>
+																	</div>
+																</div>
+
+																<div class="card-content-section">
+																	<div class="section-title" (click)="flipSlide('dentist')">Dentist</div>
+																	<div class="section-content">
+																		<ul>
+																			<li>{{curentDentist.doctorname}}</li>
+																		</ul>
+																	</div>
+																</div>
+																
+		<div class="card-content-section">
+			<div style="float: left;" class="section-title" (click)="flipSlide('ProfessionalReferral')" >Professional Referral
+			</div>
+			<div (click)="moreProfessionalReferral()" class="plusScrollicon" *ngIf="docReffInArr.length>3" style="float: left" >
+				<svg style="margin-left: 15px;" width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+			
+			<div class="clear"></div>
+			
+			<div class="section-content">
+				<ul>
+					<!-- <li *ngFor="let doctoroptionsdetails of doctordetailsArr; let doctorindx=index" >
+						<div *ngFor="let doctoroptionsdetail of doctoroptionsdetails.doctoroptions; let doctorindxx=index">
+								
+								<div *ngIf="doctoroptionsdetail.selected && doctordetailsSelectArrlen + countFilterLocationAndDoc <= 3 && moreProfessionalval==false" style="margin-bottom:5px;">
+									<div class="ProfessionalDoctor">
+											{{doctoroptionsdetail.doctorname}}
+									</div>
+									<div class="desg-italic">
+											{{doctoroptionsdetail.designation}}
+									</div>
+									<div style="clear: both;"></div>
+								</div>
+								
+								<div style="margin-bottom:6px;" *ngIf="doctoroptionsdetail.selected && doctorindxx<=2 && doctordetailsSelectArrlen + countFilterLocationAndDoc > 3 && moreProfessionalval==false">
+									<div class="ProfessionalDoctor">
+											{{doctoroptionsdetail.doctorname}}
+									</div>
+									<div class="desg-italic">
+											{{doctoroptionsdetail.designation}}
+									</div>
+									<div style="clear: both;"></div>
+								</div>
+
+								<div style="margin-bottom:6px;" *ngIf="doctoroptionsdetail.selected && doctordetailsSelectArrlen + countFilterLocationAndDoc > 3 && moreProfessionalval==true">
+										<div class="ProfessionalDoctor">
+												{{doctoroptionsdetail.doctorname}}
+										</div>
+										<div class="desg-italic">
+												{{doctoroptionsdetail.designation}}
+										</div>
+										<div style="clear: both;"></div>
+								</div>
+						</div>
+					</li> -->
+					
+					<!-- <ng-container *ngIf="!moreProfessionalval"> -->
+						<li *ngFor="let docrefelem of docReffInArr | slice: 0:(moreProfessionalval? docReffInArr.length : 3)">
+							<div class="ProfessionalDoctor">{{docrefelem.doctorname}}</div>
+							<div class="desg-italic">{{docrefelem.designation}}</div>
+							<div style="clear: both;"></div>
+						</li>
+					<!-- </ng-container> -->
+					
+					<!-- <ng-container *ngIf="moreProfessionalval">
+						<li *ngFor="let docrefelem of docReffInArr | slice: 0:docReffInArr.length">
+							<div class="ProfessionalDoctor">{{docrefelem.doctorname}}</div>
+							<div class="desg-italic">{{docrefelem.designation}}</div>
+							<div style="clear: both;"></div>
+						</li>
+					</ng-container> -->
+				</ul>
+			</div>
+
+		</div>
+
+																<div class="card-content-section">
+																	<div style="float: left" class="section-title" (click)="flipSlide('PatientReferral')">Patient Referral</div>
+																	
+																	<div (click)="morePatientReferral()" class="plusScrollicon" *ngIf="refInArraySelectArrlen>2" style="float: left" >
+																		<svg style="margin-left: 15px;" width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+																		</svg>
+																	</div>
+																	<div style="clear: both;"></div>
+
+
+																	<div *ngIf="refInArraySelectArrlen <= 2 && morePatientReferralval==false" class="section-content">
+																		<ul>
+																			<li *ngFor="let refname of refInArray; let indx=index" >{{refname.patientname}}</li>	
+																		</ul>
+																	</div>
+
+																	<div *ngIf="refInArraySelectArrlen > 2 && morePatientReferralval==false" class="section-content">
+																		<ul>
+																			<li *ngFor="let refname of refInArray; let indx=index" >
+																				<div *ngIf="indx<=1"> {{refname.patientname}} </div>
+																			</li>	
+																		</ul>
+																	</div>
+
+																	<div *ngIf="refInArraySelectArrlen > 2 && morePatientReferralval==true" class="section-content">
+																		<ul>
+																			<li *ngFor="let refname of refInArray; let indx=index" >{{refname.patientname}}</li>	
+																		</ul>
+																	</div>
+
+
+
+																	<div style="float: left; width: 80%;" class="section-title" (click)="flipSlide('PatientReferral')">Referred to practice - Thank you!</div>
+																	<div (click)="morePatientReferralThxF()" class="plusScrollicon" *ngIf="refInThxArraySelectArrlen>3" style="float: left" >
+																		<svg style="margin-left: 15px;" width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+																		</svg>
+																	</div>
+																	<div style="clear: both;"></div>
+
+																	<div  *ngIf="refInThxArraySelectArrlen <= 3 && morePatientReferralThx==false" class="section-content">
+																		<ul>
+																			<li *ngFor="let refname of refInArray; let indx=index" >
+																				<div *ngIf="refname.thanks==false">{{refname.patientname}} </div>
+																			</li>	
+																		</ul>
+																	</div>
+
+																	<div *ngIf="refInThxArraySelectArrlen > 3 && morePatientReferralThx==false" class="section-content">
+																		<ul>
+																			<li *ngFor="let refname of refInArray; let indx=index" >
+																				<div *ngIf="refname.thanks==false && indx<=2">{{refname.patientname}} </div>
+																			</li>	
+																		</ul>
+																	</div>
+
+																	<div *ngIf="refInThxArraySelectArrlen > 3 && morePatientReferralThx==true" class="section-content">
+																		<ul>
+																			<li *ngFor="let refname of refInArray; let indx=index" >
+																				<div *ngIf="refname.thanks==false">{{refname.patientname}} </div>
+																			</li>	
+																		</ul>
+																	</div>
+
+
+
+																</div>
+																
+																
+																
+																<div class="card-content-section">
+																		<div class="section-title" (click)="flipSlide('patientPreferences')" >Patient Preferences</div>
+																		<div class="section-content">
+																			<ul>
+																				<li>{{location}}</li>
+																				<li>{{doctor}}</li>
+																			</ul>
+																		</div>
+																</div>
+																
+																<div class="card-content-section">
+																	<div class="section-title" (click)="flipSlide('Comment')"  >Comment</div>
+																	<div class="section-content" style="height: 70px;">
+																		<perfect-scrollbar [config]="config">
+																		{{commentAlertdata}}
+																		</perfect-scrollbar>
+																	</div>
+																</div>
+															
+															</div>
+														
+														
+													</div>
+													</perfect-scrollbar>
+													
+													
+													<!-- <div class="clear"></div> -->
+												<!-- </div> -->
+											</div>
+										</div>
+										<div class="card-elem card1 flipcard2" style="padding-left: 0; padding-right: 0;">
+											<div class="card-section-item">
+												
+												<app-relationshipcard *ngIf="this.showrotetedList && rotetedType=='Relationships'" (currentRelationData)="currentRelationData($event)" (goback)="goback($event)"></app-relationshipcard>
+												
+												<app-patient-referral-card *ngIf="this.showrotetedList && rotetedType=='PatientReferral'" [refInArray]="refInArray" (refInArrayEmit)="refInArrayEmit($event)" (goback)="goback($event)"></app-patient-referral-card>
+												
+												<app-professional-referral-card *ngIf="this.showrotetedList && rotetedType=='ProfessionalReferral'"  [doctordetailsArr]="doctordetailsArr"  [doctorFilterArray]="doctorFilterArray"  [doctordetailsArrForOut]="doctordetailsArrForOut" [doctorFilterArrayForOut]="doctorFilterArrayForOut" (doctordetailsSelectArrlen)="doctordetailsSelectArrlenFun($event)" (goback)="goback($event)" 
+												(updatepofessionalRef)="updatepofessionalRef($event)"
+												></app-professional-referral-card>
+
+												<app-medical-alertcard *ngIf="this.showrotetedList && rotetedType=='MedicalAlert'" [medicalAlert]="medicalAlertdata" (passTextareadata)="passTextareaData($event)" (goback)="goback($event)"></app-medical-alertcard>
+												
+												<app-patient-preferencescard *ngIf="this.showrotetedList && rotetedType=='patientPreferences'" (locationback)="locationShow($event)" (doctorback)="doctorShow($event)" (goback)="goback($event)" [locationInput]="location" [doctorInput]="doctor"></app-patient-preferencescard>
+
+												<app-comment-card *ngIf="this.showrotetedList && rotetedType=='Comment'" [commentAlert]="commentAlertdata" (passTextareadata)="passTextareaCommentData($event)" (goback)="goback($event)"></app-comment-card>
+												
+												<app-dentist-card *ngIf="this.showrotetedList && rotetedType=='dentist'" (goback)="goback($event)" (updateDentist)="updateDentist($event)"></app-dentist-card>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div fxFlex="30.9" class="card-elem card3" style="padding-bottom:10px">
+								<app-xray-scan [postTreatment]="postTreatment"></app-xray-scan>
+								
+								<div class="fixed-content">
+									
+									<div class="left-part" style="float: left;">
+										<div class="evt-btn" (click)="imageModal('galleryimage')">GALLERY</div>
+										<div class="evt-btn" (click)="imageModal('uploadimage')" ><span>+</span> UPLOAD</div>
+									</div>
+									
+									<div class="card-title" style="float: right;">
+										<div class="updatedon">updated: 10/18/18</div>
+										<div class="card-title-label">X-Ray / Scan</div>
+									</div>
+									
+									<div style="clear: both;"></div>
+								</div>
+							</div>
+						
+							<div fxFlex="20.8" *ngIf="!elasticSection" style="padding-bottom:10px; position: relative;">
+								<div class="flip-container">
+									<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + diagnosticRotateY + 'deg)'}">
+										<div class="card-elem card2 flipcard1" style="padding-right: 8px;">
+											<!-- <div class="icon" (click)="diagnosticRot()" style="top: 0; right: 5px;">
+												<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M1.2459 7.23996L0.706284 9.19288L2.65798 8.65319L2.65939 8.6546L8.26595 3.04593L6.85338 1.63282L1.24713 7.24119L1.2459 7.23996Z" fill="#56CCF2"/>
+													<path d="M7.17944 1.30664L8.20188 0.283814C8.35806 0.127574 8.61128 0.127574 8.76746 0.283813L9.61445 1.13112C9.77063 1.28736 9.77063 1.54068 9.61445 1.69692L8.59201 2.71974L7.17944 1.30664Z" fill="#56CCF2"/>
+												</svg>
+											</div> -->
+											
+											<div style="width: 100%; height: 410px">
+												<perfect-scrollbar>
+													<app-multileveldrpdn [multidrpdndata] = "diagnosisArr"></app-multileveldrpdn>
+												</perfect-scrollbar>
+											</div>
+											
+											
+											
+											<div class="fixed-content">
+												
+												<div class="notes">
+													<p style="color: #4EC8F0">Notes:</p>
+													<textarea class="notes-textarea" [(ngModel)]="diagnosisTxt"></textarea>
+												</div>
+												
+												
+												<div class="card-title">
+													<div class="card-title-label-flip">Edit Diagnosis</div>
+													<div class="done-btn" (click)="diagnosticRot(true)">DONE
+														<!-- <svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<circle cx="13" cy="13.1309" r="12.5" stroke="#4EC8F0"/>
+															<path fill-rule="evenodd" clip-rule="evenodd" d="M18.899 8.76434C18.6949 8.57837 18.3787 8.59309 18.1927 8.79722L11.2769 16.3883L8.02795 13.4284C7.82382 13.2424 7.50758 13.2571 7.32161 13.4613C7.13564 13.6654 7.15036 13.9816 7.35449 14.1676L10.817 17.3221C10.8442 17.3874 10.8859 17.4479 10.9416 17.4987C11.1458 17.6847 11.462 17.67 11.648 17.4658L18.9319 9.47068C19.1179 9.26655 19.1032 8.95031 18.899 8.76434Z" fill="#434343"/>
+														</svg> -->
+														
+														
+														
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="card-elem card2 flipcard2">
+											<div class="icon" (click)="diagnosticRot(false)" style="z-index: 1000">
+												<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<circle cx="6" cy="6" r="5.75" stroke="#4EC8F0" stroke-width="0.5"/>
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M9.37639 4.25772C9.26647 4.15758 9.09619 4.16551 8.99605 4.27542L5.27214 8.36294L3.52272 6.76914C3.41281 6.669 3.24252 6.67693 3.14238 6.78684C3.04225 6.89676 3.05017 7.06704 3.16009 7.16718L5.0245 8.86574C5.03918 8.90091 5.06159 8.9335 5.09162 8.96085C5.20154 9.06099 5.37182 9.05307 5.47196 8.94315L9.39409 4.63806C9.49423 4.52814 9.4863 4.35786 9.37639 4.25772Z" fill="#434343"/>
+												</svg>
+											</div>
+											
+											<div style="width: 100%; height: 486px">
+												<perfect-scrollbar>
+													<app-selected-ddoptions [drpdndata]="diagnosisArr"></app-selected-ddoptions>
+												</perfect-scrollbar>
+											</div>
+											
+											<div class="fixed-content">
+												<div class="notes">
+													<p style="color: #4EC8F0">Notes:</p>
+													<textarea class="notes-textarea" readonly [(ngModel)]="diagnosisTxt"></textarea>
+												</div>
+												
+												<div class="card-title">
+													<div class="updatedon">updated: 10/18/18</div>
+													<div class="card-title-label">Diagnosis</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="main-tooth-grid-btn" (click)="showElasticSection()">
+									<svg width="23" height="17" viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M21.0625 11.2496L17.8806 8.06764C17.6853 7.87238 17.3687 7.87238 17.1735 8.06764C16.9782 8.2629 16.9782 8.57949 17.1735 8.77475L19.5019 11.1032L9.57594 11.1032V11.1003H6.44775C4.17592 11.1003 2.33425 9.25865 2.33425 6.98683C2.33425 4.71501 4.17592 2.87333 6.44775 2.87333H9.57594V1.87333H6.44775C3.62364 1.87333 1.33425 4.16272 1.33425 6.98683C1.33425 9.81094 3.62364 12.1003 6.44775 12.1003H6.93065V12.1032L19.5019 12.1032L17.1735 14.4316C16.9782 14.6269 16.9782 14.9434 17.1735 15.1387C17.3687 15.334 17.6853 15.334 17.8806 15.1387L21.0625 11.9567C21.2578 11.7615 21.2578 11.4449 21.0625 11.2496Z" fill="#4EC8F0"/>
+										<path d="M17.8806 8.06764L17.1734 8.77475L17.1735 8.77475L17.8806 8.06764ZM21.0625 11.2496L21.7696 10.5425L21.7696 10.5425L21.0625 11.2496ZM17.1735 8.06764L17.8806 8.77475L17.8806 8.77475L17.1735 8.06764ZM19.5019 11.1032V12.1032H21.9161L20.209 10.3961L19.5019 11.1032ZM9.57594 11.1032H8.57594V12.1032H9.57594V11.1032ZM9.57594 11.1003L10.5759 11.1003V10.1003L9.57594 10.1003V11.1003ZM9.57594 2.87333V3.87333H10.5759V2.87333H9.57594ZM9.57594 1.87333H10.5759V0.873327H9.57594V1.87333ZM6.93065 12.1003H7.93065V11.1003H6.93065V12.1003ZM6.93065 12.1032H5.93065V13.1032H6.93065V12.1032ZM19.5019 12.1032L20.209 12.8103L21.9161 11.1032H19.5019V12.1032ZM17.1735 14.4316L16.4663 13.7245L16.4663 13.7245L17.1735 14.4316ZM17.8806 15.1387L17.1735 14.4316L17.1734 14.4316L17.8806 15.1387ZM21.0625 11.9567L21.7696 12.6638L21.7696 12.6638L21.0625 11.9567ZM17.1735 8.77475L20.3554 11.9567L21.7696 10.5425L18.5877 7.36053L17.1735 8.77475ZM17.8806 8.77475C17.6853 8.97001 17.3687 8.97001 17.1734 8.77475L18.5877 7.36054C18.0019 6.77475 17.0521 6.77475 16.4663 7.36054L17.8806 8.77475ZM17.8806 8.06764C18.0758 8.2629 18.0758 8.57949 17.8806 8.77475L16.4663 7.36054C15.8806 7.94632 15.8806 8.89607 16.4663 9.48186L17.8806 8.06764ZM20.209 10.3961L17.8806 8.06764L16.4663 9.48186L18.7948 11.8103L20.209 10.3961ZM9.57594 12.1032L19.5019 12.1032V10.1032L9.57594 10.1032V12.1032ZM10.5759 11.1032V11.1003L8.57594 11.1003V11.1032L10.5759 11.1032ZM9.57594 10.1003H6.44775V12.1003H9.57594V10.1003ZM6.44775 10.1003C4.72821 10.1003 3.33425 8.70637 3.33425 6.98683H1.33425C1.33425 9.81094 3.62364 12.1003 6.44775 12.1003V10.1003ZM3.33425 6.98683C3.33425 5.26729 4.72821 3.87333 6.44775 3.87333V1.87333C3.62364 1.87333 1.33425 4.16272 1.33425 6.98683H3.33425ZM6.44775 3.87333H9.57594V1.87333H6.44775V3.87333ZM10.5759 2.87333V1.87333H8.57594V2.87333H10.5759ZM9.57594 0.873327H6.44775V2.87333H9.57594V0.873327ZM6.44775 0.873327C3.07135 0.873327 0.334247 3.61044 0.334247 6.98683H2.33425C2.33425 4.71501 4.17592 2.87333 6.44775 2.87333V0.873327ZM0.334247 6.98683C0.334247 10.3632 3.07135 13.1003 6.44775 13.1003V11.1003C4.17592 11.1003 2.33425 9.25865 2.33425 6.98683H0.334247ZM6.44775 13.1003H6.93065V11.1003H6.44775V13.1003ZM7.93065 12.1032V12.1003H5.93065V12.1032H7.93065ZM19.5019 11.1032L6.93065 11.1032V13.1032L19.5019 13.1032V11.1032ZM17.8806 15.1387L20.209 12.8103L18.7948 11.3961L16.4663 13.7245L17.8806 15.1387ZM17.8806 14.4316C18.0758 14.6269 18.0758 14.9434 17.8806 15.1387L16.4663 13.7245C15.8806 14.3103 15.8806 15.26 16.4663 15.8458L17.8806 14.4316ZM17.1734 14.4316C17.3687 14.2363 17.6853 14.2363 17.8806 14.4316L16.4663 15.8458C17.0521 16.4316 18.0019 16.4316 18.5877 15.8458L17.1734 14.4316ZM20.3554 11.2496L17.1735 14.4316L18.5877 15.8458L21.7696 12.6638L20.3554 11.2496ZM20.3554 11.9567C20.1602 11.7615 20.1602 11.4449 20.3554 11.2496L21.7696 12.6638C22.3554 12.078 22.3554 11.1283 21.7696 10.5425L20.3554 11.9567Z" fill="#4EC8F0"/>
+									</svg>
+								</div>
+								
+							</div>
+					
+						<!-- </div> -->
+
+						<!-- <div *ngIf="elasticSection"> -->
+							
+							<div fxFlex="735px" class="card-elem card3" *ngIf="elasticSection" style="padding-bottom:10px">
+								<div class="elastic-section">
+									<div class="elastic-section-leftpart">
+										<div class="elastic-last-edited">Last edited: 07/10/2019</div>
+										
+									</div>
+									
+									<div class="action-container">
+										<div class="elastic-section-action-btn" (click)="closeElasticSection()">
+											<svg width="21" height="13" viewBox="0 0 21 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M1.14645 5.03553L4.32843 8.21751C4.52369 8.41278 4.84027 8.41278 5.03553 8.21751C5.2308 8.02225 5.2308 7.70567 5.03553 7.51041L2.70711 5.18198H12.2411V5.1848H16.0233C17.7831 5.1848 19.2097 6.6114 19.2097 8.3712C19.2097 10.131 17.7831 11.5576 16.0233 11.5576H12.2411V12.5576H16.0233C18.3354 12.5576 20.2097 10.6833 20.2097 8.3712C20.2097 6.05911 18.3354 4.1848 16.0233 4.1848H14.7921V4.18198H2.70711L5.03553 1.85355C5.2308 1.65829 5.2308 1.34171 5.03553 1.14645C4.84027 0.951184 4.52369 0.951184 4.32843 1.14645L1.14645 4.32843C0.951185 4.52369 0.951185 4.84027 1.14645 5.03553Z" fill="#4EC8F0"/>
+												<path d="M4.32843 8.21751L4.59359 7.95235L4.59359 7.95235L4.32843 8.21751ZM1.14645 5.03553L0.881281 5.3007H0.881281L1.14645 5.03553ZM5.03553 8.21751L4.77037 7.95235L4.77037 7.95235L5.03553 8.21751ZM2.70711 5.18198V4.80698H1.80178L2.44194 5.44715L2.70711 5.18198ZM12.2411 5.18198H12.6161V4.80698H12.2411V5.18198ZM12.2411 5.1848H11.8661V5.5598H12.2411V5.1848ZM12.2411 11.5576V11.1826H11.8661V11.5576H12.2411ZM12.2411 12.5576H11.8661V12.9326H12.2411V12.5576ZM14.7921 4.1848H14.4171V4.5598H14.7921V4.1848ZM14.7921 4.18198H15.1671V3.80698H14.7921V4.18198ZM2.70711 4.18198L2.44194 3.91682L1.80178 4.55698H2.70711V4.18198ZM5.03553 1.85355L5.3007 2.11872V2.11872L5.03553 1.85355ZM4.32843 1.14645L4.59359 1.41161V1.41161L4.32843 1.14645ZM1.14645 4.32843L0.881281 4.06326H0.881281L1.14645 4.32843ZM4.59359 7.95235L1.41161 4.77037L0.881281 5.3007L4.06326 8.48268L4.59359 7.95235ZM4.77037 7.95235C4.72155 8.00116 4.64241 8.00116 4.59359 7.95235L4.06326 8.48268C4.40497 8.82439 4.95899 8.82439 5.3007 8.48268L4.77037 7.95235ZM4.77037 7.77557C4.81918 7.82439 4.81918 7.90353 4.77037 7.95235L5.3007 8.48268C5.64241 8.14097 5.64241 7.58695 5.3007 7.24524L4.77037 7.77557ZM2.44194 5.44715L4.77037 7.77557L5.3007 7.24524L2.97227 4.91682L2.44194 5.44715ZM12.2411 4.80698H2.70711V5.55698H12.2411V4.80698ZM11.8661 5.18198V5.1848H12.6161V5.18198H11.8661ZM12.2411 5.5598H16.0233V4.8098H12.2411V5.5598ZM16.0233 5.5598C17.576 5.5598 18.8347 6.81851 18.8347 8.3712H19.5847C19.5847 6.40429 17.9902 4.8098 16.0233 4.8098V5.5598ZM18.8347 8.3712C18.8347 9.9239 17.576 11.1826 16.0233 11.1826V11.9326C17.9902 11.9326 19.5847 10.3381 19.5847 8.3712H18.8347ZM16.0233 11.1826H12.2411V11.9326H16.0233V11.1826ZM11.8661 11.5576V12.5576H12.6161V11.5576H11.8661ZM12.2411 12.9326H16.0233V12.1826H12.2411V12.9326ZM16.0233 12.9326C18.5425 12.9326 20.5847 10.8904 20.5847 8.3712H19.8347C19.8347 10.4762 18.1283 12.1826 16.0233 12.1826V12.9326ZM20.5847 8.3712C20.5847 5.85201 18.5425 3.8098 16.0233 3.8098V4.5598C18.1283 4.5598 19.8347 6.26622 19.8347 8.3712H20.5847ZM16.0233 3.8098H14.7921V4.5598H16.0233V3.8098ZM14.4171 4.18198V4.1848H15.1671V4.18198H14.4171ZM2.70711 4.55698H14.7921V3.80698H2.70711V4.55698ZM4.77037 1.58839L2.44194 3.91682L2.97227 4.44715L5.3007 2.11872L4.77037 1.58839ZM4.77037 1.41161C4.81918 1.46043 4.81918 1.53957 4.77037 1.58839L5.3007 2.11872C5.64241 1.77701 5.64241 1.22299 5.3007 0.881282L4.77037 1.41161ZM4.59359 1.41161C4.64241 1.3628 4.72155 1.3628 4.77037 1.41161L5.3007 0.881282C4.95899 0.539573 4.40497 0.539573 4.06326 0.881282L4.59359 1.41161ZM1.41161 4.59359L4.59359 1.41161L4.06326 0.881282L0.881281 4.06326L1.41161 4.59359ZM1.41161 4.77037C1.3628 4.72155 1.3628 4.64241 1.41161 4.59359L0.881281 4.06326C0.539573 4.40497 0.539573 4.95899 0.881281 5.3007L1.41161 4.77037Z" fill="#4EC8F0"/>
+											</svg>
+										</div>
+										
+										<!-- <div class="elastic-section-action-btn">
+											<svg width="6" height="9" viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M1.94547 0C1.89024 0 1.84547 0.0447716 1.84547 0.1V0.47373H0.5C0.223858 0.47373 0 0.697588 0 0.97373V1.86847C0 2.14461 0.223858 2.36847 0.5 2.36847H5.5C5.77614 2.36847 6 2.14461 6 1.86847V0.97373C6 0.697587 5.77614 0.47373 5.5 0.47373H4.15316V0.1C4.15316 0.0447715 4.10839 0 4.05316 0H1.94547Z" fill="#A5A5A5"/>
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M0.1 2.8418C0.0447715 2.8418 0 2.88657 0 2.9418V8.89971C0 8.95494 0.0447714 8.99971 0.0999999 8.99971H5.9C5.95523 8.99971 6 8.95494 6 8.89971V2.9418C6 2.88657 5.95523 2.8418 5.9 2.8418H0.1ZM4.846 3.78896C4.71855 3.78896 4.61523 3.89228 4.61523 4.01973V7.82136C4.61523 7.94881 4.71855 8.05213 4.846 8.05213C4.97345 8.05213 5.07677 7.94881 5.07677 7.82136V4.01973C5.07677 3.89228 4.97345 3.78896 4.846 3.78896ZM0.922852 4.01973C0.922852 3.89228 1.02617 3.78896 1.15362 3.78896C1.28107 3.78896 1.38439 3.89228 1.38439 4.01973V7.82136C1.38439 7.94881 1.28107 8.05213 1.15362 8.05213C1.02617 8.05213 0.922852 7.94881 0.922852 7.82136V4.01973ZM3.0003 3.78896C2.87285 3.78896 2.76953 3.89228 2.76953 4.01973V7.82136C2.76953 7.94881 2.87285 8.05213 3.0003 8.05213C3.12775 8.05213 3.23107 7.94881 3.23107 7.82136V4.01973C3.23107 3.89228 3.12775 3.78896 3.0003 3.78896Z" fill="#A5A5A5"/>
+											</svg>
+										</div>
+										
+										<div class="elastic-section-action-btn">
+											<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M2.55556 3H1.5C1.22386 3 1 3.22386 1 3.5V8.5C1 8.77614 1.22386 9 1.5 9H7.5C7.77614 9 8 8.77614 8 8.5V3.5C8 3.22386 7.77614 3 7.5 3H6.44444" stroke="#A5A5A5" stroke-width="0.5"/>
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M4.65 0C4.51193 0 4.4 0.111929 4.4 0.25V6.34069L3.03127 4.80087C2.93364 4.69104 2.77535 4.69104 2.67772 4.80087C2.58008 4.91071 2.58008 5.08878 2.67772 5.19862L4.43623 7.17695C4.43907 7.18048 4.442 7.18395 4.44503 7.18736C4.49388 7.24231 4.55791 7.26977 4.62194 7.26973C4.68603 7.26982 4.75014 7.24237 4.79904 7.18736C4.80206 7.18395 4.805 7.18048 4.80784 7.17694L6.56635 5.19862C6.66398 5.08878 6.66398 4.91071 6.56635 4.80087C6.46872 4.69104 6.31043 4.69104 6.2128 4.80087L4.9 6.27777V0.25C4.9 0.111929 4.78807 0 4.65 0Z" fill="#A5A5A5"/>
+											</svg>
+										</div>
+										
+										<div class="elastic-section-action-btn" (click)="closeElasticSection()">
+											<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<rect width="0.605633" height="10.6041" rx="0.302817" transform="matrix(0.71359 0.700563 -0.71359 0.700563 7.56689 0)" fill="#A5A5A5"/>
+											<rect width="0.605633" height="10.6041" rx="0.302817" transform="matrix(0.71359 -0.700563 0.71359 0.700563 0.000488281 0.571289)" fill="#A5A5A5"/>
+											</svg>
+										</div> -->
+										
+										
+									</div>
+									<div class="clear"></div>
+									<div class="elastic-main">
+										<app-elastic-treatment></app-elastic-treatment>
+									</div>
+									
+									<!-- <div class="communication-cont">
+										<div class="elastic-section-action-btn">
+											<svg width="23" height="15" viewBox="0 0 23 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M7.63961 3.66406C3.54235 3.66406 0.264539 6.22168 0.264539 9.33229C0.264539 10.5765 0.742553 11.6825 1.63029 12.5811C1.28885 13.1341 0.674265 13.9636 0.127964 13.8945C-0.6232 13.8254 2.10831 15.1388 3.74721 14.1019C4.9081 14.6549 6.27385 15.0005 7.7079 15.0005C11.8052 15.0005 15.083 12.4429 15.083 9.33229C15.0147 6.22168 11.7369 3.66406 7.63961 3.66406Z" fill="#4EC8F0"/>
+												<path d="M21.9793 10.2304C21.5013 10.2996 20.955 9.5392 20.6135 9.05533C21.5013 8.08758 22.0476 6.91247 22.0476 5.66822C22.0476 2.55761 18.7698 0 14.6725 0C10.5752 0 7.36572 2.48849 7.36572 5.5991C7.36572 8.70971 10.6435 11.2673 14.7408 11.2673C16.1748 11.2673 17.5406 10.9217 18.7015 10.3687C20.1355 11.4747 22.6622 10.1613 21.9793 10.2304Z" fill="#4EC8F0"/>
+												<path d="M14.6746 11.267C14.8795 10.9214 15.2892 10.161 15.2209 9.19326C15.2209 7.87989 14.6063 6.98127 14.1966 6.4974C12.9674 4.76928 11.192 4.21628 10.5091 4.00891C9.41647 3.66329 8.52873 3.66328 7.91414 3.73241C7.70928 4.42366 7.36784 5.87527 7.91414 7.32689C8.87017 9.67713 11.5334 11.267 14.6746 11.267ZM14.6746 11.267C14.9478 10.7831 15.2892 10.0228 15.2209 9.19326" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										
+										<div class="elastic-section-action-btn">
+											<svg width="23" height="17" viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M17.9818 14.8342H2.80986C2.24495 14.8342 1.76074 14.382 1.76074 13.8545V3.68086C1.76074 3.15333 2.24495 2.70117 2.80986 2.70117H17.9818C18.5467 2.70117 19.0309 3.15333 19.0309 3.68086V13.8545C19.0309 14.382 18.5467 14.8342 17.9818 14.8342Z" stroke="#4EC8F0" stroke-width="0.7" stroke-miterlimit="10"/>
+												<path d="M1.92236 3.30469L10.2346 9.40888L18.5469 3.30469" stroke="#4EC8F0" stroke-width="0.7" stroke-miterlimit="10"/>
+												<path d="M1.68066 12.9504L7.08768 7.07227" stroke="#4EC8F0" stroke-width="0.7" stroke-miterlimit="10"/>
+												<path d="M19.0309 12.9504L13.7046 7.07227" stroke="#4EC8F0" stroke-width="0.7" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+									</div> -->
+								</div>
+							</div>
+							
+						<!-- </div> -->
+						
+						<div fxFlex="17.14" class="card4" style="padding-bottom:10px" *ngIf="!elasticSection">
+							<app-cardaccordion [postTreatment]="postTreatment"></app-cardaccordion>			
+						</div>
+						
+						<div fxFlex="167px" *ngIf="postTreatment && !elasticSection">
+							<app-treatmentmeter></app-treatmentmeter>
+						</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="12px" style="margin-top: 30px; margin-bottom: 30px; padding-right: 20px" *ngIf="postTreatment">
+					
+                    <div class="main-table-wrap">	
+                       <div class="treatment-table-wrap">  
+                       
+                       <div class="treatment-table">
+								
+								<div class="treatment-table-header">
+									<div class="treatment-table-header-inner">
+										<div class="treatment-header-cell" style="width: 7.4%;">Date / Time</div>
+										<div class="treatment-header-cell" style="width: 7%;">UW</div>
+										<div class="treatment-header-cell" style="width: 7%;">LW</div>
+										<div class="treatment-header-cell" style="width: 4%;">Hyg</div>
+										<div class="treatment-header-cell" style="width: 7%;">Appl</div>
+										<div class="treatment-header-cell" style="width: 2.5%;">Elas</div>
+										<div class="treatment-header-cell" style="width: 2.5%;">St</div>
+										<div class="treatment-header-cell" style="width: 7%;">Dr</div>
+										<div class="treatment-header-cell left-align" style="width: 22%;">Notes</div>
+										<div class="treatment-header-cell left-align" style="width: 15%;">Next Notes</div>
+										<div class="treatment-header-cell" style="width: 6%;">Proc</div>
+										<div class="treatment-header-cell" style="width: 6%;">U</div>
+										<div class="treatment-header-cell" style="width: 5.8%;">Wks</div>
+									</div>
+								</div>
+
+
+								<div *ngIf="futureAppointmentVal" class="treatment-table-header">
+									<div class="treatment-header-cell futuredate" style="width: 15.4%;">{{futureAppointmentDate}}</div>
+								</div>
+
+							</div>
+                       <perfect-scrollbar #listboxscroll1>
+                         <div class="treatment-table-holder" style="height: 400px !important">  
+                        
+                          <div class="card-elem" [ngStyle]="{'width': '100%', 'min-width': '1392px', 'height':  '400px', 'padding': '0px', 'min-height': '120px', 'position': 'relative', 'background': 'transparent', 'border': 'none'}">
+							
+							
+							
+							<div class="treatment-table">
+								<div [ngStyle]="{'width': '100%', 'min-width': '1392px', 'min-height': '90px', 'height':   '400px'}">
+								
+								<perfect-scrollbar #listboxscroll1>	
+									
+										<div [ngStyle]="{'background': openNextNoteVal==true || openNoteVal==true ? 'rgba(246, 204, 97, 0.5)' : 'rgba(78, 200, 240, 0.5)', 'color': openNextNoteVal==true || openNoteVal==true ? '#434343' : '#FFFFFF', 'margin-left': '30px' }" class="treatment-table-body treatment-form" *ngIf="addBtnClicked" style="padding-left: 5px !important">
+											<div class="treatment-body-cell header-input-cell" style="width: 7.4%;">{{newTxCard_Row.date | date: 'short'}}</div>
+											
+											<div class="treatment-body-cell header-input-cell" style="width: 7%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="txCardUW_option"
+													[height]="200"
+													[showdropdownIcon]='1'
+													(selectedOptn)="getValue($event, 'UW')"
+												></app-tx-card-ddrpdn>
+											</div>
+											
+											<div class="treatment-body-cell header-input-cell" style="width: 7%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="txCardLW_option"
+													[height]="200"
+													[showdropdownIcon]='1'
+													(selectedOptn)="getValue($event, 'LW')"
+												></app-tx-card-ddrpdn>
+											</div>
+											
+											<div class="treatment-body-cell header-input-cell" style="width: 4%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="txCardHg_option"
+													[ratingIcon]="true"
+													[showdropdownIcon]='1'
+													(selectedOptn)="getValue($event, 'Hyg')"
+												></app-tx-card-ddrpdn>
+											</div>
+											
+											<div class="treatment-body-cell header-input-cell" style="width: 7%;">
+												<!----<app-tx-card-ddrpdn 
+													[drpdnData]="txCardAppl_option"
+													[height]="200"
+													[showdropdownIcon]='1'
+													(selectedOptn)="getValue($event, 'Appl')"
+												></app-tx-card-ddrpdn>-->
+											</div>
+											
+											<div class="treatment-body-cell header-input-cell" style="width: 2.5%;">
+												<div class="elastic-col" *ngIf="newTxCard_Row.elastic">
+													<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.36364 8.50018V11.182C8.36364 11.7343 7.91592 12.182 7.36364 12.182H2C1.44772 12.182 1 11.7343 1 11.182V5.81836C1 5.26608 1.44772 4.81836 2 4.81836H4.68182" stroke="white"/>
+														<path d="M10.4992 4.03746C10.5204 3.76213 10.3144 3.52176 10.0391 3.50059L5.55231 3.15545C5.27698 3.13427 5.03662 3.3403 5.01544 3.61563C4.99426 3.89096 5.20029 4.13133 5.47562 4.15251L9.46383 4.45929L9.15705 8.44751C9.13587 8.72284 9.3419 8.96321 9.61723 8.98439C9.89256 9.00556 10.1329 8.79954 10.1541 8.52421L10.4992 4.03746ZM4.59883 9.28783L10.3261 4.37874L9.67531 3.61948L3.94804 8.52857L4.59883 9.28783Z" fill="white"/>
+													</svg>
+														
+														
+												</div>
+												&nbsp;
+											</div>
+											
+											<div class="treatment-body-cell header-input-cell" style="width: 2.5%;">
+												<input type="text" class="treatment-body-cell-input" [(ngModel)]="newTxCard_Row.St"/>
+											</div>
+											
+											<div class="treatment-body-cell header-input-cell" style="width: 7%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="txCardDr_option"
+													(selectedOptn)="getValue($event, 'dr')"
+													[showdropdownIcon]='1'
+												></app-tx-card-ddrpdn>
+											</div>
+											
+											<div   (clickOutside)="glodBackGroundOff1()" [exclude]="'.treatment-body-cell left-align wrap-text italic-style'" class="treatment-body-cell left-align wrap-text italic-style header-input-cell" style="width: 20%; position: relative; height: 60px;">
+												<div  style="width: 98%; height: 50px;">
+													<textarea  *ngIf="openNoteVal" class="noteTex" style="padding: 0px 10px 10px 10px; overflow: hidden; resize: none;" class="treatment-body-cell-input left-align" [(ngModel)]="newTxCard_Row.notes">
+
+													</textarea>
+													<div *ngIf="openNoteVal== false"> {{newTxCard_Row.notes}} </div>
+												</div>
+												<div (click)="openNote()" style="position: absolute;  right: 1px; bottom: 0px;">
+													<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M5 8L0.669872 0.500001L9.33013 0.5L5 8Z" fill="white"/>
+													</svg>
+												</div>
+											</div>
+											
+
+											<div  (clickOutside)="glodBackGroundOff2()" [exclude]="'.treatment-body-cell left-align wrap-text italic-style'" class="treatment-body-cell left-align wrap-text italic-style header-input-cell"  style="width: 15%; position: relative;" >
+												<div  style="width: 98%; height: 50px;">
+													<textarea *ngIf="openNextNoteVal" class="noteTex" style="padding: 0px 10px 10px 10px; overflow: hidden; resize: none;" class="treatment-body-cell-input left-align noteTex" [(ngModel)]="newTxCard_Row.next_notes">
+
+													</textarea>
+													<div *ngIf="openNextNoteVal== false"> {{newTxCard_Row.next_notes}} </div>
+												</div>
+												<div (click)="openNextNote()" style="position: absolute;  right: 1px; bottom: 0px;">
+													<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M5 8L0.669872 0.500001L9.33013 0.5L5 8Z" fill="white"/>
+													</svg>
+												</div>
+											</div>
+
+											<div class="treatment-body-cell header-input-cell" style="position: relative; width: 2%; height: 100%;">
+												<div  class="multiple-appointment-icon" (click)="showMultipleAppointment()">
+													<svg pab width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M5 8L0.669872 0.500001L9.33013 0.5L5 8Z" fill="white"/>
+													</svg>
+												</div>
+											
+
+											<div *ngIf="multipleSearchAppointmentBar" class="step-libary" [ngStyle]="{'height': searchBoxHg1St + 'px'}" >
+												<div [ngStyle]="{'height': searchBoxHg2Nd + 'px', 'margin-bottom': '10px'}"  >
+												<perfect-scrollbar  #listboxscroll>
+													<div style="padding: 10px 5px 5px 10px;">
+															<div  *ngFor="let filterProcedureCodeArray of filterProcedureCode let optnindx=index"  (click)="selectForstepBox(optnindx)" class="common-libary comonhover">
+															
+																		<div style="color: #434343" [ngClass]="{'common-title': true, 'common-libary-background': filterProcedureCodeArray.selected}"> {{filterProcedureCodeArray.name}} </div>
+																		<div style="color: #434343" [ngClass]="{'common-time hoverTime': true, 'common-libary-background': filterProcedureCodeArray.selected}"> {{filterProcedureCodeArray.code}} </div>
+																		<div style="clear: both"></div>
+															
+															</div>
+															<div style="clear: both"></div>
+													</div>
+												</perfect-scrollbar>
+												</div>
+												
+												<div class="remaining-section" [ngStyle]="{'height': remainingBoxHg + 'px'}">
+													
+													<div  class="add-new-libary">
+														<!----<div class="common-title-name" style="background: #F0F0F0; border: 0.5px solid #A5A5A5;">
+															<input  [(ngModel)]="addToProcedureName" class="add-to-library" placeholder="Name"/> 
+														</div>
+														<div class="common-time-duration" style="background: #F0F0F0; border: 0.5px solid #A5A5A5;">
+															<input [(ngModel)]="addToProcedureCode" maxlength="5" placeholder="Code" class="add-to-time" /> 
+														</div>
+
+														<div class="common-title-name" style="background: #F0F0F0; border: 0.5px solid #A5A5A5;">
+															<input type="number" [(ngModel)]="addToProcedureTime" class="add-to-library" placeholder="Time"/> 
+														</div>
+														<div class="common-time-duration" style="background: #F0F0F0; border: 0.5px solid #A5A5A5;">
+															<div (click)="showUnit()" style="position: relative; width:100%; height:100%">
+																<div class="unit-lebel" style="float:left; color: #434343">{{addToProcedureUnit}}</div>
+																<div  class="unit-icon" style="float: right">
+																	<svg  fill="none" height="6" viewBox="0 0 11 6" width="11" xmlns="http://www.w3.org/2000/svg"><path _ngcontent-c56="" d="M5.5 6L10.2631 0H0.73686L5.5 6Z" fill="#4EC8F0"></path></svg>
+																</div>
+															</div>
+															<div *ngIf="showUnitVar" class="showAllunit">
+																<div (click)="selectUnit('day')" class="unitName">Day</div>
+																<div (click)="selectUnit('week')" class="unitName">Week</div>
+																<div (click)="selectUnit('month')" class="unitName">Month</div>
+
+															</div>
+															
+														</div>
+													-->
+														<div style="clear: both"></div>
+								
+														<div  class="add-section">
+															<div class="add-done" (click)="addNewProcedureCode()">
+																Add
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+											<div class="treatment-body-cell header-input-cell" style="width: 6%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="poc_option"
+													[height]="150"
+													[showdropdownIcon]='1'
+													(selectedOptn)="getValue($event, 'Poc')"
+												></app-tx-card-ddrpdn>
+											</div>
+
+											<div class="treatment-body-cell header-input-cell" style="width: 6%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="u_option"
+													[height]="100"
+													[showdropdownIcon]='1'
+													(selectedOptn)="getValue($event, 'U')"
+												></app-tx-card-ddrpdn>
+											</div>
+
+											<div class="treatment-body-cell header-input-cell" style="width: 5.8%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="wks_option"
+													[height]="100"
+													[showdropdownIcon]='1'
+													(selectedOptn)="getValue($event, 'Wks')"
+												></app-tx-card-ddrpdn>
+											</div>
+
+										</div>
+										
+										<div *ngFor="let tretmentItem of treatmentArr; let indx=index">
+											
+											<div *ngIf="tretmentItem.deleted== false" [ngClass]="{'treatment-table-body': true, 'fistrow-shadow': indx==0}">
+											
+											<div class="treatment-body-inner">
+												
+												<div [ngStyle]="{ 'left': tretmentItem.delete_icon==true? '40px' : '0px'}" (click)="checkDeleteButton(indx)" style="position: absolute; top: 0px; width:100%; height: 100%; background: transparent;"> </div>
+
+												<div (click)="deleteItem(indx, tretmentItem.date)" class="delete-button" *ngIf="tretmentItem.delete_icon" style="z-index: 9">
+												<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<rect width="1.64179" height="9.85075" rx="0.5" transform="matrix(0.713564 0.70059 -0.713564 0.70059 9.97363 3.6543)" fill="#FD7474"/>
+													<rect width="1.64179" height="9.85075" rx="0.5" transform="matrix(0.713564 -0.70059 0.713564 0.70059 2.94531 4.80371)" fill="#FD7474"/>
+												</svg>
+											</div>
+										
+											<div class="treatment-body-cell" style="width: 7.4%;">{{tretmentItem.date | date: 'short'}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 7%;">{{tretmentItem.UW}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 7%;">{{tretmentItem.LW}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 4%; justify-content: center;">
+												
+												<div *ngIf="tretmentItem.Hyg==1">
+													<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 16.489C12.8731 16.489 16.2976 13.0645 16.2976 8.84021C16.2976 4.61589 12.8731 1.19141 8.64881 1.19141C4.42449 1.19141 1 4.61589 1 8.84021C1 13.0645 4.42449 16.489 8.64881 16.489Z" fill="#FFB5B5" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path d="M6.20123 12.7701C7.33325 11.1179 9.68144 11.0185 10.7599 12.7701C11.0659 13.2749 11.8613 12.8083 11.5554 12.3035C10.0945 9.9247 6.92787 10.0853 5.40576 12.3035C5.07686 12.793 5.87233 13.2519 6.20123 12.7701Z" fill="#A5A5A5"/>
+														<path d="M6.98903 7.03539C6.34653 6.75239 5.71168 6.47703 5.06918 6.19403C4.53376 5.95691 4.06718 6.75239 4.6026 6.9895C5.2451 7.27251 5.87995 7.54786 6.52245 7.83087C7.06552 8.06033 7.53209 7.27251 6.98903 7.03539Z" fill="#A5A5A5"/>
+														<path d="M12.0291 6.15385C11.3713 6.38332 10.7136 6.62043 10.0558 6.84989C9.50504 7.04111 9.74215 7.92837 10.3005 7.73715C10.9583 7.50769 11.6161 7.27058 12.2739 7.04111C12.8246 6.84224 12.5875 5.95498 12.0291 6.15385Z" fill="#A5A5A5"/>
+														<path d="M4.78621 9.23729C5.1304 10.5223 6.84374 10.4917 7.20323 9.23729C7.36386 8.67127 6.48424 8.42651 6.31597 8.99252C6.20124 9.38261 5.78055 9.39026 5.67347 8.99252C5.52049 8.42651 4.63323 8.66363 4.78621 9.23729Z" fill="#A5A5A5"/>
+														<path d="M9.88045 9.23729C10.2246 10.5223 11.938 10.4917 12.2975 9.23729C12.4581 8.67127 11.5785 8.42651 11.4102 8.99252C11.2955 9.38261 10.8748 9.39026 10.7677 8.99252C10.6147 8.42651 9.72747 8.66363 9.88045 9.23729Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+												<div *ngIf="tretmentItem.Hyg==2">
+													<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 16.1912C12.8731 16.1912 16.2976 12.7667 16.2976 8.54236C16.2976 4.31804 12.8731 0.893555 8.64881 0.893555C4.42449 0.893555 1 4.31804 1 8.54236C1 12.7667 4.42449 16.1912 8.64881 16.1912Z" fill="#FFE0E0" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path d="M4.64119 6.9978C4.98539 8.2828 6.69872 8.2522 7.05821 6.9978C7.21884 6.43179 6.33922 6.18702 6.17095 6.75304C6.05622 7.14312 5.63553 7.15077 5.52845 6.75304C5.37547 6.18702 4.48821 6.43179 4.64119 6.9978Z" fill="#A5A5A5"/>
+														<path d="M9.74275 6.9978C10.0869 8.2828 11.8003 8.2522 12.1598 6.9978C12.3204 6.43179 11.4408 6.18702 11.2725 6.75304C11.1578 7.14312 10.7371 7.15077 10.63 6.75304C10.477 6.18702 9.58978 6.43179 9.74275 6.9978Z" fill="#A5A5A5"/>
+														<path d="M7.15739 10.1322C7.80754 9.37493 8.91662 9.36728 9.56677 10.1322C9.94921 10.5834 10.5994 9.9333 10.2169 9.48202C9.26081 8.35764 7.47099 8.36529 6.51489 9.48202C6.1248 9.9333 6.77495 10.5834 7.15739 10.1322Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+												<div *ngIf="tretmentItem.Hyg==3">
+													<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 15.8933C12.8731 15.8933 16.2976 12.4688 16.2976 8.24451C16.2976 4.02019 12.8731 0.595703 8.64881 0.595703C4.42449 0.595703 1 4.02019 1 8.24451C1 12.4688 4.42449 15.8933 8.64881 15.8933Z" fill="#F0F0F0" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path d="M5.95647 8.88754C6.31131 8.88754 6.59896 8.59988 6.59896 8.24504C6.59896 7.8902 6.31131 7.60254 5.95647 7.60254C5.60162 7.60254 5.31396 7.8902 5.31396 8.24504C5.31396 8.59988 5.60162 8.88754 5.95647 8.88754Z" fill="#A5A5A5"/>
+														<path d="M11.3412 8.97055C11.6961 8.97055 11.9837 8.68289 11.9837 8.32805C11.9837 7.9732 11.6961 7.68555 11.3412 7.68555C10.9864 7.68555 10.6987 7.9732 10.6987 8.32805C10.6987 8.68289 10.9864 8.97055 11.3412 8.97055Z" fill="#A5A5A5"/>
+														<path d="M6.20148 11.3485C7.82303 11.3485 9.44458 11.3485 11.0661 11.3485C11.6551 11.3485 11.6551 10.4307 11.0661 10.4307C9.44458 10.4307 7.82303 10.4307 6.20148 10.4307C5.61253 10.4307 5.61253 11.3485 6.20148 11.3485Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+												<div *ngIf="tretmentItem.Hyg==4">
+													<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 15.5955C12.8731 15.5955 16.2976 12.171 16.2976 7.94666C16.2976 3.72234 12.8731 0.297852 8.64881 0.297852C4.42449 0.297852 1 3.72234 1 7.94666C1 12.171 4.42449 15.5955 8.64881 15.5955Z" fill="#F0F0F0" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path d="M6.22355 9.24548C6.89664 11.8996 10.5604 11.892 11.2335 9.24548C11.3788 8.67182 10.4916 8.42706 10.3462 9.00072C9.89497 10.7676 7.55444 10.7676 7.10316 9.00072C6.96548 8.42706 6.07822 8.67182 6.22355 9.24548Z" fill="#A5A5A5"/>
+														<path d="M4.99261 7.32598C5.32916 6.90529 5.89517 6.90529 6.23171 7.32598C6.59886 7.79256 7.24136 7.13476 6.88187 6.67583C6.25467 5.888 4.96967 5.888 4.34246 6.67583C3.97532 7.13476 4.61782 7.78491 4.99261 7.32598Z" fill="#A5A5A5"/>
+														<path d="M11.1193 7.32598C11.4558 6.90529 12.0218 6.90529 12.3584 7.32598C12.7255 7.79256 13.368 7.13476 13.0085 6.67583C12.3813 5.888 11.0963 5.888 10.4691 6.67583C10.102 7.13476 10.7521 7.78491 11.1193 7.32598Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+												<div *ngIf="tretmentItem.Hyg==5">
+													<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 16.2976C12.8731 16.2976 16.2976 12.8731 16.2976 8.64881C16.2976 4.42449 12.8731 1 8.64881 1C4.42449 1 1 4.42449 1 8.64881C1 12.8731 4.42449 16.2976 8.64881 16.2976Z" fill="#F0F0F0" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path opacity="0.89" d="M5.35953 8.64746C5.26009 8.64746 5.17596 8.73925 5.19126 8.83868C5.40543 10.7738 6.76691 12.2653 8.42671 12.2653C10.0941 12.2653 11.448 10.7738 11.6621 8.83868C11.6698 8.73925 11.5933 8.64746 11.4939 8.64746H5.35953Z" fill="#A5A5A5"/>
+														<path d="M4.85513 7.37082C4.83984 7.1643 4.92397 6.8354 5.19933 6.85835C5.45174 6.88129 5.50528 7.17195 5.49763 7.37082C5.45939 7.95977 6.37725 7.95977 6.41549 7.37082C6.46138 6.67478 5.94891 5.94814 5.19933 5.94049C4.43445 5.93284 3.89138 6.64418 3.93727 7.37082C3.96787 7.95977 4.89338 7.95977 4.85513 7.37082Z" fill="#A5A5A5"/>
+														<path d="M11.341 7.37082C11.3257 7.1643 11.4098 6.8354 11.6852 6.85835C11.9376 6.88129 11.9911 7.17195 11.9835 7.37082C11.9452 7.95977 12.8631 7.95977 12.9013 7.37082C12.9472 6.67478 12.4347 5.94814 11.6852 5.94049C10.9203 5.93284 10.3772 6.64418 10.4231 7.37082C10.4614 7.95977 11.3792 7.95977 11.341 7.37082Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+											</div>
+											<div class="treatment-body-cell" style="width: 7%;">{{tretmentItem.Appl}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 2.5%; position: relative;">
+												<div class="elastic-col" *ngIf="tretmentItem.elastic" (click)="showElasticSection()">
+													<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.36364 7.50018V10.182C8.36364 10.7343 7.91592 11.182 7.36364 11.182H2C1.44772 11.182 1 10.7343 1 10.182V4.81836C1 4.26608 1.44772 3.81836 2 3.81836H4.68182" stroke="#4EC8F0" stroke-width="0.5"/>
+														<path d="M10.3741 3.02885C10.39 2.82235 10.2355 2.64208 10.029 2.62619L6.66392 2.36734C6.45743 2.35146 6.27715 2.50598 6.26127 2.71248C6.24538 2.91897 6.3999 3.09925 6.6064 3.11513L9.59757 3.34522L9.36748 6.33639C9.35159 6.54288 9.50611 6.72316 9.71261 6.73904C9.91911 6.75493 10.0994 6.60041 10.1153 6.39391L10.3741 3.02885ZM4.517 8.1939L10.2443 3.28481L9.75618 2.71537L4.0289 7.62446L4.517 8.1939Z" fill="#4EC8F0"/>
+													</svg>
+												</div>
+												&nbsp;
+											</div>
+											<div class="treatment-body-cell" style="width: 2.5%;">{{tretmentItem.St}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 7%;">{{tretmentItem.dr}} &nbsp;</div>
+											<div class="treatment-body-cell left-align wrap-text italic-style" style="width: 20%;">{{tretmentItem.notes}} &nbsp;</div>
+											<div class="treatment-body-cell left-align wrap-text italic-style" style="width: 15%;">{{tretmentItem.next_notes}} &nbsp;</div>
+											
+											<div *ngIf="tretmentItem.multiple_application_status" class="treatment-body-cell left-align wrap-text italic-style" style="position: relative; width: 2%;">
+												<div  class="multiple-appointment-icon" style="top:22px;" (click)="showSelectedMultipleAppointment(indx)">
+													<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M5 8L0.669872 0.500001L9.33013 0.5L5 8Z" fill="#4EC8F0" fill-opacity="0.5"/>
+													</svg>
+												</div>
+
+												<div *ngIf="tretmentItem.show_applicant" class="showAllselectedProcedure">
+													<div  *ngFor="let multiple_applicationArray of tretmentItem.multiple_application; let indx=index" class="selectedProcedureName">
+													{{multiple_applicationArray.name}}
+													</div>
+												</div>
+
+											</div>
+
+											<div class="treatment-body-cell" style="width: 6%;">{{tretmentItem.Proc}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 6%;">{{tretmentItem.U}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 5.8%;">{{tretmentItem.Wks}} &nbsp;</div>
+											
+											</div>
+											
+											</div>
+										</div>
+                                        
+                                 </perfect-scrollbar>
+								</div>
+
+
+							</div>
+							
+							
+						</div>
+                       
+					  </div>	
+                       </perfect-scrollbar>
+                     </div>
+                     <div class="add-row-btn addRow" (click)="addRow()" >
+							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<line x1="7" y1="0.5" x2="7" y2="13.5" stroke="#646464"/>
+								<line x1="0.5" y1="7" x2="13.5" y2="7" stroke="#646464"/>
+							</svg>
+					</div>
+							
+					<div class="add-row-btn addSaveRow" (click)="saveRow()"  >
+							<svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M0.5 11.5H9.5V3.25L7.25 0.5H0.5V11.5Z" fill="#F6CC61"/>
+							</svg>
+								
+					</div>
+
+
+
+
+					<div class="confirmation-modal-overlay" *ngIf="errorVal">
+						<div class="confirm-modal">
+						  <div class="modal-logo">
+							<svg width="114" height="114" viewBox="0 0 114 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+							  <circle cx="57" cy="57" r="57" fill="#4EC8F0"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M41.6955 68.6971C42.6357 69.2576 44.7058 70.0983 46.8212 68.7423C48.7106 67.5309 48.4665 65.063 46.5591 65.6416C44.064 66.3196 42.1294 65.9399 40.014 65.4517C38.8659 65.1896 38.1699 66.2744 39.5982 67.3592C40.1587 67.7841 41.0536 68.3174 41.6955 68.6971Z" fill="#0C1E2E"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M43.0698 54.9902C40.1318 56.6626 36.7598 59.1035 34.4908 63.1263C33.3156 65.549 36.8593 67.6825 37.8266 66.2542C38.9023 64.401 41.0358 62.2675 42.9432 60.803C42.6268 58.6695 42.6178 56.6626 43.0698 54.9902Z" fill="#0E2436"/>
+							  <path d="M63.9793 45.0098H56.5754V53.0735H63.9793V45.0098Z" fill="#0E2436"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M73.9507 49.8718C73.2185 47.4219 60.8517 50.8843 54.3066 51.3905C53.6829 51.3996 53.0681 51.3996 52.4534 51.3815C51.5042 51.3363 50.4917 51.2097 49.1809 50.9385C47.4543 50.4775 46.044 50.83 44.9502 51.7793C43.4495 52.9997 42.5997 55.2506 42.3828 58.035C41.8494 63.4229 43.558 70.7996 47.7978 76.5581C55.0841 88.2108 62.7049 86.8819 70.0364 72.8607C73.553 66.1078 77.6481 55.2235 73.9507 49.8718Z" fill="#EDEFF0"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M48.8642 76.1411C46.8031 70.1114 47.002 63.4127 47.8608 63.2681C53.1582 62.364 57.172 60.1221 60.1643 56.8948C61.3395 55.6382 64.7567 51.299 64.9284 51.082C59.423 51.1182 56.2228 53.324 49.5332 51.6696C48.2495 51.3532 47.1647 51.4708 46.2787 51.9318C45.1035 52.5465 44.2267 53.7941 43.6933 55.4484C43.1238 57.1931 42.9249 59.3627 43.1147 61.7493C43.4854 66.3869 45.3657 71.7567 48.8642 76.1411Z" fill="#BECDD1"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M40.7375 34.4414C40.0685 34.6584 39.5623 34.9929 39.4628 35.4268C39.0922 36.9907 38.9747 38.8891 39.4086 40.5254C39.5171 40.9231 39.9691 41.1943 40.5838 41.348C40.0866 39.097 40.2584 36.5749 40.7375 34.4414Z" fill="#0C1E2E"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M41.8672 33.1309C41.2887 33.4292 40.8819 33.8089 40.7824 34.2699C40.231 36.5842 40.0502 39.3956 40.7101 41.8184C40.8819 42.4693 41.6864 42.8941 42.7532 43.1021C41.6141 39.9923 41.4243 36.5118 41.8672 33.1309Z" fill="#BECDD1"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M60.5625 47.5043C68.7529 46.7178 77.0607 44.3855 77.4946 41.6916C77.8743 39.3411 77.6754 36.9365 77.0697 34.5951C76.907 36.5206 76.0753 37.9761 74.864 38.184C73.2006 38.4643 71.4378 36.2946 70.9315 33.3385C70.4253 30.3734 71.3654 27.7427 73.0288 27.4625C73.3362 27.4082 73.6526 27.4444 73.9599 27.5529C73.5983 26.9743 73.2187 26.4048 72.8209 25.8533C71.4106 23.8193 64.7843 23.4758 58.1669 24.2261C51.5315 24.8318 45.1131 26.5133 44.1458 28.7914C41.8496 33.9081 40.81 40.0643 42.7898 45.2624C43.7751 47.7936 52.3813 48.3903 60.5625 47.5043Z" fill="#EDEFF0"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M52.2454 44.9453C53.3302 46.3736 54.7495 47.4132 56.4852 47.82C49.7323 48.1365 43.6212 47.368 42.8076 45.2436C40.8278 40.0546 41.8674 33.8983 44.1636 28.7726C44.8326 27.1996 48.1051 25.9069 52.2545 25.0571C53.5291 24.795 54.8851 24.578 56.2773 24.4062C54.7314 24.9487 53.4658 25.8979 52.4714 27.1273C52.3358 27.2991 52.2002 27.4708 52.0737 27.6516C51.5493 27.7782 51.0521 27.9048 50.5911 28.0404C48.5119 28.6551 46.9841 29.4687 46.4869 30.445C45.4292 32.4429 44.6698 34.6667 44.4258 36.8816C44.2088 38.8794 44.4077 40.8682 45.1851 42.7124C45.6823 43.8605 47.6531 44.5385 50.3741 44.8007C50.9437 44.882 51.5765 44.9182 52.2454 44.9453Z" fill="#BECDD1"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M60.1826 43.7998C66.7728 43.158 70.877 42.1907 71.2567 40.3013C72.0251 36.4412 70.2623 32.3913 67.6678 29.2363C66.5558 27.826 63.8257 26.8949 58.5011 27.5006C53.1675 27.9978 47.9875 29.2453 47.183 30.8545C45.2845 34.4705 44.3805 38.7916 45.9174 42.4167C46.6948 44.1886 53.6014 44.514 60.1826 43.7998Z" fill="#0C1E2E"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M60.1828 43.7977C64.1062 43.418 67.1527 42.9208 69.0511 42.1795C69.6116 41.8089 69.9552 41.384 70.0456 40.9048C70.814 37.0447 69.0511 32.9948 66.4566 29.8398C65.3447 28.4295 62.6146 27.4984 57.29 28.1041C53.7282 28.4295 50.2387 29.0985 48.0782 29.9844C47.6442 30.2556 47.3459 30.5449 47.1922 30.8523C45.2938 34.4683 44.3898 38.7895 45.9266 42.4145C46.695 44.1864 53.6017 44.5118 60.1828 43.7977Z" fill="#0E2436"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M61.6829 43.6452C64.8921 43.2836 67.4053 42.8225 69.0506 42.1807C69.611 41.81 69.9546 41.3851 70.045 40.906C70.7772 37.2267 69.2133 33.3756 66.8177 30.293L66.7996 30.3653L63.9248 38.863C63.3011 38.5646 62.6773 38.5646 62.1349 38.7545C61.6829 38.9172 61.2761 39.2065 60.9687 39.5771C60.6704 39.9387 60.4534 40.3727 60.345 40.8247C60.1822 41.5117 60.2726 42.262 60.7156 42.8948C60.8241 43.0576 61.0953 43.2655 61.4569 43.5005C61.5202 43.5457 61.6015 43.5909 61.6829 43.6452Z" fill="#0C1E2E"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M51.6308 34.308C50.7177 34.2447 49.9403 35.1035 49.8951 36.2335C49.8408 37.3635 50.5369 38.3218 51.45 38.3941C52.363 38.4574 53.1404 37.5986 53.1856 36.4686C53.2399 35.3385 52.5438 34.3713 51.6308 34.308Z" fill="#13A7DD"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M58.8083 100.867C64.82 100.867 69.6835 101.382 69.6835 102.015C69.6835 102.648 64.8109 103.163 58.8083 103.163C52.7967 103.163 47.9331 102.648 47.9331 102.015C47.9331 101.382 52.8057 100.867 58.8083 100.867Z" fill="#BECDD1"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M64.5763 57.459C65.5255 57.459 66.2939 58.3088 66.2939 59.3664C66.2939 60.4241 65.5255 61.2739 64.5763 61.2739C63.6271 61.2739 62.8586 60.4241 62.8586 59.3664C62.8586 58.3088 63.6361 57.459 64.5763 57.459Z" fill="#EC1B23"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M74.011 27.5009C75.6743 27.2207 77.4371 29.3903 77.9434 32.3464C78.4496 35.3116 77.5095 37.9422 75.8461 38.2225C74.1827 38.5027 72.4199 36.3331 71.9137 33.377C71.4074 30.4209 72.3476 27.7902 74.011 27.5009Z" fill="#EDEFF0"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M75.4755 28.3981C76.732 28.1812 78.07 29.8265 78.4496 32.0684C78.8293 34.3103 78.1242 36.3082 76.8586 36.5161C75.602 36.7331 74.2641 35.0878 73.8844 32.8458C73.5047 30.6129 74.2189 28.6151 75.4755 28.3981Z" fill="#0E2436"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M78.2717 46.6807C77.7655 45.5687 77.0875 43.1821 78.8413 41.0125C80.4052 39.0689 83.1082 39.6384 82.2313 41.6815C81.1826 44.3483 81.3725 46.536 81.6437 48.9407C81.7974 50.2424 80.5137 50.8752 79.4831 49.1667C79.0853 48.4977 78.6062 47.431 78.2717 46.6807Z" fill="#0C1E2E"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M43.9734 71.0745C44.6153 71.6892 46.9657 74.8532 47.4719 75.5674C48.4573 77.0861 46.4142 78.6952 45.0944 77.9178C44.6785 77.6737 42.066 73.678 41.4512 72.5028C42.4095 72.3129 43.2773 71.8609 43.9282 71.1377L43.9734 71.0745ZM43.5485 67.5488C44.552 68.0189 48.7737 70.2247 49.4879 70.7852C51.0066 72.0417 49.3884 74.3741 47.7612 73.9944C47.4629 73.9221 46.8934 73.452 46.2606 72.8644C43.3587 70.8846 43.5666 70.4507 43.3677 69.2845C43.3406 69.1218 43.5847 67.7115 43.5485 67.5488ZM41.7767 73.0723C41.9575 73.3616 42.9067 75.6668 43.0694 75.9742C43.7474 77.4025 41.7948 78.5506 40.7371 77.7189C40.3845 77.4387 38.9291 73.6238 38.4771 72.3853C39.3539 72.8011 40.2579 73.0271 41.1258 73.0723C41.3428 73.0904 41.5597 73.0904 41.7767 73.0723Z" fill="#0E2436"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M38.3416 74.1472C40.7553 76.0908 43.8741 76.2716 45.4561 74.4997C47.0653 72.7008 46.4957 69.5639 44.2176 67.3762L44.1363 67.3038L44.1182 67.2858C42.6899 65.9478 36.4251 61.8798 34.4543 62.2414C32.8271 62.5397 31.7514 64.1037 32.0497 65.7309C32.5198 68.3073 36.2985 72.6104 38.3416 74.1472Z" fill="#EDEFF0"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M40.4843 73.1521C38.4412 71.6152 34.6624 67.3122 34.1924 64.7357C34.0477 63.9673 34.2195 63.217 34.5992 62.6113C34.572 62.6113 34.5449 62.6204 34.5268 62.6204H34.5178C33.8127 62.756 33.2251 63.1537 32.8454 63.7052C32.4657 64.2566 32.2939 64.9527 32.4295 65.6578V65.6669C32.6284 66.7426 33.4601 68.1619 34.4907 69.5451C35.6388 71.0819 37.04 72.5554 38.1158 73.4685C38.2694 73.595 38.4322 73.7216 38.5858 73.8481C39.7339 74.7702 41.0447 75.2765 42.2471 75.3307C43.142 75.3759 43.9737 75.177 44.6246 74.725C43.7116 74.725 42.7262 74.4809 41.786 73.9928C41.334 73.7668 40.9001 73.4865 40.4843 73.1521Z" fill="#BECDD1"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M69.277 57.1927C66.6915 55.674 68.6532 51.5156 70.4341 52.2478C72.5676 53.2965 75.8581 53.9564 78.534 54.1372L78.5611 54.1824C79.0764 55.2672 81.1918 52.4738 81.4901 53.5315C84.1569 62.9603 72.8297 59.2448 69.277 57.1927Z" fill="#0E2436"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M61.3849 33.6302C60.4719 33.567 59.6944 34.4258 59.6402 35.5558C59.5859 36.6858 60.282 37.644 61.1951 37.7073C62.1081 37.7706 62.8856 36.9118 62.9398 35.7818C62.994 34.6518 62.298 33.6935 61.3849 33.6302Z" fill="#13A7DD"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M76.1657 44.6455C75.786 43.7325 73.4627 40.017 72.9293 39.2034C71.7631 37.5671 69.2681 39.0316 69.5303 40.7131C69.6116 41.2464 72.6852 45.5676 73.6616 46.6795C74.2401 45.7574 75.0628 45.0523 76.0843 44.6726L76.1657 44.6455ZM77.8923 43.1629C77.811 41.9335 77.2324 36.6722 76.9522 35.7049C76.2651 33.6257 73.1915 34.3489 72.9293 36.193C72.8841 36.5275 73.1372 37.314 73.4898 38.1999C74.3667 42.0058 74.9001 41.9606 76.021 42.6477C76.1747 42.7381 77.7386 43.0545 77.8923 43.1629ZM73.2096 46.119C72.9745 45.8117 70.9767 43.8952 70.7326 43.6059C69.5302 42.3313 67.5505 43.8861 67.9844 45.3145C68.129 45.7936 71.4829 48.8491 72.5858 49.8074C72.5135 48.7316 72.64 47.7011 72.9474 46.788C73.0197 46.553 73.1101 46.327 73.2096 46.119Z" fill="#0E2436"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M70.8318 47.5035C69.8012 44.222 70.877 40.9223 73.354 40.0003C75.8671 39.0691 78.8865 40.9223 80.2245 44.1677L80.2697 44.2762L80.2787 44.2943C81.0833 46.3102 82.7647 54.4463 81.5895 56.3447C80.6222 57.9087 78.5701 58.3968 77.0062 57.4205C74.5202 55.9018 71.6002 50.2427 70.8318 47.5035Z" fill="#EDEFF0"/>
+							  <path fill-rule="evenodd" clip-rule="evenodd" d="M72.7393 45.6893C73.5077 48.4284 76.4276 54.0785 78.9046 55.6153C79.6368 56.0673 80.4866 56.2029 81.2731 56.0583C81.2641 56.0854 81.246 56.1125 81.2279 56.1306V56.1396C80.803 56.8176 80.1521 57.2606 79.4289 57.4323C78.7057 57.6041 77.9192 57.4956 77.2322 57.0707H77.2231C76.1926 56.4289 75.0626 55.0006 74.0501 53.3643C72.9201 51.5473 71.9618 49.5042 71.4556 48.0216C71.3923 47.8047 71.32 47.5877 71.2567 47.3798C70.7685 45.8158 70.7776 44.261 71.2024 42.9863C71.5188 42.0461 72.0613 41.2687 72.7935 40.7715C72.4229 41.7207 72.2782 42.8326 72.3957 43.9988C72.4409 44.5593 72.5585 45.1198 72.7393 45.6893Z" fill="#BECDD1"/>
+							</svg>
+						  </div>
+						  
+						  <div [ngClass]="{'modal-txt': true}">{{errorMessage}}</div>
+						  
+						  <div class="modal-btn-cont">
+							<div class="modal-btn" (click)="btnAction('back')">Go back</div>
+						  </div>
+						</div>
+					  </div>
+
+
+
+
+                    </div>
+						
+					</div>
+					
+					<!----<div class="tab-cont" [ngStyle]="{'margin-top': (postTreatment == false ? (tableHt+60) : 0) + 'px'}">
+						<div class="tab-btn">Treatment</div>
+					</div>-->
+					
+					
+				</div>
+				
+				
+				<!-- <div fxFlex="330px" class="right-panel" >
+					<app-chair [chairDetails]="patientInChair" [activepatient]="true"></app-chair>
+					
+					<div class="other-patient-panel">
+						<app-chair *ngFor="let chair of chair_labelArr" [chairDetails]="chair" [activepatient]="false"></app-chair>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		
+		
+		
+		</perfect-scrollbar>
+		</div>
+		
+	<!-- <div class="profile-cont">
+		<img src="assets/492730210_1.png" width="100%" />
+	</div> -->
+	
+</div>

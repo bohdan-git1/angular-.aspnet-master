@@ -1,0 +1,191 @@
+input:focus {
+	outline: none;
+}
+
+.section-cont{width:100%; /*height:655px;*/ padding:15px; position:relative; box-sizing:border-box; background:#E5E5E5}
+.section-title{width:100%; margin-bottom:15px; font-size:14px; text-align:center; text-transform:uppercase; color:#646464; letter-spacing:3px; position:relative}
+.view-btn{position:absolute; right:8px; top:0; z-index:99}
+.inner-cont{width:100%; min-height:600px; background:#FFF; border-radius:4px; box-sizing:border-box; padding-top:15px; padding-bottom:15px;
+padding-left:10px; padding-right:10px;position:relative}
+
+.option-selector-cont {
+	
+}
+
+.add-library-icon {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	cursor: pointer;
+}
+
+.labelbox-holder{
+	width:auto;
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    min-width: 275px;
+    float: left;
+    max-width: 100%;
+}
+
+.drag-drop-cont {
+	padding-left: 80px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 247px;
+}
+
+.labelbox{
+	width: 100%;
+    position: relative;
+    margin: 0 0 3px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 2px;
+    height: 24px;
+}
+
+.drag-drop-elem {
+	border: 1px solid #4EC8F0;
+	box-sizing: border-box;
+	border-radius: 2px;
+}
+
+.labelbox .name{font-family:Lato; font-style:normal; font-weight:bold; font-size:11px; line-height:normal; color:#A5A5A5; width: 100%; height: 100%; box-sizing: border-box;}
+
+.drag-drop-elem-label {
+	display: flex;
+	align-items: center;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #4EC8F0;
+	padding-left: 10px;
+	cursor: move;
+}
+
+.labelbox-wrapper {
+	/*width: 70%;
+  margin: auto;*/
+	width: 100%;
+	max-width: 247px;
+	border-top: 1px solid #C4C4C4;
+	padding-top: 3px;
+	float: left;
+}
+
+.entry-input-cont {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 13px;
+    color: #A5A5A5;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
+.entry-input-cont::placeholder {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #A5A5A5;
+}
+
+.add-btn{position:absolute; z-index:999; right:0; top:0; cursor: pointer; width: 24px; height: 24px;}
+.labelbox-actine-cont{float: right; width: auto; margin-left: 14px}
+.labelbox-actine-cont .active-labelbox{width:auto; float: left; margin-top: -15px; margin-right: 15px}
+.labelbox-actine-cont .active-labelbox .title{font-family:Lato; font-weight:500; font-size:11px; line-height:20px; text-align:center; color:#646464}
+.labelbox-actine-cont .active-labelbox .txtbox{width:auto; min-width: 180px;  border:1px solid #4EC8F0;box-sizing:border-box; border-radius:2px; font-family:Lato; font-weight:normal; font-size:10px; line-height: 21px; text-align:center; color: #646464}
+.tick-icon2{
+	width: 24px;
+    height: 24px;
+    float: right;
+    border: 1px solid #4EC8F0;
+    margin: 6px 0 0;
+    text-align: center;
+    box-sizing: border-box;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+
+}
+.tick-icon2 svg{margin-top: -15px}
+
+.txtbox input {
+	width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    border: none;
+    background: none;
+    text-align: center;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+	color: #646464;
+}
+
+.txtbox input::placeholder {
+	text-align: center;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+	color: #646464;
+}
+
+.bottom-elem {
+	position: absolute;
+	left: 0;
+	bottom: 10px;
+	width: 100%;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+.info-item {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #4EC8F0;
+    float: left;
+    /* padding-top: 15px; */
+	width: 80%;
+	height: 27px;
+	display: flex;
+	align-items: center;
+}
+
+.library-btn {
+	width: 30px;
+    height: 27px;
+    background: #FFFFFF;
+    border: 0.5px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.clear {
+	clear: both;
+}

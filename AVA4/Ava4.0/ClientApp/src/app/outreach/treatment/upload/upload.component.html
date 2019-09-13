@@ -1,0 +1,95 @@
+<div class="imageupload-contain">
+	<div class="name-date top-panel">
+		<div class="name">UPLOAD - Estelle Goslin *Stella</div>
+		<div class="date">3/15/2018 (13y 1m)</div>
+		<!-- <div class="boderclsforimgupload"></div> -->
+		<div style="clear: both;"></div>
+	</div>
+
+        <div class="name-date">
+			<div class="final-phase">
+				<!-- <input class="final-phase-text" placeholder="Title"> -->
+				
+				<app-dropdown [options]="optionArray"></app-dropdown>
+				
+			</div>
+			<!-- <div class="dropdown-list">
+				
+			</div> -->
+			<div style="clear: both;"></div>
+        </div>
+
+        <div class="name-date">
+			<div *ngFor="let imagelist of imagelistArray; let indx = index" class="imageshowoneby-one">
+				<div class="imgshow-section">
+					<img [src]="imagelist.img"  *ngIf="imagelist.img">
+				</div>
+				<div class="image-name" style="margin-top:4px;">
+					<input class="common-input-imgName" type="text" (keyup)="saveImagename($event, indx)" value="{{imagelist.name}}" />
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+        </div>
+
+        <div class="name-date" style="position: relative">
+              <div class="drag-and-drop-outer-div">
+                    <div class="drag-and-drop-inner-div">
+                              <div class="upload-file-icon">
+                                    <svg style="height: 125px; margin-left: 315px; margin-top: 20px;" viewBox="0 0 347 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M310.689 129.928C317.888 117.262 322 102.611 322 87C322 38.9512 283.049 0 235 0C194.353 0 160.217 27.8746 150.664 65.5509C138.255 52.2885 120.595 44 101 44C63.4446 44 33 74.4446 33 112C33 118.273 33.8495 124.348 35.4397 130.116C15.1516 134.695 0 152.828 0 174.5C0 199.629 20.371 220 45.5 220H301.5C326.629 220 347 199.629 347 174.5C347 152.519 331.413 134.178 310.689 129.928Z" fill="#C4C4C4"/>
+                                        <rect x="146" y="140" width="54" height="55" fill="white"/>
+                                        <path d="M173 85.4922L220.631 153.115H125.369L173 85.4922Z" fill="white"/>
+                                    </svg>
+                              </div>
+                              <div class="upload-file-text">Drag and drop OR </div>
+                    </div>
+              </div>  
+              <div style="clear: both;"></div>  
+              
+              <ngx-file-drop class="ngx-fileDrop" dropZoneLabel=""  (onFileDrop)="dropped($event)" 
+                        (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+             </ngx-file-drop>
+
+                <div class="image-upload">
+                <label for="file-input">
+                <a style="cursor: pointer; color: #4EC8F0">click here </a> to upload files 
+                </label>
+                <input style="display: none" id="file-input" #file type="file" accept='image/*' (change)="preview(file.files)" />
+                </div>
+
+
+        </div>
+
+        <div class="name-date last-set">
+                <div style="cursor: pointer;" class="Cancel" (click)="cancelModal()" >
+					<div class="Cancel-text">Cancel</div>
+					<div class="Cancel-icon">
+						<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="12.0352" y="4.25684" width="1" height="11" transform="rotate(45 12.0352 4.25684)" fill="#4EC8F0"/>
+						<rect x="4.25781" y="4.96387" width="1" height="11" transform="rotate(-45 4.25781 4.96387)" fill="#4EC8F0"/>
+						</svg>
+					</div>
+					<div style="clear: both;"></div>
+                </div>
+
+                <div style="cursor: pointer;" class="Save" (click)="saveAndCloseModal()" >
+					<div class="Save-text">Save</div> 
+					<div class="Save-icon">
+						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="0.5" y="4.5" width="13" height="9" rx="0.5" stroke="#4EC8F0"/>
+						<rect x="3" y="3" width="8" height="5" fill="#F0F0F0"/>
+						<path d="M6.64645 10.3536C6.84171 10.5488 7.15829 10.5488 7.35355 10.3536L10.5355 7.17157C10.7308 6.97631 10.7308 6.65973 10.5355 6.46447C10.3403 6.2692 10.0237 6.2692 9.82843 6.46447L7 9.29289L4.17157 6.46447C3.97631 6.2692 3.65973 6.2692 3.46447 6.46447C3.2692 6.65973 3.2692 6.97631 3.46447 7.17157L6.64645 10.3536ZM6.5 0L6.5 10H7.5L7.5 0L6.5 0Z" fill="#4EC8F0"/>
+						</svg>
+					</div>
+					
+					<div style="clear: both;"></div>
+					
+                </div>
+                <div style="clear: both;"></div>
+        </div>
+                
+        
+
+
+
+</div>

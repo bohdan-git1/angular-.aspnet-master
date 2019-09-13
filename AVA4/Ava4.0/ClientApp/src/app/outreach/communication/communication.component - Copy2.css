@@ -1,0 +1,597 @@
+input:focus, textarea:focus {
+	outline: none;
+}
+
+.left-wrap{width:70%; float:left}
+.right-wrap{width:25%; float:right}
+.clear{clear:both}
+
+.left-contwrap{}
+.right-contwrap{}
+
+.complience-roundbox{width:445px; height:445px; position:relative; float:left; overflow:hidden; background:#FFFFFF; margin:50px; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25); border-radius:100%; -webkit-font-smoothing:antialiased; font-smoothing:antialiased }
+.complience-roundbox .title{width:100%; position:absolute; left:0; bottom:32px; font-family:Lato; font-style:normal; font-weight:bold; font-size:20px; text-align:center; line-height: normal; color: #646464}
+.complience-roundbox .separator{width:100%; height:2px; position:absolute; top:60px; left:0; background:#F0F0F0} 
+.complience-roundbox .separator:nth-child(2){top:50%}
+.complience-roundbox .graph-holder{width:76%; position:relative; left:0; bottom:-35px;  margin:0; /*margin:0 0 65px;*/ padding:0 107px; border-bottom:#F0F0F0 2px solid;}
+.complience-roundbox .graph{width:40px; height:292px; margin-right:6px; position:relative; display:inline-block; vertical-align:bottom; background:linear-gradient(180deg, #B48CF6 0%, #00AEEF 100%); 
+border-radius:2px}
+.complience-roundbox .graph.graph2{height:341px; margin-left:10px; background: linear-gradient(180deg, #8CF1E4 0%, #4EC8F0 100%)}
+.complience-roundbox .graph .graph-label{width:100px; height:98px; position:absolute; left:0; bottom:5px; font-family:Lato; font-style:normal; font-weight:bold; font-size:10px;
+line-height:normal; color:#FFFFFF; transform: rotate(-90deg)}
+.complience-roundbox .graph .graph-value{width:100%; position:relative; top:3px; left:0; font-family:Lato; font-style:normal; 
+font-weight:500; font-size:14px; color:#fff; text-align:center}
+.complience-roundbox .graph:nth-child(2){width:40px; height:261px}
+.complience-roundbox .graph:nth-child(3){width:40px; height:234px}
+.complience-roundbox .graph:nth-child(4){width:40px; height:238px}
+.complience-roundbox .ava-img{width:200px; height:80px; position:absolute; right:0; bottom:0}
+
+.scheduling-roundbox{width:445px; height:445px; position:relative; float:left; background:#FFFFFF; margin:50px; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25); border-radius:100%}
+.scheduling-roundbox .title{width:100%; position:absolute; left:0; bottom:12px; font-family:Lato; font-style:normal; font-weight:bold; font-size:20px; text-align:center; line-height: normal; color: #646464}
+.scheduling-roundbox .separator{width:100%; height:2px; position:absolute; top:60px; left:0; background:#F0F0F0} 
+.scheduling-roundbox .separator span{font-family:Lato; font-style:normal; font-weight:500; font-size:9px;
+line-height:normal; color:#646464; position:absolute; left:-39px; top:-5px}
+.scheduling-roundbox .separator span:after{content:""; width:12px; height:2px; background:#C1C1C1; position:absolute; left:44px; top:5px} 
+.scheduling-roundbox .separator:nth-child(2){top:55%}
+.scheduling-roundbox .separator:nth-child(3){top:auto; bottom:80px}
+.scheduling-roundbox .graph-wrap{width:100%; position:relative; left:20px; top:0; margin:0; /*margin:0 0 65px;*/ padding:0; border-bottom:#F0F0F0 2px solid;}
+.scheduling-roundbox .graph-holder{width:63px; float:left; text-align:center; margin:0}
+.scheduling-roundbox .graph-holder .name{width:100%; height:54px; font-weight:bold; font-size:13px; line-height:normal; text-align:center; color:#696969; margin:0 0 6px}
+.scheduling-roundbox .graph-holder .name span{display:block; font-size:9px; line-height: normal; color:#939393; padding-top:11px}
+.scheduling-roundbox .add-icon{width:auto; position:absolute; bottom:3px; left:4px; font-family:Lato; font-style:normal; 
+font-weight:500; font-size:12px; color:#fff; text-align:left}
+.scheduling-roundbox .graph-one{width:40px; display:inline-block; position:relative; height:335px; background:linear-gradient(180deg, #B48CF6 0%, #FD7474 99.99%);
+box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25); border-radius:2px}
+.scheduling-roundbox .graph-two{width:40px; height:46px; display:inline-block; position:relative; background:linear-gradient(180deg, #FD7474 0%, #F6CC61 99.99%);
+box-shadow:3px 3px 4px rgba(0, 0, 0, 0.25); border-radius:2px}
+.scheduling-roundbox .graph-three{width:40px; height:34px; display:inline-block; position:relative; background:linear-gradient(180deg, #FCFF7C 0%, #00ABE9 100%);
+box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25); border-radius:2px;}
+.scheduling-roundbox .graph-four{width:40px; height:335px; display:inline-block; position:relative; background: linear-gradient(180deg, #8CF1E4 0%, #B48CF6 100%);
+box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25); border-radius:2px;}
+.scheduling-roundbox .graph-five{width:40px; height:102px; display:inline-block; position:relative; background: linear-gradient(180deg, #F6CC61 0%, #04EDFE 100%);
+box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25); border-radius:2px;}
+.scheduling-roundbox .graph-six{width:40px; height:140px; display:inline-block; position:relative; background: linear-gradient(180deg, #8CF1E4 0%, #FD7474 100%);
+box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25); border-radius: 2px;}
+.scheduling-roundbox .ava-img{position:absolute; left:115px; bottom:-10px}
+
+.payment-detailbox{
+    float: left;
+    position: relative;
+    padding: 20px 20px 0;
+    background: #FFFFFF;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    margin-right: 35px;
+    box-sizing: border-box;
+    /*width: 660px;*/
+}
+.payment-detailbox .smheading{width:100%; display:block; font-family:Lato; font-style:normal; font-weight:500; font-size:10px;
+line-height:normal; color:#646464; margin-bottom:10px; padding-left:12px}
+.payment-detailbox .greybarwrap{width:100%; float:left; position:relative}
+.payment-detailbox .greybar-one{width:432px; height:16px; float:left; display:block; background:#ECECEC; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius:2px}
+.payment-detailbox .greybar-one .sep{width:2px; height:23px; display:inline-block; vertical-align:bottom; margin-left:47px; margin-top:-7px; background:#646464; border-radius:4px}
+.payment-detailbox .greybar-one .sep:nth-child(2){margin-left:70px}
+.payment-detailbox .greybar-one .sep:nth-child(3){margin-left:80px}
+.payment-detailbox .greybar-one .sep:nth-child(4){margin-left:100px}
+.payment-detailbox .greybar-one .sep:nth-child(5){margin-left:90px}
+.payment-detailbox .greybarwrap .hexagon{width:24px; height:14px; float:left; background:#646464; color:#fff; font-family:Lato; font-style:normal;
+font-weight: 500;font-size:10px;  position:relative; margin-left:-10px; text-align:center}
+.hexagon:before{content:""; position:absolute; top:-7px; left:0; width:0; height:0; border-left:12px solid transparent;      
+border-right: 12px solid transparent; border-bottom:7px solid #646464;}
+.hexagon:after{content:""; position:absolute; bottom:-7px; left:0; width:0; height:0; border-left:12px solid transparent;
+border-right:12px solid transparent; border-top:7px solid #646464}
+.payment-detailbox .date{width:100%; float:left; padding: 5px 5px 5px 12px; font-family:Lato; font-style:normal; font-weight:500; font-size:10px;
+line-height: ]normal; color:#646464}
+.payment-detailbox .greybar-two{width:332px}
+.payment-detailbox .greybar-three{width:500px}
+.payment-detailbox .progress-bar{width:90%; height:34px; float:left; position:relative; background:#ECECEC; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius:2px}
+.payment-detailbox .progress-bar span{width:88%; height:34px; position:absolute; left:0; top:0; background:linear-gradient(270deg, #FD7474 0%, #F6CC61 101.01%);
+border-radius: 2px}
+.payment-detailbox .progress-bar .sep{width:3px; height:38px; float:left; position:relative; z-index:99; margin-left:47px; margin-top:-3px; background:#646464; border-radius:4px}
+.payment-detailbox .progress-bar .sep:nth-child(1){margin-left:46px}
+.payment-detailbox .progress-bar .sep:nth-child(2){margin-left:46px}
+.payment-detailbox .progress-bar .sep:nth-child(3){margin-left:69px}
+.payment-detailbox .progress-bar .sep:nth-child(4){margin-left:79px}
+.payment-detailbox .progress-bar .sep:nth-child(5){margin-left:100px}
+.payment-detailbox .progress-bar .sep:nth-child(6){margin-left:89px}
+.payment-detailbox .progress-bar .sep:nth-child(7){margin-left:100px}
+.payment-detailbox .progress-bar .sep:nth-child(8){margin-left:120px}
+.payment-detailbox .progress-bar .sep:nth-child(9){margin-left:90px}
+.payment-detailbox .ava-icon-txt{width:13%; float:right; margin:10px 109px 0 0}
+.payment-detailbox .title{width:50%; float:left; font-family:Lato; font-style:normal; font-weight:bold; font-size:20px; line-height:normal;
+color:#646464; margin:20px 0 0}
+
+.communication-iconwrap{width:100%; float:left; display:flex; text-align:right; position:relative; top:10px; padding-bottom:20px}
+.communication-iconwrap .icon{width:26px; height:26px; float:right; display:flex; align-items:center; justify-content: center; text-align:center; padding:4px; border-radius:100%}
+.communication-iconwrap .icon.communication{position:absolute; right:30px; top:0; background:#4EC8F0; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25)}
+.communication-iconwrap .icon.msg{position:absolute; right:85px; top:0; background:#8CF1E4; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25)}
+.communication-iconwrap .icon.call{position:absolute; right:135px; top:0; width:30px; height:30px;background:#FD7474; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25)}
+.communication-iconwrap .icon.email{position:absolute; right:180px; top:0; width:30px; height:30px;background:#B48CF6; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25)}
+.comn-box{width:100%; min-height:500px; float:left; position:relative; background:#FFFFFF; box-shadow:inset 2px 2px 4px rgba(0, 0, 0, 0.25), inset -2px 0px 4px rgba(0, 0, 0, 0.25);
+border-radius: 4px; margin-top:50px; padding:20px 0 0}
+.communication-iconwrap .icon.active{transform:scale(1.4)}
+
+.comn-box .details{width:100%; float:left; padding:8px 10px 10px; position:relative; box-sizing: border-box;}
+.comn-box .details:before{content:""; width:1px; height:100%; background:#ccc; position:absolute; left:66px; bottom:0; z-index:9; top: 45px}
+.comn-box .entry-box{padding:0 15px 30px 15px; float:left; width:100%; box-sizing:border-box}
+.comn-box .entry-box .icon{width:23px; height:23px; float:left; position:relative; z-index:1; text-align:center; background:#FD7474; padding:4px; border-radius:100%}
+.comn-box .entry-box .icon::after{width:55px; height:1px; background:#e7e7e7; position:absolute; left:31px; top:16px; content:""}
+.comn-box .entry-box .txtbox-container{width:230px; float:left; margin-left:20px}
+.comn-box .entry-box .txtbox{ display:block; position:relative; vertical-align:middle; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25); 
+border-radius:5px; border:1px solid #C4C4C4;  border-left:#FD7474 5px solid; font-family:Lato; font-style:normal; font-weight:500;
+font-size:10px; line-height:normal; color:#646464; margin:0 0 12px; padding:8px; box-sizing:border-box}
+.comn-box .entry-box .txtbox .dropdown{width:10px; position:absolute; right:5px; top:7px}
+.comn-box .entry-box .txtbox .dropdown-content{width:100%; position:absolute; left:0; top:30px; z-index:999; background:#fff; padding:10px; box-sizing:border-box; border:#ccc 1px solid}
+.comn-box .entry-box .txtbox .dropdown-content .option{width:100%; display:block; padding:0 0 8px; font-family:Lato; font-style:normal; font-weight:500; font-size:10px; line-height:12px; color:#A5A5A5; cursor:pointer}
+.comn-box .entry-box .msgbox{width:100%; min-height:90px; position:relative; display:block; vertical-align:middle; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25); 
+border-radius:5px; border:1px solid #C4C4C4;  border-left:#FD7474 5px solid; font-family:Lato; font-style:normal; font-weight:500;
+font-size:10px; line-height:normal; color:#646464; margin:0; padding:8px;  box-sizing:border-box}
+.comn-box .entry-box .msgbox .attach-btn{position:absolute; bottom:8px; right:8px; padding:4px 7px 3px; border-radius:3px; cursor: pointer;}
+.comn-box .entry-box .msgbox .attach-btn img{width:5px}
+.comn-box .entry-box .msgbox .attach-btn.msg{background:linear-gradient(180deg, #8CF1E4 0%, #2BE6D0 100%)}
+.comn-box .entry-box .separator{width:100%; height:2px; float:left; background:#8CF1E4; margin:30px 0 0} 
+.comn-box .entry-box .icon.msg{background:#8CF1E4}
+.comn-box .entry-box .msgbox.msg, .comn-box .entry-box .txtbox.msg{border-left:#8CF1E4 5px solid}
+
+.comn-box .details .date{display:inline-block; vertical-align:middle; font-family:Lato; font-style:normal; font-weight:500; font-size:10px;
+line-height:normal; text-align:left; color:#A5A5A5; margin-right: 10px} 
+.comn-box .details .icon{width:23px; height:23px; display:inline-block; position:relative; z-index:999; text-align:center; background:#FD7474; padding:4px; border-radius:100%}
+.comn-box .details .icon.email{background:#B48CF6}
+.comn-box .details .icon.msg{background:#8CF1E4}
+.comn-box .details .icon svg{margin-top:4px}
+.comn-box .details .msgbox{width:152px; display:inline-block; vertical-align:middle; box-shadow:2px 4px 4px rgba(0, 0, 0, 0.25); 
+border-radius:5px; border:1px solid #C4C4C4;  border-left:#FD7474 5px solid; font-family:Lato; font-style:normal; font-weight:500;
+font-size:10px; line-height:normal; color:#646464; margin:0 0 0 18px; padding:8px}
+.comn-box .details .msgbox.email{border-left:#B48CF6 5px solid}
+.comn-box .details .msgbox.msg{border-left:#8CF1E4 5px solid}
+.comn-box .details .status{display:inline-block; vertical-align:middle; font-family:Lato; font-style:normal; font-weight:500;
+font-size:9px; line-height:normal; text-align:right; color:#696969; margin-left:10px; width: 15px}
+.comn-box .ava-icon{position:absolute; left:-88px; bottom:0; }
+
+
+
+
+
+.emailcolor{
+
+    background: #B48CF6 !important;
+}
+
+.emaillist{
+    margin-left: 55px;
+}
+
+.emaillist-contain {
+    width: 100%;
+    min-height: 34px;
+    position: relative;
+    display: block;
+    vertical-align: middle;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: 1px solid #C4C4C4;
+    border-left: #FD7474 5px solid;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: normal;
+    color: #646464;
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+    border-left: #B48CF6 5px solid;
+}
+
+.separatorfor-email {
+    width: 100%;
+    height: 2px;
+    float: left;
+    background: #B48CF6;
+    margin: 30px 0 0;
+}
+
+.emailcolor::after{width:20px !important; height:1px; background:#e7e7e7; position:absolute; left:31px; top:16px; content:""}
+
+
+.emailfor {
+font-family: Lato;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+padding: 1px;
+box-sizing: border-box;
+cursor: pointer;
+}
+
+ .emailfor a:hover {
+    color: #B48CF6;
+}
+
+
+.set_email_textcl{
+
+    border-left: #B48CF6 5px solid !important;
+  
+
+}
+
+.email_des {
+    height: 55px;
+    border: 0px;
+    width: 100%;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: rgb(100, 100, 100);
+    margin: 0px;
+    resize: none;
+	    padding: 5px 10px;
+    box-sizing: border-box;
+
+}
+
+.email-des-contain{
+    padding: 0px !important;
+}
+
+
+.callcolor{
+
+    background: #FD7474 !important;
+    margin-right: 25px;
+
+}
+
+.callcolor::after{width:24px !important; height:1px; background:#e7e7e7; position:absolute; left:31px; top:16px; content:""}
+
+
+.calllist{
+    margin-left: 55px;
+}
+
+
+.calllist-contain {
+    width: 100%;
+    min-height: 34px;
+    position: relative;
+    display: block;
+    vertical-align: middle;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: 1px solid #C4C4C4;
+  
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: normal;
+    color: #646464;
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+    border-left: #FD7474 5px solid;
+}
+
+
+
+.callfor {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    padding: 1px;
+    box-sizing: border-box;
+    cursor: pointer;
+    }
+
+    .callfor a:hover {
+        color: #FD7474;
+    }
+    
+
+    .separatorfor-call {
+        width: 100%;
+        height: 2px;
+        float: left;
+        background: #FD7474;
+        margin: 30px 0 0;
+    }
+    
+    .set_call_textcl {
+        border-left: #FD7474 5px solid !important;
+        display: flex !important;
+    }
+
+
+
+    .call-right-section 
+    {
+
+       width: 77%;
+        min-height: 34px;
+        position: relative;
+        float: left;
+        vertical-align: middle;
+        box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        border: 1px solid #C4C4C4;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: normal;
+        color: #646464;
+        margin: 0;
+        padding: 5px;
+        box-sizing: border-box;
+        border-left: #FD7474 5px solid;
+    }
+
+
+    .show-call-icon {
+
+        height: 18px;
+        float: left;
+        margin-right: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .show-call-title {
+
+        height: 18px;
+        float: left;
+        margin-right: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .on-call {
+       
+        margin: 5px;
+        background: #FD7474;
+        border-radius: 50px;
+        height: 25px;
+    }
+
+
+    .call-time {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 9px;
+        line-height: 11px;
+        color: #FFFFFF;
+        float: left;
+        margin-left: 10px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-right: 5px;
+    }
+    
+
+    .call-time-icon {
+        display: flex;
+        box-sizing: border-box;
+        margin-right: 5px;
+    }
+
+    .msg-icons-dis{
+      
+        height: 60px;
+        float: left;
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+    }
+   
+
+    .email-icons-dis{
+
+       
+        height: 40px;
+        float: left;
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .msgcolor{
+        background: #8CF1E4 !important;
+    }
+
+
+    .msgcolor::after{width:24px !important; height:1px; background:#e7e7e7; position:absolute; left:31px; top:16px; content:""}
+
+
+    .emaillist-contain-formsg {
+        width: 100%;
+        min-height: 34px;
+        position: relative;
+        display: block;
+        vertical-align: middle;
+        box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        border: 1px solid #C4C4C4;
+       
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: normal;
+        color: #646464;
+        margin: 0;
+        padding: 5px;
+        box-sizing: border-box;
+        border-left: #8CF1E4 5px solid;
+    }
+
+    .msgfor {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        padding: 1px;
+        box-sizing: border-box;
+        cursor: pointer;
+        }
+    
+
+    .msgfor a:hover {
+        color: #8CF1E4;
+    }
+
+    .calldropdown{
+        float: right;
+
+        height: 18px;
+       color: #FD7474;
+        display: flex;
+        align-items: center;
+    }
+
+    .noteforcall{
+        margin-top: 20px;
+        margin-left: 55px;
+        padding: 0px;
+    
+    }
+
+    .note-save{
+        float: left;
+		width: 100%;
+    }
+
+    .note-save-icon{
+        float: right;
+        height: 25px;
+        width: 27px;
+        margin-right: 9px;
+        background: #FD7474;
+        border-radius: 3px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+   .note-txt{
+
+    border: 0;
+    height: 35px;
+    padding-left: 3px;
+    box-sizing: border-box;
+    width: 100%;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    color: #A5A5A5;
+	box-sizing: border-box;
+    padding: 5px 10px;
+}
+   
+
+
+.communicationcolor {
+    background: #4EC8F0 !important;
+}
+
+
+.set_communication_textcl {
+    border-left: #4EC8F0 5px solid !important;
+}
+
+
+.separatorfor-communication{
+    width: 100%;
+    height: 2px;
+    float: left;
+    background: #4EC8F0;
+    margin: 30px 0 0;
+
+}
+
+.communicationcolor::after{width:24px !important; height:1px; background:#e7e7e7; position:absolute; left:31px; top:16px; content:""}
+
+
+.setbc-for-send-email-icon{
+
+    background: #B48CF6 !important;
+}
+
+.set-padding-color-formsg {
+
+    border-left: #8CF1E4 5px solid !important;
+}
+
+@media screen and (min-width: 1921px){
+.comn-box .details .msgbox{width:auto; max-width:64%}
+}
+
+@media screen and (max-width: 1920px){
+.complience-roundbox, .scheduling-roundbox{display:block; margin-left:2%;}
+.comn-box .details .msgbox{width:auto; max-width:64%;}
+.comn-box .entry-box .txtbox-container {width: 80%;}
+}
+
+@media screen and (max-width: 1366px){
+.left-contwrap{max-width:68% !important}
+.right-contwrap{max-width:32% !important}
+.right-panel{position:absolute !important; right:-230px !important}
+.complience-roundbox{width:350px; height:350px; margin:50px 90px}
+.complience-roundbox .title{font-size:17px; bottom:16px}
+.complience-roundbox .graph-holder{padding:0 30px 0 80px; width:76%; bottom:-23px}
+
+.complience-roundbox .graph{width:30px; height:215px; margin-right:6px}
+.complience-roundbox .graph.graph2{height:275px; margin-left:10px; background: linear-gradient(180deg, #8CF1E4 0%, #4EC8F0 100%)}
+.complience-roundbox .graph .graph-value{font-size:10px}
+.complience-roundbox .graph:nth-child(2){width:30px; height:190px}
+.complience-roundbox .graph:nth-child(3){width:30px; height:168px}
+.complience-roundbox .graph:nth-child(4){width:30px; height:174px}
+.complience-roundbox .ava-img{width:98px}
+.complience-roundbox .separator{top:64px}
+
+.scheduling-roundbox{width:350px; height:350px; margin:50px 90px }
+.scheduling-roundbox .title{font-size:17px; bottom:16px}
+.scheduling-roundbox .graph-holder{width:50px}
+.scheduling-roundbox .separator:nth-child(2) {top:50%}
+.scheduling-roundbox .graph-one, .scheduling-roundbox .graph-two, .scheduling-roundbox .graph-three, 
+.scheduling-roundbox .graph-four, .scheduling-roundbox .graph-five, .scheduling-roundbox .graph-six {width:30px}
+.scheduling-roundbox .graph-one{height:250px}
+.scheduling-roundbox .graph-four{height:250px}
+.scheduling-roundbox .graph-holder .name{font-size:11px}
+.scheduling-roundbox .separator{top:60px}
+.scheduling-roundbox .separator:nth-child(3){bottom:46px}
+.scheduling-roundbox .ava-img{left:74px}
+.comn-box .details .msgbox{width:105px; max-width:282px}
+.comn-box .details .status{margin-left:5px}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

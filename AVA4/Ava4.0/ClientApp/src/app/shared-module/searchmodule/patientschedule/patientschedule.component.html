@@ -1,0 +1,747 @@
+	
+	<div class="checkedin-btn" (click)="patientCheckin()" [ngStyle]="{'color': patientdata.checkedin==true ? '#4EC8F0': '#A5A5A5'}">{{patientdata.checkedin==true ? 'Checked In' : 'Check-In?'}}</div>
+
+
+
+	<div class="dialog-content">
+		<div fxLayout="column">
+			<div fxLayout="row">
+				<div fxFlex="110px">
+					<div class="profile-img" [ngStyle]="{'border-color': appntType}">
+						<img src='{{patientdata.profileimg}}' width=100%/>
+					</div>
+				</div>
+				<div fxFlex="calc(100%-110px)" class="patient-details">
+					<div class="patient-block">
+						<div class="patient-name">{{patientdata.firstname}} {{patientdata.lastname}}</div>
+						<div class="term-inline">
+							<div class="term-inline-item">TX - FULL</div>
+							<div class="term-inline-item">254</div>
+							<div class="term-inline-item">$3,560.15</div>
+							<div class="term-inline-item">$0.00</div>
+						</div>
+					</div>
+					<div class="medical-history">+ Allergic to Codiene, Autistic (do not make direct eye contact)</div>
+					<div class="table-form">
+						<div class="table-form-item">Location #1</div>
+						<div class="table-form-item">Dr. Smoot</div>
+						<div class="table-form-item">Jill Allen</div>
+					</div>
+					
+					<div class="patient-addr">
+						<div class="addr-item">(801) 369 - 6492</div>
+						<div class="addr-item">marcumclarissa@gmail.com</div>
+						<div class="addr-item">October 23, 1984 (8y 3m)</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	
+		<div fxLayout="column" class="display-block schedule-appnt">
+			<div class="block-heading" style="margin-bottom: 10px;">Current Scheduled Appointments</div>
+
+				<ng-container *ngIf="initialPatientMulti">
+					<perfect-scrollbar [config]="config">
+					<div class="multiple-appnts" style="width: 100%; margin-top: 5px">
+							<div class="label-div" style="float: left">
+									<p>Multiple</p>
+									<p>appts</p>
+									<p>needed</p>
+							</div>
+							<div class="appts">
+									<div class="appts-content" *ngFor="let appt of multipleAppnts; let indx=index;" (click)="apptDetails(indx);showAppntWeek(appt,appt.details.date,appt.details.startTime)" [ngStyle]="{'background':appt.showDetails? 'rgba(78, 200, 240, 0.2)':'transparent'}" >
+											<div class="short-form" >
+												<div class="proc" >{{getProcedureCodeLabel(appt.procCode)}}</div>
+												<div class="tenure">{{appt.tenure}}</div>
+												<div style="clear: left;"></div>
+											</div>
+											<div class="appts-details" [ngStyle]="{'visibility':appt.showDetails?'visible':'hidden'}">
+												<div class="loc-details">{{appt.details.loc}}</div>
+												<div class="timeslot-details">{{appt.details.date| date:'EEEE, MMM d'}}</div>
+												<div class="appStrtTm">{{appt.details.startTime}}</div>
+												<div class="app-procTm">{{getProcedureTime(appt.procCode)}}</div>
+												<div class="app-chair">{{appt.details.chair}}</div>
+												<div class="app-doc-details">{{appt.details.doc}}</div>
+												<div style="clear: left"></div>
+											</div>
+											<div style="clear: both;"></div>
+									</div>
+							</div>
+							<div style="clear: left"></div>
+							
+					</div>
+					<div style="width:100%; display: flex; justify-content: flex-end; margin-top: 6px;">
+						<div class="schedule-action" (click)="scheduleMultiAppnts()">Schedule All</div>
+					</div>
+					</perfect-scrollbar>
+				</ng-container>
+
+
+				<ng-container *ngIf="!initialPatientMulti">
+						<perfect-scrollbar [config]="config">
+					<div fxLayout="row" fxLayoutGap="10px" *ngFor="let appnt of current_appArr; let ap_indx=index;"  [ngStyle]="{'background': appnt.rescheduleAppnt == true ? innerModal == true ? 'rgba(253, 116, 116, 0.2)' : 'rgba(78, 200, 240, 0.2)' : 'transparent', 'margin-left': '-10px', 'margin-right': '-10px', 'padding': '2px 10px 0', 'position': 'relative'}">
+				
+						<div class="bin-icon" *ngIf="appnt.rescheduleAppnt" (click)="delApptmnt=!delApptmnt; innerDelAppntModal=!innerDelAppntModal;createCurrAppObj(ap_indx)">
+							<svg width="10" height="13" viewBox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M0 1.30078H10L8.84549 12.107C8.79119 12.6153 8.36231 13.0008 7.85115 13.0008H2.14885C1.63769 13.0008 1.20881 12.6153 1.15451 12.107L0 1.30078Z" fill="#3C3C3C"/>
+								<ellipse cx="5" cy="1.3" rx="5" ry="1.3" fill="#C0C0C0"/>
+								<rect x="2.25098" y="5.19922" width="0.625" height="6.5" rx="0.3125" fill="#6F6F6F"/>
+								<rect x="7.25049" y="5.19922" width="0.625" height="6.5" rx="0.3125" fill="#6F6F6F"/>
+								<rect x="4.75049" y="5.19922" width="0.625" height="6.5" rx="0.3125" fill="#6F6F6F"/>
+							</svg>
+						</div>
+						
+						<div fxFlex="10" class="table-item rechedule-btn" (click)="rescheduleKeepAppnt('reschedule',ap_indx)" *ngIf="!appnt.rescheduleAppnt">Rechedule</div>
+						<div fxFlex="10" class="table-item rechedule-btn"  (click)="rescheduleKeepAppnt('keep',ap_indx)" *ngIf="appnt.rescheduleAppnt">Keep Appt</div>
+						<div fxFlex="15" class="table-item">{{appnt.location}}</div>
+						<div fxFlex="15" class="table-item">{{appnt.date}}</div>
+						<div fxFlex="10" class="table-item">{{appnt.time}}</div>
+						<div fxFlex="10" class="table-item">{{appnt.procedure_tm}}</div>
+						<div fxFlex="30" class="table-item">{{appnt.procedure_code}}</div>
+						<div fxFlex="10" class="table-item">{{appnt.doc}}</div>
+						<div fxFlex="30" class="table-item">{{appnt.ins}}</div>
+					</div>
+					</perfect-scrollbar>
+				</ng-container>
+			
+				
+			<div class="family-icon">
+				<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="14.6383" height="16" fill="white"/>
+					<path d="M12.0667 1.93984C12.0667 2.68543 11.4623 3.28984 10.7167 3.28984C9.97111 3.28984 9.3667 2.68543 9.3667 1.93984C9.3667 1.19426 9.97111 0.589844 10.7167 0.589844C11.4623 0.589844 12.0667 1.19426 12.0667 1.93984Z" stroke="#646464" stroke-width="0.5"/>
+					<path d="M8.34543 6.3463C8.34543 6.93019 7.87209 7.40353 7.28819 7.40353C6.7043 7.40353 6.23096 6.93019 6.23096 6.3463C6.23096 5.7624 6.7043 5.28906 7.28819 5.28906C7.87209 5.28906 8.34543 5.7624 8.34543 6.3463Z" stroke="#646464" stroke-width="0.5"/>
+					<path d="M6.15789 4.68019C6.03874 4.58487 5.85491 4.45891 5.6098 4.36359C5.24895 4.22402 4.94938 4.22402 4.65661 4.22742C3.82597 4.23082 3.41406 4.22061 3.03959 4.23423C1.91278 4.27508 1.75959 4.30231 1.56214 4.41125C1.09236 4.66657 0.87108 5.0921 0.809804 5.21465C0.690655 5.45295 0.639591 5.67423 0.588527 6.57976C0.547676 7.30146 0.571506 7.30146 0.537463 7.8904C0.527251 8.06061 0.459166 9.28274 0.57491 9.97721C0.585123 10.0419 0.619166 10.2325 0.755336 10.4164C0.816612 10.4981 0.91874 10.6376 1.10257 10.6819C1.32044 10.7364 1.50427 10.6206 1.53151 10.6036C1.82427 10.413 1.8481 9.96359 1.85831 9.76614C1.88214 9.14997 1.95704 6.64104 1.85831 6.64785C1.81065 6.65125 1.89236 7.19933 1.86853 10.3517C1.85831 11.7168 1.86512 12.3976 1.86172 12.4147C1.86172 12.4147 1.80725 13.0478 1.85831 14.3959C1.86172 14.4436 1.86512 14.5798 1.91278 14.7534C1.94342 14.8657 1.97746 14.9951 2.07278 15.1244C2.12044 15.1925 2.25321 15.3695 2.50172 15.4444C2.5664 15.4615 2.80129 15.5227 3.0498 15.4036C3.08044 15.3866 3.22682 15.3151 3.34257 15.1415C3.51278 14.8895 3.50257 14.607 3.49917 14.5117C3.48555 14.0555 3.51959 12.5815 3.56044 10.5423C3.56044 10.6206 3.56044 10.7432 3.56044 10.8895C3.56044 11.6044 3.54002 11.9857 3.51619 12.83C3.51619 12.83 3.49236 13.6334 3.6047 14.5593C3.61491 14.6478 3.64555 14.8895 3.81236 15.1142C3.86682 15.1891 3.93491 15.281 4.05746 15.3457C4.2481 15.4478 4.49661 15.4478 4.68725 15.3355C4.82682 15.2538 4.89491 15.1381 4.94597 15.053C5.07193 14.8351 5.08555 14.6206 5.08895 14.5423C5.16044 13.1193 5.11959 12.2615 5.11959 12.2615C5.09917 11.8223 5.09576 11.4036 5.08895 10.5695C5.08214 9.97721 5.10264 9.68087 5.10604 9.36087" stroke="#646464" stroke-width="0.5" stroke-miterlimit="10"/>
+					<path d="M8.76611 4.7437C8.86824 4.6586 9.02484 4.54966 9.2325 4.45434C9.27675 4.43392 9.42313 4.36924 9.62058 4.31817C10.0121 4.21605 10.2436 4.26711 10.955 4.2637C11.4691 4.2603 11.687 4.22966 12.007 4.34881C12.1704 4.41009 12.2725 4.47477 12.327 4.51562C12.5823 4.69945 12.7014 4.94115 12.7763 5.10796C12.9568 5.50285 13.2665 6.30285 13.607 7.36498C13.7499 7.86881 13.8963 8.2637 14.0053 8.53945C14.0053 8.53945 14.2197 9.07051 14.3253 9.70711C14.3423 9.81604 14.3797 10.0577 14.2436 10.2177C14.1891 10.2824 14.121 10.3199 14.0972 10.3301C14.0972 10.3301 13.9406 10.4152 13.7568 10.3914C13.6376 10.3777 13.4368 10.2858 13.1576 9.67647C13.0453 9.43477 13.0419 9.35988 12.8512 8.77775C12.841 8.7403 12.7048 8.32839 12.5585 7.93009C12.4802 7.71222 12.3576 7.38881 12.1942 7.00073C12.3814 7.61009 12.5482 8.12753 12.681 8.53264C12.8274 8.97519 12.9227 9.26796 13.0487 9.62541C13.0725 9.69349 13.1508 9.91136 13.2563 10.2177C13.3959 10.6194 13.355 10.5071 13.4061 10.6467C13.4912 10.8816 13.5355 11.1301 13.6342 11.3582C13.6648 11.4331 13.7091 11.5216 13.6682 11.5863C13.624 11.6577 13.5116 11.6612 13.4606 11.6612C13.2155 11.6646 11.5542 11.6543 9.28696 11.6339" stroke="#646464" stroke-width="0.5" stroke-miterlimit="10"/>
+					<path d="M9.32744 11.4648C9.32744 11.9142 9.32063 12.2751 9.31723 12.5236C9.31723 12.5236 9.2968 13.7082 9.32063 14.3925C9.32063 14.4061 9.32063 14.4197 9.32404 14.4334C9.32744 14.498 9.33766 14.6138 9.3717 14.75C9.39893 14.8623 9.42957 14.9917 9.51468 15.121C9.55893 15.1891 9.67468 15.3661 9.89595 15.441C9.95042 15.458 10.1615 15.5193 10.3828 15.4002C10.4304 15.3729 10.536 15.3082 10.6449 15.138C10.8389 14.8248 10.8287 14.4878 10.8253 14.4129C10.7811 12.8708 10.8185 11.6419 10.7743 11.6453C10.7572 11.6453 10.7504 11.87 10.7981 12.8265C10.7981 12.8334 10.7777 13.6334 10.8764 14.5559C10.8866 14.6444 10.9138 14.8861 11.0602 15.1108C11.1079 15.1857 11.1691 15.2776 11.2781 15.3423C11.4449 15.4444 11.6662 15.4444 11.8364 15.3321C11.9589 15.2504 12.0202 15.1346 12.0645 15.0495C12.1768 14.8317 12.187 14.6172 12.1904 14.5389C12.2143 14.0044 12.2245 13.6095 12.2279 13.2419C12.2313 12.7823 12.2245 12.7585 12.2177 12.258C12.2143 12.0299 12.2108 11.8393 12.2108 11.7134" stroke="#646464" stroke-width="0.5" stroke-miterlimit="10"/>
+					<path d="M9.44019 9.4743C9.44019 8.82749 8.91593 8.30664 8.27253 8.30664H6.30487C5.65806 8.30664 5.13721 8.8309 5.13721 9.4743V12.3645H6.29465V15.2037C6.29465 15.4147 6.46487 15.5849 6.67593 15.5849H7.90487C8.11593 15.5849 8.28614 15.4147 8.28614 15.2037V12.3645H9.44359V9.4743H9.44019Z" fill="white" stroke="#646464" stroke-width="0.5" stroke-miterlimit="10"/>
+					<path d="M4.88701 1.93984C4.88701 2.68543 4.2826 3.28984 3.53701 3.28984C2.79143 3.28984 2.18701 2.68543 2.18701 1.93984C2.18701 1.19426 2.79143 0.589844 3.53701 0.589844C4.2826 0.589844 4.88701 1.19426 4.88701 1.93984Z" stroke="#646464" stroke-width="0.5"/>
+				</svg>
+			</div>
+		</div>
+		
+		<div fxLayout="column" class="display-block block-2" [ngStyle]="{'height': appntSection == false ? '68px' : '177px'}">
+			<!-- <div class="block-heading">908 | 6 weeks</div> -->
+				
+				<!-- <div class="scroller" style="left: 0; right: 0; margin: auto; top: 15px" (click)="onScroll('up', 'block_2')" *ngIf="block_2_upscroll == true">
+					<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10.5 0L20.4593 8.25H0.540708L10.5 0Z" fill="#4EC8F0"/>
+					</svg>
+				</div> -->
+				
+				<!-- <div class="block-2-wrapper">
+					<perfect-scrollbar>
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#1</div>
+							<div fxFlex="15" class="table-item">Tuesday, July 24th</div>
+							<div fxFlex="10" class="table-item">10:20 am</div>
+							<div fxFlex="10" class="table-item">Chair 4</div>
+							<div fxFlex="10" class="table-item">Dr. Smoot</div>
+						</div>
+						
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#2</div>
+							<div fxFlex="15" class="table-item">Tuesday, July 25th</div>
+							<div fxFlex="10" class="table-item">9:30 am</div>
+							<div fxFlex="10" class="table-item">Chair 2</div>
+							<div fxFlex="10" class="table-item">Dr. Tooms</div>
+						</div>
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#1</div>
+							<div fxFlex="15" class="table-item">Monday, July 23rd</div>
+							<div fxFlex="10" class="table-item">01:10 pm</div>
+							<div fxFlex="10" class="table-item">Chair 3</div>
+							<div fxFlex="10" class="table-item">Dr. Smoot</div>
+						</div>
+						
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#1</div>
+							<div fxFlex="15" class="table-item">Tuesday, July 24th</div>
+							<div fxFlex="10" class="table-item">10:20 am</div>
+							<div fxFlex="10" class="table-item">Chair 4</div>
+							<div fxFlex="10" class="table-item">Dr. Smoot</div>
+						</div>
+						
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#2</div>
+							<div fxFlex="15" class="table-item">Tuesday, July 25th</div>
+							<div fxFlex="10" class="table-item">9:30 am</div>
+							<div fxFlex="10" class="table-item">Chair 2</div>
+							<div fxFlex="10" class="table-item">Dr. Tooms</div>
+						</div>
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#1</div>
+							<div fxFlex="15" class="table-item">Monday, July 23rd</div>
+							<div fxFlex="10" class="table-item">01:10 pm</div>
+							<div fxFlex="10" class="table-item">Chair 3</div>
+							<div fxFlex="10" class="table-item">Dr. Smoot</div>
+						</div>
+						
+					</perfect-scrollbar>
+				</div> -->
+				
+				<!-- <div class="scroller" style="left: 0; right: 0; margin: auto; bottom: 5px" (click)="onScroll('dn', 'block_2')" *ngIf="block_2_dnscroll == true">
+					<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10.5 9L0.540707 0.75L20.4593 0.75L10.5 9Z" fill="#4EC8F0"/>
+					</svg>
+				</div> -->
+				
+				<div class="patientmodal-1">
+					<div fxLayout="row" style="height: 100%;">
+						<div *ngIf="appntSection" fxFlex="175px" style="padding: 5px 8px 5px;">
+							<div *ngIf="appntSection" class="procedure-search">
+								<input type="text" placeholder="Procedure code" (keyup)="searchProcedureCode($event)" [(ngModel)]="procedure_searchStr"/>
+								<div class="search-icon" (click)="searchListallProcedureCode()">
+									<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M5.4649 0.92594C4.21647 -0.308647 2.18455 -0.308647 0.93612 0.92594C-0.31204 2.16079 -0.31204 4.16991 0.93612 5.40476C1.95223 6.40936 3.48605 6.59416 4.69496 5.96323C4.85869 5.87779 5.07865 5.96914 5.20996 6.099L7.02807 7.89695C7.29302 8.15842 7.72117 8.15842 7.98476 7.89695C8.24944 7.6352 8.24944 7.21181 7.98476 6.95087L6.16665 5.15238C6.03554 5.0231 5.9449 4.80295 6.03144 4.64042C6.66784 3.44523 6.48036 1.93039 5.4649 0.92594ZM4.89088 4.83711C3.95882 5.75884 2.44192 5.75884 1.51013 4.83711C0.578614 3.91539 0.578614 2.41558 1.51013 1.49385C2.44192 0.572398 3.95882 0.572398 4.89088 1.49385C5.82294 2.41558 5.82294 3.91539 4.89088 4.83711Z" fill="#4EC8F0"/>
+									</svg>
+								</div>
+								
+								<div class="procedure-optn-cont" *ngIf="procedureSrch">
+									<div [ngClass]="{'procedure-optn': true}" *ngFor="let procedureitem of filterProcedure; let indx=index" (click)="selectProcedure(indx)">{{procedureitem.code}} {{procedureitem.name}}</div>
+								</div>
+								
+							</div>
+							<div *ngIf="appntSection" fxLayout="row">
+								<div fxFlex="30" style="padding: 6px 5px 0 0px;"><div class="treatment-time-num">{{timenum}}</div></div>
+								<div fxFlex="70">
+									<app-patientmodaldd 
+										[ddoptionsArr]="timespan_dd" 
+										[ddplaceholder]="'weeks'"
+										[multiple]="false"
+										[sel_type]="'weekMin'"
+									></app-patientmodaldd>
+								</div>
+							</div>
+
+							<div *ngIf="appntSection" fxLayout="row">
+								<div fxFlex="30" style="padding: 6px 5px 0 0px;"><div class="treatment-time-num">
+									<input type="number" class="appointment_timeslot" [(ngModel)]="procedure_searchTime"/>
+									</div></div>
+								<div fxFlex="70">
+									<app-patientmodaldd 
+										[ddoptionsArr]="timespan_dd_type" 
+										[ddplaceholder]="'minutes'"
+										[multiple]="false"
+										[sel_type]="'weekMin'"
+									></app-patientmodaldd>
+								</div>
+							</div>
+							
+							<div *ngIf="appntSection" class="dd-section">
+								<app-patientmodaldd 
+									[ddoptionsArr]="locations_dd" 
+									[ddplaceholder]="'all'"
+									[multiple]="true"
+									[sel_type]="'locDoc'"
+									(location_filterArray)='location_filter_fu($event)'
+								></app-patientmodaldd>
+							</div>
+							
+							<div *ngIf="appntSection" class="dd-section">
+								<app-patientmodaldd 
+									[ddoptionsArr]="doctors_dd" 
+									[ddplaceholder]="doc_plcHldr" 
+									[multiple]="false"
+									[sel_type]="'locDoc'"
+									(doctor_filterArray)='doctor_filter_fu($event)'
+								></app-patientmodaldd>
+							</div>
+							
+							
+						</div>
+						<div fxFlex="calc(100%-175px)">  
+							<div style="width: 100%; height: 100%; position: relative"  *ngIf="!appntSection">
+								<div class="new-searh-section"> 
+									<div class="new-search-procedure" style="position: relative; float: left;">
+											<input type="text" class="new-procedure-field" placeholder="Procedure code" (keyup)="searchProcedureCode($event)" [(ngModel)]="procedure_searchStr"/>
+											<div class="search-icon" style="top: 5px; left: 1px;" (click)="searchListallProcedureCode()">
+													<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M7.16683 5.4649C8.40142 4.21647 8.40142 2.18455 7.16683 0.93612C5.93198 -0.31204 3.92287 -0.31204 2.68801 0.93612C1.68341 1.95223 1.49862 3.48605 2.12954 4.69496C2.21499 4.85869 2.12363 5.07865 1.99378 5.20996L0.195825 7.02807C-0.0656509 7.29302 -0.0656509 7.72117 0.195825 7.98476C0.457569 8.24944 0.880963 8.24944 1.1419 7.98476L2.94039 6.16665C3.06968 6.03554 3.28983 5.9449 3.45235 6.03144C4.64754 6.66784 6.16238 6.48036 7.16683 5.4649ZM3.25566 4.89088C2.33394 3.95882 2.33394 2.44192 3.25566 1.51013C4.17739 0.578614 5.67719 0.578614 6.59892 1.51013C7.52038 2.44192 7.52038 3.95882 6.59892 4.89088C5.67719 5.82294 4.17739 5.82294 3.25566 4.89088Z" fill="#4EC8F0"/>
+													</svg>
+											</div>
+											
+											<div class="procedure-optn-cont" *ngIf="procedureSrch">
+												<div [ngClass]="{'procedure-optn': true}" *ngFor="let procedureitem of filterProcedure; let indx=index" (click)="selectProcedure(indx)">{{procedureitem.code}} {{procedureitem.name}}</div>
+											</div>
+											
+									</div>
+
+									<div class="new-number">
+										{{selectedNumber}}
+										<div style=" right: -5px;" class="new-dropdown" (click)="numberBoxOpen()" >
+											<svg width="4" height="3" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M1.95508 3L0.223027 -3.39188e-07L3.68713 -2.43526e-08L1.95508 3Z" fill="#4EC8F0"/>
+											</svg>
+										</div>
+										<div class="number-contain" *ngIf="numberSelectBox">
+												<perfect-scrollbar [config]="config">
+												<div class="number-one" *ngFor="let numberArrayData of numberArray; let indx=index " (click)="selectedNumberId(numberArrayData.no)">{{ numberArrayData.no}}</div>
+												</perfect-scrollbar>
+										</div>
+									</div>
+
+									<div class="new-week">
+										{{selectedWeek}}
+										<div style=" right: 10px;" class="new-dropdown" (click)="barBoxOpen()">
+											<svg width="4" height="3" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M1.95508 3L0.223027 -3.39188e-07L3.68713 -2.43526e-08L1.95508 3Z" fill="#4EC8F0"/>
+											</svg>
+										</div>
+
+										<div class="bar-contain" *ngIf="barSelectBox">
+												<div class="bar-one" *ngFor="let timespan_ddData of timespan_dd; let indx=index " (click)="selectedBarId(timespan_ddData.label)">{{ timespan_ddData.label}}</div>
+										</div>
+									</div>
+
+									<div class="new-location">
+										<div style="width: 70px; text-align: right"> {{selectedLocation}}  </div>
+										<div for="location-new" style="color: #A5A5A5; margin-left: 5px">locations</div>
+											<div id="location-new"  class="new-dropdown" (click)="locationBoxOpen()">
+												<svg width="4" height="3" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M1.95508 3L0.223027 -3.39188e-07L3.68713 -2.43526e-08L1.95508 3Z" fill="#4EC8F0"/>
+												</svg>
+											</div>
+
+											<div class="location-contain" *ngIf="locationSelectBox">
+													<div class="location-one" *ngFor="let locations_ddData of locations_dd; let indx=index " (click)="selectedLocationId(locations_ddData.label)">{{ locations_ddData.label}}</div>
+											</div>
+
+									</div>
+
+									<div class="new-doctors">
+											<div style="width: 70px; text-align: right"> {{selectedDoctor}}  </div>
+											 <div style="color: #A5A5A5; margin-left: 5px">doctors</div>
+											<div style=" right: 8px;" class="new-dropdown" (click)="doctorBoxOpen()">
+												<svg width="4" height="3" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M1.95508 3L0.223027 -3.39188e-07L3.68713 -2.43526e-08L1.95508 3Z" fill="#4EC8F0"/>
+												</svg>
+											</div>
+
+											<div class="doctor-contain" *ngIf="doctorSelectBox">
+													<div class="doctor-one" *ngFor="let doctors_ddData of doctors_dd; let indx=index "  (click)="selectedDoctorId(doctors_ddData.label)">
+														<div *ngIf="indx>0">{{ doctors_ddData.label}} </div>
+													</div>
+											</div>
+
+									</div>
+
+
+
+								</div>
+								<div (click)="showAppntSection()" class="new-appnt-section">Let’s find your appointment!</div>
+								<div class="robot-icon"><img src="assets/laptop-Ava.png" /></div>
+							</div>
+							
+							<div fxLayout="row" *ngIf="appntSection" style="padding: 5px; height: 100%;">
+								<div fxFlex="77">
+									<!-- <div class="calender-bar">
+										<div class="calender-label">{{currentWeek}}</div>
+										<div class="calender-btn prev-btn" (click)="nextPrevWeek('prev')" *ngIf="showPrevWeekBtn">
+											<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M8.96205 5.41099L12.7876 1.40834C13.071 1.11185 13.071 0.667109 12.7876 0.22237C12.5042 -0.0741232 12.0792 -0.0741232 11.6541 0.22237L7.51212 4.51581C7.22874 4.66406 7.12012 5.26275 7.12012 5.41099C7.12012 5.55924 7.22874 6.00968 7.51212 6.15793L11.6541 10.4514C11.9375 10.7479 12.5042 10.7479 12.7876 10.4514C13.071 10.1549 13.071 9.71014 12.7876 9.2654L8.96205 5.41099Z" fill="#4EC8F0"/>
+												<path d="M1.84194 5.41099L5.66749 1.40834C5.95087 1.11185 5.95087 0.667109 5.66749 0.22237C5.38412 -0.0741232 4.95906 -0.0741232 4.534 0.22237L0.392002 4.51581C0.108627 4.66406 1.49813e-07 5.26275 1.54033e-07 5.41099C1.58253e-07 5.55924 0.108627 6.00968 0.392002 6.15793L4.534 10.4514C4.81737 10.7479 5.38412 10.7479 5.6675 10.4514C5.95087 10.1549 5.95087 9.71014 5.6675 9.2654L1.84194 5.41099Z" fill="#4EC8F0"/>
+											</svg>
+										</div>
+										
+										<div class="calender-btn next-btn" (click)="nextPrevWeek('next')" *ngIf="showNextWeekBtn">
+											<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M4.03795 5.26283L0.212388 9.26549C-0.0709867 9.56198 -0.0709867 10.0067 0.212388 10.4515C0.495763 10.748 0.920825 10.748 1.34589 10.4515L5.48788 6.15802C5.77126 6.00977 5.87988 5.41108 5.87988 5.26284C5.87988 5.11459 5.77126 4.66415 5.48788 4.5159L1.34589 0.222457C1.06251 -0.0740352 0.495764 -0.0740352 0.212389 0.222457C-0.070986 0.51895 -0.070986 0.963689 0.212389 1.40843L4.03795 5.26283Z" fill="#4EC8F0"/>
+												<path d="M11.1581 5.26283L7.33251 9.26549C7.04913 9.56198 7.04913 10.0067 7.33251 10.4515C7.61588 10.748 8.04094 10.748 8.466 10.4515L12.608 6.15802C12.8914 6.00977 13 5.41108 13 5.26284C13 5.11459 12.8914 4.66415 12.608 4.5159L8.46601 0.222457C8.18263 -0.0740352 7.61588 -0.0740352 7.33251 0.222457C7.04913 0.51895 7.04913 0.963689 7.33251 1.40843L11.1581 5.26283Z" fill="#4EC8F0"/>
+											</svg>
+										</div>
+									</div> -->
+									<div class="cal-bar">
+											<div class="cal-btn prev-btn" (click)="nextPrevWeek('prev')" [ngStyle]="{'visibility':showPrevWeekBtn?'visible':'hidden'}">
+													<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.96205 5.41099L12.7876 1.40834C13.071 1.11185 13.071 0.667109 12.7876 0.22237C12.5042 -0.0741232 12.0792 -0.0741232 11.6541 0.22237L7.51212 4.51581C7.22874 4.66406 7.12012 5.26275 7.12012 5.41099C7.12012 5.55924 7.22874 6.00968 7.51212 6.15793L11.6541 10.4514C11.9375 10.7479 12.5042 10.7479 12.7876 10.4514C13.071 10.1549 13.071 9.71014 12.7876 9.2654L8.96205 5.41099Z" fill="#4EC8F0"/>
+														<path d="M1.84194 5.41099L5.66749 1.40834C5.95087 1.11185 5.95087 0.667109 5.66749 0.22237C5.38412 -0.0741232 4.95906 -0.0741232 4.534 0.22237L0.392002 4.51581C0.108627 4.66406 1.49813e-07 5.26275 1.54033e-07 5.41099C1.58253e-07 5.55924 0.108627 6.00968 0.392002 6.15793L4.534 10.4514C4.81737 10.7479 5.38412 10.7479 5.6675 10.4514C5.95087 10.1549 5.95087 9.71014 5.6675 9.2654L1.84194 5.41099Z" fill="#4EC8F0"/>
+													</svg>
+												</div>
+												<div class="week-days">
+														<div class="week-panel">
+																<div class="week-label-wrapper" *ngFor="let weekday of weekdays">
+																	<div [ngClass]="{'week-label': true, 'offday': weekday.weekOff}">
+																		<p>{{weekday.day}}</p>
+																		<p>{{weekday.mon+1}}/{{weekday.date}}</p>
+																	</div>
+																</div>
+															</div>
+												</div>
+												
+												
+												<div class="cal-btn next-btn" (click)="nextPrevWeek('next')" *ngIf="showNextWeekBtn">
+													<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M4.03795 5.26283L0.212388 9.26549C-0.0709867 9.56198 -0.0709867 10.0067 0.212388 10.4515C0.495763 10.748 0.920825 10.748 1.34589 10.4515L5.48788 6.15802C5.77126 6.00977 5.87988 5.41108 5.87988 5.26284C5.87988 5.11459 5.77126 4.66415 5.48788 4.5159L1.34589 0.222457C1.06251 -0.0740352 0.495764 -0.0740352 0.212389 0.222457C-0.070986 0.51895 -0.070986 0.963689 0.212389 1.40843L4.03795 5.26283Z" fill="#4EC8F0"/>
+														<path d="M11.1581 5.26283L7.33251 9.26549C7.04913 9.56198 7.04913 10.0067 7.33251 10.4515C7.61588 10.748 8.04094 10.748 8.466 10.4515L12.608 6.15802C12.8914 6.00977 13 5.41108 13 5.26284C13 5.11459 12.8914 4.66415 12.608 4.5159L8.46601 0.222457C8.18263 -0.0740352 7.61588 -0.0740352 7.33251 0.222457C7.04913 0.51895 7.04913 0.963689 7.33251 1.40843L11.1581 5.26283Z" fill="#4EC8F0"/>
+													</svg>
+												</div>
+									</div>
+
+									<div style="height: 120px;">
+										<perfect-scrollbar [config]="config">
+										<div class="appnt-date-panel">
+											<div class="timeslot-cont" *ngFor="let day of appntslot1; let dayindx=index">
+												<div [ngClass]="{'timeslot-wrapper': true, 'timeslot-grey': innerModal, 'timeslot-blue': seledtedDateIndx == dayindx && selectedSoltIndx == slotindx && innerModal, 'selecedtimeslot-wrapper':slot.slotSelected && multi_weekCounter==0}" *ngFor="let slot of day.timeslot; let slotindx=index">
+													<div class="timeslot" (click)="openInnerModal(dayindx, slotindx)">
+														<div class="timeslot-time" [ngStyle]="{'color': slot.slotSelected && multi_weekCounter==0? '#333333':'#FFFF'}">{{slot.time}}</div>
+														<div class="timeslot-location" [ngStyle]="{'color': slot.slotSelected && multi_weekCounter==0? '#333333':'#FFFF'}" >{{slot.location}}</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</perfect-scrollbar>
+									</div> 
+									
+									
+								</div>
+								<div fxFlex="23" style="position: relative; height: 100%;">
+									<div class="notes-block"><span class="blue-title">Notes :</span> AAA302- Arch Wire Change blah blee blah. Blah blee blah
+									</div>
+									
+									<div class="clear"></div>
+									
+									<!-- <div class="schedule-calendar">Schedule in Calendar</div> -->
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+				
+		</div>
+		
+		<div class="showhide-btn" (click)="showAppnts()">{{showAllApnts == true ? 'Hide' : 'Show All'}}</div>
+		<div class="clear"></div>
+		
+		<div fxLayout="column" class="display-block block-3" [ngStyle]="{'height': appntSection == false ? '188px' : '80px'}">
+			
+			<!-- <div class="scroller" style="left: 0; right: 0; margin: auto; top: 0px" (click)="onScroll('up', 'block_3')" *ngIf="block_3_upscroll == true">
+				<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M10.5 0L20.4593 8.25H0.540708L10.5 0Z" fill="#4EC8F0"/>
+				</svg>
+			</div> -->
+			<!-- <div class="block-3-wrapper"> -->
+				<perfect-scrollbar>
+					
+					<div fxLayout="row" fxLayoutGap="6px" *ngFor="let appntItem of showAppntsArr">
+						<div fxFlex="8" class="table-item">{{appntItem.location}}</div>
+						<div fxFlex="7" class="table-item">{{appntItem.date}}</div>
+						<div fxFlex="7" class="table-item">{{appntItem.time}}</div>
+						<div fxFlex="5" class="table-item">{{appntItem.date | date: 'EE'}}</div>
+						<div fxFlex="2" class="table-item">
+							<!-- {{appntItem.status}} -->
+							
+							<div *ngIf="appntItem.status=='showedup'">
+								<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M4.5 0L5.51031 3.10942H8.77975L6.13472 5.03115L7.14503 8.14058L4.5 6.21885L1.85497 8.14058L2.86528 5.03115L0.220246 3.10942H3.48969L4.5 0Z" fill="#434343"/>
+								</svg>
+							</div>
+							
+							<div *ngIf="appntItem.status=='noshow'">
+								<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect x="8.10022" width="1.27274" height="11.4546" transform="rotate(45 8.10022 0)" fill="#FD7474"/>
+									<rect y="0.900391" width="1.27274" height="11.4546" transform="rotate(-45 0 0.900391)" fill="#FD7474"/>
+								</svg>
+							</div>
+							
+							<div *ngIf="appntItem.status=='cancelled'">
+								<svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7.134 7.224C7.198 7.224 7.254 7.25 7.302 7.302L7.764 7.8C7.412 8.208 6.984 8.526 6.48 8.754C5.98 8.982 5.374 9.096 4.662 9.096C4.046 9.096 3.486 8.99 2.982 8.778C2.478 8.562 2.048 8.262 1.692 7.878C1.336 7.49 1.06 7.026 0.864 6.486C0.668 5.946 0.57 5.352 0.57 4.704C0.57 4.056 0.672 3.462 0.876 2.922C1.08 2.382 1.366 1.918 1.734 1.53C2.106 1.142 2.55 0.842 3.066 0.629999C3.582 0.413999 4.152 0.305999 4.776 0.305999C5.388 0.305999 5.928 0.403999 6.396 0.599999C6.864 0.796 7.276 1.062 7.632 1.398L7.248 1.932C7.224 1.972 7.192 2.006 7.152 2.034C7.116 2.058 7.066 2.07 7.002 2.07C6.93 2.07 6.842 2.032 6.738 1.956C6.634 1.876 6.498 1.788 6.33 1.692C6.162 1.596 5.952 1.51 5.7 1.434C5.448 1.354 5.138 1.314 4.77 1.314C4.326 1.314 3.92 1.392 3.552 1.548C3.184 1.7 2.866 1.922 2.598 2.214C2.334 2.506 2.128 2.862 1.98 3.282C1.832 3.702 1.758 4.176 1.758 4.704C1.758 5.24 1.834 5.718 1.986 6.138C2.142 6.558 2.352 6.914 2.616 7.206C2.884 7.494 3.198 7.714 3.558 7.866C3.922 8.018 4.314 8.094 4.734 8.094C4.99 8.094 5.22 8.08 5.424 8.052C5.632 8.02 5.822 7.972 5.994 7.908C6.17 7.844 6.332 7.764 6.48 7.668C6.632 7.568 6.782 7.45 6.93 7.314C6.998 7.254 7.066 7.224 7.134 7.224Z" fill="#F11212"/>
+								</svg>
+							</div>
+							
+							<div *ngIf="appntItem.status=='reschedule'">
+								<svg width="7" height="9" viewBox="0 0 7 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M2.48 4.566C2.816 4.566 3.112 4.526 3.368 4.446C3.628 4.362 3.844 4.246 4.016 4.098C4.192 3.946 4.324 3.766 4.412 3.558C4.5 3.35 4.544 3.12 4.544 2.868C4.544 2.356 4.376 1.97 4.04 1.71C3.704 1.45 3.2 1.32 2.528 1.32H1.256V4.566H2.48ZM6.452 9H5.42C5.208 9 5.052 8.918 4.952 8.754L2.72 5.682C2.652 5.586 2.578 5.518 2.498 5.478C2.422 5.434 2.302 5.412 2.138 5.412H1.256V9H0.0980001V0.401999H2.528C3.072 0.401999 3.542 0.457999 3.938 0.569999C4.334 0.678 4.66 0.836 4.916 1.044C5.176 1.252 5.368 1.504 5.492 1.8C5.616 2.092 5.678 2.42 5.678 2.784C5.678 3.088 5.63 3.372 5.534 3.636C5.438 3.9 5.298 4.138 5.114 4.35C4.934 4.558 4.712 4.736 4.448 4.884C4.188 5.032 3.892 5.144 3.56 5.22C3.708 5.304 3.836 5.426 3.944 5.586L6.452 9Z" fill="#F11212"/>
+								</svg>
+							</div>
+						</div>
+						<div fxFlex="18" class="table-item">{{appntItem.prev_procedure}}</div>
+						<div fxFlex="30" class="table-item">{{appntItem.visit_notes}}</div>
+						<div fxFlex="2" class="table-item">
+							<div *ngIf="appntItem.multipleappt">
+								<svg width="9" height="12" viewBox="0 0 9 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7.4475 2.5515L6.651 9H5.9175L6.5025 4.2345C6.5115 4.1745 6.522 4.1085 6.534 4.0365C6.549 3.9645 6.5655 3.8895 6.5835 3.8115L4.068 7.866C3.99 7.995 3.882 8.0595 3.744 8.0595H3.6225C3.5565 8.0595 3.498 8.043 3.447 8.01C3.399 7.977 3.3645 7.929 3.3435 7.866L1.7865 3.8115C1.7835 3.8835 1.7805 3.9555 1.7775 4.0275C1.7745 4.0965 1.77 4.161 1.764 4.221L1.1835 9H0.441L1.233 2.5515H1.854C1.929 2.5515 1.983 2.562 2.016 2.583C2.049 2.601 2.0865 2.6385 2.1285 2.6955L3.69 6.75C3.711 6.81 3.729 6.87 3.744 6.93C3.759 6.99 3.774 7.0515 3.789 7.1145C3.819 7.0515 3.849 6.99 3.879 6.93C3.909 6.87 3.942 6.81 3.978 6.75L6.516 2.6955C6.567 2.6355 6.612 2.5965 6.651 2.5785C6.69 2.5605 6.747 2.5515 6.822 2.5515H7.4475Z" fill="#CB1010"/>
+								</svg>
+							</div>
+						</div>
+						<div fxFlex="18" class="table-item">{{appntItem.next_procedure}}</div>
+						<div fxFlex="7" class="table-item">{{appntItem.week}}</div>
+					</div>
+					
+					<!-- <div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item item-1st">Location#2</div>
+						<div fxFlex="7" class="table-item item-1st">06/11/18</div>
+						<div fxFlex="7" class="table-item item-1st">09:20 am</div>
+						<div fxFlex="9" class="table-item item-1st">Monday</div>
+						<div fxFlex="5" class="table-item item-1st">Chair 2</div>
+						<div fxFlex="3" class="table-item item-1st"></div>
+						<div fxFlex="20" class="table-item item-1st">900 - Arch Wire(s) Simple</div>
+						<div fxFlex="25" class="table-item item-1st"></div>
+						<div fxFlex="8" class="table-item item-1st">908 - RETIE</div>
+						<div fxFlex="7" class="table-item item-1st">6 weeks</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#2</div>
+						<div fxFlex="7" class="table-item">05/01/18</div>
+						<div fxFlex="7" class="table-item">09:20 am</div>
+						<div fxFlex="9" class="table-item">Tuesday</div>
+						<div fxFlex="5" class="table-item">Chair 7</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item">753 - Broken bracket</div>
+						<div fxFlex="25" class="table-item">PT IN FOR EMERG, LL3 OF..</div>
+						<div fxFlex="8" class="table-item">KEEP NV</div>
+						<div fxFlex="7" class="table-item">KeepNv</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#1</div>
+						<div fxFlex="7" class="table-item">03/14/18</div>
+						<div fxFlex="7" class="table-item">09:00 am</div>
+						<div fxFlex="9" class="table-item">Wednesday</div>
+						<div fxFlex="5" class="table-item">Chair 1</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M7.656 9H6.504C6.416 9 6.346 8.978 6.294 8.934C6.246 8.886 6.206 8.834 6.174 8.778L3.87 5.166C3.838 5.262 3.802 5.344 3.762 5.412L1.518 8.778C1.478 8.834 1.434 8.886 1.386 8.934C1.342 8.978 1.28 9 1.2 9H0.12L3.078 4.584L0.24 0.402H1.398C1.482 0.402 1.544 0.416 1.584 0.444C1.624 0.472 1.66 0.512 1.692 0.564L3.936 4.008C3.964 3.924 4.006 3.832 4.062 3.732L6.18 0.588C6.212 0.532 6.25 0.488 6.294 0.456C6.338 0.42 6.39 0.402 6.45 0.402H7.56L4.71 4.53L7.656 9Z" fill="#F63D3D"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item"></div>
+						<div fxFlex="25" class="table-item"></div>
+						<div fxFlex="8" class="table-item"></div>
+						<div fxFlex="7" class="table-item"></div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#2</div>
+						<div fxFlex="7" class="table-item">12/12/17</div>
+						<div fxFlex="7" class="table-item">09:00 am</div>
+						<div fxFlex="9" class="table-item">Tuesday</div>
+						<div fxFlex="5" class="table-item">Chair 3</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item">908 - Retie</div>
+						<div fxFlex="25" class="table-item">UL3 OFF REBONDED, BONDE..</div>
+						<div fxFlex="8" class="table-item">908 - RETIE CH..</div>
+						<div fxFlex="7" class="table-item">6 weeks</div>
+					</div>
+					
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#2</div>
+						<div fxFlex="7" class="table-item">05/01/18</div>
+						<div fxFlex="7" class="table-item">09:20 am</div>
+						<div fxFlex="9" class="table-item">Tuesday</div>
+						<div fxFlex="5" class="table-item">Chair 7</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item">753 - Broken bracket</div>
+						<div fxFlex="25" class="table-item">PT IN FOR EMERG, LL3 OF..</div>
+						<div fxFlex="8" class="table-item">KEEP NV</div>
+						<div fxFlex="7" class="table-item">KeepNv</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#1</div>
+						<div fxFlex="7" class="table-item">03/14/18</div>
+						<div fxFlex="7" class="table-item">09:00 am</div>
+						<div fxFlex="9" class="table-item">Wednesday</div>
+						<div fxFlex="5" class="table-item">Chair 1</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M7.656 9H6.504C6.416 9 6.346 8.978 6.294 8.934C6.246 8.886 6.206 8.834 6.174 8.778L3.87 5.166C3.838 5.262 3.802 5.344 3.762 5.412L1.518 8.778C1.478 8.834 1.434 8.886 1.386 8.934C1.342 8.978 1.28 9 1.2 9H0.12L3.078 4.584L0.24 0.402H1.398C1.482 0.402 1.544 0.416 1.584 0.444C1.624 0.472 1.66 0.512 1.692 0.564L3.936 4.008C3.964 3.924 4.006 3.832 4.062 3.732L6.18 0.588C6.212 0.532 6.25 0.488 6.294 0.456C6.338 0.42 6.39 0.402 6.45 0.402H7.56L4.71 4.53L7.656 9Z" fill="#F63D3D"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item"></div>
+						<div fxFlex="25" class="table-item"></div>
+						<div fxFlex="8" class="table-item"></div>
+						<div fxFlex="7" class="table-item"></div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#2</div>
+						<div fxFlex="7" class="table-item">12/12/17</div>
+						<div fxFlex="7" class="table-item">09:00 am</div>
+						<div fxFlex="9" class="table-item">Tuesday</div>
+						<div fxFlex="5" class="table-item">Chair 3</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item">908 - Retie</div>
+						<div fxFlex="25" class="table-item">UL3 OFF REBONDED, BONDE..</div>
+						<div fxFlex="8" class="table-item">908 - RETIE CH..</div>
+						<div fxFlex="7" class="table-item">6 weeks</div>
+					</div> -->
+					
+				</perfect-scrollbar>
+			<!-- </div> -->
+		</div>
+	
+	</div>
+	
+	<div class="bottom-section">
+		
+		<div class="action-btn-cont">
+			<div class="action-btn" (click)="openProfile('treatment')">
+				<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8.064 2.11H4.816V11H3.465V2.11H0.21V0.968999H8.064V2.11ZM13.8383 11H12.6413C12.5387 11 12.457 10.9743 12.3963 10.923C12.3403 10.867 12.2937 10.8063 12.2563 10.741L10.4713 7.962C10.4527 8.02733 10.4317 8.09267 10.4083 8.158C10.3897 8.21867 10.3617 8.27467 10.3243 8.326L8.67234 10.741C8.62568 10.8063 8.57434 10.867 8.51834 10.923C8.46701 10.9743 8.39468 11 8.30134 11H7.18834L9.67334 7.36L7.28634 3.909H8.48334C8.58601 3.909 8.66068 3.92533 8.70734 3.958C8.75401 3.99067 8.79601 4.03733 8.83334 4.098L10.5763 6.758C10.6137 6.62267 10.672 6.492 10.7513 6.366L12.2773 4.126C12.3193 4.06067 12.3637 4.00933 12.4103 3.972C12.4617 3.93 12.5223 3.909 12.5923 3.909H13.7403L11.3533 7.297L13.8383 11Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+			
+			<div class="action-btn" (click)="openProfile('finance')">
+				<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M4.08964 8.9385C4.47831 8.88717 4.77164 8.757 4.96964 8.548C5.17131 8.33533 5.27214 8.0585 5.27214 7.7175C5.27214 7.57817 5.24647 7.45717 5.19514 7.3545C5.14747 7.24817 5.07781 7.15467 4.98614 7.074C4.89814 6.99333 4.79364 6.92367 4.67264 6.865C4.55164 6.80633 4.41964 6.75133 4.27664 6.7L4.08964 8.9385ZM3.73764 3.125C3.53231 3.15067 3.35814 3.19467 3.21514 3.257C3.07214 3.31567 2.95481 3.389 2.86314 3.477C2.77147 3.565 2.70364 3.664 2.65964 3.774C2.61931 3.884 2.59914 3.9995 2.59914 4.1205C2.59914 4.25983 2.62297 4.38267 2.67064 4.489C2.72197 4.59167 2.78981 4.68517 2.87414 4.7695C2.96214 4.85017 3.06481 4.9235 3.18214 4.9895C3.29947 5.05183 3.42781 5.1105 3.56714 5.1655L3.73764 3.125ZM4.38114 5.4295C4.64514 5.51017 4.90731 5.6 5.16764 5.699C5.42797 5.79433 5.66081 5.919 5.86614 6.073C6.07514 6.227 6.24381 6.4195 6.37214 6.6505C6.50047 6.87783 6.56464 7.16383 6.56464 7.5085C6.56464 7.8495 6.50781 8.17033 6.39414 8.471C6.28047 8.768 6.11364 9.032 5.89364 9.263C5.67364 9.49033 5.40414 9.67733 5.08514 9.824C4.76614 9.967 4.40131 10.0513 3.99064 10.077L3.92464 10.8855C3.92097 10.9698 3.88431 11.0468 3.81464 11.1165C3.74864 11.1898 3.66431 11.2265 3.56164 11.2265H3.06114L3.16014 10.0495C2.73114 9.99083 2.32781 9.8735 1.95014 9.6975C1.57247 9.5215 1.25164 9.30333 0.987641 9.043L1.40564 8.4215C1.44231 8.3665 1.48997 8.3225 1.54864 8.2895C1.61097 8.25283 1.67697 8.2345 1.74664 8.2345C1.82731 8.2345 1.91347 8.26383 2.00514 8.3225C2.09681 8.3775 2.20131 8.4435 2.31864 8.5205C2.43597 8.59383 2.56981 8.669 2.72014 8.746C2.87047 8.823 3.04831 8.87983 3.25364 8.9165L3.45714 6.458C3.19681 6.38467 2.93831 6.2985 2.68164 6.1995C2.42864 6.1005 2.19947 5.97033 1.99414 5.809C1.79247 5.644 1.62931 5.43683 1.50464 5.1875C1.37997 4.93817 1.31764 4.6265 1.31764 4.2525C1.31764 3.97383 1.37264 3.7025 1.48264 3.4385C1.59264 3.17083 1.75397 2.9325 1.96664 2.7235C2.18297 2.5145 2.44697 2.34217 2.75864 2.2065C3.07031 2.07083 3.42781 1.99383 3.83114 1.9755L3.89164 1.2825C3.89897 1.1945 3.93564 1.11567 4.00164 1.046C4.06764 0.976333 4.15381 0.9415 4.26014 0.9415H4.76064L4.67264 2.0195C5.06131 2.08183 5.39681 2.19367 5.67914 2.355C5.96147 2.51267 6.20531 2.6905 6.41064 2.8885L6.08064 3.389C6.03297 3.46233 5.98347 3.51733 5.93214 3.554C5.88081 3.59067 5.81847 3.609 5.74514 3.609C5.69014 3.609 5.62414 3.5925 5.54714 3.5595C5.47014 3.52283 5.38397 3.48067 5.28864 3.433C5.19331 3.38167 5.08514 3.33033 4.96414 3.279C4.84681 3.22767 4.71664 3.1855 4.57364 3.1525L4.38114 5.4295ZM10.4705 8.9385C10.8592 8.88717 11.1525 8.757 11.3505 8.548C11.5522 8.33533 11.653 8.0585 11.653 7.7175C11.653 7.57817 11.6273 7.45717 11.576 7.3545C11.5283 7.24817 11.4587 7.15467 11.367 7.074C11.279 6.99333 11.1745 6.92367 11.0535 6.865C10.9325 6.80633 10.8005 6.75133 10.6575 6.7L10.4705 8.9385ZM10.1185 3.125C9.91317 3.15067 9.739 3.19467 9.596 3.257C9.453 3.31567 9.33567 3.389 9.244 3.477C9.15233 3.565 9.0845 3.664 9.0405 3.774C9.00017 3.884 8.98 3.9995 8.98 4.1205C8.98 4.25983 9.00383 4.38267 9.0515 4.489C9.10283 4.59167 9.17067 4.68517 9.255 4.7695C9.343 4.85017 9.44567 4.9235 9.563 4.9895C9.68033 5.05183 9.80867 5.1105 9.948 5.1655L10.1185 3.125ZM10.762 5.4295C11.026 5.51017 11.2882 5.6 11.5485 5.699C11.8088 5.79433 12.0417 5.919 12.247 6.073C12.456 6.227 12.6247 6.4195 12.753 6.6505C12.8813 6.87783 12.9455 7.16383 12.9455 7.5085C12.9455 7.8495 12.8887 8.17033 12.775 8.471C12.6613 8.768 12.4945 9.032 12.2745 9.263C12.0545 9.49033 11.785 9.67733 11.466 9.824C11.147 9.967 10.7822 10.0513 10.3715 10.077L10.3055 10.8855C10.3018 10.9698 10.2652 11.0468 10.1955 11.1165C10.1295 11.1898 10.0452 11.2265 9.9425 11.2265H9.442L9.541 10.0495C9.112 9.99083 8.70867 9.8735 8.331 9.6975C7.95333 9.5215 7.6325 9.30333 7.3685 9.043L7.7865 8.4215C7.82317 8.3665 7.87083 8.3225 7.9295 8.2895C7.99183 8.25283 8.05783 8.2345 8.1275 8.2345C8.20817 8.2345 8.29433 8.26383 8.386 8.3225C8.47767 8.3775 8.58217 8.4435 8.6995 8.5205C8.81683 8.59383 8.95067 8.669 9.101 8.746C9.25133 8.823 9.42917 8.87983 9.6345 8.9165L9.838 6.458C9.57767 6.38467 9.31917 6.2985 9.0625 6.1995C8.8095 6.1005 8.58033 5.97033 8.375 5.809C8.17333 5.644 8.01017 5.43683 7.8855 5.1875C7.76083 4.93817 7.6985 4.6265 7.6985 4.2525C7.6985 3.97383 7.7535 3.7025 7.8635 3.4385C7.9735 3.17083 8.13483 2.9325 8.3475 2.7235C8.56383 2.5145 8.82783 2.34217 9.1395 2.2065C9.45117 2.07083 9.80867 1.99383 10.212 1.9755L10.2725 1.2825C10.2798 1.1945 10.3165 1.11567 10.3825 1.046C10.4485 0.976333 10.5347 0.9415 10.641 0.9415H11.1415L11.0535 2.0195C11.4422 2.08183 11.7777 2.19367 12.06 2.355C12.3423 2.51267 12.5862 2.6905 12.7915 2.8885L12.4615 3.389C12.4138 3.46233 12.3643 3.51733 12.313 3.554C12.2617 3.59067 12.1993 3.609 12.126 3.609C12.071 3.609 12.005 3.5925 11.928 3.5595C11.851 3.52283 11.7648 3.48067 11.6695 3.433C11.5742 3.38167 11.466 3.33033 11.345 3.279C11.2277 3.22767 11.0975 3.1855 10.9545 3.1525L10.762 5.4295Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+			
+			<div class="action-btn" (click)="openProfile('communication')">
+				<svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M1.2502 8.89236L1.30183 8.80874L1.23277 8.73884C0.631635 8.13034 0.310605 7.3854 0.310605 6.54723C0.310605 4.46194 2.52243 2.69531 5.36008 2.69531C8.19581 2.69531 10.4107 4.46087 10.4575 6.54859C10.4565 8.63329 8.24502 10.3992 5.40799 10.3992C4.42165 10.3992 3.4817 10.1613 2.68286 9.78081L2.62058 9.75114L2.56227 9.78803C2.03095 10.1242 1.3067 10.085 0.759711 9.95397C0.603208 9.9165 0.465527 9.87251 0.355757 9.83024C0.385457 9.81823 0.414456 9.80425 0.442617 9.7888C0.555036 9.72712 0.661954 9.63784 0.759637 9.53896C0.954966 9.34124 1.12842 9.08959 1.2502 8.89236Z" fill="#4EC8F0" stroke="white" stroke-width="0.25"/>
+					<path d="M15.2028 6.26887L15.1347 6.34312L15.1928 6.42544C15.3118 6.59409 15.4731 6.82074 15.6491 6.99896C15.7373 7.0882 15.8335 7.1699 15.9346 7.22636C15.9554 7.23797 15.9768 7.24872 15.9987 7.25832C15.8983 7.29955 15.7725 7.34223 15.6299 7.37789C15.132 7.50241 14.4863 7.528 14.0297 7.17587L13.9689 7.12899L13.8996 7.162C13.1008 7.54253 12.1608 7.78034 11.1745 7.78034C8.33682 7.78034 6.125 6.01371 6.125 3.92842C6.125 1.84353 8.28839 0.125 11.1266 0.125C13.9642 0.125 16.176 1.89163 16.176 3.97692C16.176 4.81209 15.8093 5.60764 15.2028 6.26887Z" fill="#4EC8F0" stroke="white" stroke-width="0.25"/>
+				</svg>
+			</div>
+						
+			<div class="action-btn" (click)="addToBucket()">
+					<svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="1.47827" y="0.714844" width="15.5217" height="2.85714" rx="1" fill="#4EC8F0"/>
+						<rect x="2.21729" y="1.42773" width="14.0435" height="1.42857" rx="0.714286" fill="white"/>
+						<rect x="1.47827" y="3.57227" width="15.5217" height="10" rx="1" fill="#4EC8F0"/>
+						<rect x="2.21729" y="3.57227" width="14.0435" height="9.28571" rx="1" fill="white"/>
+						<line x1="3.45654" x2="3.45654" y2="2.14286" stroke="#4EC8F0"/>
+						<line x1="6.41309" x2="6.41309" y2="2.14286" stroke="#4EC8F0"/>
+						<line x1="9.36963" x2="9.36963" y2="2.14286" stroke="#4EC8F0"/>
+						<line x1="12.3262" x2="12.3262" y2="2.14286" stroke="#4EC8F0"/>
+						<line x1="15.2827" x2="15.2827" y2="2.14286" stroke="#4EC8F0"/>
+						<ellipse cx="4.43478" cy="10.7134" rx="4.43478" ry="4.28571" fill="#4EC8F0"/>
+						<ellipse cx="4.43467" cy="10.714" rx="3.69565" ry="3.57143" fill="white"/>
+						<line x1="4.68481" y1="7.5" x2="4.68481" y2="11.0714" stroke="#4EC8F0" stroke-width="0.5"/>
+						<line x1="4.43481" y1="10.9648" x2="2.21742" y2="10.9648" stroke="#4EC8F0" stroke-width="0.5"/>
+					</svg>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div class="innermodal-overlay" *ngIf="innerModal">
+		
+		<div class="inner-modal" *ngIf="!scheduled">
+			<div class="modal-content">
+				<div *ngIf="!rescheduleAppnt">
+					<div class="content-info">Would you like me to schedule an appointment for</div>
+					<div class="content-info content-info-schedule" >{{patientdata.firstname}} {{patientdata.lastname}}</div>
+					<div class="content-info">on</div>
+					<div class="content-info content-info-schedule">{{appnt_timeslot}}</div>
+				</div>
+				
+				<div *ngIf="rescheduleAppnt">
+					<div class="content-info">Would you like me to schedule an appointment for</div>
+					<div class="content-info content-info-schedule">{{appnt_timeslot}}</div>
+					<div class="content-info">and remove exsisting appointment</div>
+					<div class="content-info content-info-remove">{{delApp_timeslot}}</div>
+				</div>
+				
+				<div class="btn-cont">
+					<div class="modal-btn yes-btn" (click)="confirmSelection()">Yes</div>
+					<div class="modal-btn no-btn" (click)="closeInnerModal()">Cancel</div>
+				</div>
+				
+				<div class="robot-img"><img src="assets/laptop-Ava.png" /></div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="scheduled-modal" *ngIf="scheduled">
+			<div class="scheduledTxt">Appointment<br>Scheduled!</div>
+			<div class="scedule-robot">
+				<img src="assets/Ava bolt.png" />
+			</div>
+		</div>
+
+
+
+		
+	</div>
+
+
+	<div class="innermodal-overlay" *ngIf="innerDelAppntModal">
+		<div class="del-appntmnt-modal" *ngIf="delApptmnt">
+			<div class="laptopAva">
+				<img src="assets/laptop-Ava.png" style="width: 80%">
+			</div>
+			<div class="content-div" style="margin-top: 10px;">
+				<div class="info-text">
+					<p style="line-height: 30px">Would you like me to</p>
+					<p>remove exsisting appointment</p>
+				</div>
+				<div class="info-date-time">
+					<p>{{delApp_timeslot}}</p>
+				</div>
+			</div>
+			<div class="action-div">
+				<div class="option op-cancel" (click)="delApptmnt=false; innerDelAppntModal=false;">Cancel</div>
+				<div class="option op-yes" (click)="patientdata.lastAppntRecord=false;delApptmnt=false; innerDelAppntModal=false; delAppnt()">Yes</div>
+				<div style="clear: both;"></div>
+			</div>
+
+
+			<div class="bottom-action">
+
+				<div class="check-circle" style="cursor: pointer; float: left;">
+					<div class="unchecked-cirle" *ngIf="!checkCircle" (click)="checkCircle=!checkCircle">
+						<img src="assets/Ellipse 2.492.png">
+					</div>
+					<div class="checkd-circle" *ngIf="checkCircle" (click)="checkCircle=!checkCircle">
+						<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="6" cy="6" r="6" fill="#4EC8F0"/>
+							<line x1="5.67991" y1="6.61589" x2="11.6799" y2="1.61589" stroke="black"/>
+							<line x1="5.5" y1="2" x2="5.5" y2="7" stroke="black"/>
+							</svg>
+					</div>
+				</div>
+				<div class="check-text">Keep procedure</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="innermodal-overlay" *ngIf="proc_err_panel">
+		<div class="proc_err_modal">
+				<div class="ava-img">
+					<div class="bck-blue" style="margin-top: 20px;">
+							<img src="assets/Ellipse 2.png">
+					</div>
+					<div class="robot_img">
+						<img src="assets/Group 2.225.png" style="height: 90px;">
+					</div>
+				</div>
+				<div class="proc-text-info">
+					<p>Ooops!</p>
+					<p>Please select a </p>
+					<p>proceudre to search</p>
+					<p>for.</p>
+				</div>
+				<div class="btn-action" (click)="proc_err_panel=false;">Go back</div>
+		</div>
+
+	</div>

@@ -1,0 +1,1185 @@
+<div class="pagetitle">PROCEDURE CODES</div>
+
+<div class="component-cont">
+
+<perfect-scrollbar [config]="config">
+
+<div class="procedure-main-div" [ngStyle]="{'height': boxHt + 'px'}">
+    
+    <div class="section-block record">
+        <div class="section-block-title">
+          RECORD
+        </div>
+        <div class="section-block-data-list">
+            <div  *ngFor="let recordArray of recordArraylist let indx = index">
+            <div class="section-data-list" *ngIf='recordArray.display && recordArray.recod_slno'>
+               <div class="section-sno" (click)="openup_doctor_assistant_section('record',indx,recordArray.count)">{{recordArray.recod_slno}}</div>
+                 <div class="section-name">
+                    <span *ngIf="recordArray.openup_doctor_assistant =='No'">{{recordArray.record_name}}</span> 
+                   <input (keyup)="Upadte_promocode_name($event,'record',indx)" *ngIf="recordArray.openup_doctor_assistant =='Yes'" type='text' class="common-input comon-des-cls" value="{{recordArray.record_name}}">
+                </div>
+
+                 <div class="section-count" [style.float] = "recordArray.openup_doctor_assistant == 'Yes' ? 'left' : 'right'"  >
+                    <span *ngIf="recordArray.openup_doctor_assistant =='No'">{{recordArray.count}}</span> 
+                    <input (keyup)="Upadte_promocode_time($event,'record',indx)" *ngIf="recordArray.openup_doctor_assistant =='Yes'" type='text' class="common-input common-count-cls" value="{{recordArray.count}}">
+                 </div>
+
+                <div *ngIf="recordArray.openup_doctor_assistant =='Yes'" class="hide-procedure-code" (click)="hide_doctor_assistant_section('record',indx)">
+                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.43018 1.39659L5.58054 4.24623L8.58575 7.25143L7.46145 8.37573L4.45624 5.37053L1.62074 8.20602L0.574225 7.15951L3.40972 4.32401L0.418661 1.33295L1.54296 0.208645L4.53402 3.19971L7.38366 0.350067L8.43018 1.39659Z" fill="#FD7474"/>
+                    </svg>
+                </div>
+
+               <div class="clear"></div>
+             
+              
+               <div class="doctor-assistant" *ngIf="recordArray.openup_doctor_assistant =='Yes'">
+                  
+
+                        <div class="setion-doctor-assistant">
+                            <div class="title-doctor-assistant">
+
+                                    <div class="interval-time-slot-head">
+
+                                    </div>
+                    
+                                    <div class="doctor-time-slot-head">
+                                            Doctor
+                                    </div>
+                
+                                    <div class="assistant-time-slot-head">
+                                            Assistant
+                                    </div>
+
+                            </div>
+                        </div>
+
+                        <div class="setion-doctor-assistant" *ngFor="let number of recordArray.boxLabelArr; let indx=index" [ngStyle]="{'width':  recordArray.boxWd + 'px'}">
+                                <div class="title-doctor-assistant">
+                                    <div class="interval-time-slot-head">
+                                      {{number}}
+                                    </div>
+                                    <div class="doctor-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(recordArray.length-1) ? '0 2px 2px 0' : 0}">
+                                        <input type="number" class="comon-input-for-doc-assis"/>
+                                    </div>
+                                    <div class="assistant-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(recordArray.length-1) ? '0 0 2px 0' : 0}">
+                                        <input type="number" class="comon-input-for-doc-assis"/>
+                                    </div>
+                                </div>
+                        </div>
+                   
+                </div>
+           
+            </div>
+          
+        </div>
+        
+        <div class="add-more-procedure-section" *ngIf="formopenArray['0'].procedure_field_one || formopenArray['0'].procedure_field_ten">
+                <div class="add10-item" (click)="change_procedure_field_form('record')">
+                        x {{formopenArray['0'].countval}} ?
+                </div>
+                <div class="add-one-field" *ngIf="formopenArray['0'].procedure_field_one" >
+                        <div class="section-data-list add-common-procedure-section">
+                                <form #addoneProcedure="ngForm" (ngSubmit)="add_one_procedure_code_fn(addoneProcedure,'record')">
+                                <div class="add-procedure-code">
+                                 <input  type='text'  name="recod_slno" ngModel class="common-add-text" placeholder="Code">
+                                </div>
+                                <div class="add-procedure-des">
+                                 <input  type='text'   name="record_name" ngModel class="common-add-text" placeholder="Description">
+                                </div>
+                                <div class="add-procedure-time">
+                                <input  type='number' name="count" ngModel class="common-add-text" placeholder="Amount">
+                                </div>
+                                <input  type='hidden' name="openup_doctor_assistant" ngModel='No' class="common-add-text" placeholder="Amount">
+
+                                
+                                </form>
+                          <div class="clear"></div>
+                         </div>
+                </div>
+
+                <div class="add-ten-field" *ngIf="formopenArray['0'].procedure_field_ten" >
+                        <form #addtenProcedure="ngForm" (ngSubmit)="add_ten_procedure_code_fn(addtenProcedure.value,'record')">
+
+                        <div *ngFor="let i of tentimeShowprocedureField(num) let indx = index " class="section-data-list add-common-procedure-section">
+                               
+                            <div class="add-procedure-code">
+                                   <input  type='text'  name="recod_slno" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Code">
+                                </div>
+                                <div class="add-procedure-des">
+                                  <input  type='text'   name="record_name" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Description">
+                                </div>
+                                <div class="add-procedure-time">
+                                  <input  type='number' name="count" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                                </div>
+                                <input  type='hidden' name="openup_doctor_assistant" ngModel='No' [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                                
+                          <div class="clear"></div>
+                         </div>
+
+
+                      
+                         </form>
+                </div>
+               
+                <div class="add-procedure-icon" (click)="addoneProcedure.ngSubmit.emit()" *ngIf="formopenArray['0'].procedure_field_one">
+                            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                            <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                            <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                            </svg>
+                            
+                </div>
+
+                <div class="add-procedure-icon" (click)="addtenProcedure.ngSubmit.emit()"  *ngIf="formopenArray['0'].procedure_field_ten">
+                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                        <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                        <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                        </svg>
+                        
+                 </div>
+
+                
+        </div>
+
+    </div>
+  
+       <div class="btn-cont" (click)="add_procedure_field('record')" *ngIf="procedure_field_first_for_record==false">
+           
+            <div class="action-btn">
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d)">
+                    <circle cx="18" cy="16" r="14.5" fill="white" stroke="#4EC8F0"/>
+                    <rect x="17.2188" y="9.18164" width="2" height="13.4266" rx="0.2" fill="#646464"/>
+                    <rect x="11.1797" y="16.5664" width="2" height="13.4266" rx="0.2" transform="rotate(-90 11.1797 16.5664)" fill="#646464"/>
+                    </g>
+                    <defs>
+                    <filter id="filter0_d" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                    <feOffset dx="1" dy="3"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                    </filter>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <div class="section-block exam">
+        <div class="section-block-title">
+            EXAM 
+        </div>
+        <div class="section-block-data-list">
+            <div  *ngFor="let examArray of examArraylist let indx = index">
+                <div class="section-data-list" *ngIf='examArray.display' class="section-data-list">
+                <div class="section-sno"(click)="openup_doctor_assistant_section('exam',indx,examArray.count)">{{examArray.exam_slno}}</div>
+               
+
+                     <div class="section-name">
+                        <span *ngIf="examArray.openup_doctor_assistant =='No'">{{examArray.exam_name}}</span> 
+                       <input (keyup)="Upadte_promocode_name($event,'exam',indx)" *ngIf="examArray.openup_doctor_assistant =='Yes'" type='text' class="common-input comon-des-cls" value="{{examArray.exam_name}}">
+                    </div>
+    
+                     <div class="section-count" [style.float] = "examArray.openup_doctor_assistant == 'Yes' ? 'left' : 'right'"  >
+                        <span *ngIf="examArray.openup_doctor_assistant =='No'">{{examArray.count}}</span> 
+                        <input (keyup)="Upadte_promocode_time($event,'exam',indx)" *ngIf="examArray.openup_doctor_assistant =='Yes'" type='text' class="common-input common-count-cls" value="{{examArray.count}}">
+                     </div>
+    
+                    <div *ngIf="examArray.openup_doctor_assistant =='Yes'" class="hide-procedure-code" (click)="hide_doctor_assistant_section('exam',indx)">
+                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.43018 1.39659L5.58054 4.24623L8.58575 7.25143L7.46145 8.37573L4.45624 5.37053L1.62074 8.20602L0.574225 7.15951L3.40972 4.32401L0.418661 1.33295L1.54296 0.208645L4.53402 3.19971L7.38366 0.350067L8.43018 1.39659Z" fill="#FD7474"/>
+                        </svg>
+                    </div>
+
+                    <div class="clear"></div>
+
+            
+                           
+                <div class="doctor-assistant" *ngIf="examArray.openup_doctor_assistant =='Yes'">
+                        <div class="setion-doctor-assistant">
+                            <div class="title-doctor-assistant">
+
+                                    <div class="interval-time-slot-head">
+
+                                    </div>
+                    
+                                    <div class="doctor-time-slot-head">
+                                            Doctor
+                                    </div>
+                
+                                    <div class="assistant-time-slot-head">
+                                            Assistant
+                                    </div>
+
+                            </div>
+                        </div>
+
+                        <div class="setion-doctor-assistant" *ngFor="let number of examArray.boxLabelArr" [ngStyle]="{'width':  examArray.boxWd + 'px'}">
+							<div class="title-doctor-assistant">
+								<div class="interval-time-slot-head">
+								  {{number}}
+								</div>
+								
+								<div class="doctor-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(examArray.length-1) ? '0 2px 2px 0' : 0}">
+									<input type="number" class="comon-input-for-doc-assis"/>
+								</div>
+								
+								<div class="assistant-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(examArray.length-1) ? '0 0 2px 0' : 0}">
+									<input type="number" class="comon-input-for-doc-assis"/>
+								</div>
+								
+							</div>
+                        </div>
+                </div>
+               
+
+                </div>
+             </div>
+
+
+             <div class="add-more-procedure-section" *ngIf="formopenArray['1'].procedure_field_one || formopenArray['1'].procedure_field_ten">
+                    <div class="add10-item" (click)="change_procedure_field_form('exam')">
+                            x {{formopenArray['1'].countval}} ?
+                    </div>
+                    <div class="add-one-field" *ngIf="formopenArray['1'].procedure_field_one" >
+                            <div class="section-data-list add-common-procedure-section">
+                                    <form #examaddoneProcedure="ngForm" (ngSubmit)="add_one_procedure_code_fn(examaddoneProcedure,'exam')">
+                                    <div class="add-procedure-code">
+                                     <input  type='text'  name="exam_slno" ngModel class="common-add-text" placeholder="Code">
+                                    </div>
+                                    <div class="add-procedure-des">
+                                     <input  type='text'   name="exam_name" ngModel class="common-add-text" placeholder="Description">
+                                    </div>
+                                    <div class="add-procedure-time">
+                                    <input  type='number' name="count" ngModel class="common-add-text" placeholder="Amount">
+                                    </div>
+                                    <input  type='hidden' name="openup_doctor_assistant" ngModel='No' class="common-add-text" placeholder="Amount">
+    
+                                    
+                                    </form>
+                              <div class="clear"></div>
+                             </div>
+                    </div>
+    
+                    <div class="add-ten-field" *ngIf="formopenArray['1'].procedure_field_ten" >
+                            <form #examaddtenProcedure="ngForm" (ngSubmit)="add_ten_procedure_code_fn(examaddtenProcedure.value,'exam')">
+    
+                            <div *ngFor="let i of tentimeShowprocedureField(num) let indx = index " class="section-data-list add-common-procedure-section">
+                                   
+                                <div class="add-procedure-code">
+                                       <input  type='text'  name="exam_slno" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Code">
+                                    </div>
+                                    <div class="add-procedure-des">
+                                      <input  type='text'   name="exam_name" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Description">
+                                    </div>
+                                    <div class="add-procedure-time">
+                                      <input  type='number' name="count" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                                    </div>
+                                    <input  type='hidden' name="openup_doctor_assistant" ngModel='No' [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                                    
+                              <div class="clear"></div>
+                             </div>
+    
+    
+                          
+                             </form>
+                    </div>
+                   
+                    <div class="add-procedure-icon" (click)="examaddoneProcedure.ngSubmit.emit()" *ngIf="formopenArray['1'].procedure_field_one">
+                                <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                                <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                                <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                                </svg>
+                                
+                    </div>
+    
+                    <div class="add-procedure-icon" (click)="examaddtenProcedure.ngSubmit.emit()"  *ngIf="formopenArray['1'].procedure_field_ten">
+                            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                            <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                            <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                            </svg>
+                            
+                     </div>
+    
+                    
+            </div>
+
+
+        </div>
+
+        <div class="btn-cont" (click)="add_procedure_field('exam')" *ngIf="procedure_field_first_for_exam==false">
+           
+                <div class="action-btn">
+                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d)">
+                        <circle cx="18" cy="16" r="14.5" fill="white" stroke="#4EC8F0"/>
+                        <rect x="17.2188" y="9.18164" width="2" height="13.4266" rx="0.2" fill="#646464"/>
+                        <rect x="11.1797" y="16.5664" width="2" height="13.4266" rx="0.2" transform="rotate(-90 11.1797 16.5664)" fill="#646464"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                        <feOffset dx="1" dy="3"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                        </filter>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+     
+    </div>
+
+
+
+    <div class="section-block start">
+        <div class="section-block-title">
+            START 
+        </div>
+        <div class="section-block-data-list">
+            <div  *ngFor="let startArray of startArraylist let indx = index">
+              <div class="section-data-list" *ngIf='startArray.display' class="section-data-list">
+                <div class="section-sno" (click)="openup_doctor_assistant_section('start',indx,startArray.count)" >{{startArray.start_slno}}</div>
+               
+
+                    <div class="section-name">
+                        <span *ngIf="startArray.openup_doctor_assistant =='No'">{{startArray.start_name}}</span> 
+                       <input (keyup)="Upadte_promocode_name($event,'start',indx)" *ngIf="startArray.openup_doctor_assistant =='Yes'" type='text' class="common-input comon-des-cls" value="{{startArray.start_name}}">
+                    </div>
+    
+                     <div class="section-count" [style.float] = "startArray.openup_doctor_assistant == 'Yes' ? 'left' : 'right'"  >
+                        <span *ngIf="startArray.openup_doctor_assistant =='No'">{{startArray.count}}</span> 
+                        <input (keyup)="Upadte_promocode_time($event,'start',indx)" *ngIf="startArray.openup_doctor_assistant =='Yes'" type='text' class="common-input common-count-cls" value="{{startArray.count}}">
+                     </div>
+    
+                    <div *ngIf="startArray.openup_doctor_assistant =='Yes'" class="hide-procedure-code" (click)="hide_doctor_assistant_section('start',indx)">
+                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.43018 1.39659L5.58054 4.24623L8.58575 7.25143L7.46145 8.37573L4.45624 5.37053L1.62074 8.20602L0.574225 7.15951L3.40972 4.32401L0.418661 1.33295L1.54296 0.208645L4.53402 3.19971L7.38366 0.350067L8.43018 1.39659Z" fill="#FD7474"/>
+                        </svg>
+                    </div>
+
+                 <div class="clear"></div>
+
+              
+
+                <div class="doctor-assistant" *ngIf="startArray.openup_doctor_assistant =='Yes'">
+                        <div class="setion-doctor-assistant">
+                            <div class="title-doctor-assistant">
+
+                                    <div class="interval-time-slot-head">
+
+                                    </div>
+                    
+                                    <div class="doctor-time-slot-head">
+                                            Doctor
+                                    </div>
+                
+                                    <div class="assistant-time-slot-head">
+                                            Assistant
+                                    </div>
+
+                            </div>
+                        </div>
+						
+						<div class="setion-doctor-assistant" *ngFor="let number of startArray.boxLabelArr" [ngStyle]="{'width':  startArray.boxWd + 'px'}">
+							<div class="title-doctor-assistant">
+								<div class="interval-time-slot-head">
+								  {{number}}
+								</div>
+								
+								<div class="doctor-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(startArray.length-1) ? '0 2px 2px 0' : 0}">
+									<input type="number" class="comon-input-for-doc-assis"/>
+								</div>
+								
+								<div class="assistant-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(startArray.length-1) ? '0 0 2px 0' : 0}">
+									<input type="number" class="comon-input-for-doc-assis"/>
+								</div>
+								
+							</div>
+                        </div>
+                </div>
+              
+                </div>
+             </div>
+
+
+       <div class="add-more-procedure-section" *ngIf="formopenArray['2'].procedure_field_one || formopenArray['2'].procedure_field_ten">
+            <div class="add10-item" (click)="change_procedure_field_form('start')">
+                    x {{formopenArray['2'].countval}} ?
+            </div>
+            <div class="add-one-field" *ngIf="formopenArray['2'].procedure_field_one" >
+                    <div class="section-data-list add-common-procedure-section">
+                            <form #startaddoneProcedure="ngForm" (ngSubmit)="add_one_procedure_code_fn(startaddoneProcedure,'start')">
+                            <div class="add-procedure-code">
+                             <input  type='text'  name="start_slno" ngModel class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                             <input  type='text'   name="start_name" ngModel class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                            <input  type='number' name="count" ngModel class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' class="common-add-text" placeholder="Amount">
+
+                            
+                            </form>
+                      <div class="clear"></div>
+                     </div>
+            </div>
+
+            <div class="add-ten-field" *ngIf="formopenArray['2'].procedure_field_ten" >
+                    <form #startaddtenProcedure="ngForm" (ngSubmit)="add_ten_procedure_code_fn(startaddtenProcedure.value,'start')">
+
+                    <div *ngFor="let i of tentimeShowprocedureField(num) let indx = index " class="section-data-list add-common-procedure-section">
+                           
+                        <div class="add-procedure-code">
+                               <input  type='text'  name="start_slno" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                              <input  type='text'   name="start_name" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                              <input  type='number' name="count" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            
+                      <div class="clear"></div>
+                     </div>
+
+
+                  
+                     </form>
+            </div>
+           
+            <div class="add-procedure-icon" (click)="startaddoneProcedure.ngSubmit.emit()" *ngIf="formopenArray['2'].procedure_field_one">
+                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                        <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                        <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                        </svg>
+                        
+            </div>
+
+            <div class="add-procedure-icon" (click)="startaddtenProcedure.ngSubmit.emit()"  *ngIf="formopenArray['2'].procedure_field_ten">
+                    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                    <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                    <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                    </svg>
+                    
+             </div>
+
+            
+    </div>
+
+    </div>
+
+
+    <div class="btn-cont" (click)="add_procedure_field('start')" *ngIf="procedure_field_first_for_start==false">
+           
+            <div class="action-btn">
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d)">
+                    <circle cx="18" cy="16" r="14.5" fill="white" stroke="#4EC8F0"/>
+                    <rect x="17.2188" y="9.18164" width="2" height="13.4266" rx="0.2" fill="#646464"/>
+                    <rect x="11.1797" y="16.5664" width="2" height="13.4266" rx="0.2" transform="rotate(-90 11.1797 16.5664)" fill="#646464"/>
+                    </g>
+                    <defs>
+                    <filter id="filter0_d" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                    <feOffset dx="1" dy="3"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                    </filter>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="section-block appl">
+        <div class="section-block-title">
+            APPL 
+        </div>
+        <div class="section-block-data-list">
+            <div  *ngFor="let applArray of applArraylist let indx = index">
+                <div class="section-data-list" *ngIf='applArray.display' class="section-data-list">
+                <div class="section-sno" (click)="openup_doctor_assistant_section('appl',indx,applArray.count)">{{applArray.appl_slno}}</div>
+               
+
+                    <div class="section-name">
+                        <span *ngIf="applArray.openup_doctor_assistant =='No'">{{applArray.appl_name}}</span> 
+                       <input (keyup)="Upadte_promocode_name($event,'appl',indx)" *ngIf="applArray.openup_doctor_assistant =='Yes'" type='text' class="common-input comon-des-cls" value="{{applArray.appl_name}}">
+                    </div>
+    
+                     <div class="section-count" [style.float] = "applArray.openup_doctor_assistant == 'Yes' ? 'left' : 'right'"  >
+                        <span *ngIf="applArray.openup_doctor_assistant =='No'">{{applArray.count}}</span> 
+                        <input (keyup)="Upadte_promocode_time($event,'appl',indx)" *ngIf="applArray.openup_doctor_assistant =='Yes'" type='text' class="common-input common-count-cls" value="{{applArray.count}}">
+                     </div>
+    
+                    <div *ngIf="applArray.openup_doctor_assistant =='Yes'" class="hide-procedure-code" (click)="hide_doctor_assistant_section('appl',indx)">
+                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.43018 1.39659L5.58054 4.24623L8.58575 7.25143L7.46145 8.37573L4.45624 5.37053L1.62074 8.20602L0.574225 7.15951L3.40972 4.32401L0.418661 1.33295L1.54296 0.208645L4.53402 3.19971L7.38366 0.350067L8.43018 1.39659Z" fill="#FD7474"/>
+                        </svg>
+                    </div>
+
+                <div class="clear"></div>
+
+               
+                <div class="doctor-assistant" *ngIf="applArray.openup_doctor_assistant =='Yes'">
+                        <div class="setion-doctor-assistant">
+                            <div class="title-doctor-assistant">
+
+                                    <div class="interval-time-slot-head">
+
+                                    </div>
+                    
+                                    <div class="doctor-time-slot-head">
+                                            Doctor
+                                    </div>
+                
+                                    <div class="assistant-time-slot-head">
+                                            Assistant
+                                    </div>
+
+                            </div>
+                        </div>
+						
+						<div class="setion-doctor-assistant" *ngFor="let number of applArray.boxLabelArr" [ngStyle]="{'width':  applArray.boxWd + 'px'}">
+							<div class="title-doctor-assistant">
+								<div class="interval-time-slot-head">
+								  {{number}}
+								</div>
+								
+								<div class="doctor-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(applArray.length-1) ? '0 2px 2px 0' : 0}">
+									<input type="number" class="comon-input-for-doc-assis"/>
+								</div>
+								
+								<div class="assistant-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(applArray.length-1) ? '0 0 2px 0' : 0}">
+									<input type="number" class="comon-input-for-doc-assis"/>
+								</div>
+								
+							</div>
+                        </div>
+                </div>
+             </div>
+             </div>
+
+
+
+
+       <div class="add-more-procedure-section" *ngIf="formopenArray['3'].procedure_field_one || formopenArray['3'].procedure_field_ten">
+            <div class="add10-item" (click)="change_procedure_field_form('appl')">
+                    x {{formopenArray['3'].countval}} ?
+            </div>
+            <div class="add-one-field" *ngIf="formopenArray['3'].procedure_field_one" >
+                    <div class="section-data-list add-common-procedure-section">
+                            <form #appladdoneProcedure="ngForm" (ngSubmit)="add_one_procedure_code_fn(appladdoneProcedure,'appl')">
+                            <div class="add-procedure-code">
+                             <input  type='text'  name="appl_slno" ngModel class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                             <input  type='text'   name="appl_name" ngModel class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                            <input  type='number' name="count" ngModel class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' class="common-add-text" placeholder="Amount">
+
+                            
+                            </form>
+                      <div class="clear"></div>
+                     </div>
+            </div>
+
+            <div class="add-ten-field" *ngIf="formopenArray['3'].procedure_field_ten" >
+                    <form #appladdtenProcedure="ngForm" (ngSubmit)="add_ten_procedure_code_fn(appladdtenProcedure.value,'appl')">
+
+                    <div *ngFor="let i of tentimeShowprocedureField(num) let indx = index " class="section-data-list add-common-procedure-section">
+                           
+                        <div class="add-procedure-code">
+                               <input  type='text'  name="appl_slno" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                              <input  type='text'   name="appl_name" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                              <input  type='number' name="count" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            
+                      <div class="clear"></div>
+                     </div>
+
+
+                  
+                     </form>
+            </div>
+           
+            <div class="add-procedure-icon" (click)="appladdoneProcedure.ngSubmit.emit()" *ngIf="formopenArray['3'].procedure_field_one">
+                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                        <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                        <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                        </svg>
+                        
+            </div>
+
+            <div class="add-procedure-icon" (click)="appladdtenProcedure.ngSubmit.emit()"  *ngIf="formopenArray['3'].procedure_field_ten">
+                    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                    <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                    <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                    </svg>
+                    
+             </div>
+
+            
+    </div>
+    </div>
+
+
+    <div class="btn-cont" (click)="add_procedure_field('appl')" *ngIf="procedure_field_first_for_appl==false">
+           
+            <div class="action-btn">
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d)">
+                    <circle cx="18" cy="16" r="14.5" fill="white" stroke="#4EC8F0"/>
+                    <rect x="17.2188" y="9.18164" width="2" height="13.4266" rx="0.2" fill="#646464"/>
+                    <rect x="11.1797" y="16.5664" width="2" height="13.4266" rx="0.2" transform="rotate(-90 11.1797 16.5664)" fill="#646464"/>
+                    </g>
+                    <defs>
+                    <filter id="filter0_d" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                    <feOffset dx="1" dy="3"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                    </filter>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="section-block adj">
+            <div class="section-block-title">
+                    ADJ 
+            </div>
+            <div class="section-block-data-list">
+                <div  *ngFor="let adjArray of adjArraylist let indx = index">
+                 <div class="section-data-list" *ngIf='adjArray.display' class="section-data-list">
+                    <div class="section-sno" (click)="openup_doctor_assistant_section('adj',indx,adjArray.count)">{{adjArray.appl_slno}}</div>
+                    
+                       
+                     <div class="section-name">
+                            <span *ngIf="adjArray.openup_doctor_assistant =='No'">{{adjArray.appl_name}}</span> 
+                           <input (keyup)="Upadte_promocode_name($event,'adj',indx)" *ngIf="adjArray.openup_doctor_assistant =='Yes'" type='text' class="common-input comon-des-cls" value="{{adjArray.appl_name}}">
+                        </div>
+        
+                         <div class="section-count" [style.float] = "adjArray.openup_doctor_assistant == 'Yes' ? 'left' : 'right'"  >
+                            <span *ngIf="adjArray.openup_doctor_assistant =='No'">{{adjArray.count}}</span> 
+                            <input (keyup)="Upadte_promocode_time($event,'adj',indx)" *ngIf="adjArray.openup_doctor_assistant =='Yes'" type='text' class="common-input common-count-cls" value="{{adjArray.count}}">
+                         </div>
+        
+                        <div *ngIf="adjArray.openup_doctor_assistant =='Yes'" class="hide-procedure-code" (click)="hide_doctor_assistant_section('adj',indx)">
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.43018 1.39659L5.58054 4.24623L8.58575 7.25143L7.46145 8.37573L4.45624 5.37053L1.62074 8.20602L0.574225 7.15951L3.40972 4.32401L0.418661 1.33295L1.54296 0.208645L4.53402 3.19971L7.38366 0.350067L8.43018 1.39659Z" fill="#FD7474"/>
+                            </svg>
+                        </div>
+                    
+
+                    <div class="clear"></div>
+                    <div class="doctor-assistant" *ngIf="adjArray.openup_doctor_assistant =='Yes'">
+                            <div class="setion-doctor-assistant">
+                                <div class="title-doctor-assistant">
+    
+                                        <div class="interval-time-slot-head">
+    
+                                        </div>
+                        
+                                        <div class="doctor-time-slot-head">
+                                                Doctor
+                                        </div>
+                    
+                                        <div class="assistant-time-slot-head">
+                                                Assistant
+                                        </div>
+    
+                                </div>
+                            </div>
+                            
+                            <div class="setion-doctor-assistant" *ngFor="let number of adjArray.boxLabelArr" [ngStyle]="{'width':  adjArray.boxWd + 'px'}">
+                                <div class="title-doctor-assistant">
+                                    <div class="interval-time-slot-head">
+                                      {{number}}
+                                    </div>
+                                    
+                                    <div class="doctor-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(adjArray.length-1) ? '0 2px 2px 0' : 0}">
+                                        <input type="number" class="comon-input-for-doc-assis"/>
+                                    </div>
+                                    
+                                    <div class="assistant-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(adjArray.length-1) ? '0 0 2px 0' : 0}">
+                                        <input type="number" class="comon-input-for-doc-assis"/>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                 </div>
+                 </div>
+           
+       <div class="add-more-procedure-section" *ngIf="formopenArray['4'].procedure_field_one || formopenArray['4'].procedure_field_ten">
+            <div class="add10-item" (click)="change_procedure_field_form('adj')">
+                    x {{formopenArray['4'].countval}} ?
+            </div>
+            <div class="add-one-field" *ngIf="formopenArray['4'].procedure_field_one" >
+                    <div class="section-data-list add-common-procedure-section">
+                            <form #adjaddoneProcedure="ngForm" (ngSubmit)="add_one_procedure_code_fn(adjaddoneProcedure,'adj')">
+                            <div class="add-procedure-code">
+                             <input  type='text'  name="appl_slno" ngModel class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                             <input  type='text'   name="appl_name" ngModel class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                            <input  type='number' name="count" ngModel class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' class="common-add-text" placeholder="Amount">
+
+                            
+                            </form>
+                      <div class="clear"></div>
+                     </div>
+            </div>
+
+            <div class="add-ten-field" *ngIf="formopenArray['4'].procedure_field_ten" >
+                    <form #adjaddtenProcedure="ngForm" (ngSubmit)="add_ten_procedure_code_fn(adjaddtenProcedure.value,'adj')">
+
+                    <div *ngFor="let i of tentimeShowprocedureField(num) let indx = index " class="section-data-list add-common-procedure-section">
+                           
+                        <div class="add-procedure-code">
+                               <input  type='text'  name="appl_slno" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                              <input  type='text'   name="appl_name" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                              <input  type='number' name="count" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            
+                      <div class="clear"></div>
+                     </div>
+
+
+                  
+                     </form>
+            </div>
+           
+            <div class="add-procedure-icon" (click)="adjaddoneProcedure.ngSubmit.emit()" *ngIf="formopenArray['4'].procedure_field_one">
+                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                        <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                        <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                        </svg>
+                        
+            </div>
+
+            <div class="add-procedure-icon" (click)="adjaddtenProcedure.ngSubmit.emit()"  *ngIf="formopenArray['4'].procedure_field_ten">
+                    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                    <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                    <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                    </svg>
+                    
+             </div>
+
+            
+    </div>
+    </div>
+
+
+    <div class="btn-cont" (click)="add_procedure_field('adj')" *ngIf="procedure_field_first_for_adj==false">
+           
+            <div class="action-btn">
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d)">
+                    <circle cx="18" cy="16" r="14.5" fill="white" stroke="#4EC8F0"/>
+                    <rect x="17.2188" y="9.18164" width="2" height="13.4266" rx="0.2" fill="#646464"/>
+                    <rect x="11.1797" y="16.5664" width="2" height="13.4266" rx="0.2" transform="rotate(-90 11.1797 16.5664)" fill="#646464"/>
+                    </g>
+                    <defs>
+                    <filter id="filter0_d" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                    <feOffset dx="1" dy="3"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                    </filter>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+</div>
+
+
+        <div class="section-block dband">
+                <div class="section-block-title">
+                        D-BAND 
+                </div>
+                <div class="section-block-data-list">
+                    <div  *ngFor="let dbandArray of d_bandArraylist let indx = index">
+                        <div class="section-data-list" *ngIf='dbandArray.display' class="section-data-list">
+                        <div class="section-sno" (click)="openup_doctor_assistant_section('dband',indx,dbandArray.count)">{{dbandArray.appl_slno}}</div>
+                        
+                            <div class="section-name">
+                                <span *ngIf="dbandArray.openup_doctor_assistant =='No'">{{dbandArray.appl_name}}</span> 
+                               <input (keyup)="Upadte_promocode_name($event,'dband',indx)" *ngIf="dbandArray.openup_doctor_assistant =='Yes'" type='text' class="common-input comon-des-cls" value="{{dbandArray.appl_name}}">
+                            </div>
+            
+                             <div class="section-count" [style.float] = "dbandArray.openup_doctor_assistant == 'Yes' ? 'left' : 'right'"  >
+                                <span *ngIf="dbandArray.openup_doctor_assistant =='No'">{{dbandArray.count}}</span> 
+                                <input (keyup)="Upadte_promocode_time($event,'dband',indx)" *ngIf="dbandArray.openup_doctor_assistant =='Yes'" type='text' class="common-input common-count-cls" value="{{dbandArray.count}}">
+                             </div>
+            
+                            <div *ngIf="dbandArray.openup_doctor_assistant =='Yes'" class="hide-procedure-code" (click)="hide_doctor_assistant_section('dband',indx)">
+                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.43018 1.39659L5.58054 4.24623L8.58575 7.25143L7.46145 8.37573L4.45624 5.37053L1.62074 8.20602L0.574225 7.15951L3.40972 4.32401L0.418661 1.33295L1.54296 0.208645L4.53402 3.19971L7.38366 0.350067L8.43018 1.39659Z" fill="#FD7474"/>
+                                </svg>
+                            </div>
+
+                        <div class="clear"></div>
+                        <div class="doctor-assistant" *ngIf="dbandArray.openup_doctor_assistant =='Yes'">
+                                <div class="setion-doctor-assistant">
+                                    <div class="title-doctor-assistant">
+        
+                                            <div class="interval-time-slot-head">
+        
+                                            </div>
+                            
+                                            <div class="doctor-time-slot-head">
+                                                    Doctor
+                                            </div>
+                        
+                                            <div class="assistant-time-slot-head">
+                                                    Assistant
+                                            </div>
+        
+                                    </div>
+                                </div>
+                                
+                                <div class="setion-doctor-assistant" *ngFor="let number of dbandArray.boxLabelArr" [ngStyle]="{'width':  dbandArray.boxWd + 'px'}">
+                                    <div class="title-doctor-assistant">
+                                        <div class="interval-time-slot-head">
+                                          {{number}}
+                                        </div>
+                                        
+                                        <div class="doctor-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(dbandArray.length-1) ? '0 2px 2px 0' : 0}">
+                                            <input type="number" class="comon-input-for-doc-assis"/>
+                                        </div>
+                                        
+                                        <div class="assistant-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(dbandArray.length-1) ? '0 0 2px 0' : 0}">
+                                            <input type="number" class="comon-input-for-doc-assis"/>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                        </div>
+                     </div>
+                     </div>
+               
+       <div class="add-more-procedure-section" *ngIf="formopenArray['5'].procedure_field_one || formopenArray['5'].procedure_field_ten">
+            <div class="add10-item" (click)="change_procedure_field_form('d_band')">
+                    x {{formopenArray['5'].countval}} ?
+            </div>
+            <div class="add-one-field" *ngIf="formopenArray['5'].procedure_field_one" >
+                    <div class="section-data-list add-common-procedure-section">
+                            <form #dbandaddoneProcedure="ngForm" (ngSubmit)="add_one_procedure_code_fn(dbandaddoneProcedure,'d_band')">
+                            <div class="add-procedure-code">
+                             <input  type='text'  name="appl_slno" ngModel class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                             <input  type='text'   name="appl_name" ngModel class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                            <input  type='number' name="count" ngModel class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' class="common-add-text" placeholder="Amount">
+
+                            
+                            </form>
+                      <div class="clear"></div>
+                     </div>
+            </div>
+
+            <div class="add-ten-field" *ngIf="formopenArray['5'].procedure_field_ten" >
+                    <form #dbandaddtenProcedure="ngForm" (ngSubmit)="add_ten_procedure_code_fn(dbandaddtenProcedure.value,'d_band')">
+
+                    <div *ngFor="let i of tentimeShowprocedureField(num) let indx = index " class="section-data-list add-common-procedure-section">
+                           
+                        <div class="add-procedure-code">
+                               <input  type='text'  name="appl_slno" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                              <input  type='text'   name="appl_name" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                              <input  type='number' name="count" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            
+                      <div class="clear"></div>
+                     </div>
+
+
+                  
+                     </form>
+            </div>
+           
+            <div class="add-procedure-icon" (click)="dbandaddoneProcedure.ngSubmit.emit()" *ngIf="formopenArray['5'].procedure_field_one">
+                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                        <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                        <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                        </svg>
+                        
+            </div>
+
+            <div class="add-procedure-icon" (click)="dbandaddtenProcedure.ngSubmit.emit()"  *ngIf="formopenArray['5'].procedure_field_ten">
+                    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                    <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                    <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                    </svg>
+                    
+             </div>
+
+            
+    </div>
+    </div>
+
+
+    <div class="btn-cont" (click)="add_procedure_field('d_band')" *ngIf="procedure_field_first_for_dband==false">
+           
+            <div class="action-btn">
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d)">
+                    <circle cx="18" cy="16" r="14.5" fill="white" stroke="#4EC8F0"/>
+                    <rect x="17.2188" y="9.18164" width="2" height="13.4266" rx="0.2" fill="#646464"/>
+                    <rect x="11.1797" y="16.5664" width="2" height="13.4266" rx="0.2" transform="rotate(-90 11.1797 16.5664)" fill="#646464"/>
+                    </g>
+                    <defs>
+                    <filter id="filter0_d" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                    <feOffset dx="1" dy="3"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                    </filter>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+ </div>
+
+
+            <div class="section-block events">
+                    <div class="section-block-title">
+                            EVENTS 
+                    </div>
+                    <div class="section-block-data-list">
+                        <div  *ngFor="let eventsArray of eventArraylist let indx = index">
+                            <div class="section-data-list" *ngIf='eventsArray.display' class="section-data-list">
+                            <div class="section-sno" (click)="openup_doctor_assistant_section('events',indx,eventsArray.count)">{{eventsArray.appl_slno}}</div>
+                            
+                            <div class="section-name">
+                                    <span *ngIf="eventsArray.openup_doctor_assistant =='No'">{{eventsArray.appl_name}}</span> 
+                                   <input (keyup)="Upadte_promocode_name($event,'events',indx)" *ngIf="eventsArray.openup_doctor_assistant =='Yes'" type='text' class="common-input comon-des-cls" value="{{eventsArray.appl_name}}">
+                                </div>
+                
+                                 <div class="section-count" [style.float] = "eventsArray.openup_doctor_assistant == 'Yes' ? 'left' : 'right'"  >
+                                    <span *ngIf="eventsArray.openup_doctor_assistant =='No'">{{eventsArray.count}}</span> 
+                                    <input (keyup)="Upadte_promocode_time($event,'events',indx)" *ngIf="eventsArray.openup_doctor_assistant =='Yes'" type='text' class="common-input common-count-cls" value="{{eventsArray.count}}">
+                                 </div>
+                
+                                <div *ngIf="eventsArray.openup_doctor_assistant =='Yes'" class="hide-procedure-code" (click)="hide_doctor_assistant_section('events',indx)">
+                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8.43018 1.39659L5.58054 4.24623L8.58575 7.25143L7.46145 8.37573L4.45624 5.37053L1.62074 8.20602L0.574225 7.15951L3.40972 4.32401L0.418661 1.33295L1.54296 0.208645L4.53402 3.19971L7.38366 0.350067L8.43018 1.39659Z" fill="#FD7474"/>
+                                    </svg>
+                                </div>
+
+                           
+                            <div class="clear"></div>
+                            <div class="doctor-assistant" *ngIf="eventsArray.openup_doctor_assistant =='Yes'">
+                                    <div class="setion-doctor-assistant">
+                                        <div class="title-doctor-assistant">
+            
+                                                <div class="interval-time-slot-head">
+            
+                                                </div>
+                                
+                                                <div class="doctor-time-slot-head">
+                                                        Doctor
+                                                </div>
+                            
+                                                <div class="assistant-time-slot-head">
+                                                        Assistant
+                                                </div>
+            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="setion-doctor-assistant" *ngFor="let number of eventsArray.boxLabelArr" [ngStyle]="{'width':  eventsArray.boxWd + 'px'}">
+                                        <div class="title-doctor-assistant">
+                                            <div class="interval-time-slot-head">
+                                              {{number}}
+                                            </div>
+                                            
+                                            <div class="doctor-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(eventsArray.length-1) ? '0 2px 2px 0' : 0}">
+                                                <input type="number" class="comon-input-for-doc-assis"/>
+                                            </div>
+                                            
+                                            <div class="assistant-time-slot-head common-section-for-doctor-assistant" [ngStyle]="{'border-radius': indx==(eventsArray.length-1) ? '0 0 2px 0' : 0}">
+                                                <input type="number" class="comon-input-for-doc-assis"/>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                            </div>
+                         </div>
+                         </div>
+                    
+       <div class="add-more-procedure-section" *ngIf="formopenArray['6'].procedure_field_one || formopenArray['6'].procedure_field_ten">
+            <div class="add10-item" (click)="change_procedure_field_form('evants')">
+                    x {{formopenArray['6'].countval}} ?
+            </div>
+            <div class="add-one-field" *ngIf="formopenArray['6'].procedure_field_one" >
+                    <div class="section-data-list add-common-procedure-section">
+                            <form #eventaddoneProcedure="ngForm" (ngSubmit)="add_one_procedure_code_fn(eventaddoneProcedure,'evants')">
+                            <div class="add-procedure-code">
+                             <input  type='text'  name="appl_slno" ngModel class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                             <input  type='text'   name="appl_name" ngModel class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                            <input  type='number' name="count" ngModel class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' class="common-add-text" placeholder="Amount">
+
+                            
+                            </form>
+                      <div class="clear"></div>
+                     </div>
+            </div>
+
+            <div class="add-ten-field" *ngIf="formopenArray['6'].procedure_field_ten" >
+                    <form #eventaddtenProcedure="ngForm" (ngSubmit)="add_ten_procedure_code_fn(eventaddtenProcedure.value,'evants')">
+
+                    <div *ngFor="let i of tentimeShowprocedureField(num) let indx = index " class="section-data-list add-common-procedure-section">
+                           
+                        <div class="add-procedure-code">
+                               <input  type='text'  name="appl_slno" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Code">
+                            </div>
+                            <div class="add-procedure-des">
+                              <input  type='text'   name="appl_name" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Description">
+                            </div>
+                            <div class="add-procedure-time">
+                              <input  type='number' name="count" ngModel [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            </div>
+                            <input  type='hidden' name="openup_doctor_assistant" ngModel='No' [ngModelGroup]="indx" class="common-add-text" placeholder="Amount">
+                            
+                      <div class="clear"></div>
+                     </div>
+
+
+                  
+                     </form>
+            </div>
+           
+            <div class="add-procedure-icon" (click)="eventaddoneProcedure.ngSubmit.emit()" *ngIf="formopenArray['6'].procedure_field_one">
+                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                        <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                        <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                        </svg>
+                        
+            </div>
+
+            <div class="add-procedure-icon" (click)="eventaddtenProcedure.ngSubmit.emit()"  *ngIf="formopenArray['6'].procedure_field_ten">
+                    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="9.5" stroke="#4EC8F0"/>
+                    <rect x="5.64844" y="10.5532" width="4.66684" height="0.933369" rx="0.2" transform="rotate(42.7363 5.64844 10.5532)" fill="#4EC8F0"/>
+                    <rect x="15.7676" y="5.90088" width="11.2004" height="0.933368" rx="0.2" transform="rotate(128.756 15.7676 5.90088)" fill="#4EC8F0"/>
+                    </svg>
+                    
+             </div>
+
+            
+    </div>
+    </div>
+
+
+    <div class="btn-cont" (click)="add_procedure_field('evants')" *ngIf="procedure_field_first_for_events==false">
+           
+    <div class="action-btn">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d)">
+            <circle cx="18" cy="16" r="14.5" fill="white" stroke="#4EC8F0"/>
+            <rect x="17.2188" y="9.18164" width="2" height="13.4266" rx="0.2" fill="#646464"/>
+            <rect x="11.1797" y="16.5664" width="2" height="13.4266" rx="0.2" transform="rotate(-90 11.1797 16.5664)" fill="#646464"/>
+            </g>
+            <defs>
+            <filter id="filter0_d" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+            <feOffset dx="1" dy="3"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+            </filter>
+            </defs>
+        </svg>
+    </div>
+</div>
+
+ </div>
+
+</div>
+
+</perfect-scrollbar>
+	
+
+</div>

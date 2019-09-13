@@ -1,0 +1,8 @@
+.closeBtn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}

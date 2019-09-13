@@ -1,0 +1,575 @@
+<div fxLayout="column">
+	
+	<!-- <div class="title-bar">
+		<div class="patient-info">
+			<div class="patient-name">Estelle Goslin *Stella</div>
+			<div class="patient-status patient-info-block">Pending</div>
+			<div class="patient-age patient-info-block">8y 3m</div>
+			<div class="patient-appnt-time patient-info-block">Tues, June 3rd - Obs1</div>
+		</div>
+		
+		<div style="float: right; margin-right: 25px;">
+			<div class="search_panel">
+				<div fxLayout="row">
+					<div fxFlex="5" class="vh_center">
+						<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M7.67797 1.38641C6.00228 -0.290262 3.27496 -0.290262 1.59927 1.38641C-0.0760588 3.06345 -0.0760588 5.792 1.59927 7.46903C2.96239 8.83262 5.01963 9.08406 6.64188 8.22889C6.86227 8.11271 7.15966 8.23564 7.33578 8.41187L9.77613 10.8536C10.1318 11.2087 10.7064 11.2087 11.0602 10.8536C11.4155 10.4982 11.4155 9.92316 11.0602 9.56878L8.61989 7.12628C8.44377 6.95056 8.32098 6.65375 8.437 6.43367C9.29288 4.81008 9.04172 2.75129 7.67797 1.38641ZM6.90751 6.69812C5.65646 7.9499 3.62042 7.9499 2.36973 6.69812C1.11941 5.44634 1.11941 3.40947 2.36973 2.15769C3.62042 0.906271 5.65646 0.906271 6.90751 2.15769C8.15856 3.40947 8.15856 5.44634 6.90751 6.69812Z" fill="#6BD3F4"/>
+						</svg>
+					</div>
+					<div fxFlex="90">
+						<input class="search-input" placeholder="Find Patient..." [matAutocomplete]="auto">
+						
+						<mat-autocomplete #auto="matAutocomplete" class="search-auto-complete mat-elevation-z0">
+						  <mat-option *ngFor="let option of search_options" [value]="option" style="font-size: 12px; height: 30px;">
+							{{option}}
+						  </mat-option>
+						</mat-autocomplete>
+						
+					</div>
+					
+					<div fxFlex="5" class="vh_center" (click)="showLast()">
+						<svg width="13" height="6" viewBox="0 0 13 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.5 6L12.1292 0H0.870835L6.5 6Z" fill="#4EC8F0"/>
+						</svg>
+					</div>
+					
+					<div class="lastnames-list" *ngIf="showlastList">
+						<perfect-scrollbar>
+							<ul>
+								<li *ngFor="let lastitem of lastlistArr"><div class="lastitem-label">{{lastitem.name}}</div></li>
+							</ul>
+						</perfect-scrollbar>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			<div class="plus-btn-cont">
+				<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect y="3.8457" width="10" height="2.30769" fill="white"/>
+					<rect x="3.84583" width="2.30769" height="10" fill="white"/>
+				</svg>
+			</div>
+			
+			<div class="plus-btn-cont" style="width: 26px; height: 32px;">
+				<svg viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M4.09094 13.4434C4.4049 14.3417 5.28397 15.0005 6.28862 15.0005C7.29327 15.0005 8.23513 14.4016 8.61187 13.4434" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M8.60933 1.60016C9.13596 1.83247 9.62232 2.14784 10.042 2.54327C10.9977 3.44386 11.6282 4.77857 11.5866 6.55513L12.3364 6.57266C12.3827 4.59397 11.6744 3.051 10.5563 1.99742C9.95349 1.42939 9.23763 1.00918 8.46812 0.738281C8.55779 1.00792 8.60742 1.29796 8.60933 1.60016ZM3.83737 0.846661C3.24665 1.08715 2.68792 1.41992 2.18789 1.84751C0.980923 2.8796 0.137825 4.44566 0 6.53919L0.74838 6.58845C0.873903 4.6818 1.63284 3.30896 2.67531 2.41752C3.00078 2.13921 3.35601 1.90603 3.73138 1.71766C3.73024 1.68471 3.72966 1.65161 3.72966 1.61836C3.72966 1.34976 3.76735 1.09061 3.83737 0.846661Z" fill="white"/>
+					<path d="M11.7393 10.2696C11.4881 10.0899 11.1114 9.73056 10.7974 9.19153C10.609 8.83218 10.5462 8.59262 10.4207 8.17337C10.3579 7.63435 10.2323 6.91564 10.2323 6.07716C10.2323 5.7777 10.2323 4.81943 9.54159 3.86116C8.85089 2.90289 7.90903 2.60343 7.59508 2.48365C7.53228 1.82484 6.96717 1.3457 6.27647 1.3457C5.58577 1.3457 5.02066 1.88473 4.95787 2.48365C3.3881 3.02267 2.25787 4.40019 2.25787 6.07716C2.25787 6.91564 2.13228 7.57445 2.06949 8.05359C2.06949 8.47283 1.94391 8.89207 1.62996 9.37121C1.44159 9.67067 1.31601 9.91024 1.00205 10.2097C0.81368 10.4493 0.625308 10.569 0.499727 10.8086C0.374145 11.0482 0.374146 11.2877 0.374146 11.3476C0.374146 11.4075 0.374146 12.0064 0.81368 12.3658C1.25322 12.785 1.81833 12.7252 1.88112 12.7252C4.89508 12.7252 7.84624 12.7252 10.8602 12.7252C10.923 12.7252 11.7393 12.785 12.1788 12.1861C12.43 11.8268 12.3672 11.4674 12.3672 11.2877C12.2416 10.7487 11.8648 10.3894 11.7393 10.2696Z" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+				</svg>
+				
+				<div class="notifictn_available"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="zoom-cont">
+			<div class="zoom-btn plus-btn" (click)="zoomView('in')"><mat-icon class="zoom-icon">remove</mat-icon></div>
+			<div class="zoom-value">{{zoomviewport}}%</div>
+			<div class="zoom-btn minus-btn" (click)="zoomView('out')"><mat-icon class="zoom-icon" >add</mat-icon></div>
+		</div>
+	</div> -->
+	
+	<div [ngStyle]="{'height': windowContHt + 'px', 'width': '100%', 'overflow': 'hidden'}">
+	
+	<perfect-scrollbar #profilescroll>
+		<!-- <div style="width: 1759px; box-sizing: border-box;" [ngStyle]="{'height': windowHt + 'px'}"> -->
+		<div style="box-sizing: border-box; transform-origin: 0 0; position: relative;" [ngStyle]="{'transform': 'scale('+ (zoomviewport/100) +')', 'width': '100%'}">
+		
+
+			<div fxLayout="row">
+				<div fxFlex="100%" style="padding-top: 22px; padding-left: 88px;">
+					<div fxLayout="row" fxLayoutGap="10px" class="main-wrappr">
+						<!-- <div *ngIf="!elasticSection"> -->
+							<div fxFlex="13.5" class="alert-box" *ngIf="!elasticSection" style="padding-bottom:10px">
+								<div class="flip-container">
+									<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + rotateOnY + 'deg)'}">
+										<div class="card-elem card1 flipcard1" style="padding-left: 0; padding-right: 0;">
+										<div class="notification-cont">
+											<app-treatment-notification></app-treatment-notification>
+										</div>
+										
+											<div class="card-section-wrapper">
+												<!-- <div class="card-section-cont animatecard" [ngStyle]="{'margin-left': animateFirstCard + 'px'}"> -->
+													<div class="card-section-item">
+														
+														<!-- <perfect-scrollbar> -->
+															<div style="padding-left: 10px; padding-right: 10px;">
+																<div class="card-content-section" style="padding-top: 30px;">
+																	<div class="section-title" (click)="flipSlide('MedicalAlert')" >Medical Alert</div>
+																	<div class="section-content section-content-red" style="height: 55px;">
+																		<perfect-scrollbar [config]="config">
+																		{{medicalAlertdata}}
+																		</perfect-scrollbar>
+																	</div>
+																</div>
+																
+																<div class="card-content-section">
+																	<div class="section-title">Patient Referral</div>
+																	<div class="section-content">
+																		<ul>
+																			<li>John Smith</li>
+																			<li>Paula Jones</li>
+																			<li class="thanks">Jackie Mendoza - Thank you!</li>
+																		</ul>
+																	</div>
+																</div>
+																
+																<div class="card-content-section">
+																	<div class="section-title">Professional Referral</div>
+																	<div class="section-content">
+																		<ul>
+																			<li>Dr. Jim Holmes <span class="desg-italic">Oral Surgeon</span></li>
+																			<li>Dr. Jane Nolan <span class="desg-italic">Pediatric Dentist</span></li>
+																		</ul>
+																	</div>
+																</div>
+																
+																<div class="card-content-section">
+																	<div class="section-title" (click)="flipSlide('Relationships')">Relationships</div>
+																	<div class="section-content">
+																		<ul>
+																			<li>MO - Clarissa Marcum </li>
+																			<li>FA- Peter Goslin</li>
+																			<li>SF- Spencer Marcum</li>
+																		</ul>
+																	</div>
+																</div>
+																
+																<div class="card-content-section">
+																	<div class="section-title">Dentist</div>
+																	<div class="section-content">
+																		<ul>
+																			<li>Dr. Susan Smiley</li>
+																			<li>Dr. Sam Walters</li>
+																		</ul>
+																	</div>
+																</div>
+
+																<div class="card-content-section">
+																		<div class="section-title" (click)="flipSlide('patientPreferences')" >Patient Preferences</div>
+																		<div class="section-content">
+																			<ul>
+																				<li>{{location}}</li>
+																				<li>{{doctor}}</li>
+																			</ul>
+																		</div>
+																</div>
+																
+																<div class="card-content-section">
+																	<div class="section-title" (click)="flipSlide('Comment')"  >Comment</div>
+																	<div class="section-content" style="height: 70px;">
+																		<perfect-scrollbar [config]="config">
+																		{{commentAlertdata}}
+																		</perfect-scrollbar>
+																	</div>
+																</div>
+															
+															</div>
+														
+														<!-- </perfect-scrollbar> -->
+													</div>
+													
+													
+													
+													<!-- <div class="clear"></div> -->
+												<!-- </div> -->
+											</div>
+										</div>
+										<div class="card-elem card1 flipcard2" style="padding-left: 0; padding-right: 0;">
+											<div class="card-section-item">
+												
+												<app-relationshipcard *ngIf="this.showrotetedList && rotetedType=='Relationships'" (goback)="goback($event)"></app-relationshipcard>
+												<app-medical-alertcard *ngIf="this.showrotetedList && rotetedType=='MedicalAlert'" [medicalAlert]="medicalAlertdata" (passTextareadata)="passTextareaData($event)" (goback)="goback($event)"></app-medical-alertcard>
+												
+												<app-patient-preferencescard *ngIf="this.showrotetedList && rotetedType=='patientPreferences'" (locationback)="locationShow($event)" (doctorback)="doctorShow($event)" (goback)="goback($event)" [locationInput]="location" [doctorInput]="doctor"></app-patient-preferencescard>
+
+												<app-comment-card *ngIf="this.showrotetedList && rotetedType=='Comment'" [commentAlert]="commentAlertdata" (passTextareadata)="passTextareaCommentData($event)" (goback)="goback($event)"></app-comment-card>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						
+						
+							<div fxFlex="20.8" *ngIf="!elasticSection" style="padding-bottom:10px">
+								<div class="flip-container">
+									<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + diagnosticRotateY + 'deg)'}">
+										<div class="card-elem card2 flipcard1" style="padding-right: 8px;">
+											<!-- <div class="icon" (click)="diagnosticRot()" style="top: 0; right: 5px;">
+												<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M1.2459 7.23996L0.706284 9.19288L2.65798 8.65319L2.65939 8.6546L8.26595 3.04593L6.85338 1.63282L1.24713 7.24119L1.2459 7.23996Z" fill="#56CCF2"/>
+													<path d="M7.17944 1.30664L8.20188 0.283814C8.35806 0.127574 8.61128 0.127574 8.76746 0.283813L9.61445 1.13112C9.77063 1.28736 9.77063 1.54068 9.61445 1.69692L8.59201 2.71974L7.17944 1.30664Z" fill="#56CCF2"/>
+												</svg>
+											</div> -->
+											
+											<div style="width: 100%; height: 485px">
+												<perfect-scrollbar>
+													<app-multileveldrpdn [multidrpdndata] = "diagnosisArr"></app-multileveldrpdn>
+												</perfect-scrollbar>
+											</div>
+											
+											
+											
+											<div class="fixed-content">
+												
+												<div class="card-title">
+													<div class="card-title-label-flip">Edit Diagnosis</div>
+													<div class="done-btn" (click)="diagnosticRot()">DONE
+														<!-- <svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<circle cx="13" cy="13.1309" r="12.5" stroke="#4EC8F0"/>
+															<path fill-rule="evenodd" clip-rule="evenodd" d="M18.899 8.76434C18.6949 8.57837 18.3787 8.59309 18.1927 8.79722L11.2769 16.3883L8.02795 13.4284C7.82382 13.2424 7.50758 13.2571 7.32161 13.4613C7.13564 13.6654 7.15036 13.9816 7.35449 14.1676L10.817 17.3221C10.8442 17.3874 10.8859 17.4479 10.9416 17.4987C11.1458 17.6847 11.462 17.67 11.648 17.4658L18.9319 9.47068C19.1179 9.26655 19.1032 8.95031 18.899 8.76434Z" fill="#434343"/>
+														</svg> -->
+														
+														
+														
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="card-elem card2 flipcard2">
+											<div class="icon" (click)="diagnosticRot()" style="z-index: 1000">
+												<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<circle cx="6" cy="6" r="5.75" stroke="#4EC8F0" stroke-width="0.5"/>
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M9.37639 4.25772C9.26647 4.15758 9.09619 4.16551 8.99605 4.27542L5.27214 8.36294L3.52272 6.76914C3.41281 6.669 3.24252 6.67693 3.14238 6.78684C3.04225 6.89676 3.05017 7.06704 3.16009 7.16718L5.0245 8.86574C5.03918 8.90091 5.06159 8.9335 5.09162 8.96085C5.20154 9.06099 5.37182 9.05307 5.47196 8.94315L9.39409 4.63806C9.49423 4.52814 9.4863 4.35786 9.37639 4.25772Z" fill="#434343"/>
+												</svg>
+											</div>
+											
+											<div style="width: 100%; height: 486px">
+												<perfect-scrollbar>
+													<app-selected-ddoptions [drpdndata]="diagnosisArr"></app-selected-ddoptions>
+												</perfect-scrollbar>
+											</div>
+											
+											<div class="fixed-content">
+												<div class="notes">
+													<p style="color: #4EC8F0">Notes:</p>
+													<textarea class="notes-textarea" [(ngModel)]="diagnosisTxt"></textarea>
+												</div>
+												
+												<div class="card-title">
+													<div class="updatedon">updated: 10/18/18</div>
+													<div class="card-title-label">Diagnosis</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+					
+						
+							<div fxFlex="30.9" class="card-elem card3" *ngIf="!elasticSection" style="padding-bottom:10px">
+								<app-xray-scan [postTreatment]="postTreatment"></app-xray-scan>
+								
+								<div class="fixed-content">
+									
+									<div class="left-part" style="float: left;">
+										<div class="evt-btn" (click)="imageModal('galleryimage')">GALLERY</div>
+										<div class="evt-btn" (click)="imageModal('uploadimage')" ><span>+</span> UPLOAD</div>
+									</div>
+									
+									<div class="card-title" style="float: right;">
+										<div class="updatedon">updated: 10/18/18</div>
+										<div class="card-title-label">X-Ray / Scan</div>
+									</div>
+									
+									<div style="clear: both;"></div>
+								</div>
+							</div>
+					
+						<!-- </div> -->
+
+						<!-- <div *ngIf="elasticSection"> -->
+							
+							<div fxFlex="66.5" class="card-elem card3" *ngIf="elasticSection" style="padding-bottom:10px">
+								<div class="elastic-section">
+									<div class="action-container">
+										
+										<div class="elastic-section-action-btn">
+											<svg width="6" height="9" viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M1.94547 0C1.89024 0 1.84547 0.0447716 1.84547 0.1V0.47373H0.5C0.223858 0.47373 0 0.697588 0 0.97373V1.86847C0 2.14461 0.223858 2.36847 0.5 2.36847H5.5C5.77614 2.36847 6 2.14461 6 1.86847V0.97373C6 0.697587 5.77614 0.47373 5.5 0.47373H4.15316V0.1C4.15316 0.0447715 4.10839 0 4.05316 0H1.94547Z" fill="#A5A5A5"/>
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M0.1 2.8418C0.0447715 2.8418 0 2.88657 0 2.9418V8.89971C0 8.95494 0.0447714 8.99971 0.0999999 8.99971H5.9C5.95523 8.99971 6 8.95494 6 8.89971V2.9418C6 2.88657 5.95523 2.8418 5.9 2.8418H0.1ZM4.846 3.78896C4.71855 3.78896 4.61523 3.89228 4.61523 4.01973V7.82136C4.61523 7.94881 4.71855 8.05213 4.846 8.05213C4.97345 8.05213 5.07677 7.94881 5.07677 7.82136V4.01973C5.07677 3.89228 4.97345 3.78896 4.846 3.78896ZM0.922852 4.01973C0.922852 3.89228 1.02617 3.78896 1.15362 3.78896C1.28107 3.78896 1.38439 3.89228 1.38439 4.01973V7.82136C1.38439 7.94881 1.28107 8.05213 1.15362 8.05213C1.02617 8.05213 0.922852 7.94881 0.922852 7.82136V4.01973ZM3.0003 3.78896C2.87285 3.78896 2.76953 3.89228 2.76953 4.01973V7.82136C2.76953 7.94881 2.87285 8.05213 3.0003 8.05213C3.12775 8.05213 3.23107 7.94881 3.23107 7.82136V4.01973C3.23107 3.89228 3.12775 3.78896 3.0003 3.78896Z" fill="#A5A5A5"/>
+											</svg>
+										</div>
+										
+										<div class="elastic-section-action-btn">
+											<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M2.55556 3H1.5C1.22386 3 1 3.22386 1 3.5V8.5C1 8.77614 1.22386 9 1.5 9H7.5C7.77614 9 8 8.77614 8 8.5V3.5C8 3.22386 7.77614 3 7.5 3H6.44444" stroke="#A5A5A5" stroke-width="0.5"/>
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M4.65 0C4.51193 0 4.4 0.111929 4.4 0.25V6.34069L3.03127 4.80087C2.93364 4.69104 2.77535 4.69104 2.67772 4.80087C2.58008 4.91071 2.58008 5.08878 2.67772 5.19862L4.43623 7.17695C4.43907 7.18048 4.442 7.18395 4.44503 7.18736C4.49388 7.24231 4.55791 7.26977 4.62194 7.26973C4.68603 7.26982 4.75014 7.24237 4.79904 7.18736C4.80206 7.18395 4.805 7.18048 4.80784 7.17694L6.56635 5.19862C6.66398 5.08878 6.66398 4.91071 6.56635 4.80087C6.46872 4.69104 6.31043 4.69104 6.2128 4.80087L4.9 6.27777V0.25C4.9 0.111929 4.78807 0 4.65 0Z" fill="#A5A5A5"/>
+											</svg>
+										</div>
+										
+										<div class="elastic-section-action-btn" (click)="closeElasticSection()">
+											<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<rect width="0.605633" height="10.6041" rx="0.302817" transform="matrix(0.71359 0.700563 -0.71359 0.700563 7.56689 0)" fill="#A5A5A5"/>
+											<rect width="0.605633" height="10.6041" rx="0.302817" transform="matrix(0.71359 -0.700563 0.71359 0.700563 0.000488281 0.571289)" fill="#A5A5A5"/>
+											</svg>
+										</div>
+									</div>
+									<div class="clear"></div>
+									<div class="elastic-main">
+										<app-elastic-treatment></app-elastic-treatment>
+									</div>
+									
+									<div class="communication-cont">
+										<div class="elastic-section-action-btn">
+											<svg width="23" height="15" viewBox="0 0 23 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M7.63961 3.66406C3.54235 3.66406 0.264539 6.22168 0.264539 9.33229C0.264539 10.5765 0.742553 11.6825 1.63029 12.5811C1.28885 13.1341 0.674265 13.9636 0.127964 13.8945C-0.6232 13.8254 2.10831 15.1388 3.74721 14.1019C4.9081 14.6549 6.27385 15.0005 7.7079 15.0005C11.8052 15.0005 15.083 12.4429 15.083 9.33229C15.0147 6.22168 11.7369 3.66406 7.63961 3.66406Z" fill="#4EC8F0"/>
+												<path d="M21.9793 10.2304C21.5013 10.2996 20.955 9.5392 20.6135 9.05533C21.5013 8.08758 22.0476 6.91247 22.0476 5.66822C22.0476 2.55761 18.7698 0 14.6725 0C10.5752 0 7.36572 2.48849 7.36572 5.5991C7.36572 8.70971 10.6435 11.2673 14.7408 11.2673C16.1748 11.2673 17.5406 10.9217 18.7015 10.3687C20.1355 11.4747 22.6622 10.1613 21.9793 10.2304Z" fill="#4EC8F0"/>
+												<path d="M14.6746 11.267C14.8795 10.9214 15.2892 10.161 15.2209 9.19326C15.2209 7.87989 14.6063 6.98127 14.1966 6.4974C12.9674 4.76928 11.192 4.21628 10.5091 4.00891C9.41647 3.66329 8.52873 3.66328 7.91414 3.73241C7.70928 4.42366 7.36784 5.87527 7.91414 7.32689C8.87017 9.67713 11.5334 11.267 14.6746 11.267ZM14.6746 11.267C14.9478 10.7831 15.2892 10.0228 15.2209 9.19326" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+										
+										<div class="elastic-section-action-btn">
+											<svg width="23" height="17" viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M17.9818 14.8342H2.80986C2.24495 14.8342 1.76074 14.382 1.76074 13.8545V3.68086C1.76074 3.15333 2.24495 2.70117 2.80986 2.70117H17.9818C18.5467 2.70117 19.0309 3.15333 19.0309 3.68086V13.8545C19.0309 14.382 18.5467 14.8342 17.9818 14.8342Z" stroke="#4EC8F0" stroke-width="0.7" stroke-miterlimit="10"/>
+												<path d="M1.92236 3.30469L10.2346 9.40888L18.5469 3.30469" stroke="#4EC8F0" stroke-width="0.7" stroke-miterlimit="10"/>
+												<path d="M1.68066 12.9504L7.08768 7.07227" stroke="#4EC8F0" stroke-width="0.7" stroke-miterlimit="10"/>
+												<path d="M19.0309 12.9504L13.7046 7.07227" stroke="#4EC8F0" stroke-width="0.7" stroke-miterlimit="10"/>
+											</svg>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						<!-- </div> -->
+						
+						<div fxFlex="17.14" class="card4" style="padding-bottom:10px">
+							<app-cardaccordion [postTreatment]="postTreatment"></app-cardaccordion>			
+						</div>
+						
+						<div fxFlex="167px" *ngIf="postTreatment">
+							<app-treatmentmeter></app-treatmentmeter>
+						</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="12px" style="margin-top: 30px; margin-bottom: 30px; padding-right: 20px" *ngIf="postTreatment">
+					
+                    <div class="main-table-wrap">	
+                       <div class="treatment-table-wrap">  
+                       
+                       <div class="treatment-table">
+								
+								<div class="treatment-table-header">
+									<div class="treatment-header-cell" style="width: 7.4%;">Date / Time</div>
+									<div class="treatment-header-cell" style="width: 7%;">UW</div>
+									<div class="treatment-header-cell" style="width: 7%;">LW</div>
+									<div class="treatment-header-cell" style="width: 4%;">Hyg</div>
+									<div class="treatment-header-cell" style="width: 7%;">Appl</div>
+									<div class="treatment-header-cell" style="width: 2.5%;">Elas</div>
+									<div class="treatment-header-cell" style="width: 2.5%;">St</div>
+									<div class="treatment-header-cell" style="width: 7%;">Dr</div>
+									<div class="treatment-header-cell left-align" style="width: 29%;">Notes</div>
+									<div class="treatment-header-cell left-align" style="width: 17%;">Next Notes</div>
+									<div class="treatment-header-cell" style="width: 3%;">Proc</div>
+									<div class="treatment-header-cell" style="width: 3%;">U</div>
+									<div class="treatment-header-cell" style="width: 2.8%;">Wks</div>
+								</div>
+							</div>
+                       <perfect-scrollbar>
+                         <div class="treatment-table-holder">  
+                        
+                          <div class="card-elem" [ngStyle]="{'width': '100%', 'min-width': '1392px', 'height': tableHt +'px', 'padding': '0px', 'min-height': '120px', 'position': 'relative'}">
+							
+							
+							
+							<div class="treatment-table">
+								<div [ngStyle]="{'width': '100%', 'min-width': '1392px', 'min-height': '90px', 'height': (tableHt-30) + 'px'}">
+								
+								<perfect-scrollbar>	
+									
+										<div class="treatment-table-body" *ngIf="addBtnClicked">
+											<div class="treatment-body-cell" style="width: 7.4%;">{{newTxCard_Row.date | date: 'short'}}</div>
+											
+											<div class="treatment-body-cell" style="width: 7%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="txCardUW_option"
+													[height]="200"
+													(selectedOptn)="getValue($event, 'UW')"
+												></app-tx-card-ddrpdn>
+											</div>
+											
+											<div class="treatment-body-cell" style="width: 7%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="txCardLW_option"
+													[height]="200"
+													(selectedOptn)="getValue($event, 'LW')"
+												></app-tx-card-ddrpdn>
+											</div>
+											
+											<div class="treatment-body-cell" style="width: 4%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="txCardHg_option"
+													[ratingIcon]="true"
+													(selectedOptn)="getValue($event, 'Hyg')"
+												></app-tx-card-ddrpdn>
+											</div>
+											
+											<div class="treatment-body-cell" style="width: 7%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="txCardAppl_option"
+													[height]="200"
+													(selectedOptn)="getValue($event, 'Appl')"
+												></app-tx-card-ddrpdn>
+											</div>
+											
+											<div class="treatment-body-cell" style="width: 2.5%;">
+												<div class="elastic-col" *ngIf="newTxCard_Row.elastic">
+													<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.36364 7.50018V10.182C8.36364 10.7343 7.91592 11.182 7.36364 11.182H2C1.44772 11.182 1 10.7343 1 10.182V4.81836C1 4.26608 1.44772 3.81836 2 3.81836H4.68182" stroke="#4EC8F0" stroke-width="0.5"/>
+														<path d="M10.3741 3.02885C10.39 2.82235 10.2355 2.64208 10.029 2.62619L6.66392 2.36734C6.45743 2.35146 6.27715 2.50598 6.26127 2.71248C6.24538 2.91897 6.3999 3.09925 6.6064 3.11513L9.59757 3.34522L9.36748 6.33639C9.35159 6.54288 9.50611 6.72316 9.71261 6.73904C9.91911 6.75493 10.0994 6.60041 10.1153 6.39391L10.3741 3.02885ZM4.517 8.1939L10.2443 3.28481L9.75618 2.71537L4.0289 7.62446L4.517 8.1939Z" fill="#4EC8F0"/>
+													</svg>
+												</div>
+												&nbsp;
+											</div>
+											
+											<div class="treatment-body-cell" style="width: 2.5%;">
+												<input type="text" class="treatment-body-cell-input" [(ngModel)]="newTxCard_Row.St"/>
+											</div>
+											
+											<div class="treatment-body-cell" style="width: 7%;">
+												<app-tx-card-ddrpdn 
+													[drpdnData]="txCardDr_option"
+													(selectedOptn)="getValue($event, 'dr')"
+												></app-tx-card-ddrpdn>
+											</div>
+											
+											<div class="treatment-body-cell left-align wrap-text italic-style" style="width: 29%;">
+												<input type="text" class="treatment-body-cell-input left-align" [(ngModel)]="newTxCard_Row.notes"/>
+											</div>
+											<div class="treatment-body-cell left-align wrap-text italic-style" style="width: 17%;" >
+												<input type="text" class="treatment-body-cell-input left-align" [(ngModel)]="newTxCard_Row.next_notes"/>
+											</div>
+										</div>
+										
+										<div [ngClass]="{'treatment-table-body': true, 'fistrow-shadow': indx==0}" *ngFor="let tretmentItem of treatmentArr; let indx=index">
+											<div class="treatment-body-cell" style="width: 7.4%;">{{tretmentItem.date | date: 'short'}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 7%;">{{tretmentItem.UW}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 7%;">{{tretmentItem.LW}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 4%;">
+												
+												<div *ngIf="tretmentItem.Hyg==1">
+													<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 16.489C12.8731 16.489 16.2976 13.0645 16.2976 8.84021C16.2976 4.61589 12.8731 1.19141 8.64881 1.19141C4.42449 1.19141 1 4.61589 1 8.84021C1 13.0645 4.42449 16.489 8.64881 16.489Z" fill="#FFB5B5" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path d="M6.20123 12.7701C7.33325 11.1179 9.68144 11.0185 10.7599 12.7701C11.0659 13.2749 11.8613 12.8083 11.5554 12.3035C10.0945 9.9247 6.92787 10.0853 5.40576 12.3035C5.07686 12.793 5.87233 13.2519 6.20123 12.7701Z" fill="#A5A5A5"/>
+														<path d="M6.98903 7.03539C6.34653 6.75239 5.71168 6.47703 5.06918 6.19403C4.53376 5.95691 4.06718 6.75239 4.6026 6.9895C5.2451 7.27251 5.87995 7.54786 6.52245 7.83087C7.06552 8.06033 7.53209 7.27251 6.98903 7.03539Z" fill="#A5A5A5"/>
+														<path d="M12.0291 6.15385C11.3713 6.38332 10.7136 6.62043 10.0558 6.84989C9.50504 7.04111 9.74215 7.92837 10.3005 7.73715C10.9583 7.50769 11.6161 7.27058 12.2739 7.04111C12.8246 6.84224 12.5875 5.95498 12.0291 6.15385Z" fill="#A5A5A5"/>
+														<path d="M4.78621 9.23729C5.1304 10.5223 6.84374 10.4917 7.20323 9.23729C7.36386 8.67127 6.48424 8.42651 6.31597 8.99252C6.20124 9.38261 5.78055 9.39026 5.67347 8.99252C5.52049 8.42651 4.63323 8.66363 4.78621 9.23729Z" fill="#A5A5A5"/>
+														<path d="M9.88045 9.23729C10.2246 10.5223 11.938 10.4917 12.2975 9.23729C12.4581 8.67127 11.5785 8.42651 11.4102 8.99252C11.2955 9.38261 10.8748 9.39026 10.7677 8.99252C10.6147 8.42651 9.72747 8.66363 9.88045 9.23729Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+												<div *ngIf="tretmentItem.Hyg==2">
+													<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 16.1912C12.8731 16.1912 16.2976 12.7667 16.2976 8.54236C16.2976 4.31804 12.8731 0.893555 8.64881 0.893555C4.42449 0.893555 1 4.31804 1 8.54236C1 12.7667 4.42449 16.1912 8.64881 16.1912Z" fill="#FFE0E0" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path d="M4.64119 6.9978C4.98539 8.2828 6.69872 8.2522 7.05821 6.9978C7.21884 6.43179 6.33922 6.18702 6.17095 6.75304C6.05622 7.14312 5.63553 7.15077 5.52845 6.75304C5.37547 6.18702 4.48821 6.43179 4.64119 6.9978Z" fill="#A5A5A5"/>
+														<path d="M9.74275 6.9978C10.0869 8.2828 11.8003 8.2522 12.1598 6.9978C12.3204 6.43179 11.4408 6.18702 11.2725 6.75304C11.1578 7.14312 10.7371 7.15077 10.63 6.75304C10.477 6.18702 9.58978 6.43179 9.74275 6.9978Z" fill="#A5A5A5"/>
+														<path d="M7.15739 10.1322C7.80754 9.37493 8.91662 9.36728 9.56677 10.1322C9.94921 10.5834 10.5994 9.9333 10.2169 9.48202C9.26081 8.35764 7.47099 8.36529 6.51489 9.48202C6.1248 9.9333 6.77495 10.5834 7.15739 10.1322Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+												<div *ngIf="tretmentItem.Hyg==3">
+													<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 15.8933C12.8731 15.8933 16.2976 12.4688 16.2976 8.24451C16.2976 4.02019 12.8731 0.595703 8.64881 0.595703C4.42449 0.595703 1 4.02019 1 8.24451C1 12.4688 4.42449 15.8933 8.64881 15.8933Z" fill="#F0F0F0" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path d="M5.95647 8.88754C6.31131 8.88754 6.59896 8.59988 6.59896 8.24504C6.59896 7.8902 6.31131 7.60254 5.95647 7.60254C5.60162 7.60254 5.31396 7.8902 5.31396 8.24504C5.31396 8.59988 5.60162 8.88754 5.95647 8.88754Z" fill="#A5A5A5"/>
+														<path d="M11.3412 8.97055C11.6961 8.97055 11.9837 8.68289 11.9837 8.32805C11.9837 7.9732 11.6961 7.68555 11.3412 7.68555C10.9864 7.68555 10.6987 7.9732 10.6987 8.32805C10.6987 8.68289 10.9864 8.97055 11.3412 8.97055Z" fill="#A5A5A5"/>
+														<path d="M6.20148 11.3485C7.82303 11.3485 9.44458 11.3485 11.0661 11.3485C11.6551 11.3485 11.6551 10.4307 11.0661 10.4307C9.44458 10.4307 7.82303 10.4307 6.20148 10.4307C5.61253 10.4307 5.61253 11.3485 6.20148 11.3485Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+												<div *ngIf="tretmentItem.Hyg==4">
+													<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 15.5955C12.8731 15.5955 16.2976 12.171 16.2976 7.94666C16.2976 3.72234 12.8731 0.297852 8.64881 0.297852C4.42449 0.297852 1 3.72234 1 7.94666C1 12.171 4.42449 15.5955 8.64881 15.5955Z" fill="#F0F0F0" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path d="M6.22355 9.24548C6.89664 11.8996 10.5604 11.892 11.2335 9.24548C11.3788 8.67182 10.4916 8.42706 10.3462 9.00072C9.89497 10.7676 7.55444 10.7676 7.10316 9.00072C6.96548 8.42706 6.07822 8.67182 6.22355 9.24548Z" fill="#A5A5A5"/>
+														<path d="M4.99261 7.32598C5.32916 6.90529 5.89517 6.90529 6.23171 7.32598C6.59886 7.79256 7.24136 7.13476 6.88187 6.67583C6.25467 5.888 4.96967 5.888 4.34246 6.67583C3.97532 7.13476 4.61782 7.78491 4.99261 7.32598Z" fill="#A5A5A5"/>
+														<path d="M11.1193 7.32598C11.4558 6.90529 12.0218 6.90529 12.3584 7.32598C12.7255 7.79256 13.368 7.13476 13.0085 6.67583C12.3813 5.888 11.0963 5.888 10.4691 6.67583C10.102 7.13476 10.7521 7.78491 11.1193 7.32598Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+												<div *ngIf="tretmentItem.Hyg==5">
+													<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.64881 16.2976C12.8731 16.2976 16.2976 12.8731 16.2976 8.64881C16.2976 4.42449 12.8731 1 8.64881 1C4.42449 1 1 4.42449 1 8.64881C1 12.8731 4.42449 16.2976 8.64881 16.2976Z" fill="#F0F0F0" stroke="#C4C4C4" stroke-width="0.5" stroke-miterlimit="10"/>
+														<path opacity="0.89" d="M5.35953 8.64746C5.26009 8.64746 5.17596 8.73925 5.19126 8.83868C5.40543 10.7738 6.76691 12.2653 8.42671 12.2653C10.0941 12.2653 11.448 10.7738 11.6621 8.83868C11.6698 8.73925 11.5933 8.64746 11.4939 8.64746H5.35953Z" fill="#A5A5A5"/>
+														<path d="M4.85513 7.37082C4.83984 7.1643 4.92397 6.8354 5.19933 6.85835C5.45174 6.88129 5.50528 7.17195 5.49763 7.37082C5.45939 7.95977 6.37725 7.95977 6.41549 7.37082C6.46138 6.67478 5.94891 5.94814 5.19933 5.94049C4.43445 5.93284 3.89138 6.64418 3.93727 7.37082C3.96787 7.95977 4.89338 7.95977 4.85513 7.37082Z" fill="#A5A5A5"/>
+														<path d="M11.341 7.37082C11.3257 7.1643 11.4098 6.8354 11.6852 6.85835C11.9376 6.88129 11.9911 7.17195 11.9835 7.37082C11.9452 7.95977 12.8631 7.95977 12.9013 7.37082C12.9472 6.67478 12.4347 5.94814 11.6852 5.94049C10.9203 5.93284 10.3772 6.64418 10.4231 7.37082C10.4614 7.95977 11.3792 7.95977 11.341 7.37082Z" fill="#A5A5A5"/>
+													</svg>
+												</div>
+												
+											</div>
+											<div class="treatment-body-cell" style="width: 7%;">{{tretmentItem.Appl}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 2.5%;">
+												<div class="elastic-col" *ngIf="tretmentItem.elastic" (click)="showElasticSection()">
+													<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8.36364 7.50018V10.182C8.36364 10.7343 7.91592 11.182 7.36364 11.182H2C1.44772 11.182 1 10.7343 1 10.182V4.81836C1 4.26608 1.44772 3.81836 2 3.81836H4.68182" stroke="#4EC8F0" stroke-width="0.5"/>
+														<path d="M10.3741 3.02885C10.39 2.82235 10.2355 2.64208 10.029 2.62619L6.66392 2.36734C6.45743 2.35146 6.27715 2.50598 6.26127 2.71248C6.24538 2.91897 6.3999 3.09925 6.6064 3.11513L9.59757 3.34522L9.36748 6.33639C9.35159 6.54288 9.50611 6.72316 9.71261 6.73904C9.91911 6.75493 10.0994 6.60041 10.1153 6.39391L10.3741 3.02885ZM4.517 8.1939L10.2443 3.28481L9.75618 2.71537L4.0289 7.62446L4.517 8.1939Z" fill="#4EC8F0"/>
+													</svg>
+												</div>
+												&nbsp;
+											</div>
+											<div class="treatment-body-cell" style="width: 2.5%;">{{tretmentItem.St}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 7%;">{{tretmentItem.dr}} &nbsp;</div>
+											<div class="treatment-body-cell left-align wrap-text italic-style" style="width: 29%;">{{tretmentItem.notes}} &nbsp;</div>
+											<div class="treatment-body-cell left-align wrap-text italic-style" style="width: 17%;">{{tretmentItem.next_notes}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 3%;">{{tretmentItem.Proc}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 3%;">{{tretmentItem.U}} &nbsp;</div>
+											<div class="treatment-body-cell" style="width: 2.8%;">{{tretmentItem.Wks}} &nbsp;</div>
+										</div>
+                                        
+                                 </perfect-scrollbar>
+								</div>
+							</div>
+							
+							
+						</div>
+                       
+					  </div>	
+                       </perfect-scrollbar>
+                     </div>
+                     <div class="add-row-btn" (click)="addRow()" *ngIf="!addBtnClicked">
+								<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect x="5.0835" width="2.03333" height="12.2" rx="0.5" fill="#4EC8F0"/>
+									<rect y="7.11621" width="2.03332" height="12.2" rx="0.5" transform="rotate(-90 0 7.11621)" fill="#4EC8F0"/>
+								</svg>
+							</div>
+							
+							<div class="add-row-btn" (click)="saveRow()" *ngIf="addBtnClicked">
+								<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 11H11V2.75L8.25 0H0V11Z" fill="#F6CC61"/>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 10.5H10.5V2.95711L8.04289 0.5H0.5V10.5ZM8.25 0L11 2.75V11H0V0H8.25Z" fill="#646464"/>
+								</svg>
+							</div>
+                    </div>
+						
+					</div>
+					
+					<div class="tab-cont" [ngStyle]="{'margin-top': (postTreatment == false ? (tableHt+60) : 0) + 'px'}">
+						<div class="tab-btn">Treatment</div>
+					</div>
+					
+					
+				</div>
+				
+				
+				<!-- <div fxFlex="330px" class="right-panel" >
+					<app-chair [chairDetails]="patientInChair" [activepatient]="true"></app-chair>
+					
+					<div class="other-patient-panel">
+						<app-chair *ngFor="let chair of chair_labelArr" [chairDetails]="chair" [activepatient]="false"></app-chair>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		
+		
+		
+		</perfect-scrollbar>
+		</div>
+		
+	<!-- <div class="profile-cont">
+		<img src="assets/492730210_1.png" width="100%" />
+	</div> -->
+	
+</div>

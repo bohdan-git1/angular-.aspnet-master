@@ -1,0 +1,92 @@
+<div class="patientdialog">
+	
+	
+	
+	<div fxLayout="row" fxLayoutGap="0">
+		<div fxFlex="35" style="position: relative;">
+			<div class="profile-img" [style.borderColor]="appntType">
+				<img src={{patientdata.profileimg}} width=100%/>
+			</div>
+			
+			<div class="checkin" (click)="changeCheckin()">
+				<span *ngIf="checkin == true">
+					<svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="0.5" y="2.5" width="14" height="14" rx="1.5" fill="white" stroke="#56CCF2"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M19.6895 1.17611L18.5754 0L7.46797 10.9286L8.58204 12.1047L19.6895 1.17611ZM8.57849 12.1012L4.154 7.43035L3 8.56576L7.4245 13.2366L8.57849 12.1012Z" fill="#A5A5A5"/>
+					</svg>
+				</span>
+				
+				<span *ngIf="checkin == false">
+					<svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="2.5" width="14" height="14" rx="1.5" fill="white" stroke="#56CCF2"/>
+</svg>
+
+				</span>
+				
+				<span>Check-In</span>
+			</div>
+		</div>
+		<div fxFlex="65">
+			<div class="patient-name">{{patientdata.firstname}} {{patientdata.lastname}}<span class="gender">(female)</span></div>
+			<div class="next-appnt">Next appt: October 1, 2018 08:30am - 10:00am</div>
+			<div class="appnt-code">AAA302 - Arch Wire Change</div>
+			<div class="appnt-comment">
+				<textarea placeholder="Add appointment comment..."></textarea>
+				
+				<div class="char-count">120</div>
+			</div>
+		</div>
+	</div>
+	
+	<div fxLayout="row" class="patient-info-block">
+		<div fxFlex="35" class="info-label">Mobile Number</div>
+		<div fxFlex="65" class="info-details">(801) 369 - 6492</div>
+	</div>
+	
+	<div fxLayout="row" class="patient-info-block">
+		<div fxFlex="35" class="info-label">Email Address</div>
+		<div fxFlex="65" class="info-details">jarjarbinks84@gmail.com</div>
+	</div>
+	
+	<div fxLayout="row" class="patient-info-block">
+		<div fxFlex="35" class="info-label">Birthday</div>
+		<div fxFlex="65" class="info-details">October 23, 1984 (age 33)</div>
+	</div>
+	
+	<div fxLayout="row" class="patient-info-block">
+		<div fxFlex="35" class="info-label">Medical Conditions</div>
+		<div fxFlex="65" class="info-details"><span style="color: #FE0000; margin-right: 4px; font-size: 16px; font-weight: bold;">+</span> Allergic to Penicillin, Hypertension</div>
+	</div>
+	
+	<div fxLayout="row" class="patient-info-block">
+		<div fxFlex="35" class="info-label">Attention Notes</div>
+		<div fxFlex="65" class="info-details"><span style="color: #FE0000; margin-right: 4px; font-weight: bold;">$$</span> Payment from 6/18 not recieved</div>
+	</div>
+	
+	<div fxLayout="row" fxLayoutGap="10px">
+		<div fxFlex="33" class="contol-btn">
+			<div class="icon-cont"></div>
+			<div>Make an appointment</div>
+		</div>
+		<div fxFlex="33" class="contol-btn">
+			<div class="icon-cont"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.27407 5.92223C1.93709 4.40727 1.60832 2.9005 1.27133 1.38554C1.2138 1.13168 0.819274 1.23814 0.876808 1.492C1.2138 3.00696 1.54256 4.51373 1.87955 6.02869C1.93709 6.28255 2.33161 6.17609 2.27407 5.92223Z" fill="white"/>
+<path d="M9.58286 1.38713C9.30341 2.80382 9.02395 4.22052 8.75272 5.63721C8.61299 6.34965 8.47327 7.0539 8.33354 7.76634C8.26779 8.11028 8.20203 8.44603 8.13628 8.78996C8.05409 9.21579 7.9719 9.39595 7.51162 9.46146C6.2212 9.63343 4.90613 9.63343 3.61571 9.46146C3.34448 9.4287 3.15544 9.36319 3.04859 9.07658C2.99105 8.92099 2.95818 8.74083 2.9253 8.57705C2.78557 7.97926 2.66228 7.38146 2.54722 6.78366C2.4979 6.52162 2.10338 6.63626 2.15269 6.89012C2.2842 7.54524 2.40749 8.20855 2.57187 8.86366C2.6705 9.25674 2.76913 9.66618 3.21297 9.8054C3.81297 9.99374 4.5527 9.97737 5.17736 9.99374C5.94175 10.0183 6.69792 9.97737 7.45408 9.8791C8.02943 9.8054 8.39108 9.658 8.51436 9.05201C8.68697 8.21674 8.84313 7.37327 9.00752 6.52981C9.33628 4.85107 9.66505 3.17233 9.99382 1.49359C10.0267 1.23973 9.63218 1.12508 9.58286 1.38713Z" fill="white"/>
+<path d="M0.879386 1.44355C0.904044 1.87756 1.30679 2.12323 1.66843 2.28701C2.34241 2.59 3.09035 2.71284 3.81365 2.79473C5.49036 2.98307 7.44654 2.99126 9.04106 2.36071C9.40271 2.2215 9.89586 1.99221 9.98627 1.56638C10.0685 1.16512 9.71504 0.870317 9.40271 0.698349C8.79449 0.37079 8.0712 0.239766 7.39722 0.141498C6.43557 0.00228577 5.47393 -0.0304701 4.5205 0.0268527C3.61638 0.0841755 2.67939 0.198821 1.83281 0.52638C1.42185 0.69016 0.904044 0.944018 0.879386 1.44355C0.862948 1.70559 1.27391 1.70559 1.29035 1.44355C1.30679 1.11599 1.92323 0.92764 2.1698 0.84575C2.78624 0.641026 3.44378 0.534569 4.0931 0.477246C5.5479 0.346223 7.10133 0.37079 8.51503 0.788428C8.78627 0.870317 9.4849 1.04229 9.57531 1.37803C9.66572 1.68921 9.10682 1.90213 8.89312 1.98402C7.61092 2.48355 6.1068 2.52449 4.75064 2.45898C3.96981 2.42622 3.17255 2.33614 2.41638 2.12323C2.12871 2.04134 1.315 1.84481 1.29035 1.45173C1.27391 1.1815 0.862948 1.17331 0.879386 1.44355Z" fill="white"/>
+<path d="M1.17454 2.49964C0.533437 3.32672 -0.95424 5.81617 0.895082 6.29113C1.56906 6.4631 2.30879 6.19287 2.90879 5.90625C3.854 5.44767 4.69236 4.75161 5.39921 3.96546C5.57181 3.76893 5.28414 3.48231 5.11154 3.67885C4.55263 4.30121 3.91975 4.84987 3.19646 5.28389C2.64577 5.61145 1.99646 5.93082 1.33892 5.93082C0.788233 5.93901 0.410149 5.62783 0.418368 5.0546C0.426587 4.22751 0.977274 3.4168 1.46221 2.78625C1.62659 2.58153 1.33892 2.28672 1.17454 2.49964Z" fill="white"/>
+</svg>
+</div>
+			<div>Add to holding bucket</div>
+		</div>
+		<div fxFlex="33" class="contol-btn">
+			<div class="icon-cont"></div>
+			<div>See full treatment card</div>
+	</div>
+	
+	<div class="closeBtn">
+		<button mat-icon-button (click)="cancel()">
+			<mat-icon aria-label="Close">close</mat-icon>
+		</button>
+	</div>
+	
+</div>

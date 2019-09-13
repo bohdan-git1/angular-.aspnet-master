@@ -1,0 +1,101 @@
+<div class="card-content-section">
+  <!-- <div class="section-display-wrapper animatecard" [ngStyle]="{'margin-left': posLeft + 'px'}"> -->
+    <div class="section-display-cont">
+      <!-- <perfect-scrollbar> -->
+        <div class="section-title" (click)="backtoMain()">Patient Referral</div>
+        <div class="section-content">
+            <div class="section-ref-in">
+                <div class="ref-in-head-section">
+                    <div class="ref-in-title">Referred by</div>
+                    <div class="ref-in-plus" (click)="showRefinBox()">
+                      <svg width="8" height="8" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+                      </svg>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="ref-in-search-bar" *ngIf="refInsearchBox">
+                  <div class="ref-search-icon" (click)="showInPrasent()">
+                      <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.07943 1.10528C3.16446 0.186262 1.67527 0.186262 0.7603 1.10528C-0.154475 2.02449 -0.154475 3.52005 0.7603 4.43927C1.50447 5.18654 2.62751 5.32444 3.51322 4.85601C3.63368 4.7923 3.79645 4.85948 3.89259 4.95605L5.22508 6.29443C5.41926 6.48907 5.73305 6.48907 5.92624 6.29443C6.12022 6.09959 6.12022 5.78442 5.92624 5.59017L4.59375 4.2514C4.49756 4.15506 4.43031 3.99276 4.49363 3.87224C4.96127 2.98225 4.82421 1.85352 4.07943 1.10528ZM3.65874 4.01671C2.97563 4.70284 1.8639 4.70284 1.18099 4.01671C0.498284 3.33059 0.498284 2.21415 1.18099 1.52803C1.8639 0.842103 2.97563 0.842103 3.65874 1.52803C4.34185 2.21415 4.34185 3.33059 3.65874 4.01671Z" fill="#6BD3F4"/>
+                      </svg>
+                  </div>
+                  <input (keyup)="searchInPatient($event.target.value)" type="text" placeholder="Find patient" class="ref-in-input" [(ngModel)]="selectedInPatient" />
+                  
+                  <div class="patient-optn-cont" *ngIf="refInsearch" [ngStyle]="{'height': (40*filterInPatient.length) + 'px'}">
+                      <perfect-scrollbar>
+                        <div class="patient-item" *ngFor="let patientitem of filterInPatient; let indx=index" (click)="selectInPatient(patientitem.patientname)">{{patientitem.patientname}}
+                        </div>
+                      </perfect-scrollbar>
+                  </div>
+                </div>
+                <div class="ref-in-list">
+                    <ul>
+                      <li *ngFor="let refname of refInArray; let indx=index" >{{refname.patientname}}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-ref-out">
+                <div class="section-ref-in">
+                    <div class="ref-in-head-section">
+                        <div class="ref-in-title">Referred to practice</div>
+                        <div class="ref-in-plus" (click)="showRefoutBox()">
+                          <svg width="8" height="8" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+                          </svg>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div class="ref-in-search-bar" *ngIf="refOutsearchBox">
+                      <div class="ref-search-icon" (click)="showOutPrasent()">
+                          <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.07943 1.10528C3.16446 0.186262 1.67527 0.186262 0.7603 1.10528C-0.154475 2.02449 -0.154475 3.52005 0.7603 4.43927C1.50447 5.18654 2.62751 5.32444 3.51322 4.85601C3.63368 4.7923 3.79645 4.85948 3.89259 4.95605L5.22508 6.29443C5.41926 6.48907 5.73305 6.48907 5.92624 6.29443C6.12022 6.09959 6.12022 5.78442 5.92624 5.59017L4.59375 4.2514C4.49756 4.15506 4.43031 3.99276 4.49363 3.87224C4.96127 2.98225 4.82421 1.85352 4.07943 1.10528ZM3.65874 4.01671C2.97563 4.70284 1.8639 4.70284 1.18099 4.01671C0.498284 3.33059 0.498284 2.21415 1.18099 1.52803C1.8639 0.842103 2.97563 0.842103 3.65874 1.52803C4.34185 2.21415 4.34185 3.33059 3.65874 4.01671Z" fill="#6BD3F4"/>
+                          </svg>
+                      </div>
+                      <input (keyup)="searchOutPatient($event.target.value)" type="text" placeholder="Find patient" class="ref-in-input" [(ngModel)]="selectedOutPatient" />
+                  
+                      <div class="patient-optn-cont" *ngIf="refOutsearch" [ngStyle]="{'height': (40*filterOutPatient.length) + 'px'}">
+                          <perfect-scrollbar>
+                            <div class="patient-item" *ngFor="let patientitem of filterOutPatient; let indx=index" (click)="selectOutPatient(patientitem.patientname)">{{patientitem.patientname}}
+                            </div>
+                          </perfect-scrollbar>
+                      </div>
+
+
+
+                    </div>
+                    <div class="ref-in-list">
+                        <ul>
+                          
+                            <li *ngFor="let refname of refOutArray; let indx=index" >
+                              <div [ngClass]="{'thansk': refname.thanks==true}"  style="cursor: pointer" (click)="setAsThanked(indx)" >
+                                  <div class="dr-name">{{refname.patientname}}</div>
+                                  <div class="history-dt">
+                                      <div *ngIf="refname.thanks==false">
+                                          {{refname.date | date: 'MM/dd/yyyy'}}
+                                      </div>
+                                      <div *ngIf="refname.thanks" class="thanked">
+                                           - Thanked
+                                      </div>
+                                  </div>
+                                </div>
+                                  <div *ngIf="refname.thanks" class="delete" style="cursor: pointer" (click)="delete(refname.patientname)">
+                                      <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.87298 6H4.93248C4.85182 6 4.78765 5.97983 4.73998 5.9395C4.69598 5.8955 4.65932 5.84783 4.62998 5.7965L3.22748 3.613C3.21282 3.66433 3.19632 3.71567 3.17798 3.767C3.16332 3.81467 3.14132 3.85867 3.11198 3.899L1.81398 5.7965C1.77732 5.84783 1.73698 5.8955 1.69298 5.9395C1.65265 5.97983 1.59582 6 1.52248 6H0.647984L2.60048 3.14L0.724984 0.4285H1.66548C1.74615 0.4285 1.80482 0.441333 1.84148 0.467C1.87815 0.492666 1.91115 0.529333 1.94048 0.577L3.30998 2.667C3.33932 2.56067 3.38515 2.458 3.44748 2.359L4.64648 0.599C4.67948 0.547666 4.71432 0.507333 4.75098 0.478C4.79132 0.445 4.83898 0.4285 4.89398 0.4285H5.79598L3.92048 3.0905L5.87298 6Z" fill="#B48CF6"/>
+                                      </svg>
+                                 </div>
+
+                                  <div style="clear: both;"></div>
+                            
+                             </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+           
+        </div>
+    </div>
+</div>

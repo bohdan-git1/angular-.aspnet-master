@@ -1,0 +1,41 @@
+<div class="drpdn-panel">
+	<ng-container *ngFor="let drpdn of drpdndata let indx=index">
+		<div class="drpdn-cont" *ngIf="drpdn.selected">
+			<div class="drpdn-title" (click)="toogleDropdown(indx)">
+				<div class="down-arrow">
+					<svg width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M2.5 4L0.334936 0.25L4.66506 0.25L2.5 4Z" fill="#A5A5A5"/>
+					</svg>
+				</div>
+				<div class="drp-dn-title-wrapper">{{drpdn.title}}</div>
+			</div>
+			
+			<div class="drpdn-optn" *ngIf="drpdn.opendrpdn_edit">
+				<ul>
+					<ng-container *ngFor="let ddoption of drpdn.ddoptions">
+						<li class="optn_title" *ngIf="ddoption.suboptn.length > 0 && ddoption.selected">
+							<div>{{ddoption.title}}</div>
+							<ng-container *ngFor="let subitem of ddoption.suboptn" >
+								<div class="selectedoptn" [hidden]="!subitem.selected">{{subitem.title}}</div>
+								<div class="selectedoptn-time" [hidden]="!subitem.selected">{{subitem.time}}</div>
+								<div class="clear"></div>
+							</ng-container>
+						</li>
+						
+						<li class="optn_title" *ngIf="ddoption.suboptn.length == 0 && ddoption.selected">
+							<div>{{ddoption.title}}</div>
+							<ng-container *ngFor="let subitem of ddoption.suboptn" >
+								<div class="selectedoptn" [hidden]="!subitem.selected">{{subitem.title}}</div>
+								<div class="selectedoptn-time" [hidden]="!subitem.selected">{{subitem.time}}</div>
+								<div class="clear"></div>
+							</ng-container>
+							
+						</li>
+						
+					</ng-container>
+					
+				</ul>
+			</div>
+		</div>
+	</ng-container>
+</div>

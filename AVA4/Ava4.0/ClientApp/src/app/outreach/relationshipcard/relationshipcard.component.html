@@ -1,0 +1,331 @@
+<div class="card-content-section">
+	<!-- <div class="section-display-wrapper animatecard" [ngStyle]="{'margin-left': posLeft + 'px'}"> -->
+		<div class="section-display-cont">
+			<!-- <perfect-scrollbar> -->
+				<div class="section-title" (click)="backtoMain()">Relationships</div>
+				<div class="section-content" style="height: 110px;">
+					<ul>
+						<li class="content-item" *ngFor="let relnItem of relnData ; let indx=index"  (click)="showSelectedDetails(relnItem, indx)">
+							<div class="headName"> {{relnItem.fname}} </div>
+							<div [ngClass]="{'headType': true, 'headTypecolor': relnItem.relationtype=='MO - Mother'}" class="headType"> {{relnItem.relationtype}}  </div> 
+						</li>
+						
+						<li class="add-reln-btn" (click)="gotoInput()" *ngIf="addNewRelation">
+							<div class="add-icon">
+								<svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+								</svg>
+							</div>
+						</li>
+						
+						<li class="add-reln-btn" style="cursor: default;" *ngIf="searchBar">
+							
+							<div class="new-form-title">New patient-relationship</div>
+
+							<div class="search-panel">
+								<span class="search-icon">
+									<svg width="10" height="10" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M3.33907 0.572431C2.57627 -0.19081 1.33477 -0.19081 0.571972 0.572431C-0.190657 1.33584 -0.190657 2.5779 0.571972 3.34131C1.19248 3.96203 2.12896 4.07649 2.86742 3.68721C2.96775 3.63432 3.10313 3.69028 3.1833 3.7705L4.29417 4.88202C4.45606 5.04367 4.71765 5.04367 4.87871 4.88202C5.04043 4.72021 5.04043 4.45846 4.87871 4.29714L3.76784 3.18529C3.68767 3.10529 3.63177 2.97019 3.68459 2.87C4.07419 2.13093 3.95986 1.19374 3.33907 0.572431ZM2.98834 2.99038C2.41885 3.56021 1.49202 3.56021 0.922695 2.99038C0.353535 2.42056 0.353535 1.49335 0.922695 0.923525C1.49202 0.353865 2.41885 0.353865 2.98834 0.923525C3.55783 1.49335 3.55783 2.42056 2.98834 2.99038Z" fill="#6BD3F4"/>
+									</svg>
+								</span>
+								<input (keyup)="searchRelationList($event.target.value)" [(ngModel)]="selectedRePatient" class="search-input" type="text" placeholder="Search exsisting name" />
+								
+								
+								<div class="patient-optn-cont" *ngIf="refInsearch" [ngStyle]="{'height': filterInRelation.length>0 ? (38*filterInRelation.length) : 38 + 'px'}">
+									<perfect-scrollbar>
+									  <div class="patient-item" *ngFor="let drItem of filterInRelation; let indx=index" (click)="selectRelation(drItem, indx)">
+											<div class="headName"> {{drItem.fname}} </div>
+									  </div>
+
+									  <div class="patient-item" *ngIf="filterInRelation.length==0" (click)="selectNoRelation()" >
+											<div class="headName"> No patient found! </div>
+									  </div>
+
+
+									</perfect-scrollbar>
+								</div>
+							
+							</div>
+						</li>
+					</ul>
+				</div>			
+				
+				<div style="height: 340px;">
+				<perfect-scrollbar>
+				<div class="item-details" *ngIf="showInputForm">
+						<div class="error" *ngIf="checkrelationExist">
+								This relationship is already in used, please select another.	
+						</div>
+					<div class="back-out-section">
+						
+					<div *ngIf="insertOrUpdate" class="edit-info">Relationship to patient</div>
+				
+						<!----<div class="drpdn"  (click)="openList($event, listarr, 'R')">
+							<div [ngClass]="{'drpdn-title': true}" >{{selectedRelationItem}}</div>
+							<div class="drpdn-icon">
+								<svg viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M2 3L3.73205 0.75H0.267949L2 3Z" fill="#4EC8F0"/>
+								</svg>
+							</div>
+						</div>-->
+
+						<div  style="position: relative">
+							<app-dropdown-relationship-card  [options]="listarr" (relationShipItem)="relationShipItemSet($event, 'R')" [ddplaceholder]="selectedRelationItem"></app-dropdown-relationship-card>
+						</div>
+
+
+					
+					</div>
+					
+					<div class="back-out-section">
+						<div class="reln-item">
+								<input class="common-relation-input" type="text" value="{{fname}}" (keyup)="onKeyFastname($event)"  placeholder="First Name..."/>
+						</div>
+						<div *ngIf="insertOrUpdate" class="edit-info"> First Name</div>
+					</div>
+					
+					<div class="back-out-section">
+					<div class="reln-item">
+							<input class="common-relation-input" type="text" [(ngModel)]="relationShiformData.mname" placeholder="Middle Name..."/>
+					</div>
+					<div *ngIf="insertOrUpdate" class="edit-info"> Middle Name</div>
+					</div>
+
+					<div class="back-out-section">
+					<div class="reln-item">
+							<input class="common-relation-input" type="text" [(ngModel)]="relationShiformData.lname" placeholder="Last Name..."/>
+					</div>
+					<div *ngIf="insertOrUpdate" class="edit-info"> Last Name</div>
+					</div>
+
+					<div class="back-out-section">
+					<div class="reln-item">
+							<input class="common-relation-input" type="text" [(ngModel)]="relationShiformData.preferredName" placeholder="Preferred Name..."/>
+					</div>
+					<div *ngIf="insertOrUpdate" class="edit-info"> Preferred Name</div>
+					</div>
+
+					<div class="back-out-section">
+					<div class="reln-item">
+							<input class="common-relation-input" type="text" [(ngModel)]="relationShiformData.email" placeholder="Email Address..."/>
+					</div>
+					<div *ngIf="insertOrUpdate" class="edit-info"> Email Address</div>
+					</div>
+
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.phone" [textMask]="{mask: phonemask}" type="text" placeholder="Phone Number..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info"> Phone Number</div>
+					</div>
+					
+
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.streetAdd" type="text" placeholder="Street Address..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">Street Address</div>
+					</div>
+					
+
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.city" type="text" placeholder="City..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">City</div>
+					</div>
+					
+
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.state" type="text" placeholder="State..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">State</div>
+					</div>
+					
+
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.zip" type="text" placeholder="Zip..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">Zip</div>
+					</div>
+					
+
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.dateOfBirth" [textMask]="{mask: dobmask}" type="text" placeholder="Date of birth"/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">Date of birth</div>
+					</div>
+					
+
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input"  type="text" [(ngModel)]="relationShiformData.ssn" placeholder="SSN..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">SSN</div>
+					</div>
+				
+					
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.workPhone" [textMask]="{mask: phonemask}" type="text" placeholder="Work Phone..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">Work Phone</div>
+					</div>
+					
+					
+					<div class="back-out-section">
+							<div class="back-out-section">
+								<div *ngIf="insertOrUpdate" class="edit-info">Employer</div>
+							
+									<div style="position: relative;">
+										<app-dropdown-relationship-card  [options]="employerArray" (relationShipItem)="relationShipItemSet($event,'E')" [ddplaceholder]="selectedEmpItem"></app-dropdown-relationship-card>
+									</div>
+			
+							</div>
+
+					</div>
+					
+					
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.insurance" type="text" placeholder="Insurance Carrier..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">Insurance Carrier</div>
+					</div>
+					
+
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.empid" type="text" placeholder="Employer ID..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">Employer ID</div>
+					</div>
+					
+
+					<div class="back-out-section">
+							<div class="reln-item">
+									<input class="common-relation-input" [(ngModel)]="relationShiformData.group"  type="text" placeholder="Group #..."/>
+							</div>
+							<div *ngIf="insertOrUpdate" class="edit-info">Group#</div>
+					</div>
+				
+				
+			<!-- </perfect-scrollbar> -->
+		</div>
+		</perfect-scrollbar>
+
+				
+		</div>
+		
+		
+		<div (click)="saveRelationFu()" *ngIf="showInputForm" class="saveCls">
+				Save
+		</div>
+		
+			
+		<!-- <div class="section-display-cont">
+			
+				<div class="section-title" (click)="backtoPrevious()">Relationships</div>
+				<div class="section-content">
+					<ul>
+						<li class="content-item input-section" *ngFor="let relnItem of relnData">{{relnItem.relationtype}} - {{relnItem.name}}</li>
+						
+						<li class="add-reln-btn" style="margin-bottom: 10px; cursor: default;">
+							<div class="add-icon-search">
+								<svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+								</svg>
+							</div>
+							
+							<div class="search-panel">
+								<span class="search-icon">
+									<svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M3.33907 0.572431C2.57627 -0.19081 1.33477 -0.19081 0.571972 0.572431C-0.190657 1.33584 -0.190657 2.5779 0.571972 3.34131C1.19248 3.96203 2.12896 4.07649 2.86742 3.68721C2.96775 3.63432 3.10313 3.69028 3.1833 3.7705L4.29417 4.88202C4.45606 5.04367 4.71765 5.04367 4.87871 4.88202C5.04043 4.72021 5.04043 4.45846 4.87871 4.29714L3.76784 3.18529C3.68767 3.10529 3.63177 2.97019 3.68459 2.87C4.07419 2.13093 3.95986 1.19374 3.33907 0.572431ZM2.98834 2.99038C2.41885 3.56021 1.49202 3.56021 0.922695 2.99038C0.353535 2.42056 0.353535 1.49335 0.922695 0.923525C1.49202 0.353865 2.41885 0.353865 2.98834 0.923525C3.55783 1.49335 3.55783 2.42056 2.98834 2.99038Z" fill="#6BD3F4"/>
+									</svg>
+								</span>
+								<input class="search-input" type="text" placeholder="Search exsisting patient..." />
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="item-details">
+					<div class="reln-item">
+						<div class="drpdn" (click)="openList($event)">
+							<div class="drpdn-title">{{selectedRelationItem}}</div>
+							<div class="drpdn-icon">
+								<svg viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M2 3L3.73205 0.75H0.267949L2 3Z" fill="#4EC8F0"/>
+								</svg>
+							</div>
+						</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" placeholder="..."/></div>
+						<div class="itemlabel">First M Last</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" placeholder="..."/></div>
+						<div class="itemlabel">Email Address</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" placeholder="..."/></div>
+						<div class="itemlabel">Cell phone</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" placeholder="..."/></div>
+						<div class="itemlabel">Employer</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" placeholder="..."/></div>
+						<div class="itemlabel">Carrier</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" placeholder="..."/></div>
+						<div class="itemlabel">Group #</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue">
+							<input type="text" placeholder="Street"/>
+							<input type="text" placeholder="City, ST"/>
+							<input type="text" placeholder="Zip code"/>
+						</div>
+						<div class="itemlabel">Address</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" [textMask]="{mask: phonemask}" placeholder="(---) --- - ----"/></div>
+						<div class="itemlabel">Work phone</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" [textMask]="{mask: dobmask}" placeholder="00/00/0000" /></div>
+						<div class="itemlabel">DOB</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" placeholder="..."/></div>
+						<div class="itemlabel">SSN</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue"><input type="text" placeholder="..."/></div>
+						<div class="itemlabel">Employer ID</div>
+					</div>
+				</div>
+		</div> -->
+		
+	<!-- </div> -->
+	
+	
+</div>

@@ -1,0 +1,114 @@
+.calendar-cont {
+	width: 100%;
+	box-sizing: border-box;
+	position: relative;
+	height: 245px;
+}
+
+.monthname {
+	font-size: 16px;
+	color: #A5A5A5;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.week {
+	display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.date-text {
+    text-align: center;
+	display: flex;
+	width: 28px;
+	height: 28px;
+	justify-content: center;
+	align-items: center;
+	font-size: 13px;
+	color: #646464;
+	font-weight: normal;
+	cursor: default;
+	box-sizing: border-box;
+	position: relative;
+	margin: 2px;
+}
+
+.daynames {
+    border-bottom: 1px solid #C6C6C6;
+}
+
+.dayname {
+	font-size: 12px;
+}
+
+.holiday {
+	color: #C6C6C6;
+	font-weight: normal;
+}
+
+.longerday {
+	color: #F6CC61;
+	font-weight: bold;
+}
+
+.shorterday {
+	color: #8CF1E4;
+	font-weight: bold;
+}
+
+.today {
+	background: #fff;
+	border-radius: 100px;
+	border: 1px solid #56CCF2;
+	box-shadow: 1px 1px 4px #63CCF2;
+}
+
+.seldate {
+	background: #f0f0f0;
+	border-radius: 100px;
+	border: 1px solid #6BD3F4;
+	box-shadow: 1px 1px 4px #63CCF2;
+}
+
+.dots-container {
+	text-align: center;
+	position: absolute;
+	bottom: 0.5px;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.reddots {
+	width: 4px;
+	height: 4px;
+	display: inline-block;
+	background: #F11212;
+	border-radius: 100%;
+}
+
+.nav-btn {
+	width: 20px;
+    height: 20px;
+    background: #FFFFFF;
+    border-radius: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 4px;
+    margin: auto;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.left-btn {
+	right: 30px;
+    padding-left: 5px;
+    padding-top: 2px;
+}
+
+.right-btn {
+	right: 0;
+    padding-right: 5px;
+    padding-top: 2px;
+}

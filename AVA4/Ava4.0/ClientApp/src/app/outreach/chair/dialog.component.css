@@ -1,0 +1,14 @@
+.patientdialog {
+	position: relative;
+	padding: 20px 30px 12px 30px;
+	box-sizing: border-box;
+}
+
+.closeBtn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}

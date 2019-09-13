@@ -1,0 +1,152 @@
+<div class="chair">
+	
+	<div fxLayout="row" fxLayoutGap="10px">
+		<div fxFlex="33px">
+			<div class="chair-num" [ngStyle]="{'background': activepatient == true ? '#FFFFFF' : '#4EC8F0'}">
+				<div class="chair-label" [ngStyle]="{'color': activepatient == true ? '#4EC8F0' : '#FFFFFF'}">{{chairDetails.label}}</div>
+			</div>
+		</div>
+		<div fxFlex="calc(100% - 43px)">
+			<div class="chair-details" [ngStyle]="{'background': activepatient == true ? '#FFFFFF' : '#4EC8F0'}">
+				<div fxLayout="row">
+					<div fxFlex="60" style="position: relative;">
+						<div class="patient_name" *ngIf="chairDetails.patient" [ngStyle]="{'color': activepatient == true ? '#4EC8F0' : '#FFFFFF'}">{{chairDetails.patient}}</div>
+						
+						<div class="seated_at" *ngIf="chairDetails.seated && activepatient == true" [ngStyle]="{'color': activepatient == true ? '#4EC8F0' : '#FFFFFF'}">Seated at {{chairDetails.seated}}</div>
+						
+						<div class="seated_at" *ngIf="chairDetails.seated && activepatient == false">2m 13s</div>
+						
+					</div>
+					<div fxFlex="40" style="position: relative; height: 67px">
+						<div class="outer-border" *ngIf="chairDetails.progress" [ngStyle]="{'border': activepatient == true ? '1px solid #4EC8F0' : 'none'}"></div>
+						<div class="counter-svg" *ngIf="chairDetails.progress">
+							<svg width="46" height="46" viewBox="0 0 46 46" class="progress__svg">
+							  <circle [attr.r]="radius" cx="23" cy="23" stroke-width="5" class="progress__meter" fill="none" />
+							  <circle [style.strokeDasharray]="circumference" [style.strokeDashoffset]="dashoffset" [attr.r]="radius" cx="23" cy="23" stroke-width="5" fill="none" [ngClass]="progressValue" />
+							</svg>
+						</div>
+						
+						<div class="filled-circle" *ngIf="chairDetails.progress" (click)="changeCount()" (dblclick)="dblclickEvent()">
+							<div class="filled-circle-blue">
+								<img *ngIf="clickCount == 1" src="assets/Ellipse 3.11.png" width="100%" />
+								<img *ngIf="clickCount == 2" src="assets/Ellipse 3.19.png" width="100%" />
+								<img *ngIf="clickCount == 3" src="assets/Ellipse 3.10.png" width="100%" />
+							</div>
+							
+							<!-- <svg *ngIf="clickCount == 1" class="filled-circle-blue" width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter2_d)">
+								<circle cx="16.5" cy="16.5" r="14" stroke="#DCDCDC"/>
+								</g>
+								<defs>
+								<filter id="filter2_d" x="0" y="0" width="37" height="37" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								<feOffset dx="2" dy="2"/>
+								<feGaussianBlur stdDeviation="2"/>
+								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								</filter>
+								</defs>
+							</svg>
+							
+							<svg *ngIf="clickCount == 2" class="filled-circle-blue" width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+								<circle cx="16.5" cy="16.5" r="14.5" fill="url(#paint0_radial)"/>
+								</g>
+								<defs>
+								<filter id="filter0_d" x="0" y="0" width="37" height="37" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								<feOffset dx="2" dy="2"/>
+								<feGaussianBlur stdDeviation="2"/>
+								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								</filter>
+								<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16.5 16.5) rotate(90) scale(14.5)">
+								<stop stop-color="#9BE4FF"/>
+								<stop offset="1" stop-color="#54CBF1"/>
+								</radialGradient>
+								</defs>
+							</svg>
+							
+							<svg *ngIf="clickCount == 3" class="filled-circle-blue" width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+								<circle cx="16.5" cy="16.5" r="14.5" fill="url(#paint0_radial)"/>
+								</g>
+								<defs>
+								<filter id="filter0_d" x="0" y="0" width="37" height="37" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+								<feOffset dx="2" dy="2"/>
+								<feGaussianBlur stdDeviation="2"/>
+								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+								</filter>
+								<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16.5 16.5) rotate(90) scale(14.5)">
+								<stop stop-color="#52FF8F"/>
+								<stop offset="1" stop-color="#0ED251"/>
+								</radialGradient>
+								</defs>
+							</svg> -->
+
+
+
+							
+						</div>
+						
+						<div class="bucket-icon" *ngIf="activepatient == true" (click)="openPateientModal()">
+								<svg _ngcontent-c42="" fill="none" height="15" viewBox="0 0 15 15" width="15" xmlns="http://www.w3.org/2000/svg"><rect _ngcontent-c42="" fill="#4EC8F0" height="2.8573" rx="1" width="13.6956" x="1.30469" y="0.712891"></rect><rect _ngcontent-c42="" fill="white" height="1.42865" rx="0.714326" width="12.3912" x="1.95654" y="1.42969"></rect><rect _ngcontent-c42="" fill="#4EC8F0" height="10.0006" rx="1" width="13.6956" x="1.30469" y="3.57227"></rect><rect _ngcontent-c42="" fill="white" height="9.28623" rx="1" width="12.3912" x="1.95654" y="3.57227"></rect><line _ngcontent-c42="" stroke="#4EC8F0" x1="3.10889" x2="3.10889" y2="2.14298"></line><line _ngcontent-c42="" stroke="#4EC8F0" x1="5.71729" x2="5.71729" y2="2.14298"></line><line _ngcontent-c42="" stroke="#4EC8F0" x1="8.32617" x2="8.32617" y2="2.14298"></line><line _ngcontent-c42="" stroke="#4EC8F0" x1="10.9346" x2="10.9346" y2="2.14298"></line><line _ngcontent-c42="" stroke="#4EC8F0" x1="13.5435" x2="13.5435" y2="2.14298"></line><ellipse _ngcontent-c42="" cx="3.91302" cy="10.7137" fill="#4EC8F0" rx="3.91302" ry="4.28595"></ellipse><ellipse _ngcontent-c42="" cx="3.9132" cy="10.7142" fill="white" rx="3.26085" ry="3.57163"></ellipse><line _ngcontent-c42="" stroke="#4EC8F0" stroke-width="0.5" x1="4.16309" x2="4.16309" y1="7.5" y2="11.0716"></line><line _ngcontent-c42="" stroke="#4EC8F0" stroke-width="0.5" x1="3.91309" x2="1.95657" y1="10.9688" y2="10.9688"></line></svg>
+						</div>
+						
+						<div class="timings">
+							<div class="bookingTime" [ngStyle]="{'color': activepatient == true ? '#4EC8F0' : '#FFFFFF'}"><span *ngIf="chairDetails.bookingtime != null">{{chairDetails.bookingtime}}</span><br><span *ngIf="chairDetails.bookingtimeMin">{{chairDetails.bookingtimeMin}}</span></div>
+					<div class="excessTime" *ngIf="chairDetails.excesstime != 0 && chairDetails.excesstime != null">{{chairDetails.excesstime}}</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <div class="chair-top">
+		<div fxLayout="row" style="height: 100%;">
+			<div fxFlex="35" style="position: relative; height: 100%">
+				
+				<div class="outer-border" *ngIf="chairDetails.progress"></div>
+				<div class="counter-svg" *ngIf="chairDetails.progress">
+
+					<svg width="86" height="86" viewBox="0 0 86 86" class="progress__svg">
+					  <circle [attr.r]="radius" cx="43" cy="43" stroke-width="12" class="progress__meter" />
+					  <circle [style.strokeDasharray]="circumference" [style.strokeDashoffset]="dashoffset" [attr.r]="radius" cx="43" cy="43" stroke-width="12" [ngClass]="progressValue" />
+					</svg>
+
+				</div>
+				<div class="filled-circle" *ngIf="chairDetails.progress">
+					<div class="bookingTime"><span>{{chairDetails.bookingtime}}</span><br><span *ngIf="chairDetails.bookingtimeMin">{{chairDetails.bookingtimeMin}}</span></div>
+					<div class="excessTime" *ngIf="chairDetails.excesstime != 0">{{chairDetails.excesstime}}</div>
+				</div>
+				
+			</div>
+			
+			<div fxFlex="55" class="chair_details">
+				<div class="patient_name" *ngIf="chairDetails.patient">{{chairDetails.patient}}</div>
+				<div class="dr_name" *ngIf="chairDetails.dr">{{chairDetails.dr}}</div>
+				<div class="seated_at" *ngIf="chairDetails.seated">Seated at {{chairDetails.seated}}</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="bucket-icon">
+		<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.64009 9.57921C3.10072 7.15523 2.5745 4.74436 2.03513 2.32038C1.94305 1.9142 1.31159 2.08454 1.40368 2.49072C1.94305 4.91469 2.46926 7.32556 3.00863 9.74954C3.10072 10.1557 3.73218 9.98539 3.64009 9.57921Z" fill="white"/>
+<path d="M15.3368 2.32214C14.8895 4.58889 14.4422 6.85563 14.0081 9.12238C13.7844 10.2623 13.5608 11.3891 13.3371 12.529C13.2319 13.0794 13.1267 13.6166 13.0214 14.1669C12.8899 14.8482 12.7583 15.1365 12.0216 15.2413C9.95621 15.5164 7.85136 15.5164 5.78597 15.2413C5.35184 15.1889 5.04927 15.084 4.87825 14.6255C4.78616 14.3765 4.73354 14.0882 4.68092 13.8262C4.45727 12.8697 4.25994 11.9132 4.07577 10.9567C3.99684 10.5375 3.36538 10.7209 3.44431 11.1271C3.6548 12.1753 3.85213 13.2366 4.11524 14.2848C4.2731 14.9137 4.43096 15.5688 5.14135 15.7916C6.10169 16.0929 7.28568 16.0667 8.28548 16.0929C9.50893 16.1322 10.7192 16.0667 11.9295 15.9095C12.8504 15.7916 13.4292 15.5557 13.6266 14.5861C13.9028 13.2497 14.1528 11.9001 14.4159 10.5506C14.9421 7.86453 15.4683 5.1785 15.9945 2.49248C16.0471 2.0863 15.4157 1.90286 15.3368 2.32214Z" fill="white"/>
+<path d="M1.40702 2.41322C1.44648 3.10766 2.0911 3.50074 2.66993 3.76279C3.74867 4.24758 4.94581 4.44412 6.10348 4.57515C8.78718 4.87651 11.9181 4.88961 14.4703 3.88071C15.0491 3.65797 15.8384 3.2911 15.9832 2.60976C16.1147 1.96774 15.549 1.49604 15.0491 1.22089C14.0756 0.696788 12.918 0.487147 11.8392 0.329917C10.3 0.107173 8.76086 0.0547627 7.23484 0.146481C5.78775 0.238199 4.28804 0.421634 2.93304 0.945737C2.27527 1.20779 1.44648 1.61397 1.40702 2.41322C1.38071 2.83251 2.03848 2.83251 2.06479 2.41322C2.0911 1.88912 3.07775 1.58776 3.47241 1.45674C4.45906 1.12917 5.51149 0.95884 6.55076 0.867122C8.87926 0.657481 11.3656 0.696788 13.6283 1.36502C14.0625 1.49604 15.1807 1.7712 15.3254 2.3084C15.4701 2.8063 14.5755 3.14697 14.2335 3.27799C12.1813 4.07725 9.77383 4.14276 7.60319 4.03794C6.35343 3.98553 5.07736 3.8414 3.86707 3.50074C3.40663 3.36971 2.10425 3.05525 2.06479 2.42633C2.03848 1.99394 1.38071 1.98084 1.40702 2.41322Z" fill="white"/>
+<path d="M1.87992 4.1045C0.853799 5.42786 -1.52732 9.41104 1.43263 10.171C2.51137 10.4461 3.69536 10.0138 4.6557 9.55517C6.16856 8.82142 7.51041 7.70771 8.64177 6.44986C8.91803 6.1354 8.4576 5.67681 8.18133 5.99127C7.28677 6.98706 6.27381 7.86494 5.11614 8.55937C4.23473 9.08347 3.19545 9.59447 2.14302 9.59447C1.26162 9.60758 0.656469 9.10968 0.669624 8.1925C0.68278 6.86914 1.56419 5.57199 2.34035 4.56309C2.60346 4.23552 2.14302 3.76383 1.87992 4.1045Z" fill="white"/>
+</svg>
+	</div>
+	<div class="chair-label">{{chairDetails.label}}</div> -->
+</div>

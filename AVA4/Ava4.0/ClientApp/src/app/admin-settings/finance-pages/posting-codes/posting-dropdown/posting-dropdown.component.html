@@ -1,0 +1,15 @@
+<div class="dropdown-label-cont" (click)="showddoptions()">
+  <div class="dropdown-label">{{ddplaceholder}}</div>
+  <div class="dropdown-icon">
+    <svg *ngIf="dropdown==1" width="23" height="13" viewBox="0 0 23 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.5 13L0.674683 0.25L22.3253 0.25L11.5 13Z" fill="#C4C4C4"/>
+    </svg>
+  </div>
+</div>
+
+<div class="dropdown-options-cont" *ngIf="showdd" [ngStyle]="{'height':  dropdownboxHG + 'px'}">
+<perfect-scrollbar [config]="config">
+  <div   *ngFor="let optionitem of options; let indx=index; let last = last" [ngClass]="{'optionsitem': true, 'selected': selectedIndex == optionitem.option }" [class.newitemadd]="last" (click)="selectDdOption(indx)">{{optionitem.option}}</div>
+</perfect-scrollbar>
+</div>
+

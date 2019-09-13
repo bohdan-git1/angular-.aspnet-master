@@ -1,0 +1,150 @@
+<div class="pagetitle">ACCOUNT</div>
+<div class="billing-panel-cont">
+	<div class="billing-panel">
+		<div class="panel-title">B I L L I N G</div>
+		<div class="card-holder">
+			<div class="flip-container">
+				<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + rotateOnY + 'deg)'}">
+					<div class="card-cont card1">
+						<div class="plus-btn" (click)="flipCard()">
+							<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect x="4.5" width="1" height="10" rx="0.5" fill="#434343"/>
+								<rect y="5.5" width="1" height="10" rx="0.5" transform="rotate(-90 0 5.5)" fill="#434343"/>
+							</svg>
+						</div>
+						<div class="card">
+							<div class="card-bg">
+								<svg width="288" height="173" viewBox="0 0 288 173" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect x="3.23047" y="3.23047" width="281.039" height="166.901" rx="1" fill="url(#paint0_linear)"/>
+									<path d="M53.3732 72.6008C52.8883 71.9543 53.3308 71.0295 54.1384 71.0014L283.235 63.0282C283.8 63.0085 284.27 63.4617 284.27 64.0276V169.132C284.27 169.684 283.822 170.132 283.27 170.132H127.021C126.707 170.132 126.41 169.984 126.221 169.732L53.3732 72.6008Z" fill="url(#paint1_linear)"/>
+									<path d="M239.928 69.5682C240.056 69.492 240.165 69.3882 240.248 69.2645L282.438 5.97854C282.987 5.15531 284.27 5.54384 284.27 6.53324V169.131C284.27 169.684 283.823 170.131 283.27 170.131H75.23C74.2148 170.131 73.8456 168.793 74.7171 168.273L239.928 69.5682Z" fill="url(#paint2_linear)"/>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58172 0 0 3.58172 0 8V164.285C0 168.703 3.58172 172.285 8 172.285H279.5C283.918 172.285 287.5 168.703 287.5 164.285V8C287.5 3.58172 283.918 0 279.5 0H8ZM10.2302 3.22948C6.36416 3.22948 3.23015 6.36348 3.23015 10.2295V163.13C3.23015 166.996 6.36417 170.13 10.2302 170.13H277.27C281.135 170.13 284.27 166.996 284.27 163.13V10.2295C284.27 6.36348 281.135 3.22948 277.269 3.22948H10.2302Z" fill="white"/>
+									<defs>
+									<linearGradient id="paint0_linear" x1="154.518" y1="158.825" x2="0.00012883" y2="3.23047" gradientUnits="userSpaceOnUse">
+									<stop stop-color="#2B54E2"/>
+									<stop offset="1" stop-color="#4CB4FF"/>
+									</linearGradient>
+									<linearGradient id="paint1_linear" x1="117.369" y1="34.9959" x2="281.039" y2="170.132" gradientUnits="userSpaceOnUse">
+									<stop stop-color="#2BCBFF"/>
+									<stop offset="1" stop-color="#114697"/>
+									</linearGradient>
+									<linearGradient id="paint2_linear" x1="192.744" y1="71.0676" x2="272.426" y2="150.211" gradientUnits="userSpaceOnUse">
+									<stop stop-color="#0097D7"/>
+									<stop offset="1" stop-color="#1E6CC6"/>
+									</linearGradient>
+									</defs>
+								</svg>
+							</div>
+							<div class="card-info">
+								<div class="holder-name">BRETT TOBLER</div>
+								<div class="card-num">**** 4805</div>
+							</div>
+						</div>
+						
+						<div class="card">
+							<div class="card-bg" >
+								<svg width="288" height="173" viewBox="0 0 288 173" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect width="281.039" height="166.901" rx="1" transform="matrix(-1 0 0 1 284.77 3.22949)" fill="url(#paint0_linear)"/>
+									<path d="M234.626 72.6008C235.111 71.9543 234.668 71.0295 233.861 71.0014L4.76431 63.0282C4.19873 63.0085 3.72952 63.4617 3.72952 64.0276V169.132C3.72952 169.684 4.17723 170.132 4.72952 170.132H160.978C161.292 170.132 161.589 169.984 161.778 169.732L234.626 72.6008Z" fill="url(#paint1_linear)"/>
+									<path d="M48.0715 69.5672C47.9439 69.491 47.8349 69.3872 47.7524 69.2635L5.56175 5.97757C5.01292 5.15433 3.72971 5.54286 3.72971 6.53227V169.13C3.72971 169.683 4.17743 170.13 4.72971 170.13H212.77C213.785 170.13 214.154 168.792 213.283 168.272L48.0715 69.5672Z" fill="url(#paint2_linear)"/>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M287 0C287.552 0 288 0.447717 288 1V171.285C288 171.837 287.552 172.285 287 172.285H1.5C0.947723 172.285 0.5 171.837 0.5 171.285V1C0.5 0.447715 0.947723 0 1.5 0H287ZM277.77 3.22948C281.636 3.22948 284.77 6.36348 284.77 10.2295V163.13C284.77 166.996 281.636 170.13 277.77 170.13H10.7305C6.86453 170.13 3.7305 166.996 3.7305 163.13V10.2295C3.7305 6.36348 6.86453 3.22948 10.7305 3.22948H277.77Z" fill="white"/>
+									<defs>
+									<linearGradient id="paint0_linear" x1="151.287" y1="155.595" x2="-3.23034" y2="-1.96579e-06" gradientUnits="userSpaceOnUse">
+									<stop stop-color="#FF7C7C"/>
+									<stop offset="1" stop-color="#FD7474"/>
+									</linearGradient>
+									<linearGradient id="paint1_linear" x1="170.63" y1="34.9959" x2="6.9598" y2="170.132" gradientUnits="userSpaceOnUse">
+									<stop stop-color="#FF8D8D"/>
+									<stop offset="1" stop-color="#F6CC61"/>
+									</linearGradient>
+									<linearGradient id="paint2_linear" x1="95.2559" y1="71.0666" x2="15.5743" y2="150.21" gradientUnits="userSpaceOnUse">
+									<stop stop-color="#FF5656"/>
+									<stop offset="1" stop-color="#FFBF74"/>
+									</linearGradient>
+									</defs>
+								</svg>
+							</div>
+							
+							<div class="card-info">
+								<div class="holder-name">STONEHAVEN DENTAL</div>
+								<div class="card-num">**** 3683</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="card-details-cont card2">
+						<div class="card-details">
+							<div class="cardinput cardholder-name">
+								<input type="text" placeholder="Name" />
+							</div>
+							
+							<div class="cardinput cardholder-cnum">
+								<input type="text" placeholder="Card number" />
+							</div>
+							
+							<div class="card-num-cont">
+								<div class="cardinput card-cvv">
+									<input type="text" placeholder="CVV" />
+								</div>
+								
+								<div class="cardinput card-expmonth">
+									<input type="text" placeholder="Exp Month" />
+								</div>
+								
+								<div class="cardinput card-expyear">
+									<input type="text" placeholder="Exp Year" />
+								</div>
+							</div>
+							
+							<div class="cardinput cardholder-address">
+								<input type="text" placeholder="Address 1" />
+							</div>
+							
+							<div class="cardinput cardholder-address">
+								<input type="text" placeholder="Address 2" />
+							</div>
+							
+							<div class="card-num-cont">
+								<div class="cardinput card-city">
+									<input type="text" placeholder="City" />
+								</div>
+								
+								<div class="cardinput card-state">
+									<input type="text" placeholder="State" />
+								</div>
+								
+								<div class="cardinput card-zip">
+									<input type="text" placeholder="Zip Code" />
+								</div>
+								
+								<div class="cardinput primary-toggle" (click)="primaryToggle()">
+									<div class="toggle-checkbox">
+										<div class="checkbox-icon" *ngIf="checkprimaryToggle">
+											<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.2701 3.76434C12.066 3.57837 11.7498 3.59309 11.5638 3.79722L4.64796 11.3883L1.39904 8.4284C1.19491 8.24243 0.878673 8.25715 0.692702 8.46128C0.50673 8.66541 0.52145 8.98165 0.725581 9.16762L4.18806 12.3221C4.21532 12.3874 4.25695 12.4479 4.31271 12.4987C4.51684 12.6847 4.83308 12.67 5.01906 12.4658L12.303 4.47068C12.489 4.26655 12.4743 3.95031 12.2701 3.76434Z" fill="#4EC8F0"/>
+</svg>
+										</div>
+									</div>
+									<div class="toggle-label">Primary card?</div>
+									
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="back-btn" (click)="flipCard()">
+							<svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12.5" cy="14.5" r="11" stroke="#4EC8F0"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M18.2701 9.76434C18.066 9.57837 17.7498 9.59309 17.5638 9.79722L10.648 17.3883L7.39904 14.4284C7.19491 14.2424 6.87867 14.2571 6.6927 14.4613C6.50673 14.6654 6.52145 14.9816 6.72558 15.1676L10.1881 18.3221C10.2153 18.3874 10.257 18.4479 10.3127 18.4987C10.5168 18.6847 10.8331 18.67 11.0191 18.4658L18.303 10.4707C18.489 10.2665 18.4743 9.95031 18.2701 9.76434Z" fill="#434343"/>
+</svg>
+
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

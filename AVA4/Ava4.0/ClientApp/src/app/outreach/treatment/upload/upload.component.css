@@ -1,0 +1,295 @@
+.closeBtn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+
+
+input:focus {
+	outline: none;
+}
+
+
+	.name-date{
+		margin-top: 15px;
+		/* margin-left: 30px;
+		margin-right: 30px; */
+	}
+	
+	.name{
+		width: 50%;
+		
+		font-family: Lato;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: normal;
+		color: #646464;
+        float: left;
+        margin-bottom: 10px;
+        margin-top: 10px;
+	}
+	
+	.date{
+		width: 50%;
+	
+		font-family: Lato;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: normal;
+		text-align: right;
+		color: #646464;
+        float: right;
+        margin-top: 10px;
+	}
+	
+	.boderclsforimgupload {
+	
+		
+		width: 100%;
+		height: 1px;
+		background: #C4C4C4;
+		border-radius: 10px;
+        margin-top: 30px;
+        display: -webkit-box;
+	}
+
+	.final-phase{	
+        width: 100%;
+		max-width: 350px;
+    }
+    
+    .dropdown-list{
+        width: 49%;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: normal;
+        color: #646464;
+        float: right;
+        text-align: left;
+    }
+	
+
+	
+.final-phase-text {	
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: normal;
+    color: #646464;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+}
+
+
+.imageshowoneby-one
+{
+    width: 129.47px;
+    height: 115.47px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 20px;
+
+}
+
+.imgshow-section{
+    width: 100%;
+    height: 110px;
+    background: #E5E5E5;
+    box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.25);
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    display: flex;
+    overflow: hidden
+}
+
+.image-name
+{
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 10px;
+text-align: center;
+color: #646464;
+}
+
+.imgshow-section img {
+	width: 100%;
+}
+
+.drag-and-drop-outer-div{
+
+    width: 100%;
+    height: 250px;
+    border-style: dashed;
+    border-color: #E5E5E5;
+    position: relative;
+
+}
+
+.drag-and-drop-inner-div{
+    width: 97%;
+    height: 90%;
+    background: #E5E5E5;
+    box-shadow: inset 1px 3px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    margin: 10px 10px 10px 12px;
+}
+
+.Cancel{
+	float: left;
+	width: 89px;
+	height: 20px;
+	background: #F0F0F0;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+	padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.Cancel-text{
+    float: left;
+    width: 38px;
+    height: 100%;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: normal;
+    color: #646464;
+	
+	display: flex;
+    align-items: center;
+}
+
+.Cancel-icon{
+	float: right;
+    width: 18px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.Save{
+    float: right;
+    text-align: right;
+    width: 89px;
+    height: 20px;
+    background: #F0F0F0;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding-left: 10px;
+
+}
+
+.Save-text{
+    width: 38px;
+    height: 100%;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: normal;
+    color: #646464;
+    display: flex;
+    align-items: center;
+    float: left;
+
+}
+
+.Save-icon{
+    width: 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    float: right;
+}
+
+.last-set{
+
+    margin-bottom: 15px;
+}
+
+.upload-file-text{
+
+    width: 45%;
+    height: 30%;
+    background: #E5E5E5;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: normal;
+    text-align: right;
+
+    color: #646464;
+}
+
+.upload-file-icon{
+    width: 100%;
+    height: 70%;
+    background: #E5E5E5;
+}
+
+.top-panel {
+	margin: 0;
+	border-bottom: 1px solid #C4C4C4;
+}
+.ngx-fileDrop{
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    height: 100%;
+}
+.ngx-file-drop__drop-zone{
+    border:0px !important;
+    height: 100% !important;
+}
+
+.ngx-file-drop__content{
+    height: 100% !important;
+    display: none !important;
+}
+
+.image-upload{
+    position: absolute;
+    top: 170px;
+    right: 200px;
+   
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: normal;
+    text-align: center;
+    color: #646464;
+}
+
+.common-input-imgName
+{
+    border: 1.5px solid #C4C4C4;
+    border-radius: 2px;
+    width: 100%;
+    color: #4EC8F0;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+
+

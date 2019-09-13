@@ -1,0 +1,13 @@
+
+<div class="component-cont">
+	<div class="chkbox-cont" (click)="selectChkbox()">
+		<div class="chkbox-box" [ngStyle]="{'border': selected ? '1px solid #4EC8F0':'1px solid #C4C4C4'}">
+			<div class="selector" *ngIf="selected">
+				<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M11.9452 3.63338C11.741 3.4474 11.4248 3.46212 11.2388 3.66625L4.323 11.2574L1.07408 8.29744C0.869948 8.11147 0.553708 8.12619 0.367736 8.33032C0.181765 8.53445 0.196485 8.85069 0.400615 9.03666L3.86309 12.1911C3.89036 12.2564 3.93198 12.317 3.98775 12.3678C4.19188 12.5537 4.50812 12.539 4.69409 12.3349L11.9781 4.33972C12.164 4.13559 12.1493 3.81935 11.9452 3.63338Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+		</div>
+		<div class="chkbox-label">{{chkboxlabel}}</div>
+	</div>
+</div>

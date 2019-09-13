@@ -1,0 +1,721 @@
+<perfect-scrollbar>
+<div fxLayout="column">
+	<div fxLayout="row" fxLayoutGap="10px">
+		<div fxFlex="282px">
+			<div class="card-elem">
+				<div class="reln-info gen-info">
+					Parents are divorced. Mom (Clarissa) is bringing Stella into the office but all financial information should be sent to Dad (Peter).
+				</div>
+				
+				<div class="reln-type-insurance">MO-</div>
+				<div class="reln-type-insurance">FA- Primary Insurance holder</div>
+			</div>
+			
+			<div class="card-elem">
+				<div class="item-details">
+					<div class="reln-item">
+						<div class="relationtype">{{selectedItem.relationtype}}</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue">{{selectedItem.name}}</div>
+						<div class="itemlabel">First M Last</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue">{{selectedItem.email}}</div>
+						<div class="itemlabel">Email Address</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue" *ngIf="selectedItem.mobile != ''">{{selectedItem.mobile}}</div>
+						<div class="itemvalue" *ngIf="selectedItem.mobile == ''">-</div>
+						<div class="itemlabel">Cell phone</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue" *ngIf="selectedItem.employer != ''">{{selectedItem.employer}}</div>
+						<div class="itemvalue" *ngIf="selectedItem.employer == ''">-</div>
+						<div class="itemlabel">Employer</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue" *ngIf="selectedItem.carrier != ''">{{selectedItem.carrier}}</div>
+						<div class="itemvalue" *ngIf="selectedItem.carrier == ''">-</div>
+						<div class="itemlabel">Carrier</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue" *ngIf="selectedItem.group != ''">{{selectedItem.group}}</div>
+						<div class="itemvalue" *ngIf="selectedItem.group == ''">-</div>
+						<div class="itemlabel">Group #</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue">{{selectedItem.street}}<br>{{selectedItem.city}}<br>{{selectedItem.zip}}</div>
+						<div class="itemlabel">Address</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue" *ngIf="selectedItem.phone != ''">{{selectedItem.phone}}</div>
+						<div class="itemvalue" *ngIf="selectedItem.phone == ''">-</div>
+						<div class="itemlabel">Work phone</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue" *ngIf="selectedItem.dob != ''">{{selectedItem.dob}}</div>
+						<div class="itemvalue" *ngIf="selectedItem.dob == ''">-</div>
+						<div class="itemlabel">DOB</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue" *ngIf="selectedItem.ssn!= ''">{{selectedItem.ssn}}</div>
+						<div class="itemvalue" *ngIf="selectedItem.ssn == ''">-</div>
+						<div class="itemlabel">SSN</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemvalue" *ngIf="selectedItem.emplrid != ''">{{selectedItem.emplrid}}</div>
+						<div class="itemvalue" *ngIf="selectedItem.emplrid == ''">-</div>
+						<div class="itemlabel">Employer ID</div>
+					</div>
+					
+					<div class="reln-item">
+						<div class="itemlabel contract">Contract <span class="signed">{{selectedItem.contract}}</span></div>
+						<div class="itemlabel contract">Consent <span class="notsigned">{{selectedItem.consent}}</span></div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div fxFlex="896px">
+			<div fxLayout="row" fxLayoutGap="10px">
+				<div fxFlex="691px" class="card-elem">
+					<div fxLayout="row" fxLayoutGap="20px">
+						<div fxFlex="377px" style="position: relative;">
+							
+							<div class="newreln-btn">
+								<div class="new-reln-icon">
+									<svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect width="11" height="10" rx="1" fill="#333333"/>
+										<path d="M8.37953 5.376H5.93153V7.956H5.06153V5.376H2.62553V4.566H5.06153V2.004H5.93153V4.566H8.37953V5.376Z" fill="white"/>
+									</svg>
+								</div>
+								<div class="new-reln-label">New Relationship</div>
+
+							</div>
+							
+							<div class="finance-table">
+								<div class="finance-table-header">
+									<div class="finance-header-cell" style="width: 45px; padding-top: 0; padding-bottom: 0;"></div>
+									<div class="finance-header-cell" style="width: 45px; padding-top: 0; padding-bottom: 0;"></div>
+									<div class="finance-header-cell" style="width: 163px; padding-top: 0; padding-bottom: 0;"></div>
+									<div class="finance-header-cell" style="text-align: right; padding-top: 0; padding-bottom: 0;">Balance</div>
+									<div class="finance-header-cell" style="text-align: right; padding-top: 0; padding-bottom: 0;">Due Now</div>
+								</div>
+							</div>
+							
+							<div class="finance-table-bdy">
+								<div class="finance-table-body" style="background: #d1f9f4;">
+									<div class="finance-body-cell">FA</div>
+									<div class="finance-body-cell">REG</div>
+									<div class="finance-body-cell" style="width: 163px;">Goslin, Peter</div>
+									<div class="finance-body-cell" style="text-align: right; border-top: 1px solid #333333;">2,400.00</div>
+									<div class="finance-body-cell" style="text-align: right; border-top: 1px solid #333333;">800.00</div>
+								</div>
+								
+								<div class="finance-table-body" style="background: #e1d1fb;">
+									<div class="finance-body-cell">FA</div>
+									<div class="finance-body-cell">Ins 1</div>
+									<div class="finance-body-cell" style="width: 163px">Blue Cross of Washington</div>
+									<div class="finance-body-cell" style="text-align: right;">2,400.00</div>
+									<div class="finance-body-cell" style="text-align: right;">800.00</div>
+								</div>
+								
+								<div class="finance-table-body" style="background: #fec2c2;">
+									<div class="finance-body-cell">MO</div>
+									<div class="finance-body-cell">Reg</div>
+									<div class="finance-body-cell" style="width: 163px">Marcum, Clarissa</div>
+									<div class="finance-body-cell" style="text-align: right; border-bottom: 1px solid #333333;">975.00</div>
+									<div class="finance-body-cell" style="text-align: right; border-bottom: 1px solid #333333;">250.00</div>
+								</div>
+								
+								<div class="finance-table-body">
+									<div class="finance-body-cell" style="padding-top: 0; padding-bottom: 0;"></div>
+									<div class="finance-body-cell" style="padding-top: 0; padding-bottom: 0;"></div>
+									<div class="finance-body-cell" style="width: 163px; padding-top: 0; padding-bottom: 0;"></div>
+									<div class="finance-body-cell" style="text-align: right; padding-top: 0; padding-bottom: 0;">3,375.00</div>
+									<div class="finance-body-cell" style="text-align: right; padding-top: 0; padding-bottom: 0;">1,050.00</div>
+								</div>
+							</div>
+							
+							
+							
+						</div>
+						
+						<div fxFlex="264px" style="position: relative;">
+							<div style="margin-bottom: 8px; margin-top: 5px;">
+								<app-vertical-meter [markerlblArr]="markerlblArr" [meterdata]="markerdata1"></app-vertical-meter>
+							</div>
+							
+							<div style="margin-bottom: 8px">
+								<app-vertical-meter [markerlblArr]="markerlblArr2" [meterdata]="markerdata2"></app-vertical-meter>
+							</div>
+							
+							<div>
+								<app-vertical-meter [markerlblArr]="markerlblArr3" [meterdata]="markerdata3"></app-vertical-meter>
+							</div>
+						</div>
+					</div>
+					
+					<div class="btn-cont">
+						<div class="btn-cont-left">
+							<div class="table-btn">Full Ledger</div>
+							<div class="table-btn">Insurance</div>
+						</div>
+						
+						<div class="btn-cont-right">
+							<div class="table-btn">Pay Schedule <span style="margin-left: 8px;"><svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.796692 4.62714L0.625972 6.0498L2.04801 5.87916L2.04895 5.8801L5.63407 2.29499L4.38212 1.04304L0.797363 4.62781L0.796692 4.62714Z" fill="#333333"/>
+<path d="M4.59003 0.835938L5.14181 0.28415C5.29802 0.127941 5.55129 0.127941 5.7075 0.28415L6.39376 0.97041C6.54997 1.12662 6.54997 1.37989 6.39376 1.5361L5.84197 2.08788L4.59003 0.835938Z" fill="#333333"/>
+</svg>
+</span></div>
+						</div>
+						
+						<div class="clear"></div>
+					</div>
+					
+					<div class="finance-table2">
+						<div class="finance-table2-header">
+							<div class="finance-header2-cell" style="width: 76px;">
+								<span>
+									<svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect width="18" height="10" rx="1" fill="#333333"/>
+										<rect y="2" width="18" height="2" fill="white"/>
+									</svg>
+								</span>
+								
+								<span style="color: #333333; margin-left: 20px;">+</span>
+							</div>
+							<div class="finance-header2-cell" style="width: 76px;">Due Date</div>
+							<div class="finance-header2-cell" style="width: 95px;">Posting Code...</div>
+							<div class="finance-header2-cell" style="width: 70px;">Chg...</div>
+							<div class="finance-header2-cell" style="width: 65px;">Adj...</div>
+							<div class="finance-header2-cell" style="width: 65px;">Pay...</div>
+							<div class="finance-header2-cell" style="width: 137px">Authorized...</div>
+							<div class="finance-header2-cell" style="width: 60px">Balance</div>
+						</div>
+					</div>
+					
+					<div class="finance-table2-body firstrow">
+						<div class="finance-body2-cell" style="width: 76px;"></div>
+						<div class="finance-body2-cell" style="width: 76px;"></div>
+						<div class="finance-body2-cell" style="width: 95px;"></div>
+						<div class="finance-body2-cell" style="width: 70px;">10,000.00</div>
+						<div class="finance-body2-cell" style="width: 65px;">1,950.00</div>
+						<div class="finance-body2-cell" style="width: 65px;">8,950.00</div>
+						<div class="finance-body2-cell" style="width: 140px"></div>
+						<div class="finance-body2-cell" style="width: 60px">1,050.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #d1f9f4;">
+						<div class="finance-body2-cell" style="width: 76px;">04/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">04/15/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CCard</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">100.00</div>
+						<div class="finance-body2-cell" style="width: 140px">Authorized 44883C</div>
+						<div class="finance-body2-cell" style="width: 60px">2400.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #d1f9f4;">
+						<div class="finance-body2-cell" style="width: 76px;">03/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">03/18/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CCard</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">200.00</div>
+						<div class="finance-body2-cell" style="width: 140px">Authorized 22Cx55</div>
+						<div class="finance-body2-cell" style="width: 60px">2500.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #e1d1fb;">
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CompTx</div>
+						<div class="finance-body2-cell" style="width: 70px;">3500.00</div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 140px"></div>
+						<div class="finance-body2-cell" style="width: 60px">3500.00</div>
+					</div>
+					
+					<div class="finance-table2-body note" style="background: #feffca;">
+						<div class="finance-body2-cell" style="width: 76px;">03/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">Filed BC ins. Max to pay 1200 at 50%</div>
+						<div class="finance-body2-cell" style="width: 95px;"></div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 140px">follow up: 03/18/2017</div>
+						<div class="finance-body2-cell" style="width: 60px"></div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #d1f9f4;">
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">Check</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">250.00</div>
+						<div class="finance-body2-cell" style="width: 140px">#4453</div>
+						<div class="finance-body2-cell" style="width: 60px">.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #d1f9f4;">
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">Records</div>
+						<div class="finance-body2-cell" style="width: 70px;">250.00</div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 140px"></div>
+						<div class="finance-body2-cell" style="width: 60px">250.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #fec2c2;">
+						<div class="finance-body2-cell" style="width: 76px;">04/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">04/15/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CCard</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">100.00</div>
+						<div class="finance-body2-cell" style="width: 140px">Authorized 44883C</div>
+						<div class="finance-body2-cell" style="width: 60px">2400.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #fec2c2;">
+						<div class="finance-body2-cell" style="width: 76px;">03/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">03/18/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CCard</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">200.00</div>
+						<div class="finance-body2-cell" style="width: 140px">Authorized 22Cx55</div>
+						<div class="finance-body2-cell" style="width: 60px">2500.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #e1d1fb;">
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CCard</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">800.00</div>
+						<div class="finance-body2-cell" style="width: 140px">Authorized AAVV22</div>
+						<div class="finance-body2-cell" style="width: 60px">2700.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #d1f9f4;">
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CompTx</div>
+						<div class="finance-body2-cell" style="width: 70px;">3500.00</div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 140px"></div>
+						<div class="finance-body2-cell" style="width: 60px">3500.00</div>
+					</div>
+					
+					<div class="finance-table2-body note" style="background: #feffca;">
+						<div class="finance-body2-cell" style="width: 76px;">03/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">Filed BC ins. Max to pay 1200 at 50%</div>
+						<div class="finance-body2-cell" style="width: 95px;"></div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 140px">follow up: 03/18/2017</div>
+						<div class="finance-body2-cell" style="width: 60px"></div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #e1d1fb;">
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">Check</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">250.00</div>
+						<div class="finance-body2-cell" style="width: 140px">#4453</div>
+						<div class="finance-body2-cell" style="width: 60px">.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #d1f9f4;">
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">Records</div>
+						<div class="finance-body2-cell" style="width: 70px;">250.00</div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 140px"></div>
+						<div class="finance-body2-cell" style="width: 60px">250.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #fec2c2;">
+						<div class="finance-body2-cell" style="width: 76px;">04/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">04/15/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CCard</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">100.00</div>
+						<div class="finance-body2-cell" style="width: 140px">Authorized 44883C</div>
+						<div class="finance-body2-cell" style="width: 60px">2400.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #e1d1fb;">
+						<div class="finance-body2-cell" style="width: 76px;">03/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">03/18/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CCard</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">200.00</div>
+						<div class="finance-body2-cell" style="width: 140px">Authorized 22Cx55</div>
+						<div class="finance-body2-cell" style="width: 60px">2500.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #fec2c2;">
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CCard</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">800.00</div>
+						<div class="finance-body2-cell" style="width: 140px">Authorized AAVV22</div>
+						<div class="finance-body2-cell" style="width: 60px">2700.00</div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #fec2c2;">
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">02/15/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">CompTx</div>
+						<div class="finance-body2-cell" style="width: 70px;">3500.00</div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 140px"></div>
+						<div class="finance-body2-cell" style="width: 60px">3500.00</div>
+					</div>
+					
+					<div class="finance-table2-body note" style="background: #feffca;">
+						<div class="finance-body2-cell" style="width: 76px;">03/15/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">Filed BC ins. Max to pay 1200 at 50%</div>
+						<div class="finance-body2-cell" style="width: 95px;"></div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 140px">follow up: 03/18/2017</div>
+						<div class="finance-body2-cell" style="width: 60px"></div>
+					</div>
+					
+					<div class="finance-table2-body" style="background: #e1d1fb;">
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 76px;">01/01/2017</div>
+						<div class="finance-body2-cell" style="width: 95px;">Check</div>
+						<div class="finance-body2-cell" style="width: 70px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;"></div>
+						<div class="finance-body2-cell" style="width: 65px;">250.00</div>
+						<div class="finance-body2-cell" style="width: 140px">#4453</div>
+						<div class="finance-body2-cell" style="width: 60px">.00</div>
+					</div>
+					
+				</div>
+				
+				<div fxFlex="194px" style="position: relative;">
+					<div class="card-elem" style="position: absolute; left: 0; bottom: 0;">
+						<div class="paymnt-item">
+							<div class="paymnt-item-label">Start Date</div>
+							<div class="paymnt-item-value">11/10/2018</div>
+						</div>
+						
+						<div class="paymnt-item">
+							<div class="paymnt-item-label">Amount</div>
+							<div class="paymnt-item-value">$200</div>
+						</div>
+						
+						<div class="paymnt-item">
+							<div class="paymnt-item-label">Down Payment</div>
+							<div class="paymnt-item-value">$1,400</div>
+						</div>
+						
+						<div class="paymnt-item">
+							<div class="paymnt-item-label">x Months</div>
+							<div class="paymnt-item-value">13</div>
+						</div>
+						
+						<div class="paymnt-breakup-cont">
+							<div class="paymnt-breakup">
+								<div class="paymnt-breakup-label">11/10/2018</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup even">
+								<div class="paymnt-breakup-label">12/10/2018</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup">
+								<div class="paymnt-breakup-label">01/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup even">
+								<div class="paymnt-breakup-label">02/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup">
+								<div class="paymnt-breakup-label">03/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup even">
+								<div class="paymnt-breakup-label">04/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup">
+								<div class="paymnt-breakup-label">05/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup even">
+								<div class="paymnt-breakup-label">06/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup">
+								<div class="paymnt-breakup-label">07/10/2018</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup even">
+								<div class="paymnt-breakup-label">08/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup">
+								<div class="paymnt-breakup-label">09/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup even">
+								<div class="paymnt-breakup-label">10/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+							<div class="paymnt-breakup">
+								<div class="paymnt-breakup-label">11/10/2019</div>
+								<div class="paymnt-breakup-value">$200</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div fxLayout="row">
+				<div fxFlex="100%" class="card-elem">
+					<div fxLayout="row" fxLayoutGap="20px">
+						
+						<div fxFlex="calc(100% - 305px)">
+							<div class="top-panel">
+								<div fxLayout="row">
+									<div fxFlex="33.33" class="title-name title-selected">Peter K. Goslin</div>
+									<div fxFlex="33.33" class="title-name">Clarissa Marcum</div>
+									<div fxFlex="33.33" class="title-name">Blue Cross of Washington</div>
+								</div>
+								
+								<div fxLayout="row">
+									<div fxFlex="50" class="title-addr title-selected">Blue Cross of Washington 192 Grand Ave. Seattle WA 82101</div>
+									<div fxFlex="50" class="title-addr">Aetna: 8909 Cardiff Cir. Tacoma, WA 92840</div>
+								</div>
+								
+								<div fxLayout="row" style="margin-top: 5px; margin-bottom: 5px;">
+									<div fxFlex="50" class="ids">Pt Ins ID: W1235 06922</div>
+									<div fxFlex="50" class="ids">Medicaid ID: 99994938490</div>
+								</div>
+							</div>
+							
+							<div class="finance-table3 bgcol">
+								<div class="finance-table3-cell" style="width: 76px;">ADA Code</div>
+								<div class="finance-table3-cell" style="width: 160px;">Description</div>
+								<div class="finance-table3-cell" style="width: 90px;">Date</div>
+								<div class="finance-table3-cell" style="width: 59px;">Tooth</div>
+								<div class="finance-table3-cell" style="width: 59px;">Quad</div>
+								<div class="finance-table3-cell" style="width: 71px;">Surface</div>
+								<div class="finance-table3-cell" style="width: 85px;">Amount</div>
+							</div>
+							
+							<div class="finance-table3">
+								<div class="finance-table3-cell" style="width: 76px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 160px;"><input type="text" placeholder="Type here..."></div>
+								<div class="finance-table3-cell" style="width: 90px;">00/00/00</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 71px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 85px;">0000.00</div>
+							</div>
+							
+							<div class="finance-table3 bgcol">
+								<div class="finance-table3-cell" style="width: 76px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 160px;"><input type="text" placeholder="Type here..."></div>
+								<div class="finance-table3-cell" style="width: 90px;">00/00/00</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 71px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 85px;">0000.00</div>
+							</div>
+							
+							<div class="finance-table3">
+								<div class="finance-table3-cell" style="width: 76px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 160px;"><input type="text" placeholder="Type here..."></div>
+								<div class="finance-table3-cell" style="width: 90px;">00/00/00</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 71px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 85px;">0000.00</div>
+							</div>
+							
+							<div class="finance-table3 bgcol">
+								<div class="finance-table3-cell" style="width: 76px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 160px;"><input type="text" placeholder="Type here..."></div>
+								<div class="finance-table3-cell" style="width: 90px;">00/00/00</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 71px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 85px;">0000.00</div>
+							</div>
+							
+							<div class="finance-table3">
+								<div class="finance-table3-cell" style="width: 76px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 160px;"><input type="text" placeholder="Type here..."></div>
+								<div class="finance-table3-cell" style="width: 90px;">00/00/00</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 71px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 85px;">0000.00</div>
+							</div>
+							
+							<div class="finance-table3 bgcol">
+								<div class="finance-table3-cell" style="width: 76px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 160px;"><input type="text" placeholder="Type here..."></div>
+								<div class="finance-table3-cell" style="width: 90px;">00/00/00</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 59px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 71px;">Add...</div>
+								<div class="finance-table3-cell" style="width: 85px;">0000.00</div>
+							</div>
+							
+						</div>
+						
+						<div fxFlex="285px">
+							<div fxLayout="row" fxLayoutGap="5px">
+								<div fxFlex="50">
+									<div class="card-elem" style="padding: 5px; margin-bottom: 5px;">
+										<div class="custChkbox">
+											<input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
+											<label for="styled-checkbox-1">Primary?</label>
+										</div>
+										
+										<div class="custChkbox">
+											<input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value1">
+											<label for="styled-checkbox-2">Pre Estimate</label>
+										</div>
+										
+										<div class="section-item">Group #: <span>128495342-53</span></div>
+										<div class="section-item">School: <span>IIIII</span></div>
+										
+										<div class="custRadio">
+											<div class="custRadio-cont">
+												<input type="radio" id="radio1" name="radio-group" checked>
+												<label for="radio1">Tx for Ortho</label>
+											</div>
+											<div class="custRadio-cont">
+												<input type="radio" id="radio2" name="radio-group">
+												<label for="radio2">Signature on file</label>
+											</div>
+											<div class="custRadio-cont">
+												<input type="radio" id="radio3" name="radio-group">
+												<label for="radio3">Illness / Injury</label>
+											</div>
+											<div class="custRadio-cont">
+												<input type="radio" id="radio4" name="radio-group">
+												<label for="radio4">Auto Accident</label>
+											</div>
+										</div>
+									</div>
+									
+									<div class="card-elem" style="padding: 5px; margin-bottom: 0;">
+										<div class="custChkbox">
+											<input class="styled-checkbox" id="other-coverage" type="checkbox" value="value1">
+											<label for="other-coverage">Other Coverage</label>
+										</div>
+										
+										<div class="section-item">Relationship: <span>GM</span></div>
+										<div class="section-item">Other Insurer: <span></span></div>
+										<div class="section-item">Sex: <span>F</span></div>
+										<div class="section-item">Group Number: <span>128442-53</span></div>
+									</div>
+								</div>
+								<div fxFlex="50">
+									<div class="card-elem" style="padding: 5px; margin-bottom: 5px; position: relative;">
+										<div class="section-item">Marital Status: <span>Single</span></div>
+										<div class="section-item">Employ Status: <span>Active</span></div>
+										<div class="section-item">Student Status: <span>Inactive</span></div>
+										<div class="section-item">Medicaid ID: <span>128495342-53</span></div>
+										<div class="custChkbox">
+											<input class="styled-checkbox" id="release-info" type="checkbox" value="value1" checked>
+											<label for="release-info">Release Info</label>
+										</div>
+										<div class="custChkbox">
+											<input class="styled-checkbox" id="assign-benefits" type="checkbox" value="value1" checked>
+											<label for="assign-benefits">Assign Benefits</label>
+										</div>
+										
+										<div class="section-title">P a t i e n t</div>
+										
+									</div>
+									
+									<div class="card-elem" style="padding: 5px; position: relative; margin-bottom: 0;">
+										
+										<div class="reln-item" style="margin-bottom: 6px;">
+											<div class="itemvalue">Trifin Labs</div>
+											<div class="itemlabel">Employer</div>
+										</div>
+										
+										<div class="reln-item">
+											<div class="itemvalue">8283939283-75</div>
+											<div class="itemlabel">Employer ID</div>
+										</div>
+										
+										<div class="reln-item">
+											<div class="itemvalue">1800 Grand ave. San Diego, CA 92109</div>
+											<div class="itemlabel">Employer Address</div>
+										</div>
+										
+										<div class="section-title" style="right: -11px; top: 25px;">S u b s c r i b e r</div>
+										
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</perfect-scrollbar>

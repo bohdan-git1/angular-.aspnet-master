@@ -1,0 +1,279 @@
+.patient-block {
+	width: 240px;
+	height: 70px;
+	background: #fff;
+	border: 2px solid #B48CF6;
+	border-radius: 5px;
+	box-sizing: border-box;
+	position: absolute;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+	max-height: 100px;
+	
+	/*left: 234px;*/
+}
+
+.upper-block {
+	width: 100%;
+	position: relative;
+}
+
+.lower-block {
+	width: calc(100% - 10px);
+    /* border-top: 1px solid #646464; */
+    padding-top: 0px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 3px;
+    box-sizing: border-box;
+}
+
+.profile-img {
+	width: 38px;
+	height: 38px;
+	border: 2px solid #B48CF6;
+	border-radius: 100px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	
+}
+
+.profile-img-wrapper {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.patient-name {
+	display: inline-block;
+    color: #646464;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: top;
+    width: calc(100% - 45px);
+    line-height: 14px;
+}
+
+.notes {
+	color: #F11212;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+.notes span {
+	margin-right: 5px;
+}
+
+.patient-block-icon {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	color: #646464;
+}
+
+.time-cont {
+	display: flex;
+	align-items: center;
+}
+
+.time-cont-left {
+	float: left;
+}
+
+.time-cont-right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.time-in-chair {
+	font-size: 10px;
+    text-align: right;
+    width: 100%;
+	color: #646464;
+}
+
+.access-code {
+	font-size: 10px;
+    text-align: left;
+    color: #646464;
+}
+
+.chair-section {
+	position: relative;
+}
+
+/* ---- new css --- */
+
+.min-10 {
+	/* position: relative; */
+	height: 100%;
+}
+
+.min-10 .profile-img {
+	width: 37px;
+	height: 37px;
+	position: relative;
+}
+
+.min-10 .patient-name {
+	display: block;
+    color: #646464;
+    font-size: 13px;
+    font-weight: bold;
+    vertical-align: top;
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0 2px;
+    border-bottom: none;
+    margin-top: 2px;
+    height: 12px;
+}
+
+.min-10 .access-code {
+	font-size: 9px;
+    color: #646464;
+    text-align: center;
+    width: 100%;
+    font-weight: normal;
+    padding-left: 5px;
+    box-sizing: border-box;
+    margin: 0
+	
+}
+
+.dots {
+	width: 4px;
+    height: 4px;
+    background: #F11212;
+    border-radius: 100%;
+    position: absolute;
+    right: 0;
+    left: 37px;
+    margin: auto;
+    top: 44px;
+}
+
+.min-10 .img-cont {
+	position: relative;
+	width: 37px;
+	height: 37px;
+	margin: 2px auto 2px;
+}
+
+.min-other {
+	padding: 3px 5px;
+}
+
+.min-10-pateint-wrapper {
+	position: absolute;
+    left: 0;
+    right: 0;
+	top: 5px;
+    bottom: auto;
+    margin: auto
+}
+
+.overlay-box {
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.8);
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	border-radius: 5px;
+	left: 0;
+	top: 0;
+}
+
+/*---- added on 08-07-2019 ----------*/
+
+.alergy-sign {
+	display: flex;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+	width: 6px;
+}
+
+.alergy-sign-center {
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.five-min-starttime {
+	font-size: 8px;
+    color: #646464;
+    text-align: center;
+    width: 100%;
+    font-weight: normal;
+    padding: 0 1px;
+    box-sizing: border-box;
+    margin: 0
+}
+
+.ten-min-img-cont {
+	width: 37px;
+    height: 37px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1px;
+    margin: auto;
+}
+
+.ten-min-img-cont .profile-img {
+	width: 100%;
+	height: 100%;
+}
+
+.ten-min-patient-name {
+	font-size: 12px !important;
+    padding: 0px 1px !important;
+    line-height: 12px !important;
+    margin: 0 !important;
+}
+
+.five-min-wrapper {
+	position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotatedname {
+	font-size: 12px !important;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    white-space: nowrap;
+}
+
+.fadein-animate{animation:opac 1s}@keyframes opac{from{opacity:0} to{opacity:1}}
+
+/*@media screen and (max-height: 768px) {
+	.lower-block {
+		width: calc(100% - 42px);
+		left: auto;
+		right: 3px
+	}
+}*/

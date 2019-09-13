@@ -1,0 +1,615 @@
+input:focus, textarea:focus {
+	outline: none;
+}
+
+.component-cont {
+	/*height: 635px;*/
+	width: 849px;
+}
+
+.component-title {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: normal;
+	color: #646464;
+	
+}
+
+.comp-content {
+	margin-top: 15px;
+	padding-left: 40px;
+}
+
+.content-section {
+	margin-bottom: 15px;
+}
+
+.search-section {
+	width: 338px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 0 8px;
+	position: relative;
+}
+
+.search-icon {
+	width: 12px;
+	height: 100%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.search-input {
+	width: calc(100% - 12px);
+    display: inline-block;
+	color:#646464; font-size:14px;
+    height: 100%; 
+	vertical-align:top;
+	
+}
+
+.search-input input {
+	width: 100%;
+    height: 100%;
+    padding: 0 0 0 10px;
+    box-sizing: border-box;
+    border: none;
+    background: none;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: normal;
+}
+
+.search-input input::placeholder {
+	color: #A5A5A5;
+}
+
+.float-left {
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
+
+.add-new-patient {
+	margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+	cursor: pointer;
+}
+
+.plus-icon {
+	display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.new-patient-label {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: normal;
+	color: #4EC8F0;
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: underline;
+}
+
+.event-btn {
+	width: 51px;
+    height: 100%;
+    background: #FFFFFF;
+    border-left: 1px solid #A5A5A5;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: normal;
+	text-align: center;
+	color: #A5A5A5;
+	cursor: pointer;
+
+}
+
+.procedure-time {
+	height: 35px;
+    min-width: 35px;
+    background: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: inline-flex;
+    margin-right: 8px;
+    align-items: center;
+    justify-content: center;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: normal;
+    text-align: center;
+    color: #A5A5A5;
+    padding-left: 6px;
+    padding-right: 6px;
+	cursor: default;
+}
+
+.add-note {
+	height: 90px;
+	background: #FFFFFF;
+	border: 1px solid #A5A5A5;
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.search-section textarea::placeholder{
+	color: #4EC8F0;
+}
+
+.search-section textarea {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: normal;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    resize: none;
+    border: none;
+    background: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.calender-section {
+	width: 336px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    border-radius: 2px;
+    display: inline-flex;
+    vertical-align: bottom;
+    margin-left: 15px;
+	box-sizing: border-box;
+	padding-left: 10px;
+    padding-right: 10px;
+}
+
+.office-section {
+	display: inline-flex;
+    vertical-align: bottom;
+    margin-left: 15px;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: normal;
+	text-align: center;
+	color: #4EC8F0;
+	align-items: center;
+	justify-content: center;
+
+	background: #FFFFFF;
+	border: 1px solid #C4C4C4;
+	border-radius: 2px;
+	padding: 10px;
+	height: 35px;
+	box-sizing: border-box;
+	cursor: default;
+
+}
+
+.prev-week-icon, .next-week-icon {
+	width: 20px;
+	height: 100%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.calender-label {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: calc(100% - 40px);
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: normal;
+	text-align: center;
+	color: #4EC8F0;
+}
+
+.week-panel {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.week-label-wrapper {
+	width: 14.28%;
+	display: inline-block;
+	padding-left: 3px;
+	padding-right: 3px;
+	box-sizing: border-box;
+}
+
+.week-label {
+    width: 100%;
+    height: 35px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    border-radius: 2px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: normal;
+    text-align: center;
+    color: #4EC8F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	box-sizing: border-box;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.week-label-wrapper:first-child {
+	padding-left: 0;
+}
+
+.week-label-wrapper:last-child {
+	padding-right: 0;
+}
+
+.offday {
+	color: #A5A5A5;
+}
+
+.timeslot {
+	width: 100%;
+	height: auto;
+	cursor: pointer;
+}
+
+.timeslot-time {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 10px;
+	line-height: normal;
+	text-align: center;
+	color: #FFFFFF;
+	border-radius: 4px;
+}
+
+.timeslot-location {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 8px;
+	line-height: normal;
+	text-align: center;
+	color: #FFFFFF;
+	border-radius: 4px;
+}
+
+.timeslot-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 30px;
+	background: #4EC8F0;
+	border: 1px solid #FFFFFF;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+	margin-bottom: 8px;
+}
+
+.timeslot-cont {
+	width: 14.28%;	
+	display: inline-block;
+	padding-left: 3px;
+	padding-right: 3px;
+	box-sizing: border-box;
+	vertical-align: top;
+}
+
+.appnt-date-panel {
+	height: 210px;
+}
+
+.search-result-cont {
+	position: absolute;
+	top: 39px;
+	left: 0;
+	width: 100%;
+	height: auto;
+	max-height: 170px;
+	background: #FFFFFF;
+	border: 1px solid #A5A5A5;
+	box-sizing: border-box;
+	border-radius: 4px;
+	z-index: 1000;
+}
+
+.search-ptn-name {
+	float: left;
+	width: 30%;
+	padding-left: 10px;
+	padding-right: 5px;
+	box-sizing: border-box;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: normal;
+	color: #646464;
+}
+
+.search-ptn-family {
+	float: left;
+	width: 30%;
+	padding-left: 5px;
+	padding-right: 5px;
+	box-sizing: border-box;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: normal;
+	color: #A5A5A5;
+}
+
+.search-ptn-addr {
+	float: right;
+	width: 40%;
+	padding-left: 5px;
+	padding-right: 10px;
+	box-sizing: border-box;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: normal;
+	text-align: right;
+	color: #A5A5A5;
+	
+}
+
+.search-item {
+	padding: 8px 5px;
+	cursor: pointer;
+	background: transparent;
+}
+
+.search-item:hover {
+	background: #F5F5F5;
+}
+
+/* --------------------- new patient info ---------------------*/
+
+.patient-info{width:100%;}
+.patient-info .name-label{font-family: Lato; font-size:9px; color:#4EC8F0; margin-top: 3px; margin-bottom: 3px;}
+.patient-info .txt-input{font-family: Lato; width:100%; position:relative; height:39px; font-weight:500; font-size:12px; line-height:36px; color:#646464; padding:0 16px;
+border:1px solid #4EC8F0; border-radius:4px; box-sizing:border-box}
+.patient-info .txt-input-edit{font-family: Lato; width:100%; height:36px; font-weight:500; font-size:12px; line-height:36px; color:#A5A5A5; padding:0 16px;
+border:1px solid #A5A5A5; border-radius:4px; box-sizing:border-box}
+.patient-info .submit_btn{float:left; padding:9px 30px; margin:20px 5px 20px 0; background:#4EC8F0; border:1px solid #FFFFFF; text-align:center; box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25);
+border-radius:4px; font-size:12px; line-height:normal; text-align:center; color:#FFFFFF; font-family: Lato; cursor: pointer;}
+.patient-info .dropdwnbox{width:100%; position:relative; box-sizing:border-box}
+.patient-info .dropdwnbox .dropdwnarrow{width:20px; height:20px; position:absolute; right:0; top:6px}
+
+.patient-info .next-btn {
+	float:left; 
+	padding:9px 30px; 
+	margin:20px 5px 20px 0; 
+	background:#4EC8F0; 
+	border:1px solid #FFFFFF; 
+	text-align:center; 
+	box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25);
+	border-radius:4px; 
+	font-size:12px;
+	line-height:normal;
+	text-align:center;
+	color:#FFFFFF;
+	font-family: Lato;
+	cursor: pointer;
+}
+
+.confirmation-modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: transparent;
+	left: 0;
+	top: 0;
+}
+
+.confirm-modal {
+	position: absolute;
+    width: 297px;
+    height: 312px;
+    background: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 25px;
+}
+
+.modal-logo {
+	margin: 0 auto 25px;
+    width: 114px;
+    height: 114px;
+}
+
+.modal-txt {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: normal;
+	text-align: center;
+	color: #4EC8F0;
+	
+}
+
+.newspaceCls{
+	white-space: pre;
+}
+
+.modal-btn {
+	width: 80px;
+	height: 30px;
+	background: #4EC8F0;
+	border: 1px solid #FFFFFF;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 4px;
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: normal;
+	text-align: center;
+	color: #FFFFFF;
+	
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.modal-btn-cont {
+	text-align: center;
+    margin-top: 25px;
+	cursor: pointer;
+}
+
+.closeBtn {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+
+
+
+
+.savePatientBt {
+	font-size: 12px;
+    line-height: normal;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Lato;
+    cursor: pointer;
+    border: 0;
+    background: none;
+}
+
+.city-container{
+	float: left;
+    width: 45%;
+    margin-right: 5%;
+}
+
+.state-container{
+	float: left;
+    width: 20%;
+    margin-right: 5%;
+}
+
+.zip-container{
+	float: left;
+    width: 25%;
+}
+
+.birthday-container{
+	float: left;
+	width: 45%;
+	margin-right: 5%;
+}
+
+.gender-container{
+	float: left;
+	width: 50%;
+}
+.ssn-container{
+	float: left;
+	width: 45%;
+	margin-right: 5%;
+}
+
+.cellphone-container{
+	float: left;
+	width: 47.5%;
+	margin-right: 5%;
+}
+
+.homephone-container{
+	float: left;
+	width: 47.5%;
+}
+
+.have-other-family{
+	font-family: Lato;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    color: #646464;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.patient-search-glass{
+	position: absolute;
+    width: 29px;
+    height: 39px;
+    background: #FFFFFF;
+    border: 1px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+	align-items: center;
+	cursor: pointer;
+}

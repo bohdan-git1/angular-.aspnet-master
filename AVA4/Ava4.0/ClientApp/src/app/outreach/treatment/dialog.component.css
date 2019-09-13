@@ -1,0 +1,181 @@
+.todolist {
+	position: relative;
+	box-sizing: border-box;
+}
+
+.todolist-bar {
+	width: 100%;
+	height: 23px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #4EC8F0;
+	box-sizing: border-box;
+	border-radius: 4px 4px 0 0;
+	border-left: 1px solid #4EC8F0;
+    border-right: 1px solid #4EC8F0;
+    border-top: 1px solid #4EC8F0;
+}
+
+.todo-icon {
+	width: 14px;
+	height: 17px;
+	margin: auto;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.todo-available {
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	background: #FF5A5A;
+	border-radius: 100px;
+	right: 0;
+	top: 0;
+}
+
+.list-content {
+	width: 100%;
+	height: 260px;
+	background: #4EC8F0;
+	padding: 23px 0 50px 10px;
+	box-sizing: border-box;
+	font-size: 11px;
+	border: 1px solid #4EC8F0;
+	border-radius: 4px;
+}
+
+ul {
+	list-style: none;
+}
+
+.todo-item {
+	margin-bottom: 12px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.checked {
+	color: #646464;
+	text-decoration: line-through;
+}
+
+.pastdate {
+	color: #FF5A5A;
+}
+
+.todo-date {
+	font-size: 8px;
+	padding-left: 20px;
+}
+
+.notduedate {
+	color: #CBC9C9;
+}
+
+.add-todo {
+	width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.checked-icon {
+	margin-right: 8px;
+	display: inline-block;
+	visibility: hidden;
+}
+
+.todo-item-label {
+	display: inline-block;
+    width: 145px;
+    vertical-align: top;
+}
+
+.todo-item-label:hover, .todo-item:hover {
+	color: #646464;
+}
+
+.showcheckicon {
+	visibility: visible;
+}
+
+.bottom-cont {
+	width: 100%;
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.addicon-wrapper {
+	width: 20px;
+    height: 20px;
+	display: inline-block;
+}
+
+.addicon {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.textinput {
+	width: 150px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 4px;
+	margin-left: 4px;
+}
+
+.descptn, .dt {
+	background: none;
+    border: none;
+    width: 150px;
+    height: 15px;
+	font-family: 'Lato', sans-serif;
+	font-size: 11px;
+	resize: none;
+	color: #fff;
+	display: block;
+}
+
+.dt {
+	font-size: 8px;
+}
+
+.descptn::placeholder, .dt::placeholder {
+	font-family: 'Lato', sans-serif;
+	color: #fff;
+	font-size: 11px;
+}
+
+.dt::placeholder {
+	font-size: 8px;
+}
+
+.allchecked {
+	color: #4EC8F0;
+}
+
+.allchecked::placeholder {
+	color: #4EC8F0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+

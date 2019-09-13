@@ -1,0 +1,150 @@
+.pagetitle {
+	font-size: 40px;
+	color: #4EC8F0;
+	letter-spacing: 8px;
+	margin-bottom: 15px;
+}
+
+.section-cont {
+	width: 100%;
+	padding: 10px 15px 15px 15px;
+	background: #E5E5E5;
+	box-sizing: border-box;
+}
+
+.section-title {
+	margin-bottom: 15px;
+	font-size: 14px;
+	text-align: center;
+	color: #646464;
+	letter-spacing: 3px;
+}
+
+.inner-cont {
+	width: 100%;
+	height: calc(100% - 30px);
+	background: #FFFFFF;
+	border-radius: 4px;
+	box-sizing: border-box;
+	padding: 15px 5px;
+}
+
+.section-dd-cont {
+	padding: 0 25px;
+	position: relative;
+}
+
+.dd-item {
+	width: 100%;
+	background: #F9F9F9;
+	border: 0.5px solid #4EC8F0;
+	box-sizing: border-box;
+	border-radius: 2px;
+	padding: 3px 8px 5px 5px;
+	margin-bottom: 5px;
+}
+
+.dd-item-label {
+	font-size: 12px;
+	color: #333333;
+}
+
+.left-cont {
+	float: left;
+}
+
+.right-cont {
+	float: right;
+	text-align: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.dd-btn {
+	position: absolute;
+    right: 6px;
+    top: -1px;
+}
+
+.plus-btn {
+	position: absolute;
+    left: 5px;
+    top: 0;
+}
+
+.user-item {
+	width: 100%;
+    background: #F9F9F9;
+    border: 0.5px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 2px 5px 3px 5px;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.user-item-element {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+.user-img {
+	width: 26px;
+	height: 26px;
+	background: #F0F0F0;
+	border-radius: 100%;
+}
+
+.user-name {
+	font-size: 12px;
+	color: #333333;
+	min-width: 130px;
+}
+
+.user-email {
+	font-size: 12px;
+	color: #333333;
+	min-width: 220px;
+}
+
+.user-email span {
+	vertical-align: middle;
+	margin-left: 15px;
+}
+
+.user-desig {
+	font-size: 12px;
+	color: #333333;
+	/* min-width: 125px; */
+}
+
+.drpdn-icon {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.drpdn-label {
+	display: inline-block;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+.remove-btn {
+	position: absolute;
+    right: 8px;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+}
+
+.innerfloat-left {float: left;}
+.innerfloat-right {float: right;}
+
+.blue {border-left: 3px solid #4EC8F0;}
+.orange {border-left: 3px solid #F6CC61;}
+.red {border-left: 3px solid #FD7474;}
+.purple {border-left: 3px solid #B48CF6;}
+.tarkish {border-left: 3px solid #8CF1E4;}

@@ -1,0 +1,21 @@
+<div class="searchoxDD">
+	<perfect-scrollbar>
+		<ul>
+			<li *ngFor="let item of optionsArr">
+				<div class="grp-item-label">{{item.grp_title}}</div>
+				<ul>
+					<li *ngFor="let grpitem of item.grp_options">
+						<div class="grp-option-label">{{grpitem.optns}}</div>
+						
+						<ul *ngIf="grpitem.suboptns">
+							<li *ngFor="let subgrpitem of grpitem.suboptns">
+								<div class="subgrp-option-label">{{subgrpitem.optns}}</div>
+							</li>
+						</ul>
+						
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</perfect-scrollbar>
+</div>

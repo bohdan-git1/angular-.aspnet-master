@@ -1,0 +1,86 @@
+<div class="component-wrapper" (clickOutside)="onClickedOutside($event)" [exclude]="'.component-wrapper'">
+	<div class="selected-label" (click)="opendrpdn = opendrpdn==true ? false : true">{{currentStatus}}</div>
+	<div class="option-panel" *ngIf="opendrpdn">
+		<div class="keydates">Key dates</div>
+		
+		<div class="table-heading">
+			  <div class="tbl-hd-col" style="width:87px">Date</div>
+			  <div class="tbl-hd-col" style="width:123px">From</div>
+			  <div class="tbl-hd-col" style="width:124px">To</div>
+			  <div class="tbl-hd-col" style="width:50px">Office</div>
+			  <div class="tbl-hd-col" style="width:90px; text-align: center;">Changed by</div>
+		</div>
+		
+		<div style="height: 135px;">
+			<perfect-scrollbar>
+				<div style="padding-right: 15px; box-sizing: border-box; width: 100%;">
+					<div class="table-row" *ngFor="let rowItem of statusdata">
+						  <div class="tbl-row-col" style="width:87px">{{rowItem.date | date: 'MM/dd/y'}}</div>
+						  <div class="tbl-row-col" style="width:123px">{{rowItem.from}}</div>
+						  <div class="tbl-row-col" style="width:124px">{{rowItem.to}}</div>
+						  <div class="tbl-row-col" style="width:50px; text-align: center">{{rowItem.office}}</div>
+						  <div class="tbl-row-col" style="width:90px; text-align: center;">{{rowItem.changed_by}}</div>
+					</div>
+				</div>
+			</perfect-scrollbar>
+		</div>
+		
+		<div class="action-section">
+			<div class="row-plus-btn" (click)="showRowModal=showRowModal==true?false:true">
+				<svg fill="none" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+					<rect fill="#4EC8F0" height="2.30769" width="10" y="3.8457"></rect>
+					<rect fill="#4EC8F0" height="10" width="2.30769" x="3.84583"></rect>
+				</svg>
+			</div>
+			<div class="current-status">Current Status patient is in: <span>{{currentStatus}}</span></div>
+		</div>
+		
+		<div class="modal-overlay" *ngIf="showRowModal">
+	
+			<div class="create-row-modal">
+				<div class="close-icon" (click)="closeRowModal()">
+					<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect width="1.41409" height="12.7268" transform="matrix(0.707141 0.707073 -0.707141 0.707073 9 0)" fill="#333333"/>
+						<rect width="1.41409" height="12.7268" transform="matrix(0.707141 -0.707073 0.707141 0.707073 0 1.00146)" fill="#333333"/>
+					</svg>
+				</div>
+				
+				<div class="calender-cont">
+					<div class="section-title" (click)="enterManualDt()" (clickOutside)="removeInput()" [exclude]="'.section-title'" >Date: 
+					<span *ngIf="!manualDt">{{selectedDate | date: 'MM/dd/y'}}</span> 
+					<input #dtinput class="input-dt" type="text" [(ngModel)]="inputDt" (blur)="updateDt()" *ngIf="manualDt" [textMask]="{mask: dateMask()}"/>
+					<div class="dateinfo">Click to enter date</div>
+					</div>
+					
+					
+					
+					<app-date-selector (selectedDate)="getSelectedDate($event)"></app-date-selector>
+				</div>
+				
+				<div class="drpdn-container">
+					<div class="section-title">Select Status</div>
+					<div class="drpdn-selector" (click)="showStatusDrdpOptn=showStatusDrdpOptn==true ? false : true">
+						<div class="drpdn-label">{{selectedStatus}}</div>
+						<div class="dn-arrow">
+							<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M5 6L0.669872 0L9.33013 0L5 6Z" fill="#4EC8F0"/>
+							</svg>
+						</div>
+					</div>
+					
+					<div class="drpdn-options" *ngIf="showStatusDrdpOptn">
+						<perfect-scrollbar>
+							<div class="drpdn-optn" *ngFor="let item of statusDrpdnOptn; let indx=index;" (click)="selectOption(indx)">{{item.label}}</div>
+						</perfect-scrollbar>
+					</div>
+				</div>
+				
+				
+				<div class="add-btn" (click)="addnewRow()">Change now</div>
+				<div class="clear"></div>
+				
+			</div>
+		</div>
+	</div>
+	
+</div>

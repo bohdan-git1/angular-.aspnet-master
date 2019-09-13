@@ -1,0 +1,93 @@
+
+
+<div class="todolist">
+	
+	<div class="todolist-bar" [ngStyle]="{'background': allChecked==true ? '#FFFFFF' : '#4EC8F0'}">
+		<div class="todo-icon" (click)="openTodoList($event)">
+			<div class="todo-available" *ngIf="!allChecked"></div>
+			<svg *ngIf="!allChecked" width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.7168 14.4434C5.03075 15.3417 5.90982 16.0005 6.91447 16.0005C7.91912 16.0005 8.86098 15.4016 9.23773 14.4434" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+<path d="M1 7.56408C1.5267 -0.436286 12.7629 0.0536634 12.5873 7.56416" stroke="white" stroke-width="0.75"/>
+<ellipse cx="6.7957" cy="2.61813" rx="2.43987" ry="2.61813" fill="#4EC8F0"/>
+<path d="M12.3651 11.2696C12.114 11.0899 11.7372 10.7306 11.4233 10.1915C11.2349 9.83218 11.1721 9.59262 11.0465 9.17337C10.9837 8.63435 10.8581 7.91564 10.8581 7.07716C10.8581 6.7777 10.8581 5.81943 10.1674 4.86116C9.47674 3.90289 8.53488 3.60343 8.22093 3.48365C8.15814 2.82484 7.59302 2.3457 6.90232 2.3457C6.21163 2.3457 5.64651 2.88473 5.58372 3.48365C4.01395 4.02267 2.88372 5.40019 2.88372 7.07716C2.88372 7.91564 2.75814 8.57445 2.69535 9.05359C2.69535 9.47283 2.56977 9.89207 2.25581 10.3712C2.06744 10.6707 1.94186 10.9102 1.62791 11.2097C1.43953 11.4493 1.25116 11.569 1.12558 11.8086C1 12.0482 1 12.2877 1 12.3476C1 12.4075 1 13.0064 1.43953 13.3658C1.87907 13.785 2.44419 13.7252 2.50698 13.7252C5.52093 13.7252 8.47209 13.7252 11.486 13.7252C11.5488 13.7252 12.3651 13.785 12.8047 13.1861C13.0558 12.8268 12.993 12.4674 12.993 12.2877C12.8674 11.7487 12.4907 11.3894 12.3651 11.2696Z" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+</svg>
+	
+	<svg *ngIf="allChecked" width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.7168 14.4434C5.03075 15.3417 5.90982 16.0005 6.91447 16.0005C7.91912 16.0005 8.86098 15.4016 9.23773 14.4434" stroke="#4EC8F0" stroke-width="0.75" stroke-miterlimit="10"/>
+<path d="M1 7.56408C1.5267 -0.436286 12.7629 0.0536634 12.5873 7.56416" stroke="#4EC8F0" stroke-width="0.75"/>
+<ellipse cx="6.7957" cy="2.61813" rx="2.43987" ry="2.61813" fill="white"/>
+<path d="M12.3651 11.2696C12.114 11.0899 11.7372 10.7306 11.4233 10.1915C11.2349 9.83218 11.1721 9.59262 11.0465 9.17337C10.9837 8.63435 10.8581 7.91564 10.8581 7.07716C10.8581 6.7777 10.8581 5.81943 10.1674 4.86116C9.47674 3.90289 8.53488 3.60343 8.22093 3.48365C8.15814 2.82484 7.59302 2.3457 6.90232 2.3457C6.21163 2.3457 5.64651 2.88473 5.58372 3.48365C4.01395 4.02267 2.88372 5.40019 2.88372 7.07716C2.88372 7.91564 2.75814 8.57445 2.69535 9.05359C2.69535 9.47283 2.56977 9.89207 2.25581 10.3712C2.06744 10.6707 1.94186 10.9102 1.62791 11.2097C1.43953 11.4493 1.25116 11.569 1.12558 11.8086C1 12.0482 1 12.2877 1 12.3476C1 12.4075 1 13.0064 1.43953 13.3658C1.87907 13.785 2.44419 13.7252 2.50698 13.7252C5.52093 13.7252 8.47209 13.7252 11.486 13.7252C11.5488 13.7252 12.3651 13.785 12.8047 13.1861C13.0558 12.8268 12.993 12.4674 12.993 12.2877C12.8674 11.7487 12.4907 11.3894 12.3651 11.2696Z" stroke="#4EC8F0" stroke-width="0.75" stroke-miterlimit="10"/>
+</svg>
+
+		</div>
+	</div>
+	<div class="list-content" [ngStyle]="{'background': allChecked==true ? '#FFFFFF' : '#4EC8F0'}">
+		<perfect-scrollbar #todolistscroll>
+			<ul>
+				<li class="todo-item" *ngFor="let todoitem of tolistArr let indx=index" (mouseover)="mouseOver(indx, 'over')" (mouseout)="mouseOver(indx, 'out')" (click)="checkedTodoItem(indx)">
+					<div>
+						<div [ngClass]="checkedIcon[indx]" *ngIf="!todoitem.checked">
+							<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="6" cy="6" r="5" stroke="#646464" stroke-width="0.5"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M9.36351 4.12132L8.6564 3.41421L5.12087 6.94975L3.70665 5.53553L2.99955 6.24264L4.41376 7.65685L5.12087 8.36396L5.82797 7.65685L9.36351 4.12132Z" fill="#646464"/>
+							</svg>
+						</div>
+						
+						<div [ngClass]="checkedIcon[indx]" *ngIf="todoitem.checked">
+							<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="6" cy="6" r="5" fill="white" stroke="#646464" stroke-width="0.25"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M9.36351 4.12132L8.6564 3.41421L5.12087 6.94975L3.70665 5.53553L2.99955 6.24264L4.41376 7.65685L5.12087 8.36396L5.82797 7.65685L9.36351 4.12132Z" fill="#4EC8F0"/>
+							</svg>
+
+						</div>
+						
+						<div [ngClass]="{'todo-item-label': true, 'checked': todoitem.checked, pastdate: todoitem.pastdate}">{{todoitem.desc}}</div>
+						<div [ngClass]="{'todo-date': true, pastdate: todoitem.pastdate}" *ngIf="!todoitem.checked">{{todoitem.date}}</div>
+					</div>
+				</li>
+			</ul>
+		
+		</perfect-scrollbar>
+		
+	</div>
+	
+	<div class="bottom-cont">
+		<div class="add-todo" (click)="showAddtodoInput()" *ngIf="!showAddtodo && !allChecked">
+			<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M5.14286 0H3.85714V3.85714H0V5.14286H3.85714V9H5.14286V5.14286H9V3.85714H5.14286V0Z" fill="#696969"/>
+			</svg>
+		</div>
+		
+		<div class="add-todo" (click)="showAddtodoInput()" *ngIf="!showAddtodo && allChecked">
+			<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M5.14286 0H3.85714V3.85714H0V5.14286H3.85714V9H5.14286V5.14286H9V3.85714H5.14286V0Z" fill="#4EC8F0"/>
+			</svg>
+
+		</div>
+		
+		<div class="desc-input" *ngIf="showAddtodo">
+			<div class="addicon-wrapper">
+				<div class="addicon" *ngIf="!allChecked">
+					<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5.14286 0H3.85714V3.85714H0V5.14286H3.85714V9H5.14286V5.14286H9V3.85714H5.14286V0Z" fill="#696969"/>
+					</svg>
+				</div>
+				
+				<div class="addicon" *ngIf="allChecked">
+					<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5.14286 0H3.85714V3.85714H0V5.14286H3.85714V9H5.14286V5.14286H9V3.85714H5.14286V0Z" fill="#4EC8F0"/>
+					</svg>
+				</div>
+			</div>
+			<div class="textinput">
+				<input type="text" [ngClass]="{'descptn': true, 'allchecked': allChecked}" #descptn placeholder="Description" (keyup)="addTodoItem($event)" />
+				<input type="text" [ngClass]="{'dt': true, 'allchecked': allChecked}" #dt placeholder="00/00/00" (keyup)="addTodoItem($event)" />
+			</div>
+		</div>
+		
+	</div>
+	
+	<!-- <perfect-scrollbar>
+		
+	</perfect-scrollbar> -->
+</div>

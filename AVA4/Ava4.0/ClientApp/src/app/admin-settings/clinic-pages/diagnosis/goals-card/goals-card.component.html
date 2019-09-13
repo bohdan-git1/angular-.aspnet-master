@@ -1,0 +1,61 @@
+
+	<div class="section-title">Goals</div>
+
+	<div class="inner-cont" [ngStyle]="{'height': (boxHt-70) + 'px'}">
+
+	<div class="goal-item-section">
+	  <perfect-scrollbar [config]="config">
+	<div class="goals-item-holder" *ngFor="let item of goalsPlanArr let indx = index">
+	  <div class="goal-edit" >
+		<svg (click)="goal_edit(indx)" *ngIf="item.selected" width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M1.03826 6.03361L0.706284 7.77882L2.45009 7.44686L2.45111 7.44788L7.12329 2.77394L5.71072 1.36084L1.03898 6.03434L1.03826 6.03361Z" fill="#56CCF2"/>
+		<path d="M5.98242 1.08984L6.78734 0.284626C6.94352 0.128387 7.19673 0.128387 7.35291 0.284627L8.1999 1.13194C8.35608 1.28818 8.35608 1.54149 8.1999 1.69773L7.39499 2.50295L5.98242 1.08984Z" fill="#56CCF2"/>
+		</svg>
+	 </div>
+	 <div class="section-item-cont-goal" [ngStyle]="{'background': item.edit_mode ? 'rgba(78, 200, 240, 0.5)' : '#F0F0F0'}">
+		<div class="goal-lebel">
+			
+		  <div style="width:100%" (click)="goal_edit_mode_on(indx)" *ngIf="item.edit_mode==false">{{item.label}}</div>
+		  <!-- <input (blur)="upadte_goal_name($event,indx)" *ngIf="item.edit_mode" type='text' class="common-input" value="{{item.label}}"> -->
+			
+			<input *ngIf="item.edit_mode" (blur)="upadte_goal_name($event,indx)" type='text' class="common-input" [ngStyle]="{'color': '#333333'}" value="{{item.label}}">
+		
+		</div>
+		<div class="delete-item-goal" (click)="delete_goal_from_list(indx)" *ngIf="item.selected">
+		  <svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M5.742 7H4.878C4.812 7 4.7595 6.9835 4.7205 6.9505C4.6845 6.9145 4.6545 6.8755 4.6305 6.8335L2.9025 4.1245C2.8785 4.1965 2.8515 4.258 2.8215 4.309L1.1385 6.8335C1.1085 6.8755 1.0755 6.9145 1.0395 6.9505C1.0065 6.9835 0.96 7 0.9 7H0.09L2.3085 3.688L0.18 0.5515H1.0485C1.1115 0.5515 1.158 0.562 1.188 0.582999C1.218 0.604 1.245 0.634 1.269 0.673L2.952 3.256C2.973 3.193 3.0045 3.124 3.0465 3.049L4.635 0.691C4.659 0.649 4.6875 0.616 4.7205 0.592C4.7535 0.565 4.7925 0.5515 4.8375 0.5515H5.67L3.5325 3.6475L5.742 7Z" fill="#F11212"/>
+		  </svg>
+		</div>
+	 </div>
+
+	</div>
+	
+	<div class="input-block input-categry">
+		<input type="text" placeholder="New Item" [(ngModel)]="addGoal.add_goal"/>
+		<div class="input-add-btn" (click)="add_goal_item()">
+			<svg viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+			</svg>
+		</div>
+	</div>
+	
+	</perfect-scrollbar>
+	</div>
+
+
+
+	<!-- <div class="goal-section-input-cont">
+		<div class="seperatr"></div>
+		<div class="goal-section-input">
+			<input type="text" placeholder="New Goal" [(ngModel)]="addGoal.add_goal">
+			<div class="goal-add-btn" (click)="add_goal_item()">
+				<svg viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="0.25" y="0.25" width="15.5" height="14.5" rx="1.75" fill="white" stroke="#4EC8F0" stroke-width="0.5"/>
+					<path d="M10.874 7.81H8.74V10.076H7.6345V7.81H5.5115V6.8035H7.6345V4.5485H8.74V6.8035H10.874V7.81Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+		</div>
+		
+	</div> -->
+
+	</div>   

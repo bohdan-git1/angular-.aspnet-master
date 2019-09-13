@@ -1,0 +1,137 @@
+<div class="pagetitle">POSTING CODES</div>
+<div fxLayout="column">
+	<div fxLayout="row" fxLayoutGap="15px">
+		<div fxFlex="970px">
+			<div class="section-cont">
+				<div class="section-item" *ngFor="let item of postingcodeData">
+					<div class="cell-element code">{{item.code}}</div>
+					<div class="cell-element desc">{{item.desc}}</div>
+					<div class="cell-element type">{{item.type}}</div>
+					<div class="cell-element deposittype">{{item.depositType}}</div>
+					<div class="cell-element defaultamt">{{item.defaultAmt}}</div>
+					<div class="cell-element active">{{item.active}}</div>
+					<div class="cell-element chgstatus">{{item.changestatus}}</div>
+				</div>
+				
+				<!-- <div class="section-item">
+					<div class="cell-element code">Exam</div>
+					<div class="cell-element desc">Initial Exam</div>
+					<div class="cell-element type">Charge</div>
+					<div class="cell-element deposittype"></div>
+					<div class="cell-element defaultamt">1</div>
+					<div class="cell-element active">Y</div>
+					<div class="cell-element chgstatus">Y</div>
+				</div>
+				
+				<div class="section-item">
+					<div class="cell-element code">Records</div>
+					<div class="cell-element desc">Orthodontic Records</div>
+					<div class="cell-element type">Charge</div>
+					<div class="cell-element deposittype"></div>
+					<div class="cell-element defaultamt">2</div>
+					<div class="cell-element active">Y</div>
+					<div class="cell-element chgstatus">N</div>
+				</div>
+				
+				<div class="section-item">
+					<div class="cell-element code">Cash</div>
+					<div class="cell-element desc">Cash Payment</div>
+					<div class="cell-element type">Payment</div>
+					<div class="cell-element deposittype">1</div>
+					<div class="cell-element defaultamt">1</div>
+					<div class="cell-element active">Y</div>
+					<div class="cell-element chgstatus">N</div>
+				</div>
+				
+				<div class="section-item">
+					<div class="cell-element code">Check</div>
+					<div class="cell-element desc">Check Payment</div>
+					<div class="cell-element type">Payment</div>
+					<div class="cell-element deposittype">2</div>
+					<div class="cell-element defaultamt">2</div>
+					<div class="cell-element active">Y</div>
+					<div class="cell-element chgstatus">N</div>
+				</div>
+				
+				<div class="section-item">
+					<div class="cell-element code">eCCAmx</div>
+					<div class="cell-element desc">American Express Credit Card</div>
+					<div class="cell-element type">Payment</div>
+					<div class="cell-element deposittype">6</div>
+					<div class="cell-element defaultamt">6</div>
+					<div class="cell-element active">Y</div>
+					<div class="cell-element chgstatus">N</div>
+				</div>
+				
+				<div class="section-item">
+					<div class="cell-element code">eCCDisc</div>
+					<div class="cell-element desc">Discover Credit Card</div>
+					<div class="cell-element type">Payment</div>
+					<div class="cell-element deposittype">7</div>
+					<div class="cell-element defaultamt">7</div>
+					<div class="cell-element active">Y</div>
+					<div class="cell-element chgstatus">Y</div>
+				</div>
+				
+				<div class="section-item">
+					<div class="cell-element code">eCCMC</div>
+					<div class="cell-element desc">Mastercard</div>
+					<div class="cell-element type">Payment</div>
+					<div class="cell-element deposittype">8</div>
+					<div class="cell-element defaultamt">8</div>
+					<div class="cell-element active">Y</div>
+					<div class="cell-element chgstatus">Y</div>
+				</div>
+				
+				<div class="section-item">
+					<div class="cell-element code">eCCVisa</div>
+					<div class="cell-element desc">Visa Credit Card</div>
+					<div class="cell-element type">Payment</div>
+					<div class="cell-element deposittype">9</div>
+					<div class="cell-element defaultamt">9</div>
+					<div class="cell-element active">Y</div>
+					<div class="cell-element chgstatus">Y</div>
+				</div>
+				
+				<div class="section-item">
+					<div class="cell-element code">InsCk</div>
+					<div class="cell-element desc">Insurance Check</div>
+					<div class="cell-element type">Payment</div>
+					<div class="cell-element deposittype">3</div>
+					<div class="cell-element defaultamt">3</div>
+					<div class="cell-element active">Y</div>
+					<div class="cell-element chgstatus">Y</div>
+				</div> -->
+				
+				<div class="section-item input-cont-border" *ngIf="editmode">
+				<form #postingcodesfield="ngForm" (ngSubmit)="addEditmode(postingcodesfield,'ff')" >
+					<div class="cell-element code input-cont"><input type="text" name="code" ngModel placeholder="Code" /></div>
+					<div class="cell-element desc input-cont"><input type="text" name="desc" ngModel placeholder="Description" /></div>
+					<div class="cell-element type input-cont"><input type="text" name="type" ngModel placeholder="Type" /></div>
+					<div class="cell-element deposittype input-cont"><input type="number" name="depositType" ngModel placeholder="Deposit Type" /></div>
+					<div class="cell-element defaultamt input-cont"><input type="text" name="defaultAmt" ngModel placeholder="DefaultAmt" /></div>
+					<div class="cell-element active input-cont"><input type="text" name="active" ngModel placeholder="Active" /></div>
+					<div class="cell-element chgstatus input-cont"><input type="text" name="changestatus" ngModel placeholder="ChgStatus" /></div>
+				</form>
+					<!-- <div class="cell-element status input-cont"><input type="text" placeholder="Status" /></div> -->
+				</div>
+				
+				<div class="plus-btn" *ngIf="!editmode" (click)="forpostingcodeData('edit')">
+					<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="12.5" y="8" width="1" height="10" rx="0.5" fill="#434343"/>
+						<rect x="8" y="13.5" width="1" height="10" rx="0.5" transform="rotate(-90 8 13.5)" fill="#434343"/>
+						<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+					</svg>
+				</div>
+				
+				<div class="plus-btn" (click)="postingcodesfield.ngSubmit.emit()" *ngIf="editmode">
+					<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M19.2692 9.76434C19.065 9.57837 18.7488 9.59309 18.5628 9.79722L11.647 17.3883L8.39807 14.4284C8.19394 14.2424 7.8777 14.2571 7.69172 14.4613C7.50575 14.6654 7.52047 14.9816 7.7246 15.1676L11.1871 18.3221C11.2143 18.3874 11.256 18.4479 11.3117 18.4987C11.5159 18.6847 11.8321 18.67 12.0181 18.4658L19.302 10.4707C19.488 10.2665 19.4733 9.95031 19.2692 9.76434Z" fill="#434343"/>
+					</svg>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

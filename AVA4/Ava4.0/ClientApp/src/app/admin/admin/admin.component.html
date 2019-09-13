@@ -1,0 +1,34 @@
+<app-admin-home [hidden]="showDashboard" (getPanelSelected)="openPanelOption($event)"></app-admin-home>
+
+<div class="accordion" [style.height.px]="accordHt" [hidden]="!showDashboard">
+  <ul>
+    <li [style.marginBottom.px]="-acord_bottom_margin " *ngFor="let item of panelArr let indx=index">
+      <input type="radio" name="select" class="accordion-select" [checked]="item.checked" (change)="activePanel(indx)"
+        [ngStyle]="{'height' : zoomWd + 'px'}" />
+      <div [ngClass]="{'accordion-title': true, 'title-selected': item.checked === true}"
+        [ngStyle]="{'height': 'zoomWd' + 'px', 'font-size': fontsize + 'px'}">
+        <span>{{item.title}}</span>
+      </div>
+
+      <div class="accordion-content" [ngStyle]="{'height': acord_cont_ht + 'px'}" *ngIf="indx == 0">
+
+        <router-outlet></router-outlet>
+
+        <!-- <app-analytics (getPanelSelected)="openPanelOption($event)"></app-analytics> -->
+      </div>
+
+      <!-- <div class="accordion-content" [ngStyle]="{'height': acord_cont_ht + 'px'}" *ngIf="indx == 1">
+        <router-outlet name='pmt'></router-outlet>
+      </div>
+
+      <div class="accordion-content" [ngStyle]="{'height': acord_cont_ht + 'px'}" *ngIf="indx == 2">
+
+        <router-outlet name='settings'></router-outlet>
+      </div> -->
+
+      <div [ngClass]="{'accordion-separator': itemclicked == true}"
+        [ngStyle]="{'margin-bottom': item.checked === true ? acord_bottom_margin + 'px' : ''}"></div>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

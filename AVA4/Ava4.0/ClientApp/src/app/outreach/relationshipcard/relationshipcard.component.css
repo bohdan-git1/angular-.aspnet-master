@@ -1,0 +1,389 @@
+ul {
+	list-style: none;
+}
+
+.card-content-section {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	/* height: 460px; */
+}
+
+.section-title {
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+	color: #4EC8F0;
+	text-align: right;
+	margin-bottom: 5px;
+	padding-right: 10px;
+	cursor: pointer;
+}
+
+.section-content {
+}
+
+.content-item {
+	font-size: 11px;
+	text-align: right;
+	color: #434343;
+	padding: 3px 10px;
+	cursor: pointer;
+	height: 13px;
+}
+
+.content-item:hover {
+	background: #d5f2fb;
+}
+
+.add-reln-btn {
+	font-size: 11px;
+	text-align: right;
+	color: #4EC8F0;
+	padding: 3px 10px;
+	cursor: pointer;
+}
+
+.add-icon {
+    width: 15px;
+    height: 15px;
+    background: #FFFFFF;
+    border: 0.5px solid #4EC8F0;
+    border-radius: 2px;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.item-details {
+	padding-left: 10px;
+    padding-right: 10px;
+}
+
+.itemlabel {
+	font-size: 9px;
+	color: #4EC8F0;
+}
+
+.itemvalue {
+	font-size: 12px;
+	color: #696969;
+}
+
+.allrelnlabel {
+	font-weight: bold;
+}
+
+.reln-item {
+	margin-bottom: 10px;
+    background: #FFFFFF;
+    border: 0.5px solid #4EC8F0;
+    box-sizing: border-box;
+	border-radius: 2px;
+	height: 25px;
+}
+
+.drpdn {
+	
+	height: 20px;
+    padding-left: 3px;
+	position: relative;
+	margin-top: -3px;
+}
+
+.drpdn-title {
+	font-size: 9px;
+	color: #696969;
+	margin-top: 5px;
+}
+
+.drpdn-icon {
+    position: absolute;
+    right: 2px;
+    top: -7px;
+    width: 8px;
+    height: 8px;
+}
+
+.section-display-wrapper {
+	width: 400px;
+}
+
+.section-display-cont {
+	/* display: inline-block;
+    margin-right: 10px; */
+    width: 100%;
+    box-sizing: border-box;
+	/* vertical-align: top; */
+	/* height: 460px; */
+}
+
+.animatecard {
+	transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+.input-section {
+	cursor: default;
+}
+
+.input-section:hover {
+	background: none;
+}
+
+.itemvalue input {
+	border: none;
+	background: none;
+	font-size: 12px;
+	color: #696969;
+}
+
+.itemvalue input::placeholder {
+	font-size: 12px;
+	color: #696969;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.search-panel {
+	height: 25px;
+    border: 0.5px solid #4EC8F0;
+    border-radius: 2px;
+    text-align: left;
+    padding-left: 5px;
+    box-sizing: border-box;
+	margin-left: 5px;
+	background: #efecec;
+	position: relative;
+}
+
+.search-icon{
+	float: left;
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.add-icon-search {
+	width: 7px;
+    height: 7px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -9px;
+    margin-right: 6px;
+}
+
+.search-input {
+	border: none;
+    margin-left: 0px;
+    color: #A5A5A5;
+    background: none;
+    align-items: center;
+    float: left;
+    width: 85%;
+    margin-top: -5px;
+    font-size: 9px;
+    height: 35px;
+}
+
+.search-input::placeholder {
+font-family: Lato;
+font-style: normal;
+font-weight: 500;
+font-size: 9px;
+line-height: 11px;
+align-items: center;
+color: #C4C4C4;
+}
+
+.new-form-title{
+	font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 13px;
+    align-items: center;
+    text-align: center;
+    color: #4EC8F0;
+	height: 18px;
+	margin-top: 2px;
+}
+
+.common-relation-input{
+	border: none;
+    width: 95%;
+    margin-left: 5px;
+    box-sizing: border-box;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 11px;
+	color: #4EC8F0;
+	height: 92%;
+}
+
+.common-relation-input input::placeholder {
+
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 9px;
+	line-height: 11px;
+	display: flex;
+	align-items: center;
+	color: #C4C4C4;
+
+
+}
+
+.back-out-section{
+	position: relative;
+	height: 35px;
+}
+
+.edit-info{
+	position: absolute;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 6px;
+    color: #A5A5A5;
+    right: 2px;
+    top: -9px;
+}
+
+.saveCls{
+    width: 80px;
+    height: 20px;
+    background: #4EC8F0;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    justify-content: center;
+    margin: 15px auto;
+	cursor: pointer;
+
+}
+
+.addSelectbc{
+
+background: rgba(78, 200, 240, 0.5);
+border: 0.5px solid #4EC8F0;
+box-sizing: border-box;
+border-radius: 2px;
+
+}
+
+.headName{
+	float: left;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    color: #434343;
+    padding-left: 2px;
+}
+
+.headType{
+
+	float: right;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    color: #4EC8F0;
+}
+
+.headTypecolor{
+font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 11px;
+line-height: 13px;
+text-align: center;
+color: #FD7474;
+}
+
+
+.patient-item {
+    padding: 2px 25px 5px 15px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: normal;
+    color: #333333;
+    cursor: pointer;
+    height: 15px;
+
+}
+
+.patient-item:hover {
+	background: #F1F1F1;
+}
+.patient-optn-cont {
+	position: absolute;
+    width: 100%;
+    max-height: 250px;
+    background: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    box-sizing: border-box;
+    border-radius: 4px;
+    z-index: 1000;
+    padding: 5px 0 10px;
+    top: 25px;
+    right: 1px;
+}
+
+.edit-viewfrelation{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: normal;
+    color: #646464;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: -5px;
+    margin-left: 11px;
+}
+
+.error{
+    font-size: 9px;
+    color: red;
+    font-family: Lato;
+    font-style: normal;
+    height: 25px;
+}
+
+
+
+

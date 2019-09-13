@@ -1,0 +1,82 @@
+<div class="chair" [ngStyle]="{'height': chairsettings.chairHt + 'px', 'margin-bottom': chairsettings.bottomMargin + 'px'}">
+	
+	<div fxLayout="row" fxLayoutGap="10px">
+		<div fxFlex="35px">
+			<div class="chair-num" [ngStyle]="{'height': chairsettings.chairHt + 'px'}">
+				<div [ngClass]="{'chair-label': true, 'chair-label-786': chairsettings.chairHt <= 50, 'rotate-label': (chairDetails.label == 'Exam' && chairsettings.chairHt > 50), 'rotate-label-786': (chairDetails.label == 'Exam' && chairsettings.chairHt <= 50)}" >{{chairDetails.label}}</div>
+			</div>
+		</div>
+		<div fxFlex="calc(100% - 45px)">
+			<div class="chair-details" [ngStyle]="{'height': chairsettings.chairHt + 'px', 'position': 'relative'}">
+				<div fxLayout="row" style="height: 85%;">
+					<div fxFlex="60" style="position: relative">
+						<div [ngClass]="{'patient_name': true, 'patient_name-786': chairsettings.chairHt <= 50}" *ngIf="chairDetails.patient">{{chairDetails.patient}}</div>
+						<div class="seated_at" *ngIf="chairDetails.seated">Seated at {{chairDetails.seated}}</div>
+						
+					</div>
+					<div fxFlex="40" style="position: relative; height: 100%" #countersvgcont>
+						<div class="outer-border" *ngIf="chairDetails.progress" [ngStyle]="{'width': (counterDim+5) + 'px', 'height': (counterDim+5) + 'px'}">
+						
+						<!----	<div class="counter-svg" *ngIf="chairDetails.progress" [ngStyle]="{'width': counterDim + 'px', 'height': counterDim + 'px'}">
+								<svg viewBox="0 0 50 50" class="progress__svg">
+								  <circle [attr.r]="radius" cx="25" cy="25" stroke-width="6" class="progress__meter" fill="none" />
+								 <circle [style.strokeDasharray]="circumference" [style.strokeDashoffset]="dashoffset" [attr.r]="radius" cx="25" cy="25" stroke-width="6" fill="none" [ngClass]="progressValue" />
+								</svg>
+							</div>-->
+							
+							<div class="filled-circle" *ngIf="chairDetails.progress" (click)="changeCount()" (dblclick)="dblclickEvent()" >
+								<div class="filled-circle-blue">
+									<img *ngIf="clickCount == 1" src="assets/Ellipse 3.11.png" width="100%"/>
+									<img *ngIf="clickCount == 2" src="assets/Ellipse 3.19.png" width="100%" />
+									<img *ngIf="clickCount == 3" src="assets/Ellipse 3.10.png" width="100%" />
+								</div>
+							</div>
+						
+						</div>
+						
+						
+						
+						
+						<div *ngIf="chairDetails.progress" class="bucket-icon" (click)="addtoBucket()">
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect x="1.30469" y="0.712891" width="13.6956" height="2.8573" rx="1" fill="#4EC8F0"/>
+								<rect x="1.95654" y="1.42969" width="12.3912" height="1.42865" rx="0.714326" fill="white"/>
+								<rect x="1.30469" y="3.57227" width="13.6956" height="10.0006" rx="1" fill="#4EC8F0"/>
+								<rect x="1.95654" y="3.57227" width="12.3912" height="9.28623" rx="1" fill="white"/>
+								<line x1="3.10889" x2="3.10889" y2="2.14298" stroke="#4EC8F0"/>
+								<line x1="5.71729" x2="5.71729" y2="2.14298" stroke="#4EC8F0"/>
+								<line x1="8.32617" x2="8.32617" y2="2.14298" stroke="#4EC8F0"/>
+								<line x1="10.9346" x2="10.9346" y2="2.14298" stroke="#4EC8F0"/>
+								<line x1="13.5435" x2="13.5435" y2="2.14298" stroke="#4EC8F0"/>
+								<ellipse cx="3.91302" cy="10.7137" rx="3.91302" ry="4.28595" fill="#4EC8F0"/>
+								<ellipse cx="3.9132" cy="10.7142" rx="3.26085" ry="3.57163" fill="white"/>
+								<line x1="4.16309" y1="7.5" x2="4.16309" y2="11.0716" stroke="#4EC8F0" stroke-width="0.5"/>
+								<line x1="3.91309" y1="10.9688" x2="1.95657" y2="10.9688" stroke="#4EC8F0" stroke-width="0.5"/>
+							</svg>
+						</div>
+						
+						<div class="timings">
+							<div [ngClass]="{'bookingTime': true, 'bookingTime-786': chairsettings.chairHt <= 55}" [ngStyle]="{'color': rangeSliderBar>=99? '#FF3048' : '#FFFFFF'}"><span *ngIf="chairDetails.bookingtime != null">{{chairDetails.bookingtime}}</span><br><span *ngIf="chairDetails.bookingtimeMin">{{chairDetails.bookingtimeMin}}</span></div>
+							
+							<!----<div [ngClass]="{'excessTime': true, 'excessTime-786': chairsettings.chairHt <= 55}" *ngIf="chairDetails.excesstime != 0 && chairDetails.excesstime != null">{{chairDetails.excesstime}}</div>-->
+							
+							<div class="clear"></div>
+						</div>
+						
+					</div>
+					<div class="clear"></div>
+					<div *ngIf="chairDetails.progress" style="position: absolute; bottom: 0; height: 10px; width: 95%;">
+						<div class="OutsliderBar">
+						</div>
+						<div class="InnersliderBar" [ngStyle]="{'width': (rangeSliderBar) +'%', 'background': rangeSliderBar==99? '#FF3048': '#4EC8F0'}">
+						</div>
+					</div>
+
+					<div class="clear"></div>
+				</div>
+
+				
+			</div>
+		</div>
+	</div>
+</div>

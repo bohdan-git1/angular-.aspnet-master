@@ -1,0 +1,175 @@
+.comp-cont {
+	padding-left: 50px;
+}
+
+.treatment-section {
+	width: 100%;
+    height: 430px;
+    background: #f0f0f0;
+    position: relative;
+}
+
+.finance-section {
+	width: 100%;
+	height: 280px;
+	background: #ffffff;
+	position: relative;
+}
+
+.communication-section {
+	width: 100%;
+	height: 427px;
+	background: #f0f0f0;
+	position: relative;
+	overflow: hidden;
+}
+
+.main-section-title {
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	
+	height: 100%;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	text-decoration: underline;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: normal;
+	color: #717171;
+	position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.diagnositc-card {
+	width: 100%;
+	height: 322px;
+	background: #FFFFFF;
+	border: 1px solid #4EC8F0;
+	box-sizing: border-box;
+	box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 4px;
+	
+}
+
+.main-section-content {
+    padding: 30px 30px 10px 60px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.clear {
+	clear: both;
+}
+
+.card-elem {
+	height: 322px;
+	background: #FFFFFF;
+	border: 1px solid #4EC8F0;
+	box-sizing: border-box;
+	box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 4px;
+	padding: 10px 15px;
+	position: relative;
+}
+
+.treatment-table {
+	/* width: 100%;
+	display: table; */
+}
+
+.treatment-table-header {
+	/* display: table-header-group; */
+}
+
+.treatment-header-cell {
+	display: inline-block;
+	padding: 5px 8px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 11px;
+	color: #4EC8F0;
+	border-bottom: 1px solid #434343;
+	box-sizing: border-box;
+}
+
+.treatment-header-cell:first-child {
+	/* padding: 10px 0 10px 10px; */
+	text-align: left;
+}
+
+.treatment-table-body {
+	/* display: table-row; */
+}
+
+.treatment-body-cell {
+	display: inline-block;
+    text-align: center;
+    border-bottom: 1px solid #434343;
+    padding: 5px 8px;
+    font-size: 11px;
+	color: #434343;
+	white-space: nowrap;
+	box-sizing: border-box;
+}
+
+.treatment-body-cell:first-child {
+	text-align: left;
+	padding-left: 0;
+}
+
+.left-align {
+	text-align: left;
+}
+
+.wrap-text {
+	white-space: normal;
+}
+
+.italic-style {
+	font-style: italic;
+}
+
+.section-title {
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+	color: #4EC8F0;
+	cursor: pointer;
+}
+
+.section-content {
+	font-size: 11px;
+	color: #434343;
+	padding: 7px 0 10px 10px;
+}
+
+.section-content-red {
+	color: #EC0404;
+}
+
+.section-content ul {
+	list-style: none;
+}
+
+.section-content ul li {
+	margin-bottom: 5px;
+}
+
+.clickable-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	cursor: pointer;
+	background: transparent;
+}

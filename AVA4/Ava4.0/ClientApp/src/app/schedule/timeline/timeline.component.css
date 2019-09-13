@@ -1,0 +1,250 @@
+.timeline-timer {
+	border: 1px solid #63CCF2;
+	border-radius: 5px;
+	background: #fff;
+}
+
+.nav-btn {
+	/*padding-top: 15px;
+	padding-bottom: 15px;*/
+	cursor: pointer;
+}
+
+.vh_center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.border-left {
+	border-left: 1px solid #A5A5A5;
+}
+
+.border-right {
+	border-right: 1px solid #A5A5A5;
+}
+
+.timeline-timer-icon {
+	width: 30px;
+	height: 30px;
+	font-size: 30px;
+	color: #63CCF2;
+}
+
+.timer {
+	display: flex;
+	align-items: center;
+}
+
+.time-slot {
+	display: inline-block;
+	font-size: 20px;
+	color: #A5A5A5;
+	width: 60px;
+	text-align: center;
+}
+
+.time-slot-quarter {
+	display: inline-block;
+	font-size: 14px;
+	color: #A5A5A5;
+	width: 60px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.timeslot-cont-wrapper {
+	overflow: hidden;
+}
+
+.timeslot-cont {
+	width: 1620px;
+}
+
+.chair-section {
+	padding-bottom: 16px;
+	height: 70px;
+	position: relative;
+}
+
+.patient-area {
+	/* position: relative;
+	height: calc(100% - 60px);
+	overflow: hidden; */
+	
+	background: #e2eff3;
+	
+} 
+
+.guide-section {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.guide-container {
+	width: 120px;
+	height: 100%;
+	display: inline-flex;
+	justify-content: center;
+}
+
+.guide {
+	width: 1px;
+	height: 100%;
+	
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.guide_hr {
+	border-left: 2px solid #4EC8F0;
+}
+
+.guide_hlfHr {
+	border-left: 2px solid #C6C6C6;
+}
+
+.guide_fiveMin {
+	border-left: 1px solid #A5A5A5;
+}
+
+.guide-cont-wrapper {
+	height: 100%;
+	overflow: hidden;
+}
+
+.scrollable-section {
+	padding-top: 12px;
+	width: 1728px;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.time-elapsed {
+	height: 100%;
+	width: 300px;
+	background: rgba(78, 200, 240, 0.5);
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-right: 4px solid #4EC8F0;
+	
+	box-sizing: border-box;
+}
+
+.time-slot-block {
+	display: inline-block;
+}
+
+.timeline-footer {
+	margin-top: 10px;
+	text-align: right;
+}
+
+.timeline-footer ul {
+	list-style: none;
+}
+
+.appnt-type-block {
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+	display: inline-flex;
+	font-size: 6px;
+	align-items: center;
+	justify-content: center;
+	margin-left: 17px;
+	color: #4C4C4C;
+	vertical-align: middle;
+}
+
+.appnt-type-block.yellow {
+	background: #FCFF7C;
+}
+
+.appnt-type-block.red {
+	background: #FD7474;
+}
+
+.appnt-type-block.blue {
+	background: #74B3FD;
+}
+
+.appnt-type-block.orange {
+	background: #F6CC61;
+}
+
+.appnt-type-block.green {
+	background: #8CF1E4;
+}
+
+.appnt-type-block.purple {
+	background: #B48CF6;
+}
+
+.clickable-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+}
+
+.dayeventmsg-cont {
+	position: absolute;
+	width: 332px;
+	height: 20px;
+	left: 0;
+	bottom: 4px;
+}
+
+.overbooked-cont {
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 8px
+}
+
+.overbooked-cont-wrapper {
+	position: relative;
+}
+
+.overbooked-block {
+	width: 44px;
+	height: 8px;
+	background: #F11212;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.lunch-time-block {
+
+	position: absolute;
+	width: 137px;
+	height: 100%;
+	left: 0;
+	top: 0;
+
+	background: rgba(255, 255, 255, 0.9);
+	border: 2px solid #4EC8F0;
+	box-sizing: border-box;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 4px;
+	
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #646464;
+
+}

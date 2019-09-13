@@ -1,0 +1,822 @@
+<div class="pagetitle">TREATMENT</div>
+
+<div class="component-cont">
+	<div class="treatment-container" [ngStyle]="{'height': boxHt + 'px', 'padding': '5px'}">
+		<perfect-scrollbar [config]="config">
+    
+        <div class="create-new-column-section">
+            <div class="drag-and-drop-text">
+                    *Drag & Drop groups to arrange order
+            </div>
+            <div class="txcard-title">TX CARD</div>
+                <div class="create-new-column-container">
+                    
+                    <div class="comon-column-container">
+                        <div class="common-lebel"> Date / Time </div>
+                    </div>
+
+                    <div class="comon-column-container" [ngClass]="{ 'comon-column-container': true, 'editUwOrLwOn': type=='uw' && lwAndUwVar, 'hideEditPencilCls': lebelTypeArrayData[1].selected}">
+                            <div style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;" (click)="openBothLwAndUw('uw',1)" ></div>
+
+                            <div class="common-lebel"> UW </div>
+                            <div class="comon-remain-section">
+                                <div class="comon-plus-icon" style="cursor: pointer" (click)="hideEditIcon(1)">
+                                    <div *ngIf="lebelTypeArrayData[1].selected" style="padding-top: 2px;">
+                                            <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14 0C14 0.787931 13.8189 1.56815 13.4672 2.2961C13.1154 3.02405 12.5998 3.68549 11.9497 4.24264C11.2997 4.79979 10.5281 5.24175 9.67878 5.54328C8.8295 5.84481 7.91925 6 7 6C6.08075 6 5.17049 5.84481 4.32122 5.54328C3.47194 5.24175 2.70026 4.79979 2.05025 4.24264C1.40024 3.68549 0.884626 3.02405 0.532843 2.2961C0.18106 1.56815 -8.03636e-08 0.78793 0 -4.76837e-07H0.784253C0.784253 0.699654 0.945028 1.39246 1.2574 2.03885C1.56977 2.68525 2.02762 3.27258 2.6048 3.76731C3.18199 4.26204 3.86721 4.65448 4.62134 4.92223C5.37547 5.18998 6.18374 5.32778 7 5.32778C7.81626 5.32778 8.62453 5.18998 9.37866 4.92223C10.1328 4.65448 10.818 4.26204 11.3952 3.76731C11.9724 3.27258 12.4302 2.68525 12.7426 2.03885C13.055 1.39246 13.2157 0.699655 13.2157 0H14Z" fill="#4EC8F0"/>
+                                            <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                            <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                            <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                            <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                            <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                            <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                            <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                            <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                            <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                            <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                            </svg>
+                                                
+                                    </div>
+                                    <div *ngIf="lebelTypeArrayData[1].selected==false">
+                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.44746 6.74205L1.39561 8.85483L3.48058 8.8023L3.48271 8.80446L8.29119 3.9325L6.25779 1.87225L1.44945 6.74407L1.44746 6.74205Z" fill="#56CCF2"/>
+                                        <path d="M6.53516 1.58301L7.37361 0.733485C7.52879 0.576254 7.78039 0.576254 7.93557 0.733485L9.40701 2.22435C9.56219 2.38158 9.56219 2.6365 9.40701 2.79373L8.56856 3.64326L6.53516 1.58301Z" fill="#56CCF2"/>
+                                        </svg>
+                                    </div>
+                                       
+                                            
+                                </div>
+                            </div>
+                    </div>
+
+                    <div  [ngClass]="{ 'comon-column-container': true, 'editUwOrLwOn': type=='lw' && lwAndUwVar, 'hideEditPencilCls': lebelTypeArrayData[2].selected}">
+                            <div style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;" (click)="openBothLwAndUw('lw',2)" ></div>
+
+                            <div class="common-lebel"> LW </div>
+                            <div class="comon-remain-section">
+                                <div class="comon-plus-icon" style="cursor: pointer" (click)="hideEditIcon(2)">
+                                        <div *ngIf="lebelTypeArrayData[2].selected" style="padding-top: 2px;">
+                                                <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M14 0C14 0.787931 13.8189 1.56815 13.4672 2.2961C13.1154 3.02405 12.5998 3.68549 11.9497 4.24264C11.2997 4.79979 10.5281 5.24175 9.67878 5.54328C8.8295 5.84481 7.91925 6 7 6C6.08075 6 5.17049 5.84481 4.32122 5.54328C3.47194 5.24175 2.70026 4.79979 2.05025 4.24264C1.40024 3.68549 0.884626 3.02405 0.532843 2.2961C0.18106 1.56815 -8.03636e-08 0.78793 0 -4.76837e-07H0.784253C0.784253 0.699654 0.945028 1.39246 1.2574 2.03885C1.56977 2.68525 2.02762 3.27258 2.6048 3.76731C3.18199 4.26204 3.86721 4.65448 4.62134 4.92223C5.37547 5.18998 6.18374 5.32778 7 5.32778C7.81626 5.32778 8.62453 5.18998 9.37866 4.92223C10.1328 4.65448 10.818 4.26204 11.3952 3.76731C11.9724 3.27258 12.4302 2.68525 12.7426 2.03885C13.055 1.39246 13.2157 0.699655 13.2157 0H14Z" fill="#4EC8F0"/>
+                                                <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                </svg>
+                                                    
+                                        </div>
+                                        <div *ngIf="lebelTypeArrayData[2].selected==false">
+                                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.44746 6.74205L1.39561 8.85483L3.48058 8.8023L3.48271 8.80446L8.29119 3.9325L6.25779 1.87225L1.44945 6.74407L1.44746 6.74205Z" fill="#56CCF2"/>
+                                            <path d="M6.53516 1.58301L7.37361 0.733485C7.52879 0.576254 7.78039 0.576254 7.93557 0.733485L9.40701 2.22435C9.56219 2.38158 9.56219 2.6365 9.40701 2.79373L8.56856 3.64326L6.53516 1.58301Z" fill="#56CCF2"/>
+                                            </svg>
+                                        </div>
+                                            
+                                </div>
+                            </div>
+                    </div>
+
+                    <div  [ngClass]="{ 'comon-column-container': true, 'editUwOrLwOn': hygSection, 'hideEditPencilCls': lebelTypeArrayData[3].selected}">
+                    <div style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;" (click)="showHygSection()" ></div>
+   
+                            <div class="common-lebel"> Hyg </div>
+                            <div class="comon-remain-section">
+                                    <div class="comon-plus-icon" style="cursor: pointer" (click)="hideEditIcon(3)">
+                                            <div *ngIf="lebelTypeArrayData[3].selected" style="padding-top: 2px;">
+                                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M14 0C14 0.787931 13.8189 1.56815 13.4672 2.2961C13.1154 3.02405 12.5998 3.68549 11.9497 4.24264C11.2997 4.79979 10.5281 5.24175 9.67878 5.54328C8.8295 5.84481 7.91925 6 7 6C6.08075 6 5.17049 5.84481 4.32122 5.54328C3.47194 5.24175 2.70026 4.79979 2.05025 4.24264C1.40024 3.68549 0.884626 3.02405 0.532843 2.2961C0.18106 1.56815 -8.03636e-08 0.78793 0 -4.76837e-07H0.784253C0.784253 0.699654 0.945028 1.39246 1.2574 2.03885C1.56977 2.68525 2.02762 3.27258 2.6048 3.76731C3.18199 4.26204 3.86721 4.65448 4.62134 4.92223C5.37547 5.18998 6.18374 5.32778 7 5.32778C7.81626 5.32778 8.62453 5.18998 9.37866 4.92223C10.1328 4.65448 10.818 4.26204 11.3952 3.76731C11.9724 3.27258 12.4302 2.68525 12.7426 2.03885C13.055 1.39246 13.2157 0.699655 13.2157 0H14Z" fill="#4EC8F0"/>
+                                                    <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                    <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                    <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                    <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                    <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                    <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                    <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                    <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                    <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                    <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                    </svg>
+                                                        
+                                            </div>
+                                            <div *ngIf="lebelTypeArrayData[3].selected==false">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.44746 6.74205L1.39561 8.85483L3.48058 8.8023L3.48271 8.80446L8.29119 3.9325L6.25779 1.87225L1.44945 6.74407L1.44746 6.74205Z" fill="#56CCF2"/>
+                                                <path d="M6.53516 1.58301L7.37361 0.733485C7.52879 0.576254 7.78039 0.576254 7.93557 0.733485L9.40701 2.22435C9.56219 2.38158 9.56219 2.6365 9.40701 2.79373L8.56856 3.64326L6.53516 1.58301Z" fill="#56CCF2"/>
+                                                </svg>
+                                            </div>
+                                                
+                                    </div>
+                            </div>
+                    </div>
+
+                    <div class="comon-small-column-container">
+                            <div class="common-lebel"> Elas </div>
+                            <div class="comon-remain-section">
+                                <div class="comon-plus-icon">
+                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.44746 6.74205L1.39561 8.85483L3.48058 8.8023L3.48271 8.80446L8.29119 3.9325L6.25779 1.87225L1.44945 6.74407L1.44746 6.74205Z" fill="#56CCF2"/>
+                                            <path d="M6.53516 1.58301L7.37361 0.733485C7.52879 0.576254 7.78039 0.576254 7.93557 0.733485L9.40701 2.22435C9.56219 2.38158 9.56219 2.6365 9.40701 2.79373L8.56856 3.64326L6.53516 1.58301Z" fill="#56CCF2"/>
+                                        </svg>
+                                            
+                                </div>
+                            </div>
+                    </div>
+
+                   <div  [ngClass]="{ 'comon-column-container': true, 'editUwOrLwOn': applVar, 'hideEditPencilCls': lebelTypeArrayData[5].selected}">
+                            <div style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;" (click)="openAppl('appl')" ></div>
+
+                            <div class="common-lebel"> Appl </div>
+                            <div class="comon-remain-section">
+
+                                    <div class="comon-plus-icon" style="cursor: pointer" (click)="hideEditIcon(5)">
+                                            <div *ngIf="lebelTypeArrayData[5].selected" style="padding-top: 2px;">
+                                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M14 0C14 0.787931 13.8189 1.56815 13.4672 2.2961C13.1154 3.02405 12.5998 3.68549 11.9497 4.24264C11.2997 4.79979 10.5281 5.24175 9.67878 5.54328C8.8295 5.84481 7.91925 6 7 6C6.08075 6 5.17049 5.84481 4.32122 5.54328C3.47194 5.24175 2.70026 4.79979 2.05025 4.24264C1.40024 3.68549 0.884626 3.02405 0.532843 2.2961C0.18106 1.56815 -8.03636e-08 0.78793 0 -4.76837e-07H0.784253C0.784253 0.699654 0.945028 1.39246 1.2574 2.03885C1.56977 2.68525 2.02762 3.27258 2.6048 3.76731C3.18199 4.26204 3.86721 4.65448 4.62134 4.92223C5.37547 5.18998 6.18374 5.32778 7 5.32778C7.81626 5.32778 8.62453 5.18998 9.37866 4.92223C10.1328 4.65448 10.818 4.26204 11.3952 3.76731C11.9724 3.27258 12.4302 2.68525 12.7426 2.03885C13.055 1.39246 13.2157 0.699655 13.2157 0H14Z" fill="#4EC8F0"/>
+                                                    <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                    <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                    <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                    <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                    <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                    <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                    <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                    <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                    <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                    <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                    </svg>
+                                                        
+                                            </div>
+                                            <div *ngIf="lebelTypeArrayData[5].selected==false">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.44746 6.74205L1.39561 8.85483L3.48058 8.8023L3.48271 8.80446L8.29119 3.9325L6.25779 1.87225L1.44945 6.74407L1.44746 6.74205Z" fill="#56CCF2"/>
+                                                <path d="M6.53516 1.58301L7.37361 0.733485C7.52879 0.576254 7.78039 0.576254 7.93557 0.733485L9.40701 2.22435C9.56219 2.38158 9.56219 2.6365 9.40701 2.79373L8.56856 3.64326L6.53516 1.58301Z" fill="#56CCF2"/>
+                                                </svg>
+                                            </div>
+                                                
+                                    </div>
+
+                            </div>
+                    </div>
+
+                    <div class="comon-small-column-container">
+                            <div class="common-lebel"> Staff </div>
+                    </div>
+
+                    <div class="comon-small-column-container">
+                            <div class="common-lebel"> Dr </div>
+                    </div>
+
+                   
+                    <div  [ngClass]="{ 'comon-column-container': true, 'editUwOrLwOn': showNotesType=='notes' && notessection, 'hideEditPencilCls': lebelTypeArrayData[8].selected}">
+                        <div style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;" (click)="showNotes('notes', 8)" ></div>
+        
+                            <div class="common-lebel"> Notes </div>
+                            <div class="comon-remain-section">
+                                    <div class="comon-plus-icon" style="cursor: pointer" (click)="hideEditIcon(8)">
+                                            <div *ngIf="lebelTypeArrayData[8].selected" style="padding-top: 2px;">
+                                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M14 0C14 0.787931 13.8189 1.56815 13.4672 2.2961C13.1154 3.02405 12.5998 3.68549 11.9497 4.24264C11.2997 4.79979 10.5281 5.24175 9.67878 5.54328C8.8295 5.84481 7.91925 6 7 6C6.08075 6 5.17049 5.84481 4.32122 5.54328C3.47194 5.24175 2.70026 4.79979 2.05025 4.24264C1.40024 3.68549 0.884626 3.02405 0.532843 2.2961C0.18106 1.56815 -8.03636e-08 0.78793 0 -4.76837e-07H0.784253C0.784253 0.699654 0.945028 1.39246 1.2574 2.03885C1.56977 2.68525 2.02762 3.27258 2.6048 3.76731C3.18199 4.26204 3.86721 4.65448 4.62134 4.92223C5.37547 5.18998 6.18374 5.32778 7 5.32778C7.81626 5.32778 8.62453 5.18998 9.37866 4.92223C10.1328 4.65448 10.818 4.26204 11.3952 3.76731C11.9724 3.27258 12.4302 2.68525 12.7426 2.03885C13.055 1.39246 13.2157 0.699655 13.2157 0H14Z" fill="#4EC8F0"/>
+                                                    <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                    <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                    <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                    <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                    <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                    <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                    <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                    <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                    <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                    <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                    </svg>
+                                                        
+                                            </div>
+                                            <div *ngIf="lebelTypeArrayData[8].selected==false">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.44746 6.74205L1.39561 8.85483L3.48058 8.8023L3.48271 8.80446L8.29119 3.9325L6.25779 1.87225L1.44945 6.74407L1.44746 6.74205Z" fill="#56CCF2"/>
+                                                <path d="M6.53516 1.58301L7.37361 0.733485C7.52879 0.576254 7.78039 0.576254 7.93557 0.733485L9.40701 2.22435C9.56219 2.38158 9.56219 2.6365 9.40701 2.79373L8.56856 3.64326L6.53516 1.58301Z" fill="#56CCF2"/>
+                                                </svg>
+                                            </div>
+                                                
+                                    </div>
+                            </div>
+                    </div>
+
+
+
+                
+                    <div  [ngClass]="{ 'comon-column-container': true, 'editUwOrLwOn': showNotesType=='nextnotes' && notessection, 'hideEditPencilCls': lebelTypeArrayData[9].selected}">
+                         <div style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px;" (click)="showNotes('nextnotes', 9)" ></div>
+                    
+                            <div class="common-lebel"> Next notes </div>
+                            <div class="comon-remain-section">
+                                    <div class="comon-plus-icon" style="cursor: pointer" (click)="hideEditIcon(9)">
+                                            <div *ngIf="lebelTypeArrayData[9].selected" style="padding-top: 2px;">
+                                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M14 0C14 0.787931 13.8189 1.56815 13.4672 2.2961C13.1154 3.02405 12.5998 3.68549 11.9497 4.24264C11.2997 4.79979 10.5281 5.24175 9.67878 5.54328C8.8295 5.84481 7.91925 6 7 6C6.08075 6 5.17049 5.84481 4.32122 5.54328C3.47194 5.24175 2.70026 4.79979 2.05025 4.24264C1.40024 3.68549 0.884626 3.02405 0.532843 2.2961C0.18106 1.56815 -8.03636e-08 0.78793 0 -4.76837e-07H0.784253C0.784253 0.699654 0.945028 1.39246 1.2574 2.03885C1.56977 2.68525 2.02762 3.27258 2.6048 3.76731C3.18199 4.26204 3.86721 4.65448 4.62134 4.92223C5.37547 5.18998 6.18374 5.32778 7 5.32778C7.81626 5.32778 8.62453 5.18998 9.37866 4.92223C10.1328 4.65448 10.818 4.26204 11.3952 3.76731C11.9724 3.27258 12.4302 2.68525 12.7426 2.03885C13.055 1.39246 13.2157 0.699655 13.2157 0H14Z" fill="#4EC8F0"/>
+                                                    <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                    <line x1="4.44721" y1="5.22361" x2="3.44721" y2="7.22361" stroke="#4EC8F0"/>
+                                                    <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                    <line x1="7" y1="8.11816" x2="7" y2="5.8821" stroke="#4EC8F0"/>
+                                                    <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                    <line x1="10.5314" y1="7.22411" x2="9.56628" y2="5.20704" stroke="#4EC8F0"/>
+                                                    <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                    <line x1="13.5314" y1="5.22411" x2="12.5663" y2="3.20704" stroke="#4EC8F0"/>
+                                                    <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                    <line x1="1.44721" y1="3.22361" x2="0.447214" y2="5.22361" stroke="#4EC8F0"/>
+                                                    </svg>
+                                                        
+                                            </div>
+                                            <div *ngIf="lebelTypeArrayData[9].selected==false">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.44746 6.74205L1.39561 8.85483L3.48058 8.8023L3.48271 8.80446L8.29119 3.9325L6.25779 1.87225L1.44945 6.74407L1.44746 6.74205Z" fill="#56CCF2"/>
+                                                <path d="M6.53516 1.58301L7.37361 0.733485C7.52879 0.576254 7.78039 0.576254 7.93557 0.733485L9.40701 2.22435C9.56219 2.38158 9.56219 2.6365 9.40701 2.79373L8.56856 3.64326L6.53516 1.58301Z" fill="#56CCF2"/>
+                                                </svg>
+                                            </div>
+                                                
+                                    </div>
+                            </div>
+                    </div>
+
+                    <div class="comon-small-column-container last-one-column">
+                            <div class="common-lebel-last-one-column" style="margin-bottom:5px"> </div>
+                            <div class="common-lebel-last-one-column"> </div>
+                            <div class="plus-icon-for-last">
+                                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="3.19922" width="1.6" height="8" rx="0.3" fill="#4EC8F0"/>
+                                        <rect y="4.7998" width="1.6" height="8" rx="0.3" transform="rotate(-90 0 4.7998)" fill="#4EC8F0"/>
+                                    </svg>
+                            </div>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+        </div>
+
+     
+        <div class="create-new-right-upper-column-section">
+            <div class="create-new-right-column-section" (click)="checkBracketSection()">
+                    B R A C K E T S
+            </div>
+            <div *ngIf="bracketsSection" class="brackets-section"> 
+                    <div class="bracket-title"> B R A C K E T S </div>
+                    <div class="bracket-contain">
+
+                        <div  [ngStyle]="{'height': bracketHeight +'px', 'margin-bottom': '10px'}">
+                            <perfect-scrollbar [config]="config"  #listboxscroll>
+                            <div class="comon-bracket-list" *ngFor="let bracketListData of bracketList; let index=index">
+                                    <div class="comon-bracket-name" [ngStyle]="{'color': bracketListData.color}">
+                                        {{bracketListData.name}}
+                                    </div>
+                                    <div class="comon-bracket-action" (click)="deleteBracketItem(index)">
+                                        <svg width="8" height="8" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.67605 1.31867L3.16708 2.82763L4.76939 4.42994L3.98768 5.21164L2.38538 3.60934L0.884189 5.11053L0.172486 4.39882L1.67367 2.89763L0.0791477 1.30311L0.860854 0.521402L2.45538 2.11593L3.96435 0.606962L4.67605 1.31867Z" fill="#646464"/>
+                                        </svg>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                            </div>
+                            </perfect-scrollbar>
+                        </div>
+
+                        <div class="comon-bracket-list" style="margin-bottom:12px;">
+                                <div class="comon-bracket-name add-name" *ngIf="addBracketItem">
+                                    <input type="text" [(ngModel)]="bracketName" placeholder="New bracket item" class="input-add-bracket-name" />
+                                </div>
+                                <div class="comon-bracket-action add-action" style="cursor: pointer" (click)="checkBracketItemOpen()">
+                                        <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.18357 3.81H4.04957V6.076H2.94407V3.81H0.82107V2.8035H2.94407V0.548499H4.04957V2.8035H6.18357V3.81Z" fill="#4EC8F0"/>
+                                        </svg>
+                                            
+                                </div>
+                                <div style="clear:both;"></div>
+                        </div>
+
+                        <div class="comon-bracket-list" *ngIf="addBracketItem">
+                                <div class="comon-bracket-name add-name select-color-lebel">
+                                   <div *ngIf="colorCode=='Choose color'"> {{colorCode}} </div> 
+                                    <div *ngIf="colorCode!='Choose color'" class="color" [ngStyle]="{ 'background' : colorCode, 'margin-top':  '-3px'  }"> </div>
+                                    <div class="drop-down-icon" (click)="openDropDown()">
+                                        <svg width="9" height="9" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2 3L0.267949 0.75L3.73205 0.75L2 3Z" fill="#4EC8F0"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="drop-down-list" *ngIf="dropDown">
+                                        <div *ngFor="let bracketColorData of bracketColor; let indx=index">
+                                            <div (click)="changeTempleteColor(indx)" class="upper-container" [ngStyle]="{ 'border' : bracketColorData.selected== true ? '1px solid #696969' : '', 'border-radius' : bracketColorData.selected== true ? '100px' : '' }">
+                                                <div class="color" [ngStyle]="{ 'background' : bracketColorData.color, 'height': bracketColorData.selected== true ? '16px' : '' }">
+                                                </div>
+                                            </div>
+                                        </div>	
+                                        <div style="clear:both"></div>
+                                    </div>
+
+                                </div>
+                        </div>
+                       
+
+                       
+                    </div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+
+        <div class="lower-section" *ngIf="lowerSectionVar">
+                <div class="drag-and-drop-text">
+                      
+                        <div *ngIf="hygSection">*Choose a rating system for oral hygiene </div>
+                        <div *ngIf="notessection"> *Double click group title to change it</div>
+                        <div *ngIf="hygSection== false && notessection==false">  *Drag & Drop items to arrange order </div>
+                </div>
+                <div class="txcard-title" style="margin-bottom: 7px; height: 3%">TX CARD</div>
+                <div class="lower-container">
+
+                    <div class="uw-and-lw-section" *ngIf="lwAndUwVar">
+                            <div class="uw-section">
+                                <div class="uw-title"> UW </div>
+                                <div class="uw-list">
+                                    <!---- <div class="uw-name-list-drop-down" (click)="openUWDropDownList()">List
+                                         <div class="uw-drop-down-icon">
+                                            <svg width="6" height="6" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2.41617 3L0.956576 0.75L3.87576 0.75L2.41617 3Z" fill="#4EC8F0"/>
+                                            </svg>
+                                         </div>
+                                     </div> -->
+                                     <div class="uw-name-show-section" *ngIf="uwListDropDown">
+                                            <perfect-scrollbar  #listboxscroll1>
+                                            <div class="uw-name" *ngFor="let uwListData of uwList; let index= index">
+                                                    <div style="cursor: pointer; width:100%"> 
+                                                      {{uwListData.name}}
+                                                      <div class="color-set-section" [ngStyle]="{ 'background': uwListData.color }"></div>
+                                                    </div>
+                                                    <div (click)="OnUweditMode(index)" style="width: 100%; height: 100%; position:absolute; top:0px; left:0px"></div>
+
+                                                    <div class="edit-mode-section" *ngIf="uwListData.edit_mode" (click)="OnUweditMode(index)">
+                                                       
+                                                        <div class="edit-section" style="cursor: pointer" (click)="editUW(index)">
+                                                            <svg width="14" height="13" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <circle cx="5.70508" cy="5" r="4.85" fill="white" stroke="#646464" stroke-width="0.3"/>
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.8819 5.75926L3.88461 6.83477L4.95921 6.83748L4.96008 6.83835L7.37295 4.42457L6.29513 3.34635L3.88251 5.75987L3.8819 5.75926Z" fill="#56CCF2"/>
+                                                            <path d="M6.43555 3.20386L6.71448 2.92482C6.87066 2.76858 7.12388 2.76858 7.28006 2.92482L7.7923 3.43725C7.94848 3.59349 7.94848 3.8468 7.7923 4.00304L7.51336 4.28208L6.43555 3.20386Z" fill="#56CCF2"/>
+                                                            </svg>
+                                                        </div>
+
+                                                        <div class="delete-section" style="cursor: pointer" (click)="deleteUW(index)">
+                                                            <svg width="14" height="13" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <circle cx="5.16992" cy="5" r="4.85" fill="white" stroke="#646464" stroke-width="0.3"/>
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67262 3.01196C4.61739 3.01196 4.57262 3.05673 4.57262 3.11196V3.24919H3.74648C3.69126 3.24919 3.64648 3.29396 3.64648 3.34919V4.09996C3.64648 4.15519 3.69126 4.19996 3.74648 4.19996H6.55725C6.61248 4.19996 6.65725 4.15519 6.65725 4.09996V3.34919C6.65725 3.29396 6.61248 3.24919 6.55725 3.24919H5.73061V3.11196C5.73061 3.05673 5.68583 3.01196 5.63061 3.01196H4.67262Z" fill="#FD7474"/>
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.74648 4.43652C3.69126 4.43652 3.64648 4.48129 3.64648 4.53652V7.42653C3.64648 7.48176 3.69126 7.52653 3.74648 7.52653H6.55725C6.61248 7.52653 6.65725 7.48176 6.65725 7.42653V4.53652C6.65725 4.48129 6.61248 4.43652 6.55725 4.43652H3.74648ZM6.07814 4.9108C6.01419 4.9108 5.96234 4.96264 5.96234 5.02659V6.93423C5.96234 6.99819 6.01419 7.05003 6.07814 7.05003C6.14209 7.05003 6.19394 6.99819 6.19394 6.93423V5.02659C6.19394 4.96264 6.14209 4.9108 6.07814 4.9108ZM4.10956 5.02707C4.10956 4.96311 4.1614 4.91127 4.22536 4.91127C4.28931 4.91127 4.34116 4.96311 4.34116 5.02707V6.9347C4.34116 6.99866 4.28931 7.0505 4.22536 7.0505C4.1614 7.0505 4.10956 6.99866 4.10956 6.9347V5.02707ZM5.15199 4.91197C5.08804 4.91197 5.03619 4.96382 5.03619 5.02777V6.93541C5.03619 6.99936 5.08804 7.05121 5.15199 7.05121C5.21595 7.05121 5.26779 6.99936 5.26779 6.93541V5.02777C5.26779 4.96382 5.21595 4.91197 5.15199 4.91197Z" fill="#FD7474"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div style="clear: both"></div>
+                                                        
+      
+                                                    </div>
+                                            </div>  
+                                            </perfect-scrollbar>
+                                           
+                                     </div>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="lw-section">
+
+                                <div class="lw-title"> LW </div>
+                                <div class="lw-list">
+                                       <!---- <div class="lw-name-list-drop-down" (click)="openLWDropDownList()">List
+                                            <div class="lw-drop-down-icon">
+                                            <svg width="6" height="6" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2.41617 3L0.956576 0.75L3.87576 0.75L2.41617 3Z" fill="#4EC8F0"/>
+                                            </svg>
+                                            </div>
+                                        </div> --->
+                                        <div class="lw-name-show-section" *ngIf="lwListDropDown">
+                                            <perfect-scrollbar  #listboxscroll2>
+                                            <div class="lw-name" *ngFor="let lwListData of lwList; let index= index">
+                                                    <div style="cursor: pointer; width:100%"> 
+                                                    {{lwListData.name}}
+                                                     <div class="color-set-section" [ngStyle]="{ 'background': lwListData.color }"></div>
+                                                    </div>
+
+                                                    <div (click)="OnLweditMode(index)" style="width: 100%; height: 100%; position:absolute; top:0px; left:0px"></div>
+
+                                                     <div class="edit-mode-section" *ngIf="lwListData.edit_mode" (click)="OnLweditMode(index)">
+                                                       
+                                                            <div class="edit-section" style="cursor: pointer" (click)="editLW(index)">
+                                                                <svg width="14" height="13" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <circle cx="5.70508" cy="5" r="4.85" fill="white" stroke="#646464" stroke-width="0.3"/>
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.8819 5.75926L3.88461 6.83477L4.95921 6.83748L4.96008 6.83835L7.37295 4.42457L6.29513 3.34635L3.88251 5.75987L3.8819 5.75926Z" fill="#56CCF2"/>
+                                                                <path d="M6.43555 3.20386L6.71448 2.92482C6.87066 2.76858 7.12388 2.76858 7.28006 2.92482L7.7923 3.43725C7.94848 3.59349 7.94848 3.8468 7.7923 4.00304L7.51336 4.28208L6.43555 3.20386Z" fill="#56CCF2"/>
+                                                                </svg>
+                                                            </div>
+    
+                                                            <div class="delete-section" style="cursor: pointer" (click)="deleteLW(index)">
+                                                                <svg width="14" height="13" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <circle cx="5.16992" cy="5" r="4.85" fill="white" stroke="#646464" stroke-width="0.3"/>
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67262 3.01196C4.61739 3.01196 4.57262 3.05673 4.57262 3.11196V3.24919H3.74648C3.69126 3.24919 3.64648 3.29396 3.64648 3.34919V4.09996C3.64648 4.15519 3.69126 4.19996 3.74648 4.19996H6.55725C6.61248 4.19996 6.65725 4.15519 6.65725 4.09996V3.34919C6.65725 3.29396 6.61248 3.24919 6.55725 3.24919H5.73061V3.11196C5.73061 3.05673 5.68583 3.01196 5.63061 3.01196H4.67262Z" fill="#FD7474"/>
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.74648 4.43652C3.69126 4.43652 3.64648 4.48129 3.64648 4.53652V7.42653C3.64648 7.48176 3.69126 7.52653 3.74648 7.52653H6.55725C6.61248 7.52653 6.65725 7.48176 6.65725 7.42653V4.53652C6.65725 4.48129 6.61248 4.43652 6.55725 4.43652H3.74648ZM6.07814 4.9108C6.01419 4.9108 5.96234 4.96264 5.96234 5.02659V6.93423C5.96234 6.99819 6.01419 7.05003 6.07814 7.05003C6.14209 7.05003 6.19394 6.99819 6.19394 6.93423V5.02659C6.19394 4.96264 6.14209 4.9108 6.07814 4.9108ZM4.10956 5.02707C4.10956 4.96311 4.1614 4.91127 4.22536 4.91127C4.28931 4.91127 4.34116 4.96311 4.34116 5.02707V6.9347C4.34116 6.99866 4.28931 7.0505 4.22536 7.0505C4.1614 7.0505 4.10956 6.99866 4.10956 6.9347V5.02707ZM5.15199 4.91197C5.08804 4.91197 5.03619 4.96382 5.03619 5.02777V6.93541C5.03619 6.99936 5.08804 7.05121 5.15199 7.05121C5.21595 7.05121 5.26779 6.99936 5.26779 6.93541V5.02777C5.26779 4.96382 5.21595 4.91197 5.15199 4.91197Z" fill="#FD7474"/>
+                                                                </svg>
+                                                            </div>
+                                                            <div style="clear: both"></div>
+                                                                    
+                                                        </div>
+                                             </div>  
+                                             </perfect-scrollbar>
+                                           
+                                        </div>
+                                    
+                                </div>
+
+                            </div>
+
+                            <div class="create-new-uw-lw-section">
+
+                                <div class="create-form-section">
+                                   
+                                    <div class="comon-lebel-section">
+                                        <div class="comon-lebel-text">
+                                            <div class="plus-sign-for-uw-lw" (click)="openUwAndLwForm()" *ngIf="saveDataByEditMode==false">
+                                                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="3.42773" width="1.14286" height="8" fill="#00AEEF"/>
+                                                <rect y="4.57153" width="1.14286" height="8" transform="rotate(-90 0 4.57153)" fill="#00AEEF"/>
+                                                </svg>
+                                            </div>
+                                            <div *ngIf="saveDataByEditMode" class="editText">
+                                                    Edit
+                                            </div>
+                                        </div>
+                                        <div class="comon-lebel-field" *ngIf="addNewLwUw">
+                                            <input type="text" placeholder="Wire Name" [(ngModel)]="createNewWireFormData[0].wireName" class="input-write-name" />
+                                        </div>
+                                        <div *ngIf="addNewLwUw== false" class="new-write-text">
+                                                New wire
+                                        </div>
+                                        <div style="clear: both"></div>
+                                    </div>
+
+
+                                    <div class="comon-lebel-section" *ngIf="addNewLwUw">
+                                        <div class="comon-lebel-text">
+                                        </div>
+                                        <div class="comon-lebel-field for-color" style="cursor: pointer">
+                                               
+                                                <div style="width: 100%" (click)="chooseNewColorOption()">
+                                                    <div *ngIf="colorCode=='Choose color'"> {{colorCode}} </div> 
+                                                    <div *ngIf="colorCode!='Choose color'" class="color" [ngStyle]="{ 'background' : colorCode, 'height': '12px', 'width': '12px' }"> </div>
+                                                    <div class="drop-down-icon-for-create">
+                                                            <svg width="6" height="6" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M2.41617 3L0.956576 0.75L3.87576 0.75L2.41617 3Z" fill="#646464"/>
+                                                            </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div *ngIf="chooseNewColor" class="drop-down-list for-create-dplist">
+                                                    <div *ngFor="let bracketColorData of bracketColor; let indx=index">
+                                                        <div (click)="changeTempleteNewColor(indx)" class="upper-container" [ngStyle]="{ 'border' : bracketColorData.selected== true ? '1px solid #696969' : '', 'border-radius' : bracketColorData.selected== true ? '100px' : '' }">
+                                                            <div class="color" [ngStyle]="{ 'background' : bracketColorData.color, 'height': bracketColorData.selected== true ? '16px' : '' }">
+                                                            </div>
+                                                        </div>
+                                                    </div>	
+                                                    <div style="clear:both"></div>
+                                                </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                    </div>
+
+                                    <div class="comon-lebel-section" style="margin-bottom: 75px;" *ngIf="addNewLwUw && duplicateUWtoLWVar==false && duplicateLWtoUWVar==false && saveDataByEditMode==false">
+                                        <div class="comon-lebel-text">
+                                        </div>
+                                        <div class="comon-lebel-field for-color" style="cursor: pointer">
+                                               
+                                                <div style="width: 100%" (click)="chooseNewGroupOption()">
+                                                        {{groupType}}
+                                                        <div class="drop-down-icon-for-create">
+                                                                <svg width="6" height="6" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M2.41617 3L0.956576 0.75L3.87576 0.75L2.41617 3Z" fill="#646464"/>
+                                                                </svg>
+                                                        </div>
+                                                </div>
+                                               
+                                                <div *ngIf="choodeNewGroup" class="both-uw-lw-list">
+                                                    <div (click)="chooseGroup('UW')" class="typeName">UW</div>
+                                                    <div (click)="chooseGroup('LW')" class="typeName">LW</div>
+                                                    <div (click)="chooseGroup('UW & LW')" class="typeName">UW & LW</div>
+                                                </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                    </div>
+
+
+                                    <div class="comon-lebel-section" *ngIf="addNewLwUw">
+                                        <div class="comon-lebel-text">
+                                           <div class="delete" *ngIf="saveDataByEditMode" (click)="deleteUwOrLwData()">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="8" cy="8" r="7.5" fill="white" stroke="#F11212"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.1455 4.81921C7.09028 4.81921 7.0455 4.86399 7.0455 4.91921V5.19876H5.76445C5.654 5.19876 5.56445 5.2883 5.56445 5.39876V6.51999C5.56445 6.63045 5.654 6.71999 5.76445 6.71999H10.1817C10.2921 6.71999 10.3817 6.63045 10.3817 6.51999V5.39876C10.3817 5.2883 10.2921 5.19876 10.1817 5.19876H8.89828V4.91921C8.89828 4.86399 8.85351 4.81921 8.79828 4.81921H7.1455Z" fill="#F11212"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.66445 7.09827C5.60922 7.09827 5.56445 7.14304 5.56445 7.19827V11.9423C5.56445 11.9975 5.60922 12.0423 5.66445 12.0423H10.2817C10.3369 12.0423 10.3817 11.9975 10.3817 11.9423V7.19827C10.3817 7.14304 10.3369 7.09827 10.2817 7.09827H5.66445ZM9.45481 7.85721C9.35248 7.85721 9.26953 7.94016 9.26953 8.04249V11.0947C9.26953 11.197 9.35248 11.28 9.45481 11.28C9.55714 11.28 9.64009 11.197 9.64009 11.0947V8.04249C9.64009 7.94016 9.55714 7.85721 9.45481 7.85721ZM6.30469 8.04355C6.30469 7.94123 6.38764 7.85828 6.48997 7.85828C6.59229 7.85828 6.67524 7.94123 6.67524 8.04355V11.0958C6.67524 11.1981 6.59229 11.2811 6.48997 11.2811C6.38764 11.2811 6.30469 11.1981 6.30469 11.0958V8.04355ZM7.97239 7.85934C7.87006 7.85934 7.78711 7.94229 7.78711 8.04462V11.0968C7.78711 11.1992 7.87006 11.2821 7.97239 11.2821C8.07471 11.2821 8.15767 11.1992 8.15767 11.0968V8.04462C8.15767 7.94229 8.07471 7.85934 7.97239 7.85934Z" fill="#F11212"/>
+                                                    </svg>
+                                            </div>
+                                        </div>
+                                        <div class="comon-lebel-field for-save" (click)="saveNewWireData()">
+                                                Save
+                                        </div>
+                                        <div style="clear: both"></div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="duplicate-option-section" *ngIf="saveDataByEditMode==false">
+                                    <div class="duplicate-container">
+                                        <div style="cursor: pointer;" (click)="duplicateUWtoLW()">
+                                            <div class="duplicate-radio">
+                                                <div class="radio">
+                                                   <div class="radio-circle" *ngIf="duplicateUWtoLWVar"></div>
+                                                </div>
+                                            </div>
+                                            <div class="duplicate-text-lebel">
+                                                    Duplicate all UW list to LW list
+                                            </div>
+                                            <div style="clear: both"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="duplicate-container">
+                                            <div style="cursor: pointer;" (click)="duplicateLWtoUW()">
+                                                    <div class="duplicate-radio">
+                                                        <div class="radio">
+                                                                <div class="radio-circle" *ngIf="duplicateLWtoUWVar"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="duplicate-text-lebel">
+                                                            Duplicate all LW list to UW list
+                                                    </div>
+                                                    <div style="clear: both"></div>
+                                            </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div style="clear:both"></div>
+                    </div>
+
+
+                    <div class="appl-section" *ngIf="applVar">
+                            <div class="uw-section" style="width: 8%;margin: 10px;">
+                                    <div class="uw-title"> Appl </div>
+                                    <div class="uw-list">
+                                         <div class="uw-name-show-section">
+                                                <perfect-scrollbar  #listboxscroll1>
+                                                <div class="uw-name" style="padding: 3px 3px 3px 20px" *ngFor="let applListData of applList; let index= index" [ngClass]="{ 'editApplMode': applListData.edit_mode}">
+                                                        <div  style="cursor: pointer; width:100%" (click)="editApplMode(index)"> 
+                                                          {{applListData.name}}
+                                                          <div class="color-set-section" style=" background: white; top: 5px; right:20px;" *ngIf="applListData.appl">
+                                                               
+                                                            <div *ngIf="applListData.edit_mode==false">
+                                                                    <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M2.6002 9V9C3.64943 9 4.5 8.14943 4.5 7.1002L4.5 6.5L4.5 2.5" stroke="#646464" stroke-width="0.5"/>
+                                                                    <path d="M2.59961 9V9C1.71595 9 0.999609 8.28365 0.999609 7.4L0.999609 2.33309C0.999609 1.59685 1.59646 1 2.3327 1V1" stroke="#646464" stroke-width="0.5"/>
+                                                                    <path d="M2.20039 2.9999L2.20039 5.3999L2.20039 6.7999C2.20039 7.13127 2.46902 7.3999 2.80039 7.3999V7.3999C3.13176 7.3999 3.40039 7.13127 3.40039 6.7999L3.40039 2.1999C3.40039 1.53716 2.86313 0.999902 2.20039 0.999902V0.999902" stroke="#646464" stroke-width="0.5"/>
+                                                                    </svg>
+                                                            </div>
+                                                            <div *ngIf="applListData.edit_mode">
+                                                                    <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M2.6002 9V9C3.64943 9 4.5 8.14943 4.5 7.1002L4.5 6.5L4.5 2.5" stroke="#5CD7FF" stroke-width="0.5"/>
+                                                                    <path d="M2.59961 9V9C1.71595 9 0.999609 8.28365 0.999609 7.4L0.999609 2.33309C0.999609 1.59685 1.59646 1 2.3327 1V1" stroke="#5CD7FF" stroke-width="0.5"/>
+                                                                    <path d="M2.20039 2.9999L2.20039 5.3999L2.20039 6.7999C2.20039 7.13127 2.46902 7.3999 2.80039 7.3999V7.3999C3.13176 7.3999 3.40039 7.13127 3.40039 6.7999L3.40039 2.1999C3.40039 1.53716 2.86313 0.999902 2.20039 0.999902V0.999902" stroke="#5CD7FF" stroke-width="0.5"/>
+                                                                    </svg>
+                                                            </div>
+                                                               
+                                                              
+                                                                    
+                                                          </div>
+                                                        </div>
+                                                </div>  
+                                                </perfect-scrollbar>
+                                         </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="create-new-uw-lw-section" style="padding-top: 10px;">
+                                    <div class="create-form-section">
+                                        <div class="comon-lebel-section" *ngIf="addNewAppl==false" (click)="openApplForm()">
+                                            <div class="comon-lebel-text">
+                                                <div class="plus-sign-for-uw-lw">
+                                                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect x="3.42773" width="1.14286" height="8" fill="#00AEEF"/>
+                                                    <rect y="4.57153" width="1.14286" height="8" transform="rotate(-90 0 4.57153)" fill="#00AEEF"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div  class="new-write-text">
+                                                    New appliance
+                                            </div>
+                                            <div style="clear: both"></div>
+                                        </div>
+
+                                        <div class="appl-form" *ngIf="addNewAppl">
+                                            <div class="new-appliance-text">New appliance</div>
+                                            <div class="appl-comon-field">
+                                                <input [(ngModel)]="applFormListData[0].name" type="text" placeholder="Title" class="appl-title"/>
+                                            </div>
+
+                                            <div class="upload-img-or-video">
+                                                    <div *ngIf="showImgName==''" class="upload-box" for="file-input">
+                                                          
+                                                        <label for="file-input" style="cursor: pointer">
+                                                                Upload image/video
+                                                        </label>
+                                                        <input style="display: none" id="file-input" #file type="file" accept='image/*' (change)="preview(file.files)" />
+                                                    </div>
+                                                    <div *ngIf="showImgName" class="replace-img-for-appl">   
+                                                            <label for="file-input" style="cursor: pointer">
+                                                                    Replace image
+                                                            </label>
+                                                            <input style="display: none" id="file-input" #file type="file" accept='image/*' (change)="preview(file.files)" />
+                                                       
+                                                    </div>
+                                                    <div *ngIf="showImgName" class="showImage">
+                                                            <img [src]="showImgName"  *ngIf="showImgName">
+                                                    </div>
+                                            </div>
+                                            <div class="saveAppl-container">
+                                                <div class="save-right" (click)="saveApplData()">
+                                                    Save
+                                                </div>
+                                            </div>
+
+                                            <div class="deleteAppl-container" *ngIf="showImgName">
+                                                <div class="delete-appl-circle" (click)="deleteApplImg()">
+                                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.66826 0.22876C2.61303 0.22876 2.56826 0.273531 2.56826 0.32876V0.798015H0.545703C0.435246 0.798015 0.345703 0.887558 0.345703 0.998015V2.87986C0.345703 2.99032 0.435246 3.07986 0.545703 3.07986H7.37154C7.482 3.07986 7.57154 2.99032 7.57154 2.87986V0.998015C7.57154 0.887558 7.482 0.798015 7.37154 0.798015H5.34742V0.32876C5.34742 0.273531 5.30265 0.22876 5.24742 0.22876H2.66826Z" fill="#F11212"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.445703 3.64722C0.390475 3.64722 0.345703 3.69199 0.345703 3.74722V10.9632C0.345703 11.0185 0.390475 11.0632 0.445703 11.0632H7.47154C7.52677 11.0632 7.57154 11.0185 7.57154 10.9632V3.74722C7.57154 3.69199 7.52677 3.64722 7.47154 3.64722H0.445703ZM6.18221 4.78557C6.02872 4.78557 5.9043 4.91 5.9043 5.06349V9.64182C5.9043 9.79531 6.02872 9.91974 6.18221 9.91974C6.3357 9.91974 6.46013 9.79531 6.46013 9.64182V5.06349C6.46013 4.91 6.3357 4.78557 6.18221 4.78557ZM1.45508 5.06509C1.45508 4.9116 1.57951 4.78717 1.73299 4.78717C1.88648 4.78717 2.01091 4.9116 2.01091 5.06509V9.64342C2.01091 9.79691 1.88648 9.92133 1.73299 9.92133C1.57951 9.92133 1.45508 9.79691 1.45508 9.64342V5.06509ZM3.95956 4.78877C3.80607 4.78877 3.68164 4.9132 3.68164 5.06669V9.64501C3.68164 9.7985 3.80607 9.92293 3.95956 9.92293C4.11305 9.92293 4.23747 9.7985 4.23747 9.64501V5.06668C4.23747 4.9132 4.11305 4.78877 3.95956 4.78877Z" fill="#F11212"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="appl-delete-text-info">
+                                                    Remove appliance and image
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+                    </div>
+
+                    <div *ngIf="hygSection">
+                            <div class="lower-container hyg-main-cont">
+                                <div class="hyg-selection-box" *ngFor="let slecBox of hygSystemArr; let indx=index" (click)="selectHygSystem(indx)" [ngStyle]="{'background': slecBox.selected ? '#FFFFFF': '#F0F0F0', 'padding-top': slecBox.type == 'emoji' ? '2px' : '5px', 'padding-bottom': slecBox.type == 'emoji' ? '2px' : '5px'}">
+                                    <div class="selection-checkbox">
+                                        <div class="chkbox-icon" *ngIf="slecBox.selected">
+                                            <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <line x1="0.474342" y1="2.84189" x2="1.47434" y2="5.84189" stroke="black"/>
+                                                <line x1="1.60957" y1="5.68765" x2="5.60957" y2="0.687652" stroke="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="number-system-cont" *ngIf="slecBox.type=='number'">
+                                        <div class="number-system-item" *ngFor="let ratingElem of  slecBox.ratingelements">{{ratingElem.value}}={{ratingElem.label}}</div>
+                                    </div>
+                                    
+                                    <div class="emoji-system-cont" *ngIf="slecBox.type=='emoji'">
+                                        <div class="emoji-cont">
+                                            <div class="emoji-system-item" *ngFor="let ratingElem of  slecBox.ratingelements">
+                                                <div class="emoji-system-item-icon" *ngIf="ratingElem.value==5">
+                                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.64881 16.2976C12.8731 16.2976 16.2976 12.8731 16.2976 8.64881C16.2976 4.42449 12.8731 1 8.64881 1C4.42449 1 1 4.42449 1 8.64881C1 12.8731 4.42449 16.2976 8.64881 16.2976Z" fill="#39D56E" stroke="black" stroke-width="0.5" stroke-miterlimit="10"/>
+                                                        <path opacity="0.89" d="M5.35953 8.64795C5.26009 8.64795 5.17596 8.73973 5.19126 8.83917C5.40543 10.7743 6.76691 12.2658 8.42671 12.2658C10.0941 12.2658 11.448 10.7743 11.6621 8.83917C11.6698 8.73973 11.5933 8.64795 11.4939 8.64795H5.35953Z" fill="black"/>
+                                                        <path d="M4.85416 7.37033C4.83886 7.16381 4.92299 6.83491 5.19835 6.85786C5.45076 6.88081 5.5043 7.17146 5.49665 7.37033C5.45841 7.95929 6.37627 7.95929 6.41452 7.37033C6.46041 6.67429 5.94793 5.94765 5.19835 5.94C4.43347 5.93235 3.89041 6.64369 3.9363 7.37033C3.96689 7.95929 4.8924 7.95929 4.85416 7.37033Z" fill="black"/>
+                                                        <path d="M11.3405 7.37033C11.3252 7.16381 11.4093 6.83491 11.6847 6.85786C11.9371 6.88081 11.9906 7.17146 11.983 7.37033C11.9447 7.95929 12.8626 7.95929 12.9008 7.37033C12.9467 6.67429 12.4343 5.94765 11.6847 5.94C10.9198 5.93235 10.3767 6.64369 10.4226 7.37033C10.4609 7.95929 11.3787 7.95929 11.3405 7.37033Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                                
+                                                <div class="emoji-system-item-icon" *ngIf="ratingElem.value==4">
+                                                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.64881 15.5955C12.8731 15.5955 16.2976 12.171 16.2976 7.94666C16.2976 3.72234 12.8731 0.297852 8.64881 0.297852C4.42449 0.297852 1 3.72234 1 7.94666C1 12.171 4.42449 15.5955 8.64881 15.5955Z" fill="#8CF1E4" stroke="black" stroke-width="0.5" stroke-miterlimit="10"/>
+                                                        <path d="M6.22306 9.24548C6.89615 11.8996 10.5599 11.892 11.233 9.24548C11.3783 8.67182 10.4911 8.42706 10.3458 9.00072C9.89448 10.7676 7.55395 10.7676 7.10267 9.00072C6.96499 8.42706 6.07773 8.67182 6.22306 9.24548Z" fill="black"/>
+                                                        <path d="M4.99212 7.32598C5.32867 6.90529 5.89468 6.90529 6.23123 7.32598C6.59837 7.79256 7.24087 7.13476 6.88138 6.67583C6.25418 5.888 4.96918 5.888 4.34198 6.67583C3.97483 7.13476 4.61733 7.78491 4.99212 7.32598Z" fill="black"/>
+                                                        <path d="M11.1183 7.32598C11.4548 6.90529 12.0208 6.90529 12.3574 7.32598C12.7245 7.79256 13.367 7.13476 13.0075 6.67583C12.3803 5.888 11.0953 5.888 10.4681 6.67583C10.101 7.13476 10.7511 7.78491 11.1183 7.32598Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                                
+                                                <div class="emoji-system-item-icon" *ngIf="ratingElem.value==3">
+                                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.64881 15.8933C12.8731 15.8933 16.2976 12.4688 16.2976 8.24451C16.2976 4.02019 12.8731 0.595703 8.64881 0.595703C4.42449 0.595703 1 4.02019 1 8.24451C1 12.4688 4.42449 15.8933 8.64881 15.8933Z" fill="#F0F0F0" stroke="black" stroke-width="0.5" stroke-miterlimit="10"/>
+                                                        <path d="M5.95696 8.88705C6.3118 8.88705 6.59945 8.59939 6.59945 8.24455C6.59945 7.88971 6.3118 7.60205 5.95696 7.60205C5.60211 7.60205 5.31445 7.88971 5.31445 8.24455C5.31445 8.59939 5.60211 8.88705 5.95696 8.88705Z" fill="black"/>
+                                                        <path d="M11.3417 8.97055C11.6966 8.97055 11.9842 8.68289 11.9842 8.32805C11.9842 7.9732 11.6966 7.68555 11.3417 7.68555C10.9869 7.68555 10.6992 7.9732 10.6992 8.32805C10.6992 8.68289 10.9869 8.97055 11.3417 8.97055Z" fill="black"/>
+                                                        <path d="M6.20148 11.3488C7.82303 11.3488 9.44458 11.3488 11.0661 11.3488C11.6551 11.3488 11.6551 10.4309 11.0661 10.4309C9.44458 10.4309 7.82303 10.4309 6.20148 10.4309C5.61253 10.4309 5.61253 11.3488 6.20148 11.3488Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                                
+                                                <div class="emoji-system-item-icon" *ngIf="ratingElem.value==2">
+                                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.64881 16.1912C12.8731 16.1912 16.2976 12.7667 16.2976 8.54236C16.2976 4.31804 12.8731 0.893555 8.64881 0.893555C4.42449 0.893555 1 4.31804 1 8.54236C1 12.7667 4.42449 16.1912 8.64881 16.1912Z" fill="#FFE0E0" stroke="black" stroke-width="0.5" stroke-miterlimit="10"/>
+                                                        <path d="M4.6407 6.99755C4.9849 8.28255 6.69823 8.25196 7.05772 6.99755C7.21835 6.43154 6.33874 6.18678 6.17046 6.75279C6.05573 7.14288 5.63505 7.15053 5.52796 6.75279C5.37499 6.18678 4.48772 6.43154 4.6407 6.99755Z" fill="black"/>
+                                                        <path d="M9.74226 6.99755C10.0865 8.28255 11.7998 8.25196 12.1593 6.99755C12.3199 6.43154 11.4403 6.18678 11.272 6.75279C11.1573 7.14288 10.7366 7.15053 10.6295 6.75279C10.4765 6.18678 9.58929 6.43154 9.74226 6.99755Z" fill="black"/>
+                                                        <path d="M7.15739 10.1322C7.80754 9.37493 8.91662 9.36728 9.56677 10.1322C9.94921 10.5834 10.5994 9.9333 10.2169 9.48202C9.26081 8.35764 7.47099 8.36529 6.51489 9.48202C6.1248 9.9333 6.77495 10.5834 7.15739 10.1322Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                                
+                                                <div class="emoji-system-item-icon" *ngIf="ratingElem.value==1">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7.64881 15.489C11.8731 15.489 15.2976 12.0645 15.2976 7.84021C15.2976 3.61589 11.8731 0.191406 7.64881 0.191406C3.42449 0.191406 0 3.61589 0 7.84021C0 12.0645 3.42449 15.489 7.64881 15.489Z" fill="#DE473E"/>
+                                                        <path d="M5.20172 11.7701C6.33374 10.1179 8.68193 10.0185 9.76041 11.7701C10.0664 12.2749 10.8618 11.8083 10.5559 11.3035C9.09496 8.9247 5.92836 9.08532 4.40624 11.3035C4.07735 11.793 4.87282 12.2519 5.20172 11.7701Z" fill="black"/>
+                                                        <path d="M5.98854 6.03515C5.34604 5.75214 4.71119 5.47679 4.06869 5.19378C3.53327 4.95667 3.0667 5.75214 3.60211 5.98926C4.24461 6.27226 4.87946 6.54762 5.52196 6.83063C6.06503 7.06009 6.5316 6.27226 5.98854 6.03515Z" fill="black"/>
+                                                        <path d="M11.0301 5.1541C10.3723 5.38356 9.71453 5.62067 9.05673 5.85014C8.50602 6.04136 8.74313 6.92862 9.30149 6.7374C9.95929 6.50793 10.6171 6.27082 11.2749 6.04136C11.8256 5.84249 11.5885 4.95523 11.0301 5.1541Z" fill="black"/>
+                                                        <path d="M3.78523 8.23753C4.12943 9.52253 5.84276 9.49193 6.20225 8.23753C6.36288 7.67152 5.48327 7.42676 5.31499 7.99277C5.20026 8.38286 4.77958 8.39051 4.67249 7.99277C4.51952 7.42676 3.63226 7.66387 3.78523 8.23753Z" fill="black"/>
+                                                        <path d="M8.88094 8.23753C9.22513 9.52253 10.9385 9.49193 11.298 8.23753C11.4586 7.67152 10.579 7.42676 10.4107 7.99277C10.296 8.38286 9.87528 8.39051 9.7682 7.99277C9.61522 7.42676 8.72796 7.66387 8.88094 8.23753Z" fill="black"/>
+                                                    </svg>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="label-cont">
+                                            <div class="label-cont-item" *ngFor="let ratingElem of  slecBox.ratingelements">{{ratingElem.label}}</div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="info-box">
+                                    Using a point system of 5, 5 being excellent, Ava will be <br>able to score the patient’s oral hygiene at each visit.<br><br>Choose your display preference in the hygiene column on treatment card.
+                                </div>
+                            </div>
+                    </div>
+                    
+                    <div  *ngIf="notessection">
+                            <div class="lower-container textnotes-cont">
+                                
+                                <div class="notes-shortdesc_list">
+                                    <div class="notes-shortdesc_listItem" style="cursor: default;">Short description</div>
+                                    <div class="notes-shortdesc_listItem" *ngFor="let listitem of notesList; let indx=index" (click)="selectNotesListItem(indx)">{{listitem.short}}</div>
+                                </div>
+                                
+                                <div class="notes-add-edit-cont">
+                                    
+                                    <div class="notes-add-section">
+                                        <div class="notes-add-btn" *ngIf="!addNotes">
+                                            <div class="notes-add-btn-icon" (click)="addNotes = !addNotes">
+                                                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect x="3.42773" width="1.14286" height="8" fill="#4EC8F0"/>
+                                                    <rect y="4.57153" width="1.14286" height="8" transform="rotate(-90 0 4.57153)" fill="#4EC8F0"/>
+                                                </svg>
+                                            </div>
+                                            
+                                            <div class="notes-add-btn-label">Add new auto text</div>
+                                        </div>
+                                        
+                                        <div class="notes-input-section" *ngIf="addNotes">
+                                            <div class="add-notes-title">{{editNotes == true ? 'Edit auto text' :'New auto text'}}</div>
+                                            <div class="notes-input-shortdesc"><input type="text" placeholder="Short description" [(ngModel)]="shortDesc" /></div>
+                                            <div class="notes-input-desc">
+                                                <textarea [(ngModel)]="longDesc"></textarea>
+                                            </div>
+                                            
+                                            <div class="notes-delete-btn" *ngIf="editNotes" (click)="deleteExistingNotes()">
+                                                <div class="notes-delete-icon">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <circle cx="12" cy="12" r="11.25" fill="white" stroke="#C4C4C4" stroke-width="1.5"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6683 7.22876C10.613 7.22876 10.5683 7.27353 10.5683 7.32876V7.79801H8.5457C8.43525 7.79801 8.3457 7.88756 8.3457 7.99801V9.87986C8.3457 9.99032 8.43525 10.0799 8.5457 10.0799H15.3715C15.482 10.0799 15.5715 9.99032 15.5715 9.87986V7.99801C15.5715 7.88756 15.482 7.79801 15.3715 7.79801H13.3474V7.32876C13.3474 7.27353 13.3027 7.22876 13.2474 7.22876H10.6683Z" fill="#F11212"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.4457 10.6472C8.39047 10.6472 8.3457 10.692 8.3457 10.7472V17.9632C8.3457 18.0185 8.39047 18.0632 8.4457 18.0632H15.4715C15.5268 18.0632 15.5715 18.0185 15.5715 17.9632V10.7472C15.5715 10.692 15.5268 10.6472 15.4715 10.6472H8.4457ZM14.1822 11.7856C14.0287 11.7856 13.9043 11.91 13.9043 12.0635V16.6418C13.9043 16.7953 14.0287 16.9197 14.1822 16.9197C14.3357 16.9197 14.4601 16.7953 14.4601 16.6418V12.0635C14.4601 11.91 14.3357 11.7856 14.1822 11.7856ZM9.45508 12.0651C9.45508 11.9116 9.57951 11.7872 9.73299 11.7872C9.88648 11.7872 10.0109 11.9116 10.0109 12.0651V16.6434C10.0109 16.7969 9.88648 16.9213 9.73299 16.9213C9.57951 16.9213 9.45508 16.7969 9.45508 16.6434V12.0651ZM11.9596 11.7888C11.8061 11.7888 11.6816 11.9132 11.6816 12.0667V16.645C11.6816 16.7985 11.8061 16.9229 11.9596 16.9229C12.113 16.9229 12.2375 16.7985 12.2375 16.645V12.0667C12.2375 11.9132 12.113 11.7888 11.9596 11.7888Z" fill="#F11212"/>
+                                                    </svg>
+                                                </div>
+                                                
+                                                <div class="delete-confirm-warning" *ngIf="deleteNotes">Delete from list?</div>
+                                            </div>
+                                            
+                                            <div class="notes-action-btn-cont">
+                                                <div class="notes-action-btn" (click)="cancelNotesAddEdit()">Cancel</div>
+                                                <div class="notes-action-btn" (click)="addNotesToList()">Save</div>
+                                            </div>
+                                            
+                                            <div class="clear"></div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+
+                    <div class="close" (click)="closeLowerSection()" >Close</div>
+                </div>
+        </div>
+		
+      
+		
+		
+		</perfect-scrollbar>
+	</div>
+</div>

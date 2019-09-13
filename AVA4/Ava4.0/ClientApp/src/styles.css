@@ -1,0 +1,201 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body, html {
+	background: #f0f0f0;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+}
+
+.mat-autocomplete-panel {
+	border: 1px solid #56CCF2 !important;
+}
+
+.calenderClass > .mat-dialog-container {
+	padding: 0 !important;
+	box-shadow: none;
+	background: none;
+}
+
+.panelClass > .mat-dialog-container {
+	padding: 0 !important;
+	box-shadow: none;
+	border: 1px solid #A5A5A5;
+	border-radius: 5px;
+	overflow: visible;
+}
+
+.panelClass-right > .mat-dialog-container {
+	padding: 0 !important;
+	box-shadow: none;
+	border: 1px solid #A5A5A5;
+	border-radius: 5px 0 5px 5px;
+	overflow: visible;
+}
+
+.relationpanelClass > .mat-dialog-container {
+	padding: 0 !important;
+	box-shadow: none;
+	border: none;
+	overflow: visible;	
+	background: #F0F0F0;
+	border-radius: 2px;
+}
+
+.mat-calendar-body-today {
+	background-color: #56CCF2 !important;
+	border: none;
+}
+
+.mat-calendar-header {
+	/* display: none; */
+}
+
+.mat-calendar-content {
+	/* margin-top: 20px; */
+}
+
+.mat-button:focus .mat-button-focus-overlay { background-color: transparent; }
+
+.perfect-scrollbar > .ps > .ps__rail-y {
+    visibility: hidden;
+}
+
+.perfect-scrollbar > .ps > .ps__rail-x {
+    visibility: hidden;
+}
+
+.chairscrollbar {
+	overflow: visible;
+}
+
+.chairscrollbar > .ps > .ps__rail-y {
+    right: -17px !important;
+}
+
+perfect-scrollbar.chairscrollbar > .ps.ps--active-y > .ps__rail-y{
+	right: -17px !important;
+}
+
+.whitebackdrop {
+	background: rgba(255, 255, 255, 0.8);
+}
+
+.transparentbackdrop {
+	background: transparent;
+}
+
+.patient-card .mat-dialog-container {
+	border: 3px solid #4EC8F0;
+	box-sizing: border-box;
+	box-shadow: 5px 5px 5px rgba(127, 127, 127, 0.5);
+	border-radius: 4px;
+	padding: 0;
+}
+
+.patient-card .mat-table {
+	background: transparent;
+	font-family: 'Avenir Next';
+}
+.patient-card thead, .patient-card tfoot {
+	display: none;
+}
+
+.patient-card td.mat-cell, .patient-card td.mat-footer-cell, .patient-card th.mat-header-cell {
+	border-width: 0;
+}
+
+.patient-card tr.mat-footer-row, .patient-card tr.mat-row {
+	height: 35px;
+}
+
+.searchboxClass > .mat-dialog-container {
+	padding: 0 !important;
+	box-shadow: none;
+	border: 1px solid #56CCF2;
+	border-radius: 5px;
+	overflow: visible;
+}
+
+.tooltipcustomize {
+	background: #fff;
+	font-size: 14px;
+	color: #000 !important;
+	border: 1px solid #ccc;
+}
+
+/* --------- */
+.patientModal > .mat-dialog-container {
+	width: 913px;
+	height: auto;
+	background: #FFFFFF;
+	border: 2px solid #4EC8F0;
+	box-shadow: 5px 5px 5px rgba(127, 127, 127, 0.5);
+	border-radius: 4px;
+	padding: 0 !important;
+}
+
+.precedureModal > .mat-dialog-container {
+	width: 900px;
+	height: auto;
+	background: #FFFFFF;
+	border: 2px solid #4EC8F0;
+	box-shadow: 5px 5px 5px rgba(127, 127, 127, 0.5);
+	border-radius: 4px;
+	padding: 0 !important;
+}
+
+.vendormodal > .mat-dialog-container {
+	background: #FFFFFF;
+	border: 2px solid #4EC8F0;
+	box-shadow: 5px 5px 5px rgba(127, 127, 127, 0.5);
+	border-radius: 4px;
+	padding: 0 !important;
+}
+
+.overbookedmodal > .mat-dialog-container {
+	width: 300px;
+	height: 312px;
+	background: #FFFFFF;
+	border: 2px solid #4EC8F0;
+	box-shadow: 5px 5px 5px rgba(127, 127, 127, 0.5);
+	border-radius: 4px;
+	padding: 0 !important;
+}
+
+.referralModal > .mat-dialog-container {
+	width: 480px;
+	height: auto;
+	background: #FFFFFF;
+	border: 2px solid #4EC8F0;
+	box-shadow: 5px 5px 5px rgba(127, 127, 127, 0.5);
+	border-radius: 4px;
+	padding: 0 !important;
+}
+
+.ngx-file-drop__drop-zone{
+	border-radius: 0px !important;
+}
+.ngx-file-drop__drop-zone{
+	height: 100% !important;
+	border: none !important;
+}
+.ngx-file-drop__content{
+	height: 100% !important;
+}
+
+.editReffralModal > .mat-dialog-container {
+	width: 480px;
+	height: 650px;
+	background: #FFFFFF;
+	border: 2px solid #4EC8F0;
+	box-shadow: 5px 5px 5px rgba(127, 127, 127, 0.5);
+	border-radius: 4px;
+	padding: 0 !important;
+}

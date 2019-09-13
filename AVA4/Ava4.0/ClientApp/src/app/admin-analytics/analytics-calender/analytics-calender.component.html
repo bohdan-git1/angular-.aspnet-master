@@ -1,0 +1,19 @@
+<div class="calendar-cont">
+	<div class="monthname">{{monthname | date:'MMMM'}}</div>
+	<!-- <div class="day-names">
+		<div *ngFor="let name of dayNames" class="day-name">
+		{{ name }}
+		</div>
+	</div> -->
+	
+	<div class="weeks">
+		<div *ngFor="let week of weeks let weekIndx = index" class="week">
+			<div *ngFor="let day of week let dayIndx = index" [ngClass]="{'date-text': true, holiday: day.holiday, today: day.today, seldate: day.selected, longerday: day.longerday, shorterday: day.shorterday}">
+			  <div>{{day.weekdate | date:'d'}}</div>
+			  <div class="dots-container" *ngIf="day.weekdate">
+				<div [ngClass]="{reddots: day.reddots}"></div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>

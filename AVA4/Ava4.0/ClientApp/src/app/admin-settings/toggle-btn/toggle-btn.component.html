@@ -1,0 +1,11 @@
+<div class="toggle-btn-cont" (click)="checkedToogle()">
+	<div class="toggle-selection">
+		<div class="icon-cont" *ngIf="toggleChecked">
+			<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M12.899 3.63348C12.6949 3.44751 12.3787 3.46223 12.1927 3.66636L5.27687 11.2575L2.02795 8.29754C1.82382 8.11157 1.50758 8.12629 1.32161 8.33042C1.13564 8.53455 1.15036 8.85079 1.35449 9.03676L4.81696 12.1912C4.84423 12.2565 4.88586 12.3171 4.94162 12.3679C5.14575 12.5538 5.46199 12.5391 5.64796 12.335L12.9319 4.33982C13.1179 4.13569 13.1032 3.81945 12.899 3.63348Z" fill="#434343"/>
+			</svg>
+		</div>
+	</div>
+	<div class="toggle-label" *ngIf="label != ''">{{label}}</div>
+
+</div>

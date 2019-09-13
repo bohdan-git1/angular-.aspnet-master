@@ -1,0 +1,195 @@
+<div class="component-cont">
+	<div class="component-title">
+    <!-----<div (click)="cancelModal()" style="width: 6%; cursor: pointer;">
+        Add
+    </div>-->
+  </div>
+	
+	<div class="closeBtn" (click)="cancelModal()">
+		<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="13.5" width="2.12119" height="19.0907" transform="rotate(45 13.5 0)" fill="#333333"/>
+			<rect y="1.50195" width="2.12119" height="19.0907" transform="rotate(-45 0 1.50195)" fill="#333333"/>
+		</svg>
+	</div>
+	
+	<div class="comp-content">
+
+    <div class="content-section">
+        <div class="search-section float-left">
+          <div class="search-input selected-time" style="padding: 0px; position: relative;">
+              
+              <input type="text" class="selected-time" placeholder="Select time"  [(ngModel)]="selectedTime"/>
+              <div style="position: relative;  cursor: pointer; display: inline-block" (click)="changeTimeUnit()">{{timeUnit}}</div>
+          </div>
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+
+    
+    <div class="content-section">
+        <div class="search-section float-left">
+          <div class="search-input selected-location">
+              {{selectedLocation}}
+          </div>
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+
+
+    <div class="content-section">
+			<div class="search-section float-left" [ngStyle]="{'background': selectedPatient != '' ? 'rgba(78, 200, 240, 0.25)': 'transparent'}">
+				<div class="search-icon" (click)="SelectAllPatient()">
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M7.62817 1.78485C5.95247 0.108175 3.22516 0.108175 1.54947 1.78485C-0.125864 3.46189 -0.125864 6.19043 1.54947 7.86747C2.91259 9.23106 4.96983 9.4825 6.59207 8.62733C6.81247 8.51114 7.10986 8.63408 7.28598 8.8103L9.72632 11.2521C10.0819 11.6072 10.6566 11.6072 11.0104 11.2521C11.3657 10.8966 11.3657 10.3216 11.0104 9.96722L8.57008 7.52472C8.39396 7.34899 8.27118 7.05219 8.3872 6.83211C9.24308 5.20852 8.99191 3.14973 7.62817 1.78485ZM6.8577 7.09656C5.60665 8.34834 3.57061 8.34834 2.31993 7.09656C1.06961 5.84478 1.06961 3.80791 2.31993 2.55613C3.57061 1.30471 5.60665 1.30471 6.8577 2.55613C8.10875 3.80791 8.10875 5.84478 6.8577 7.09656Z" fill="#646464"/>
+					</svg>
+				</div>
+				<div class="search-input">
+					<input type="text" placeholder="Find patient..." (keyup)="searchPatient($event.target.value)" [(ngModel)]="selectedPatient"/>
+				</div>
+				
+				<div class="procedure-optn-cont" *ngIf="pateientSrch " [ngStyle]="{'height': filterPatient.length >0 ? (40*filterPatient.length) + 'px' : '40px'}">
+					<perfect-scrollbar>
+            <div *ngIf="filterPatient.length >0">
+              	<div class="procedure-item" *ngFor="let patientitem of filterPatient; let indx=index" (click)="selectPatient(patientitem)" [hidden]="!patientitem.is_patient">{{patientitem.firstname}} {{patientitem.lastname}}
+                  </div>
+            </div>
+            <div *ngIf="filterPatient.length==0">
+                <div class="procedure-item">No patient found!</div>
+            </div>
+          </perfect-scrollbar>
+				</div>
+				
+			</div>
+			
+			<div class="add-new-patient float-left" (click)="showNewPatientSection()">
+				<div class="plus-icon">
+					<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect y="5.38672" width="14" height="3.23077" fill="#4EC8F0"/>
+						<rect x="5.38403" width="3.23077" height="14" fill="#4EC8F0"/>
+					</svg>
+				</div>
+				
+				<div class="new-patient-label">New patient</div>
+			</div>
+			
+			<div class="clear"></div>
+		</div>
+		
+	<div class="content-section">
+			<div class="search-section float-left" [ngStyle]="{'background': procedure_searchStr != '' ? 'rgba(78, 200, 240, 0.25)' : 'transparent'}">
+				<div class="search-icon" (click)="showAllProcedureWithNoevent()">
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M7.62817 1.78485C5.95247 0.108175 3.22516 0.108175 1.54947 1.78485C-0.125864 3.46189 -0.125864 6.19043 1.54947 7.86747C2.91259 9.23106 4.96983 9.4825 6.59207 8.62733C6.81247 8.51114 7.10986 8.63408 7.28598 8.8103L9.72632 11.2521C10.0819 11.6072 10.6566 11.6072 11.0104 11.2521C11.3657 10.8966 11.3657 10.3216 11.0104 9.96722L8.57008 7.52472C8.39396 7.34899 8.27118 7.05219 8.3872 6.83211C9.24308 5.20852 8.99191 3.14973 7.62817 1.78485ZM6.8577 7.09656C5.60665 8.34834 3.57061 8.34834 2.31993 7.09656C1.06961 5.84478 1.06961 3.80791 2.31993 2.55613C3.57061 1.30471 5.60665 1.30471 6.8577 2.55613C8.10875 3.80791 8.10875 5.84478 6.8577 7.09656Z" fill="#646464"/>
+					</svg>
+				</div>
+				<div class="search-input" style="width: calc(100% - 63px)">
+					<input type="text" placeholder="Procedure code..." (keyup)="searchProcedureCode($event)" [(ngModel)]="procedure_searchStr"/>
+				</div>
+				
+			<!----	<div class="event-btn" *ngIf="selectedProcedure.type=='event'" (click)="showNewEventSection()">Event</div>-->
+				
+				<div class="procedure-optn-cont" *ngIf="procedureSrch" [ngStyle]="{'height': (40*filterProcedure.length) + 'px'}">
+					<perfect-scrollbar>
+						<div class="procedure-item" *ngFor="let procedureitem of filterProcedure; let indx=index" (click)="selectProcedureCode(procedureitem)">
+							<div class="procedure-code">{{procedureitem.code}}</div>
+							<div class="procedure-label">{{procedureitem.label}}</div>
+							<div class="procedure-span">{{procedureitem.time}}</div>
+							<div class="clear"></div>
+						</div>
+					</perfect-scrollbar>
+				</div>
+			</div>
+      
+      <div class="add-new-patient float-left" (click)="showAllEventProcedure()">
+        <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="7.43555" width="30.6582" height="27.8145" rx="4.5" fill="white" stroke="#2BACE2"/>
+          <line x1="4.854" y1="13.7363" x2="27.0148" y2="13.7363" stroke="#00ABE9"/>
+          <line x1="4.854" y1="19.3926" x2="27.0148" y2="19.3926" stroke="#00ABE9"/>
+          <line x1="4.854" y1="24.0469" x2="27.0148" y2="24.0469" stroke="#00ABE9"/>
+          <line x1="4.854" y1="28.7031" x2="27.0148" y2="28.7031" stroke="#00ABE9"/>
+          <g opacity="0.8">
+          <rect x="30.6246" y="0.706976" width="6" height="32" rx="2.5" transform="rotate(46.1033 30.6246 0.706976)" fill="white" stroke="#00ABE9"/>
+          <path d="M6.73301 29.1622C5.88104 29.5366 5.02444 28.6464 5.43136 27.8094L7.45795 23.6414C7.76201 23.016 8.59573 22.8842 9.07787 23.3853L11.2943 25.6887C11.7764 26.1898 11.6126 27.0178 10.976 27.2976L6.73301 29.1622Z" fill="#00ABE9"/>
+          <path d="M7.76137 28.1915C6.88807 28.6196 5.97954 27.6754 6.44091 26.8192L7.67438 24.5303C7.99591 23.9336 8.80534 23.8229 9.27528 24.3113L10.3765 25.4558C10.8465 25.9442 10.7047 26.7488 10.0961 27.0471L7.76137 28.1915Z" fill="white"/>
+          <line y1="-0.25" x2="3.21242" y2="-0.25" transform="matrix(-0.248604 0.968605 -0.999999 -0.00162057 33.0396 6.44727)" stroke="#00ABE9" stroke-width="0.5"/>
+          <line x1="32.8599" y1="9.01804" x2="21.044" y2="20.3874" stroke="#00ABE9" stroke-width="0.5"/>
+          <path d="M10.4307 21.9551L12.6529 24.2646" stroke="#00ABE9"/>
+          </g>
+         </svg>
+          
+      </div>
+
+			<div class="add-new-patient float-left">
+				<div class="procedure-time"> <input type="text" class="selected-procedure-time" value="{{selectedProcedure.time}}"/> </div>
+				<div class="procedure-time">Minutes</div>
+			</div>
+			
+			<div class="clear"></div>
+    </div>
+    
+    <div *ngIf="selectedProcedure.type=='event'"> 
+       
+        <div class="content-section">
+              <div class="search-section add-note" style="position: relative">
+                <textarea style="padding-left: 50px; padding-top: 15px; box-sizing: border-box;">Dr. Jones office/full staff will be here for lunch</textarea>
+                
+              </div>
+        </div>
+
+       <div class="content-section">
+          <div class="select-chair"> Select Chairs</div>
+          <div class="content-section">
+            <div *ngFor="let chairone of chairArray; let indx=index">
+                <div [ngClass]="{'chair-text': true, 'dd-selected': chairone.selected}" (click)="selectchair(indx)" *ngIf="indx==0" ><span>{{chairone.chair_name}}</span> </div>
+                <div [ngClass]="{'chair-text2': true, 'dd-selected1': chairone.selected}" (click)="selectchair(indx)" *ngIf="indx!=0"><span>{{chairone.chair_name}}</span></div>
+            </div>
+          </div>
+          <div (click)="selectchairAll(chairArray, selectallchairchk)" class="select-all-chair">Select all chairs</div>
+      </div>
+       
+
+    </div>
+
+    <div *ngIf="selectedProcedure.type!='event'"> 
+       
+      <div class="content-section">
+            <div class="search-section add-note" style="position: relative">
+              <textarea style="padding-left: 50px; padding-top: 10px;"></textarea>
+              <div class="notes-placeholder">Notes: </div>
+            </div>
+       </div>
+
+      <div class="content-section" *ngIf="showThreeSection">
+          <div class="search-section float-left" style="border: 0.5px solid #F11212;">
+            <div class="search-input">
+              <input type="text" class="alert-input" [(ngModel)]="alert"/>
+            </div>
+          </div>
+          <div class="due-amount">400.00</div>
+          <div class="clear"></div>
+      </div>
+
+       <div *ngIf="showThreeSection" class="content-section appointment-container">
+          <div class="notifications-title">
+              appointment notifications set for:
+          </div>
+    
+          <div  *ngFor="let appointmentNotification of appointmentNotificationsArray; let indx=index" class="notifications-section">
+              <div class="patient-nameBlk"> <input [checked]="appointmentNotification.selected== true"  type="radio" name="person1{{indx}}" value="{{appointmentNotification.name}}"> <span class="radio-title"> {{appointmentNotification.name}} </span></div>
+              <div class="patient-phoneBlk"> <input  (click)="checkNameRadioButton(indx)" type="radio" name="appointmenttype{{indx}}" value="{{appointmentNotification.phone}} "> <span class="radio-title"> {{appointmentNotification.phone}} </span>   </div>
+              <div class="patient-amountBlk"> <input  (click)="checkNameRadioButton(indx)" type="radio" name="appointmenttype{{indx}}" value="{{appointmentNotification.email}}"> <span class="radio-title">{{appointmentNotification.email}}</span>  </div>
+              <div class="clear"></div>
+          </div>
+    
+        
+
+      </div>
+
+     
+
+    </div>
+
+    <div (click)="cancelModal()" class="Save-btn" >Save</div>
+</div>

@@ -1,0 +1,408 @@
+.accordion {
+    margin: 0 auto;
+    height: 660px;
+    width: 100%;
+}
+
+.accordion > ul > li,
+.accordion-title,
+.accordion-content,
+.accordion-separator {
+    float: none;
+} 
+
+.accordion-separator-float {
+	float: left;
+}
+
+.accordion > ul > li {
+    background-color: #f0f0f0;
+    margin-right: -0px;
+    margin-bottom: -500px;
+}
+
+/* .accordion-select:checked ~ .accordion-separator {
+    margin-right: 0px;
+    margin-bottom: 500px;
+}  */
+
+.accordion-title,
+.accordion-select  {
+    background-color: #333333;
+    color: #FFFFFF;
+    width: 100%;
+    height: 46px;
+    font-size: 15px;
+	/* border: 1px solid #A5A5A5; */
+	box-sizing: border-box;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+	border-width: thin;
+	border-style: solid;
+	border-color: #A5A5A5;
+	/* padding-right: 150px; */
+	
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	
+	transition: background-color 0.5s linear;
+    -o-transition: background-color 0.5s linear;
+    -moz-transition: background-color 0.5s linear;
+    -webkit-transition: background-color 0.5s linear;
+	
+	transition: border 0.5s linear;
+    -o-transition: border 0.5s linear;
+    -moz-transition: border 0.5s linear;
+    -webkit-transition: border 0.5s linear;
+	
+	transition: color 0.5s linear;
+    -o-transition: color 0.5s linear;
+    -moz-transition: color 0.5s linear;
+    -webkit-transition: color 0.5s linear;
+}
+
+.title-selected {
+	background-color: #f0f0f0;
+	border: 1px solid rgba(0,0,0,0);
+	color: #333333;
+	
+	transition: background-color 0.5s linear;
+    -o-transition: background-color 0.5s linear;
+    -moz-transition: background-color 0.5s linear;
+    -webkit-transition: background-color 0.5s linear;
+	
+	transition: border 0.5s linear;
+    -o-transition: border 0.5s linear;
+    -moz-transition: border 0.5s linear;
+    -webkit-transition: border 0.5s linear;
+	
+	transition: color 0.5s linear;
+    -o-transition: color 0.5s linear;
+    -moz-transition: color 0.5s linear;
+    -webkit-transition: color 0.5s linear;
+}
+
+.accordion-title span {
+    margin-bottom: 20px; 
+    margin-left: 20px;
+} 
+
+/* .accordion-select:hover ~ .accordion-title,
+.accordion-select:checked ~ .accordion-title {
+    background-color: #f0f0f0;
+} */ 
+
+ .accordion-title span  {	
+    transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -ms-writing-mode: lr-tb;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+    margin-bottom: 0px;
+    line-height: 40px;
+} 
+
+.accordion-content {
+    background-color: #f0f0f0;
+    height: 404px;
+    width: 100%;
+}
+
+.accordion-title,
+.accordion-select:checked ~ .accordion-content {
+    margin-right: 0px;
+    margin-bottom: 0px;
+} 
+
+/* Do not change following properties, they aren't 
+generated automatically and are common for each slider. */
+.accordion {
+    overflow: hidden;
+}
+
+.accordion > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.accordion > ul > li,
+.accordion-title {
+    position: relative;
+}
+
+.accordion-select {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 1;
+}
+
+.accordion-title span {
+    display: block;
+    /* position: absolute; */
+    /* width: 100%; */
+    white-space: nowrap;
+	padding-right: 30px;
+}
+
+.accordion-content {
+    position: relative;
+    overflow: auto;
+}
+
+.accordion-separator {
+    transition: margin 0.3s ease 0.1s;
+    -o-transition: margin 0.3s ease 0.1s;
+    -moz-transition: margin 0.3s ease 0.1s;
+    -webkit-transition: margin 0.3s ease 0.1s;
+}
+
+
+.title-bar {
+	box-sizing: border-box;
+	width: 100%;
+	height: 70px;
+	background: #4EC8F0;
+	position: relative;
+}
+
+.profile-cont {
+	width: 120px;
+	height: 120px;
+	/* margin-top: 8px;
+	margin-left: 15px;
+	margin-right: 25px; */
+	border-radius: 100px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	box-sizing: border-box;
+	border: 5px solid #fff;
+	overflow: hidden;
+	position: absolute;
+	left: 10px;
+	top: 4px;
+	
+}
+
+.patient-info {
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 18px;
+	margin-left: 175px;
+}
+
+.patient-name {
+	display: inline-block;
+	font-size: 28px;
+	color: #FFFFFF;
+	margin-right: 15px;
+}
+
+.patient-info-block {
+	font-size: 12px;
+	color: #FFFFFF;
+	display: inline-block;
+	padding: 0 15px;
+	border-left: 1px solid #fff;
+}
+
+.search_panel {
+	position: relative;
+	background: #fff;
+	border-radius: 5px;
+	border: 1px solid #A5A5A5;
+	width: 340px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-top: 20px;
+	display: inline-block;
+	height: 35px;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+.search-input {
+	padding: 7px 10px 7px 10px;
+	width: 100%;
+	box-sizing: border-box;
+	border: none;
+	font-size: 12px;
+	height: 35px;
+	background: none;
+}
+
+.search-input::placeholder {
+	color: #A5A5A5;
+	font-size: 12px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.search-panel-icon {
+	color: #63CCF2;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+}
+
+.vh_center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 35px;
+}
+
+.plus-btn-cont {
+	position: relative;
+    /* background: #fff; */
+    border-radius: 5px;
+    /* border: 1px solid #A5A5A5; */
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+    margin-top: 20px;
+    display: inline-block;
+    margin-left: 4px;
+	margin-right: 4px;
+    text-align: center;
+    box-sizing: border-box;
+	vertical-align: middle;
+}
+
+.panelClass.mat-dialog-container {
+	@include mat-elevation(0);
+}
+
+.lastnames-list {
+	width: 364px;
+    height: 277px;
+    background: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    position: absolute;
+    right: 0;
+    top: 33px;
+    /* z-index: 100; */
+	padding: 15px;
+	
+}
+
+.lastitem-label {
+	font-size: 14px;
+	text-align: right;
+	color: #4EC8F0;
+	margin-bottom: 20px;
+	padding-right: 30px;
+}
+
+.other-patient-panel {
+	margin-top: 40px;
+}
+
+.zoom-cont {
+	position: absolute;
+    bottom: 17px;
+    right: 455px;
+}
+
+.zoom-btn {
+	background: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 4px;
+	cursor: pointer;
+}
+
+.plus-btn {
+	border-radius: 100px 0 0 100px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+	
+}
+
+.minus-btn {
+	border-radius: 0 100px 100px 0;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.zoom-value {
+	display: inline-block;
+    width: 60px;
+	height: 30px;
+	box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    background: #fff;
+    padding: 5px 0;
+    border: 1px solid #ccc;
+	font-size: 14px;
+}
+
+.zoom-value input {
+	width: 45%;
+    text-align: right;
+    border: none;
+    padding-right: 2px;
+	font-size: 14px;
+}
+
+.zoom-icon {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	margin: auto;
+}
+
+.notifictn_available {
+	position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #FF5A5A;
+    top: 6px;
+    right: 6px;
+    border-radius: 100px;
+}
+
+.right-panel {
+	background: #fff;
+	box-sizing: border-box;
+	padding: 15px;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+	min-height: 761px;
+	z-index: 1000;
+}
+
+@media screen and (max-width: 1440px) {
+  .patient-name {
+	display: block;
+  }
+  
+  .patient-info {
+	padding-top: 7px;
+  }
+  
+  .patient-status {
+	border-left: none;
+    padding-left: 0;
+  }
+}

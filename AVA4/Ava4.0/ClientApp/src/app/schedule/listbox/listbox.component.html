@@ -1,0 +1,65 @@
+<div fxLayout="row" fxLayoutGap="10px">
+	<div fxFlex="35px">
+		<div class="icon-cont">	
+			<svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="2" y="1" width="21" height="4" rx="1" fill="#4EC8F0"/>
+				<rect x="3" y="2" width="19" height="2" rx="1" fill="white"/>
+				<rect x="2" y="5" width="21" height="14" rx="1" fill="#4EC8F0"/>
+				<rect x="3" y="5" width="19" height="13" rx="1" fill="white"/>
+				<line x1="4.5" x2="4.5" y2="3" stroke="#4EC8F0"/>
+				<line x1="8.5" x2="8.5" y2="3" stroke="#4EC8F0"/>
+				<line x1="12.5" x2="12.5" y2="3" stroke="#4EC8F0"/>
+				<line x1="16.5" x2="16.5" y2="3" stroke="#4EC8F0"/>
+				<line x1="20.5" x2="20.5" y2="3" stroke="#4EC8F0"/>
+				<circle cx="6" cy="15" r="6" fill="#4EC8F0"/>
+				<circle cx="6" cy="15" r="5" fill="white"/>
+				<line x1="6.25" y1="10.5" x2="6.25" y2="15.5" stroke="#4EC8F0" stroke-width="0.5"/>
+				<line x1="6" y1="15.25" x2="3" y2="15.25" stroke="#4EC8F0" stroke-width="0.5"/>
+			</svg>
+		</div>
+	</div>
+	
+	<div fxFlex="calc(100% - 45px)">
+		<div class="listbox">
+		
+			<div class="up_arrow" (click)="scrollList('up')" *ngIf="scrollUp == true">
+				<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="9.89941" y="5.5" width="2" height="7" rx="0.3" transform="rotate(135 9.89941 5.5)" fill="#4EC8F0"/>
+					<rect x="1.41406" y="6.91406" width="2" height="7" rx="0.3" transform="rotate(-135 1.41406 6.91406)" fill="#4EC8F0"/>
+				</svg>
+			</div>
+			<div fxLayout="row">
+				<div class="listbox-cont" fxFlex="100">
+					<perfect-scrollbar class="perfect-scrollbar" #listboxscroll [config]="config">
+						<div fxFlex="calc(100%-30px)">
+							<div fxLayout="row" fxLayoutGap="10px" style="margin-bottom: 3px;" (click)="openModal(indx)" *ngFor="let item of holdingBucketArr ;let indx=index">
+								<div class="multiAppts-star" [ngStyle]="{'visibility':item.multipleAppnts?'visible':'hidden'}">
+									<!-- <img src="assets/Star 3.2.png" alt="star"> -->
+									<svg width="8" height="7" viewBox="0 0 8 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M7.4475 0.5515L6.651 7H5.9175L6.5025 2.2345C6.5115 2.1745 6.522 2.1085 6.534 2.0365C6.549 1.9645 6.5655 1.8895 6.5835 1.8115L4.068 5.866C3.99 5.995 3.882 6.0595 3.744 6.0595H3.6225C3.5565 6.0595 3.498 6.043 3.447 6.01C3.399 5.977 3.3645 5.929 3.3435 5.866L1.7865 1.8115C1.7835 1.8835 1.7805 1.9555 1.7775 2.0275C1.7745 2.0965 1.77 2.161 1.764 2.221L1.1835 7H0.441L1.233 0.5515H1.854C1.929 0.5515 1.983 0.562 2.016 0.582999C2.049 0.601 2.0865 0.6385 2.1285 0.6955L3.69 4.75C3.711 4.81 3.729 4.87 3.744 4.93C3.759 4.99 3.774 5.0515 3.789 5.1145C3.819 5.0515 3.849 4.99 3.879 4.93C3.909 4.87 3.942 4.81 3.978 4.75L6.516 0.6955C6.567 0.6355 6.612 0.5965 6.651 0.5785C6.69 0.5605 6.747 0.5515 6.822 0.5515H7.4475Z" fill="#CB1010"/>
+									</svg>
+										
+								</div>
+								<div fxFlex="calc(100%-30px)" class="list-item-name">{{item.firstname}} {{item.lastname}}</div>
+								<div fxFlex="20px" class="cross-icon">
+									<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect x="2.94629" y="5.05371" width="1.66667" height="10" rx="0.5" transform="rotate(-45 2.94629 5.05371)" fill="#FD7474"/>
+										<rect x="4.125" y="12.125" width="1.66667" height="10" rx="0.5" transform="rotate(-135 4.125 12.125)" fill="#FD7474"/>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</perfect-scrollbar>
+				</div>
+			</div>
+			
+			<div class="down_arrow" (click)="scrollList('dn')" *ngIf="scrollDn == true">
+				<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect y="5.5" width="2" height="7" rx="0.3" transform="rotate(-45 0 5.5)" fill="#4EC8F0"/>
+					<rect x="8.48535" y="4.08594" width="2" height="7" rx="0.3" transform="rotate(45 8.48535 4.08594)" fill="#4EC8F0"/>
+				</svg>
+			</div>
+			
+		</div>
+	</div>
+</div>

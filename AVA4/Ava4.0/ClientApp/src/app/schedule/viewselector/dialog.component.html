@@ -1,0 +1,5 @@
+<div class="locationdialog">
+	<ul>
+		<li [ngClass]="{'list-item': true, 'list-item-selected': selectedItem == indx}" *ngFor="let item of views let indx = index" (click)="selectView(item.value, indx)">{{item.label}}</li>
+	</ul>
+</div>

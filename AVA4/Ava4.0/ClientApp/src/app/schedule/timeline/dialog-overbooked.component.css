@@ -1,0 +1,43 @@
+.patientdialog {
+	position: relative;
+	padding: 20px 30px 20px 30px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.info-txt {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #4EC8F0;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.close-btn {
+	width: 80px;
+	height: 30px;
+	background: #FD7474;
+	border: 1px solid #FFFFFF;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 14px;
+	color: #FFFFFF;
+	cursor: pointer;
+}

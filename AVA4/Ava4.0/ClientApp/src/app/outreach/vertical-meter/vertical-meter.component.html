@@ -1,0 +1,18 @@
+<div class="meter-bar-cont">
+	<div class="meterbar-marker">
+		
+		<div class="marker-item" *ngFor="let markeritem of markerlblArr let indx=index" [ngStyle]="{'left': (indx*(264/(markerlblArr.length-1)) - 20) + 'px'}">
+			<div class="marker-label">{{markeritem.label}}</div>
+			<div class="marker-point" *ngIf="markeritem.label != ''"></div>
+		</div>
+	</div>
+	
+	<div class="meter-bar">
+		<div [ngClass]="{'meter-bar-indicator': true, 'notOnTrack': !meterdata.ontrack}" [ngStyle]="{'width': ((264/100)*meterdata.value) + 'px'}"></div>
+		<div class="meter-indicator" [ngStyle]="{'left': (((264/100)*meterdata.value)-10) + 'px'}">
+			<div class="middle-bar"></div>
+			<div class="indicator-circle-outer"></div>
+			<div class="indicator-circle-inner" [ngClass]="{'indicator-circle-inner': true, 'indicator-circle-inner-ontrack': meterdata.ontrack}">{{meterdata.value}}</div>
+		</div>
+	</div>
+</div>

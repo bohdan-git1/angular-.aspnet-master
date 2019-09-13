@@ -1,0 +1,195 @@
+.component-container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.calender-cont {
+	position: absolute;
+	width: 75%;
+	height: 95%;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background: #FFFFFF;
+	border: 1px solid #A5A5A5;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+.nav-btn {
+	position: absolute;
+	margin: auto;
+	width: 30px;
+	height: 30px;
+	background: #FFFFFF;
+	border: 1px solid #A5A5A5;
+	border-radius: 100px;
+	top: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.prev-btn {
+	left: 10px;
+	padding-left: 3px;
+}
+
+.next-btn {
+	right: 10px;
+	padding-right: 5px;
+}
+
+.right-float {
+	justify-content: flex-end;
+}
+
+.calender {
+	width: 99%;
+	height: 98%;
+	background: #fff;
+	border-radius: 5px;
+	border: 1px solid #A5A5A5;
+	/*-webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
+	box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);*/
+}
+
+
+.calendar-header {
+	text-align: center;
+	padding: 15px 0;
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #646464;
+	letter-spacing: 3px;
+}
+
+.day-names {
+	display: flex;
+	flex-direction: row;
+	background: #fff;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	font-weight: bold;
+	padding: 10px 0;
+}
+
+.day-name {
+	text-align: center;
+	padding: 5px;
+	display: block;
+	width: 40px;
+	justify-content: center;
+	align-items: center;
+	font-size: 11px;
+	color: #4C4C4C;
+	box-sizing: border-box;
+}
+
+.week {
+	display: flex;
+    flex-direction: row;
+    background: #fff;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 5px 12px;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.date-text {
+    text-align: center;
+	padding: 5px;
+	display: flex;
+	width: 40px;
+	height: 25px;
+	justify-content: center;
+	align-items: center;
+	font-size: 15px;
+	color: #B48CF6;
+	font-weight: normal;
+	cursor: default;
+	box-sizing: border-box;
+	position: relative;
+	font-weight: bold;
+}
+
+.holiday {
+	color: #C6C6C6;
+	font-weight: normal;
+}
+
+.longerday {
+	color: #F6CC61;
+	font-weight: bold;
+}
+
+.shorterday {
+	color: #8CF1E4;
+	font-weight: bold;
+}
+
+.today {
+	background: #fff;
+	border: 1px solid #4EC8F0;
+	box-sizing: border-box;
+	box-shadow: 0px 1px 4px rgba(78, 200, 240, 0.25);
+	border-radius: 2px;
+
+}
+
+.seldate {
+	background: #f0f0f0;
+	border-radius: 100px;
+	border: 1px solid #6BD3F4;
+	box-shadow: 1px 1px 4px #63CCF2;
+}
+
+.dots-container {
+	text-align: center;
+	position: absolute;
+	bottom: -6px;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.reddots {
+	width: 4px;
+	height: 4px;
+	display: inline-block;
+	background: #F11212;
+	border-radius: 100%;
+}
+
+.patient-num {
+	display: block;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: normal;
+    text-align: center;
+    color: #4EC8F0;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 5px;
+    margin: auto;
+    padding: 2px 5px
+}
+
+.daywrapper {
+	position: relative; 
+	height: 60px;
+	display: flex;
+	justify-content: center;
+}

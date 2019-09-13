@@ -1,0 +1,9 @@
+<div class="drpdn-panel">
+    <div class="drpdn-cont" *ngFor="let drpdn of drpdndata let indx=index">
+      <div class="drpdn-title-cont">
+        <div class="drpdn-title" (click)="selectedGoalsoption(indx)" [ngClass]="{slctdoptn: drpdn.selected}">{{drpdn.title}}</div>
+      </div>
+    </div>
+  </div>
+
+

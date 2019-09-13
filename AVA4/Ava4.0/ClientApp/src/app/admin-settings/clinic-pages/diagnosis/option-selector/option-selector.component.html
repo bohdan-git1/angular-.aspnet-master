@@ -1,0 +1,207 @@
+<div class="drpdn-panel">
+	<div class="drpdn-cont" *ngFor="let drpdn of compData let indx=index">
+		<div class="dropdn-first-level">
+			<div class="edit-icon-wrapper">
+				<div class="edit-icon" *ngIf="this.dropdnExpanded && drpdn.opendrpdn==true" (click)="enableEditMode('category', indx, null)">
+					<svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1.76855 6.03361L1.20307 7.77882L4.17425 7.44676L4.17683 7.44827L12.1353 2.77433L9.72917 1.36123L1.77095 6.03502L1.76855 6.03361Z" fill="#56CCF2"/>
+						<path d="M10.1914 1.08984L11.6993 0.204297C11.8897 0.0924224 12.1986 0.0924225 12.3891 0.204297L14.1054 1.21227C14.2959 1.32414 14.2959 1.50552 14.1054 1.6174L12.5975 2.50295L10.1914 1.08984Z" fill="#56CCF2"/>
+					</svg>
+				</div>
+			</div>
+			<div class="drpdn-title" (click)="toogleDropdown(indx)" *ngIf="!drpdn.editmode">{{drpdn.title}}</div>
+			
+			<div [ngClass]="{'drpdn-title': true, 'selected-sub-label': drpdn.editmode}" *ngIf="drpdn.editmode">
+				<input type="text" class="editmode-input" (blur)="updateItem($event, 'category', indx, null, null)" [value]="drpdn.title"/>
+			</div>
+			
+			<div class="remove-btn-other" *ngIf="this.dropdnExpanded && drpdn.opendrpdn==true" (click)="removeItem('category', indx, null, null)">
+				<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="0.25" y="0.25" width="13.5" height="13.5" rx="1.75" stroke="#4EC8F0" stroke-width="0.5"/>
+					<rect x="9" y="4.5" width="0.707099" height="6.36389" transform="rotate(45 9 4.5)" fill="#FD7474"/>
+					<rect x="4.5" y="5" width="0.707099" height="6.36389" transform="rotate(-45 4.5 5)" fill="#FD7474"/>
+				</svg>
+			</div>
+			
+			<div class="down-arrow">
+				<svg width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2.5 4L0.334936 0.25L4.66506 0.25L2.5 4Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+		</div>
+		<div class="drpdn-optn" *ngIf="drpdn.opendrpdn">
+			<ul>
+				<li *ngFor="let ddoption of drpdn.ddoptions let subindx=index" class="optn_title" >
+					<div class="dropdn-second-level">
+						
+						<div class="edit-icon-wrapper">
+							<div class="edit-icon" *ngIf="this.dropdnExpanded && drpdn.opendrpdn && ddoption.selected" (click)="enableEditMode('elem', indx, subindx)">
+								<svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M1.76855 6.03361L1.20307 7.77882L4.17425 7.44676L4.17683 7.44827L12.1353 2.77433L9.72917 1.36123L1.77095 6.03502L1.76855 6.03361Z" fill="#56CCF2"/>
+									<path d="M10.1914 1.08984L11.6993 0.204297C11.8897 0.0924224 12.1986 0.0924225 12.3891 0.204297L14.1054 1.21227C14.2959 1.32414 14.2959 1.50552 14.1054 1.6174L12.5975 2.50295L10.1914 1.08984Z" fill="#56CCF2"/>
+								</svg>
+							</div>
+						</div>
+						
+						<div class="ddoptions-title" (click)="toggleSubdrpndn(indx,subindx)" *ngIf="!ddoption.editmode">{{ddoption.title}}</div>
+						
+						<div [ngClass]="{'ddoptions-title': true, 'selected-sub-label': ddoption.editmode}" *ngIf="ddoption.editmode">
+							<input type="text" class="editmode-input" (focus)="setEditMode()" (blur)="updateItem($event, 'elem', indx, subindx, null)" [value]="ddoption.title"/>
+						</div>
+						
+						<div class="remove-btn-other" *ngIf="this.dropdnExpanded && drpdn.opendrpdn==true" (click)="removeItem('elem', indx, subindx)">
+							<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect x="0.25" y="0.25" width="13.5" height="13.5" rx="1.75" stroke="#4EC8F0" stroke-width="0.5"/>
+								<rect x="9" y="4.5" width="0.707099" height="6.36389" transform="rotate(45 9 4.5)" fill="#FD7474"/>
+								<rect x="4.5" y="5" width="0.707099" height="6.36389" transform="rotate(-45 4.5 5)" fill="#FD7474"/>
+							</svg>
+						</div>
+						
+						<div class="down-arrow" *ngIf="ddoption.suboptn.length > 0">
+							<svg width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M2.5 4L0.334936 0.25L4.66506 0.25L2.5 4Z" fill="#4EC8F0"/>
+							</svg>
+						</div>
+						
+					</div>
+					<ul class="accord-sub" *ngIf="ddoption.opensubdrpdn">
+						<li *ngFor="let suboption of ddoption.suboptn let optnindx=index" style="position: relative; margin-bottom: 2px;">
+							
+							<div class="sublabel-edit-icon" *ngIf="suboption.selected" (click)="enableEditMode('item', indx,subindx,optnindx)">
+								<svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M1.76855 6.03361L1.20307 7.77882L4.17425 7.44676L4.17683 7.44827L12.1353 2.77433L9.72917 1.36123L1.77095 6.03502L1.76855 6.03361Z" fill="#56CCF2"/>
+									<path d="M10.1914 1.08984L11.6993 0.204297C11.8897 0.0924224 12.1986 0.0924225 12.3891 0.204297L14.1054 1.21227C14.2959 1.32414 14.2959 1.50552 14.1054 1.6174L12.5975 2.50295L10.1914 1.08984Z" fill="#56CCF2"/>
+								</svg>
+							</div>
+							
+							<div [ngClass]="{'accord-sub-label': true, 'selected-sub-label': suboption.editmode}" [ngStyle]="{'margin-top': optnindx==0 ? '2px' : '0'}">
+								
+								<div class="sub-label-txt" (click)="selectedOptn(indx,subindx,optnindx)" *ngIf="!suboption.editmode">{{suboption.title}}</div>
+								
+								<div class="sub-label-txt" *ngIf="suboption.editmode">
+									<input type="text" class="sublabel-input" (blur)="updateItem($event, 'item', indx,subindx,optnindx)" [value]="suboption.title"/>
+								</div>
+								<div class="clear"></div>
+							</div>
+							
+							<div class="remove-btn" *ngIf="suboption.editmode" (click)="removeItem('item', indx, subindx, optnindx)">
+								<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect x="0.25" y="0.25" width="13.5" height="13.5" rx="1.75" stroke="#4EC8F0" stroke-width="0.5"/>
+									<rect x="9" y="4.5" width="0.707099" height="6.36389" transform="rotate(45 9 4.5)" fill="#FD7474"/>
+									<rect x="4.5" y="5" width="0.707099" height="6.36389" transform="rotate(-45 4.5 5)" fill="#FD7474"/>
+								</svg>
+							</div>
+							
+							<div style="display: inline-block; position: relative;" *ngIf="showClinicLayman_block && suboption.selected">
+							
+								<div class="accord-sub-label clinclaymensection">
+									<div class="clinic-layman-editmode">
+										<div class="clinic-layman-editmode-title">Clinic</div>
+										<div class="clinic-layman-editmode-content">
+											<textarea [(ngModel)]="suboption.clinical" maxlength="512"></textarea>
+										</div>
+									</div>
+								</div>
+								
+								<div class="accord-sub-label clinclaymensection" style="margin-left: 5px">
+									<div class="clinic-layman-editmode">
+										<div class="clinic-layman-editmode-title">Layman</div>
+										<div class="clinic-layman-editmode-content">
+											<textarea [(ngModel)]="suboption.layman" maxlength="512"></textarea>
+										</div>
+									</div>
+								</div>
+								
+								<div class="add-btn" (click)="addTerminology(indx, subindx, optnindx)">
+									<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect x="0.35" y="0.35" width="14.3" height="14.3" rx="1.65" fill="white" stroke="#4EC8F0" stroke-width="0.7"/>
+										<rect x="10.4746" y="5" width="0.707099" height="6.92308" transform="rotate(45 10.4746 5)" fill="#00ABE9"/>
+										<rect x="4" y="8.31348" width="0.707099" height="2.94384" transform="rotate(-45 4 8.31348)" fill="#00ABE9"/>
+									</svg>
+								</div>
+								
+								<div class="goal-drpdn-section">
+									<div class="goal-label">Attach to goal</div>
+									<div class="goal-drpdn-cont">
+										<div class="goal-dd-select" (click)="showgoalDrpdnOptn=showgoalDrpdnOptn == true ? false : true">
+											<div class="goal-dd-label">{{selectedGoalOptn}}</div>
+											<div class="goal-dd-icon">
+												<svg width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M2.5 4L0.334936 0.25L4.66506 0.25L2.5 4Z" fill="#4EC8F0"/>
+												</svg>
+											</div>
+										</div>
+										
+										<div class="goal-dd-optns" *ngIf="showgoalDrpdnOptn">
+											<perfect-scrollbar #goalboxScroll>
+												<div class="goal-dd-optn" *ngFor="let goaloptns of goalOptns; let indx=index" (click)="selectGoalOptn(indx)" [ngStyle]="{'background': goaloptns.selected == true ? '#4EC8F0': '##F0F0F0'}">
+													<div class="goal-optn-label" [ngStyle]="{'color': goaloptns.selected == true ? '#FFFFFF' : '#646464'}">{{goaloptns.label}}</div>
+												</div>
+											</perfect-scrollbar>
+											
+											<div class="goal-dd-add">
+												<input type="text" placeholder="New item" [(ngModel)]="newGoalOptn"/>
+												<div class="newgoal-btn" (click)="addNewGoal()">
+													<svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+													</svg>
+
+												</div>
+											</div>
+											
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							
+							
+							
+						</li>
+					</ul>
+					
+					<div class="input-block input-item" *ngIf="ddoption.opensubdrpdn">
+						<input type="text" placeholder="New Item" [(ngModel)]="newItem"/>
+						<div class="input-add-btn" (click)="addNew('item', indx, subindx)">
+							<svg viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+							</svg>
+						</div>
+					</div>
+					
+				</li>
+			</ul>
+			
+			<div class="input-block input-elem">
+				<input type="text" placeholder="New Element" [(ngModel)]="newElem"/>
+				<div class="input-add-btn" (click)="addNew('elem', indx, null)">
+					<svg viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+					</svg>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="input-block input-categry">
+		<input type="text" placeholder="New Category" [(ngModel)]="newCategory"/>
+		<div class="input-add-btn" (click)="addNew('category', null, null)">
+			<svg viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+			</svg>
+		</div>
+	</div>
+	
+	<div class="alert-overlay" *ngIf="showRemoveAlert">
+		<div class="remove-alertbox">
+			<div class="alert-title">Are you sure, you want to remove this {{removeitem.type == 'elem' ? 'Element' : removeitem.type == 'category' ? 'Category' : 'Item'}}</div>
+			<div class="alert-box-btn-cont">
+				<div class="alert-box-btn" (click)="removeItemConfirmation()">Yes</div>
+				<div class="alert-box-btn cancel-btn" (click)="closeAlert()">No</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div (clickOutside)="exitEditMode()" [clickOutsideEvents]="'dblclick'"></div>

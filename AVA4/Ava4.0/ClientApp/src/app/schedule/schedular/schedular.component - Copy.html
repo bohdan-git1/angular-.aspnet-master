@@ -1,0 +1,322 @@
+<perfect-scrollbar>
+<!-- <div fxLayout="column" class="schedular-cont" [ngStyle]="{'zoom': zoomviewport/100}"> -->
+
+<div fxLayout="column" id="schedularcont" class="schedular-cont" #schedularcont [ngStyle]="{'transform': 'scale('+ (zoomviewport/100) +')', 'min-width': (1728*(zoomviewport/100)) + 'px', 'height': (window_innerHt*(zoomviewport/100)) + 'px', 'width': '100%'}">
+	
+	<div class="top-bar"></div>
+	
+	<div fxLayout="row" fxLayoutGap="25px" style="z-index: 2;">
+		<div fxFlex="300px">
+			<app-listbox></app-listbox>
+			
+			<div class="scroll-btn" style="margin-bottom: 15px; margin-top: 15px;">
+				<svg viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg "(click)="scroll('up')" *ngIf="scroll_up == true">
+					<path d="M18.4215 1.59001C18.2249 1.28196 17.7751 1.28196 17.5785 1.59001L1.21635 27.231C1.00396 27.5639 1.24302 28 1.63785 28L34.3622 28C34.757 28 34.996 27.5639 34.7836 27.231L18.4215 1.59001Z" fill="white" stroke="#48bce2"/>
+				</svg>
+			</div>
+			
+			<div fxLayout="column" [style.height.px]="windowHt">
+				
+				<perfect-scrollbar class="perfect-scrollbar" #scrollercomponent [config]="config">
+					<app-chair *ngFor="let chair of chair_labelArr" [chairDetails]="chair"></app-chair>
+				</perfect-scrollbar>
+				
+			</div>
+			
+			<div class="scroll-btn" style="margin-top: 10px;">
+				<svg viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" (click)="scroll('dn')" *ngIf="scroll_dn == true">
+					<path d="M17.5785 27.41C17.7751 27.718 18.2249 27.718 18.4215 27.41L34.7836 1.76897C34.996 1.43613 34.757 1 34.3622 1H1.63785C1.24302 1 1.00396 1.43613 1.21635 1.76896L17.5785 27.41Z" fill="white" stroke="#48bce2"/>
+				</svg>
+			</div>
+			
+		</div>
+		<div fxFlex="calc(100% - 395px)">
+			<div fxLayout="column">
+				<div fxLayout="row">
+					<div fxFlex="50">
+						<div class="day_status" (click)="resetCalender()">Today<div class="today-marker"></div></div>
+						<div class="location-selection">
+							<app-location></app-location>
+						</div>
+						<div class="clear"></div>
+						
+						<div class="date-selector">
+							
+							<div fxLayout="row" style="margin-top: 5px; padding-left: 8px; padding-right: 8px; box-sizing: border-box;">
+								<div fxFlex="8" style="position: relative; cursor: pointer; margin: auto; text-align: center; " (click)="nextPrevDate('prevweek')">
+									<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.96205 5.41099L11.7876 1.40834C12.071 1.11185 12.071 0.667109 11.7876 0.22237C11.5042 -0.0741232 11.0792 -0.0741232 10.6541 0.22237L6.51212 4.51581C6.22874 4.66406 6.12012 5.26275 6.12012 5.41099C6.12012 5.55924 6.22874 6.00968 6.51212 6.15793L10.6541 10.4514C10.9375 10.7479 11.5042 10.7479 11.7876 10.4514C12.071 10.1549 12.071 9.71014 11.7876 9.2654L7.96205 5.41099Z" fill="#C4C4C4"/>
+<path d="M1.84194 5.41099L5.66749 1.40834C5.95087 1.11185 5.95087 0.667109 5.66749 0.22237C5.38412 -0.0741232 4.95906 -0.0741232 4.534 0.22237L0.392002 4.51581C0.108627 4.66406 0 5.26275 0 5.41099C0 5.55924 0.108627 6.00968 0.392002 6.15793L4.534 10.4514C4.81737 10.7479 5.38412 10.7479 5.66749 10.4514C5.95087 10.1549 5.95087 9.71014 5.66749 9.2654L1.84194 5.41099Z" fill="#C4C4C4"/>
+</svg>
+								</div>
+								<div fxFlex="8" style="margin: auto; text-align: center; cursor: pointer;" (click)="nextPrevDate('prevday')">
+									<svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.04182 5.41099L5.79167 1.40834C6.06944 1.11185 6.06944 0.667109 5.79167 0.22237C5.51391 -0.0741232 5.09726 -0.0741232 4.68061 0.22237L0.620573 4.51581C0.342806 4.66406 0.236328 5.26275 0.236328 5.41099C0.236328 5.55924 0.342806 6.00968 0.620573 6.15793L4.68061 10.4514C4.95837 10.7479 5.51391 10.7479 5.79167 10.4514C6.06944 10.1549 6.06944 9.71014 5.79167 9.2654L2.04182 5.41099Z" fill="#C4C4C4"/>
+</svg>
+
+								</div>
+								<div fxFlex="68" (click)="onShowCalender($event)" style="cursor: pointer">
+									<div [ngClass]="dateLabel">{{selectedDate | date: 'EE. MMMM d'}}<span>{{(selectedDate | date: 'd') | dateSuffix}}</span><span *ngIf="!isToday">, {{selectedDate | date: 'y'}}</span></div>
+								</div>
+								
+								<div fxFlex="8" style="margin: auto; text-align: center; cursor: pointer;" (click)="nextPrevDate('nextday')">
+									<svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.3418 5.58901L0.228516 9.59166C-0.0761718 9.88815 -0.0761718 10.3329 0.228516 10.7776C0.533203 11.0741 0.990234 11.0741 1.44727 10.7776L5.90078 6.48419C6.20547 6.33594 6.32227 5.73725 6.32227 5.58901C6.32227 5.44076 6.20547 4.99032 5.90078 4.84207L1.44727 0.548628C1.14258 0.252136 0.533204 0.252136 0.228516 0.548628C-0.0761711 0.845121 -0.0761712 1.28986 0.228516 1.7346L4.3418 5.58901Z" fill="#C4C4C4"/>
+</svg>
+
+								</div>
+								
+								<div fxFlex="8" style="position: relative; margin: auto; text-align: center; cursor: pointer;" (click)="nextPrevDate('nextweek')">
+									<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.03795 5.26283L0.212388 9.26549C-0.0709867 9.56198 -0.0709867 10.0067 0.212388 10.4515C0.495763 10.748 0.920825 10.748 1.34589 10.4515L5.48788 6.15802C5.77126 6.00977 5.87988 5.41108 5.87988 5.26284C5.87988 5.11459 5.77126 4.66415 5.48788 4.5159L1.34589 0.222457C1.06251 -0.0740352 0.495764 -0.0740352 0.212389 0.222457C-0.070986 0.51895 -0.070986 0.963689 0.212389 1.40843L4.03795 5.26283Z" fill="#C4C4C4"/>
+<path d="M10.1581 5.26283L6.33251 9.26549C6.04913 9.56198 6.04913 10.0067 6.33251 10.4515C6.61588 10.748 7.04094 10.748 7.466 10.4515L11.608 6.15802C11.8914 6.00977 12 5.41108 12 5.26284C12 5.11459 11.8914 4.66415 11.608 4.5159L7.46601 0.222457C7.18263 -0.0740352 6.61588 -0.0740352 6.33251 0.222457C6.04913 0.51895 6.04913 0.963689 6.33251 1.40843L10.1581 5.26283Z" fill="#C4C4C4"/>
+</svg>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+					<div fxFlex="50">
+						<!-- <div class="plus-btn-cont"><mat-icon class="search-panel-icon">add</mat-icon></div>
+						
+						<div class="search_panel">
+							<div fxLayout="row">
+								<div fxFlex="10" class="vh_center"><mat-icon class="search-panel-icon">search</mat-icon></div>
+								<div fxFlex="85">
+									<input class="search-input" placeholder="Find Patient..." [matAutocomplete]="auto">
+									
+									<mat-autocomplete #auto="matAutocomplete" class="search-auto-complete mat-elevation-z0" (optionSelected)="onSelection($event)">
+									  <mat-option *ngFor="let option of search_options" [value]="option">
+										{{option}}
+									  </mat-option>
+									</mat-autocomplete>
+									
+								</div>
+								
+								<div fxFlex="5" class="vh_center" (click)="showLast()">
+									<svg width="13" height="6" viewBox="0 0 13 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M6.5 6L12.1292 0H0.870835L6.5 6Z" fill="#4EC8F0"/>
+									</svg>
+								</div>
+								
+								<div class="lastnames-list" *ngIf="showlastList">
+									<perfect-scrollbar>
+										<ul>
+											<li *ngFor="let lastitem of lastlistArr"><div class="lastitem-label">{{lastitem.name}}</div></li>
+										</ul>
+									</perfect-scrollbar>
+								</div>
+							</div>
+						</div> -->
+						
+						<div style="float: right; margin-top: 35px;">
+							<div class="search_panel">
+								<!-- <div fxLayout="row">
+									<div fxFlex="5" class="vh_center">
+										<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M7.67797 1.38641C6.00228 -0.290262 3.27496 -0.290262 1.59927 1.38641C-0.0760588 3.06345 -0.0760588 5.792 1.59927 7.46903C2.96239 8.83262 5.01963 9.08406 6.64188 8.22889C6.86227 8.11271 7.15966 8.23564 7.33578 8.41187L9.77613 10.8536C10.1318 11.2087 10.7064 11.2087 11.0602 10.8536C11.4155 10.4982 11.4155 9.92316 11.0602 9.56878L8.61989 7.12628C8.44377 6.95056 8.32098 6.65375 8.437 6.43367C9.29288 4.81008 9.04172 2.75129 7.67797 1.38641ZM6.90751 6.69812C5.65646 7.9499 3.62042 7.9499 2.36973 6.69812C1.11941 5.44634 1.11941 3.40947 2.36973 2.15769C3.62042 0.906271 5.65646 0.906271 6.90751 2.15769C8.15856 3.40947 8.15856 5.44634 6.90751 6.69812Z" fill="#6BD3F4"/>
+										</svg>
+									</div>
+									<div fxFlex="90">
+										<input class="search-input" placeholder="Find Patient..." [matAutocomplete]="auto">
+										
+										<mat-autocomplete #auto="matAutocomplete" class="search-auto-complete mat-elevation-z0" (optionSelected)="onSelection($event)">
+											<mat-option *ngFor="let option of search_options let indx=index" [value]="option.name" style="font-size: 12px; height: 30px;">
+											{{option.name}}
+											</mat-option>
+										</mat-autocomplete>
+										
+									</div>
+									
+									<div fxFlex="5" class="vh_center" (click)="showLast()">
+										<svg width="13" height="6" viewBox="0 0 13 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M6.5 6L12.1292 0H0.870835L6.5 6Z" fill="#4EC8F0"/>
+										</svg>
+									</div>
+									
+									<div class="lastnames-list" *ngIf="showlastList">
+										<perfect-scrollbar>
+											<ul>
+												<li *ngFor="let lastitem of lastlistArr" class="lastname-item">
+													<div class="list-item-dob">{{lastitem.dob}}</div>
+													<div class="lastitem-label">{{lastitem.name}}</div>
+													<div style="clear:both;"></div>
+												</li>
+											</ul>
+										</perfect-scrollbar>
+									</div>
+									
+								</div> -->
+								
+								<app-searchpanel></app-searchpanel>
+								
+							</div>
+							
+							<div class="plus-btn-cont">
+								<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect y="3.8457" width="10" height="2.30769" fill="white"/>
+									<rect x="3.84583" width="2.30769" height="10" fill="white"/>
+								</svg>
+							</div>
+							
+							<div class="plus-btn-cont" style="width: 26px; height: 32px;">
+								<svg viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M4.09094 13.4434C4.4049 14.3417 5.28397 15.0005 6.28862 15.0005C7.29327 15.0005 8.23513 14.4016 8.61187 13.4434" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M8.60933 1.60016C9.13596 1.83247 9.62232 2.14784 10.042 2.54327C10.9977 3.44386 11.6282 4.77857 11.5866 6.55513L12.3364 6.57266C12.3827 4.59397 11.6744 3.051 10.5563 1.99742C9.95349 1.42939 9.23763 1.00918 8.46812 0.738281C8.55779 1.00792 8.60742 1.29796 8.60933 1.60016ZM3.83737 0.846661C3.24665 1.08715 2.68792 1.41992 2.18789 1.84751C0.980923 2.8796 0.137825 4.44566 0 6.53919L0.74838 6.58845C0.873903 4.6818 1.63284 3.30896 2.67531 2.41752C3.00078 2.13921 3.35601 1.90603 3.73138 1.71766C3.73024 1.68471 3.72966 1.65161 3.72966 1.61836C3.72966 1.34976 3.76735 1.09061 3.83737 0.846661Z" fill="white"/>
+									<path d="M11.7393 10.2696C11.4881 10.0899 11.1114 9.73056 10.7974 9.19153C10.609 8.83218 10.5462 8.59262 10.4207 8.17337C10.3579 7.63435 10.2323 6.91564 10.2323 6.07716C10.2323 5.7777 10.2323 4.81943 9.54159 3.86116C8.85089 2.90289 7.90903 2.60343 7.59508 2.48365C7.53228 1.82484 6.96717 1.3457 6.27647 1.3457C5.58577 1.3457 5.02066 1.88473 4.95787 2.48365C3.3881 3.02267 2.25787 4.40019 2.25787 6.07716C2.25787 6.91564 2.13228 7.57445 2.06949 8.05359C2.06949 8.47283 1.94391 8.89207 1.62996 9.37121C1.44159 9.67067 1.31601 9.91024 1.00205 10.2097C0.81368 10.4493 0.625308 10.569 0.499727 10.8086C0.374145 11.0482 0.374146 11.2877 0.374146 11.3476C0.374146 11.4075 0.374146 12.0064 0.81368 12.3658C1.25322 12.785 1.81833 12.7252 1.88112 12.7252C4.89508 12.7252 7.84624 12.7252 10.8602 12.7252C10.923 12.7252 11.7393 12.785 12.1788 12.1861C12.43 11.8268 12.3672 11.4674 12.3672 11.2877C12.2416 10.7487 11.8648 10.3894 11.7393 10.2696Z" stroke="white" stroke-width="0.75" stroke-miterlimit="10"/>
+								</svg>
+								
+								<div class="notifictn_available"></div>
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+			</div>
+			<div fxLayout="column">
+				<app-ondeck></app-ondeck>
+				<app-timeline></app-timeline>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<!-- <div fxLayout="row" fxFlexOffset="15px">
+		<div fxFlex="430px">
+			<div class="day_status">Today<div class="today-marker"></div></div>
+			<div class="location-selection">
+				<app-location></app-location>
+			</div>
+			<div class="clear"></div>
+			
+			<div class="date-selector">
+						
+				<div fxLayout="row">
+					<div fxFlex="8" style="position: relative; cursor: pointer" (click)="nextPrevDate('prevweek')">
+						<mat-icon class="selector-icon" >keyboard_arrow_left</mat-icon>
+						<mat-icon class="selector-icon" style="position: absolute; left: 8px; top: 0;">keyboard_arrow_left</mat-icon>
+					</div>
+					<div fxFlex="8"><mat-icon class="selector-icon" (click)="nextPrevDate('prevday')">keyboard_arrow_left</mat-icon></div>
+					<div fxFlex="68" (click)="onShowCalender($event)" style="cursor: pointer">
+						<div class="date-selector-label">{{selectedDate | date: 'EEEE MMMM d, y'}}</div>
+					</div>
+					<div fxFlex="8"><mat-icon class="selector-icon" (click)="nextPrevDate('nextday')">keyboard_arrow_right</mat-icon></div>
+					<div fxFlex="8" style="position: relative;" (click)="nextPrevDate('nextweek')">
+						<mat-icon class="selector-icon" style="position: absolute; left: -8px; top: 0;">keyboard_arrow_right</mat-icon>
+						<mat-icon class="selector-icon">keyboard_arrow_right</mat-icon>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div fxFlex="calc(100%-430px)" style="margin-top: 20px;">
+			<div class="search_panel">
+				<div fxLayout="row">
+					<div fxFlex="10" class="vh_center"><mat-icon class="search-panel-icon">search</mat-icon></div>
+					<div fxFlex="75">
+						<input class="search-input" placeholder="Find Patient..." [matAutocomplete]="auto">
+						
+						<mat-autocomplete #auto="matAutocomplete" class="search-auto-complete mat-elevation-z0">
+						  <mat-option *ngFor="let option of search_options" [value]="option">
+							{{option}}
+						  </mat-option>
+						</mat-autocomplete>
+						
+					</div>
+					<div fxFlex="15" class="plus-btn-cont vh_center">
+						<mat-icon class="search-panel-icon">add</mat-icon>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+	<div fxLayout="row" fxLayoutGap="35px">
+		<div fxFlex="345px" >
+			<div style="margin-bottom: 20px">
+				<app-listbox></app-listbox>
+			</div>
+			
+			<div class="scroll-btn" (click)="scroll('up')">
+				<svg width="56" height="33" viewBox="0 0 56 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g filter="url(#filter0_d)">
+					<path d="M24.018 3.61538C24.5817 3.12723 25.4183 3.12723 25.982 3.61537L46.5983 21.4696C47.6481 22.3788 47.0051 24.1035 45.6163 24.1035L4.38369 24.1035C2.99486 24.1035 2.35185 22.3788 3.40171 21.4696L24.018 3.61538Z" stroke="#4EC8F0"/>
+					</g>
+					<defs>
+					<filter id="filter0_d" x="0.378906" y="0.75" width="55.2406" height="31.8543" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+					<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+					<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+					<feOffset dx="3" dy="3"/>
+					<feGaussianBlur stdDeviation="2.5"/>
+					<feColorMatrix type="matrix" values="0 0 0 0 0.305882 0 0 0 0 0.784314 0 0 0 0 0.941176 0 0 0 1 0"/>
+					<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+					<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+					</filter>
+					</defs>
+				</svg>
+			</div>
+			
+			<div fxLayout="column" [style.height.px]="windowHt">
+				<perfect-scrollbar class="perfect-scrollbar" [config]="config">
+					<app-chair *ngFor="let chair of chair_labelArr" [chairDetails]="chair"></app-chair>
+				</perfect-scrollbar>
+			</div>
+			
+			<div class="scroll-btn" (click)="scroll('dn')" style="margin-top: 10px;">
+				<svg width="56" height="33" viewBox="0 0 56 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g filter="url(#filter0_d)">
+					<path d="M25.982 23.5917C25.4183 24.0798 24.5817 24.0798 24.018 23.5917L3.40171 5.73741C2.35185 4.82821 2.99486 3.10352 4.38369 3.10352L45.6163 3.10351C47.0051 3.10351 47.6481 4.8282 46.5983 5.73741L25.982 23.5917Z" stroke="#4EC8F0"/>
+					</g>
+					<defs>
+					<filter id="filter0_d" x="0.378906" y="0.603516" width="55.2406" height="31.8543" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+					<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+					<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+					<feOffset dx="3" dy="3"/>
+					<feGaussianBlur stdDeviation="2.5"/>
+					<feColorMatrix type="matrix" values="0 0 0 0 0.305882 0 0 0 0 0.784314 0 0 0 0 0.941176 0 0 0 1 0"/>
+					<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+					<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+					</filter>
+					</defs>
+				</svg>
+			</div>
+			
+		</div>
+		
+		<div fxFlex="calc(100%-380px)">
+			<app-ondeck></app-ondeck>
+			<app-timeline></app-timeline>
+		</div>
+	</div> -->
+	
+</div>
+
+</perfect-scrollbar>
+
+<div class="zoom-cont">
+	<div class="zoom-btn plus-btn" (click)="zoomView('in')"><mat-icon class="zoom-icon" >remove</mat-icon></div>
+	<div class="zoom-value">{{zoomviewport}}%</div>
+	<div class="zoom-btn minus-btn" (click)="zoomView('out')"><mat-icon class="zoom-icon" >add</mat-icon></div>
+</div>
+
+<div class="legend-cont">
+	<ul>
+		<li class="appnt-type-block yellow"><span>Record</span></li>
+		<li class="appnt-type-block red"><span>Exam</span></li>
+		<li class="appnt-type-block blue"><span>Start</span></li>
+		<li class="appnt-type-block orange"><span>Appl</span></li>
+		<li class="appnt-type-block green"><span>Adj</span></li>
+		<li class="appnt-type-block purple"><span>D-Band</span></li>
+		<li class="appnt-type-block">
+			<span>
+				<app-viewselector (selectedView)="getView($event)" [viewarr]="views" [selectedItem] = "selectedviewIndx"></app-viewselector>
+			</span>
+		</li>
+	</ul>
+</div>

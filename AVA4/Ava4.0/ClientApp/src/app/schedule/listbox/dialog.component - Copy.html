@@ -1,0 +1,311 @@
+<div class="patient-card-dialog">
+	<div fxLayout="column">
+		<div fxLayout="row">
+			<div fxFlex="117px">
+				
+				<div class="profile-img">
+					<img src='assets/images.png' width=100%/>
+				</div>
+				
+			</div>
+			<div fxFlex="calc(100%-117px)" class="patient-details">
+				<div class="patient-block">
+					<div class="patient-name">Obi-Wan Kenobi</div>
+					<div class="term-inline">
+						<div class="term-inline-item">TX - FULL</div>
+						<div class="term-inline-item">254</div>
+						<div class="term-inline-item">$3,560.15</div>
+						<div class="term-inline-item">$0.00</div>
+					</div>
+				</div>
+				<div class="medical-history">+ Allergic to Codiene, Autistic (do not make direct eye contact)</div>
+				<div class="table-form">
+					<div class="table-form-item">Location #1</div>
+					<div class="table-form-item">Dr. Smoot</div>
+					<div class="table-form-item">Jill Allen</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div fxLayout="column" class="display-block schedule-appnt">
+		<div class="block-heading" style="margin-bottom: 10px;">Current Scheduled Appointments</div>
+			
+			<div fxLayout="row" fxLayoutGap="10px">
+				<div fxFlex="10" class="table-item rechedule-btn">Rechedule</div>
+				<div fxFlex="15" class="table-item">Location#1</div>
+				<div fxFlex="15" class="table-item">Tuesday, June 11th</div>
+				<div fxFlex="10" class="table-item">09:20 am</div>
+				<div fxFlex="10" class="table-item">Chair 4</div>
+				<div fxFlex="10" class="table-item">Dr. Smoot</div>
+				<div fxFlex="30" class="table-item">PT IN FOR EMERG, LL3 OF..</div>
+			</div>
+			
+		
+		<!-- <table mat-table [dataSource]="appointmentsDataSource">
+			
+			<ng-container matColumnDef="rechedule">
+				<th mat-header-cell *matHeaderCellDef class="no-header"> Rechedule </th>
+				<td mat-cell *matCellDef="let element"><span class="schedule-block">{{element.rechedule}}</span></td>
+			</ng-container>
+			
+			<ng-container matColumnDef="location">
+				<th mat-header-cell *matHeaderCellDef class="no-header"> Location </th>
+				<td mat-cell *matCellDef="let element"> {{element.location}} </td>
+			</ng-container>
+
+			<ng-container matColumnDef="date">
+				<th mat-header-cell *matHeaderCellDef class="no-header"> Date </th>
+				<td mat-cell *matCellDef="let element"> {{element.date}} </td>
+			</ng-container>
+
+			<ng-container matColumnDef="time">
+				<th mat-header-cell *matHeaderCellDef class="no-header"> Time </th>
+				<td mat-cell *matCellDef="let element"> {{element.time}} </td>
+			</ng-container>
+
+			<ng-container matColumnDef="chair">
+				<th mat-header-cell *matHeaderCellDef class="no-header"> Chair </th>
+				<td mat-cell *matCellDef="let element"> {{element.chair}} </td>
+			</ng-container>
+			
+			<ng-container matColumnDef="doctor">
+				<th mat-header-cell *matHeaderCellDef class="no-header"> Doctor </th>
+				<td mat-cell *matCellDef="let element"> {{element.doctor}} </td>
+			</ng-container>
+			
+			<ng-container matColumnDef="info">
+				<th mat-header-cell *matHeaderCellDef class="no-header"> Info </th>
+				<td mat-cell *matCellDef="let element"> {{element.info}} </td>
+			</ng-container>
+			
+			<tr mat-header-row *matHeaderRowDef="displayedAppntCol"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedAppntCol;"></tr>
+			
+		</table> -->
+		
+		
+	</div>
+	
+	<div fxLayout="column" class="display-block block-2">
+		<div class="block-heading">908 | 6 weeks</div>
+			
+			<div class="scroller" style="left: 0; right: 0; margin: auto; top: 15px" (click)="onScroll('up', 'block_2')" *ngIf="block_2_upscroll == true">
+				<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M10.5 0L20.4593 8.25H0.540708L10.5 0Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+			
+			<div class="block-2-wrapper">
+				<perfect-scrollbar class="perfect-scrollbar" #block2component [config]="config">
+					<div fxLayout="row" fxLayoutGap="10px">
+						<div fxFlex="10" class="table-item"></div>
+						<div fxFlex="15" class="table-item">Location#1</div>
+						<div fxFlex="15" class="table-item">Tuesday, July 24th</div>
+						<div fxFlex="10" class="table-item">10:20 am</div>
+						<div fxFlex="10" class="table-item">Chair 4</div>
+						<div fxFlex="10" class="table-item">Dr. Smoot</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="10px">
+						<div fxFlex="10" class="table-item"></div>
+						<div fxFlex="15" class="table-item">Location#2</div>
+						<div fxFlex="15" class="table-item">Tuesday, July 25th</div>
+						<div fxFlex="10" class="table-item">9:30 am</div>
+						<div fxFlex="10" class="table-item">Chair 2</div>
+						<div fxFlex="10" class="table-item">Dr. Tooms</div>
+					</div>
+					<div fxLayout="row" fxLayoutGap="10px">
+						<div fxFlex="10" class="table-item"></div>
+						<div fxFlex="15" class="table-item">Location#1</div>
+						<div fxFlex="15" class="table-item">Monday, July 23rd</div>
+						<div fxFlex="10" class="table-item">01:10 pm</div>
+						<div fxFlex="10" class="table-item">Chair 3</div>
+						<div fxFlex="10" class="table-item">Dr. Smoot</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="10px">
+						<div fxFlex="10" class="table-item"></div>
+						<div fxFlex="15" class="table-item">Location#1</div>
+						<div fxFlex="15" class="table-item">Tuesday, July 24th</div>
+						<div fxFlex="10" class="table-item">10:20 am</div>
+						<div fxFlex="10" class="table-item">Chair 4</div>
+						<div fxFlex="10" class="table-item">Dr. Smoot</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="10px">
+						<div fxFlex="10" class="table-item"></div>
+						<div fxFlex="15" class="table-item">Location#2</div>
+						<div fxFlex="15" class="table-item">Tuesday, July 25th</div>
+						<div fxFlex="10" class="table-item">9:30 am</div>
+						<div fxFlex="10" class="table-item">Chair 2</div>
+						<div fxFlex="10" class="table-item">Dr. Tooms</div>
+					</div>
+					<div fxLayout="row" fxLayoutGap="10px">
+						<div fxFlex="10" class="table-item"></div>
+						<div fxFlex="15" class="table-item">Location#1</div>
+						<div fxFlex="15" class="table-item">Monday, July 23rd</div>
+						<div fxFlex="10" class="table-item">01:10 pm</div>
+						<div fxFlex="10" class="table-item">Chair 3</div>
+						<div fxFlex="10" class="table-item">Dr. Smoot</div>
+					</div>
+					
+				</perfect-scrollbar>
+			</div>
+			
+			<div class="scroller" style="left: 0; right: 0; margin: auto; bottom: 5px" (click)="onScroll('dn', 'block_2')" *ngIf="block_2_dnscroll == true">
+				<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M10.5 9L0.540707 0.75L20.4593 0.75L10.5 9Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+	</div>
+	
+	<div fxLayout="column" class="display-block block-3">
+		
+		<div class="scroller" style="left: 0; right: 0; margin: auto; top: 0px" (click)="onScroll('up', 'block_3')" *ngIf="block_3_upscroll == true">
+			<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M10.5 0L20.4593 8.25H0.540708L10.5 0Z" fill="#4EC8F0"/>
+			</svg>
+		</div>
+		<div class="block-3-wrapper">
+			<perfect-scrollbar class="perfect-scrollbar" #block3component [config]="config">
+				
+				<div fxLayout="row" fxLayoutGap="6px">
+					<div fxFlex="9" class="table-item item-1st">Location#2</div>
+					<div fxFlex="7" class="table-item item-1st">06/11/18</div>
+					<div fxFlex="7" class="table-item item-1st">09:20 am</div>
+					<div fxFlex="9" class="table-item item-1st">Monday</div>
+					<div fxFlex="5" class="table-item item-1st">Chair 2</div>
+					<div fxFlex="3" class="table-item item-1st"></div>
+					<div fxFlex="20" class="table-item item-1st">900 - Arch Wire(s) Simple</div>
+					<div fxFlex="25" class="table-item item-1st"></div>
+					<div fxFlex="8" class="table-item item-1st">908 - RETIE</div>
+					<div fxFlex="7" class="table-item item-1st">6 weeks</div>
+				</div>
+				
+				<div fxLayout="row" fxLayoutGap="6px">
+					<div fxFlex="9" class="table-item">Location#2</div>
+					<div fxFlex="7" class="table-item">05/01/18</div>
+					<div fxFlex="7" class="table-item">09:20 am</div>
+					<div fxFlex="9" class="table-item">Tuesday</div>
+					<div fxFlex="5" class="table-item">Chair 7</div>
+					<div fxFlex="3" class="table-item">
+						<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+						</svg>
+					</div>
+					<div fxFlex="20" class="table-item">753 - Broken bracket</div>
+					<div fxFlex="25" class="table-item">PT IN FOR EMERG, LL3 OF..</div>
+					<div fxFlex="8" class="table-item">KEEP NV</div>
+					<div fxFlex="7" class="table-item">KeepNv</div>
+				</div>
+				
+				<div fxLayout="row" fxLayoutGap="6px">
+					<div fxFlex="9" class="table-item">Location#1</div>
+					<div fxFlex="7" class="table-item">03/14/18</div>
+					<div fxFlex="7" class="table-item">09:00 am</div>
+					<div fxFlex="9" class="table-item">Wednesday</div>
+					<div fxFlex="5" class="table-item">Chair 1</div>
+					<div fxFlex="3" class="table-item">
+						<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M7.656 9H6.504C6.416 9 6.346 8.978 6.294 8.934C6.246 8.886 6.206 8.834 6.174 8.778L3.87 5.166C3.838 5.262 3.802 5.344 3.762 5.412L1.518 8.778C1.478 8.834 1.434 8.886 1.386 8.934C1.342 8.978 1.28 9 1.2 9H0.12L3.078 4.584L0.24 0.402H1.398C1.482 0.402 1.544 0.416 1.584 0.444C1.624 0.472 1.66 0.512 1.692 0.564L3.936 4.008C3.964 3.924 4.006 3.832 4.062 3.732L6.18 0.588C6.212 0.532 6.25 0.488 6.294 0.456C6.338 0.42 6.39 0.402 6.45 0.402H7.56L4.71 4.53L7.656 9Z" fill="#F63D3D"/>
+		</svg>
+					</div>
+					<div fxFlex="20" class="table-item"></div>
+					<div fxFlex="25" class="table-item"></div>
+					<div fxFlex="8" class="table-item"></div>
+					<div fxFlex="7" class="table-item"></div>
+				</div>
+				
+				<div fxLayout="row" fxLayoutGap="6px">
+					<div fxFlex="9" class="table-item">Location#2</div>
+					<div fxFlex="7" class="table-item">12/12/17</div>
+					<div fxFlex="7" class="table-item">09:00 am</div>
+					<div fxFlex="9" class="table-item">Tuesday</div>
+					<div fxFlex="5" class="table-item">Chair 3</div>
+					<div fxFlex="3" class="table-item">
+						<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+						</svg>
+					</div>
+					<div fxFlex="20" class="table-item">908 - Retie</div>
+					<div fxFlex="25" class="table-item">UL3 OFF REBONDED, BONDE..</div>
+					<div fxFlex="8" class="table-item">908 - RETIE CH..</div>
+					<div fxFlex="7" class="table-item">6 weeks</div>
+				</div>
+				
+				<div fxLayout="row" fxLayoutGap="6px">
+					<div fxFlex="9" class="table-item item-1st">Location#2</div>
+					<div fxFlex="7" class="table-item item-1st">06/11/18</div>
+					<div fxFlex="7" class="table-item item-1st">09:20 am</div>
+					<div fxFlex="9" class="table-item item-1st">Monday</div>
+					<div fxFlex="5" class="table-item item-1st">Chair 2</div>
+					<div fxFlex="3" class="table-item item-1st"></div>
+					<div fxFlex="20" class="table-item item-1st">900 - Arch Wire(s) Simple</div>
+					<div fxFlex="25" class="table-item item-1st"></div>
+					<div fxFlex="8" class="table-item item-1st">908 - RETIE</div>
+					<div fxFlex="7" class="table-item item-1st">6 weeks</div>
+				</div>
+				
+				<div fxLayout="row" fxLayoutGap="6px">
+					<div fxFlex="9" class="table-item">Location#2</div>
+					<div fxFlex="7" class="table-item">05/01/18</div>
+					<div fxFlex="7" class="table-item">09:20 am</div>
+					<div fxFlex="9" class="table-item">Tuesday</div>
+					<div fxFlex="5" class="table-item">Chair 7</div>
+					<div fxFlex="3" class="table-item">
+						<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+						</svg>
+					</div>
+					<div fxFlex="20" class="table-item">753 - Broken bracket</div>
+					<div fxFlex="25" class="table-item">PT IN FOR EMERG, LL3 OF..</div>
+					<div fxFlex="8" class="table-item">KEEP NV</div>
+					<div fxFlex="7" class="table-item">KeepNv</div>
+				</div>
+				
+				<div fxLayout="row" fxLayoutGap="6px">
+					<div fxFlex="9" class="table-item">Location#1</div>
+					<div fxFlex="7" class="table-item">03/14/18</div>
+					<div fxFlex="7" class="table-item">09:00 am</div>
+					<div fxFlex="9" class="table-item">Wednesday</div>
+					<div fxFlex="5" class="table-item">Chair 1</div>
+					<div fxFlex="3" class="table-item">
+						<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M7.656 9H6.504C6.416 9 6.346 8.978 6.294 8.934C6.246 8.886 6.206 8.834 6.174 8.778L3.87 5.166C3.838 5.262 3.802 5.344 3.762 5.412L1.518 8.778C1.478 8.834 1.434 8.886 1.386 8.934C1.342 8.978 1.28 9 1.2 9H0.12L3.078 4.584L0.24 0.402H1.398C1.482 0.402 1.544 0.416 1.584 0.444C1.624 0.472 1.66 0.512 1.692 0.564L3.936 4.008C3.964 3.924 4.006 3.832 4.062 3.732L6.18 0.588C6.212 0.532 6.25 0.488 6.294 0.456C6.338 0.42 6.39 0.402 6.45 0.402H7.56L4.71 4.53L7.656 9Z" fill="#F63D3D"/>
+		</svg>
+					</div>
+					<div fxFlex="20" class="table-item"></div>
+					<div fxFlex="25" class="table-item"></div>
+					<div fxFlex="8" class="table-item"></div>
+					<div fxFlex="7" class="table-item"></div>
+				</div>
+				
+				<div fxLayout="row" fxLayoutGap="6px">
+					<div fxFlex="9" class="table-item">Location#2</div>
+					<div fxFlex="7" class="table-item">12/12/17</div>
+					<div fxFlex="7" class="table-item">09:00 am</div>
+					<div fxFlex="9" class="table-item">Tuesday</div>
+					<div fxFlex="5" class="table-item">Chair 3</div>
+					<div fxFlex="3" class="table-item">
+						<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+						</svg>
+					</div>
+					<div fxFlex="20" class="table-item">908 - Retie</div>
+					<div fxFlex="25" class="table-item">UL3 OFF REBONDED, BONDE..</div>
+					<div fxFlex="8" class="table-item">908 - RETIE CH..</div>
+					<div fxFlex="7" class="table-item">6 weeks</div>
+				</div>
+				
+			</perfect-scrollbar>
+		
+			<div class="scroller" style="left: 0; right: 0; margin: auto; bottom: 5px" (click)="onScroll('dn', 'block_3')" *ngIf="block_3_dnscroll == true">
+				<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M10.5 9L0.540707 0.75L20.4593 0.75L10.5 9Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+		
+	</div>
+	
+</div>

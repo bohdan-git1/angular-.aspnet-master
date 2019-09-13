@@ -1,0 +1,9 @@
+<div class="component-cont" (clickOutside)="onClickedOutside()" [exclude]="'.component-cont'">
+	<div class="location-label" (click)="onShowDialog($event)">
+	  {{selectedLocation.label}}
+	</div>
+	
+	<div class="location-dropdown" *ngIf="showdrpdn">
+		<div [ngClass]="{'list-item': true, 'list-item-selected': location.active}" *ngFor="let location of locationArr let indx = index" (click)="selectLocation(indx)">{{location.label}}</div>
+	</div>
+</div>

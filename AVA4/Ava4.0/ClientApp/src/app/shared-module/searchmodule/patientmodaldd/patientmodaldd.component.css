@@ -1,0 +1,92 @@
+.dd-label-wrapper {
+	position: relative;
+	border-bottom: 1px solid #4EC8F0;
+	padding: 5px 0;
+}
+
+.dd-icon {
+	width: 4px;
+	height: 3px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.dd-label {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 16px;
+	text-align: right;
+	color: #A5A5A5;
+	width: calc(100% - 8px);
+}
+.plcholdr{
+	position: absolute;
+	right: 5px;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 16px;
+	color: #A5A5A5;
+	top: 7px;
+}
+.dd-label-locDoc {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 16px;
+	text-align: left;
+	color: #4EC8F0;
+	width: calc(100% - 8px);
+}
+
+
+.dd-option-container {
+	position: absolute;
+    width: 100%;
+    height: auto;
+    background: #FFFFFF;
+    border: 0.5px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    left: 0;
+    top: 26px;
+    z-index: 10000;
+    padding-bottom: 3px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.dd-container {
+	position: relative;
+}
+
+.dd-option {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: normal;
+	color: #A5A5A5;
+	padding: 3px 5px;
+}
+
+.dd-option:hover, .dd-selected {
+	background: #DCF4FC;
+	color: #434343;
+}
+
+.schedule-calendar {
+	position: absolute;
+	width: 103px;
+	height: 16px;
+	background: #4EC8F0;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 1px;
+	bottom: 0;
+	right: 0;
+}

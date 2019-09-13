@@ -1,0 +1,147 @@
+input:focus {
+	outline: none;
+}
+
+.section-cont{width:100%; /*height:655px;*/ padding:15px; position:relative; box-sizing:border-box; background:#E5E5E5}
+.section-title{width:100%; margin-bottom:15px; font-size:14px; text-align:center; text-transform:uppercase; color:#646464; letter-spacing:3px; position:relative}
+.view-btn{position:absolute; right:8px; top:0; z-index:99}
+.inner-cont{width:100%; min-height:600px; background:#FFF; border-radius:4px; box-sizing:border-box; padding-top:15px; padding-bottom:15px;
+padding-left:10px; padding-right:10px;position:relative}
+
+.goal-item-section{
+   /*  height: 500px; */
+}
+
+.goals-item-holder{width:100%; display:block; position:relative; margin:0 auto}
+.goal-edit{
+    float: left;
+    margin-right: 2px;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    cursor: pointer;
+    width: 3%;
+}
+
+.section-item-cont-goal {width:93%; display:inline-block; padding:3px 5px 4px 14px; box-sizing:border-box; margin-bottom:1px; background:#F0F0F0; border-radius:2px; position:relative; font-family:Lato; font-style:normal; font-weight:bold; font-size:11px; line-height:normal; color:#646464}
+
+.goal-lebel{
+    float: left;
+    width: 95%;
+    cursor: pointer;
+}
+
+.comon-des-cls{
+    border: 0px;
+    width: 100%;
+}
+
+.delete-item-goal{
+    float: right;
+    cursor: pointer;
+}
+
+.goal-section-input-cont {
+	width: 100%;
+    padding: 5px 10px;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    box-sizing: border-box;
+	
+}
+
+.goal-section-input {
+	width: 100%;
+	height: 24px;
+	background: #FFFFFF;
+	border: 1px solid #C4C4C4;
+	box-sizing: border-box;
+	border-radius: 2px;
+	position: relative;
+}
+
+.common-input {
+	width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    padding: 0;
+    box-sizing: border-box;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #A5A5A5;
+}
+
+.common-input::placeholder {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #A5A5A5;
+}
+
+.goal-add-btn {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+}
+
+.seperatr {
+	width: 100%;
+	border-bottom: 1px solid #A5A5A5;
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+.input-block {
+	line-height: normal;
+    font-size: 11px;
+    color: #696969;
+    background: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    box-sizing: border-box;
+    border-radius: 2px;
+    position: relative;
+    height: 20px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 93%;
+    margin: 5px auto
+}
+
+.input-block input {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    color: #646464;
+    width: 100%;
+    height: 100%;
+    background: no-repeat;
+    border: none;
+    padding: 0 25px 0 5px;
+	box-sizing: border-box;
+}
+
+.input-add-btn {
+	position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #FFFFFF;
+    border: 1px solid #4EC8F0;
+    border-radius: 2px;
+    cursor: pointer;
+    right: -1px;
+    top: -1px;
+    box-sizing: border-box;
+    padding: 3px 5px
+}

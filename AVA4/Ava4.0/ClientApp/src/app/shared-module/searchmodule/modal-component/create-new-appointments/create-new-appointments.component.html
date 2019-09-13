@@ -1,0 +1,194 @@
+<div class="component-cont">
+	<div class="component-title">Create new appointment</div>
+	
+	<div class="closeBtn" (click)="cancelModal()">
+		<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="13.5" width="2.12119" height="19.0907" transform="rotate(45 13.5 0)" fill="#333333"/>
+			<rect y="1.50195" width="2.12119" height="19.0907" transform="rotate(-45 0 1.50195)" fill="#333333"/>
+		</svg>
+	</div>
+	
+	<div class="comp-content">
+		<div class="content-section" style="padding-left: 40px;">
+			<div [ngClass]="{'search-section float-left': true, 'commonBackground-input': true}"  *ngIf="checkPatientName">
+				<!----<div class="search-input">
+					<input type="text" placeholder="Find patient..."  [(ngModel)]="selectedPatient"/>
+				</div>-->
+
+				<div class="search-input selPatient">
+					{{selectedPatient}}
+				</div>
+				
+			</div>
+			
+			<div  *ngIf="checkPatientName==false" [ngStyle]="{'margin-left': checkPatientName== true ? '15px' : '0px'}" class="add-new-patient float-left" (click)="showNewPatientSection()">
+				<div class="plus-icon">
+					<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect y="5.38672" width="14" height="3.23077" fill="#4EC8F0"/>
+						<rect x="5.38403" width="3.23077" height="14" fill="#4EC8F0"/>
+					</svg>
+				</div>
+				
+				<div class="new-patient-label">New patient</div>
+			</div>
+			
+			<div class="clear"></div>
+		</div>
+		
+		<div class="content-section" style="padding-left: 40px;">
+			<div [ngClass]="{'search-section float-left': true, 'commonBackground-input': procedure_selc_done}"  >
+				<div class="search-icon" (click)="showallProcedureCode(count_ProcedureCode)">
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M7.62817 1.7868C5.95247 0.110129 3.22516 0.110129 1.54947 1.7868C-0.125864 3.46384 -0.125864 6.19239 1.54947 7.86942C2.91259 9.23301 4.96983 9.48445 6.59207 8.62928C6.81247 8.5131 7.10986 8.63603 7.28598 8.81226L9.72632 11.254C10.0819 11.6091 10.6566 11.6091 11.0104 11.254C11.3657 10.8986 11.3657 10.3236 11.0104 9.96917L8.57008 7.52667C8.39396 7.35095 8.27118 7.05415 8.3872 6.83406C9.24308 5.21048 8.99191 3.15168 7.62817 1.7868ZM6.8577 7.09851C5.60665 8.35029 3.57061 8.35029 2.31993 7.09851C1.06961 5.84673 1.06961 3.80986 2.31993 2.55808C3.57061 1.30666 5.60665 1.30666 6.8577 2.55808C8.10875 3.80986 8.10875 5.84673 6.8577 7.09851Z" fill="#646464"/>
+					</svg>
+				</div>
+				<div class="search-input" style="width: calc(100% - 63px)">
+					<input style="padding: 0px;" type="text" placeholder="Procedure code..." (keyup)="searchProcedureCode($event)" [(ngModel)]="procedure_searchStr"/>
+				</div>
+				
+				<div class="event-btn" *ngIf="selectedProcedure.type=='event'" (click)="showNewEventSection()">Event</div>
+				
+				<div class="procedure-optn-cont" *ngIf="procedureSrch" [ngStyle]="{'height': (40*filterProcedure.length) + 'px'}">
+					<perfect-scrollbar>
+						<div class="procedure-item" *ngFor="let procedureitem of filterProcedure; let indx=index" (click)="selectProcedureCode(procedureitem)">
+							<div class="procedure-code">{{procedureitem.code}}</div>
+							<div class="procedure-label">{{procedureitem.label}}</div>
+							<div class="procedure-span">{{procedureitem.time}}</div>
+							<div class="clear"></div>
+						</div>
+					</perfect-scrollbar>
+				</div>
+			</div>
+			
+			<div class="add-new-patient float-left">
+				<div class="procedure-time">{{selectedProcedure.time}}</div>
+				<div class="procedure-time">Minutes</div>
+			</div>
+
+			<div class="search-section add-note float-left" style="margin-top:-55px; position: relative;">
+				<textarea class="textareaInput"></textarea>
+				<div class="notes-placeholder">Notes: </div>
+			</div>
+			
+			
+			<div class="clear"></div>
+		</div>
+
+		<div class="content-section msgInfo" style="margin-left: 40px;">
+			We want to make sure you feel comfortable with our office so there will be NO charge for this appointment. <br>
+			We will be sending you an automatic text reminder a day before you visit.  We are so very much looking <br>
+			forward
+		</div>
+		
+		
+		<!----<div class="content-section" style="padding-left: 60px;">
+			<div class="calender-section">
+				<div class="prev-week-icon" (click)="nextPrevWeek('prev')" *ngIf="showPrevWeekBtn">
+					<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M7.9623 5.41099L11.7879 1.40834C12.0712 1.11185 12.0712 0.667109 11.7879 0.22237C11.5045 -0.0741232 11.0794 -0.0741232 10.6544 0.22237L6.51236 4.51581C6.22899 4.66406 6.12036 5.26275 6.12036 5.41099C6.12036 5.55924 6.22899 6.00968 6.51236 6.15793L10.6544 10.4514C10.9377 10.7479 11.5045 10.7479 11.7879 10.4514C12.0712 10.1549 12.0712 9.71014 11.7879 9.2654L7.9623 5.41099Z" fill="#C4C4C4"/>
+						<path d="M1.84194 5.41099L5.66749 1.40834C5.95087 1.11185 5.95087 0.667109 5.66749 0.22237C5.38412 -0.0741232 4.95906 -0.0741232 4.534 0.22237L0.392002 4.51581C0.108627 4.66406 0 5.26275 0 5.41099C0 5.55924 0.108627 6.00968 0.392002 6.15793L4.534 10.4514C4.81737 10.7479 5.38412 10.7479 5.66749 10.4514C5.95087 10.1549 5.95087 9.71014 5.66749 9.2654L1.84194 5.41099Z" fill="#C4C4C4"/>
+					</svg>
+				</div>
+				
+				<div class="calender-label">{{currentWeek}}</div>
+				
+				<div class="next-week-icon" (click)="nextPrevWeek('next')" *ngIf="showNextWeekBtn">
+					<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M4.0377 5.26283L0.212144 9.26549C-0.0712308 9.56198 -0.0712308 10.0067 0.212144 10.4515C0.495519 10.748 0.920581 10.748 1.34564 10.4515L5.48764 6.15802C5.77101 6.00977 5.87964 5.41108 5.87964 5.26284C5.87964 5.11459 5.77101 4.66415 5.48764 4.5159L1.34564 0.222457C1.06227 -0.0740352 0.495519 -0.0740352 0.212145 0.222457C-0.0712301 0.51895 -0.0712302 0.963689 0.212145 1.40843L4.0377 5.26283Z" fill="#C4C4C4"/>
+						<path d="M10.1581 5.26283L6.33251 9.26549C6.04913 9.56198 6.04913 10.0067 6.33251 10.4515C6.61588 10.748 7.04094 10.748 7.466 10.4515L11.608 6.15802C11.8914 6.00977 12 5.41108 12 5.26284C12 5.11459 11.8914 4.66415 11.608 4.5159L7.46601 0.222457C7.18263 -0.0740352 6.61588 -0.0740352 6.33251 0.222457C6.04913 0.51895 6.04913 0.963689 6.33251 1.40843L10.1581 5.26283Z" fill="#C4C4C4"/>
+					</svg>
+				</div>
+			</div>
+
+			<div class="office-section">
+				<div class="office-label" (click)="selectOffice()">{{selectedOffice}}</div>
+				<div class="office-options" *ngIf="showOfficeDd">
+					<div class="office-item" *ngFor="let officeitem of officeArr" (click)="selectOfficeOption(officeitem)">{{officeitem.office}}</div>
+				</div>
+			</div>
+		</div>-->
+
+
+
+		
+		<div class="content-section" style="padding-left: 40px;">
+			<div class="week-panel" style="position: relative">
+				<div class="prev-week-icon" (click)="nextPrevWeekDate('prev')" *ngIf="showPrevWeekBtn">
+					<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M7.9623 5.41099L11.7879 1.40834C12.0712 1.11185 12.0712 0.667109 11.7879 0.22237C11.5045 -0.0741232 11.0794 -0.0741232 10.6544 0.22237L6.51236 4.51581C6.22899 4.66406 6.12036 5.26275 6.12036 5.41099C6.12036 5.55924 6.22899 6.00968 6.51236 6.15793L10.6544 10.4514C10.9377 10.7479 11.5045 10.7479 11.7879 10.4514C12.0712 10.1549 12.0712 9.71014 11.7879 9.2654L7.9623 5.41099Z" fill="#C4C4C4"/>
+						<path d="M1.84194 5.41099L5.66749 1.40834C5.95087 1.11185 5.95087 0.667109 5.66749 0.22237C5.38412 -0.0741232 4.95906 -0.0741232 4.534 0.22237L0.392002 4.51581C0.108627 4.66406 0 5.26275 0 5.41099C0 5.55924 0.108627 6.00968 0.392002 6.15793L4.534 10.4514C4.81737 10.7479 5.38412 10.7479 5.66749 10.4514C5.95087 10.1549 5.95087 9.71014 5.66749 9.2654L1.84194 5.41099Z" fill="#C4C4C4"/>
+					</svg>
+				</div>
+
+				<div class="week-label-wrapper" *ngFor="let weeklabel of weeklabel">
+					<div [ngClass]="{'week-label': true, 'offday': weeklabel.offday}">
+						{{weeklabel.label}}
+						<br> 
+						<div>{{weeklabel.month}}/{{weeklabel.day}}</div>
+					</div>
+				</div>
+
+				<div class="next-week-icon" (click)="nextPrevWeekDate('next')" *ngIf="showNextWeekBtn">
+					<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M4.0377 5.26283L0.212144 9.26549C-0.0712308 9.56198 -0.0712308 10.0067 0.212144 10.4515C0.495519 10.748 0.920581 10.748 1.34564 10.4515L5.48764 6.15802C5.77101 6.00977 5.87964 5.41108 5.87964 5.26284C5.87964 5.11459 5.77101 4.66415 5.48764 4.5159L1.34564 0.222457C1.06227 -0.0740352 0.495519 -0.0740352 0.212145 0.222457C-0.0712301 0.51895 -0.0712302 0.963689 0.212145 1.40843L4.0377 5.26283Z" fill="#C4C4C4"/>
+						<path d="M10.1581 5.26283L6.33251 9.26549C6.04913 9.56198 6.04913 10.0067 6.33251 10.4515C6.61588 10.748 7.04094 10.748 7.466 10.4515L11.608 6.15802C11.8914 6.00977 12 5.41108 12 5.26284C12 5.11459 11.8914 4.66415 11.608 4.5159L7.46601 0.222457C7.18263 -0.0740352 6.61588 -0.0740352 6.33251 0.222457C6.04913 0.51895 6.04913 0.963689 6.33251 1.40843L10.1581 5.26283Z" fill="#C4C4C4"/>
+					</svg>
+				</div>
+
+
+			</div>
+		</div>
+		
+		<div class="content-section" *ngIf="procedure_selc_done" style="position: relative">
+			<div class="appnt-date-panel" style="padding-left: 40px;">
+				<perfect-scrollbar>
+					<div class="location-slot" *ngFor="let location of filterOfficeArr; let locindx=index">
+						<div class="timeslot-cont" *ngFor="let day of location.slots; let dayindx=index">
+							<div [ngClass]="{'timeslot-wrapper': true, 'timeslot-grey': day.selected==false}" *ngFor="let slot of day.timeslot; let slotindx=index">
+								
+
+								<div *ngIf="day.selected!=false && slot.selected!=true && clickCount==0" [ngClass]="{ 'timeslot': true }"  (click)="openInnerModal(locindx, dayindx, slotindx)">
+									<div class="timeslot-time">{{slot.time}}</div>
+								</div>
+
+								<div *ngIf="day.selected!=false && slot.selected==true && clickCount!=0" [ngClass]="{'appointment': slot.selected==true , 'timeslot': true }"  (click)="openInnerModal(locindx, dayindx, slotindx)">
+									<div class="timeslot-time">{{slot.time}}</div>
+								</div>
+
+								<div *ngIf="day.selected!=false && slot.selected!=true  && clickCount!=0" [ngClass]="{'notappointment': slot.selected!=true , 'timeslot': true }" >
+									<div class="timeslot-time">{{slot.time}}</div>
+								</div>
+
+								<div *ngIf="day.selected==false" class="timeslot timeslot-grey">
+									<div class="timeslot-time">{{slot.time}}</div>
+								</div>
+
+							</div>
+						</div>
+						
+						<div class="location-item" style="cursor: pointer; top: 145px;" (click)="selectOfficeOption(location.location)" >
+							<div class="location-label">{{location.location}}</div>
+						</div>
+
+					</div>
+				</perfect-scrollbar>
+			</div>
+
+			
+			<div class="location-item" style="cursor: pointer; top: -145px; left: 40px;" (click)="selectOfficeOption('All Offices')" >
+				<div class="location-label">All Offices</div>
+			</div>
+					
+
+		</div>
+		
+		
+		<div class="schedule-btn" *ngIf="pateient_selc_done && procedure_selc_done" (click)="scheduled()">Schedule</div>
+		
+	</div>
+	
+	
+	
+	
+	
+</div>

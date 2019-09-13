@@ -1,0 +1,462 @@
+<perfect-scrollbar>
+<div fxLayout="column" style="padding-right: 10px; padding-left: 50px;">
+   <div fxLayout="row">
+   
+   
+
+
+<div fxFlex="40" class="right-contwrap">
+ 
+ <div class="comn-box">
+  <!-- <div class="ava-icon"><img src="../../assets/Ava phone call.png"></div> -->
+  
+  <div class="details" *ngFor="let comm of communications">
+    <div class="date">{{comm.sentOn | date: 'MMM dd'}}</div>
+
+    <div class="icon" *ngIf="comm.type=='audio'">
+     <svg width="21" height="14" viewBox="0 0 21 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M13.9971 0H7.49878C7.12744 0 6.87988 0.301724 6.87988 0.663793V13.3362C6.87988 13.6983 7.12744 14 7.49878 14H13.9971C14.3685 14 14.616 13.6983 14.616 13.3362V0.663793C14.616 0.301724 14.3066 0 13.9971 0ZM10.717 13.6983C10.4076 13.6983 10.16 13.3966 10.16 13.0948C10.16 12.7931 10.4076 12.4914 10.717 12.4914C11.0265 12.4914 11.274 12.7931 11.274 13.0948C11.274 13.3966 11.0265 13.6983 10.717 13.6983ZM14.2447 12.1897C14.2447 12.25 14.1828 12.25 14.2447 12.1897L7.31311 12.25C7.31311 12.25 7.31311 12.25 7.31311 12.1897V1.50862V1.44828H14.2447C14.2447 1.44828 14.2447 1.44828 14.2447 1.50862V12.1897Z" fill="white"/>
+		<path d="M3.04268 3.01758C2.79513 3.25896 1.2479 4.58654 1.18601 6.8193C1.06223 9.29344 2.79513 10.8021 3.04268 10.9831" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+		<path d="M17.958 3.01758C18.2056 3.25896 19.7528 4.58654 19.8147 6.8193C19.8766 9.29344 18.2056 10.8021 17.958 10.9831" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+		<path d="M4.65179 4.58594C4.46612 4.70663 3.59967 5.49111 3.53778 6.87904C3.47589 8.32732 4.52801 9.29283 4.65179 9.35318" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+		<path d="M16.4109 4.58594C16.5966 4.70663 17.463 5.49111 17.5249 6.87904C17.5868 8.32732 16.5347 9.29283 16.4109 9.35318" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+    </svg>
+   </div>
+
+   <div class="icon email" *ngIf="comm.type=='mail'">
+    <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12.5096 9.83504H1.95517C1.56218 9.83504 1.22534 9.50477 1.22534 9.11945V1.68825C1.22534 1.30293 1.56218 0.972656 1.95517 0.972656H12.5096C12.9025 0.972656 13.2394 1.30293 13.2394 1.68825V9.11945C13.2394 9.50477 12.9025 9.83504 12.5096 9.83504Z" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+    <path d="M1.3374 1.41309L7.11986 5.8718L12.9023 1.41309" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+    <path d="M1.16895 8.45862L4.93035 4.16504" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+    <path d="M13.239 8.45862L9.53369 4.16504" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+    </svg>
+  </div>
+
+  <div class="icon msg" *ngIf="comm.type=='chat'">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M5.86898 2.81445C2.72134 2.81445 0.203227 4.77929 0.203227 7.16895C0.203227 8.12482 0.570452 8.97448 1.25244 9.66482C0.990137 10.0897 0.517991 10.7269 0.0983058 10.6738C-0.478761 10.6207 1.61966 11.6297 2.87872 10.8331C3.77055 11.2579 4.81976 11.5235 5.92144 11.5235C9.06908 11.5235 11.5872 9.55862 11.5872 7.16895C11.5347 4.77929 9.01662 2.81445 5.86898 2.81445Z" fill="white"/>
+   <path d="M16.886 7.85934C16.5188 7.91244 16.0991 7.3283 15.8368 6.95658C16.5188 6.21313 16.9385 5.31036 16.9385 4.3545C16.9385 1.96483 14.4204 0 11.2727 0C8.12507 0 5.65942 1.91173 5.65942 4.30139C5.65942 6.69106 8.17754 8.65589 11.3252 8.65589C12.4268 8.65589 13.4761 8.39038 14.3679 7.96555C15.4696 8.8152 17.4106 7.80623 16.886 7.85934Z" fill="white"/>
+   <path d="M11.2725 8.65589C11.4299 8.39037 11.7447 7.80623 11.6922 7.06278C11.6922 6.05381 11.2201 5.36346 10.9053 4.99174C9.96101 3.66415 8.59704 3.23932 8.07243 3.08001C7.23306 2.81449 6.55107 2.81449 6.07892 2.86759C5.92154 3.39863 5.65924 4.51381 6.07892 5.62898C6.81337 7.43451 8.85934 8.65589 11.2725 8.65589ZM11.2725 8.65589C11.4824 8.28416 11.7447 7.70002 11.6922 7.06278" stroke="#8CF1E4" stroke-width="0.5" stroke-miterlimit="10"/>
+   </svg>
+  </div>
+
+
+   
+   <div [ngClass]="{'msgbox':true, 'email':comm.type=='mail', 'msg':comm.type=='chat'}" *ngIf="comm.type=='chat' || comm.type=='mail'">
+     {{comm.msgContent}}
+   </div>
+
+   <div class="msgbox" *ngIf="comm.type=='audio'">
+    <p style="margin-bottom: 5px;">{{comm.audioTime}}</p>
+    <div class="audio-content">
+      <div class="play-pause" style="width: 5%">
+        <svg width="8" height="8" viewBox="0 0 5 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.95692 2.5L0.706096 4.66506L0.706096 0.334936L4.95692 2.5Z" fill="#FD7474"/>
+          </svg>
+      </div>
+        <div class="audio-img" style="width: 90%">
+          <img src="assets/Group 69.3.png" alt="audio spikes">
+        </div>
+    </div>
+    
+  </div>
+
+   <div class="status" *ngIf="comm.sentBy!='avaBot'">{{comm.sentBy}}</div>
+   <div class="status" *ngIf="comm.sentBy=='avaBot'">
+    <img src="assets/sentByAva.png" alt="ava-bot">
+  </div>
+
+  <div class="further-convo" *ngIf="comm.responses.length">
+    <div *ngFor="let response of comm.responses">
+        <div style="margin-bottom:10px;" [ngClass]="{'response-div':true , 'email-recv':comm.type=='mail' && response.sentRecvd=='received', 'email-sent': comm.type=='mail' && response.sentRecvd=='sent', 'chat-recv':comm.type=='chat' && response.sentRecvd=='received', 'chat-sent':comm.type=='chat' && response.sentRecvd=='sent', 'audio-recv':comm.type=='audio' && response.sentRecvd=='received', 'audio-sent':comm.type=='audio' && response.sentRecvd=='sent'}">
+            {{response.msgContent}}
+          </div>
+          <div class="status" *ngIf="response.sentBy!=null">{{response.sentBy}}</div>
+    </div>
+    
+  </div>
+  <div style="clear: right;"></div>
+    
+  </div>
+  
+  
+ 
+ </div>
+
+</div>
+
+
+<div class="communication-iconwrap">
+ 
+  <div (click)="communication('communication')" [ngStyle]="{'height': height_width_set_communication + 'px', 'width': height_width_set_communication + 'px'}"  [ngClass]="{'icon communication': true, 'active': communication_entry_boxactive=='communication'}">
+  
+       <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5.46103 5.03229C5.29875 5.05683 5.11329 4.78689 4.99738 4.61511C5.29875 4.27156 5.48421 3.85438 5.48421 3.41266C5.48421 2.30837 4.37146 1.40039 2.98051 1.40039C1.58957 1.40039 0.5 2.28383 0.5 3.38812C0.5 4.49242 1.61275 5.40039 3.0037 5.40039C3.49053 5.40039 3.95417 5.27769 4.34827 5.08137C4.8351 5.47401 5.69285 5.00775 5.46103 5.03229Z" fill="white"/>
+  <path d="M19.461 13.0323C19.2988 13.0568 19.1133 12.7869 18.9974 12.6151C19.2988 12.2716 19.4842 11.8544 19.4842 11.4127C19.4842 10.3084 18.3715 9.40039 16.9805 9.40039C15.5896 9.40039 14.5 10.2838 14.5 11.3881C14.5 12.4924 15.6128 13.4004 17.0037 13.4004C17.4905 13.4004 17.9542 13.2777 18.3483 13.0814C18.8351 13.474 19.6929 13.0078 19.461 13.0323Z" fill="white"/>
+  <path d="M12.461 9.03229C12.2988 9.05683 12.1133 8.78689 11.9974 8.61511C12.2988 8.27156 12.4842 7.85438 12.4842 7.41266C12.4842 6.30837 11.3715 5.40039 9.98051 5.40039C8.58957 5.40039 7.5 6.28383 7.5 7.38812C7.5 8.49242 8.61275 9.40039 10.0037 9.40039C10.4905 9.40039 10.9542 9.27769 11.3483 9.08137C11.8351 9.47401 12.6929 9.00775 12.461 9.03229Z" fill="white"/>
+  <line x1="4.5" y1="0.200391" x2="9.5" y2="0.200391" stroke="white" stroke-width="0.4"/>
+  <line x1="9.7" y1="-8.74229e-09" x2="9.7" y2="4" stroke="white" stroke-width="0.4"/>
+  <line x1="4.7" y1="0.400391" x2="4.7" y2="0.941374" stroke="white" stroke-width="0.4"/>
+  <line x1="11.5" y1="4.20039" x2="16.5" y2="4.20039" stroke="white" stroke-width="0.4"/>
+  <line x1="16.7" y1="4" x2="16.7" y2="8" stroke="white" stroke-width="0.4"/>
+  <line x1="11.7" y1="4.40039" x2="11.7" y2="4.94137" stroke="white" stroke-width="0.4"/>
+  </svg>
+  
+     </div>
+     
+    
+        <div (click)="communication('msg')" [ngStyle]="{'height': height_width_set_msg + 'px', 'width': height_width_set_msg + 'px'}"  [ngClass]="{'icon msg': true, 'active': communication_entry_boxactive=='msg'}">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.86898 2.81445C2.72134 2.81445 0.203227 4.77929 0.203227 7.16895C0.203227 8.12482 0.570452 8.97448 1.25244 9.66482C0.990137 10.0897 0.517991 10.7269 0.0983058 10.6738C-0.478761 10.6207 1.61966 11.6297 2.87872 10.8331C3.77055 11.2579 4.81976 11.5235 5.92144 11.5235C9.06908 11.5235 11.5872 9.55862 11.5872 7.16895C11.5347 4.77929 9.01662 2.81445 5.86898 2.81445Z" fill="white"/>
+          <path d="M16.886 7.85934C16.5188 7.91244 16.0991 7.3283 15.8368 6.95658C16.5188 6.21313 16.9385 5.31036 16.9385 4.3545C16.9385 1.96483 14.4204 0 11.2727 0C8.12507 0 5.65942 1.91173 5.65942 4.30139C5.65942 6.69106 8.17754 8.65589 11.3252 8.65589C12.4268 8.65589 13.4761 8.39038 14.3679 7.96555C15.4696 8.8152 17.4106 7.80623 16.886 7.85934Z" fill="white"/>
+          <path d="M11.2725 8.65589C11.4299 8.39037 11.7447 7.80623 11.6922 7.06278C11.6922 6.05381 11.2201 5.36346 10.9053 4.99174C9.96101 3.66415 8.59704 3.23932 8.07243 3.08001C7.23306 2.81449 6.55107 2.81449 6.07892 2.86759C5.92154 3.39863 5.65924 4.51381 6.07892 5.62898C6.81337 7.43451 8.85934 8.65589 11.2725 8.65589ZM11.2725 8.65589C11.4824 8.28416 11.7447 7.70002 11.6922 7.06278" stroke="#8CF1E4" stroke-width="0.5" stroke-miterlimit="10"/>
+          </svg>
+     </div>
+     
+   
+      <div (click)="communication('call')" [ngStyle]="{'height': height_width_set_call + 'px', 'width': height_width_set_call + 'px'}"  [ngClass]="{'icon call': true, 'active': communication_entry_boxactive=='call'}">
+  
+          <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.9967 0H6.49829C6.12695 0 5.87939 0.301724 5.87939 0.663793V13.3362C5.87939 13.6983 6.12695 14 6.49829 14H12.9967C13.368 14 13.6156 13.6983 13.6156 13.3362V0.663793C13.6156 0.301724 13.3061 0 12.9967 0ZM9.71653 13.6983C9.40708 13.6983 9.15952 13.3966 9.15952 13.0948C9.15952 12.7931 9.40708 12.4914 9.71653 12.4914C10.026 12.4914 10.2735 12.7931 10.2735 13.0948C10.2735 13.3966 10.026 13.6983 9.71653 13.6983ZM13.2442 12.1897C13.2442 12.25 13.1823 12.25 13.2442 12.1897L6.31262 12.25C6.31262 12.25 6.31262 12.25 6.31262 12.1897V1.50862V1.44828H13.2442C13.2442 1.44828 13.2442 1.44828 13.2442 1.50862V12.1897Z" fill="white"/>
+            <path d="M2.0422 3.01758C1.79464 3.25896 0.247407 4.58654 0.185518 6.8193C0.0617394 9.29344 1.79464 10.8021 2.0422 10.9831" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+            <path d="M16.9575 3.01758C17.2051 3.25896 18.7523 4.58654 18.8142 6.8193C18.8761 9.29344 17.2051 10.8021 16.9575 10.9831" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+            <path d="M3.6513 4.58594C3.46563 4.70663 2.59918 5.49111 2.53729 6.87904C2.4754 8.32732 3.52752 9.29283 3.6513 9.35318" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+            <path d="M15.4104 4.58594C15.5961 4.70663 16.4625 5.49111 16.5244 6.87904C16.5863 8.32732 15.5342 9.29283 15.4104 9.35318" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+      </svg>
+    </div>
+     
+      
+    <div (click)="communication('email')" [ngStyle]="{'height': height_width_set_email + 'px', 'width': height_width_set_email + 'px'}"  [ngClass]="{'icon email': true, 'active': communication_entry_boxactive=='email'}">
+        <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.3621 9.83504H1.80771C1.41472 9.83504 1.07788 9.50477 1.07788 9.11945V1.68825C1.07788 1.30293 1.41472 0.972656 1.80771 0.972656H12.3621C12.7551 0.972656 13.0919 1.30293 13.0919 1.68825V9.11945C13.0919 9.50477 12.7551 9.83504 12.3621 9.83504Z" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+        <path d="M1.18994 1.41309L6.9724 5.8718L12.7549 1.41309" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+        <path d="M1.02148 8.45862L4.78289 4.16504" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+        <path d="M13.0915 8.45862L9.38623 4.16504" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+        </svg>
+    </div>
+     
+   <!-- <div style="clear: both;"></div> -->
+   </div>
+
+   <div class="type-text" *ngIf="communication_entry_boxactive_var">
+    <div class="entry-box">
+
+      <div class="entry-box-email" *ngIf="communication_entry_boxactive=='email'">
+              <div class="email-list-form">
+                  <div class="email-icons-dis">
+                  <div class="icon msg emailcolor">
+                      <svg width="20" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.2143 9.86239H1.84707C1.42382 9.86239 1.06104 9.53211 1.06104 9.14679V1.7156C1.06104 1.33028 1.42382 1 1.84707 1H13.2143C13.6376 1 14.0004 1.33028 14.0004 1.7156V9.14679C14.0004 9.53211 13.6376 9.86239 13.2143 9.86239Z" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+                        <path d="M1.18213 1.44043L7.40993 5.89915L13.6377 1.44043" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+                        <path d="M1 8.48596L5.0511 4.19238" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+                        <path d="M13.9989 8.48694L10.0083 4.19336" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+                        </svg>
+                  </div>
+                  </div>
+  
+                  <div class="emaillist">
+                      
+                      <div class="emaillist-contain">
+                        <div class="emailfor">(PA) Bail Organa</div>
+                          <div (click)="selectemail(relative)" class="emailfor" *ngFor="let relative of relatives"> <a>({{relative.relation}}) {{relative.firstname}} {{relative.lastname}}</a></div>
+                          <!-- <div (click)="selectemail('(FA) Peter Goslin')" class="emailfor"> <a>(FA) Peter Goslin</a> </div> -->
+                          <div class="separatorfor-email"></div>
+                          <div class="emailfor">Dr John Smith (dentist)</div>
+                          <div class="emailfor">Dr John Smith (prof referral)</div>
+                          <div class="emailfor">Misc (type in email address)</div>
+                      </div>
+                      
+                  </div>
+              </div>
+  
+              <div class="email-send-form" *ngIf="setto_emailid" style="margin-top: 10px;">
+  
+                  <!-- <div class="icon msg emailcolor">
+                      <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.2143 9.86239H1.84707C1.42382 9.86239 1.06104 9.53211 1.06104 9.14679V1.7156C1.06104 1.33028 1.42382 1 1.84707 1H13.2143C13.6376 1 14.0004 1.33028 14.0004 1.7156V9.14679C14.0004 9.53211 13.6376 9.86239 13.2143 9.86239Z" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+                        <path d="M1.18213 1.44043L7.40993 5.89915L13.6377 1.44043" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+                        <path d="M1 8.48596L5.0511 4.19238" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+                        <path d="M13.9989 8.48694L10.0083 4.19336" stroke="white" stroke-width="0.7" stroke-miterlimit="10"/>
+                        </svg>
+                  </div> -->
+                    
+                        <div class="emaillist">
+                          <div class="txtbox msg set_email_textcl">{{setto_emailid}}</div>
+                          <div class="txtbox msg set_email_textcl" (click)="dropDownselect()"><span>{{dropdownOption}}</span>
+                            <div class="dropdown">
+                              <svg width="7" height="5" viewBox="0 0 7 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.5127 5L0.481607 0.499999L6.54378 0.5L3.5127 5Z" fill="#8CF1E4"/>
+                              </svg>
+                            </div>
+                              <div class="dropdown-content" *ngIf="showDropdown">
+                                <div class="option" *ngFor="let item of templetesDropdownArr; let indx=index" (click)="dropdownOptionselected(indx)">{{item.label}}</div>
+                              </div>
+                          </div>
+                          <div class="txtbox msg set_email_textcl">
+                            <input type="text" placeholder="Email subject" style="border: 0;width: 100%;font-size: 11px;">
+                          </div>
+                          <div class="msgbox msg set_email_textcl email-des-contain">
+                         
+                                <textarea class="email_des" placeholder="Type here..."></textarea>
+                            
+                          </div>
+                          <div (click)="send_email()" class="attachButton setbc-for-send-email-icon"><img src="../../assets/union-icon.png" style="width: 12px; padding-top:2px;"></div>
+                          <div (click)="send_email()" class="action-btn actnMail">Send Now</div>
+                        </div>
+  
+  
+              </div>
+          <!-- <div class="separatorfor-email"></div> -->
+      </div>
+  
+  
+      <div class="entry-box-call" *ngIf="communication_entry_boxactive=='call'">
+  
+          <div class="email-list-form" *ngIf="setto_call==''">
+              <div class="icon msg callcolor">
+                <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.1343 0H7.76802C7.34709 0 7.06647 0.301724 7.06647 0.663793V13.3362C7.06647 13.6983 7.34709 14 7.76802 14H15.1343C15.5552 14 15.8358 13.6983 15.8358 13.3362V0.663793C15.8358 0.301724 15.485 0 15.1343 0ZM11.4161 13.6983C11.0653 13.6983 10.7847 13.3966 10.7847 13.0948C10.7847 12.7931 11.0653 12.4914 11.4161 12.4914C11.7668 12.4914 12.0475 12.7931 12.0475 13.0948C12.0475 13.3966 11.7668 13.6983 11.4161 13.6983ZM15.4149 12.1897C15.4149 12.25 15.3447 12.25 15.4149 12.1897L7.55755 12.25C7.55755 12.25 7.55755 12.25 7.55755 12.1897V1.50862V1.44828H15.4149C15.4149 1.44828 15.4149 1.44828 15.4149 1.50862V12.1897Z" fill="white"/>
+                  <path d="M2.71728 3.01709C2.43666 3.25847 0.682786 4.58606 0.612631 6.81881C0.472322 9.29295 2.43666 10.8016 2.71728 10.9826" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+                  <path d="M19.6241 3.01709C19.9047 3.25847 21.6586 4.58606 21.7287 6.81881C21.7989 9.29295 19.9047 10.8016 19.6241 10.9826" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+                  <path d="M4.54085 4.58643C4.33038 4.70712 3.34821 5.4916 3.27806 6.87953C3.20791 8.3278 4.40054 9.29332 4.54085 9.35367" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+                  <path d="M17.8702 4.58643C18.0807 4.70712 19.0629 5.4916 19.133 6.87953C19.2032 8.3278 18.0105 9.29332 17.8702 9.35367" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+                  </svg>
+                  
+              </div>
+  
+              <div class="calllist">
+                  
+                  <div class="calllist-contain">
+                    <div class="callfor">(PA) Bail Organa</div>
+                      <div (click)="selectcall('(MO) Clarissa Marcum - Cell')" class="callfor"> <a>(MO) Clarissa Marcum - Cell </a></div>
+                      <div (click)="selectcall('(FA)Peter Goslin - Cell')" class="callfor"> <a> (FA)Peter Goslin - Cell</a> </div>
+                      <div (click)="selectcall(' (FA) Peter Goslin - Work')" class="callfor"> <a>  (FA) Peter Goslin - Work</a> </div>
+                      <div (click)="selectcall(' (SF) Spencer Marcum - Cell')" class="callfor"> <a>  (SF) Spencer Marcum - Cell</a> </div>
+                      <div class="separatorfor-call"></div>
+                  </div>
+                  
+              </div>
+          </div>
+  
+  
+  
+          <div class="email-send-form" *ngIf="setto_call">
+  
+              <div class="icon msg callcolor">
+                  <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.8175 0H7.31909C6.94775 0 6.7002 0.301724 6.7002 0.663793V13.3362C6.7002 13.6983 6.94775 14 7.31909 14H13.8175C14.1888 14 14.4364 13.6983 14.4364 13.3362V0.663793C14.4364 0.301724 14.1269 0 13.8175 0ZM10.5373 13.6983C10.2279 13.6983 9.98033 13.3966 9.98033 13.0948C9.98033 12.7931 10.2279 12.4914 10.5373 12.4914C10.8468 12.4914 11.0943 12.7931 11.0943 13.0948C11.0943 13.3966 10.8468 13.6983 10.5373 13.6983ZM14.065 12.1897C14.065 12.25 14.0031 12.25 14.065 12.1897L7.13342 12.25C7.13342 12.25 7.13342 12.25 7.13342 12.1897V1.50862V1.44828H14.065C14.065 1.44828 14.065 1.44828 14.065 1.50862V12.1897Z" fill="white"/>
+                    <path d="M2.863 3.01758C2.61544 3.25896 1.06821 4.58654 1.00632 6.8193C0.88254 9.29344 2.61544 10.8021 2.863 10.9831" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+                    <path d="M17.7783 3.01758C18.0259 3.25896 19.5731 4.58654 19.635 6.8193C19.6969 9.29344 18.0259 10.8021 17.7783 10.9831" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+                    <path d="M4.4721 4.58594C4.28643 4.70663 3.41998 5.49111 3.35809 6.87904C3.2962 8.32732 4.34832 9.29283 4.4721 9.35318" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+                    <path d="M16.2312 4.58594C16.4169 4.70663 17.2833 5.49111 17.3452 6.87904C17.4071 8.32732 16.355 9.29283 16.2312 9.35318" stroke="white" stroke-width="0.5" stroke-miterlimit="10"/>
+                    </svg>
+              </div>
+                
+                <div class="call-right-section">
+                        
+                        <div>
+                              <div class="show-call-icon">
+                                 To:
+                              </div>
+                              <div class="show-call-title">
+                                  Calling: {{setto_call}}
+                              </div>
+  
+                              <div class="calldropdown" (click)="dropDownselectforphone()"><span>{{dropdownforphoneOption}}</span>
+                                <div class="dropdown" style="float: right;  margin-left: 3px;display: flex;">
+                                    <svg width="7" height="5" viewBox="0 0 7 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M3.5 5L0.468912 0.499999L6.53109 0.5L3.5 5Z" fill="#FD7474"/>
+                                      </svg>
+                                </div>
+                                 <div class="dropdown-content" *ngIf="showDropdown">
+                                   <div class="option" *ngFor="let item of templetesDropdownArr; let indx=index" (click)="dropdownOptionforphoneselected(indx)">{{item.label}}</div>
+                                 </div>
+                              </div>
+  
+  
+                              
+                        </div>
+                 </div>
+  
+                 <div class="call-right-section noteforcall">
+                    <div class="note-save">
+                      <input class="note-txt" placeholder="Notes..." type="text"/>
+                    </div>
+                    <div class="note-save-icon" (click)="savenotes()">
+                        <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.05607 15.5205C6.04217 15.5205 7.65222 13.9104 7.65223 11.9243L7.65223 3.96278H7.46437C7.42574 3.8185 7.29409 3.71225 7.13762 3.71225C6.98115 3.71225 6.84949 3.8185 6.81086 3.96278H6.65223V11.9243C6.65223 13.3581 5.48989 14.5205 4.05607 14.5205V15.5205ZM4.05494 14.5205C2.86528 14.5205 1.90088 13.5561 1.90088 12.3664L1.90088 3.07795C1.90088 2.13281 2.66706 1.36663 3.6122 1.36663L3.6122 0.366628C2.11478 0.366628 0.900879 1.58053 0.900879 3.07795V12.3664C0.900879 14.1084 2.313 15.5205 4.05494 15.5205V14.5205ZM4.05676 11.8662C4.26917 11.8662 4.44137 11.694 4.44137 11.4816L4.44137 2.19314C4.44137 1.73644 4.07115 1.36621 3.61445 1.36621L3.61445 0.366211C4.62343 0.366211 5.44137 1.18415 5.44137 2.19314L5.44137 11.4816C5.44137 12.2463 4.82146 12.8662 4.05676 12.8662C3.29205 12.8662 2.67214 12.2463 2.67214 11.4816L2.67214 4.69972H3.67214L3.67214 11.4816C3.67214 11.694 3.84434 11.8662 4.05676 11.8662Z" fill="white"/>
+                          </svg>
+                          
+                          
+                          
+                          
+                    </div>
+                </div>
+  
+  
+          </div>
+  
+          <!-- <div class="separatorfor-call"></div> -->
+  
+      </div>
+  
+  
+  
+  
+  
+      <div class="entry-box-other" *ngIf="communication_entry_boxactive=='msg'">
+  
+  
+          <div class="email-list-form">
+            <div class="msg-icons-dis">
+              <div class="icon msg msgcolor">
+                <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.00776 2.81445C4.00246 2.81445 0.798214 4.77929 0.798214 7.16895C0.798214 8.12482 1.2655 8.97448 2.13332 9.66482C1.79954 10.0897 1.19874 10.7269 0.664704 10.6738C-0.0696021 10.6207 2.6006 11.6297 4.20272 10.8331C5.33756 11.2579 6.67266 11.5235 8.07452 11.5235C12.0798 11.5235 15.2841 9.55862 15.2841 7.16895C15.2173 4.77929 12.0131 2.81445 8.00776 2.81445Z" fill="white"/>
+                  <path d="M22.0261 7.85934C21.5588 7.91244 21.0248 7.3283 20.691 6.95658C21.5588 6.21313 22.0929 5.31036 22.0929 4.3545C22.0929 1.96483 18.8886 0 14.8833 0C10.878 0 7.74054 1.91173 7.74054 4.30139C7.74054 6.69106 10.9448 8.65589 14.9501 8.65589C16.3519 8.65589 17.687 8.39038 18.8219 7.96555C20.2237 8.8152 22.6937 7.80623 22.0261 7.85934Z" fill="white"/>
+                  <path d="M14.8837 8.65589C15.084 8.39037 15.4845 7.80623 15.4177 7.06278C15.4177 6.05381 14.817 5.36346 14.4164 4.99174C13.2148 3.66415 11.4792 3.23932 10.8116 3.08001C9.74357 2.81449 8.87575 2.81449 8.27495 2.86759C8.07469 3.39863 7.74091 4.51381 8.27495 5.62898C9.20953 7.43451 11.813 8.65589 14.8837 8.65589ZM14.8837 8.65589C15.1507 8.28416 15.4845 7.70002 15.4177 7.06278" stroke="#8CF1E4" stroke-width="0.5" stroke-miterlimit="10"/>
+                  </svg>
+                  
+              </div>
+            </div>
+              <div class="emaillist">
+                
+  
+  
+                  <div class="emaillist-contain-formsg">
+                    <div class="msgfor">(PA) Bail Organa</div>
+                      <div (click)="selectformsg(relative)" class="msgfor" *ngFor="let relative of relatives"> <a>({{relative.relation}}) {{relative.firstname}} {{relative.lastname}} - {{relative.phn}}</a></div>
+                      <!-- <div (click)="selectformsg('(FA) Peter Goslin - Cell')" class="msgfor"> <a>(FA) Peter Goslin - Cell</a> </div>
+  
+                      <div (click)="selectformsg('(SF) Spencer Marcum - Cell')" class="msgfor"> <a>(SF) Spencer Marcum - Cell</a> </div> -->
+
+                      <div class="separator msg" style="height: 2px; margin: 2px 0"></div>
+                      <div class="msgfor">Dr John Smith (dentist)</div>
+                      <div class="msgfor">Dr John Smith (prof referral)</div>
+                      <div class="msgfor">Misc (type in cell number)</div>
+                  </div>
+                  
+              </div>
+          </div>
+  
+          <div class="email-send-form" *ngIf="setto_emailid_for_msg">
+            <!-- <div class="icon msg">
+              <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.86898 2.81445C2.72134 2.81445 0.203227 4.77929 0.203227 7.16895C0.203227 8.12482 0.570452 8.97448 1.25244 9.66482C0.990137 10.0897 0.517991 10.7269 0.0983058 10.6738C-0.478761 10.6207 1.61966 11.6297 2.87872 10.8331C3.77055 11.2579 4.81976 11.5235 5.92144 11.5235C9.06908 11.5235 11.5872 9.55862 11.5872 7.16895C11.5347 4.77929 9.01662 2.81445 5.86898 2.81445Z" fill="white"/>
+            <path d="M16.8858 7.85934C16.5185 7.91244 16.0988 7.3283 15.8365 6.95658C16.5185 6.21313 16.9382 5.31036 16.9382 4.3545C16.9382 1.96483 14.4201 0 11.2725 0C8.12483 0 5.65918 1.91173 5.65918 4.30139C5.65918 6.69106 8.17729 8.65589 11.3249 8.65589C12.4266 8.65589 13.4758 8.39038 14.3676 7.96555C15.4693 8.8152 17.4104 7.80623 16.8858 7.85934Z" fill="white"/>
+            <path d="M11.2728 8.65589C11.4302 8.39037 11.7449 7.80623 11.6925 7.06278C11.6925 6.05381 11.2203 5.36346 10.9055 4.99174C9.96126 3.66415 8.59728 3.23932 8.07267 3.08001C7.2333 2.81449 6.55131 2.81449 6.07917 2.86759C5.92179 3.39863 5.65948 4.51381 6.07917 5.62898C6.81362 7.43451 8.85958 8.65589 11.2728 8.65589ZM11.2728 8.65589C11.4826 8.28416 11.7449 7.70002 11.6925 7.06278" stroke="#8CF1E4" stroke-width="0.5" stroke-miterlimit="10"/>
+            </svg>
+            </div> -->
+            
+            <div class="txtbox-container">
+                <div class="txtbox msg">{{setto_emailid_for_msg}}</div>
+                <div class="txtbox msg" (click)="dropDownselect()"><span>{{dropdownOption}}</span>
+                  <div class="dropdown">
+                    <svg width="7" height="5" viewBox="0 0 7 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M3.5127 5L0.481607 0.499999L6.54378 0.5L3.5127 5Z" fill="#8CF1E4"/>
+                   </svg>
+                  </div>
+                   <div class="dropdown-content" *ngIf="showDropdown">
+                     <div class="option" *ngFor="let item of templetesDropdownArr; let indx=index" (click)="dropdownOptionselected(indx)">{{item.label}}</div>
+                   </div>
+                </div>
+  
+  
+                  <div class="msgbox msg set_email_textcl email-des-contain set-padding-color-formsg">
+                        <textarea class="email_des" placeholder="Type here..."></textarea>
+                        
+                  </div>
+                  <div (click)="send_msg()" class="attachButton attchBtn-msg"><img src="../../assets/union-icon.png" style="width: 12px; padding-top:2px;"></div>
+                  <div (click)="send_msg()" class="action-btn actnMsg">Send Now</div>
+             </div>
+           </div>
+  
+      <!-- <div class="separator msg"></div> -->
+      
+      </div>
+  
+  
+      <div class="entry-box-other" *ngIf="communication_entry_boxactive=='communication'">
+  
+          <div class="icon msg communicationcolor">
+            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.4942 5.03229C6.28771 5.05683 6.05172 4.78689 5.90422 4.61511C6.28771 4.27156 6.5237 3.85438 6.5237 3.41266C6.5237 2.30837 5.10775 1.40039 3.3378 1.40039C1.56785 1.40039 0.181396 2.28383 0.181396 3.38812C0.181396 4.49242 1.59735 5.40039 3.3673 5.40039C3.98678 5.40039 4.57676 5.27769 5.07825 5.08137C5.69773 5.47401 6.78919 5.00775 6.4942 5.03229Z" fill="white"/>
+              <path d="M24.3093 13.0323C24.1028 13.0568 23.8668 12.7869 23.7193 12.6151C24.1028 12.2716 24.3388 11.8544 24.3388 11.4127C24.3388 10.3084 22.9228 9.40039 21.1529 9.40039C19.3829 9.40039 17.9965 10.2838 17.9965 11.3881C17.9965 12.4924 19.4124 13.4004 21.1824 13.4004C21.8018 13.4004 22.3918 13.2777 22.8933 13.0814C23.5128 13.474 24.6043 13.0078 24.3093 13.0323Z" fill="white"/>
+              <path d="M15.4022 9.03229C15.1957 9.05683 14.9597 8.78689 14.8122 8.61511C15.1957 8.27156 15.4317 7.85438 15.4317 7.41266C15.4317 6.30837 14.0157 5.40039 12.2458 5.40039C10.4758 5.40039 9.08936 6.28383 9.08936 7.38812C9.08936 8.49242 10.5053 9.40039 12.2753 9.40039C12.8947 9.40039 13.4847 9.27769 13.9862 9.08137C14.6057 9.47401 15.6972 9.00775 15.4022 9.03229Z" fill="white"/>
+              <line x1="5.27173" y1="0.199902" x2="11.6341" y2="0.199902" stroke="white" stroke-width="0.4"/>
+              <line x1="11.8342" y1="-6.87028e-09" x2="11.8342" y2="4" stroke="white" stroke-width="0.4"/>
+              <line x1="5.47173" y1="0.399902" x2="5.47173" y2="0.940885" stroke="white" stroke-width="0.4"/>
+              <line x1="14.179" y1="4.1999" x2="20.5414" y2="4.1999" stroke="white" stroke-width="0.4"/>
+              <line x1="20.7414" y1="4" x2="20.7414" y2="8" stroke="white" stroke-width="0.4"/>
+              <line x1="14.379" y1="4.3999" x2="14.379" y2="4.94089" stroke="white" stroke-width="0.4"/>
+              </svg>
+              
+          </div>
+            
+                <div class="emaillist">
+                 
+                    <div class="emaillist-contain-forcomm">
+                      <div class="commufor">(PA) Bail Organa</div>
+                        <div (click)="selectforcommu(relative.maildId)" class="commufor" *ngFor="let relative of relatives"> <a>({{relative.relation}}) {{relative.firstname}} {{relative.lastname}} - {{relative.maildId}}</a></div>
+                        <!-- <div (click)="selectformsg('(FA) Peter Goslin - Cell')" class="msgfor"> <a>(FA) Peter Goslin - Cell</a> </div>
+        
+                        <div (click)="selectformsg('(SF) Spencer Marcum - Cell')" class="msgfor"> <a>(SF) Spencer Marcum - Cell</a> </div> -->
+        
+                        <div class="separatorfor-commu" style="margin: 2px 0"></div>
+                        <div class="commufor">dentist</div>
+                        <div class="commufor">professional</div>
+                        <div class="commufor">misc (email)</div>
+                    </div>
+
+                    <div class="email-send-form" *ngIf="setto_commu" style="margin-top: 10px;">
+
+                        
+                          
+                              <div class="commu-list">
+                                <div class="txtbox msg set_communication_textcl">{{setto_commu}}</div>
+                                
+                                <div class="txtbox msg set_communication_textcl" (click)="dropDownselectforcommunication()"><span>{{dropdownforcommunicationOption}}</span>
+                                  <div class="dropdown">
+                                      <svg width="7" height="5" viewBox="0 0 7 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3.5 5L0.468912 0.499999L6.53109 0.5L3.5 5Z" fill="#4EC8F0"/>
+                                        </svg>
+                                        
+                                  </div>
+                                    <div class="dropdown-content" *ngIf="showDropdownforcommunication">
+                                      <div class="option" *ngFor="let item of communicationDropdownArr; let indx=index" (click)="dropdownOptionselectedforcommunication(indx)">{{item.label}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="txtbox msg set_communication_textcl">Interval</div>
+
+                                <div class="txtbox msg set_communication_textcl">Number of reminders
+                                    <div class="dropdown">
+                                        <svg width="7" height="5" viewBox="0 0 7 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M3.5 5L0.468912 0.499999L6.53109 0.5L3.5 5Z" fill="#4EC8F0"/>
+                                          </svg>
+                                          
+                                    </div>
+                                </div>
+                                
+                               
+                                <div class="action-btn atcnCommu" (click)="sendCommu()">Add Sequences</div>
+                              </div>
+                
+                
+                    </div>
+
+                  
+                  
+                </div>
+  
+  
+                <!-- <div class="separatorfor-communication"></div> -->
+      </div>
+  
+  
+    </div>
+   </div>
+
+
+</div>
+</div>
+</perfect-scrollbar>

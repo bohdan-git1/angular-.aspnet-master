@@ -1,0 +1,141 @@
+.drpdn-title {
+	font-weight: bold;
+    font-size: 11px;
+    color: #A5A5A5;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 2px 5px;
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 15px);
+	
+}
+
+.drpdn-cont {
+	margin-bottom: 2px;
+}
+
+.drpdn-optn {
+	padding-left: 25px;
+}
+
+.drpdn-optn ul {
+	list-style: none;
+}
+
+.optn_title {
+	
+}
+
+.optn_title:first-child {
+	margin-top: 2px;
+}
+
+.optn_title:hover {
+	color: #646464
+}
+
+.accord-sub {
+	/* border-left: 1px solid #4EC8F0; */
+	padding-left: 25px;
+}
+
+.accord-sub li {
+	margin-bottom: 5px;
+}
+
+.accord-sub li:first-child {
+	margin-top: 5px;
+}
+
+.accord-sub-label {
+	line-height: normal;
+    font-size: 11px;
+    color: #A5A5A5;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 2px 5px;
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.accord-sub-label-input {
+	display: inline-block;
+    width: calc(27% - 15px);
+    margin-left: 5px;
+    background: transparent;
+    border: 1px solid transparent;
+    vertical-align: top;
+    height: 17px;
+    position: relative;
+    border-radius: 2px;
+}
+
+
+
+.accord-sub-label-input input {
+	background: none;
+    box-sizing: border-box;
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding: 0 4px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    color: #4EC8F0;
+    left: 0;
+    top: 0;
+    position: absolute;
+
+}
+
+.accord-sub-label span {
+	/* padding: 2px 3px 3px; */
+}
+
+.label-value {
+	color: #FFFFFF;
+	background: #4EC8F0;
+	border-radius: 1px;
+	margin-left: 3px;
+	padding: 2px 3px 3px;
+}
+
+.ddoptions-title {
+	font-weight: bold;
+	font-size: 11px;
+	color: #A5A5A5;
+	cursor: pointer;
+	background: transparent;
+	border: 1px solid transparent;
+	box-sizing: border-box;
+	border-radius: 2px;
+	padding: 2px 5px;
+	width: calc(100% - 15px);
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.down-arrow {
+	display: inline-flex;
+    vertical-align: middle;
+    width: 10px;
+    margin-left: 5px;
+}
+
+.option-selected {
+	color: #333333;
+	border: 1px solid #4EC8F0;
+	background: rgba(107, 211, 244, 0.53);
+}

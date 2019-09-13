@@ -1,0 +1,22 @@
+<div class="component-cont">
+	<div class="dd-label-cont">
+		<div class="dd-label" (click)="showOptions=showOptions==true?fasle:true">{{ddLabel}}</div>
+	</div>
+	<div class="dd-options-cont" *ngIf="showOptions">
+		<perfect-scrollbar>
+			<div class="elastice-head">
+				<div class="elastice-head-type hdclolor-set">Type</div>
+				<div class="elastice-head-description hdclolor-set">Description</div>
+				<div class="elastice-head-teeth hdclolor-set">Teeth</div>
+				<div class="clear"></div>
+			</div>
+
+			<div *ngFor="let elasticedata of elasticedataArraylist let indx = index" class="elastice-data-list" (click)="selectDDOptions(indx)">
+				<div class="elastice-head-type listclolor-set">{{elasticedata.type}}</div>
+				<div class="elastice-head-description listclolor-set">{{elasticedata.description}}</div>
+				<div class="elastice-head-teeth listclolor-set">{{elasticedata.teeth}}</div>
+				<div class="clear"></div>
+			</div>
+		</perfect-scrollbar>
+	</div>
+</div>

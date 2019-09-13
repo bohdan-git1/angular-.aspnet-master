@@ -1,0 +1,64 @@
+<div class="accordion" [style.height.px]="accordHt">
+  <ul>
+    <li [style.marginRight.px]="-acord_margin" *ngFor="let item of panelArr let indx=index"
+      [hidden]="item.id==2 && !show_profileTab">
+      <!-- <input type="radio" name="select" class="accordion-select" [checked]="item.checked" (change)="activePanel(indx)" [style.height.px]="accordHt" [style.width.px]="zoomWd" /> -->
+
+      <input type="radio" name="select" class="accordion-select" [checked]="item.checked" (change)="activePanel(indx)"
+        [ngStyle]="{'height': accordHt + 'px', 'width': zoomWd + 'px'}" />
+
+      <div [ngClass]="{'accordion-title': true, 'title-selected': item.checked === true}"
+        [ngStyle]="{'height': (accordHt-2) + 'px', 'width': zoomWd + 'px', 'font-size': fontSize + 'px'}"
+        (click)="refreshSection(indx)">
+        <span *ngIf="item.id != 2">{{item.title}}</span>
+        <span #paneltitle *ngIf="item.id == 2">{{item.title}}</span>
+        <div class="close-btn" *ngIf="item.id == 2" (click)="closeProfile()" [ngStyle]="{'top': closeBtnPos + 'px'}">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M9.3891 3.41425L8.53554 2.56069L5.97494 5.12129L3.41425 2.5606L2.5607 3.41416L5.12139 5.97485L2.56065 8.53558L3.41421 9.38914L5.97494 6.8284L8.53559 9.38905L9.38915 8.53549L6.8285 5.97485L9.3891 3.41425Z"
+              fill="#FD7474" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="accordion-content" [style.height.px]="accord_content_Ht" [style.width.px]="acord_cont_wd"
+        *ngIf="item.id==0" [@fadeAnimation]="true">
+        <router-outlet></router-outlet>
+        <!-- <router-outlet name='adminoutlet' #adminoutlet="outlet"></router-outlet> -->
+        <mat-spinner class="loader" [mode]="'indeterminate'" diameter="50" *ngIf="loadingRouteConfig"></mat-spinner>
+      </div>
+
+      <!-- <div class="accordion-content" [style.height.px]="accord_content_Ht" [style.width.px]="acord_cont_wd"
+        *ngIf="item.id == '1'" >
+        <router-outlet></router-outlet> -->
+
+        <!-- <router-outlet name='scheduleoutlet' #scheduleoutlet="outlet"></router-outlet> -->
+        <!-- <mat-spinner class="loader" [mode]="'indeterminate'" diameter="50" *ngIf="loadingRouteConfig"></mat-spinner>
+      </div> -->
+
+      <!-- <div class="accordion-content" [style.height.px]="accord_content_Ht" [style.width.px]="acord_cont_wd"
+        *ngIf="item.id == '2'">
+        <router-outlet></router-outlet> -->
+        <!-- <router-outlet name='outreachoutlet' #outreachoutlet="outlet"></router-outlet> -->
+        <!-- <mat-spinner class="loader" [mode]="'indeterminate'" diameter="50" *ngIf="loadingRouteConfig"></mat-spinner>
+      </div> -->
+
+      <!-- <div class="accordion-content" [style.height.px]="accord_content_Ht" [style.width.px]="acord_cont_wd" *ngIf="item.id == '2'" [@fadeAnimation]="getRouterOutletState(outreachoutletx)">
+                <router-outlet name='outreachoutletx' #outreachoutletx="outlet"></router-outlet>
+				<mat-spinner class="loader" [mode]="'indeterminate'" diameter="50" *ngIf="loadingRouteConfig"></mat-spinner>
+            </div> -->
+
+      <div [ngClass]="{'accordion-separator-float': true, 'accordion-separator': itemclicked == true}"
+        [ngStyle]="{'margin-right': item.checked === true ? acord_margin + 'px' : ''}"></div>
+    </li>
+  </ul>
+</div>
+
+
+<!-- <div>
+	<div><a [routerLink]="[{ outlets: { adminoutlet: ['admin'], scheduleoutlet: null}}]">Admin</a></div>
+	<div><a [routerLink]="[{ outlets: { adminoutlet: null, scheduleoutlet: ['schedule']}}]">Schedule</a></div>
+</div>
+
+<router-outlet name="adminoutlet"></router-outlet>
+<router-outlet name="scheduleoutlet"></router-outlet> -->

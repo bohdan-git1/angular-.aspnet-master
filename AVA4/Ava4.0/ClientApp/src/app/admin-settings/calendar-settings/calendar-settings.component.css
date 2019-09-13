@@ -1,0 +1,123 @@
+.calendar-cont {
+	width: 100%;
+	height: 215px;
+	background: #FFFFFF;
+	border-radius: 4px;
+	box-sizing: border-box;
+	padding: 7px;
+}
+
+.monthname {
+	font-size: 12px;
+	text-align: center;
+	color: #646464;
+	text-transform: 3px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	cursor: pointer;
+}
+
+.day-names {
+	display: flex;
+	flex-direction: row;
+	background: #fff;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	padding: 5px 0;
+}
+
+.day-name {
+	text-align: center;
+	display: block;
+	width: 34px;
+	justify-content: center;
+	align-items: center;
+	font-size: 8px;
+	font-weight: bold;
+	color: #646464;
+	box-sizing: border-box;
+}
+
+.week {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 5px;
+	/*padding: 4px 0;*/
+}
+
+.date-text {
+    text-align: center;
+	display: flex;
+	width: 24px;
+	height: 24px;
+	justify-content: center;
+	align-items: center;
+	font-size: 12px;
+	/* color: #B48CF6; */
+	color: #C6C6C6;
+	font-weight: normal;
+	cursor: default;
+	box-sizing: border-box;
+	position: relative;
+	font-weight: bold;
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+.normalday{
+	/* color:#B48CF6; */
+	font-weight: bold;
+}
+.normal-border{
+	border: 1px solid #B48CF6;
+	color:#B48CF6;
+	border-radius: 2px;
+}
+.holiday {
+	/* color: #C6C6C6; */
+	font-weight: normal;
+}
+
+.holidayType {
+	/* color: #C6C6C6; */
+	font-weight: normal;
+}
+.holiday-border{
+	border: 1px solid #C6C6C6;
+	color: #C6C6C6;
+	border-radius: 2px;
+}
+
+.longerday {
+	/* color: #F6CC61; */
+	font-weight: bold;
+}
+.longer-border{
+	border: 1px solid #F6CC61;
+	color: #F6CC61;
+	border-radius: 2px;
+}
+
+.shorterday {
+	/* color: #8CF1E4; */
+	font-weight: bold;
+}
+.shorter-border{
+	border: 1px solid #8CF1E4;
+	color: #8CF1E4;
+	border-radius: 2px;
+}
+
+.today {
+	background: #fff;
+	border-radius: 100px;
+	border: 1px solid #56CCF2;
+	box-shadow: 1px 1px 4px #63CCF2;
+}
+
+.seldate {
+	background: #f0f0f0;
+	border-radius: 100px;
+	border: 1px solid #6BD3F4;
+	box-shadow: 1px 1px 4px #63CCF2;
+}

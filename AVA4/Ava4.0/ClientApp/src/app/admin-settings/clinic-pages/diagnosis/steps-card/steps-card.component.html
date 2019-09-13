@@ -1,0 +1,191 @@
+<div class="section-title">Steps</div>
+<div class="inner-cont" [ngStyle]="{'height': (boxHt-70) + 'px'}">
+    <div fxLayout="row" fxLayoutGap="20px" style="height: 100%;">
+		<div fxFlex="50">
+			<div class="steps-listwrap">
+				<div style="height: calc(100% - 35px);">
+					<perfect-scrollbar [config]="config">
+						<div class="list"  *ngFor="let item of stepsArr let indx = index">
+							<div class="step-edit" *ngIf="item.selected" (click)="step_label_edit(indx)">
+								<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M1.03826 6.03361L0.706284 7.77882L2.45009 7.44686L2.45111 7.44788L7.12329 2.77394L5.71072 1.36084L1.03898 6.03434L1.03826 6.03361Z" fill="#56CCF2"/>
+								<path d="M5.98242 1.08984L6.78734 0.284626C6.94352 0.128387 7.19673 0.128387 7.35291 0.284627L8.1999 1.13194C8.35608 1.28818 8.35608 1.54149 8.1999 1.69773L7.39499 2.50295L5.98242 1.08984Z" fill="#56CCF2"/>
+								</svg>
+							</div>
+							<div class="step-section">
+								<div [ngClass]="{'labelname': true}" [ngStyle]="{'background': item.edit_mode ? 'rgba(78, 200, 240, 0.5)' : '#F0F0F0'}">
+									<div style="width:100% ; cursor: pointer;" (click)="step_label_edit_mode_on(indx)" *ngIf="item.edit_mode==false">{{item.label}}</div>
+									<input  (blur)="Upadte_step_name($event,indx)" *ngIf="item.edit_mode" type='text' class="steps-editmode steps-editmode-leftside"  value="{{item.label}}" />
+								</div>
+
+								<div [ngClass]="{'time': true}" [ngStyle]="{'background': item.edit_time_mode ? 'rgba(78, 200, 240, 0.5)' : '#F0F0F0'}">
+									<div style="width:100% ; cursor: pointer;" (click)="step_time_edit_mode_on(indx)" *ngIf="item.edit_time_mode==false">{{item.time}}{{item.timeunit}}</div>
+									<input  (keyup)="Upadte_step_time($event,indx)" *ngIf="item.edit_time_mode" type='number' [ngClass]="{'step-time-input': true, 'time-edit-mode': item.edit_time_mode}"  value="{{item.time}}" />
+									<div (click)="showAllbar(indx)" class="item-unit-section" *ngIf="item.edit_time_mode"  >{{item.timeunit}}</div>
+									<div class="procedure-optn-cont-edit" *ngIf="search_time_edit_var && item.edit_time_mode">
+										<div class="procedure-item" *ngFor="let Timebar of TimebarArray; " (click)="selecteditTime(Timebar.code, indx)">
+											<div class="procedure-label">{{Timebar.label}}</div>
+										<div class="clear"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="delete-step-goal" (click)="delete_step_from_list(indx)">
+								<svg *ngIf="item.selected" width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M5.742 7H4.878C4.812 7 4.7595 6.9835 4.7205 6.9505C4.6845 6.9145 4.6545 6.8755 4.6305 6.8335L2.9025 4.1245C2.8785 4.1965 2.8515 4.258 2.8215 4.309L1.1385 6.8335C1.1085 6.8755 1.0755 6.9145 1.0395 6.9505C1.0065 6.9835 0.96 7 0.9 7H0.09L2.3085 3.688L0.18 0.5515H1.0485C1.1115 0.5515 1.158 0.562 1.188 0.582999C1.218 0.604 1.245 0.634 1.269 0.673L2.952 3.256C2.973 3.193 3.0045 3.124 3.0465 3.049L4.635 0.691C4.659 0.649 4.6875 0.616 4.7205 0.592C4.7535 0.565 4.7925 0.5515 4.8375 0.5515H5.67L3.5325 3.6475L5.742 7Z" fill="#F11212"/>
+								</svg>
+							</div>
+						</div>
+					</perfect-scrollbar>
+				</div>
+               
+				<div class="btm-dv-step">
+					<div class="labelbox-holderstep">
+						<div style="border-top: #C4C4C4 1px solid;">
+							<div class="add-step-title-section">
+								<input placeholder="New step" class="step-input-new-item" [(ngModel)]="addStep.add_step_item"   type="text"/>
+							</div>
+							<div class="add-step-time-section">
+								<input placeholder="days" class="step-input-new-time" (keyup)="searchTime($event)"  [(ngModel)]="addStep.add_step_time" type="number"/>
+								<div (click)="showAllbar_foradd()" class="time-bar-section" [ngStyle]="{'left': Timecode_left_style + 'px'}" >{{Timecode_val}}</div>
+								<div class="procedure-optn-cont" *ngIf="search_time_var">
+									<div class="procedure-item" *ngFor="let Timebar of TimebarArray; let indx=index" (click)="selectTime(Timebar.code)">
+										<div class="procedure-label">{{Timebar.label}}</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="add-step-section" (click)="add_step_item()">
+								<svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+		</div>
+           
+		<div fxFlex="50">
+			<div class="steps-labelboxwrap">
+				<div style="height: 535px;">
+					<perfect-scrollbar [config]="config">
+						<div *ngFor="let StepsPlan of StepsPlanArra let indx=index"  class="labelbox stepplan-labelbox" [ngStyle]="{'background': StepsPlan.selected ? '#FFFFFF' : '#F0F0F0' }">
+							<div style="height: 15px; width: 100%">
+								<div (click)="edit_step_plan(indx)" *ngIf="StepsPlan.selected" class="edit-StepsPlan-section">
+									<svg  width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M1.03826 6.03361L0.706284 7.77882L2.45009 7.44686L2.45111 7.44788L7.12329 2.77394L5.71072 1.36084L1.03898 6.03434L1.03826 6.03361Z" fill="#56CCF2"/>
+										<path d="M5.98242 1.08984L6.78734 0.284626C6.94352 0.128387 7.19673 0.128387 7.35291 0.284627L8.1999 1.13194C8.35608 1.28818 8.35608 1.54149 8.1999 1.69773L7.39499 2.50295L5.98242 1.08984Z" fill="#56CCF2"/>
+									</svg>
+								</div>
+
+								<div [ngStyle]="{'width': StepsPlan.selected === true ?  '75%' : '100%'}" class="namestep stepsplan-name">
+									<div class="stepfontsize" *ngIf="StepsPlan.edit_mode==false"  (click)="stepPlan_edit_mode(indx)" > {{StepsPlan.label}} </div>
+									
+									<input (blur)="Upadte_step_plan($event,indx)" *ngIf="StepsPlan.edit_mode" type='text' class="steps-editmode" value="{{StepsPlan.label}}" />
+								</div>
+								<!-- <div *ngIf="StepsPlan.selected" class="editunit-step-plan">
+									<div class="stepfontsize" *ngIf="StepsPlan.edit_mode==false">{{StepsPlan.time}}{{StepsPlan.unit}}</div>
+									<input (keyup)="Upadte_stepplan_time($event,indx)" *ngIf="StepsPlan.edit_mode" type='number' [ngClass]="{'step-time-input': true, 'time-edit-mode': StepsPlan.edit_mode}" value="{{StepsPlan.time}}" />
+									<div (click)="showAllbar_step_plan(indx)" class="item-unit-section-stepplan" *ngIf="StepsPlan.edit_mode">{{StepsPlan.unit}}</div>
+									<div class="procedure-optn-cont-edit-step-plan" *ngIf="search_time_edit_plan && StepsPlan.edit_mode">
+										<div class="procedure-item" *ngFor="let Timebar of TimebarArray; " (click)="selecteditTime_plan(Timebar.code, indx)">
+											<div class="procedure-label">{{Timebar.label}}</div>
+											<div class="clear"></div>
+										</div>
+									</div>
+								</div> -->
+
+								<div *ngIf="StepsPlan.selected" (click)="delete_step_plan(indx)" class="delete-StepsPlan-section">
+									<svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M5.742 7H4.878C4.812 7 4.7595 6.9835 4.7205 6.9505C4.6845 6.9145 4.6545 6.8755 4.6305 6.8335L2.9025 4.1245C2.8785 4.1965 2.8515 4.258 2.8215 4.309L1.1385 6.8335C1.1085 6.8755 1.0755 6.9145 1.0395 6.9505C1.0065 6.9835 0.96 7 0.9 7H0.09L2.3085 3.688L0.18 0.5515H1.0485C1.1115 0.5515 1.158 0.562 1.188 0.582999C1.218 0.604 1.245 0.634 1.269 0.673L2.952 3.256C2.973 3.193 3.0045 3.124 3.0465 3.049L4.635 0.691C4.659 0.649 4.6875 0.616 4.7205 0.592C4.7535 0.565 4.7925 0.5515 4.8375 0.5515H5.67L3.5325 3.6475L5.742 7Z" fill="#F11212"/>
+									</svg>
+								</div>
+								<div class="clear"></div>
+							</div>
+							
+							<div *ngIf="StepsPlan.selected" class="category-section" style="width: 100%">
+								<div class="category-name" *ngFor="let StepsPlancategory of StepsPlan.category let indx1 = index" >
+									<div class="stepsplan-category_name-name"> 
+										<div class="category-pencil-icon" *ngIf="StepsPlancategory.selected" (click)="StepsPlancategory.edit_mode=!StepsPlancategory.edit_mode">
+											<svg  width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M1.03826 6.03361L0.706284 7.77882L2.45009 7.44686L2.45111 7.44788L7.12329 2.77394L5.71072 1.36084L1.03898 6.03434L1.03826 6.03361Z" fill="#56CCF2"/>
+												<path d="M5.98242 1.08984L6.78734 0.284626C6.94352 0.128387 7.19673 0.128387 7.35291 0.284627L8.1999 1.13194C8.35608 1.28818 8.35608 1.54149 8.1999 1.69773L7.39499 2.50295L5.98242 1.08984Z" fill="#56CCF2"/>
+											</svg>
+										</div>
+
+										<div class="category-label-item" >
+											<div [ngStyle]="{'background': StepsPlancategory.edit_mode ? 'rgba(78, 200, 240, 0.5)' : '#FFFFFF', 'width': '100%', 'height': '100%'}">
+											
+												<div *ngIf="!StepsPlancategory.edit_mode" (click)="stepsPlanCategorySelected(indx,indx1) ">{{StepsPlancategory.category_name}}</div>
+												<input (blur)="Upadte_stepCat_plan($event,indx,indx1)" *ngIf="StepsPlancategory.edit_mode" type='text' class="steps-cat-editmode" value="{{StepsPlancategory.category_name}}" />
+											</div>
+										</div>
+										
+
+									</div>
+
+									<div class="edit-time-StepsPlan-section" [ngStyle]="{'background': StepsPlancategory.edit_mode ? 'rgba(78, 200, 240, 0.5)' : '#FFFFFF'}">
+										<span class="categorynon-edit-time" *ngIf="StepsPlancategory.edit_mode==false">{{StepsPlancategory.time}}{{StepsPlancategory.unit}}</span>
+										<input (keyup)=" Update_stepplan_cat_time($event,indx,indx1)" *ngIf="StepsPlancategory.edit_mode" type='number' [ngClass]="{'step-time-input': true, 'time-edit-mode': StepsPlancategory.edit_mode}" value="{{StepsPlancategory.time}}" />
+										<div (click)="showAllbar_step_plan(indx1)" class="item-unit-section-stepplan-cat" *ngIf="StepsPlancategory.edit_mode"  >{{StepsPlancategory.unit}}</div>
+										<div class="procedure-optn-cont-edit-step-plan" *ngIf="search_time_edit_plan && StepsPlancategory.edit_mode">
+											<div class="procedure-item" *ngFor="let Timebar of TimebarArray; " (click)="selecteditTime_Catplan(Timebar.code,indx, indx1)">
+												<div class="procedure-label">{{Timebar.label}}</div>
+												<div class="clear"></div>
+											</div>
+										</div>
+										<div style="display: inline;padding-left: 5px;" (click)="delete_Cat_Step(indx,indx1)">
+											<svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M5.742 7H4.878C4.812 7 4.7595 6.9835 4.7205 6.9505C4.6845 6.9145 4.6545 6.8755 4.6305 6.8335L2.9025 4.1245C2.8785 4.1965 2.8515 4.258 2.8215 4.309L1.1385 6.8335C1.1085 6.8755 1.0755 6.9145 1.0395 6.9505C1.0065 6.9835 0.96 7 0.9 7H0.09L2.3085 3.688L0.18 0.5515H1.0485C1.1115 0.5515 1.158 0.562 1.188 0.582999C1.218 0.604 1.245 0.634 1.269 0.673L2.952 3.256C2.973 3.193 3.0045 3.124 3.0465 3.049L4.635 0.691C4.659 0.649 4.6875 0.616 4.7205 0.592C4.7535 0.565 4.7925 0.5515 4.8375 0.5515H5.67L3.5325 3.6475L5.742 7Z" fill="#F11212"/>
+											</svg>
+										</div>
+									</div>
+									<div class="clear"></div>
+                        
+								</div>
+								<div class="clear"></div>
+								<div>
+									<div class="add-step-title-section">
+									  <input placeholder="New step" class="step-input-new-item" [(ngModel)]="addInnerStep.add_step_item"   type="text"/>
+									</div>
+									<div class="add-step-time-section">
+									   <input placeholder="days" class="step-input-new-time" (keyup)="searchTimeInnerSteps($event)" [(ngModel)]="addInnerStep.add_step_time" type="number"/>
+									   <div  (click)="showAllbar_foradd_inner()" class="time-bar-section" [ngStyle]="{'left': Timecode_left_style + 'px'}" >{{Timecode_val_inner}}</div>
+									   <div class="procedure-optn-cont" *ngIf="search_time_var_inner">
+										   <div class="procedure-item" *ngFor="let Timebar of TimebarArray; let indx=index" (click)="selectTimeInner(Timebar.code)">
+											
+											 <div class="procedure-label">{{Timebar.label}}</div>
+											 
+											 <div class="clear"></div>
+										   </div>
+									   </div>
+									</div>
+									<div class="add-step-section" (click)=" addStepInStepPlan(indx)">
+										<svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+										</svg>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div>
+				  
+						<div class="btm-dv-stepplan">
+							<div class="labelbox-holderstep">
+								<div class="add-step-title-section-step-plan">
+									<input placeholder="Template name" class="step-input-new-item" [(ngModel)]="addStepplan.add_step_item" type="text"/>
+								</div>
+								<div class="add-stepplan-section" (click)="add_step_plan_item()">
+									<svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M5.874 3.81H3.74V6.076H2.6345V3.81H0.5115V2.8035H2.6345V0.548499H3.74V2.8035H5.874V3.81Z" fill="#4EC8F0"/>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</perfect-scrollbar>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

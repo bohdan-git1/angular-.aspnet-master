@@ -1,0 +1,207 @@
+.patient-card-dialog {
+	position: relative;
+	padding: 20px 30px;
+	box-sizing: border-box;
+}
+
+.closeBtn {
+	position: absolute;
+	right: -10px;
+	top: -10px;
+}
+
+.profile-img {
+	width: 117px;
+	height: 117px;
+	border: 8px solid #4EC8F0;
+	border-radius: 100%;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.patient-details {
+	padding-left: 40px;
+}
+
+.patient-name {
+	font-size: 36px;
+	color: #646464;
+	display: inline-block;
+}
+
+.medical-history {
+	font-size: 16px;
+	color: #FE0000;
+	margin-top: 10px;
+}
+
+.table-form-item {
+	font-size: 15px;
+	color: #4EC8F0;
+	margin-right: 40px;
+	display: inline-block;
+}
+
+.table-form {
+	margin-top: 15px;
+}
+
+.term-inline {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.term-inline-item {
+	padding-left: 15px;
+	padding-right: 15px;
+	display: inline-block;
+	font-size: 16px;
+	color: #4EC8F0;
+	border-left: 2px solid #4EC8F0;
+	line-height: 14px;
+	font-weight: bold;
+}
+
+.display-block {
+	border: 1px solid #56CCF2;
+	border-radius: 4px;
+	margin-top: 11px;
+	padding: 10px 10px 5px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.schedule-appnt {
+	height: 64px;
+	margin-top: 20px;
+}
+
+.block-heading {
+	font-weight: bold;
+	font-size: 12px;
+	color: #434343;
+	margin-bottom: 10px;
+}
+
+.block-2 {
+	height: 128px;
+}
+
+.block-2-wrapper {
+	width: 100%;
+	height: 60px;
+	overflow: hidden;
+}
+
+.block-3 {
+	height: 148px;
+}
+
+.no-header {
+	display: none;
+}
+
+.schedule-block {
+	background: #4EC8F0;
+	border-radius: 2px;
+	color: #fff;
+	padding: 2px 5px;
+}
+
+.table-item {
+	font-size: 12px;
+	margin-bottom: 8px;
+	color: #434343;
+}
+
+.rechedule-btn {
+	color: #4EC8F0;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.scroller {
+	width: 23px;
+	height: 20px;
+	cursor: pointer;
+	position: absolute;
+}
+
+.table-item.item-1st {
+	color: #4EC8F0;
+}
+
+.block-3-wrapper {
+	height: 102px;
+	margin-top: 10px;
+}
+
+/* .patient-info-block {
+	width: 100%;
+	border: 1px solid #56CCF2;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+.gender {
+	font-size: 12px;
+}
+
+.next-appnt {
+	color: #646464;
+	font-size: 12px;
+	margin-bottom: 15px;
+}
+
+.appnt-code {
+	color: #646464;
+	font-size: 12px;
+	margin-bottom: 15px;
+}
+
+.appnt-comment {
+	width: 100%;
+	height: 100px;
+	border: 1px solid #56CCF2;
+	border-radius: 5px;
+}
+
+.appnt-comment textarea {
+	width: 100%;
+	height: 100%;
+	border: none;
+	padding: 10px 8px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	resize: none;
+	border-color: transparent;
+}
+
+.info-label {
+	padding: 20px 10px;
+	color: #646464;
+	text-align: center;
+	border-right: 1px solid #56CCF2;
+	font-size: 12px;
+}
+
+.info-details {
+	padding: 20px 10px;
+	color: #646464;
+	text-align: center;
+	font-size: 12px;
+}
+
+.contol-btn {
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center; 
+	background: #56CCF2;
+	padding: 10px 10px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+} */
+
+

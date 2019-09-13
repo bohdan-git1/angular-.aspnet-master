@@ -1,0 +1,35 @@
+<div class="dd-container" (clickOutside)="onClickedOutside()" [exclude]="'.dd-container'" *ngIf="sel_type=='weekMin'">
+
+	<div class="dd-label-wrapper" (click)="showddoptions()">
+		<div class="dd-label">{{ddplaceholder}}</div>
+		<div class="dd-icon">
+			<svg width="4" height="3" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M2 3L0.267949 -3.26266e-07L3.73205 -2.34249e-08L2 3Z" fill="#4EC8F0"/>
+			</svg>
+		</div>
+	</div>
+
+	<div class="dd-option-container" *ngIf="showdd">
+		<div [ngClass]="{'dd-option': true, 'dd-selected': options.selected}" *ngFor="let options of _ddoptionsArr; let indx=index" (click)="selectOption(indx)">{{options.label}}</div>
+	</div>
+</div>
+
+
+
+<div class="dd-container" (clickOutside)="onClickedOutside()" [exclude]="'.dd-container'" *ngIf="sel_type=='locDoc'">
+
+	<div class="dd-label-wrapper" (click)="showddoptions()">
+		<div class="dd-label-locDoc">{{ddplaceholder}}</div>
+		<div class="plcholdr" *ngIf="multiple">locations</div>
+		<div class="plcholdr" *ngIf="!multiple">doctors</div>
+		<div class="dd-icon">
+			<svg width="4" height="3" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M2 3L0.267949 -3.26266e-07L3.73205 -2.34249e-08L2 3Z" fill="#4EC8F0"/>
+			</svg>
+		</div>
+	</div>
+
+	<div class="dd-option-container" *ngIf="showdd">
+		<div [ngClass]="{'dd-option': true, 'dd-selected': options.selected}" *ngFor="let options of _ddoptionsArr; let indx=index" (click)="selectOption(indx)">{{options.label}}</div>
+	</div>
+</div>

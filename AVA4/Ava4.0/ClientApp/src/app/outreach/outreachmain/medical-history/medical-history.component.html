@@ -1,0 +1,569 @@
+
+<!----{{patient_info.firstname}} {{patient_info.lastname}}-->
+ 
+<div class="patientdialog">
+	
+    <div class="closeBtn" (click)="cancelModal()">
+        <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="13.5" width="2.12119" height="19.0907" transform="rotate(45 13.5 0)" fill="#333333"/>
+            <rect y="1.50195" width="2.12119" height="19.0907" transform="rotate(-45 0 1.50195)" fill="#333333"/>
+        </svg>
+    </div>
+        
+    
+    <div class="medical-history-head-section">
+      <div class="mdh-head-title">{{patient_info.firstname}} {{patient_info.lastname}}</div>
+      <div  class="mdh-head-date">04/25/19</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="medical-history-body-section">
+        <perfect-scrollbar [config]="config">
+          	<div style="height: calc(100% - 50px);">
+              <div class="medical-history-body-section1">
+                    <div class="dental-history-title">DENTAL HISTORY</div>
+                    <div class="dental-history-section">
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                              Has there been any injuries to the face, moujth or teeth?
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="mouthandteeth" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="mouthandteeth" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                          <div class="dental-history-question-part2">
+                              <div class="dental-history-question-sub-part2">  Describe :</div>
+                              <div class="dental-history-answar-sub-part2">
+                                <input style=" width: 189px" class="descl" type="text"/>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                                  Has the patient ever sucked a thumb or fingers?
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="thumb_or_fingers" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="thumb_or_fingers" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                          <div class="dental-history-question-part2">
+                              <div class="dental-history-question-sub-part2">  Until what age? </div>
+                              <div class="dental-history-answar-sub-part2">
+                                <input  style=" width: 159px" class="descl" type="text"/>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                                  Does the patient have any speech problems?
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="speech_problems" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="speech_problems" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                          <div class="dental-history-question-part2">
+                             
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                                  <div _ngcontent-c42="" style="float: left;"> Is the patient a mouth breather?</div>    
+                                   <div _ngcontent-c42="" style="float: right; margin-right: 45px;">While awake?</div>
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="mouth_breather" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="mouth_breather" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                          <div class="dental-history-question-part2">
+                             
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                                  <div _ngcontent-c42="" style="float: left;"> </div>    
+                                   <div _ngcontent-c42="" style="float: right; margin-right: 45px;">While awake?</div>
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="while_awake" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="while_awake" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                          <div class="dental-history-question-part2">
+                             
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                                  Does the patient have any missing or extra permanent teeth?
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="extra_permanent_teeth" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="extra_permanent_teeth" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                          <div class="dental-history-question-part2">
+                             
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                                  Has an orthodontist been previously consulted?
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="consulted" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="consulted" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                          <div class="dental-history-question-part2">
+                              <div class="dental-history-question-sub-part2">  Whom? </div>
+                              <div class="dental-history-answar-sub-part2">
+                                <input style=" width: 202px" class="descl" type="text"/>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                                  Has either parent had orthodontic treatment?
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="orthodontic_treatment" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="orthodontic_treatment" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                          <div class="dental-history-question-part2">
+                              <div class="dental-history-question-sub-part2">  Which parent?</div>
+                              <div class="dental-history-answar-sub-part2">
+                                <input style=" width: 163px" class="descl" type="text"/>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                                  Has patient ever been treated for periodontal disease or TMJ?
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="disease_tmj" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="disease_tmj" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                          
+                          <div class="clear"></div>
+                      </div>
+                    </div>
+              </div>
+              <div class="medical-history-body-section2">
+                  <div class="dental-history-title">MEDICAL HISTORY</div>
+                  <div class="dental-history-section">
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1">
+                              <div class="dental-history-question-sub-part1">
+                                  Is patient in good health?
+                              </div>
+                              <div class="dental-history-answar-sub-part1">
+                                  <div class="one-redio-bt-section">
+                                      <input type="radio" name="good_health" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <input type="radio" name="good_health" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                         
+                          <div class="clear"></div>
+                      </div>
+
+
+
+                      <div class="dental-history-question-section">
+                        <div class="dental-history-question-part1">
+                            <div class="dental-history-question-sub-part1">
+                                Does patient have any history of major illness?
+                            </div>
+                            <div class="dental-history-answar-sub-part1">
+                                <div class="one-redio-bt-section">
+                                    <input type="radio" name="illness" value="No" > <span>No</span>
+                                </div>
+                                <div class="two-redio-bt-section">
+                                    <input type="radio" name="illness" value="Yes"> <span>Yes</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                       
+                        <div class="dental-history-question-part2">
+                            <div class="dental-history-answar-sub-part2">
+                              <input style=" width: 255px;" class="descl" type="text"/>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1" style="width:100%">
+                              <div class="dental-history-question-sub-part1" style="float:none">
+                                  Check any of the following for which patient has been treated :
+                              </div>
+                              <div class="patient_treated_section">
+                                  <div class="comon_treated_section">
+                                     <div class="treated_radio_section1">
+                                        <input type="radio" name="patient_treated" value="Diabetes" > <span>Diabetes</span>
+                                     </div>
+                                     <div class="treated_radio_section2">
+                                        <input type="radio" name="patient_treated" value="Tuberculosis" > <span>Tuberculosis</span>
+                                     </div>
+                                     <div class="treated_radio_section3">
+                                        <input type="radio" name="patient_treated" value="Prolonged Bleeding" > <span>Prolonged Bleeding</span>
+                                     </div>
+                                     <div class="clear"></div>
+                                 </div>
+
+
+                                 <div class="comon_treated_section">
+                                    <div class="treated_radio_section1">
+                                       <input type="radio" name="patient_treated" value="Pneumonia" > <span>Pneumonia</span>
+                                    </div>
+                                    <div class="treated_radio_section2">
+                                       <input type="radio" name="patient_treated" value="Anemia" > <span>Anemia</span>
+                                    </div>
+                                    <div class="treated_radio_section3">
+                                       <input type="radio" name="patient_treated" value="Endocrine Problems" > <span> Endocrine Problems</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="comon_treated_section">
+                                    <div class="treated_radio_section1">
+                                       <input type="radio" name="patient_treated" value="Heart trouble" > <span>Heart trouble</span>
+                                    </div>
+                                    <div class="treated_radio_section2">
+                                       <input type="radio" name="patient_treated" value="Epilepsy" > <span>Epilepsy</span>
+                                    </div>
+                                    <div class="treated_radio_section3">
+                                       <input type="radio" name="patient_treated" value="Fainting or Dizziness" > <span>Fainting or Dizziness</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+
+                                <div class="comon_treated_section">
+                                    <div class="treated_radio_section1">
+                                       <input type="radio" name="patient_treated" value="Rheumatic fever" > <span>Rheumatic fever</span>
+                                    </div>
+                                    <div class="treated_radio_section2">
+                                       <input type="radio" name="patient_treated" value="Asthmia" > <span>Asthmia</span>
+                                    </div>
+                                    <div class="treated_radio_section3">
+                                       <input type="radio" name="patient_treated" value="Nervous Disorders " > <span>Nervous Disorders</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+
+                                <div class="comon_treated_section">
+                                    <div class="treated_radio_section1">
+                                       <input type="radio" name="patient_treated" value="Bone disorders " > <span>Bone disorders </span>
+                                    </div>
+                                    <div class="treated_radio_section2">
+                                       <input type="radio" name="patient_treated" value="Kidney Involvement" > <span>Kidney Involvement</span>
+                                    </div>
+                                    <div class="treated_radio_section3">
+                                       <input type="radio" name="patient_treated" value="Liver Involvement  " > <span> Liver Involvement</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+
+                                <div class="comon_treated_section">
+                                    <div class="treated_radio_section1">
+                                       <input type="radio" name="patient_treated" value="Hepatitis " > <span> Hepatitis</span>
+                                    </div>
+                                    <div class="treated_radio_section2">
+                                       <input type="radio" name="patient_treated" value="Hypertention" > <span>Hypertention</span>
+                                    </div>
+                                    <div class="treated_radio_section3">
+                                       <input type="radio" name="patient_treated" value="Thyroid Problems  " > <span>Thyroid Problems </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+
+                              </div>
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1 tendency ">
+                              <div class="dental-history-question-sub-part1 tendency_title">
+                                  Does patient have tendency to : 
+                              </div>
+                              <div class="dental-history-answar-sub-part1 tendency_radio">
+                                  <div class="one-redio-bt-section tendency_radio1">
+                                      <input type="radio" name="major_illness" value="Colds" > <span>Colds</span>
+                                  </div>
+                                  <div class="one-redio-bt-section tendency_radio1">
+                                      <input type="radio" name="major_illness" value="Sore Throats"> <span>Sore Throats</span>
+                                  </div>
+
+                                  <div class="one-redio-bt-section tendency_radio1">
+                                      <input type="radio" name="major_illness" value="Ear Infections "> <span>Ear Infections </span>
+                                  </div>
+
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                         
+                         
+                          <div class="clear"></div>
+                      </div>
+
+
+                      <div class="dental-history-question-section">
+                          <div class="dental-history-question-part1 tendency">
+                              <div class="dental-history-question-sub-part1 removed-sec">
+                                  Have tonsils and adenoids been removed? 
+                              </div>
+                              <div class="dental-history-answar-sub-part1 removed-sec2">
+                                  <div class="one-redio-bt-section removed-sec3">
+                                      <input type="radio" name="adenoids_removed" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section removed-sec3">
+                                      <input type="radio" name="adenoids_removed" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="two-redio-bt-section">
+                                      <div class="dental-history-question-sub-part2"> What Age?</div>
+                                      <div class="dental-history-answar-sub-part2">
+                                        <input class="descl" type="text"/>
+                                      </div>
+                                  </div>
+                                 
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+                      <div class="dental-history-question-section" style="height: 65px;">
+                          <div class="dental-history-question-part1" style="width:100%">
+                              <div class="dental-history-question-sub-part1" style="float:none">
+                                  List any drugs or medications (prescribed or over the counter) now being taken.  Give reason :
+                              </div>
+                              <div class="patient_treated_section marginleft">
+                                  <div class="dental-history-answar-sub-part2 floatnull" >
+                                      <input class="descl addwidthheight" type="text"/>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+
+
+
+
+                      <div class="dental-history-question-section" >
+                          <div class="dental-history-question-part1 tendency">
+                              <div class="dental-history-question-sub-part1 premedication-sec">
+                                  Is premedication required for dental procedures :
+                              </div>
+                              <div class="dental-history-answar-sub-part1 premedication-sec2">
+                                  <div class="one-redio-bt-section removed-sec3">
+                                      <input type="radio" name="procedures" value="No" > <span>No</span>
+                                  </div>
+                                  <div class="two-redio-bt-section removed-sec3">
+                                      <input type="radio" name="procedures" value="Yes"> <span>Yes</span>
+                                  </div>
+                                  <div class="two-redio-bt-section whysec">
+                                      <div class="dental-history-question-sub-part2 whytexttitle"> Why?</div>
+                                      <div class="dental-history-answar-sub-part2 whyinput">
+                                        <input class="descl" type="text"/>
+                                      </div>
+                                  </div>
+                                 
+                                  <div class="clear"></div>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+
+
+
+                      <div class="dental-history-question-section" >
+                        <div class="dental-history-question-part1 tendency">
+                            <div class="dental-history-question-sub-part1 sensitivity-sec">
+                                List any allergies or drug sensitivity :
+                            </div>
+                            <div class="sensitivity-input">
+                                <input class="descl" type="text"/>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+
+                    <div class="dental-history-question-section" >
+                        <div class="dental-history-question-part1 tendency">
+                            <div class="dental-history-question-sub-part1 reached-sec">
+                                Has the patient reached puberty :
+                            </div>
+                            <div class="dental-history-answar-sub-part1 premedication-sec2">
+                                <div class="one-redio-bt-section removed-sec3">
+                                    <input type="radio" name="reached" value="No" > <span>No</span>
+                                </div>
+                                <div class="two-redio-bt-section removed-sec3">
+                                    <input type="radio" name="reached" value="Yes"> <span>Yes</span>
+                                </div>
+                              
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+
+
+
+
+                      </div>
+              </div>
+          	</div>
+        </perfect-scrollbar>
+    </div>
+
+    <div class="medical-history-head-section save-and-finish" (click)="cancelModal()">
+        Finish & save
+    </div>
+      
+  </div>

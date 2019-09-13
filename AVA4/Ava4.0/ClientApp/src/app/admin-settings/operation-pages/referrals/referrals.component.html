@@ -1,0 +1,429 @@
+<div class="pagetitle">PROFESSIONAL DOCTOR LIST</div>
+
+<div class="main-cont" [ngStyle]="{'width': ((!defaultDoctor && accordOpen) ? 1061 : 455) + 'px'}">
+
+  <div class="content-holder" [ngStyle]="{'height': boxHt + 'px'}">
+	<div class="information-box-cont">
+		<div *ngIf="addMode==false" [ngClass]="{'box-title': true, 'editmode-title': editMode, 'addmode-title': addMode}">{{getBoxTitle()}}</div>
+
+		<div *ngIf="addMode==true" [ngClass]="{'box-title': true, 'editmode-title': editMode, 'addmode-title': addMode}">
+			<div class="doctor-head-title">
+					DOCTOR
+			</div>
+			<div class="location-head-title">
+					LOCATION
+			</div>
+			<div style="clear: both"></div>
+		</div>
+		<div class="box-content">
+
+			<div class="flip-container">
+				<div class="flipper" [ngStyle]="{'transform': 'rotateY(' + rotateOnY + 'deg)'}">
+					<div class="card1">
+
+						<!-- <div class="selector" [ngStyle]="{'height': selectorHeight + 'px', 'top': selectorTop + 'px'}" *ngIf="accordOpen"></div> -->
+						
+						<div class="search-section">
+							<div class="search" [ngStyle]="{'width': defaultDoctor ? '40%' : '60%'}">
+								<div class="ser-icon">
+									<svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M6.64365 1.7868C5.26871 0.110129 3.03091 0.110129 1.65598 1.7868C0.281341 3.46384 0.281341 6.19239 1.65598 7.86942C2.76367 9.21988 4.42997 9.4795 5.75495 8.65369C5.94408 8.5358 6.22156 8.63993 6.36288 8.81226L8.36522 11.254C8.65701 11.6091 9.12854 11.6091 9.41884 11.254C9.71034 10.8986 9.71034 10.3236 9.41884 9.96917L7.4165 7.52667C7.27122 7.35001 7.15494 7.08553 7.24783 6.87652C7.97224 5.2465 7.7724 3.16361 6.64365 1.7868ZM6.01147 7.09851C4.98496 8.35029 3.31436 8.35029 2.28815 7.09851C1.26224 5.84673 1.26224 3.80986 2.28815 2.55808C3.31436 1.30666 4.98496 1.30666 6.01147 2.55808C7.03797 3.80986 7.03797 5.84673 6.01147 7.09851Z" fill="#6BD3F4"/>
+									</svg>
+								</div>
+								<input class="search-input"  [placeholder]="searchPlaceholderTxt" type="text" (keyup)="search($event)"/>
+							</div>
+							
+							<div class="grpdrpdn" *ngIf="defaultDoctor">
+								<div class="drpdn-selector" (click)="showgrpdrpdn=showgrpdrpdn?false:true">
+									<div class="drpdn-label">{{selectedGrp}}</div>
+									<div class="drpdn-icon">
+										<svg width="6" height="5" viewBox="0 0 6 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M3 5L0.401924 0.5L5.59808 0.5L3 5Z" fill="#4EC8F0"/>
+										</svg>
+									</div>
+								</div>
+								
+								<div class="drpdn-optns" *ngIf="showgrpdrpdn">
+									<div [ngClass]="{'drpdn-optn': true, 'drpdn-selected': grpItem.selected}" *ngFor="let grpItem of drGroupArr; let grpindx=index" (click)="selectGrpOptn(grpindx)">{{grpItem.label}}</div>
+								</div>
+							</div>
+
+							<div class="radio-btnwrap">
+								<div [ngClass]="{'name': true, 'activeoption': defaultDoctor}">Doctor</div>
+								<div class="radio" (click)="doctorAlocationFilterFn()">
+									<div class="round" [ngStyle]="{'left': defaultDoctor ? '3px': '22px'}"></div>
+								</div>
+								<div [ngClass]="{'name': true, 'activeoption': !defaultDoctor}">Location</div>
+							</div>
+						</div>
+
+						<div *ngIf="!defaultDoctor">
+						<ul>
+							<li class="orginfo" *ngFor="let marketingItem of searchLocationArr; let indx=index">
+								<div  [ngClass]="{'activeBgclr': marketingItem.selected == true}">
+									<div [ngClass]="{'org-name': true, 'activeTxclr': marketingItem.selected == true}">{{marketingItem.clinicname}}</div>
+									<div [ngClass]="{'org-location': true, 'activeTxclr': marketingItem.selected == true}">{{marketingItem.city}}, {{marketingItem.state}}</div>
+									<div class="clear"></div>
+								</div>
+
+								<div [ngClass]="{'org-overlay': true}"  (click)="showDetailsforDoctor($event, indx)" (dblclick)="openEditDialog()" (mousedown) = "preventDblClickSelection($event)"></div>
+
+								<div class="doclist-cont" [ngStyle]="{'height': marketingItem.selected == true ? 'auto' : '0px'}">
+									<ul class="doc-list-cont">
+										<li class="doc-list" *ngFor="let doclistItem of marketingItem.doctoroptions; let innerindx=index" (click)="openEditDialog_innerItem('location', marketingItem.id, innerindx)">
+											<div class="doc-name">{{doclistItem.doctorname}}</div>
+											<div class="doc-desg">{{doclistItem.designation}}</div>
+											<div class="clear"></div>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+
+						</ul>
+						</div>
+
+
+						<div *ngIf="defaultDoctor">
+							<ul>
+								<li class="orginfo" *ngFor="let marketingItem of searchDoctorArr; let indx=index">
+									<div  [ngClass]="{'activeBgclr': marketingItem.selected == true}">
+										<div [ngClass]="{'org-name': true, 'activeTxclr': marketingItem.selected == true}" >{{marketingItem.doctorname}}</div>
+										<div [ngClass]="{'org-location': true, 'activeTxclr': marketingItem.selected == true}">{{marketingItem.designation}}</div>
+										<div class="clear"></div>
+									</div>
+
+									<div class="org-overlay" (click)="showDetailsforLocation($event, indx)" (dblclick)="openEditDialog()" (mousedown) = "preventDblClickSelection($event)"></div>
+
+									<div class="doclist-cont" [ngStyle]="{'height': marketingItem.selected == true ? 'auto' : '0px'}">
+										<ul class="doc-list-cont">
+											<li class="doc-list" *ngFor="let clinicItem of marketingItem.clinicnames; let innerindx=index" (click)="openEditDialog_innerItem('doctor', marketingItem.id, innerindx)">
+												<div class="doc-name">{{clinicItem.clinicname}}</div>
+												<div class="doc-desg">{{clinicItem.city}}, {{clinicItem.state}}</div>
+												<div class="clear"></div>
+											</li>
+										</ul>
+									</div>
+								</li>
+
+
+							</ul>
+						</div>
+
+						<div class="footer-elem">
+							<div class="infoNote">*Double click any single item to edit</div>
+							<div class="plus-btn" (click)="openAddEditSection('add')">
+									<svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M8.01 4.65H5.1V7.74H3.5925V4.65H0.6975V3.2775H3.5925V0.202499H5.1V3.2775H8.01V4.65Z" fill="#4EC8F0"/>
+									</svg>
+								<div class="add-text">Add</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+
+					</div>
+
+					<!--
+
+{"practice_name": "Stonehaven Dental", "degree": "DDS", "code": "", "fullname": "Jennifer Mcmurtrey", "firstname": "Jenny", "middle": "", "lastname": "Mcmurtrey", "nickname": "", "birthday": "06/19/1974", "address": "", "address2": "", "city": "", "state": "", "zip": "", "officephone": "(801) 777-7743", "cellphone": "(858) 379-9898", "fax": "", "email": "jmcmurtrey@stonehaven.com", "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "location": "Springville, UT", "active": true, "dentist": true, "referral": false, "professional_group":[{"label" : "Periodontist", "selected": false}, {"label" : "Oralsurgeon", "selected": false}, {"label" : "Periodontist-Pediactric Dentist", "selected": false}, {"label" : "Endodontist", "selected": false}, {"label" : "Prosthodontist", "selected": false}], "doclist":[{"firstname": "Jenny", "lastname": "Mcmurtrey" "is_dr": true, "degree": "DDS"}, {"firstname": "Tyson", "lastname": "Perrero" "is_dr": true, "degree": "Ortho"}, {"firstname": "Brett", "lastname": "Tobler" "is_dr": true, "degree": "DDS"}, {"firstname": "Eric", "lastname": "Tobler" "is_dr": true, "degree": "DDS"}, {"firstname": "Nathan", "lastname": "Tobler" "is_dr": true, "degree": "Ortho"}, {"firstname": "Kate", "lastname": "Stone" "is_dr": false, "degree": "Admin"}], "accordOpen": false},					-->
+
+					<!-- <div class="card2">
+						<div fxLayout="row" fxLayoutGap="15px">
+							<div fxFlex="50">
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Practice Name" [(ngModel)]="selectedParctice.practice_name"/></div>
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Degree" [(ngModel)]="selectedParctice.degree"/></div>
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Code" [(ngModel)]="selectedParctice.code"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Full Name" [(ngModel)]="selectedParctice.fullname"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="First" [(ngModel)]="selectedParctice.firstname"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Middle" [(ngModel)]="selectedParctice.middle"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Last" [(ngModel)]="selectedParctice.lastname"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Nickname" [(ngModel)]="selectedParctice.nickname"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Birthday" [(ngModel)]="selectedParctice.birthday"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Address" [(ngModel)]="selectedParctice.address"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Address 2" [(ngModel)]="selectedParctice.address2"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="City" [(ngModel)]="selectedParctice.city"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="State" [(ngModel)]="selectedParctice.state"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Zip" [(ngModel)]="selectedParctice.zip"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Office Phone" [(ngModel)]="selectedParctice.officephone"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Cell Phone" [(ngModel)]="selectedParctice.cellphone"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Fax Area" [(ngModel)]="selectedParctice.fax"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Email Address" [(ngModel)]="selectedParctice.email"/></div>
+								</div>
+								<div class="info-input-section">
+									<div class="info-input"><textarea [ngClass]="{'infoinput-field': true, 'editmode': editMode}" class="notes-textarea" placeholder="Notes" [(ngModel)]="selectedParctice.notes"></textarea></div>
+								</div>
+							</div>
+							<div fxFlex="50" style="position: relative;">
+								<div class="info-input-section">
+									<div class="info-input"><input [ngClass]="{'infoinput-field': true, 'editmode': editMode}" type="text" placeholder="Location" [(ngModel)]="selectedParctice.location"/></div>
+								</div>
+
+								<div class="info-input-section" style="margin-top: 27px;">
+									<app-toggle-btn [label]="'Active'" [toggleChecked]="selectedParctice.active" ></app-toggle-btn>
+								</div>
+
+								<div class="info-input-section" style="margin-top: 34px;">
+									<app-toggle-btn [label]="'Dentist'" [toggleChecked]="selectedParctice.dentist" ></app-toggle-btn>
+								</div>
+
+								<div class="info-input-section">
+									<app-toggle-btn [label]="'Referral'" [toggleChecked]="selectedParctice.referral"></app-toggle-btn>
+								</div>
+
+								<div class="info-input-section section-title">Professional Groups:</div>
+
+								<div class="info-input-section">
+									<app-toggle-btn [label]="'Periodontist'"></app-toggle-btn>
+								</div>
+
+								<div class="info-input-section">
+									<app-toggle-btn [label]="'Oralsurgeon'"></app-toggle-btn>
+								</div>
+
+								<div class="info-input-section">
+									<app-toggle-btn [label]="'Periodontist-Pediactric Dentist'"></app-toggle-btn>
+								</div>
+
+								<div class="info-input-section">
+									<app-toggle-btn [label]="'Endodontist'"></app-toggle-btn>
+								</div>
+
+								<div class="info-input-section">
+									<app-toggle-btn [label]="'Prosthodontist'"></app-toggle-btn>
+								</div>
+
+								<div class="info-input-section section-title">To be included on list:</div>
+
+								<div class="info-input-section" *ngIf="addMode">
+									<div fxLayout="row" fxLayoutGap="5px" >
+										<div fxFlex="calc(100% - 25px)">
+											<div class="info-input">
+												<input type="text" [ngClass]="{'infoinput-field': true, 'editmode': editMode}"/>
+											</div>
+										</div>
+										<div fxFlex="20px">
+											<app-toggle-btn [label]="''"></app-toggle-btn>
+										</div>
+									</div>
+
+									<div fxLayout="row" fxLayoutGap="5px">
+										<div fxFlex="calc(100% - 25px)">
+											<div class="info-input">
+												<input type="text" [ngClass]="{'infoinput-field': true, 'editmode': editMode}"/>
+											</div>
+										</div>
+										<div fxFlex="20px">
+											<app-toggle-btn [label]="''"></app-toggle-btn>
+										</div>
+									</div>
+
+									<div class="add-doc-btn">
+										<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<rect x="5" width="2" height="12" fill="#4EC8F0"/>
+											<rect y="7" width="2" height="12" transform="rotate(-90 0 7)" fill="#4EC8F0"/>
+										</svg>
+									</div>
+								</div>
+
+								<div class="info-input-section" *ngIf="editMode">
+									<div fxLayout="row" fxLayoutGap="5px" *ngFor="let docitem of selectedParctice.doclist">
+										<div fxFlex="calc(100% - 65px)">
+											<div class="info-input">
+												<input type="text" [ngClass]="{'infoinput-field': true, 'editmode': editMode}" [(ngModel)]="docitem.name"/>
+											</div>
+										</div>
+										<div fxFlex="45px">
+											<div class="info-input">
+												<input type="text" [ngClass]="{'infoinput-field': true, 'editmode': editMode}" [(ngModel)]="docitem.degree"/>
+											</div>
+										</div>
+
+										<div fxFlex="15px">
+											<svg width="8" height="2" viewBox="0 0 8 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<rect width="8" height="2" fill="#A5A5A5"/>
+											</svg>
+										</div>
+									</div>
+
+									<div fxLayout="row" fxLayoutGap="5px">
+										<div fxFlex="calc(100% - 65px)">
+											<div class="info-input">
+												<input type="text" [ngClass]="{'infoinput-field': true, 'editmode': editMode}"/>
+											</div>
+										</div>
+										<div fxFlex="45px">
+											<div class="info-input">
+												<input type="text" [ngClass]="{'infoinput-field': true, 'editmode': editMode}"/>
+											</div>
+										</div>
+										<div fxFlex="15px">
+										</div>
+									</div>
+
+									<div class="add-doc-btn">
+										<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<rect x="5" width="2" height="12" fill="#4EC8F0"/>
+											<rect y="7" width="2" height="12" transform="rotate(-90 0 7)" fill="#4EC8F0"/>
+										</svg>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+
+						<div class="done-btn" (click)="flipCard()" *ngIf="editMode">DONE</div>
+
+						<div class="plus-btn" (click)="flipCard()" *ngIf="addMode">
+							<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M18.899 7.63348C18.6949 7.44751 18.3787 7.46223 18.1927 7.66636L11.2769 15.2575L8.02795 12.2975C7.82382 12.1116 7.50758 12.1263 7.32161 12.3304C7.13564 12.5345 7.15036 12.8508 7.35449 13.0368L10.817 16.1912C10.8442 16.2565 10.8859 16.3171 10.9416 16.3679C11.1458 16.5538 11.462 16.5391 11.648 16.335L18.9319 8.33982C19.1179 8.13569 19.1032 7.81945 18.899 7.63348Z" fill="#434343"/>
+							</svg>
+						</div>
+					</div> -->
+					
+					<div class="card2">
+						<div fxLayout="row" fxLayoutGap="15px">
+							<app-new-doctor-and-location (formDataTnsf)="formDataTnsf($event)">
+							</app-new-doctor-and-location>
+						</div>
+						
+						<div class="plus-btn-edit" (click)="flipCard()" *ngIf="addMode">
+							<div class="saveLocationAndDoctor">Back</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div  class="panel3-cont" *ngIf="!defaultDoctor && accordOpen">
+			<div class="box-title">COUNTS</div>
+			<div class="panel3">
+
+				<div class="panel3-name">
+						{{selectedLocationObj.clinicname}} Counts
+
+				</div>
+
+				<div class="panel3-title">
+					{{selectedLocationObj.latupdatedcount.year}}
+				</div>
+				<div class="panel3-content">
+					<div class="circular-box-content">
+						<div class="box-label">New patient referrals</div>
+						<div class="panel3-circular-box">{{selectedLocationObj.latupdatedcount.newreferral}} </div>
+
+					</div>
+					<div class="circular-box-content">
+						<div class="box-label">Started treatment</div>
+						<div class="panel3-circular-box">{{ selectedLocationObj.latupdatedcount.startedtreatment}}</div>
+
+					</div>
+					<div class="circular-box-content">
+						<div class="box-label">Started treatment</div>
+						<div class="panel3-circular-box" style="font-size: 12px">{{ selectedLocationObj.latupdatedcount.revenue | currency:'USD':'symbol':'1.0-0'}}</div>
+
+					</div>
+
+					<div class="bottom-section">
+
+						<div *ngFor="let previousYrItem of selectedLocationObj.previousyearcount; let indx=index"  class="circular-box-content">
+							<div class="box-label">Patient referrals in <span style="color: #4EC8F0;text-decoration: underline;"> {{previousYrItem.year}} </span></div>
+							<div class="panel3-circular-box">{{previousYrItem.referral}}</div>
+
+						</div>
+
+
+					</div>
+				</div>
+
+				<!--<div class="override-section">
+				  <div class="override-patch-1"></div>
+					<div class="override-patch-41"></div>
+					<div class="override-patch-21"></div>
+					<div class="override-patch-31"></div>
+				</div>-->
+			</div>
+		</div>
+
+	<div class="clickiable-cont" *ngIf="!defaultDoctor && accordOpen">
+		<div class="box-title">MARKETING INFO</div>
+		<div class="clickiable-content">
+			<div style="position: relative; width: 100%; height: 100%;">
+				<ul>
+
+					<li *ngFor="let marketingInfoData of selectedLocationObj.marketinginfo; let indx=index" class="marketing-info">
+						<div class="marketing-dt">{{marketingInfoData.date}}</div>
+						<div class="marketing-details">{{marketingInfoData.info}}</div>
+						<div class="clear"></div>
+					</li>
+
+				</ul>
+
+				<div class="add-edit-section">
+					<div class="input-cont date-section" *ngIf="addMarketingInfoItem"><input class="addinput" type="text" placeholder="00/00/00" /></div>
+					<div class="input-cont info-section" *ngIf="addMarketingInfoItem"><input class="addinput"  type="text" placeholder="Type here..." /></div>
+					<div class="icon-cont">
+						<div class="add-icon" *ngIf="!addMarketingInfoItem" (click)="showAddPanel()">
+							<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect x="12.5" y="8" width="1" height="10" rx="0.5" fill="#434343"/>
+								<rect x="8" y="13.5" width="1" height="10" rx="0.5" transform="rotate(-90 8 13.5)" fill="#434343"/>
+								<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+							</svg>
+						</div>
+
+						<div class="edit-icon" *ngIf="addMarketingInfoItem" (click)="addMarketingItem()">
+							<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M18.8983 8.63338C18.6942 8.4474 18.3779 8.46212 18.192 8.66625L11.2761 16.2574L8.0272 13.2974C7.82307 13.1115 7.50683 13.1262 7.32086 13.3303C7.13489 13.5344 7.14961 13.8507 7.35374 14.0367L10.8162 17.1911C10.8435 17.2564 10.8851 17.317 10.9409 17.3678C11.145 17.5537 11.4612 17.539 11.6472 17.3349L18.9312 9.33972C19.1171 9.13559 19.1024 8.81935 18.8983 8.63338Z" fill="#434343"/>
+							</svg>
+						</div>
+
+						<div class="clear"></div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>

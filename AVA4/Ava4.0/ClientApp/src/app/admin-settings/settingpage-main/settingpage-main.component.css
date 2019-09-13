@@ -1,0 +1,370 @@
+.menubar {
+	width: 100%;
+	height: 400px;
+	background: linear-gradient(270deg, #31B8E4 0%, #56CCF2 100%);
+}
+
+.searchbox-holder {
+	position: absolute;
+	right: 210px;
+	top: 0;
+}
+
+.menu-cont {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow: hidden;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.menu-item {
+	width: 100%;
+	height: 92px;
+	position: relative;
+	margin-bottom: 5px;
+}
+
+.hoverbox {
+	width: 1px;
+	height: 92px;
+	left: -53px;
+	top: 0;
+	background: #F0F0F0;
+	border-radius: 0;
+	position: absolute;
+	
+	transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+.hoverbox-action {
+	width: 194px;
+	border-radius: 100px;
+	
+	transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+.selectedMenu {
+	width: 194px;
+	height: 92px;
+	left: -53px;
+	top: 0;
+	background: #F0F0F0;
+	border-radius: 100px;
+	position: absolute;
+	
+	transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+.menu-box {
+	width: 75px;
+	height: 75px;
+	background: #FFFFFF;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	cursor: pointer;
+}
+
+.elem {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.elem-icon {
+	width: 35px;
+	margin: auto;
+}
+
+.elem-label {
+	font-size: 9px;
+	text-align: center;
+	color: #00AEEF;
+	margin-top: 2px;
+}
+
+.pagetitle {
+	font-size: 40px;
+	color: #4EC8F0;
+}
+
+.billing-panel-cont {
+	margin: 0 auto;
+	padding-left: 160px;
+	width: 639px;
+	height: 273px;
+}
+
+.billing-panel {
+	width: 650px;
+	height: 285px;
+	background: #E5E5E5;
+	padding: 12px;
+	box-sizing: border-box;
+}
+
+.panel-title {
+	font-size: 14px;
+	text-align: center;
+	color: #646464;
+	margin-bottom: 10px;
+}
+
+.card-holder {
+	background: #FFFFFF;
+	border-radius: 2px;
+	width: 100%;
+	padding: 20px 10px;
+	box-sizing: border-box;
+}
+
+.card-cont {
+	width: 600px;
+}
+
+.card {
+	position: relative;
+	width: 288px;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.holder-name {
+	font-weight: bold;
+	font-size: 12px;
+	color: #FFFFFF;
+	letter-spacing: 3px;
+}
+
+.card-num {
+	font-weight: bold;
+	line-height: normal;
+	font-size: 12px;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.card-info {
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	width: 100%;
+}
+
+.card-details-cont {
+	position: relative;
+}
+
+.card-details {
+	width: 100%;
+	/* height: 230px; */
+	background: #FFFFFF;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+.cardholder-name, .cardholder-cnum, .cardholder-address {
+	width: 318px;
+	height: 25px;
+	background: #FFFFFF;
+	border: 0.5px solid #C4C4C4;
+	box-sizing: border-box;
+	border-radius: 1px;
+	margin-bottom: 8px;
+
+}
+
+.card-cvv, .card-expmonth, .card-expyear, .card-city, .card-state, .card-zip {
+	display: inline-block;
+	margin-right: 8px;
+	width: 101px;
+	background: #FFFFFF;
+	border: 0.5px solid #C4C4C4;
+	box-sizing: border-box;
+	border-radius: 1px;
+}
+
+.card-num-cont {
+	margin-bottom: 15px;
+}
+
+.cardinput input {
+	width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    background: none;
+    border: none;
+}
+
+.cardinput input::placeholder {
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	color: #A5A5A5;
+}
+
+.back-btn {
+	position: absolute;
+	right: 0;
+	bottom: -10px;
+}
+
+.primary-toggle {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.toggle-checkbox {
+	width: 25px;
+    height: 25px;
+    border: 0.5px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 1px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.toggle-label {
+	font-size: 12px;
+	color: #A5A5A5;
+	display: inline-block;
+    vertical-align: middle;
+}
+
+.checkbox-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 21px;
+}
+
+.bottom-cont {
+	position: absolute;
+    bottom: -90px;
+    left: 160px;
+	right: 0;
+	margin: auto;
+    width: 50%;
+    height: 180px;
+}
+
+.mainmenu1, .mainmenu3 {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	left: 0;
+	bottom: 50px;
+	background: #FFFFFF;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 100px;
+}
+
+.mainmenu3 {
+	right: 0;
+	left: auto;
+}
+
+.mainmenu2 {
+	position: absolute;
+	width: 180px;
+	height: 180px;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background: #4EC8F0;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 100px;
+	margin: auto;
+
+}
+
+.menu-label {
+	font-size: 10px;
+	text-align: center;
+	color: #A5A5A5;
+}
+
+.main-menu-icon {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.menu-cnt {
+	width: 100%;
+	height: 70px;
+	position: absolute;
+	margin: auto;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.middle-menu {
+	font-size: 20px;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+
+/* ---- flip animation css */
+
+.flip-container {
+	perspective: 1000px;
+}
+
+.flip-container {
+	width: 100%;
+	height: 195px;
+}
+
+.card1, .card2 {
+	width: 100%;
+	height: 100%;
+}
+
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.card1, .card2 {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.card1 {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.card2 {
+	transform: rotateY(180deg);
+}

@@ -1,0 +1,193 @@
+<div class="pagetitle">TEMPLATES</div>
+
+<div fxLayout="column" style="padding-top: 30px;" [ngStyle]="{'height': boxHt + 'px'}">
+	
+	<perfect-scrollbar>
+	
+   <div fxLayout="row" fxLayoutGap="25px">
+
+      <div fxFlex="457px">
+         <div class="content-wrap">
+           <div class="accordion-list-holder">
+              <div [ngStyle]="{'height': templateboxHt + 'px'}" >
+                <perfect-scrollbar>
+                <div [ngClass]="{'list-item': true, 'active': item.selected}" *ngFor="let item of templateSubArr; let indx=index" (click)="selectTemplateSub(indx)">{{item.label}}</div>
+                </perfect-scrollbar>
+              </div>
+             <div [ngClass]="{'list-item': true}">
+                  <input type="text" class="input-template-field" [(ngModel)]="addtemplateArray.name" placeholder="Add new template"/>
+              <div class="template-add-icon" (click)="addTemplate()">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33268 0.666504H5.66602V5.6665H0.666016L0.666016 7.33317H5.66602V12.3332H7.33268V7.33317H12.3327V5.6665H7.33268V0.666504Z" fill="#4EC8F0"/>
+                </svg>
+              </div>
+             </div>
+           
+
+           </div>
+           
+           
+         </div> 
+       
+      </div>
+      
+      
+      <div fxFlex="966px" *ngIf="checkexistTemplate">
+        <div class="content-wrap">
+          <div fxLayout="row" fxLayoutGap="35px">
+            
+            <div fxFlex="600px">
+              <div class="accordion-content">
+                
+                <div class="heading">
+                  <div class="title">
+                    <input type="text" (blur)="updateTemplateField(selectIndex,'title')" class="template-title-modify" [(ngModel)]="updatetemplateArray.selectedSub"/>
+                  </div>
+                  <div class="delete-btn" (click)="deleteTemplate(selectIndex)">
+                   <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 1.75H14L12.3488 16.6104C12.2926 17.1169 11.8645 17.5 11.355 17.5H2.64504C2.13549 17.5 1.70743 17.1169 1.65116 16.6104L0 1.75Z" fill="#3C3C3C"/>
+                      <ellipse cx="7" cy="1.75" rx="7" ry="1.75" fill="#C0C0C0"/>
+                      <rect x="3.15137" y="7" width="0.875" height="8.75" rx="0.4375" fill="#6F6F6F"/>
+                      <rect x="10.1504" y="7" width="0.875" height="8.75" rx="0.4375" fill="#6F6F6F"/>
+                      <rect x="6.65039" y="7" width="0.875" height="8.75" rx="0.4375" fill="#6F6F6F"/>
+                  </svg>
+                  </div>
+                </div>
+                
+                <!-- <div class="txtcontent" contenteditable="true" #txtcontent (click)="getCaretPos(txtcontent)" [innerHtml]="selectedTemplateContent" >
+                  
+                </div> -->
+				
+				<div class="txtcontent" mwlDroppable (drop)="dropItem($event)">
+					
+					<div class="backdrop">
+						<div class="highlights" [innerHtml]="highlightedText">
+							<!-- cloned text with <mark> tags here -->
+						</div>
+					</div>
+					
+					<textarea class="editable-content" autosize #txtarea (blur)="getCaretPos(txtarea)" (keyup)="getCaretPos(txtarea)" [value]="selectedTemplateContent"></textarea>
+                  
+                </div>
+              
+              </div> 
+            </div>
+            
+            
+             <div fxFlex="calc(100% - 600px)">
+               
+                <div class="radio-btnwrap">
+                  <div [ngClass]="{'name': true, 'active': defaultLang}">English</div>
+                   <div class="radio" (click)="selectLanguage()">
+                     <div class="round" [ngStyle]="{'left': defaultLang ? '3px': '22px'}"></div>
+                   </div>
+                  <div [ngClass]="{'name': true, 'active': !defaultLang}">Espanol</div>
+                </div>
+                
+                <div class="tag-box">
+                  <div class="title">DRAG & DROP</div>
+                  <div class="tag" mwlDraggable dropData="Practice Name" (click)="clickTag('Practice Name')">+ [Practice Name]</div> 
+                  <div class="tag" mwlDraggable dropData="Doctor Degree" (click)="clickTag('Doctor Degree')">+ [Doctor Degree]</div>
+                  <div class="tag" mwlDraggable dropData="Doctor Preferred Name" (click)="clickTag('Doctor Preferred Name')">+ [Doctor Preferred Name]</div>
+                  <div class="tag" mwlDraggable dropData="Doctor First Name" (click)="clickTag('Doctor First Name')">+ [Doctor First Name]</div> 
+                  <div class="tag" mwlDraggable dropData="Doctor Last Name" (click)="clickTag('Doctor Last Name')">+ [Doctor Last Name]</div>
+                  <div class="tag" mwlDraggable dropData="Practice Full Address" (click)="clickTag('Practice Full Address')">+ [Practice Full Address]</div>
+                  <div class="tag" mwlDraggable dropData="Todays Date" (click)="clickTag('Todays Date')">+ [Todays Date]</div>
+                  <div class="tag" mwlDraggable dropData="TC First Name" (click)="clickTag('TC First Name')">+ [TC First Name]</div>
+                  <div class="tag" mwlDraggable dropData="TC Last Name" (click)="clickTag('TC Last Name')">+ [TC Last Name]</div>
+                </div>
+                
+                
+                <div class="tag-box">
+                  <div class="tag" mwlDraggable dropData="Patient's First Name" (click)="clickTag('Patient\'s First Name')">+ [Patient's First Name]</div>
+                  <div class="tag" mwlDraggable dropData="Patient's Last Name" (click)="clickTag('Patient\'s Last Name')">+ [Patient's Last Name]</div>
+                  <div class="tag" mwlDraggable dropData="Patient's Nickname" (click)="clickTag('Patient\'s Nickname')">+ [Patient's Nickname]</div>
+                  <div class="tag" mwlDraggable dropData="Patient Age" (click)="clickTag('Patient Age')">+ [Patient Age]</div>
+                  <div class="tag" mwlDraggable dropData="Patient Date Of Birth" (click)="clickTag('Patient Date Of Birth')">+ [Patient Date Of Birth]</div>
+                  <div class="tag" mwlDraggable dropData="Patient Full Address" (click)="clickTag('Patient Full Address')">+ [Patient Full Address]</div>
+                  <div class="tag" mwlDraggable dropData="Patient Email" (click)="clickTag('Patient Email')">+ [Patient Email]</div>
+                </div>
+                
+               <div class="tag-box">
+                  <div class="tag" mwlDraggable dropData="He/She" (click)="clickTag('He/She')">+ [He/She]</div>
+                  <div class="tag" mwlDraggable dropData="he/she" (click)="clickTag('he/she')">+ [he/she]</div>
+                  <div class="tag" mwlDraggable dropData="His/Her" (click)="clickTag('His/Her')">+ [His/Her]</div>
+                  <div class="tag" mwlDraggable dropData="his/her" (click)="clickTag('his/her')">+ [his/her]</div>
+                  <div class="tag" mwlDraggable dropData="Him/Her" (click)="clickTag('Him/Her')">+ [Him/Her]</div>
+                  <div class="tag" mwlDraggable dropData="him/her" (click)="clickTag('him/her')">+ [him/her]</div>
+                  <div class="tag" mwlDraggable dropData="his/hers" (click)="clickTag('his/hers')">+ [his/hers]</div>
+                  <div class="tag" mwlDraggable dropData="His/Hers" (click)="clickTag('His/Hers')">+ [His/Hers]</div>
+                  <div class="tag" mwlDraggable dropData="son/daughter" (click)="clickTag('son/daughter')">+ [son/daughter]</div>
+                </div>   
+                
+                 <div class="tag-box">
+                  <div class="tag" mwlDraggable dropData="Last Appt Date" (click)="clickTag('Last Appt Date')">+ [Last Appt Date]</div>
+                  <div class="tag" mwlDraggable dropData="Next Appt Date" (click)="clickTag('Next Appt Date')">+ [Next Appt Date]</div>
+                  <div class="tag" mwlDraggable dropData="Next Time" (click)="clickTag('Next Time')">+ [Next Time]</div>
+                </div>   
+             
+                 <div class="tag-box">
+                  <div class="tag" mwlDraggable dropData="Resp First" (click)="clickTag('Resp First')">+ [Resp First]</div>
+                  <div class="tag" mwlDraggable dropData="Resp Middle" (click)="clickTag('Resp Middle')">+ [Resp Middle]</div>
+                  <div class="tag" mwlDraggable dropData="Resp Last" (click)="clickTag('Resp Last')">+ [Resp Last]</div>
+                  <div class="tag" mwlDraggable dropData="Resp Full Address" (click)="clickTag('Resp Full Address')">+ [Resp Full Address]</div>
+                  <div class="tag" mwlDraggable dropData="Amount Owing" (click)="clickTag('Amount Owing')">+ [Amount Owing]</div>
+                  <div class="tag" mwlDraggable dropData="Amount Balance" (click)="clickTag('Amount Balance')">+ [Amount Balance]</div>
+                  <div class="tag" mwlDraggable dropData="Amount Ins Balance" (click)="clickTag('Amount Ins Balance')">+ [Amount Ins Balance]</div>
+                  <div class="tag" mwlDraggable dropData="Insurance Co Name" (click)="clickTag('Insurance Co Name')">+ [Insurance Co Name]</div>
+                  <div class="tag" mwlDraggable dropData="Next Monthly Payment" (click)="clickTag('Next Monthly Payment')">+ [Next Monthly Payment]</div>
+                  <div class="tag" mwlDraggable dropData="Last Payment Amount" (click)="clickTag('Last Payment Amount')">+ [Last Payment Amount]</div>
+                  <div class="tag" mwlDraggable dropData="Last Payment Date" (click)="clickTag('Last Payment Date')">+ [Last Payment Date]</div>
+                </div>  
+                
+                <div class="tag-box">
+                  <div class="tag" mwlDraggable dropData="Team Name" (click)="clickTag('Team Name')">+ [Team Name]</div>
+                  <div class="tag" mwlDraggable dropData="Team Email" (click)="clickTag('Team Email')">+ [Team Email]</div>
+                  <div class="tag" mwlDraggable dropData="Off Email" (click)="clickTag('Off Email')">+ [Off Email]</div>
+                  <div class="tag" mwlDraggable dropData="Diagnosis" (click)="clickTag('Diagnosis')">+ [Diagnosis]</div>
+                  <div class="tag" mwlDraggable dropData="Tx Plan" (click)="clickTag('Tx Plan')">+ [Tx Plan]</div>
+                  <div class="tag" mwlDraggable dropData="Goals" (click)="clickTag('Goals')">+ [Goals]</div>
+                </div>
+                
+                <div class="tag-box" style="margin-top:73px">
+                  <div class="title">ATTACHMENTS</div>
+                  <div class="tag" (click)="clickTag('Practice Name')">+ [Header with Logo]</div> 
+                  <div class="tag" (click)="clickTag('Practice Name')">+ [Patient Tooth Grid]</div>
+                </div>  
+     
+            </div>
+          
+          </div>
+        
+        </div>
+      
+      </div>
+      
+
+   </div>
+
+	</perfect-scrollbar>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

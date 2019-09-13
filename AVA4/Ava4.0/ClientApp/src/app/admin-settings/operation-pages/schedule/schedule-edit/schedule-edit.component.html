@@ -1,0 +1,129 @@
+<div fxLayout="column" [ngStyle]="{'height': boxHt + 'px'}">
+	<div fxLayout="row"  style="height: 100%; padding-right: 30px;">
+		<div class="calender-cont">
+			<div class="section-title">EDIT TEMPLATE</div>
+			<div class="container-inner">
+				<div class="scrollable-content">
+					<div fxLayout="row" fxLayoutGap="10px">
+						<div fxFlex="230px">
+							<div class="left-container" [ngStyle]="{'height': boxHt-100 + 'px'}">
+								<perfect-scrollbar>
+									<div style="padding-right: 10px;">
+									<div class="comon-box-container">
+										<div class="comon-box-container-left">
+											<input class="common-input-tx-field" type="text" [(ngModel)]="selectedTemplt.title"/>
+										</div>
+										<div class="comon-box-container-right">
+											Title
+										</div>
+										<div style="clear:both"></div>
+									</div>
+
+									<div *ngFor="let editTemplate of editTemplateData[0].time_slot; let indx=index" >
+										<div [ngClass]="{'comon-box-container': indx==0 || indx== 3, 'comon-box-container-small': indx==1 || indx== 2}">
+											<div [ngStyle]="{ 'width' : indx== 1 || indx== 2 ? '21%': ''}" class="comon-box-container-left1" >
+												<input class="common-input-tx-field" type="text" [(ngModel)]="editTemplate.time"  [textMask]="{mask:timeMask}"/>
+											</div>
+											<div class="comon-box-container-left2" (click)="changeUnit(indx)" >
+													{{editTemplate.unit}}
+											</div>
+											<div class="comon-box-container-right">
+												{{editTemplate.slot_name}}
+											</div>
+											<div style="clear:both"></div>
+										</div>
+									</div>
+
+									<div class="comon-box-container">
+										<div class="comon-box-container-left-dropdown">
+											{{editTemplateData[0].selected_min}}
+											<div (click)="openDropDownBox()" class="dropdown-icon">
+												<svg width="7" height="5" viewBox="0 0 7 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M3.5 5L0.468911 0.5L6.53109 0.5L3.5 5Z" fill="#C4C4C4"/>
+												</svg>
+											</div>
+
+											<div *ngIf="dropdownVar" class="dropdown-value-section">
+												<perfect-scrollbar>
+													<div *ngFor="let editTemplateMinval of editTemplateData[0].selected_min_vals; let indx=index"  (click)="selectedDropDownVal(editTemplateMinval.min_val)" class="drop-down-value">
+													{{editTemplateMinval.min_val}}
+													</div>
+												</perfect-scrollbar>
+											</div>
+										</div>
+										<div class="comon-box-container-right">
+											Time slot increments in minutes
+										</div>
+										<div style="clear:both"></div>
+									</div>
+
+
+									<div class="comon-box-container" style="position: relative">
+										<div class="template-color-text">
+												Select a template color
+										</div>
+										<div (click)="openDropDownBoxForTem()" class="dropdown-icon-fortem-color">
+											<svg width="7" height="5" viewBox="0 0 7 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M3.5 5L0.468911 0.5L6.53109 0.5L3.5 5Z" fill="#C4C4C4"/>
+											</svg>
+										</div>
+									</div>
+
+									<div *ngIf="templateDropdownVal" class="template-color-container">
+										<div *ngFor="let editTemplateColor of editTemplateData[0].templete_color; let indx=index">
+											<div (click)="changeTempleteColor(indx)" class="upper-container" [ngStyle]="{ 'border' : editTemplateColor.selected== true ? '1px solid #696969' : '', 'border-radius' : editTemplateColor.selected== true ? '100px' : '' }">
+												<div class="color" [ngStyle]="{ 'background' : editTemplateColor.color, 'height': editTemplateColor.selected== true ? '16px' : '' }">
+												</div>
+											</div>
+										</div>	
+										<div style="clear:both"></div>
+									</div>
+									
+									<div class="comon-box-chair-container">
+										<div class="left-chair-title">
+												Chairs
+										</div>
+
+										<div class="right-chair-title">
+												*Click any chair to edit chair title
+										</div>
+										<div style="clear:both"></div>
+									</div>
+
+
+									<div class="comon-box-container">
+										<div class="comon-box-container-left">
+											<input (keyup)="changeChairVal($event)" class="common-input-tx-field" max="2" size="2" type="number" [(ngModel)]="editTemplateData[0].total_chair"/>
+										</div>
+										<div class="comon-box-container-right">
+											Total Chairs
+										</div>
+										<div style="clear:both"></div>
+									</div>
+
+									
+									<div *ngFor=" let chairArrayData of chairArray; let indx=index " class="common-chair-list">
+										<div class="chair-name">{{chairArrayData.chair_no}}</div>
+									</div>
+									
+									</div>
+
+								</perfect-scrollbar>
+							</div>
+						</div>
+						
+						<div fxFlex="calc(100% - 220px)">
+							<app-schedule-timeline [templt_sel]="selctd_Templt_Tm"></app-schedule-timeline>
+						</div>
+					</div>
+					
+				</div>
+				
+				
+			</div>
+			<div class="save-btn" (click)="saveTemplate()">Save</div>
+			<div class="clear"></div>
+			
+		</div>
+	</div>
+</div>

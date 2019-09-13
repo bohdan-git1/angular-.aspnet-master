@@ -1,0 +1,104 @@
+.meter-bar-cont {
+	position: relative;
+}
+
+.meterbar-marker {
+	position: relative;
+	width: 100%;
+	height: 18px;
+	margin-bottom: 5px;
+}
+
+.marker-item {
+	position: absolute;
+	top: 0;
+	width: 40px;
+}
+
+.marker-label {
+	font-size: 8px;
+	text-align: center;
+	color: #F11212;
+}
+
+.marker-item:first-child .marker-label {
+	color: #4EC8F0;
+}
+
+.marker-point {
+	width: 3px;
+	height: 3px;
+	background: #333333;
+	border-radius: 100px;
+	margin: 2px auto 0;
+}
+
+.meter-bar {
+	width: 100%;
+	height: 14px;
+	background: #FFFFFF;
+	border: 0.5px solid #4EC8F0;
+	box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+	position: relative;
+}
+
+.meter-bar-indicator {
+	width: 222px;
+	height: 14px;
+	background: linear-gradient(90deg, #4EC8F0 0%, #04EDFE 99.16%);
+	border-radius: 2px;
+}
+
+.notOnTrack {
+	background: linear-gradient(90deg, #333333 0%, #D22727 99.16%);
+}
+
+.meter-indicator {
+	width: 20px;
+    height: 26px;
+    position: absolute;
+    left: 212px;
+    top: -6px;
+}
+
+.middle-bar {
+	width: 2px;
+	height: 26px;
+	background: #646464;
+	border-radius: 10px;
+	margin: auto;
+}
+
+.indicator-circle-outer {
+	border-radius: 100px;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0;
+	top: 3px;
+	background: #FFFFFF;
+	border: 0.25px solid #C6C6C6;
+	box-sizing: border-box;
+}
+
+.indicator-circle-inner {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	left: 2px;
+	top: 5px;
+	background: #333333;
+	border-radius: 100px;
+	font-size: 7px;
+	text-align: center;
+	color: #FFFFFF;
+	box-sizing: border-box;
+	justify-content: center;
+    align-items: center;
+    display: flex
+}
+
+.indicator-circle-inner-ontrack {
+	background: #4EC8F0;
+}

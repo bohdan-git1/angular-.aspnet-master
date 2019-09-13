@@ -1,0 +1,465 @@
+	<div class="dialog-content">
+		<div fxLayout="column">
+			<div fxLayout="row">
+				<div fxFlex="110px">
+					<div class="profile-img" [ngStyle]="{'border-color': appntType}">
+						<img src='{{patientdata.profileimg}}' width=100%/>
+					</div>
+				</div>
+				<div fxFlex="calc(100%-110px)" class="patient-details">
+					<div class="patient-block">
+						<div class="patient-name">{{patientdata.firstname}} {{patientdata.lastname}}</div>
+						<div class="term-inline">
+							<div class="term-inline-item">TX - FULL</div>
+							<div class="term-inline-item">254</div>
+							<div class="term-inline-item">$3,560.15</div>
+							<div class="term-inline-item">$0.00</div>
+						</div>
+					</div>
+					<div class="medical-history">+ Allergic to Codiene, Autistic (do not make direct eye contact)</div>
+					<div class="table-form">
+						<div class="table-form-item">Location #1</div>
+						<div class="table-form-item">Dr. Smoot</div>
+						<div class="table-form-item">Jill Allen</div>
+					</div>
+					
+					<div class="patient-addr">
+						<div class="addr-item">(801) 369 - 6492</div>
+						<div class="addr-item">marcumclarissa@gmail.com</div>
+						<div class="addr-item">October 23, 1984 (8y 3m)</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	
+		<div fxLayout="column" class="display-block schedule-appnt">
+			<div class="block-heading" style="margin-bottom: 10px;">Current Scheduled Appointments</div>
+				
+			<div fxLayout="row" fxLayoutGap="10px"  [ngStyle]="{'background': rescheduleAppnt == true ? innerModal == true ? 'rgba(253, 116, 116, 0.2)' : 'rgba(78, 200, 240, 0.2)' : 'transparent', 'margin-left': '-10px', 'margin-right': '-10px', 'padding': '2px 10px 0', 'position': 'relative'}">
+				
+				<div class="bin-icon" *ngIf="rescheduleAppnt">
+					<svg width="10" height="13" viewBox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 1.30078H10L8.84549 12.107C8.79119 12.6153 8.36231 13.0008 7.85115 13.0008H2.14885C1.63769 13.0008 1.20881 12.6153 1.15451 12.107L0 1.30078Z" fill="#3C3C3C"/>
+						<ellipse cx="5" cy="1.3" rx="5" ry="1.3" fill="#C0C0C0"/>
+						<rect x="2.25098" y="5.19922" width="0.625" height="6.5" rx="0.3125" fill="#6F6F6F"/>
+						<rect x="7.25049" y="5.19922" width="0.625" height="6.5" rx="0.3125" fill="#6F6F6F"/>
+						<rect x="4.75049" y="5.19922" width="0.625" height="6.5" rx="0.3125" fill="#6F6F6F"/>
+					</svg>
+				</div>
+				
+				<div fxFlex="10" class="table-item rechedule-btn" (click)="rescheduleKeepAppnt('reschedule')" *ngIf="!rescheduleAppnt">Rechedule</div>
+				<div fxFlex="10" class="table-item rechedule-btn"  (click)="rescheduleKeepAppnt('keep')" *ngIf="rescheduleAppnt">Keep Appt</div>
+				<div fxFlex="15" class="table-item">{{curr_appnt.location}}</div>
+				<div fxFlex="15" class="table-item">{{curr_appnt.date | date: 'EEEE, MMMM d'}}<span>{{(curr_appnt.date | date: 'd') | dateSuffix}}</span></div>
+				<div fxFlex="10" class="table-item">{{curr_appnt.time}}</div>
+				<div fxFlex="10" class="table-item">{{curr_appnt.chair}}</div>
+				<div fxFlex="10" class="table-item">{{curr_appnt.doctor}}</div>
+				<div fxFlex="30" class="table-item">{{curr_appnt.ins}}</div>
+			</div>
+				
+			<div class="family-icon">
+				<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="14.6383" height="16" fill="white"/>
+					<path d="M12.0667 1.93984C12.0667 2.68543 11.4623 3.28984 10.7167 3.28984C9.97111 3.28984 9.3667 2.68543 9.3667 1.93984C9.3667 1.19426 9.97111 0.589844 10.7167 0.589844C11.4623 0.589844 12.0667 1.19426 12.0667 1.93984Z" stroke="#646464" stroke-width="0.5"/>
+					<path d="M8.34543 6.3463C8.34543 6.93019 7.87209 7.40353 7.28819 7.40353C6.7043 7.40353 6.23096 6.93019 6.23096 6.3463C6.23096 5.7624 6.7043 5.28906 7.28819 5.28906C7.87209 5.28906 8.34543 5.7624 8.34543 6.3463Z" stroke="#646464" stroke-width="0.5"/>
+					<path d="M6.15789 4.68019C6.03874 4.58487 5.85491 4.45891 5.6098 4.36359C5.24895 4.22402 4.94938 4.22402 4.65661 4.22742C3.82597 4.23082 3.41406 4.22061 3.03959 4.23423C1.91278 4.27508 1.75959 4.30231 1.56214 4.41125C1.09236 4.66657 0.87108 5.0921 0.809804 5.21465C0.690655 5.45295 0.639591 5.67423 0.588527 6.57976C0.547676 7.30146 0.571506 7.30146 0.537463 7.8904C0.527251 8.06061 0.459166 9.28274 0.57491 9.97721C0.585123 10.0419 0.619166 10.2325 0.755336 10.4164C0.816612 10.4981 0.91874 10.6376 1.10257 10.6819C1.32044 10.7364 1.50427 10.6206 1.53151 10.6036C1.82427 10.413 1.8481 9.96359 1.85831 9.76614C1.88214 9.14997 1.95704 6.64104 1.85831 6.64785C1.81065 6.65125 1.89236 7.19933 1.86853 10.3517C1.85831 11.7168 1.86512 12.3976 1.86172 12.4147C1.86172 12.4147 1.80725 13.0478 1.85831 14.3959C1.86172 14.4436 1.86512 14.5798 1.91278 14.7534C1.94342 14.8657 1.97746 14.9951 2.07278 15.1244C2.12044 15.1925 2.25321 15.3695 2.50172 15.4444C2.5664 15.4615 2.80129 15.5227 3.0498 15.4036C3.08044 15.3866 3.22682 15.3151 3.34257 15.1415C3.51278 14.8895 3.50257 14.607 3.49917 14.5117C3.48555 14.0555 3.51959 12.5815 3.56044 10.5423C3.56044 10.6206 3.56044 10.7432 3.56044 10.8895C3.56044 11.6044 3.54002 11.9857 3.51619 12.83C3.51619 12.83 3.49236 13.6334 3.6047 14.5593C3.61491 14.6478 3.64555 14.8895 3.81236 15.1142C3.86682 15.1891 3.93491 15.281 4.05746 15.3457C4.2481 15.4478 4.49661 15.4478 4.68725 15.3355C4.82682 15.2538 4.89491 15.1381 4.94597 15.053C5.07193 14.8351 5.08555 14.6206 5.08895 14.5423C5.16044 13.1193 5.11959 12.2615 5.11959 12.2615C5.09917 11.8223 5.09576 11.4036 5.08895 10.5695C5.08214 9.97721 5.10264 9.68087 5.10604 9.36087" stroke="#646464" stroke-width="0.5" stroke-miterlimit="10"/>
+					<path d="M8.76611 4.7437C8.86824 4.6586 9.02484 4.54966 9.2325 4.45434C9.27675 4.43392 9.42313 4.36924 9.62058 4.31817C10.0121 4.21605 10.2436 4.26711 10.955 4.2637C11.4691 4.2603 11.687 4.22966 12.007 4.34881C12.1704 4.41009 12.2725 4.47477 12.327 4.51562C12.5823 4.69945 12.7014 4.94115 12.7763 5.10796C12.9568 5.50285 13.2665 6.30285 13.607 7.36498C13.7499 7.86881 13.8963 8.2637 14.0053 8.53945C14.0053 8.53945 14.2197 9.07051 14.3253 9.70711C14.3423 9.81604 14.3797 10.0577 14.2436 10.2177C14.1891 10.2824 14.121 10.3199 14.0972 10.3301C14.0972 10.3301 13.9406 10.4152 13.7568 10.3914C13.6376 10.3777 13.4368 10.2858 13.1576 9.67647C13.0453 9.43477 13.0419 9.35988 12.8512 8.77775C12.841 8.7403 12.7048 8.32839 12.5585 7.93009C12.4802 7.71222 12.3576 7.38881 12.1942 7.00073C12.3814 7.61009 12.5482 8.12753 12.681 8.53264C12.8274 8.97519 12.9227 9.26796 13.0487 9.62541C13.0725 9.69349 13.1508 9.91136 13.2563 10.2177C13.3959 10.6194 13.355 10.5071 13.4061 10.6467C13.4912 10.8816 13.5355 11.1301 13.6342 11.3582C13.6648 11.4331 13.7091 11.5216 13.6682 11.5863C13.624 11.6577 13.5116 11.6612 13.4606 11.6612C13.2155 11.6646 11.5542 11.6543 9.28696 11.6339" stroke="#646464" stroke-width="0.5" stroke-miterlimit="10"/>
+					<path d="M9.32744 11.4648C9.32744 11.9142 9.32063 12.2751 9.31723 12.5236C9.31723 12.5236 9.2968 13.7082 9.32063 14.3925C9.32063 14.4061 9.32063 14.4197 9.32404 14.4334C9.32744 14.498 9.33766 14.6138 9.3717 14.75C9.39893 14.8623 9.42957 14.9917 9.51468 15.121C9.55893 15.1891 9.67468 15.3661 9.89595 15.441C9.95042 15.458 10.1615 15.5193 10.3828 15.4002C10.4304 15.3729 10.536 15.3082 10.6449 15.138C10.8389 14.8248 10.8287 14.4878 10.8253 14.4129C10.7811 12.8708 10.8185 11.6419 10.7743 11.6453C10.7572 11.6453 10.7504 11.87 10.7981 12.8265C10.7981 12.8334 10.7777 13.6334 10.8764 14.5559C10.8866 14.6444 10.9138 14.8861 11.0602 15.1108C11.1079 15.1857 11.1691 15.2776 11.2781 15.3423C11.4449 15.4444 11.6662 15.4444 11.8364 15.3321C11.9589 15.2504 12.0202 15.1346 12.0645 15.0495C12.1768 14.8317 12.187 14.6172 12.1904 14.5389C12.2143 14.0044 12.2245 13.6095 12.2279 13.2419C12.2313 12.7823 12.2245 12.7585 12.2177 12.258C12.2143 12.0299 12.2108 11.8393 12.2108 11.7134" stroke="#646464" stroke-width="0.5" stroke-miterlimit="10"/>
+					<path d="M9.44019 9.4743C9.44019 8.82749 8.91593 8.30664 8.27253 8.30664H6.30487C5.65806 8.30664 5.13721 8.8309 5.13721 9.4743V12.3645H6.29465V15.2037C6.29465 15.4147 6.46487 15.5849 6.67593 15.5849H7.90487C8.11593 15.5849 8.28614 15.4147 8.28614 15.2037V12.3645H9.44359V9.4743H9.44019Z" fill="white" stroke="#646464" stroke-width="0.5" stroke-miterlimit="10"/>
+					<path d="M4.88701 1.93984C4.88701 2.68543 4.2826 3.28984 3.53701 3.28984C2.79143 3.28984 2.18701 2.68543 2.18701 1.93984C2.18701 1.19426 2.79143 0.589844 3.53701 0.589844C4.2826 0.589844 4.88701 1.19426 4.88701 1.93984Z" stroke="#646464" stroke-width="0.5"/>
+				</svg>
+			</div>
+		</div>
+		
+		<div fxLayout="column" class="display-block block-2" [ngStyle]="{'height': appntSection == false ? '68px' : '177px'}">
+			<!-- <div class="block-heading">908 | 6 weeks</div> -->
+				
+				<!-- <div class="scroller" style="left: 0; right: 0; margin: auto; top: 15px" (click)="onScroll('up', 'block_2')" *ngIf="block_2_upscroll == true">
+					<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10.5 0L20.4593 8.25H0.540708L10.5 0Z" fill="#4EC8F0"/>
+					</svg>
+				</div> -->
+				
+				<!-- <div class="block-2-wrapper">
+					<perfect-scrollbar>
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#1</div>
+							<div fxFlex="15" class="table-item">Tuesday, July 24th</div>
+							<div fxFlex="10" class="table-item">10:20 am</div>
+							<div fxFlex="10" class="table-item">Chair 4</div>
+							<div fxFlex="10" class="table-item">Dr. Smoot</div>
+						</div>
+						
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#2</div>
+							<div fxFlex="15" class="table-item">Tuesday, July 25th</div>
+							<div fxFlex="10" class="table-item">9:30 am</div>
+							<div fxFlex="10" class="table-item">Chair 2</div>
+							<div fxFlex="10" class="table-item">Dr. Tooms</div>
+						</div>
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#1</div>
+							<div fxFlex="15" class="table-item">Monday, July 23rd</div>
+							<div fxFlex="10" class="table-item">01:10 pm</div>
+							<div fxFlex="10" class="table-item">Chair 3</div>
+							<div fxFlex="10" class="table-item">Dr. Smoot</div>
+						</div>
+						
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#1</div>
+							<div fxFlex="15" class="table-item">Tuesday, July 24th</div>
+							<div fxFlex="10" class="table-item">10:20 am</div>
+							<div fxFlex="10" class="table-item">Chair 4</div>
+							<div fxFlex="10" class="table-item">Dr. Smoot</div>
+						</div>
+						
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#2</div>
+							<div fxFlex="15" class="table-item">Tuesday, July 25th</div>
+							<div fxFlex="10" class="table-item">9:30 am</div>
+							<div fxFlex="10" class="table-item">Chair 2</div>
+							<div fxFlex="10" class="table-item">Dr. Tooms</div>
+						</div>
+						<div fxLayout="row" fxLayoutGap="10px">
+							<div fxFlex="10" class="table-item"></div>
+							<div fxFlex="15" class="table-item">Location#1</div>
+							<div fxFlex="15" class="table-item">Monday, July 23rd</div>
+							<div fxFlex="10" class="table-item">01:10 pm</div>
+							<div fxFlex="10" class="table-item">Chair 3</div>
+							<div fxFlex="10" class="table-item">Dr. Smoot</div>
+						</div>
+						
+					</perfect-scrollbar>
+				</div> -->
+				
+				<!-- <div class="scroller" style="left: 0; right: 0; margin: auto; bottom: 5px" (click)="onScroll('dn', 'block_2')" *ngIf="block_2_dnscroll == true">
+					<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10.5 9L0.540707 0.75L20.4593 0.75L10.5 9Z" fill="#4EC8F0"/>
+					</svg>
+				</div> -->
+				
+				<div class="patientmodal-1">
+					<div fxLayout="row" style="height: 100%;">
+						<div fxFlex="175px" style="padding: 5px 8px 5px;">
+							<div class="procedure-search">
+								<input type="text" placeholder="Procedure code" (keyup)="searchProcedureCode($event)" [(ngModel)]="procedure_searchStr"/>
+								<div class="search-icon">
+									<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M5.4649 0.92594C4.21647 -0.308647 2.18455 -0.308647 0.93612 0.92594C-0.31204 2.16079 -0.31204 4.16991 0.93612 5.40476C1.95223 6.40936 3.48605 6.59416 4.69496 5.96323C4.85869 5.87779 5.07865 5.96914 5.20996 6.099L7.02807 7.89695C7.29302 8.15842 7.72117 8.15842 7.98476 7.89695C8.24944 7.6352 8.24944 7.21181 7.98476 6.95087L6.16665 5.15238C6.03554 5.0231 5.9449 4.80295 6.03144 4.64042C6.66784 3.44523 6.48036 1.93039 5.4649 0.92594ZM4.89088 4.83711C3.95882 5.75884 2.44192 5.75884 1.51013 4.83711C0.578614 3.91539 0.578614 2.41558 1.51013 1.49385C2.44192 0.572398 3.95882 0.572398 4.89088 1.49385C5.82294 2.41558 5.82294 3.91539 4.89088 4.83711Z" fill="#4EC8F0"/>
+									</svg>
+								</div>
+								
+								<div class="procedure-optn-cont" *ngIf="procedureSrch">
+									<div [ngClass]="{'procedure-optn': true}" *ngFor="let procedureitem of filterProcedure; let indx=index" (click)="selectProcedure(indx)">{{procedureitem.code}} {{procedureitem.name}}</div>
+								</div>
+								
+							</div>
+							<div fxLayout="row">
+								<div fxFlex="30" style="padding: 6px 5px 0 0px;"><div class="treatment-time-num">{{timenum}}</div></div>
+								<div fxFlex="70">
+									<app-patientmodaldd 
+										[ddoptionsArr]="timespan_dd" 
+										[ddplaceholder]="'weeks'"
+										[multiple]="false"
+									></app-patientmodaldd>
+								</div>
+							</div>
+							
+							<div *ngIf="appntSection" class="dd-section">
+								<app-patientmodaldd 
+									[ddoptionsArr]="locations_dd" 
+									[ddplaceholder]="'Locations'"
+									[multiple]="true"
+								></app-patientmodaldd>
+							</div>
+							
+							<div *ngIf="appntSection" class="dd-section">
+								<app-patientmodaldd 
+									[ddoptionsArr]="doctors_dd" 
+									[ddplaceholder]="'Doctors'"
+									[multiple]="false"
+								></app-patientmodaldd>
+							</div>
+							
+							
+						</div>
+						<div fxFlex="calc(100%-175px)"> 
+							<div style="width: 100%; height: 100%; position: relative" (click)="showAppntSection()" *ngIf="!appntSection">
+								<div class="new-appnt-section">Would you like to schedule a new appointment?</div>
+								<div class="robot-icon"><img src="assets/laptop-Ava.png" /></div>
+							</div>
+							
+							<div fxLayout="row" *ngIf="appntSection" style="padding: 5px; height: 100%;">
+								<div fxFlex="77">
+									<div class="calender-bar">
+										<div class="calender-label">{{currentWeek}}</div>
+										<div class="calender-btn prev-btn" (click)="nextPrevWeek('prev')" *ngIf="showPrevWeekBtn">
+											<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M8.96205 5.41099L12.7876 1.40834C13.071 1.11185 13.071 0.667109 12.7876 0.22237C12.5042 -0.0741232 12.0792 -0.0741232 11.6541 0.22237L7.51212 4.51581C7.22874 4.66406 7.12012 5.26275 7.12012 5.41099C7.12012 5.55924 7.22874 6.00968 7.51212 6.15793L11.6541 10.4514C11.9375 10.7479 12.5042 10.7479 12.7876 10.4514C13.071 10.1549 13.071 9.71014 12.7876 9.2654L8.96205 5.41099Z" fill="#4EC8F0"/>
+												<path d="M1.84194 5.41099L5.66749 1.40834C5.95087 1.11185 5.95087 0.667109 5.66749 0.22237C5.38412 -0.0741232 4.95906 -0.0741232 4.534 0.22237L0.392002 4.51581C0.108627 4.66406 1.49813e-07 5.26275 1.54033e-07 5.41099C1.58253e-07 5.55924 0.108627 6.00968 0.392002 6.15793L4.534 10.4514C4.81737 10.7479 5.38412 10.7479 5.6675 10.4514C5.95087 10.1549 5.95087 9.71014 5.6675 9.2654L1.84194 5.41099Z" fill="#4EC8F0"/>
+											</svg>
+										</div>
+										
+										<div class="calender-btn next-btn" (click)="nextPrevWeek('next')" *ngIf="showNextWeekBtn">
+											<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M4.03795 5.26283L0.212388 9.26549C-0.0709867 9.56198 -0.0709867 10.0067 0.212388 10.4515C0.495763 10.748 0.920825 10.748 1.34589 10.4515L5.48788 6.15802C5.77126 6.00977 5.87988 5.41108 5.87988 5.26284C5.87988 5.11459 5.77126 4.66415 5.48788 4.5159L1.34589 0.222457C1.06251 -0.0740352 0.495764 -0.0740352 0.212389 0.222457C-0.070986 0.51895 -0.070986 0.963689 0.212389 1.40843L4.03795 5.26283Z" fill="#4EC8F0"/>
+												<path d="M11.1581 5.26283L7.33251 9.26549C7.04913 9.56198 7.04913 10.0067 7.33251 10.4515C7.61588 10.748 8.04094 10.748 8.466 10.4515L12.608 6.15802C12.8914 6.00977 13 5.41108 13 5.26284C13 5.11459 12.8914 4.66415 12.608 4.5159L8.46601 0.222457C8.18263 -0.0740352 7.61588 -0.0740352 7.33251 0.222457C7.04913 0.51895 7.04913 0.963689 7.33251 1.40843L11.1581 5.26283Z" fill="#4EC8F0"/>
+											</svg>
+										</div>
+									</div>
+									
+									<div class="week-panel">
+										<div class="week-label-wrapper" *ngFor="let weeklabel of weeklabel">
+											<div [ngClass]="{'week-label': true, 'offday': weeklabel.offday}">{{weeklabel.label}}</div>
+										</div>
+									</div>
+									
+									<div class="appnt-date-panel">
+										<div class="timeslot-cont" *ngFor="let day of appntslot; let dayindx=index">
+											<div [ngClass]="{'timeslot-wrapper': true, 'timeslot-grey': innerModal, 'timeslot-blue': seledtedDateIndx == dayindx && selectedSoltIndx == slotindx && innerModal}" *ngFor="let slot of day.timeslot; let slotindx=index">
+												<div class="timeslot" (click)="openInnerModal(dayindx, slotindx)">
+													<div class="timeslot-time">{{slot.time}}</div>
+													<div class="timeslot-location">{{slot.location}}</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+								<div fxFlex="23" style="position: relative; height: 100%;">
+									<div class="notes-block"><span class="blue-title">Notes :</span> AAA302- Arch Wire Change blah blee blah. Blah blee blah
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="schedule-calendar">Schedule in Calendar</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+				
+		</div>
+		
+		<div fxLayout="column" class="display-block block-3" [ngStyle]="{'height': appntSection == false ? '188px' : '80px'}">
+			
+			<!-- <div class="scroller" style="left: 0; right: 0; margin: auto; top: 0px" (click)="onScroll('up', 'block_3')" *ngIf="block_3_upscroll == true">
+				<svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M10.5 0L20.4593 8.25H0.540708L10.5 0Z" fill="#4EC8F0"/>
+				</svg>
+			</div> -->
+			<!-- <div class="block-3-wrapper"> -->
+				<perfect-scrollbar>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item item-1st">Location#2</div>
+						<div fxFlex="7" class="table-item item-1st">06/11/18</div>
+						<div fxFlex="7" class="table-item item-1st">09:20 am</div>
+						<div fxFlex="9" class="table-item item-1st">Monday</div>
+						<div fxFlex="5" class="table-item item-1st">Chair 2</div>
+						<div fxFlex="3" class="table-item item-1st"></div>
+						<div fxFlex="20" class="table-item item-1st">900 - Arch Wire(s) Simple</div>
+						<div fxFlex="25" class="table-item item-1st"></div>
+						<div fxFlex="8" class="table-item item-1st">908 - RETIE</div>
+						<div fxFlex="7" class="table-item item-1st">6 weeks</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#2</div>
+						<div fxFlex="7" class="table-item">05/01/18</div>
+						<div fxFlex="7" class="table-item">09:20 am</div>
+						<div fxFlex="9" class="table-item">Tuesday</div>
+						<div fxFlex="5" class="table-item">Chair 7</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item">753 - Broken bracket</div>
+						<div fxFlex="25" class="table-item">PT IN FOR EMERG, LL3 OF..</div>
+						<div fxFlex="8" class="table-item">KEEP NV</div>
+						<div fxFlex="7" class="table-item">KeepNv</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#1</div>
+						<div fxFlex="7" class="table-item">03/14/18</div>
+						<div fxFlex="7" class="table-item">09:00 am</div>
+						<div fxFlex="9" class="table-item">Wednesday</div>
+						<div fxFlex="5" class="table-item">Chair 1</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M7.656 9H6.504C6.416 9 6.346 8.978 6.294 8.934C6.246 8.886 6.206 8.834 6.174 8.778L3.87 5.166C3.838 5.262 3.802 5.344 3.762 5.412L1.518 8.778C1.478 8.834 1.434 8.886 1.386 8.934C1.342 8.978 1.28 9 1.2 9H0.12L3.078 4.584L0.24 0.402H1.398C1.482 0.402 1.544 0.416 1.584 0.444C1.624 0.472 1.66 0.512 1.692 0.564L3.936 4.008C3.964 3.924 4.006 3.832 4.062 3.732L6.18 0.588C6.212 0.532 6.25 0.488 6.294 0.456C6.338 0.42 6.39 0.402 6.45 0.402H7.56L4.71 4.53L7.656 9Z" fill="#F63D3D"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item"></div>
+						<div fxFlex="25" class="table-item"></div>
+						<div fxFlex="8" class="table-item"></div>
+						<div fxFlex="7" class="table-item"></div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#2</div>
+						<div fxFlex="7" class="table-item">12/12/17</div>
+						<div fxFlex="7" class="table-item">09:00 am</div>
+						<div fxFlex="9" class="table-item">Tuesday</div>
+						<div fxFlex="5" class="table-item">Chair 3</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item">908 - Retie</div>
+						<div fxFlex="25" class="table-item">UL3 OFF REBONDED, BONDE..</div>
+						<div fxFlex="8" class="table-item">908 - RETIE CH..</div>
+						<div fxFlex="7" class="table-item">6 weeks</div>
+					</div>
+					
+					<!-- <div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item item-1st">Location#2</div>
+						<div fxFlex="7" class="table-item item-1st">06/11/18</div>
+						<div fxFlex="7" class="table-item item-1st">09:20 am</div>
+						<div fxFlex="9" class="table-item item-1st">Monday</div>
+						<div fxFlex="5" class="table-item item-1st">Chair 2</div>
+						<div fxFlex="3" class="table-item item-1st"></div>
+						<div fxFlex="20" class="table-item item-1st">900 - Arch Wire(s) Simple</div>
+						<div fxFlex="25" class="table-item item-1st"></div>
+						<div fxFlex="8" class="table-item item-1st">908 - RETIE</div>
+						<div fxFlex="7" class="table-item item-1st">6 weeks</div>
+					</div> -->
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#2</div>
+						<div fxFlex="7" class="table-item">05/01/18</div>
+						<div fxFlex="7" class="table-item">09:20 am</div>
+						<div fxFlex="9" class="table-item">Tuesday</div>
+						<div fxFlex="5" class="table-item">Chair 7</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item">753 - Broken bracket</div>
+						<div fxFlex="25" class="table-item">PT IN FOR EMERG, LL3 OF..</div>
+						<div fxFlex="8" class="table-item">KEEP NV</div>
+						<div fxFlex="7" class="table-item">KeepNv</div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#1</div>
+						<div fxFlex="7" class="table-item">03/14/18</div>
+						<div fxFlex="7" class="table-item">09:00 am</div>
+						<div fxFlex="9" class="table-item">Wednesday</div>
+						<div fxFlex="5" class="table-item">Chair 1</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M7.656 9H6.504C6.416 9 6.346 8.978 6.294 8.934C6.246 8.886 6.206 8.834 6.174 8.778L3.87 5.166C3.838 5.262 3.802 5.344 3.762 5.412L1.518 8.778C1.478 8.834 1.434 8.886 1.386 8.934C1.342 8.978 1.28 9 1.2 9H0.12L3.078 4.584L0.24 0.402H1.398C1.482 0.402 1.544 0.416 1.584 0.444C1.624 0.472 1.66 0.512 1.692 0.564L3.936 4.008C3.964 3.924 4.006 3.832 4.062 3.732L6.18 0.588C6.212 0.532 6.25 0.488 6.294 0.456C6.338 0.42 6.39 0.402 6.45 0.402H7.56L4.71 4.53L7.656 9Z" fill="#F63D3D"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item"></div>
+						<div fxFlex="25" class="table-item"></div>
+						<div fxFlex="8" class="table-item"></div>
+						<div fxFlex="7" class="table-item"></div>
+					</div>
+					
+					<div fxLayout="row" fxLayoutGap="6px">
+						<div fxFlex="9" class="table-item">Location#2</div>
+						<div fxFlex="7" class="table-item">12/12/17</div>
+						<div fxFlex="7" class="table-item">09:00 am</div>
+						<div fxFlex="9" class="table-item">Tuesday</div>
+						<div fxFlex="5" class="table-item">Chair 3</div>
+						<div fxFlex="3" class="table-item">
+							<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.5 0L7.95934 4.49139H12.6819L8.86126 7.26722L10.3206 11.7586L6.5 8.98278L2.6794 11.7586L4.13874 7.26722L0.318133 4.49139H5.04066L6.5 0Z" fill="#434343"/>
+							</svg>
+						</div>
+						<div fxFlex="20" class="table-item">908 - Retie</div>
+						<div fxFlex="25" class="table-item">UL3 OFF REBONDED, BONDE..</div>
+						<div fxFlex="8" class="table-item">908 - RETIE CH..</div>
+						<div fxFlex="7" class="table-item">6 weeks</div>
+					</div>
+					
+				</perfect-scrollbar>
+			<!-- </div> -->
+		</div>
+	
+	</div>
+	
+	<div class="bottom-section">
+		<div class="checkedin-btn" (click)="changeCheckin()" [ngStyle]="{'color': checkin==true ? '#4EC8F0': '#A5A5A5'}">{{checkin==true ? 'Checked In' : 'Check-In?'}}</div>
+		<div class="action-btn-cont">
+			<div class="action-btn" (click)="openProfile('treatment')">
+				<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8.064 2.11H4.816V11H3.465V2.11H0.21V0.968999H8.064V2.11ZM13.8383 11H12.6413C12.5387 11 12.457 10.9743 12.3963 10.923C12.3403 10.867 12.2937 10.8063 12.2563 10.741L10.4713 7.962C10.4527 8.02733 10.4317 8.09267 10.4083 8.158C10.3897 8.21867 10.3617 8.27467 10.3243 8.326L8.67234 10.741C8.62568 10.8063 8.57434 10.867 8.51834 10.923C8.46701 10.9743 8.39468 11 8.30134 11H7.18834L9.67334 7.36L7.28634 3.909H8.48334C8.58601 3.909 8.66068 3.92533 8.70734 3.958C8.75401 3.99067 8.79601 4.03733 8.83334 4.098L10.5763 6.758C10.6137 6.62267 10.672 6.492 10.7513 6.366L12.2773 4.126C12.3193 4.06067 12.3637 4.00933 12.4103 3.972C12.4617 3.93 12.5223 3.909 12.5923 3.909H13.7403L11.3533 7.297L13.8383 11Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+			
+			<div class="action-btn" (click)="openProfile('finance')">
+				<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M4.08964 8.9385C4.47831 8.88717 4.77164 8.757 4.96964 8.548C5.17131 8.33533 5.27214 8.0585 5.27214 7.7175C5.27214 7.57817 5.24647 7.45717 5.19514 7.3545C5.14747 7.24817 5.07781 7.15467 4.98614 7.074C4.89814 6.99333 4.79364 6.92367 4.67264 6.865C4.55164 6.80633 4.41964 6.75133 4.27664 6.7L4.08964 8.9385ZM3.73764 3.125C3.53231 3.15067 3.35814 3.19467 3.21514 3.257C3.07214 3.31567 2.95481 3.389 2.86314 3.477C2.77147 3.565 2.70364 3.664 2.65964 3.774C2.61931 3.884 2.59914 3.9995 2.59914 4.1205C2.59914 4.25983 2.62297 4.38267 2.67064 4.489C2.72197 4.59167 2.78981 4.68517 2.87414 4.7695C2.96214 4.85017 3.06481 4.9235 3.18214 4.9895C3.29947 5.05183 3.42781 5.1105 3.56714 5.1655L3.73764 3.125ZM4.38114 5.4295C4.64514 5.51017 4.90731 5.6 5.16764 5.699C5.42797 5.79433 5.66081 5.919 5.86614 6.073C6.07514 6.227 6.24381 6.4195 6.37214 6.6505C6.50047 6.87783 6.56464 7.16383 6.56464 7.5085C6.56464 7.8495 6.50781 8.17033 6.39414 8.471C6.28047 8.768 6.11364 9.032 5.89364 9.263C5.67364 9.49033 5.40414 9.67733 5.08514 9.824C4.76614 9.967 4.40131 10.0513 3.99064 10.077L3.92464 10.8855C3.92097 10.9698 3.88431 11.0468 3.81464 11.1165C3.74864 11.1898 3.66431 11.2265 3.56164 11.2265H3.06114L3.16014 10.0495C2.73114 9.99083 2.32781 9.8735 1.95014 9.6975C1.57247 9.5215 1.25164 9.30333 0.987641 9.043L1.40564 8.4215C1.44231 8.3665 1.48997 8.3225 1.54864 8.2895C1.61097 8.25283 1.67697 8.2345 1.74664 8.2345C1.82731 8.2345 1.91347 8.26383 2.00514 8.3225C2.09681 8.3775 2.20131 8.4435 2.31864 8.5205C2.43597 8.59383 2.56981 8.669 2.72014 8.746C2.87047 8.823 3.04831 8.87983 3.25364 8.9165L3.45714 6.458C3.19681 6.38467 2.93831 6.2985 2.68164 6.1995C2.42864 6.1005 2.19947 5.97033 1.99414 5.809C1.79247 5.644 1.62931 5.43683 1.50464 5.1875C1.37997 4.93817 1.31764 4.6265 1.31764 4.2525C1.31764 3.97383 1.37264 3.7025 1.48264 3.4385C1.59264 3.17083 1.75397 2.9325 1.96664 2.7235C2.18297 2.5145 2.44697 2.34217 2.75864 2.2065C3.07031 2.07083 3.42781 1.99383 3.83114 1.9755L3.89164 1.2825C3.89897 1.1945 3.93564 1.11567 4.00164 1.046C4.06764 0.976333 4.15381 0.9415 4.26014 0.9415H4.76064L4.67264 2.0195C5.06131 2.08183 5.39681 2.19367 5.67914 2.355C5.96147 2.51267 6.20531 2.6905 6.41064 2.8885L6.08064 3.389C6.03297 3.46233 5.98347 3.51733 5.93214 3.554C5.88081 3.59067 5.81847 3.609 5.74514 3.609C5.69014 3.609 5.62414 3.5925 5.54714 3.5595C5.47014 3.52283 5.38397 3.48067 5.28864 3.433C5.19331 3.38167 5.08514 3.33033 4.96414 3.279C4.84681 3.22767 4.71664 3.1855 4.57364 3.1525L4.38114 5.4295ZM10.4705 8.9385C10.8592 8.88717 11.1525 8.757 11.3505 8.548C11.5522 8.33533 11.653 8.0585 11.653 7.7175C11.653 7.57817 11.6273 7.45717 11.576 7.3545C11.5283 7.24817 11.4587 7.15467 11.367 7.074C11.279 6.99333 11.1745 6.92367 11.0535 6.865C10.9325 6.80633 10.8005 6.75133 10.6575 6.7L10.4705 8.9385ZM10.1185 3.125C9.91317 3.15067 9.739 3.19467 9.596 3.257C9.453 3.31567 9.33567 3.389 9.244 3.477C9.15233 3.565 9.0845 3.664 9.0405 3.774C9.00017 3.884 8.98 3.9995 8.98 4.1205C8.98 4.25983 9.00383 4.38267 9.0515 4.489C9.10283 4.59167 9.17067 4.68517 9.255 4.7695C9.343 4.85017 9.44567 4.9235 9.563 4.9895C9.68033 5.05183 9.80867 5.1105 9.948 5.1655L10.1185 3.125ZM10.762 5.4295C11.026 5.51017 11.2882 5.6 11.5485 5.699C11.8088 5.79433 12.0417 5.919 12.247 6.073C12.456 6.227 12.6247 6.4195 12.753 6.6505C12.8813 6.87783 12.9455 7.16383 12.9455 7.5085C12.9455 7.8495 12.8887 8.17033 12.775 8.471C12.6613 8.768 12.4945 9.032 12.2745 9.263C12.0545 9.49033 11.785 9.67733 11.466 9.824C11.147 9.967 10.7822 10.0513 10.3715 10.077L10.3055 10.8855C10.3018 10.9698 10.2652 11.0468 10.1955 11.1165C10.1295 11.1898 10.0452 11.2265 9.9425 11.2265H9.442L9.541 10.0495C9.112 9.99083 8.70867 9.8735 8.331 9.6975C7.95333 9.5215 7.6325 9.30333 7.3685 9.043L7.7865 8.4215C7.82317 8.3665 7.87083 8.3225 7.9295 8.2895C7.99183 8.25283 8.05783 8.2345 8.1275 8.2345C8.20817 8.2345 8.29433 8.26383 8.386 8.3225C8.47767 8.3775 8.58217 8.4435 8.6995 8.5205C8.81683 8.59383 8.95067 8.669 9.101 8.746C9.25133 8.823 9.42917 8.87983 9.6345 8.9165L9.838 6.458C9.57767 6.38467 9.31917 6.2985 9.0625 6.1995C8.8095 6.1005 8.58033 5.97033 8.375 5.809C8.17333 5.644 8.01017 5.43683 7.8855 5.1875C7.76083 4.93817 7.6985 4.6265 7.6985 4.2525C7.6985 3.97383 7.7535 3.7025 7.8635 3.4385C7.9735 3.17083 8.13483 2.9325 8.3475 2.7235C8.56383 2.5145 8.82783 2.34217 9.1395 2.2065C9.45117 2.07083 9.80867 1.99383 10.212 1.9755L10.2725 1.2825C10.2798 1.1945 10.3165 1.11567 10.3825 1.046C10.4485 0.976333 10.5347 0.9415 10.641 0.9415H11.1415L11.0535 2.0195C11.4422 2.08183 11.7777 2.19367 12.06 2.355C12.3423 2.51267 12.5862 2.6905 12.7915 2.8885L12.4615 3.389C12.4138 3.46233 12.3643 3.51733 12.313 3.554C12.2617 3.59067 12.1993 3.609 12.126 3.609C12.071 3.609 12.005 3.5925 11.928 3.5595C11.851 3.52283 11.7648 3.48067 11.6695 3.433C11.5742 3.38167 11.466 3.33033 11.345 3.279C11.2277 3.22767 11.0975 3.1855 10.9545 3.1525L10.762 5.4295Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+			
+			<div class="action-btn" (click)="openProfile('communication')">
+				<svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M1.2502 8.89236L1.30183 8.80874L1.23277 8.73884C0.631635 8.13034 0.310605 7.3854 0.310605 6.54723C0.310605 4.46194 2.52243 2.69531 5.36008 2.69531C8.19581 2.69531 10.4107 4.46087 10.4575 6.54859C10.4565 8.63329 8.24502 10.3992 5.40799 10.3992C4.42165 10.3992 3.4817 10.1613 2.68286 9.78081L2.62058 9.75114L2.56227 9.78803C2.03095 10.1242 1.3067 10.085 0.759711 9.95397C0.603208 9.9165 0.465527 9.87251 0.355757 9.83024C0.385457 9.81823 0.414456 9.80425 0.442617 9.7888C0.555036 9.72712 0.661954 9.63784 0.759637 9.53896C0.954966 9.34124 1.12842 9.08959 1.2502 8.89236Z" fill="#4EC8F0" stroke="white" stroke-width="0.25"/>
+					<path d="M15.2028 6.26887L15.1347 6.34312L15.1928 6.42544C15.3118 6.59409 15.4731 6.82074 15.6491 6.99896C15.7373 7.0882 15.8335 7.1699 15.9346 7.22636C15.9554 7.23797 15.9768 7.24872 15.9987 7.25832C15.8983 7.29955 15.7725 7.34223 15.6299 7.37789C15.132 7.50241 14.4863 7.528 14.0297 7.17587L13.9689 7.12899L13.8996 7.162C13.1008 7.54253 12.1608 7.78034 11.1745 7.78034C8.33682 7.78034 6.125 6.01371 6.125 3.92842C6.125 1.84353 8.28839 0.125 11.1266 0.125C13.9642 0.125 16.176 1.89163 16.176 3.97692C16.176 4.81209 15.8093 5.60764 15.2028 6.26887Z" fill="#4EC8F0" stroke="white" stroke-width="0.25"/>
+				</svg>
+			</div>
+						
+			<div class="action-btn" (click)="addToBucket()">
+				<svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2.73011 7.81731C2.32569 5.81745 1.93113 3.8284 1.52671 1.82853C1.45766 1.49342 0.984197 1.63395 1.05324 1.96906C1.45766 3.96893 1.85222 5.95798 2.25664 7.95784C2.32569 8.29295 2.79916 8.15242 2.73011 7.81731Z" fill="#4EC8F0"/>
+					<path d="M11.5002 1.8293C11.1648 3.69944 10.8295 5.56959 10.5039 7.43973C10.3363 8.38021 10.1686 9.30987 10.0009 10.2503C9.92198 10.7044 9.84307 11.1476 9.76416 11.6016C9.66552 12.1637 9.56688 12.4016 9.0145 12.488C7.46587 12.715 5.88764 12.715 4.33901 12.488C4.0135 12.4448 3.78663 12.3583 3.6584 11.98C3.58935 11.7746 3.5499 11.5367 3.51044 11.3205C3.34275 10.5314 3.19479 9.74228 3.0567 8.95314C2.99752 8.60722 2.52405 8.75856 2.58323 9.09367C2.74106 9.95848 2.88901 10.8341 3.08629 11.6989C3.20466 12.2178 3.32303 12.7583 3.85568 12.9421C4.57574 13.1907 5.46349 13.1691 6.21315 13.1907C7.13049 13.2231 8.03797 13.1691 8.94545 13.0393C9.63593 12.9421 10.0699 12.7475 10.2179 11.9475C10.425 10.8449 10.6125 9.73146 10.8097 8.61803C11.2043 6.40196 11.5988 4.1859 11.9934 1.96983C12.0329 1.63472 11.5594 1.48338 11.5002 1.8293Z" fill="#4EC8F0"/>
+					<path d="M1.05624 1.90559C1.08583 2.47852 1.56916 2.80283 2.00318 3.01903C2.81202 3.419 3.70963 3.58115 4.57766 3.68925C6.58989 3.93788 8.9375 3.94869 10.8511 3.11632C11.2851 2.93255 11.8769 2.62986 11.9854 2.06774C12.0841 1.53805 11.6599 1.14888 11.2851 0.921873C10.5552 0.489471 9.68716 0.316509 8.87832 0.186789C7.72424 0.00301739 6.57016 -0.0402229 5.42595 0.0354476C4.34092 0.111118 3.21644 0.262459 2.20045 0.694862C1.70726 0.911063 1.08583 1.24618 1.05624 1.90559C1.03651 2.25151 1.52971 2.25151 1.54944 1.90559C1.56916 1.47319 2.30896 1.22456 2.60487 1.11645C3.34467 0.846203 4.13378 0.705672 4.91303 0.630001C6.65894 0.45704 8.52322 0.489471 10.2198 1.04078C10.5453 1.14888 11.3838 1.3759 11.4923 1.81911C11.6008 2.22989 10.93 2.51095 10.6735 2.61905C9.13478 3.27847 7.32969 3.33252 5.70214 3.24604C4.76507 3.2028 3.80827 3.08389 2.90079 2.80283C2.55555 2.69472 1.57903 2.43528 1.54944 1.9164C1.52971 1.55967 1.03651 1.54886 1.05624 1.90559Z" fill="#4EC8F0"/>
+					<path d="M1.40956 3.30062C0.64018 4.39244 -1.14519 7.6787 1.07419 8.30568C1.88303 8.53269 2.77078 8.17596 3.49085 7.79761C4.6252 7.19225 5.63132 6.27339 6.47961 5.23562C6.68675 4.97618 6.34152 4.59783 6.13438 4.85727C5.46363 5.67884 4.70411 6.40311 3.83609 6.97604C3.1752 7.40845 2.39596 7.83004 1.60684 7.83004C0.945961 7.84085 0.492221 7.43007 0.502085 6.67336C0.511949 5.58155 1.17283 4.51135 1.7548 3.67897C1.95208 3.40872 1.60684 3.01956 1.40956 3.30062Z" fill="#4EC8F0"/>
+				</svg>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div class="innermodal-overlay" *ngIf="innerModal">
+		
+		<div class="inner-modal" *ngIf="!scheduled">
+			<div class="modal-content">
+				<div *ngIf="!rescheduleAppnt">
+					<div class="content-info">Would you like me to schedule an appointment for</div>
+					<div class="content-info content-info-schedule" >{{patientdata.firstname}} {{patientdata.lastname}}</div>
+					<div class="content-info">on</div>
+					<div class="content-info content-info-schedule">{{appnt_timeslot}}</div>
+				</div>
+				
+				<div *ngIf="rescheduleAppnt">
+					<div class="content-info">Would you like me to schedule an appointment for</div>
+					<div class="content-info content-info-schedule">{{appnt_timeslot}}</div>
+					<div class="content-info">and remove exsisting appointment</div>
+					<div class="content-info content-info-remove">{{curr_appnt.date | date: 'EEEE, MMMM d'}}<span>{{(curr_appnt.date | date: 'd') | dateSuffix}}</span> at {{curr_appnt.time}}?</div>
+				</div>
+				
+				<div class="btn-cont">
+					<div class="modal-btn yes-btn" (click)="confirmSelection()">Yes</div>
+					<div class="modal-btn no-btn" (click)="closeInnerModal()">Cancel</div>
+				</div>
+				
+				<div class="robot-img"><img src="assets/laptop-Ava.png" /></div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="scheduled-modal" *ngIf="scheduled">
+			<div class="scheduledTxt">Appointment<br>Scheduled!</div>
+			<div class="scedule-robot">
+				<img src="assets/Ava bolt.png" />
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,353 @@
+.patientdialog {
+	position: relative;
+	padding: 20px 30px 12px 30px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.clear{
+	clear: both;
+}
+
+.closeBtn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+
+.component-cont {
+	width: 900px;
+	height: auto;
+	background: #FFFFFF;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+.medical-history-head-section{
+	height: 45px;
+    background: #FFFFFF;
+    border: 1px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.mdh-head-title{
+
+	float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	height: 100%;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 34px;
+	color: #4EC8F0;
+}
+
+.mdh-head-date{
+
+	float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	height: 100%;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 34px;
+	color: #4EC8F0;
+}
+.medical-history-body-section{
+
+	position: relative;
+    width: 100%;
+	height: 530px;
+
+}
+.medical-history-body-section1{
+
+	position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 25px;
+	height: 360px;
+	border: 1px solid #4EC8F0;
+	border-radius: 5px;
+
+
+}
+
+.medical-history-body-section2{
+
+	position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 25px;
+	/*height: 600px;*/
+	border: 1px solid #4EC8F0;
+	border-radius: 5px;
+
+}
+
+.save-and-finish {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 34px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	color: #4EC8F0;
+	cursor: pointer;
+}
+
+.dental-history-title {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 22px;
+    color: #4EC8F0;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+.dental-history-section {
+	box-sizing: border-box;
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+}
+.dental-history-question-section{
+	position: relative;
+    margin-bottom: 10px;
+}
+
+.dental-history-question-part1{
+
+	float: left;
+	width: 67%;
+}
+
+.dental-history-question-part2{
+
+	float: left;
+	width: 33%;
+}
+
+.dental-history-question-sub-part1{
+
+	float: left;
+	width: 70%;
+	
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 13px;
+	line-height: 22px;
+	color: #000000;
+
+}
+
+.dental-history-answar-sub-part1{
+	float: left;
+    width: 30%;
+}
+
+span {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 22px;
+    color: #000000;
+    margin-left: 8px;
+    box-sizing: border-box;
+}
+
+.one-redio-bt-section{
+	float: left;
+    width: 50%;
+}
+
+.two-redio-bt-section{
+	float: left;
+    width: 50%;
+}
+
+.dental-history-question-sub-part2{
+	float: left;
+    text-align: left;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 22px;
+    color: #000000;
+    padding-right: 10px;
+
+}
+
+.dental-history-answar-sub-part2{
+
+	float: right;
+   
+}
+
+.descl{
+	background: #FFFFFF;
+    border: 1px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 3px;
+	margin-top: 1px;
+	width: 100%;
+}
+
+.patient_treated_section{
+	margin-top: 10px;
+    margin-left: 25px;
+}
+
+.comon_treated_section {
+	position: relative;
+    margin-bottom: 10px;
+	box-sizing: border-box;
+	display: inline-block;
+}
+.treated_radio_section1{
+
+	float: left;
+    width: 190px;
+}
+.treated_radio_section2{
+	float: left;
+    width: 175px;
+
+}
+
+.treated_radio_section3{
+	
+	float: left;
+    width: 190px;
+}
+
+.tendency{
+	width: 100%;
+}
+
+.tendency_title{
+	width: 30%;
+}
+
+.tendency_radio{
+
+	width: 70%;
+}
+
+.tendency_radio1{
+
+	width: 30%;
+}
+.removed-sec{
+	width: 33%
+}
+
+.removed-sec2{
+	width: 65%;
+}
+
+.removed-sec3{
+	width: 15%;
+}
+.marginleft{
+	margin-left: 0px;
+}
+
+.floatnull{
+
+	float: none;
+	width: 100%;
+	height: 30px;
+}
+
+.addwidthheight{
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+}
+
+.premedication-sec{
+
+	width: 40%;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.premedication-sec2{
+	width: 60%;
+
+}
+
+.whysec{
+	float: left;
+    width: 70%;
+}
+.whytexttitle{
+	width: 10%;
+}
+
+.whyinput{
+	width: 85%;
+
+}
+
+.sensitivity-sec {
+	width: 30%;
+}
+
+.sensitivity-input{
+	float: left;
+    width: 70%;
+}
+
+.reached-sec{
+	width: 28%;
+}
+
+input[type='radio'] {
+	-webkit-appearance: none;
+	border-radius: 50%;
+	outline: none;
+	box-shadow: 0 0 0 1px  #4EC8F0;
+	width: 10px;
+	height: 10px;
+	background: #FFFFFF;
+
+
+}
+
+input[type='radio']:before {
+	content: '';
+	display: block;
+	width: 60%;
+	height: 60%;
+	margin: 20% auto;
+	border-radius: 50%;
+}
+
+input[type='radio']:checked:before {
+	background: #000000;
+}
+
+

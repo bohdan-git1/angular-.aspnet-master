@@ -1,0 +1,73 @@
+<div class="card-content-section">
+  <!-- <div class="section-display-wrapper animatecard" [ngStyle]="{'margin-left': posLeft + 'px'}"> -->
+    <div class="section-display-cont">
+      <!-- <perfect-scrollbar> -->
+        <div class="section-title" (click)="backtoMain()">Dentist</div>
+        <div class="section-content">
+            <div class="section-ref-in">
+                <div class="ref-in-head-section">
+                    <div class="ref-in-title">Current Dentist</div>
+                    <div class="ref-in-plus" (click)="showRefinBox('dentist')">
+                      <svg width="8" height="8" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H3V3H0V4H3V7H4V4H7V3H4V0Z" fill="#4EC8F0"/>
+                      </svg>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+				
+                <!-- <div class="ref-in-search-bar" *ngIf="refInsearchBox">
+                  <div class="ref-search-icon" (click)="showInPrasent()">
+                      <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.07943 1.10528C3.16446 0.186262 1.67527 0.186262 0.7603 1.10528C-0.154475 2.02449 -0.154475 3.52005 0.7603 4.43927C1.50447 5.18654 2.62751 5.32444 3.51322 4.85601C3.63368 4.7923 3.79645 4.85948 3.89259 4.95605L5.22508 6.29443C5.41926 6.48907 5.73305 6.48907 5.92624 6.29443C6.12022 6.09959 6.12022 5.78442 5.92624 5.59017L4.59375 4.2514C4.49756 4.15506 4.43031 3.99276 4.49363 3.87224C4.96127 2.98225 4.82421 1.85352 4.07943 1.10528ZM3.65874 4.01671C2.97563 4.70284 1.8639 4.70284 1.18099 4.01671C0.498284 3.33059 0.498284 2.21415 1.18099 1.52803C1.8639 0.842103 2.97563 0.842103 3.65874 1.52803C4.34185 2.21415 4.34185 3.33059 3.65874 4.01671Z" fill="#6BD3F4"/>
+                      </svg>
+                  </div>
+                  <input (keyup)="searchInPatient($event.target.value)" type="text" placeholder="Find patient..." class="ref-in-input" [(ngModel)]="selectedInPatient" />
+                  
+                  <div class="patient-optn-cont" *ngIf="refInsearch" [ngStyle]="{'height': (35*filterInPatient.length) + 'px'}">
+                      <perfect-scrollbar>
+                        <div class="patient-item" *ngFor="let drItem of filterInPatient; let indx=index" (click)="selectInPatient(drItem)">{{drItem.name}}
+                        </div>
+                      </perfect-scrollbar>
+                  </div>
+                </div> -->
+				
+                <div class="ref-in-list">
+                    <ul>
+						<li>
+							<div class="dr-name">{{currentDoctor.doctorname}}</div>
+							<div class="history-dt">{{currentDoctor.date | date: 'MM/dd/yyyy'}}</div>
+							<div class="clear"></div>
+							<div class="clinic">{{currentDoctor.location.clinicname}}</div>
+							<div class="clinic">{{currentDoctor.phone}}</div>
+							<div class="clinic">{{currentDoctor.location.addr}}</div>
+							<div class="clinic">{{currentDoctor.location.city}}, {{currentDoctor.location.state}}</div>
+						</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-ref-out">
+                <div class="section-ref-in">
+                    <div class="ref-in-head-section">
+                        <div class="ref-in-title">History</div>
+                        <div style="clear: both;"></div>
+                    </div>
+					
+                    <div class="ref-in-list">
+                        <ul>
+                            <li *ngFor="let historyItem of historyArr; let indx=index" >
+								<div class="dr-name">{{historyItem.doctorname}}</div>
+								<div class="history-dt">{{historyItem.date | date: 'MM/dd/yyyy'}}</div>
+								<div class="clear"></div>
+								<div class="clinic">{{historyItem.location.clinicname}}</div>
+							</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+           
+        </div>
+    </div>
+</div>

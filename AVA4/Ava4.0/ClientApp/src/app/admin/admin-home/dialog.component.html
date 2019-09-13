@@ -1,0 +1,215 @@
+<div class="patientdialog">
+	<div class="closeBtn" (click)="cancel()">
+		<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="13.5" width="2.12119" height="19.0907" transform="rotate(45 13.5 0)" fill="#333333"/>
+			<rect y="1.50195" width="2.12119" height="19.0907" transform="rotate(-45 0 1.50195)" fill="#333333"/>
+		</svg>
+	</div>
+	
+	<app-vendor></app-vendor>
+
+	
+	<!-- <div fxLayout="row">
+  
+    <div fxFlex="455px">
+       <div class="main-cont">
+         <div class="information-box-cont">
+		<div class="box-title">Vendors</div>
+		<div class="box-content">
+			<div class="flip-container">
+				<div class="flipper"  [ngStyle]="{'transform': 'rotateY(' + rotateOnY + 'deg)'}">
+					<div class="card1">						
+
+						<ul>
+							<li class="orginfo" (click)="selectDropdown(indx)" *ngFor="let vendoritem of vendorArr; let indx=index;">
+								<div class="org-name">{{vendoritem.vendorname}}</div>
+								<div class="org-location">{{vendoritem.phone}}</div>
+								
+                                
+                                <div class="orginfo-dropdown" *ngIf="vendoritem.selected">
+                                  <div class="container">
+                                     <div class="org-name"><span>Code:</span> {{vendoritem.code}}</div>
+								     <div class="org-location">Ext: {{vendoritem.ext}}</div>
+                                  </div>
+                                  
+                                  <div class="container">
+                                     <div class="org-name">{{vendoritem.add1}}</div>
+								     <div class="org-location">{{vendoritem.add2}}</div>
+                                  </div>
+                                  
+                                  <div class="container">
+                                     <div class="org-name"><span>Rep</span></div>
+                                  </div>
+                                  
+                                  <div class="container">
+                                     <div class="org-name">{{vendoritem.rep}}</div>
+								     <div class="org-location">{{vendoritem.code}}</div>
+                                  </div>
+                                  
+                                  <div class="container">
+                                     <div class="org-name">{{vendoritem.email}}</div>
+								     
+                                  </div>
+                                  
+                                  <div class="container">
+                                     <div class="org-name">{{vendoritem.website}}</div>
+                                  </div>
+                                  
+                                  <div class="container">
+                                     <div class="org-name"><span>Login</span></div>
+								     <div class="org-location">{{vendoritem.login}}</div>
+                                  </div>
+                                  
+                                  <div class="container">
+                                     <div class="org-name"><span>Password</span></div>
+								     <div class="org-location">{{vendoritem.password}}</div>
+                                  </div>
+                                </div>
+                                <div class="clear"></div>
+							</li>
+						</ul>
+				
+						<div class="plus-btn" (click)="flipCard()">
+							<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect x="12.5" y="8" width="1" height="10" rx="0.5" fill="#434343"/>
+								<rect x="8" y="13.5" width="1" height="10" rx="0.5" transform="rotate(-90 8 13.5)" fill="#434343"/>
+								<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+							</svg>
+						</div>					
+					</div>
+					
+					<div class="card2">
+                    
+						<div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Code" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Name" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Address 1" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Address 2" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="City" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="State" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Zip" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Phone number" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="10px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Phone number" /></div>
+                           </div>
+                           <div fxFlex="20">
+                             <div class="info-input"><input type="text" placeholder="Ext" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Rep" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Rep phone" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Email Address" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Email Address" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="10px">
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Website" /></div>
+                           </div>
+                           
+                           <div fxFlex="48">
+                             <div class="info-input"><input type="text" placeholder="Login" /></div>
+                           </div>
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50"></div>
+                           
+                           <div fxFlex="50">
+                             <div class="info-input"><input type="text" placeholder="Password" /></div>
+                           </div>
+                        </div>
+						
+						<div fxLayout="row" fxLayoutGap="15px">
+                           <div fxFlex="50">
+                             <div class="notes-textarea">
+                               Notes<br><br> 
+                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                               ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                               ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                               sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est 
+                               laborum.
+                             </div>
+                           </div>
+                        </div>
+                        
+                        <div class="plus-btn" (click)="flipCard()">
+							<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<circle cx="13" cy="13" r="12.5" stroke="#4EC8F0"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M18.899 7.63348C18.6949 7.44751 18.3787 7.46223 18.1927 7.66636L11.2769 15.2575L8.02795 12.2975C7.82382 12.1116 7.50758 12.1263 7.32161 12.3304C7.13564 12.5345 7.15036 12.8508 7.35449 13.0368L10.817 16.1912C10.8442 16.2565 10.8859 16.3171 10.9416 16.3679C11.1458 16.5538 11.462 16.5391 11.648 16.335L18.9319 8.33982C19.1179 8.13569 19.1032 7.81945 18.899 7.63348Z" fill="#434343"/>
+							</svg>
+						</div>
+                        
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+       </div> 
+    </div>
+
+</div> -->
+	
+</div>

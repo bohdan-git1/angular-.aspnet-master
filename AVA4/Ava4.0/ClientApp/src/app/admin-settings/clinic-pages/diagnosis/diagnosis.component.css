@@ -1,0 +1,693 @@
+.pagetitle{font-size:40px;	color:#4EC8F0; text-transform:uppercase; letter-spacing:8px; margin-bottom:15px}
+.section-cont{width:100%; /*height:655px;*/ padding:15px; position:relative; box-sizing:border-box; background:#E5E5E5}
+.section-title{width:100%; margin-bottom:15px; font-size:14px; text-align:center; text-transform:uppercase; color:#646464; letter-spacing:3px; position:relative}
+.view-btn{position:absolute; right:8px; top:0; z-index:99}
+.inner-cont{width:100%; min-height:600px; background:#FFF; border-radius:4px; box-sizing:border-box; padding-top:15px; padding-bottom:15px;
+padding-left:10px; padding-right:10px;position:relative}
+
+.section-item-holder{width:70%; display:block; position:relative; margin:0 auto}
+.section-item-cont {width:100%; display:inline-block; padding:3px 5px 4px 14px; box-sizing:border-box; margin-bottom:0; background:#F0F0F0;
+border-radius:2px; position:relative; font-family:Lato; font-style:normal; font-weight:bold; font-size:11px; line-height:normal; color:#646464}
+
+.section-item-cont-goal {width:93%; display:inline-block; padding:3px 5px 4px 14px; box-sizing:border-box; margin-bottom:0; background:#F0F0F0;
+    border-radius:2px; position:relative; font-family:Lato; font-style:normal; font-weight:bold; font-size:11px; line-height:normal; color:#646464}
+
+.down-arrow{width:5px; position:absolute; right:-17px; top:-2px; padding:0 5px}
+
+.plus-btn-wrap{width:100%; display:block; margin:15px auto 5px; padding:0 0 4px; border-bottom:#C4C4C4 1px solid}
+.plus-btn{width:15px; height:15px; display:inline-block; cursor: pointer;}
+.plus-icon{width:15px; height:15px; position:absolute; left:-12px; top:-2px}
+.plus-btn-wrap .txtInput{width:100%; height:20px; display:block; vertical-align:middle; border:1px solid #646464; box-sizing:border-box; border-radius:2px}
+
+.btm-dv{width:100%; position:absolute; left:0; bottom:15px}
+
+
+.labelbox-holder{
+	  width:auto;
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    min-width: 275px;
+    float: left;
+    max-width: 100%;
+}
+
+.labelbox-wrapper {
+	/*width: 70%;
+  margin: auto;*/
+  width: 100%;
+  max-width: 247px;
+	border-top: 1px solid #C4C4C4;
+  padding-top: 3px;
+  float: left;
+}
+
+.labelbox{
+	width: 100%;
+    position: relative;
+    margin: 0 0 3px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 2px;
+    height: 24px;
+}
+
+.entry-input-cont {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 13px;
+    color: #A5A5A5;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
+.entry-input-cont::placeholder {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #A5A5A5;
+}
+
+.drag-drop-elem {
+	border: 1px solid #4EC8F0;
+	box-sizing: border-box;
+	border-radius: 2px;
+}
+
+.drag-drop-cont {
+	padding-left: 80px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 247px;
+}
+
+input:focus {
+	outline: none;
+}
+
+.labelbox .name{font-family:Lato; font-style:normal; font-weight:bold; font-size:11px; line-height:normal; color:#A5A5A5; width: 100%; height: 100%; box-sizing: border-box;}
+.add-btn{position:absolute; z-index:999; right:0; top:0; cursor: pointer; width: 24px; height: 24px;}
+
+.steps-listwrap{width:100%; height:100%; float:left; border-right:1px solid #CBCBCB; /*padding-right:12px; */ padding-right: 0; padding-bottom:0; position: relative;}
+/*.steps-listwrap .list{width:100%; float:left; margin-bottom:4px}*/
+.steps-listwrap .list {width:100%; float:left; font-family:Lato;font-style: normal; font-weight:normal; font-size:9px; line-height:normal; color:#333333; cursor: pointer; position: relative;}
+/*.steps-listwrap .list {float:right; font-family: Lato; font-style: normal; font-weight: normal; font-size: 9px;
+line-height: normal; text-align: right; color: #00AEEF}*/
+.steps-labelboxwrap{width:100%; padding-bottom:20px}
+.steps-labelboxwrap .labelbox{width:100%; display:block; padding:5px; margin:0 0 4px; background:#F0F0F0; border:1px solid #CBCBCB; box-sizing:border-box; border-radius:2px}
+.steps-labelboxwrap .labelbox .name{font-family: Lato; font-style: normal; font-weight: bold; font-size: 10px;
+line-height: normal; color: #4EC8F0; text-align:left}
+.steps-labelboxwrap .labelbox .close-btn{position:absolute; z-index:999; right:8px; top:-2}
+
+.tx-item-holder {width:80%; display:block; position:relative; margin:0 auto}
+.goals-item-holder{width:100%; display:block; position:relative; margin:0 auto}
+
+.plus-btn-one{width:15px; height:15px; position:absolute; left:10px; bottom:10px; margin-top:10px}
+.plus-btn-two{width:15px; height:15px; position:absolute; right:10px; bottom:10px; margin-top:10px}
+
+.add-item-wrap{width:100%; display:block; text-align:center; padding:10px 0 0}
+.add-item-wrap .plus-iconbtn{display:inline-block; vertical-align:top}
+.add-item-wrap .txtInput{display:inline-block; vertical-align:middle; width:160px; background:#FFF; margin:0 6px;
+border:1px solid #4EC8F0; box-sizing:border-box; border-radius: 2px; font-family: Lato; font-style: normal; font-weight: normal;
+font-size: 9px; line-height: normal; color: #A5A5A5; padding:3px}
+.add-item-wrap .txtInput.active{border-color:#646464}
+.add-item-wrap .txtInput-sm{width:31px; display:inline-block; vertical-align:middle; background:#FFF; margin:0 6px;
+border:1px solid #4EC8F0; box-sizing:border-box; border-radius: 2px;  font-family: Lato; font-style: normal; font-weight: normal;
+font-size: 9px; line-height: normal; color: #A5A5A5; text-align:right; padding:3px}
+
+.bracket-type-box{width:100%; display:block; padding:10px 0 0}
+.bracket-type-box .heading{width:100%; float:left}
+.bracket-type-box .dropbox{width:231px; float:left; position:relative; background:#FFF; border:0.5px solid #4EC8F0; box-sizing:border-box; border-radius:2px; padding:1px 3px 2px 20px}
+.bracket-type-box .dropbox .name{float:left; font-family:Lato; font-style:normal; font-weight:500; font-size:10px; line-height:normal; color:#646464}
+.bracket-type-box .dropbox .dropicon{position:absolute; right:8px; top:-5px; width:5px}
+.bracket-type-box .dropbox-plus-icon{width:15px; float:right}
+.bracket-label-box{width:100%; height:18px; position:relative; padding:1px 2px 2px 20px; margin:0 0 2px; background:#FFFFFF; border:1px solid #5CD7FF; box-sizing:border-box; border-radius:2px; font-family:Lato;
+font-style:normal; font-weight:500; font-size:10px; line-height:normal}
+.bracket-label-box.green{color:#8EF9B3}
+.bracket-label-box.red{color:#FD7474}
+.bracket-label-box.blue{color:#00AEEF}
+.bracket-label-box.yellow{color:#F6CC61}
+.bracket-label-box.sea-green{color:#8CF1E4}
+.bracket-label-box.purple{color:#B48CF6}
+
+.bracket-label-box .close-btn{position:absolute; right:4px; top:1px}
+.bracket-color-box{width:100%; height:18px; position:relative; padding:1px 0 0; margin:0 0 3px; background:#FFFFFF; border:1px solid #5CD7FF; box-sizing:border-box; border-radius:2px}
+.bracket-color-box .color-sample{width:7px; height:7px; display:inline-block; vertical-align:top; border:1px solid #fff; border-radius:100%; padding:2px; margin:0}
+.bracket-color-box .color-sample svg{width:7px; height:7px; display:inline-block; vertical-align:top}
+.bracket-color-box .color-sample.active{border:1px solid #646464}
+.bracket-color-box .plus-iconn{width:7px; height:7px; display:inline-block; vertical-align:top; border:1px solid #fff; border-radius:100%; padding:0; margin:3px 0 0 5px}
+.bracket-color-box .plus-iconn svg{width:7px; height:7px; display:inline-block; vertical-align:top}
+
+.add-library-icon {
+	width: 24px;
+  height: 24px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	cursor: pointer;
+}
+
+.option-selector-cont {
+	/* width: 70%; */
+}
+
+.drag-drop-elem-label {
+	display: flex;
+	align-items: center;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #4EC8F0;
+	padding-left: 10px;
+	cursor: move;
+}
+
+.labelbox-actine-cont{float: right; width: auto; margin-left: 14px}
+.labelbox-actine-cont .active-labelbox{width:auto; float: left; margin-top: -15px; margin-right: 15px}
+.labelbox-actine-cont .active-labelbox .title{font-family:Lato; font-weight:500; font-size:11px; line-height:20px; text-align:center; color:#646464}
+.labelbox-actine-cont .active-labelbox .txtbox{width:auto; min-width: 180px;  border:1px solid #4EC8F0;box-sizing:border-box; border-radius:2px; font-family:Lato; font-weight:normal; font-size:10px; line-height: 21px; text-align:center; color: #646464}
+.tick-icon2{
+	width: 24px;
+    height: 24px;
+    float: right;
+    border: 1px solid #4EC8F0;
+    margin: 6px 0 0;
+    text-align: center;
+    box-sizing: border-box;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+
+}
+.tick-icon2 svg{margin-top: -15px}
+
+.txtbox input {
+	width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    border: none;
+    background: none;
+    text-align: center;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+	color: #646464;
+}
+
+.txtbox input::placeholder {
+	text-align: center;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+	color: #646464;
+}
+
+.delete-item-goal{
+    float: right;
+    cursor: pointer;
+}
+
+.goal-edit{
+    float: left;
+    margin-right: 2px;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    cursor: pointer;
+    width: 3%;
+}
+
+.goal-lebel{
+    float: left;
+    width: 95%;
+    cursor: pointer;
+}
+
+.comon-des-cls{
+    border: 0px;
+    width: 100%;
+}
+input[type="text"], input[type="password"], textarea, select {
+    outline: none;
+}
+
+.add-goal-section{
+    background: white;
+
+    padding: 5px;
+}
+
+.add-goal-field{
+    display: flex;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    color: #A5A5A5;
+
+}
+.goal-item-section{
+    height: 500px;
+}
+
+.add-goal-field ::placeholder {
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+color: #A5A5A5;
+}
+.step-edit{
+    /*float: left;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin-top: 2px;
+    width: 5%;*/
+    width: 20px; position: absolute; left: 0; top: 3px
+
+}
+
+.delete-step-goal{
+    /*float: right;
+    cursor: pointer;
+    display: flex;
+    margin-top: 3px;
+    width: 10%;*/
+    width: 9px; position: absolute; right: 11px; top: 0
+}
+
+.time{
+    float: right;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    line-height: normal;
+    color: #00AEEF;
+    width: 15%;
+    text-align: right;
+    margin-right: 5px;
+	border: 0.5px solid transparent;
+	padding: 3px;
+	box-sizing: border-box;
+}
+
+.labelname{
+    float: left;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    line-height: normal;
+    color: #333333;
+    width: 75%;
+    text-align: left;
+    margin-left: 8px;
+	border: 0.5px solid transparent;
+	padding: 3px;
+    box-sizing: border-box
+}
+
+.step-section{
+    float: left;
+    /*width: 85%;*/
+    width: 90%;
+    padding-left: 5px;
+    /* padding-bottom: 4px; */
+    box-sizing: border-box;
+    position: relative;
+
+}
+
+.step-input {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    line-height: normal;
+    color: #333333;
+    width: 95%;
+    background: #FFFFFF;
+    border: 0.5px solid #646464;
+    box-sizing: border-box;
+    border-radius: 2px;
+   height: 13px;
+
+}
+
+.step-time-input {
+    width: 28px;
+    height: 13px;
+    background: #FFFFFF;
+    border: 0.5px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    line-height: 11px;
+    text-align: left;
+    color: #00AEEF;
+    padding-right: 12px;
+    padding-left: 2px;
+}
+
+.labelbox-holderstep{
+    width: 100%;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+
+.btm-dv-step{
+	position: absolute;
+    bottom: 0px;
+    padding-right: 5px;
+    box-sizing: border-box;
+    left: 0;
+}
+
+.add-step-title-section{
+    background: #FFFFFF;
+    border: 0.5px solid #CBCBCB;
+    box-sizing: border-box;
+    border-radius: 2px;
+    float: left;
+
+    width: 66%;
+    margin-right: 3px;
+    height: 18px;
+    margin-top: 3px;
+}
+
+.add-step-time-section{
+    background: #FFFFFF;
+    border: 0.5px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    float: left;
+    width: 18%;
+    height: 18px;
+    margin-left: 2px;
+    border-left: 1px solid #4EC8F0;
+    margin-top: 3px;
+	position: relative;
+}
+
+.add-step-section{
+    float: right;
+    width: 29px;
+    height: 18px;
+
+    background: #FFFFFF;
+    border: 0.5px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-top: 3px;
+}
+
+.step-input-new-item{
+    width: 100%;
+    border: 0px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 13px;
+    color: #A5A5A5;
+    display: flex;
+    padding-left: 3px;
+    box-sizing: border-box;
+}
+
+.step-input-new-time{
+    width: 100%;
+    border: 0px;
+
+    color: #A5A5A5;
+    display: flex;
+    padding-left: 3px;
+    box-sizing: border-box;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 11px;
+    /* identical to box height */
+    text-align: left;
+
+    color: #A5A5A5;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input:focus, textarea {
+    outline: none !important;
+}
+
+.procedure-optn-cont {
+	position: absolute;
+    background: #FFFFFF;
+    border: 1px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    bottom: 20px;
+    left: 0;
+    padding: 5px 0 10px
+}
+
+.procedure-item {
+	padding: 3px 5px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: normal;
+    color: #333333;
+    cursor: pointer;
+}
+
+.procedure-item:hover {
+	background: #F1F1F1;
+}
+
+.time-bar-section {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    color: #A5A5A5;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+}
+
+.item-unit-section {
+    position: absolute;
+    top: 0px;
+    left: 163px;
+
+}
+
+
+.procedure-optn-cont-edit {
+    position: absolute;
+    max-height: 300px;
+    background: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    box-sizing: border-box;
+    border-radius: 4px;
+    z-index: 99999;
+    top: 14px;
+    left: 145px;
+    padding: 5px 0 10px;
+    width: 53px;
+}
+
+
+.procedure-item-edit {
+    padding: 5px 25px 5px 7px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: normal;
+    color: #333333;
+    cursor: pointer;
+}
+
+.procedure-item-edit :hover {
+	background: #F1F1F1;
+}
+.procedure-label-edit{
+    width: 42px;
+}
+
+.delete-item-goal{
+    float: right;
+    cursor: pointer;
+}
+
+.goal-edit{
+    float: left;
+    margin-right: 2px;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    cursor: pointer;
+    width: 3%;
+}
+
+.goal-lebel{
+    float: left;
+    width: 95%;
+    cursor: pointer;
+}
+
+.comon-des-cls{
+    border: 0px;
+    width: 100%;
+}
+
+.add-goal-section{
+    background: white;
+    
+    padding: 5px;
+}
+
+.add-goal-field{
+    display: flex;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    color: #A5A5A5;
+
+}
+.goal-item-section{
+    height: 500px;
+}
+
+.add-goal-field ::placeholder { 
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	color: #A5A5A5;
+}
+
+
+/* ------ goal section input ----- */
+
+.goal-section-input-cont {
+	width: 100%;
+    padding: 5px 10px;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    box-sizing: border-box;
+	
+}
+
+.goal-section-input {
+	width: 100%;
+	height: 24px;
+	background: #FFFFFF;
+	border: 1px solid #C4C4C4;
+	box-sizing: border-box;
+	border-radius: 2px;
+	position: relative;
+}
+
+.goal-section-input input {
+	width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    padding: 0 30px 0 5px;
+    box-sizing: border-box;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #A5A5A5;
+}
+
+.goal-section-input input:placeholder {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 13px;
+	color: #A5A5A5;
+}
+
+.goal-add-btn {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+}
+
+.seperatr {
+	width: 100%;
+	border-bottom: 1px solid #A5A5A5;
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+.steps-editmode {
+	border: 0.5px solid #646464;
+	box-sizing: border-box;
+	border-radius: 2px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.time-edit-mode {
+	border: 0.5px solid #4EC8F0;
+	box-sizing: border-box;
+	border-radius: 2px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.labelbox-holder2{
+	  width:100%;
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    float: left;
+    max-width: 100%;
+    padding:0 12%;
+    box-sizing: border-box
+}
+
+.plus-btn-wrap2{width:100%; display:block; margin:15px auto 0; padding:0; border-bottom:#C4C4C4 1px solid}
+
+

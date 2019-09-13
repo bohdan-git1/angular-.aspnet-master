@@ -1,0 +1,275 @@
+.component-wrapper {
+	width: 100%;
+	position: relative;
+}
+
+.selected-label {
+	font-size: 12px;
+    color: #FFFFFF;
+	cursor: pointer;
+}
+
+.option-panel {
+	position: absolute;
+	width: 490px;
+	height: 220px;
+	top: 20px;
+	left: -190px;
+	background: #FFFFFF;
+	border-radius: 4px;
+	box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+	padding: 10px 10px 10px 15px;
+}
+
+.keydates {
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 14px;
+	color: #4EC8F0;
+}
+
+.table-heading {
+	margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.tbl-hd-col {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 14px;
+	color: #4EC8F0;
+	display: inline-block;
+	border: 1px solid transparent;
+	box-sizing: border-box;
+	padding-left: 5px;
+	padding-right: 5px;
+	vertical-align: top;
+}
+
+.table-row {
+	margin-bottom: 5px;
+}
+
+.tbl-row-col {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 14px;
+	color: #A5A5A5;
+	display: inline-block;
+	border-top: 1px solid #4EC8F0;
+	border-bottom: 1px solid #4EC8F0;
+	box-sizing: border-box;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	vertical-align: top;
+}
+
+.tbl-row-col:first-child {
+	border-left: 1px solid #4EC8F0;
+}
+
+.tbl-row-col:last-child {
+	border-right: 1px solid #4EC8F0;
+}
+
+.current-status {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 14px;
+	color: #4EC8F0;
+	margin-top: 5px;
+}
+
+.current-status span {
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.create-row-modal {
+	width: 50%;
+    height: 410px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #4EC8F0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 50px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.modal-overlay {
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.5);
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.close-icon {
+	position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+	z-index: 1;
+}
+
+.drpdn-container {
+	position: relative;
+	margin-top: 10px;
+}
+
+.drpdn-selector {
+	width: 100%;
+    height: 20px;
+    position: relative;
+    border-radius: 2px;
+    border: 1px solid #4EC8F0;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+	cursor: pointer;
+}
+
+.drpdn-label {
+	font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #4EC8F0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center
+	
+}
+
+.dn-arrow {
+	position: absolute;
+	height: 100%;
+	width: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: 8px;
+	top: 0;
+}
+
+.drpdn-options {
+	width: 100%;
+	height: 150px;
+	border-radius: 2px;
+    border: 1px solid #4EC8F0;
+	position: absolute;
+	top: 43px;
+	left: 0;
+	box-sizing: border-box;
+	background: #FFFFFF;
+	cursor: pointer;
+}
+
+.drpdn-optn {
+	width: 100%;
+    padding: 3px 10px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #4EC8F0;
+    box-sizing: border-box;
+}
+
+.drpdn-optn:hover, .selectedoptn {
+	background: #DCF4FC;
+}
+
+.section-title {
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 14px;
+	color: #4EC8F0;
+	margin-bottom: 10px;
+	/* height: 18px; */
+	cursor: pointer;
+}
+
+.calender-cont {
+	position: relative;
+}
+
+.add-btn {
+	background: #FFFFFF;
+    border: 1px solid #4EC8F0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Lato;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 11px;
+    text-align: center;
+    color: #646464;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    float: right;
+    margin-top: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+.row-plus-btn {
+	width: 10px;
+	height: 100%;
+    height: 10px;
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+}
+
+.action-section {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.input-dt {
+	font-weight: bold;
+	width: 100px;
+	font-size: 12px;
+	line-height: 14px;
+	color: #646464;
+	padding: 3px 5px;
+	border: none;
+	background: #DCF4FC;
+	box-sizing: border-box;
+}
+
+.dateinfo {
+	color: #4EC8F0;
+	font-family: Lato;
+    font-style: normal;
+    font-size: 9px;
+	margin-top: 3px;
+}

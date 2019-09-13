@@ -1,0 +1,7 @@
+.patient-block {
+	width: 240px;
+	height: 58px;
+	background: #fff;
+	box-sizing: border-box;
+	position: absolute;
+}
