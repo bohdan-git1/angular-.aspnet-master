@@ -12,7 +12,7 @@ import { MultiLoginService } from 'src/app/multi-login-screen/multi-login.servic
 })
 export class LoginComponent implements OnInit {
 
-	initialroutePath:any = '/main/ava';
+	initialroutePath:any = '/dashBoard';
 	loginform: FormGroup;
 	submitted: boolean = false;
 
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
       "break":false
     }
     this.userSer.add(temp);
-		this.router.navigate([this.initialroutePath, 'admin']);
+		this.router.navigate([this.initialroutePath]);
 	}
   }
 

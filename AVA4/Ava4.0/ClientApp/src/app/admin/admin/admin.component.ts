@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 import { MessageService } from '../../core/message.service';
@@ -45,7 +45,7 @@ export class AdminComponent implements OnInit {
 
 	}
 
-  constructor(private router: Router, private messageService: MessageService, private activatedRoute:ActivatedRoute) {
+  constructor(private router: Router, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -101,11 +101,11 @@ export class AdminComponent implements OnInit {
 
 	setTimeout(() => {
 		if(this.panelArr[indx].id == 0){
-			this.router.navigate(['/main/ava/admin/analytics'])
+			this.router.navigate(['/dashBoard/analytics'])
 		} else if(this.panelArr[indx].id == 1){
-			this.router.navigate(['/main/ava/admin/pmt'])
+			this.router.navigate(['/dashBoard/pmt'])
 		} else if(this.panelArr[indx].id == 2){
-      this.router.navigate(['/main/ava/admin/settings'])
+      this.router.navigate(['/dashBoard/settings'])
 		}
 	}, 1000);
   }

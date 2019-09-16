@@ -24,7 +24,6 @@
       <div class="accordion-content" [style.height.px]="accord_content_Ht" [style.width.px]="acord_cont_wd"
         *ngIf="item.id==0" [@fadeAnimation]="true">
         <router-outlet></router-outlet>
-        <!-- <router-outlet name='adminoutlet' #adminoutlet="outlet"></router-outlet> -->
         <mat-spinner class="loader" [mode]="'indeterminate'" diameter="50" *ngIf="loadingRouteConfig"></mat-spinner>
       </div>
 

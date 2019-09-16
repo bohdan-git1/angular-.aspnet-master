@@ -60,7 +60,7 @@ export class MainComponent implements OnInit {
 	closeBtnPos: any ;
 	show_profileTab:boolean = false;
 
-	initialroutePath:any = '/main/ava';
+	initialroutePath:any = '/dashBoard';
 
 	@HostListener('window:resize', ['$event'])
 	onResize(event) {
@@ -152,7 +152,7 @@ export class MainComponent implements OnInit {
 	/* starting point of routing */
 
   if(this.router.url == this.initialroutePath){
-	this.router.navigate([this.initialroutePath, { outlets: { adminoutlet: ['admin']}}]);
+	this.router.navigate([this.initialroutePath]);
   }
 
 	if(!this.navigated){
@@ -180,7 +180,7 @@ export class MainComponent implements OnInit {
 		if(indx == 0){
 			let routerurl: any = this.router.url;
 			if(routerurl.indexOf('analytics') != -1 || routerurl.indexOf('pmt') != -1 || routerurl.indexOf('settings') != -1){
-				this.router.navigate([this.initialroutePath, { outlets: { adminoutlet: ['admin']}}]);
+				this.router.navigate([this.initialroutePath]);
 				this.messageService.sendMessage('backtohome', true);
 			}
 		}
@@ -196,7 +196,8 @@ export class MainComponent implements OnInit {
 
   setTimeout(() => {
 		if(this.panelArr[indx].id == 0){
-      this.router.navigate([this.initialroutePath+'/admin']);
+      console.log("clicked");
+      this.router.navigate([this.initialroutePath]);
 
 		} else if(this.panelArr[indx].id == 1){
       this.router.navigate([this.initialroutePath+'/schedule']);

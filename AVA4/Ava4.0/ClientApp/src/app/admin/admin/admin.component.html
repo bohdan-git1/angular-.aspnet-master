@@ -10,20 +10,17 @@
         <span>{{item.title}}</span>
       </div>
 
-      <div class="accordion-content" [ngStyle]="{'height': acord_cont_ht + 'px'}" *ngIf="indx == 0">
-
+      <div class="accordion-content" *ngIf="indx == 0" [ngStyle]="{'height': acord_cont_ht + 'px'}">
         <router-outlet></router-outlet>
-
         <!-- <app-analytics (getPanelSelected)="openPanelOption($event)"></app-analytics> -->
       </div>
 
       <!-- <div class="accordion-content" [ngStyle]="{'height': acord_cont_ht + 'px'}" *ngIf="indx == 1">
-        <router-outlet name='pmt'></router-outlet>
+        <router-outlet></router-outlet>
       </div>
 
       <div class="accordion-content" [ngStyle]="{'height': acord_cont_ht + 'px'}" *ngIf="indx == 2">
-
-        <router-outlet name='settings'></router-outlet>
+        <router-outlet></router-outlet>
       </div> -->
 
       <div [ngClass]="{'accordion-separator': itemclicked == true}"
@@ -31,4 +28,4 @@
     </li>
   </ul>
 </div>
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->

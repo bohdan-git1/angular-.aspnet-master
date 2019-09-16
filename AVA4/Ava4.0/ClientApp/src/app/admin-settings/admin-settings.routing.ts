@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsOperationComponent } from './settings-operation/settings-operation.component';
@@ -26,9 +26,9 @@ import { DiagnosisComponent } from './clinic-pages/diagnosis/diagnosis.component
 import { TreatmentPlanComponent } from './clinic-pages/treatment-plan/treatment-plan.component';
 import { VendorsComponent } from './finance-pages/vendors/vendors.component';
 
-export const adminsettingsroutes: Routes = [
-	{path: '', redirectTo: 'settings', pathMatch: 'full'},
-	{path: 'settings', component: SettingsComponent, children: [
+const adminsettingsroutes: Routes = [
+	// {path: '', redirectTo: 'settings', pathMatch: 'full'},
+	{path: '', component: SettingsComponent, children: [
 
 		{path: 'clinic', component: SettingsClinicComponent, children: [
 			{ path: 'diagnosis', component: DiagnosisComponent },
@@ -59,4 +59,9 @@ export const adminsettingsroutes: Routes = [
 
 ];
 
-export const AdminSettings_routing: ModuleWithProviders = RouterModule.forChild(adminsettingsroutes);
+@NgModule({
+  imports: [RouterModule.forChild(adminsettingsroutes)],
+  exports: [RouterModule],
+})
+export class AdminSettings_routing {}
+// export const AdminSettings_routing: ModuleWithProviders = RouterModule.forChild(adminsettingsroutes);
